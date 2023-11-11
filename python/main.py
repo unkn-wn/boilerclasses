@@ -1,3 +1,4 @@
+import json
 from selenium import webdriver
 from selenium.webdriver.support import ui
 from selenium.webdriver.common.by import By
@@ -31,7 +32,7 @@ class_codes = ["AAE","AAS","ABE","AD","AFT","AGEC","AGR","AGRY","AMST","ANSC","A
 
 code_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_subj']")
 code_dropdown = ui.Select(code_dropdown)
-code_dropdown.select_by_index(0)
+code_dropdown.select_by_value("CS")
 type_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_schd']")
 type_dropdown = ui.Select(type_dropdown)
 type_dropdown.deselect_all()
@@ -107,10 +108,9 @@ for courseId in catalogEntries:
     doneIds[courseId]["credits"] = [int(float(cred)), int(float(cred))]
 
 
-
-# with open("out.txt", "w") as f:
+jsonData = []
 for x in doneIds:
-  print(doneIds[x])
-# print(doneIds)
-  
-  
+  jsonData.append(doneIds[x])
+
+outfile = open("cs.json", "w")
+json.dump(jsonData, outfile)
