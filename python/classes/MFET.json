@@ -1,0 +1,170 @@
+[
+    {
+        "title": "Geometric Modeling Applications",
+        "subjectCode": "MFET",
+        "courseCode": "10301",
+        "instructor": [
+            "Travis J Fuerst"
+        ],
+        "description": "This course provides an introduction to the process of 3D geometric CAD modeling, and the construction techniques used in the creation of constraint-based solid and surface models used in engineering disciplines. Part modeling and assembly modeling are included, as well as manipulation of the geometric model to derive variant designs. Emphasis is on the use of the engineering design process as a problem-solving method to capture modeling behavior to enable the downstream use of 3D data in the overall product design process, and its re-use in the product lifecycle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Product Data Management",
+        "subjectCode": "MFET",
+        "courseCode": "11301",
+        "instructor": [
+            "David L Ewing"
+        ],
+        "description": "This course provides an understanding of the types of data generated and used in the product lifecycle, the current tools and methodologies in the management of that data, and system analysis and implementation techniques for using PDM as the backbone supporting a company's product development and implementation activities. Interaction between various enterprise systems is discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Graphical Communication And Spatial Analysis",
+        "subjectCode": "MFET",
+        "courseCode": "16300",
+        "instructor": [
+            "Travis J Fuerst"
+        ],
+        "description": "An introductory course in computer graphics applications for mechanical- and aeronautical-related professions. Experiences focus on visualization, sketching, graphic standards, and problem-solving strategies for engineering design. The course will emphasize the proper use of parametric solid modeling for design intent.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Model-Based Definition",
+        "subjectCode": "MFET",
+        "courseCode": "20301",
+        "instructor": [
+            "Nathan W Hartman"
+        ],
+        "description": "This course provides experience in the development of model-based product definition through the use of contemporary modeling tools and the application of ASME dimensional standards. This course also covers product data exchange and interoperability standards from the perspective of neutral and proprietary data formats and models. Long-term archival concepts are also covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Industrial Internet Of Things, Networks, And Systems II",
+        "subjectCode": "MFET",
+        "courseCode": "23100",
+        "instructor": [
+            "Grant P Richards"
+        ],
+        "description": "This course offers a practical exploration of Industrial Internet of Things (IToT) in converged information and operations technology (IT/OT) industrial automation systems. Course topics include IT and OT reference architectures, industrial network convergence, standards, and security practices in the context of Edge, hybrid, and the Cloud-based industrial applications. Specific focus is given to integrating and securing networked industrial devices with local and cloud-based IT systems in greenfield and brownfield scenarios.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Industrial Robot Programming And Applications",
+        "subjectCode": "MFET",
+        "courseCode": "24800",
+        "instructor": [
+            "Xiumin Diao",
+            "Jeffrey R Heiking"
+        ],
+        "description": "&nbsp; This course introduces the fundamental concepts of robotics with emphasis on hands-on experience in programming and application of industrial robots. Topics covered include the introduction of robotics, robot classifications, robot programming, end-of-arm tooling, safety considerations, automation sensors, and robot and system integration.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Digital Manufacturing",
+        "subjectCode": "MFET",
+        "courseCode": "30301",
+        "instructor": [
+            "Jorge Dorribo Camba"
+        ],
+        "description": "This course investigates digital manufacturing methods, tools, and processes. Topics include additive and subtractive production techniques, CNC tools, geometric dimensioning and tolerance, model-based definition, measurement instruments and metrology, and scanning techniques for geometry validation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Manufacturing Integration I",
+        "subjectCode": "MFET",
+        "courseCode": "37400",
+        "instructor": [
+            "Thomas M Lucas",
+            "Grant P Richards",
+            "Rashmi Bahuguna Deodeshmukh"
+        ],
+        "description": "The fundamentals of data communications and local area networks are taught in order to show students how to integrate modern manufacturing systems. Emphasis is on the various levels of communications between shop floor computers, PLCs, robots, and automatic identification equipment. Database technology is used as an integration tool. This course prepares students for the MFET capstone course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Additive Manufacturing",
+        "subjectCode": "MFET",
+        "courseCode": "41000",
+        "instructor": [
+            "Huachao Mao"
+        ],
+        "description": "This course covers topics in additive manufacturing (AM) technologies. Topics include the AM benefits and drawbacks of additive as compared to subtractive manufacturing, additive manufacturing process and material selection, design for additive manufacturing, support structure generation, printing process planning, and quality control techniques, such as monitoring, inspection, and surface modification.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Programming Robots With ROS",
+        "subjectCode": "MFET",
+        "courseCode": "44200",
+        "instructor": [
+            "Dongming Gan"
+        ],
+        "description": "Robot Operating Systems (ROS) will be used as a programming platform to explore the topics of computer vision, SLAM (Simultaneous Localization and Mapping), path planning, grasping, and social interaction in robotic systems, as well as programming large systems for physical interaction with the world. Self-contained implementation projects are core to the class. Student knowledge of a procedural programming language, familiarity with robotics, and a rudimentary understanding of matrices is assumed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Automation Of Digital Product Development Processes",
+        "subjectCode": "MFET",
+        "courseCode": "63400",
+        "instructor": [
+            "Jorge Dorribo Camba"
+        ],
+        "description": "This course introduces students to advanced computer programming techniques in the context of Computer-Aided Design and Manufacturing by focusing on automation and customization procedures of 3D solid modeling, design, and management tasks. The course emphasizes problem-solving skills and creative thinking by developing solutions to manipulate CAD applications, files and PDM systems programmatically. By the end of the semester, students should be able to identify characteristics and common patterns in tasks that lend themselves to automation and select and evaluate the most appropriate mechanisms to implement different levels of automation. Pre-Requisite: CGT 52000 or equivalent.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

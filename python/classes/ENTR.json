@@ -1,0 +1,114 @@
+[
+    {
+        "title": "Introduction To Entrepreneurship And Innovation",
+        "subjectCode": "ENTR",
+        "courseCode": "20000",
+        "instructor": [
+            "Jorge Arturo Romero-Day",
+            "Rick Brian Davis",
+            "Mark A Reiff",
+            "Dora L Lutz",
+            "Jack Eric Davis",
+            "Lucas Trevor Woody"
+        ],
+        "description": "&nbsp; This course&nbsp;introduces students to the process of turning ideas, inventions, and innovations into new business ventures. It covers foundational entrepreneurial concepts and practices, as well as the leadership, teamwork, and communication skills required of individuals who choose to become entrepreneurs or to act entrepreneurially in established organizations. It serves as the first required core course for the Certificate in Entrepreneurship and Innovation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Marketing And Management For New Ventures",
+        "subjectCode": "ENTR",
+        "courseCode": "31000",
+        "instructor": [
+            "Angela Lee Easterday Zentz",
+            "Terry Robertson Smith",
+            "Bob Paden"
+        ],
+        "description": "&nbsp; This course builds on the foundational skills developed in ENTR 20000 (prerequisite course) to bring students through the process of launching a new venture. Students work in teams to develop and validate business models for potential startups. This occurs through experiential activities including gathering feedback from potential customers, creating forecasts, developing a go-to-market strategy, and pitching to investors. Students can choose ENTR 31000 or ENTR 31500 to serve as the second required core course for the Certificate in Entrepreneurship and Innovation.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business Planning For Social Entrepreneurship",
+        "subjectCode": "ENTR",
+        "courseCode": "31500",
+        "instructor": [
+            "Dora L Lutz"
+        ],
+        "description": "&nbsp; This course builds on entrepreneurship concepts and skills developed in ENTR 20000 (prerequisite course) to understand the differences, benefits, and opportunities associated with social impact business models. Students work in teams on experiential activities including gathering customer feedback, creating forecasts, developing a strategy, and pitching to stakeholders and investors. Students can choose ENTR 31000 or ENTR 31500 to serve as the second required core course for the Certificate in Entrepreneurship and Innovation.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Gender, Diversity And Leadership",
+        "subjectCode": "ENTR",
+        "courseCode": "47000",
+        "instructor": [
+            "Lorraine G Kisselburgh"
+        ],
+        "description": "&nbsp; This course serves as an option course for the Certificate in Entrepreneurship and Innovation. It provides a social and historical perspective of gender and diversity in leadership and entrepreneurship, as well as practical skills students can use to develop their own leadership abilities. This highly interactive course provides the opportunity for students to meet with diverse leaders from a variety of organizations. Topics of social, political, and economic interest are covered, as are discussions of current issues and research relevant to leadership success.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Entrepreneurial Leadership And Careers",
+        "subjectCode": "ENTR",
+        "courseCode": "48000",
+        "instructor": [
+            "Susan B Woods"
+        ],
+        "description": "&nbsp; This course prepares students for entrepreneurial careers by requiring them to apply the knowledge and skills learned in prerequisite entrepreneurship courses to the development of their professional goals and networks. Students explore how they can use their entrepreneurial talents, skills, and interests in a variety of ways, including launching startups, joining family businesses, or being intrapreneurs in established organizations. The course serves as a capstone for the Certificate in Entrepreneurship and Innovation.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Consulting For Emerging Enterprises",
+        "subjectCode": "ENTR",
+        "courseCode": "48100",
+        "instructor": [
+            "Susan B Woods"
+        ],
+        "description": "&nbsp; This course is an experiential course that requires students to apply the knowledge and skills learned in prerequisite entrepreneurship courses to a real-world consulting project for a startup, small business, or non-profit organization. Student teams use a three-stage consulting model to guide project contracting, data gathering, and value creation for the client. In-class time focuses on developing consulting knowledge and competencies that are applied directly to client interactions and project execution. The course serves as a capstone for the Certificate in Entrepreneurship and Innovation. Class size is limited. Permission of the instructor is required.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Venture Planning Studio",
+        "subjectCode": "ENTR",
+        "courseCode": "48200",
+        "instructor": [
+            "John Patrick Mc Donald"
+        ],
+        "description": "&nbsp; This course is an experiential course that brings students through the process of creating a startup company as they would in a real-world business incubator or venture studio. They apply knowledge and methodologies related to design thinking, lean startup, financial planning, and fundraising to develop robust business models. Students can bring their own ideas to the course or contribute to one that will be identified. The purpose of this course is to develop in students the confidence and competence to transform a venture idea into a viable startup company. The course serves as a capstone&nbsp;for the Certificate in Entrepreneurship and Innovation.&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

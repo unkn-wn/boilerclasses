@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Introduction To Data Lifecycle Management",
+        "subjectCode": "ILS",
+        "courseCode": "10300",
+        "instructor": [
+            "Chao Cai"
+        ],
+        "description": "Introduces concepts of the management of data throughout its lifecycle. Understanding different types of data and their functions. Managing data in the context of a particular discipline or profession. Finding and evaluating data purposefully. Using data ethically and responsibly. Creating and sharing data for reuse, accountability, and enhancement. Making decisions and communicating using data, including data analysis and visualization. Protecting and archiving data.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data Science And Society: Ethical Legal Social Issues",
+        "subjectCode": "ILS",
+        "courseCode": "23000",
+        "instructor": [
+            "Jerilyn Pia Tinio"
+        ],
+        "description": "This course provides an introduction to Ethical, Legal Social Issues (ELSI) in Data Science. Students will be introduced to interdisciplinary theoretical and practical frameworks that can aid in exploring the impact and role of Data Science in society. This is a writing intensive course. Students will work individually and on collaborative assignments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intro To Digital Humanities",
+        "subjectCode": "ILS",
+        "courseCode": "29500",
+        "instructor": [
+            "Spencer Dean Stewart"
+        ],
+        "description": "Study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Rsrch Methods Rare Bks-Honors",
+        "subjectCode": "ILS",
+        "courseCode": "49500",
+        "instructor": [
+            "Adriana M Harmeyer"
+        ],
+        "description": "Study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Geo Data Sci With ArcGIS&amp;Pyth",
+        "subjectCode": "ILS",
+        "courseCode": "59500",
+        "instructor": [
+            "Gang Shao"
+        ],
+        "description": "Intensive study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science. Permission of the instructor is required for undergraduates.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computational Text Analysis",
+        "subjectCode": "ILS",
+        "courseCode": "69500",
+        "instructor": [
+            "Matthew N Hannah"
+        ],
+        "description": "Intensive study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Advanced Biopharmaceutics",
+        "subjectCode": "IPPH",
+        "courseCode": "58300",
+        "instructor": [
+            "Gregory Thomas Knipp"
+        ],
+        "description": "A comprehensive course dealing with the interaction of biological and physicochemical considerations relating to drug effectiveness and dosage form design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pharmaceutical Stability",
+        "subjectCode": "IPPH",
+        "courseCode": "59000",
+        "instructor": [
+            "Severin Thomas Schneebeli"
+        ],
+        "description": "Special topics in selected areas of industrial and physical pharmacy. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Industrial And Physical Pharmacy",
+        "subjectCode": "IPPH",
+        "courseCode": "69600",
+        "instructor": [
+            "Sandro Matosevic"
+        ],
+        "description": "Discussion of recent research developments in physical pharmacy, industrial pharmacy, and biopharmaceutics related to the physicochemical properties, availability, effectiveness, and safety of drugs and drug products. Topics are presented by staff, students, and invited speakers.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

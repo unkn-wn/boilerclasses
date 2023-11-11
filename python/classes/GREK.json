@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Ancient Greek Level II",
+        "subjectCode": "GREK",
+        "courseCode": "10200",
+        "instructor": [
+            "Elizabeth E Mercier"
+        ],
+        "description": "Continuation of the study of Attic Greek grammar and reading of connected prose of the Classical period.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Ancient Greek Level IV",
+        "subjectCode": "GREK",
+        "courseCode": "20200",
+        "instructor": [
+            "Charles Steele Campbell"
+        ],
+        "description": "Upper intermediate reading course in ancient Greek, designed to consolidate students' knowledge of grammar and syntax, broaden vocabulary, and develop precision and confidence in reading and translation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Greek Directed Reading",
+        "subjectCode": "GREK",
+        "courseCode": "49000",
+        "instructor": [
+            "Charles Steele Campbell"
+        ],
+        "description": "Directs the reading of students with special interests. Guides students in profitable reading in subjects of their own choice. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

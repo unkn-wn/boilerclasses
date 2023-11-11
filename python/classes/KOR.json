@@ -1,0 +1,94 @@
+[
+    {
+        "title": "Korean Level I",
+        "subjectCode": "KOR",
+        "courseCode": "10100",
+        "instructor": [
+            "Muni Jean"
+        ],
+        "description": "This course is the first half of the Elementary Korean language sequence. It is designed for those who have no prior (or very limited) knowledge of Korean. Lecture will introduce new material and explain conversational patterns considering grammatical, lexical, and pragmatic aspects of Korean. Some class meetings will be conducted entirely in Korean. Emphasis is placed on the fundamentals of listening, speaking, reading, and writing. In addition, students will be exposed to everyday life contexts (e.g., language use, culture, etc.) likely to be encountered in contemporary Korean society.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Korean Level II",
+        "subjectCode": "KOR",
+        "courseCode": "10200",
+        "instructor": [
+            "Huai-Rhin Kim",
+            "Jungeun A Kim"
+        ],
+        "description": "This course is the second half of the elementary Korean language sequence. As a continuation of KOR 10100, the main purpose of this course is to expand on the study of the Korean language and culture. The class will introduce new material and explain conversational patterns considering grammatical, lexical, and pragmatic aspects of Korean. Some class meetings will be conducted entirely in Korean. Students continue to learn vocabulary, pronunciation, grammar, and the writing system by practicing Korean to achieve Novice High level of speaking, listening, reading, and writing.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Korean Level IV",
+        "subjectCode": "KOR",
+        "courseCode": "20200",
+        "instructor": [
+            "Muni Jean",
+            "Jungeun A Kim"
+        ],
+        "description": "This course is the second half of the intermediate Korean language sequence. The main purpose of this course is to expand on the study of the Korean language and culture, and develop an Intermediate Mid proficiency level. Some class meetings are conducted entirely in Korean. The course provides students with further conversational and grammatical skills. Students practice reading comprehension, grammar, vocabulary, and conversation using textbooks and authentic materials for introduction of Korean culture and authentic language usage.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Korean Level VI",
+        "subjectCode": "KOR",
+        "courseCode": "30200",
+        "instructor": [
+            "Jungeun A Kim"
+        ],
+        "description": "This course aims to help students develop their language skills in four areas-speaking, listening, reading, and writing-in Korean at the advanced level. It covers grammar and vocabulary, reading comprehension, fluency, conversation manners, and public speaking. Emphasis will be on the appropriate use of Korean in a variety of situations including schools, companies, and formal/informal meetings. This course also enables students to understand Korean culture and history and to develop cross-cultural insights by comparing Korean society with US society. Korean history, image of Korea, and current social trends in Korea will be discussed for a solid understanding of Korean culture in which Korean language is embedded.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Korean Cinema",
+        "subjectCode": "KOR",
+        "courseCode": "33000",
+        "instructor": [
+            "Huai-Rhin Kim"
+        ],
+        "description": "This course examines Korean society and culture through cinematic representations. Through film, the course provides a broad understanding of the major social and political changes in Korean society, as well as a brief history of Korean cinema and the transformations in the structure of the Korean film industry. Students will learn to identify major directors such as Park Chan-wook, Lee Chang-dong, and Bong Joon-ho, films, and genres. All films will be screened with English subtitles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "K-Pop: Genre, Id, Ind &amp; Fandom",
+        "subjectCode": "KOR",
+        "courseCode": "38000",
+        "instructor": [
+            "Song I No"
+        ],
+        "description": "This course will be offered as a variable-title course focusing on traditional, historical, social, and political themes of Korea.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

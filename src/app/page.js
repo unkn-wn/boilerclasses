@@ -104,7 +104,7 @@ const CourseCatalog = () => {
             <div key={course.id}
               onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
               className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
-              <h2 className="lg:text-2xl md:text-lg font-bold">{course.subjectCode}{course.courseCode} {course.title}</h2>
+              <h2 className="lg:text-2xl md:text-lg font-bold">{course.subjectCode}{course.courseCode}: {course.title}</h2>
               <p className="lg:text-lg text-small font-medium mb-2">Instructor: {course.instructor.join(", ")}</p>
               <p className="text-gray-600 mb-4 break-words grow"> {course.description.length > 200
                 ? `${course.description.substring(0, 200)}...`

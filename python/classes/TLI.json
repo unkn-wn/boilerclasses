@@ -1,0 +1,215 @@
+[
+    {
+        "title": "Foundations Of Organizational Leadership",
+        "subjectCode": "TLI",
+        "courseCode": "11200",
+        "instructor": [
+            "Andrea F Barber-Dansby",
+            "Joshua Adam Plaskoff"
+        ],
+        "description": "A survey of individual and organizational behavioral concepts and principles that provide a foundation for leadership in technology organizations. The focus will be toward the understanding of behaviors necessary for effective organizational leadership, including concepts of work in a technology-rich environment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business Principles For Organizational Leadership",
+        "subjectCode": "TLI",
+        "courseCode": "15200",
+        "instructor": [
+            "Kyle A Ochs",
+            "Regena L Scott"
+        ],
+        "description": "This course will introduce the topic of applied organization leadership in the context of working organizations. Topics include basic functions, structures, and operations of organizations, and an introduction to reading and understanding balance sheets, cash flow statements, and profit-loss statements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Prototyping In Engineering/Technology Education",
+        "subjectCode": "TLI",
+        "courseCode": "16100",
+        "instructor": [
+            "Nathan Mentzer"
+        ],
+        "description": "Design, make, and innovate! This course provides basic instruction on the proper and safe use of tools and equipment used to prototype innovative ideas. This includes 3D printers, laser cutters/engravers, fabrication tools/equipment, CNC mills/routers, and microcontrollers/microcomputers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mentorship In Organizations",
+        "subjectCode": "TLI",
+        "courseCode": "20000",
+        "instructor": [
+            "Abrar Hammoud"
+        ],
+        "description": "&nbsp;&nbsp;This course is designed to help students learn more about mentoring within organizations from the perspectives of both mentors and mentees. Students expand their knowledge and skills about mentoring processes through practical engagement with material drawn from real-world situations.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Project Management",
+        "subjectCode": "TLI",
+        "courseCode": "21300",
+        "instructor": [
+            "Lorri J Barnett",
+            "Christopher Nelson Bittinger"
+        ],
+        "description": "Project management is an ad hoc technique for accomplishing specialized missions or work. Examples of projects include research and development studies, consulting projects, reorganizations efforts, implementation of total quality management, installation of new equipment, advertising campaigns, construction or other one-time efforts. This course will provide a leadership approach to project management, including team development and team selection.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Leading Innovation In Organizations",
+        "subjectCode": "TLI",
+        "courseCode": "31400",
+        "instructor": [
+            "Monica Gamez-Djokic"
+        ],
+        "description": "This course provides the foundation for understanding the manner in which companies capture innovation and use it to set themselves apart from competitors.  Topics covered include the attributes of organizations that are successful in fostering a culture of innovation; the characteristics and roles of leaders and members in innovative organizations; managerial processes and organizational systems that facilitate the successful development, commercialization, and adoption of innovative technologies, products, and services; and methods used to measure innovation-related outcomes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Organization Development And Change",
+        "subjectCode": "TLI",
+        "courseCode": "35520",
+        "instructor": [
+            "Monica Gamez-Djokic"
+        ],
+        "description": "This course provides an introduction to major theories, concepts, skills and techniques for the practice of organization development processes and interventions using a consultancy approach. Implications for organizational change are integrated as part of an OD effort.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Strategic Planning In Human Resources",
+        "subjectCode": "TLI",
+        "courseCode": "35530",
+        "instructor": [
+            "Mesut Akdere"
+        ],
+        "description": "The course provides students with a theoretical foundation for strategic planning within the context of systems thinking. It also develops the practical skills needed to create and execute effective strategic plans for human resource activities.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Individual And Organizational Performance",
+        "subjectCode": "TLI",
+        "courseCode": "35580",
+        "instructor": [
+            "Cho Hyun Park"
+        ],
+        "description": "This course develops an understanding of the principles and theoretical foundations of individual and organizational performance management. Emphasis is placed on the perspectives, methodology, and theoretical frameworks as well as applications for performance management from the perspective of human resources professionals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Engineering And Technology Education Instructional Planning And Evaluation",
+        "subjectCode": "TLI",
+        "courseCode": "36100",
+        "instructor": [
+            "Nathan Mentzer"
+        ],
+        "description": "This course addresses selecting content, writing instructional objectives, planning lessons, preparing a unit of study, and evaluating student progress. Emphasis is placed on evaluating instruction and student achievement to include developing valid, reliable testing instruments as they relate to measuring student achievement in the cognitive, affective, and psychomotor domains.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Teaching Design And Innovation I",
+        "subjectCode": "TLI",
+        "courseCode": "36700",
+        "instructor": [
+            "Sherylyn H Briller"
+        ],
+        "description": "This course focuses on the development of appropriate engineering design knowledge and skill required to effectively teach middle and high school engineering/technology education courses by infusing engineering design into the curriculum. Students will use 3-D solid",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Foundations Of Human Resources Capstone",
+        "subjectCode": "TLI",
+        "courseCode": "45590",
+        "instructor": [
+            "Mesut Akdere"
+        ],
+        "description": "This course synthesizes all of the required and secondary content areas described in the SHRM HR Curriculum Guidelines. Students will prepare for the SHRM Certified Professional (SHRM-CP) exam while demonstrating their accumulated knowledge and in the area of human resources.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Leadership For Competitive Advantage",
+        "subjectCode": "TLI",
+        "courseCode": "45800",
+        "instructor": [
+            "Matthew D Jones"
+        ],
+        "description": "Organizations who consistently outperform competitors realize bottom-line impact through efficient leveraging of organizational strategy, leadership, internal and external talent acquisition, organizational culture, and marketing strategies. This course will explore the relationships between these areas and introduce organizational tools and concepts to enable the student to recognize and build capacity for sustainable competitive advantage in technology organizations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Teaching Design And Innovation II",
+        "subjectCode": "TLI",
+        "courseCode": "46000",
+        "instructor": [
+            "Douglas E Pruim"
+        ],
+        "description": "This course expands the engineering design process, incorporating rapid prototyping and other fabrication technologies to create a specified solution. The course emphasizes process flow chart planning and logistics of engineering/technology education laboratory management. Prototypes will be tested in real situations and data gathered on performance. Designs will be revised to reflect a deeper understanding of manufacturing and use, being sensitive to structure, function, and behavior from a systems-level perspective. Intellectual property, marketing, and infrastructure will be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

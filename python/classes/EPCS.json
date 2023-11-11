@@ -1,0 +1,182 @@
+[
+    {
+        "title": "First Year Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "10100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Together, Engineering Projects in Community Service (EPICS) courses create a vertical project track under which students work in multidisciplinary teams on long-term engineering-based design projects. Projects of at least one-year in duration are intended to solve real problems that are defined in consultation with \"customers\" from not-for-profit community and education organizations. EPCS courses are open to students from all disciplines; each student contributes expertise in his/her academic discipline. Each team consists of a mix of first-year, sophomores, juniors, and seniors. Students are encouraged to participate in an EPICS project team for two or more semesters. First-year students participating in EPCS 10100 gain insight into the specific project, and more generally, into the design and development process. They attend planning and reporting meetings with the customer and are expected attend all team meetings. Under the mentorship of the team's sophomores, juniors and seniors they perform and report upon tasks consistent with their level of discipline expertise. May be repeated for credit.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "First Year Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "10200",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). Participants in EPCS 10200 gain insight into the specific project, and more generally, into the design and development process. They attend planning and reporting meetings with the customer and are expected to attend all team meetings. Working with team's sophomores, juniors and seniors they perform and report upon tasks consistent with their level of discipline expertise. EPCS 10200 is offered for two credits and is intended for students who have exhibited significant achievement in EPCS 10100 and desire the level of responsibility that is appropriate for two credits. May be repeated for credit. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "First Year Participation In EPICS I",
+        "subjectCode": "EPCS",
+        "courseCode": "11100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Together, Engineering Projects in Community Service (EPICS) courses create a vertical project track under which students work in multidisciplinary teams on long-term engineering-based design projects. Projects of at least one-year in duration are intended to solve real problems that are defined in consultation with \"customers\" from not-for-profit community and education organizations. EPCS courses are open to students from all disciplines; each student contributes expertise in his/her academic discipline. Each team consists of a mix of first-year, sophomores, juniors, and seniors. Students are encouraged to participate in an EPICS project team for two or more semesters. First-year students participating in EPCS gain insight into the specific project, and more generally, into the design and development process. They attend planning and reporting meetings with the customer and are expected to attend all team meetings. Under mentorship from upper-level students and instructors, they perform and report upon design tasks consistent with their level of discipline expertise.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "First Year Participation In EPICS II",
+        "subjectCode": "EPCS",
+        "courseCode": "12100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Together, Engineering Projects in Community Service (EPICS) courses create a vertical project track under which students work in multidisciplinary teams on long-term engineering-based design projects. Projects of at least one year in duration are intended to solve real problems that are defined in consultation with customers from not-for-profit community and educational organizations. EPCS courses are open to students from all disciplines; each student contributes expertise in his/her academic discipline. Each team consists of a mix of first-year, sophomores, juniors, and seniors.  Students are encouraged to participate in an EPICS project for two or more semesters. First-year students participating in EPICS gain insight into the specific project, and more generally, into the design and development process. Under mentorship from upper-level students and instructors, they perform and report upon design tasks consistent with their level of discipline expertise.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sophomore Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "20100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). Sophomores participating in EPCS 20100 gain insight into the specific project, and, more generally, into the design and development process. They attend planning and reporting meetings with the customer and are expected attend all team meetings. Under the mentorship of the team's juniors and seniors they perform and report upon tasks consistent with their level of discipline expertise. EPCS 20100 is offered for one credit.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sophomore Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "20200",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). Sophomores participating in EPCS 20100 gain insight into the specific project, and, more generally, into the design and development process. They attend planning and reporting meetings with the customer and are expected attend all team meetings. Under the mentorship of the team's juniors and seniors they perform and report upon tasks consistent with their level of discipline expertise. EPCS 20200 is offered for two credits. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Junior Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "30100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). The responsibilities of juniors include working with the seniors in the planning and organization of the project, contributing to the design process, problem-solving by contributing expertise from their discipline, meeting with the customer, and the mentorship of sophomores and freshmen. EPCS 30100 is offered for one credit. The EPICS procedures manual provides information on expected relative workload for EPCS 30100 and EPCS 30200 students. May not be taken concurrently with EPCS 30200.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Junior Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "30200",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). The responsibilities of juniors include working with the seniors in the planning and organization of the project, contributing to the design process, problem-solving by contributing expertise from their discipline, meeting with the customer, and the mentorship of sophomores and freshmen. EPCS 30200 is offered for two credits. The EPICS procedures manual provides information on expected relative workload for EPCS 30100 and EPCS 30200 students. May not be taken concurrently with EPCS 30100.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Senior Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "40100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). Seniors are responsible for the management tasks of planning and organizing their team project activity. They are expected to contribute expertise from their discipline to the design of the team's projects throughout most of the design process phases of problem identification, specification development, design, production, and deployment. Seniors will also meet with the customer and mentor the freshman, sophomores and juniors. Seniors using EPCS 40100/40200 to fulfill capstone or design requirements where approved for their major may be required to satisfy additional course requirements specified by their degree program. EPCS 40100 is offered for 1 credit. The EPICS procedures manual provides information on expected relative workload for EPCS 40100 and EPCS 40200 students. May not be taken concurrently with EPCS 40200.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Senior Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "40200",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPCS courses (see EPCS 10100). Seniors are responsible for the management tasks of planning and organizing their team project activity. They are expected to contribute expertise from their discipline to the design of the team's projects throughout most of the design process phases of problem identification, specification development, design, production, and deployment. Seniors will also meet with the customer and mentor the freshman, sophomores and juniors. Seniors using EPCS 40100/40200 to fulfill capstone or design requirements where approved for their major may be required to satisfy additional course requirements specified by their degree program. EPCS 40200 is offered for two credits. The EPICS procedures manual provides information on expected relative workload for EPCS 40100 and EPCS 40200 students. May not be taken concurrently with EPCS 40100.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Senior Design Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "41100",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPICS courses. Seniors using EPCS 41100 to fulfill capstone or design requirements where approved for their major may be required to satisfy additional course requirements specified by their degree program. EPCS 41100 is offered for 1 credit. The EPICS procedures manual provides information on expected relative workload for EPCS 41100 and EPCS 41200 students. Seniors are responsible for the management tasks of planning and organizing their team project activity. They are expected to contribute expertise from their discipline to the design of the team's projects throughout most of the design process phases of problem identification, specification development, design, production, and deployment. Seniors will also meet with the customer and mentor the first year, sophomores and juniors. May not be taken concurrently with EPCS 41200.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Senior Design Participation In EPICS",
+        "subjectCode": "EPCS",
+        "courseCode": "41200",
+        "instructor": [
+            "Andrew L Pierce"
+        ],
+        "description": "Continuation of EPICS courses. Seniors using EPCS 41200 to fulfill capstone or design requirements where approved for their major may be required to satisfy additional course requirements specified by their degree program.  EPCS 41200 is offered for 2 credits. The EPICS procedures manual provides information on expected relative workload for EPCS 41100 and EPCS 41200 students. Seniors are responsible for the management tasks of planning and organizing their team project activity. They are expected to contribute expertise from their discipline to the design of the team's projects throughout most of the design process phases of problem identification, specification development, design, production, and deployment. Seniors will also meet with the customer and mentor the first year, sophomores and juniors. May not be taken concurrently with EPCS 41100.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    }
+]

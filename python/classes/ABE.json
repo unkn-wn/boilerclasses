@@ -1,0 +1,273 @@
+[
+    {
+        "title": "Thermodynamics In Biological Systems II",
+        "subjectCode": "ABE",
+        "courseCode": "20200",
+        "instructor": [
+            "Junli Liu"
+        ],
+        "description": "Thermodynamic principles and their applications to biochemical and biological systems with emphasis on the second law of thermodynamics and use of molecular interpretations of energies and entropies. Concept of entropy balances and process efficiency. Free energy and chemical equilibrium. Equilibrium between phases, colligative properties, binding of ligands and formation of biological membranes. Molecular motion and transport properties and their application in biochemical analytical methods. Development of physical chemical problem solving skills using MathCad and MatLab software.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Thermodynamics Principles Of Engineering And Biological Systems",
+        "subjectCode": "ABE",
+        "courseCode": "21000",
+        "instructor": [
+            "Sadegh Dabiri"
+        ],
+        "description": "Application of thermodynamic principles to the design and operation of biological and engineering systems. The focus is on mass and energy balances for non-reacting processes and on the second law of thermodynamics. These principles are applied to biological and agricultural engineering systems. Specific topics include refrigeration systems, power cycles, energy conversion systems, and environmental impacts of energy production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Numerical And Computational Modeling In Biological Engineering",
+        "subjectCode": "ABE",
+        "courseCode": "30100",
+        "instructor": [
+            "Karthik Sankaranarayanan"
+        ],
+        "description": "Introduction to principles of analysis, setup, and modeling of biological systems using fundamental principles of engineering. Development of mathematical and numerical models to solve steady state and transient processes involving material and energy balances and utilizing thermodynamic, transport, and kinetic reaction principles, and economics in biological engineering systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Heat And Mass Transfer In Food And Biological Systems",
+        "subjectCode": "ABE",
+        "courseCode": "30800",
+        "instructor": [
+            "Ganesan Narsimhan"
+        ],
+        "description": "Principles of transport of energy and mass. Mechanisms of heat transfer, heat conduction, heat convection and heat radiation. Development of applications using macroscopic and microscopic balances of energy. Application of thermal energy balances and Fourier's Law to describe steady state and transient conduction applications including heat generation. Effect of the geometry on these processes. Basic principles of design of heat transfer equipment and its operation. Application of species mass balances and Fick's Law to steady state and transient diffusion problems. Effect of geometry on these processes. Analogies between transport of momentum, heat and mass applications to the solution of practical problems in the Food Process and Biological Engineering fields.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Design Of Electronic Systems",
+        "subjectCode": "ABE",
+        "courseCode": "31400",
+        "instructor": [
+            "Jian Jin"
+        ],
+        "description": "Fundamental aspects of circuits, microprocessors, transducers, sensors, instrumentation, and data acquisition are presented, with particular emphasis on electronic systems used in agricultural, biological, and food applications. Laboratory exercises used to apply the course material to constructing and testing circuits, microprocessor controlled systems, and the data collection and monitoring of systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Solid Modeling, Simulation, And Analysis",
+        "subjectCode": "ABE",
+        "courseCode": "32000",
+        "instructor": [
+            "Stanley D Harlow"
+        ],
+        "description": "Introduction to parametric, feature-based solid modeling; dimensioned 2D and 3D engineering drawings; tolerancing; mechanical dynamic simulation; kinematic models, analysis and simulation of simple linkages and complex systems; mechanism design and evaluation; visualization and animation of results; interfacing of computer aided engineering software. Projects involving industrial parts and assemblies will be discussed and assigned.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Design Of Machine Components",
+        "subjectCode": "ABE",
+        "courseCode": "33000",
+        "instructor": [
+            "Robert M Stwalley"
+        ],
+        "description": "Introduction to design; stress analysis; deformation and stiffness considerations; static and fatigue strength design; design of components of the food processing, farm and off-highway machines, and mechanical systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Ag/Biol Engineering Ambassador Leadership Seminar",
+        "subjectCode": "ABE",
+        "courseCode": "40600",
+        "instructor": [
+            "Ankita Raturi"
+        ],
+        "description": "Students engage in weekly seminar/lab that includes topics such as leadership, professional skills, teamwork, engaging audiences and Purdue culture. Students utilize these skills while representing the Department of Agricultural and Biological Engineering to current and prospective students, alumni, donors, legislators, and other supporters of Purdue Agricultural and Biological Engineering department. Students must be selected as an ABE Ambassador. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Ecological Restoration Engineering",
+        "subjectCode": "ABE",
+        "courseCode": "42600",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "This course focuses on ecologically-based design principles to restore degraded ecosystems, specifically wetlands, stream/floodplains, and prairies. Students will identify and synthesize design elements, natural and anthropogenic stresses, and management considerations to develop resilient restoration designs. Laboratory experience provides open-ended projects, data collection, and field trips to reinforce the design process.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cell And Molecular Design Principles",
+        "subjectCode": "ABE",
+        "courseCode": "44000",
+        "instructor": [
+            "Caitlin Rose Proctor"
+        ],
+        "description": "This course examines the design principles underlying the organizations and dynamics of biological networks with an emphasis on genetic/molecular circuits. Topics include the structure and tuning of network motifs and relationship to performance parameters such as robustness to internal noise, temporal response, noise filtering, bi-stability, pattern generation and temporal programs. Examples are presented from the study of natural systems and the design of new synthetic systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Transport Operations In Food And Biological Engineering I",
+        "subjectCode": "ABE",
+        "courseCode": "45700",
+        "instructor": [
+            "Ganesan Narsimhan"
+        ],
+        "description": "Application of momentum and heat transfer to biological and food process engineering. Viscosity, non-Newtonian fluids, experimental methods of rheological characterization of food and biological systems; viscoelasticity; design equations for pipe flow, pumps, mixing, emulsification, extrusion, sheeting, heat exchanges, aseptic processing, sterilization, freezing, and evaporation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Welding Engineering",
+        "subjectCode": "ABE",
+        "courseCode": "50100",
+        "instructor": [
+            "Milan Rakita"
+        ],
+        "description": "Design of weldments and modeling of heat transfer and residual stresses of the welding processes. Finite element theory of nonlinear properties for the many processes including laser, submerged arc, manual, Gas Tungsten Arc Welding (GTAW), plasma, and electron beam. Metallurgy topics include continuous cooling transformation curves in optimizing engineered joint strength, including cutting and welding.  Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computer Models In Environmental And Natural Resources Engineering",
+        "subjectCode": "ABE",
+        "courseCode": "52700",
+        "instructor": [
+            "Margaret W Gitau"
+        ],
+        "description": "Offers students in environmental and natural resources engineering programs an understanding of the hydrological processes and related design skills. Principles of soil erosion by water; drainage of agricultural lands; surface runoff; flood and reservoir routing; hydrodynamic and water quality in pipe network; nonpoint source pollution; and transport phenomenon are studied. Current computer models utilized in industry for decision support are applied using case studies to further enhance the understanding of the hydrological processes. Limitations and advantages of the models are discussed. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Process Design For Food And Biological Systems",
+        "subjectCode": "ABE",
+        "courseCode": "55800",
+        "instructor": [
+            "Martin R Okos"
+        ],
+        "description": "This course will focus on the design, synthesis, creation, evaluation, and optimization of processes to convert basic biological materials into a finished product. Concepts of materials and energy balances, thermodynamics, kinetics, transport phenomena of biological systems will be used to design processes to minimize energy and environmental impacts, and evaluate economic factors while maintaining product quality.  Course will include group projects, oral and written reports.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Process Engineering Of Renewable Resources",
+        "subjectCode": "ABE",
+        "courseCode": "58000",
+        "instructor": [
+            "Nathan S Mosier"
+        ],
+        "description": "Physical and chemical structure of biomass. Reaction kinetics of hydrolysis of hemicellulose and cellulose to fermentable sugars. Fundamentals of ethanol production by fermentation. Separation of fermentation products into pure components.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mach Learning IoT &amp; Comp Sys",
+        "subjectCode": "ABE",
+        "courseCode": "59100",
+        "instructor": [
+            "Teresa M Carvajal",
+            "Somali Chaterji"
+        ],
+        "description": "Primarily designed for students (two or more) desiring credit from subject areas for which no specific course, workshop, or individual study plan is offered. Area of study will deal with topics that have enough student interest to justify the formalized teaching of a specialized topic. The course may be repeated by a student as long as the topic being taught is not repeated. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Environmental Informatics",
+        "subjectCode": "ABE",
+        "courseCode": "65100",
+        "instructor": [
+            "Keith A Cherkauer"
+        ],
+        "description": "This course will educate students in the use, manipulation and analysis of environmental data by introducing them to scripting languages (e.g. c-shell, python), data types (e.g. ASCII, binary, NetCDF), databases (e.g. XML, DBF) and data visualization software (e.g. GMT, ArcMap) as well as techniques for checking data quality, working with missing data, and handling large diverse sources of time series and spatial data. Students will manipulate, check and insert data from a variety of sources, use that data as input to distributed hydrologic model, analyze model output and learn methods for properly documenting their data use (creation of metadata) and long-term archival storage of those data. Skills learned should be applicable to most computer operating systems, but the majority of work for this class will be done within the Unix/Linux environment. Students taking this course should have experience with one or more programming languages, including but not limited to C, Fortran, Perl, Python, java, Basic, or two writing scripts or macros within programs such as MatLab, S-Plus, R, SAS.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Graduate Seminar",
+        "subjectCode": "ABE",
+        "courseCode": "69600",
+        "instructor": [
+            "D. Marshall Porterfield"
+        ],
+        "description": "Best practices for effectively presenting scientific research are taught and practiced. Students will also present a twenty-minute seminar of original research results, as well as provide and receive constructive criticism on presentation form and content for improved future presentations.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

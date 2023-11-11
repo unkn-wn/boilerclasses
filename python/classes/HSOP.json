@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Seminar In Pharmacy Administration",
+        "subjectCode": "HSOP",
+        "courseCode": "69600",
+        "instructor": [
+            "Alan J Zillich"
+        ],
+        "description": "Selected topics on current research, teaching methods, and contemporary problems in management and marketing.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

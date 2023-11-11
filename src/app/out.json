@@ -899,7 +899,7 @@
       "instructor":[
          "Douglas E Comer"
       ],
-      "description":"Introduction to cloud computing. Cloud data center infrastructure, public and private clouds, servers and virtualized servers, data center networks and virtualized networks, virtualized disk, file, and object storage, the concept of scale-out, algorithms and programming systems used in the design and implementation of cloud-native software, especially using containers and orchestration systems, microservices, serverless designs,&nbsp;controller-based designs, edge and fog computing, security in a cloud environment, programming models.",
+      "description":"Introduction to cloud computing. Cloud data center infrastructure, public and private clouds, servers and virtualized servers, data center networks and virtualized networks, virtualized disk, file, and object storage, the concept of scale-out, algorithms and programming systems used in the design and implementation of cloud-native software, especially using containers and orchestration systems, microservices, serverless designs, controller-based designs, edge and fog computing, security in a cloud environment, programming models.",
       "capacity":0,
       "credits":[
          3,
@@ -1380,7 +1380,7 @@
       "instructor":[
          "Elisa Bertino"
       ],
-      "description":"&nbsp; Data security and privacy is an important part of information security. This course provides an introduction to the fundamental principles and techniques for data security and privacy. The course covers fundamental theories of access control, discretionary access control, mandatory access control, and role-based access control, database access control approaches including grant revoke, virtual private databases and labelled databases, database encryption. On privacy, it covers data anonymization, re-identification attacks, definition, primitives, and applications of differential privacy.",
+      "description":"Data security and privacy is an important part of information security. This course provides an introduction to the fundamental principles and techniques for data security and privacy. The course covers fundamental theories of access control, discretionary access control, mandatory access control, and role-based access control, database access control approaches including grant revoke, virtual private databases and labelled databases, database encryption. On privacy, it covers data anonymization, re-identification attacks, definition, primitives, and applications of differential privacy.",
       "capacity":0,
       "credits":[
          3,
@@ -1485,7 +1485,7 @@
       "instructor":[
          "Paul A Valiant"
       ],
-      "description":"&nbsp; This course covers fundamental techniques and a range of mathematical tools that underlie today's research in theoretical computer science. The course material is essential for research in theoretical computer science as well as machine learning theory. The course is targeted at students who plan to pursue research in these areas. Topics will be chosen from four core areas: Convex Analysis and Optimization, Spectral Methods, Concentration Inequalities, and Discrete Fourier Analysis. Depending on student and instructor interest, additional topics will be chosen and may include applied analysis, coding theory, probabilistic proofs, and more advanced topics in discrete Fourier analysis. Students will read papers in theoretical computer science and machine learning theory using, exploring and extending the covered techniques and tools. Students are expected to be proficient in probability theory, have the maturity to follow and carry out basic analysis proofs, and have completed courses in calculus, linear algebra, discrete mathematics, and analysis of algorithms. More specifically, the course expects mastery of the material covered in Calculus III, Linear Algebra, Probability, Foundations of CS, and Analysis of Algorithms.",
+      "description":"This course covers fundamental techniques and a range of mathematical tools that underlie today's research in theoretical computer science. The course material is essential for research in theoretical computer science as well as machine learning theory. The course is targeted at students who plan to pursue research in these areas. Topics will be chosen from four core areas: Convex Analysis and Optimization, Spectral Methods, Concentration Inequalities, and Discrete Fourier Analysis. Depending on student and instructor interest, additional topics will be chosen and may include applied analysis, coding theory, probabilistic proofs, and more advanced topics in discrete Fourier analysis. Students will read papers in theoretical computer science and machine learning theory using, exploring and extending the covered techniques and tools. Students are expected to be proficient in probability theory, have the maturity to follow and carry out basic analysis proofs, and have completed courses in calculus, linear algebra, discrete mathematics, and analysis of algorithms. More specifically, the course expects mastery of the material covered in Calculus III, Linear Algebra, Probability, Foundations of CS, and Analysis of Algorithms.",
       "capacity":0,
       "credits":[
          3,

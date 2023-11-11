@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Modern Hebrew II",
+        "subjectCode": "HEBR",
+        "courseCode": "10200",
+        "instructor": [
+            "Alon Kantor"
+        ],
+        "description": "Continuation and extension of the first semester. The course aims to develop fluency in reading, comprehension, and spoken language. Knowledge of grammar and vocabulary is expanded.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biblical Hebrew Level II",
+        "subjectCode": "HEBR",
+        "courseCode": "12200",
+        "instructor": [
+            "Marianne Blickenstaff"
+        ],
+        "description": "The second semester of biblical Hebrew will continue the study of reading, vocabulary and grammar, based on selections from the Hebrew Bible.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Modern Hebrew Level IV",
+        "subjectCode": "HEBR",
+        "courseCode": "20200",
+        "instructor": [
+            "Alon Kantor"
+        ],
+        "description": "Extensive practice in reading, speaking, and writing Hebrew, based on a variety of subjects from daily life and literature. Continued study of grammar and reading in the modern language.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biblical Hebrew Level IV",
+        "subjectCode": "HEBR",
+        "courseCode": "22200",
+        "instructor": [
+            "Marianne Blickenstaff"
+        ],
+        "description": "The fourth semester of biblical Hebrew exposes the student to both narrative and poetic sections of the Bible.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

@@ -1,0 +1,137 @@
+[
+    {
+        "title": "Chinese Level II",
+        "subjectCode": "CHNS",
+        "courseCode": "10200",
+        "instructor": [
+            "Li Wei"
+        ],
+        "description": "A continuation of the study of elementary Mandarin. Students will complete study of basic syntactical patterns. Character recognition will be built to 500.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Chinese Level IV",
+        "subjectCode": "CHNS",
+        "courseCode": "20200",
+        "instructor": [
+            "Wei Hong"
+        ],
+        "description": "A continuation of the study of intermediate Mandarin. Development of enhanced oral narrative skills and listening comprehension skills through audio-visual supplements. Short exercises in expository composition. Character recognition built to 1,100-plus. Introduction to Chinese newspaper.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Topics In Chinese Civilization And Culture",
+        "subjectCode": "CHNS",
+        "courseCode": "28000",
+        "instructor": [
+            "Chi-Ying A Wang"
+        ],
+        "description": "Selected topics on Chinese civilization and culture including history and geography, Confucianism, contemporary China, education, family, international cultural and economic cooperation. Course materials also cover most current issues on and in Chinese-speaking communities. Lectures in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intro Chinese Food Culture II",
+        "subjectCode": "CHNS",
+        "courseCode": "28100",
+        "instructor": [
+            "Ai-Jen Wann"
+        ],
+        "description": "Selected topics on Chinese food history, production, preparation, festivals, as well as food in literature, film, business and folk beliefs. Discussion will also include civilization and food as cultural diplomacy. Lectures in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Chinese Level VI",
+        "subjectCode": "CHNS",
+        "courseCode": "30200",
+        "instructor": [
+            "Zhengyu Tang"
+        ],
+        "description": "Continued development of Chinese speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization from a variety of sources with stronger emphasis on authentic texts, e.g., newspapers, magazines, television, recent literature, etc.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Chinese Cinema",
+        "subjectCode": "CHNS",
+        "courseCode": "33000",
+        "instructor": [
+            "Hongjian Wang Route"
+        ],
+        "description": "This course surveys the development of the Chinese cinema from its beginning to the present. Films from the mainland as well as Taiwan and Hong Kong will be examined in-depth for their aesthetic quality and techniques, and equally important, against their socio-historical, political, economic and cultural contexts. The class is conducted in English. Films are all in Chinese with English subtitles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Chinese Literature I: Traditional Chinese Literature",
+        "subjectCode": "CHNS",
+        "courseCode": "34100",
+        "instructor": [
+            "Daniel Hsieh"
+        ],
+        "description": "Reading and discussion of selected classical Chinese texts from major writers and genres. Introduction to methods of literary criticism as applied to Chinese literature. Texts, discussion, and written assignments are largely in Chinese.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Chinese Level VIII",
+        "subjectCode": "CHNS",
+        "courseCode": "40200",
+        "instructor": [
+            "Chi-Ying A Wang"
+        ],
+        "description": "Further development of Mandarin Chinese speaking, listening, reading, and writing skills. Materials will include advanced textbooks and original texts such as newspapers and literary works.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Modern Chinese Theater",
+        "subjectCode": "CHNS",
+        "courseCode": "59400",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Special topics in Chinese Literature. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

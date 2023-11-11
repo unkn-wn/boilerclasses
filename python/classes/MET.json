@@ -1,0 +1,525 @@
+[
+    {
+        "title": "Production Design And Specifications",
+        "subjectCode": "MET",
+        "courseCode": "10200",
+        "instructor": [
+            "Paul B Mcpherson",
+            "Ruiji Sun",
+            "Rustin D Webster",
+            "Jared Samuel Spitler",
+            "Randale J Glaze",
+            "Richard Detlefsen"
+        ],
+        "description": "The design, evaluation, and documentation of engineering specifications required of manufacturability and assembly are introduced. Emphasis is on CAD-based details, assemblies, design layouts, equipment installations, and related industrial practices.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Statics",
+        "subjectCode": "MET",
+        "courseCode": "11100",
+        "instructor": [
+            "Wei Vian",
+            "Jeffrey R Heiking",
+            "Miles A Creasy",
+            "Damon C Sisk",
+            "Rex C Kanu",
+            "Maher Shehadi",
+            "Megan E Prygoski"
+        ],
+        "description": "Force systems, resultants and equilibrium, trusses, frames, beams, and shear and moments in beams are studied.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Materials And Processes I",
+        "subjectCode": "MET",
+        "courseCode": "14300",
+        "instructor": [
+            "Gozdem Kilaz"
+        ],
+        "description": "An overview of structures, properties, processing, and applications of metals and ceramics commonly used in industry is presented. Problem solving skills are developed in the areas of materials selection, evaluation, measurement, and testing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Materials And Processes II",
+        "subjectCode": "MET",
+        "courseCode": "14400",
+        "instructor": [
+            "Wei Vian",
+            "Ruiji Sun",
+            "Rustin D Webster",
+            "Sarah E Leach",
+            "Rex C Kanu",
+            "Kyler Michael Blowers",
+            "Randale J Glaze"
+        ],
+        "description": "An overview of structures, properties, processing, and applications of polymers, composites, laminates, biomaterials, green materials, nanomaterials, and pharmaceuticals commonly used in industry is presented. Problem solving skills are developed in the areas of material selection, evaluation, measurement, and testing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Strength Of Materials",
+        "subjectCode": "MET",
+        "courseCode": "21100",
+        "instructor": [
+            "Sunghwan Lee"
+        ],
+        "description": "The principles of strength, stiffness, and stability are introduced and applied primarily to mechanical components.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Dynamics",
+        "subjectCode": "MET",
+        "courseCode": "21300",
+        "instructor": [
+            "Larry E Mccurdy",
+            "Damon C Sisk",
+            "Miles A Creasy",
+            "Jeffrey R Heiking",
+            "Mo Rastgaar",
+            "Kyler Michael Blowers",
+            "Megan E Prygoski"
+        ],
+        "description": "Kinematics and kinetics principles of rigid-body dynamics are introduced. Emphasis is on the analysis of bodies in plane motion.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Heat And Power",
+        "subjectCode": "MET",
+        "courseCode": "22000",
+        "instructor": [
+            "William J Hutzel"
+        ],
+        "description": "Heat/Power is an introduction to the principles of thermodynamics and heat transfer. Basic thermodynamic processes are used to evaluate the performance of energy-based systems such as internal combustion engines, power plants, and refrigeration equipment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fluid Power",
+        "subjectCode": "MET",
+        "courseCode": "23000",
+        "instructor": [
+            "Larry E Mccurdy",
+            "Jeffrey R Heiking",
+            "Joseph P Fuehne",
+            "Maher Shehadi",
+            "Megan E Prygoski",
+            "Farid Youssef El breidi"
+        ],
+        "description": "This course consists of the study of compressible and incompressible fluid statics and dynamics as applied to hydraulic and pneumatic pumps, motors, transmissions, and controls.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Manufacturing Systems",
+        "subjectCode": "MET",
+        "courseCode": "24500",
+        "instructor": [
+            "Milan Rakita"
+        ],
+        "description": "This course surveys the manufacturing processes and tools commonly used to convert cast and molded, formed, and joined materials into finished products.  It includes the fundamentals of material removal, measurement, statistical quality control, assembly processes, process planning and optimization, CNC programming and automated manufacturing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Industrial Controls",
+        "subjectCode": "MET",
+        "courseCode": "28400",
+        "instructor": [
+            "Miles A Creasy",
+            "Shawn Richard Oltz",
+            "Grant P Richards",
+            "Rashmi Bahuguna Deodeshmukh"
+        ],
+        "description": "This course examines the concepts, devices, and common practices associated with modern industrial control systems. Common industrial control devices are studied. Students learn how to wire, program, and troubleshoot programmable logic controller (PLC) based control systems. PLC applications focus on interfacing and controlling a variety of electromechanical devices such as motors and pneumatic actuators. Industrial safety practices and procedures are emphasized throughout the course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "CAD In The Enterprise",
+        "subjectCode": "MET",
+        "courseCode": "30200",
+        "instructor": [
+            "Rustin D Webster"
+        ],
+        "description": "Theory and practice of management, use and integration of computer-aided design systems, and related engineering tools and practices are studied as they are applied in the industrial enterprise. Emphasis is on course projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Fluid Mechanics",
+        "subjectCode": "MET",
+        "courseCode": "31300",
+        "instructor": [
+            "Anne M Lucietto"
+        ],
+        "description": "The fundamental principles of fluid mechanics are developed, including properties of fluid, pressure, hydrostatics, dynamics of fluid flow, friction losses, and sizing of pipes. Emphasis is on problem solving.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applications Of Machine Elements",
+        "subjectCode": "MET",
+        "courseCode": "31400",
+        "instructor": [
+            "Haiyan H Zhang"
+        ],
+        "description": "The methods developed in statics, dynamics, and strength of materials are applied to the selection of basic machine components (gears, shafts, bearings, chain and belt drives, clutches and brakes, and motors).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Mechanism Kinematics And Dynamics",
+        "subjectCode": "MET",
+        "courseCode": "31500",
+        "instructor": [
+            "Xiumin Diao"
+        ],
+        "description": "Displacements, velocities, and accelerations are determined using graphical, semi-graphical, and numerical analyses of rotational and translational motions of common mechanisms such as linkages, cams, gears, screws, and chains as well as their loading.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mechanics Of Machine Design",
+        "subjectCode": "MET",
+        "courseCode": "31601",
+        "instructor": [
+            "Dongming Gan"
+        ],
+        "description": "Concepts of stress and strain analysis under combined loadings are introduced. Analyses emphasize use of von Mises stress, Mohr's circle, static failure theories, and fatigue failure criteria. Structural joints and buckling are also analyzed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Machine Diagnostics",
+        "subjectCode": "MET",
+        "courseCode": "31700",
+        "instructor": [
+            "Dale C Nicholson"
+        ],
+        "description": "A broad spectrum of equipment behavior is introduced through the study of four major operating parameters: vibration, noise, temperature, and lubrication. Emphasis is placed on measurement and analysis of data using diagnostic instrumentation and techniques found in modern process and manufacturing plants.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Thermodynamics",
+        "subjectCode": "MET",
+        "courseCode": "32000",
+        "instructor": [
+            "Ruiji Sun",
+            "Damon C Sisk",
+            "Rex C Kanu",
+            "Maher Shehadi",
+            "John W Sheffield",
+            "Megan E Prygoski"
+        ],
+        "description": "Following a review of fundamental concepts, advanced power and refrigeration cycles are analyzed. Applications such as gas mixtures, air-vapor mixtures, and chemical reactions of combustion processes are presented.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Fluid Power",
+        "subjectCode": "MET",
+        "courseCode": "33400",
+        "instructor": [
+            "Rex C Kanu",
+            "Maher Shehadi",
+            "Jose M Garcia Bravo"
+        ],
+        "description": "Hydraulic and pneumatic circuits and their steady state and time-variant behavior as it affects the selection and design of components and systems used in fluid power transmission and motion control are studied. Emphasis is placed on industrial and mobile applications, but the principles also apply to aerospace, marine, and other fluid power systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Materials In Manufacturing",
+        "subjectCode": "MET",
+        "courseCode": "34600",
+        "instructor": [
+            "Xiaoming Wang",
+            "Ruiji Sun",
+            "Sarah E Leach",
+            "Rex C Kanu",
+            "Kyler Michael Blowers"
+        ],
+        "description": "Metals, polymers, ceramic, and composite materials are studied. Crystal structure, molecular behavior, and the effects of various processes on material properties are considered. Course emphasizes the development and control of material properties to meet engineering requirements and specifications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Controls And Instrumentation For Automation",
+        "subjectCode": "MET",
+        "courseCode": "38200",
+        "instructor": [
+            "Damon C Sisk",
+            "Haiyan H Zhang"
+        ],
+        "description": "Study of the procedures and techniques essential to industrial measurement and transmission of data is provided in the areas of microprocessor control, process control, and automated testing. Concepts of hysteresis, repeatability, weighted signals, span, suppression, range, and closed loop control are emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To The Finite Element Method",
+        "subjectCode": "MET",
+        "courseCode": "41100",
+        "instructor": [
+            "Huachao Mao"
+        ],
+        "description": "The finite element method is introduced, with emphasis on modeling and interpretation of results. Linear static problems are solved using commercial FEA software, and FEA results are verified through laboratory tests and/or theoretical calculations. Topics include trusses, frames, plane stress/strain, torsion, 3D structures, buckling, and natural frequency/mode shape analyses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Air Conditioning And Refrigeration",
+        "subjectCode": "MET",
+        "courseCode": "42100",
+        "instructor": [
+            "William J Hutzel"
+        ],
+        "description": "Heat gains and losses, heat-producing equipment, cooling, and refrigeration equipment are studied. System design is presented, including controls and instrumentation for commercial, industrial, and residential systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Power Plants And Energy Conversion",
+        "subjectCode": "MET",
+        "courseCode": "42200",
+        "instructor": [
+            "Anne M Lucietto"
+        ],
+        "description": "The theories and skills learned from prerequisite coursework are applied to the analysis and design of power plants and their systems and to selected technologies of energy conversion. Industrial procedures and methods are emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Internal Combustion Engines",
+        "subjectCode": "MET",
+        "courseCode": "42600",
+        "instructor": [
+            "Mark J Bridgeman"
+        ],
+        "description": "Introduces the operating principles of internal combustion engines with emphasis on performance, efficiency, and emissions. Students will evaluate engine performance through geometric, kinematic, and thermodynamic analysis. Introduces advanced thermodynamic cycles and trends in internal combustion engine technology.&nbsp;&nbsp;",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Hydraulic Motion Control Systems",
+        "subjectCode": "MET",
+        "courseCode": "43200",
+        "instructor": [
+            "Farid Youssef El breidi"
+        ],
+        "description": "Hydraulic feedback motion control systems, types, and applications are studied. Simulation and performance of closed loop control systems with single and multiple signal paths are emphasized. Dynamic system performance is predicted and evaluated. System parameters including accuracy, response speed, fluid compressibility effects, load disturbances, and nonlinear behavior of the components are studied.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Manufacturing Quality Control",
+        "subjectCode": "MET",
+        "courseCode": "45100",
+        "instructor": [
+            "Paul B Mcpherson"
+        ],
+        "description": "(MFET 45100) Quality control practices used in manufacturing industries; management, statistical control charts, reliability, sampling plans, economics, computer methods, and test equipment are presented and applied. Credit will not be granted for both MET 45100 and MFET 45100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced GD&amp;T Concepts Applied To Product Quality",
+        "subjectCode": "MET",
+        "courseCode": "45200",
+        "instructor": [
+            "Paul B Mcpherson"
+        ],
+        "description": "This course explores the theory and application of Geometric Dimensioning and Tolerancing (GD&amp;T) to measurement systems and the programming necessary to insure product quality.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Aerospace Technology",
+        "subjectCode": "MET",
+        "courseCode": "49000",
+        "instructor": [
+            "Richard Mark French"
+        ],
+        "description": "Group instruction in new or specialty areas of mechanical engineering technology is provided by MET faculty, subject to MET curriculum subcommittee approval. Hours, subject matter, and credit to be arranged by faculty.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Optimization",
+        "subjectCode": "MET",
+        "courseCode": "50300",
+        "instructor": [
+            "Richard Mark French"
+        ],
+        "description": "This course will introduce technology graduate students and senior undergraduates to the basic concepts of optimization methods with particular emphasis on applications in product and process design. Unconstrained nonlinear problems will be presented and solved using steepest descent and conjugate directions. Constrained problems will be solved using exterior penalty functions. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Technology From A Global Perspective",
+        "subjectCode": "MET",
+        "courseCode": "52700",
+        "instructor": [
+            "Duane D Dunlap"
+        ],
+        "description": "Introduction to the challenges faced by the practicing technologist when working and interacting with international technical personnel, both here and abroad, including history, standards, education, and practice of technology outside the United States. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Facilities Engineering Technology",
+        "subjectCode": "MET",
+        "courseCode": "53000",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "A study of the application of the engineering sciences and technology to the solution of problems associated with mechanical and electrical systems in buildings. Emphasizes commercial and industrial facilities. Identifying energy conservation measures for both mechanical and electrical systems and evaluating their economic impact are an important focus of the course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Welding Engineering",
+        "subjectCode": "MET",
+        "courseCode": "58100",
+        "instructor": [
+            "Milan Rakita"
+        ],
+        "description": "Advanced study of technical and professional topics. Emphasis is on new developments relating to technical, operational, and training aspects of industry and technology education.",
+        "capacity": 0,
+        "credits": [
+            0,
+            8
+        ],
+        "term": "Spring 2024"
+    }
+]

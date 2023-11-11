@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Latin Level II",
+        "subjectCode": "LATN",
+        "courseCode": "10200",
+        "instructor": [
+            "Elizabeth E Mercier"
+        ],
+        "description": "Second semester introduction to Latin. Focus on grammar, syntax, vocabulary, and elementary readings in classical Latin and the language of the Vulgate.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Latin Level IV",
+        "subjectCode": "LATN",
+        "courseCode": "20200",
+        "instructor": [
+            "Daniel A Conner"
+        ],
+        "description": "Upper intermediate reading course in Latin prose and poetry, designed to consolidate students' grasp of grammar and syntax, broaden vocabulary, and develop precision and confidence in reading and translation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Roman Philosophers",
+        "subjectCode": "LATN",
+        "courseCode": "44400",
+        "instructor": [
+            "Daniel A Conner"
+        ],
+        "description": "Readings and discussion of Roman philosophical texts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

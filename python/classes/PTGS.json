@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Portuguese Level II",
+        "subjectCode": "PTGS",
+        "courseCode": "10200",
+        "instructor": [
+            "Carolina Alvim Ferreira"
+        ],
+        "description": "Continuation of PTGS 10100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Accelerated Portuguese",
+        "subjectCode": "PTGS",
+        "courseCode": "10500",
+        "instructor": [
+            "Carolina Alvim Ferreira"
+        ],
+        "description": "Accelerated acquisition of basic Portuguese for speakers of Spanish or another romance language. Capitalizes on students' backgrounds in related languages to build skills in listening comprehension, reading comprehension, basic writing, and conversation. Knowledge of a romance language.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Portuguese Level IV",
+        "subjectCode": "PTGS",
+        "courseCode": "20200",
+        "instructor": [
+            "Carolina Alvim Ferreira"
+        ],
+        "description": "Continuation of PTGS 20100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

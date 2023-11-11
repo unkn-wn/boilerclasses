@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Standard Arabic Level II",
+        "subjectCode": "ARAB",
+        "courseCode": "10200",
+        "instructor": [
+            "Lhousseine None Guerwane"
+        ],
+        "description": "Further study of Modern Standard Arabic. Continued presentation of the basic structures of Arabic grammar and expansion of vocabulary. Reading and writing will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Standard Arabic Level IV",
+        "subjectCode": "ARAB",
+        "courseCode": "20200",
+        "instructor": [
+            "Lhousseine None Guerwane"
+        ],
+        "description": "Increased mastery of the four language skills, with emphasis on reading and translation using materials from literary classical and modern Arabic. The course includes a study of some parts of the Koran.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Islamic Civilization And Culture",
+        "subjectCode": "ARAB",
+        "courseCode": "28100",
+        "instructor": [
+            "Ahmed Idrissi Alami"
+        ],
+        "description": "This course is a survey of broad currents in the cultures, thought and civilization of the Muslim world. It emphasizes religious, intellectual and cultural trends, social and political structures and contemporary issues of Muslim societies within the current global cultural world. Taught in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

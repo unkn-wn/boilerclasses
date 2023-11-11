@@ -1,0 +1,378 @@
+[
+    {
+        "title": "Small Animal Nursing I",
+        "subjectCode": "VCS",
+        "courseCode": "22400",
+        "instructor": [
+            "Elizabeth J Thomovsky"
+        ],
+        "description": "This course will introduce students to nursing and diagnostic techniques for small animals and the body response to disease.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Large Animal Nursing I",
+        "subjectCode": "VCS",
+        "courseCode": "22500",
+        "instructor": [
+            "Rose P Giroux"
+        ],
+        "description": "This course builds on concepts learned in VCS 22100 related to normal, healthy large animal patients. It also introduces the students to higher level patient care for the large animal patient.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Principles Of Anesthesia-VN",
+        "subjectCode": "VCS",
+        "courseCode": "22600",
+        "instructor": [
+            "Amy B Huffman"
+        ],
+        "description": "This course is an introduction to surgical nursing and anesthesia. The principles of asepsis and sterile technique will be introduced and demonstrated by staff and in some cases, practiced by the student. The basics of anesthesia will be introduced and practiced by the student.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Diagnostic Imaging-VN",
+        "subjectCode": "VCS",
+        "courseCode": "25200",
+        "instructor": [
+            "Liane K Shaw"
+        ],
+        "description": "Provides an introduction to imaging of domestic animals. Emphasis will be placed on radiological principles and techniques, darkroom procedures and design, preparing technique charts for various X-ray units, animal positioning, and radiation safety.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Small Animal Behavior-VN",
+        "subjectCode": "VCS",
+        "courseCode": "41800",
+        "instructor": [
+            "Melinda Sue Cotton"
+        ],
+        "description": "Clinical applications of canine and feline behavior problems. The normal and common abnormal behaviors of domestic dogs and cats will be presented. Emphasis will be on taking clinical history from owner, observing animals, and establishing behavioral modification treatment plans as part of the veterinary team.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Clinical Medicine And Surgery",
+        "subjectCode": "VCS",
+        "courseCode": "62000",
+        "instructor": [
+            "Joanna C R Scott-Moncrieff"
+        ],
+        "description": "Seminars provide a forum for discussion of current concepts and research results in clinical medicine and surgery, and other aspects of veterinary medicine. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Topics In Advanced Medicine",
+        "subjectCode": "VCS",
+        "courseCode": "62100",
+        "instructor": [
+            "Anna Kathleen Mcmanamey",
+            "Sandra D Taylor"
+        ],
+        "description": "Advanced study and investigation of the pathophysiology, occurrence, diagnosis, treatment, management, and prevention of animal diseases. Emphasis will be given to the medical aspects of diseases by body system (e.g., renal, gastrointestinal, etc.) and by medical discipline (e.g., oncology, ophthalmology, etc.). Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamental Principles Of Comparative Nutrition",
+        "subjectCode": "VCS",
+        "courseCode": "80140",
+        "instructor": [
+            "Nolie K Parnell"
+        ],
+        "description": "This course will cover fundamental aspects of comparative nutrition building on knowledge from veterinary comparative anatomy and physiology courses. Multiple species will be discussed to provide the student a broad-based foundational knowledge in key nutritional concepts, including feeds and feeding assessment and the animal's physiologic state/lifestage. The student will learn how physiologic status will impacts energy needs and nutritional adequacy, on an individual and/or group basis. The student will also develop skills in forage identification, pet food assessment, and when the individual/group is at risk of nutrient deficiency.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Small Animal Clinical Nutrition",
+        "subjectCode": "VCS",
+        "courseCode": "80616",
+        "instructor": [
+            "Nolie K Parnell"
+        ],
+        "description": "This nutrition course presents the established knowledge of metabolism and physiological chemistry pertaining to nutrients and the control of biochemical pathways at the gene, cell, organ, and system level. The goal of this course is to provide the fundamentals of nutrient metabolism while discussing nutritional modification in the management of disease. At the completion of this course, the veterinary student should be proficient in recognizing a nutrition-related problem in a clinical patient, conducting a thorough nutritional assessment, and constructing appropriate nutritional strategies for both the pet and client. The veterinary student will achieve an understanding of systemic metabolism that can be applied to the contemporary practice of veterinary medicine.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Small Animal Medicine II",
+        "subjectCode": "VCS",
+        "courseCode": "80620",
+        "instructor": [
+            "Andrew D Woolcock"
+        ],
+        "description": "Credit Hours: 1.50.  This is the second course in a series providing an overview of clinical approaches to common medical diseases of dogs and cats.  A systems approach is used to teach the major concepts of diseases affecting each body system. The focus of this course is disease recognition based on initial medical information (ex. signalment, presenting complaint, physical examination), diagnosis, and treatment of common diseases encountered in small animal clinical practice.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Large Animal Surgery",
+        "subjectCode": "VCS",
+        "courseCode": "80920",
+        "instructor": [
+            "Jan F Hawkins"
+        ],
+        "description": "Credit Hours: 2.50.  This course will cover the core fundamentals of surgical diseases of multiple large animal species, including the horse, bovine, small ruminants and camelids. Case management approaches are utilized to provide examples of disease conditions affecting these large animal species.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Small Animal Primary Care And Wellness",
+        "subjectCode": "VCS",
+        "courseCode": "81210",
+        "instructor": [
+            "Steven B Thompson"
+        ],
+        "description": "This course will discuss conditions that are commonly treated in small animal primary care practice. Topics will include wellness and preventative care for dogs and cats at all lifestages, dental care, diagnosis and management of common oral and skin diseases, and emergency medicine. Humane euthanasia and palliative care will also be discussed.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Ophthalmology",
+        "subjectCode": "VCS",
+        "courseCode": "81500",
+        "instructor": [
+            "Wendy M Townsend"
+        ],
+        "description": "This course is an introduction to veterinary comparative ophthalmology. It covers the anatomy of the eye, diagnosis, pathophysiology, and treatment of the ocular diseases commonly seen in companion and food animal species: canine, feline, equine, avian, bovine, caprine, ovine, porcine, lagomorphs. Covers pharmacology as it relates to medications used to treat ocular disease.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Achieving Success In Private Practice",
+        "subjectCode": "VCS",
+        "courseCode": "81700",
+        "instructor": [
+            "James L Weisman"
+        ],
+        "description": "Credit Hours: 1.50.  Provides a foundation for the application of practice management principles. Focuses on operations management, financial management, human resource management, and marketing management.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Ruminant Theriogenology",
+        "subjectCode": "VCS",
+        "courseCode": "82501",
+        "instructor": [
+            "Bethany J Funnell"
+        ],
+        "description": "Credit Hours: 1.50.  This course will cover clinically pertinent aspects of ruminant reproduction in more detail than prerequisite courses, including obstetrics and genital diseases on an individual and group basis. The laboratory portion will teach the proper techniques for rectal palpation and reproductive ultrasound in ruminants. Principles of embryo recovery and transfer will be practiced.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Diagnostic Imaging",
+        "subjectCode": "VCS",
+        "courseCode": "82701",
+        "instructor": [
+            "Caroline V Fulkerson"
+        ],
+        "description": "This course covers basic mechanisms of image generation and interpretation. The first half of the course deals with principles of image formation and the introduction to advanced imaging modalities. A synopsis of the principles of radiobiology and radiation safety is offered. The second part of the course features imaging interpretation based on previously mastered imaging principles. The third part of the course builds the foundation of film reading and interpretation such as radiographic anatomy and radiographic signs of specific disease conditions. This course serves as a foundation for the fourth-year diagnostic radiology rotation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Clinical Nutrition For Ruminants And Swine",
+        "subjectCode": "VCS",
+        "courseCode": "83700",
+        "instructor": [
+            "Darryl Ragland"
+        ],
+        "description": "Current information on nutritional requirements of cattle and pigs, along with the relationships between nutrients and outcomes when nutrients are under- or oversupplied in different phases of the life cycle of cattle and pigs. Specific rations and nutritional requirements of cattle and pigs. Students will be expected to evaluate nutritional problems.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Swine Production Medicine",
+        "subjectCode": "VCS",
+        "courseCode": "83800",
+        "instructor": [
+            "Darryl Ragland"
+        ],
+        "description": "Introduction to production and health management in swine herds. The concept of the model herd is introduced, and the use of records in the diagnosis of problems and maximizing production efficiency is covered. The focus is herd-based and includes problem-solving.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cattle Production Medicine",
+        "subjectCode": "VCS",
+        "courseCode": "83903",
+        "instructor": [
+            "Andrew Macarthur Hubner"
+        ],
+        "description": "Credit Hours: 1.50.  \"Production medicine\" is an important part of modern bovine veterinary practice. This course will demonstrate this role of production medicine in bovine practice and the potential value to the producer and veterinarian. Topics discussed during the class will include cattle nutrition (including exposure to ration balancing programs), calf nutrition and management, records analysis including the use of computer programs, mastitis and milk quality measurements, economics, and animal welfare evaluations exposure to different facets of the beef industry (cow/calf, stocker, feedlot) and the differences in management in those systems, genomics, and immunology/vaccinology. Additionally, students will be exposed to team troubleshooting and performing farm evaluations. Outside speakers may be used as content experts.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Successful Practice Skills",
+        "subjectCode": "VCS",
+        "courseCode": "84300",
+        "instructor": [
+            "Souvigny K Salisbury"
+        ],
+        "description": "Credit Hours: 0.50.  Builds upon the foundation for the application of practice management principles learned in VCS 51700. Focus is in the areas of communications and relationships with clients, staff, and colleagues; leadership development; and key essentials of practice operation for the prospective associate (or practice director).",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Small Animal Medicine III",
+        "subjectCode": "VCS",
+        "courseCode": "84601",
+        "instructor": [
+            "Sarah Ml Steinbach"
+        ],
+        "description": "An advanced elective course focused on selected diseases of dogs and cats. Designed for the student who is considering entering either small animal exclusive practice, mixed animal practice, or companion animal practice. A systems approach is used to teach the major concepts of diseases affecting each body system while developing a deeper understanding of common diseases in the dog and cat. This course will concentrate on the diagnosis and treatment of diseases commonly encountered in small animal clinical practice. Topics in this elective include nephrology, urology, oncology, endocrinology, infectious diseases, cardiology, gastroenterology (includes liver and pancreas).",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Small Animal Medicine IV",
+        "subjectCode": "VCS",
+        "courseCode": "84701",
+        "instructor": [
+            "Christopher M Fulkerson"
+        ],
+        "description": "An advanced elective course focused on selected diseases of dogs and cats. Designed for the student who is considering entering either small animal exclusive practice, mixed animal practice, or companion animal practice, following graduation. A systems approach is used to teach the major concepts of diseases affecting each body system while developing a deeper understanding of common diseases in the dog and cat. This course will concentrate on the diagnosis and treatment of diseases commonly encountered in small animal clinical practice. Topics in this elective include neurology, respiratory, oncology, dermatology, and immune-mediated diseases.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Small Animal Surgery",
+        "subjectCode": "VCS",
+        "courseCode": "84800",
+        "instructor": [
+            "Mark C Rochat"
+        ],
+        "description": "Credit Hours: 1.50.  An advanced course dealing with selected surgical diseases of dogs and cats. Designed for the student who will be practicing on small animals (small animal, companion animal, or mixed animal track). A systems approach is used to teach important concepts of surgical diseases and procedures affecting each body system. Focuses on the diagnosis and treatment of diseases commonly encountered in small animal practice.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Medicine And Surgery Of Nontraditional Pets",
+        "subjectCode": "VCS",
+        "courseCode": "85100",
+        "instructor": [
+            "Lorraine A Corriveau"
+        ],
+        "description": "An overview of clinical approach to common medical and surgical diseases of nontraditional pets. Focuses on diagnosis and treatment of common diseases encountered in small animal clinical practice.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Small Animal Emergency And Critical Care",
+        "subjectCode": "VCS",
+        "courseCode": "85300",
+        "instructor": [
+            "Aimee C Brooks"
+        ],
+        "description": "The emergently-ill pet is a frequent scenario for both primary care private practices and the primary emergency care center. Due to the unpredictable nature of these clinical scenarios, this course provides the veterinary student the knowledge to quickly assess and stabilize pets using standard of care protocols. Common presentations and diseases are used to reinforce key concepts in emergency and critical care medicine.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

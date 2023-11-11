@@ -1,0 +1,760 @@
+[
+    {
+        "title": "Introduction To C Programming",
+        "subjectCode": "CNIT",
+        "courseCode": "10500",
+        "instructor": [
+            "Tawfiq M A Salem"
+        ],
+        "description": "This course is an introduction to computer programming using the \"C\" language. The emphasis is on structured programming principles, and understanding the basic concepts that apply to engineering problems. Among topics covered in this course are: problem solving using top down design, using flowcharts to explain the program logic, selection structure, repetition structure, bitwise operations, arrays, pointers, strings, passing arguments, and sequential files.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Software Development Concepts",
+        "subjectCode": "CNIT",
+        "courseCode": "15501",
+        "instructor": [
+            "Tawfiq M A Salem",
+            "Joseph D Kintzel",
+            "Dmitri A Gusev",
+            "Brian C Zuel"
+        ],
+        "description": "This course introduces fundamental software development concepts common to most programming languages. Topics include problem solving and algorithm development, debugging, programming standards, variables, data types, operators, decisions, repetitive structures, modularity, arrays, user interface construction, software testing and debugging. A broad range of examples will be used throughout the course to show how each programming concept applies to real life problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Visual Programming",
+        "subjectCode": "CNIT",
+        "courseCode": "17500",
+        "instructor": [
+            "Ahmad Esmaeili"
+        ],
+        "description": "This course introduces event-driven application development and programming using a visual programming environment. Topics include problem solving and program design, control structures, objects and events, user interface construction, documentation, and program testing. Credit may be established in only one of: CPT 15500 or CPT 17500 or CPT 25000. PC literacy required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Information Technology Architectures",
+        "subjectCode": "CNIT",
+        "courseCode": "17600",
+        "instructor": [
+            "Dennis O Owen",
+            "Lawrence A Hiday",
+            "Dmitri A Gusev"
+        ],
+        "description": "A conceptual and technological survey of information technology architectures inclusive of operating systems, network operating systems, distributed systems architectures, and distributed application architectures. Interoperability between these architectural components is explored. Current technology and trends in each architectural element are reviewed. PC literacy required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Systems Development",
+        "subjectCode": "CNIT",
+        "courseCode": "18000",
+        "instructor": [
+            "Victor M Barlow"
+        ],
+        "description": "This course introduces information systems development. Topics include types of information systems, system development, database management systems, and problem solving. Students will read/create UML, ERD, and data flow diagrams to model information system objects, data, processes, and logic. Labs emphasize modeling and SQL/QBE querying to prepare students for later systems, programming, and database classes. Given user requirements students will design, construct, and test a personal computer information system. PC literacy required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "System And Organizational Security",
+        "subjectCode": "CNIT",
+        "courseCode": "18200",
+        "instructor": [
+            "Paul Josekutty Thomas"
+        ],
+        "description": "This class focuses on the security of the design, procurement, testing, analysis and maintenance of components that are integrated into larger systems. Protecting organizations from cybersecurity threats and managing risk to support the successful accomplishment of the organization's mission is also covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data Communications And Networking",
+        "subjectCode": "CNIT",
+        "courseCode": "24000",
+        "instructor": [
+            "Robert C Deadman"
+        ],
+        "description": "This course provides a comprehensive introduction to data communications and networks. Topics include communication standards and concepts, protocols, the Open Systems Interconnect (OSI) model, point-to-point communication, and local area networks. Business issues from both provider and user perspectives are discussed. Current technology and trends in each architectural element are reviewed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "System Administration",
+        "subjectCode": "CNIT",
+        "courseCode": "24200",
+        "instructor": [
+            "Robert C Deadman"
+        ],
+        "description": "This course provides a comprehensive introduction to system administration. Topics include authentication and authorization, directory services, system management and system security. Emphasis is placed on enterprise level systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Object-Oriented Programming Introduction",
+        "subjectCode": "CNIT",
+        "courseCode": "25501",
+        "instructor": [
+            "Dominic Kao",
+            "Dmitri A Gusev",
+            "Joseph D Kintzel",
+            "Brian C Zuel"
+        ],
+        "description": "This course introduces software development concepts common to modern object-oriented programming languages. Topics include: intermediate data types, decisions, repetitive structures; methods; arrays and collections; encapsulation, inheritance, and polymorphism; exception handling; data persistence; Database Management System (DBMS) connectivity; user interface construction; software testing and debugging; and working in teams.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cybersecurity Fundamentals I",
+        "subjectCode": "CNIT",
+        "courseCode": "27000",
+        "instructor": [
+            "Melissa R Casner",
+            "Nicole M Hands",
+            "Brian C Zuel"
+        ],
+        "description": "This course introduces cybersecurity fundamentals and concepts. Security models that provide a basis for overarching security solutions are introduced to provide a basis for discussion. Risks and vulnerabilities are examined along with technical controls that can be used to mitigate them. The role of security policy and the incident management framework are examined. Emphasis is placed on building a strong foundation for further study in the field.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cybersecurity Fundamentals II",
+        "subjectCode": "CNIT",
+        "courseCode": "27100",
+        "instructor": [
+            "Smriti Bhatt"
+        ],
+        "description": "Course will investigate additional foundational ideas in cybersecurity and serves as a survey course in the field. The course provides extended exposure to utilizing tools to secure/harden aspects of info systems such as mandatory access control, wireless security, hardware security, cloud security and others.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Database Fundamentals",
+        "subjectCode": "CNIT",
+        "courseCode": "27200",
+        "instructor": [
+            "Sudip Vhaduri"
+        ],
+        "description": "A study of relational database concepts. These concepts include data design, modeling, and normalization; the use of Structured Query Language (SQL) to define, manipulate, and test the database; programmatic access to a database and practical issues that database developers must handle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Systems Analysis And Design Methods",
+        "subjectCode": "CNIT",
+        "courseCode": "28000",
+        "instructor": [
+            "Alejandra J Magana Deleon"
+        ],
+        "description": "Comprehensive introduction to information systems development. Topics include the systems analyst, the systems development life cycle, methodologies, development technology, systems planning, project management, systems analysis, systems design, systems implementation, and systems support. Introduction to tools and techniques for systems development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Development II: Design And Psychology",
+        "subjectCode": "CNIT",
+        "courseCode": "30800",
+        "instructor": [
+            "Jeffrey Peter Kesselman"
+        ],
+        "description": "(CGT 25500) This course examines video game design, theory, and development from aesthetic, psychological, and technical perspectives. Students will gain experience with a commercial game development platform. Advanced game development techniques will be taught in this course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Systems Programming",
+        "subjectCode": "CNIT",
+        "courseCode": "31500",
+        "instructor": [
+            "Byung-Cheol Min"
+        ],
+        "description": "This course introduces concepts of lower level systems programming in C/C++ on a UNIX/Linus operation system platform. Command level development, algorithms, data structures, iteration and recursion, algorithms and analysis will be covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Policy, Regulation, And Globalization In Information Technology",
+        "subjectCode": "CNIT",
+        "courseCode": "32000",
+        "instructor": [
+            "William Chase Ledbetter"
+        ],
+        "description": "This course provides students with opportunities to study how technology is intertwined with larger economic, social, cultural, and ethical dynamics in an era of intensified globalization. The course examines technology in a global environment. Students will explore concepts and issues related to law, policy, regulation, outsourcing, offshoring, globalization, global competitiveness, global communications, cultural differences and quality of life issues. Students will examine ethical situations that arise as a result of the impact of technology. In summary, the course is designed to help students understand what it means to identify as, and/or work with, technology in a global environment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Research Methodology And Design",
+        "subjectCode": "CNIT",
+        "courseCode": "32200",
+        "instructor": [
+            "William Chase Ledbetter"
+        ],
+        "description": "This course will discuss scientific research versus pseudoscience, experimental vs. quasi-experimental designs, different research controls and validity issues, and how study designs are used to answer research questions. Students will gain hands-on experience conducting observational and experimental research designs, and the process of writing a formal research paper.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Basic Cyberforensics",
+        "subjectCode": "CNIT",
+        "courseCode": "32300",
+        "instructor": [
+            "Umit Karabiyik"
+        ],
+        "description": "This course introduces students to the fundamentals of cyberforensics and cyber-crime scene analysis. The various laws and regulations dealing with computer forensic analysis are discussed. Students are introduced to the emerging international standards for cyberforensic analysis, as well as a formal methodology for conducting computer forensic investigations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Object-Oriented Application Development",
+        "subjectCode": "CNIT",
+        "courseCode": "32500",
+        "instructor": [
+            "Joseph D Kintzel",
+            "Eric T Matson"
+        ],
+        "description": "This course focuses on using object-oriented programming languages in the development of modern, business applications. Topics include object-oriented design, encapsulation, object interfaces, inheritance, aggregation, abstract classes, polymorphism, data structures, and exception handling.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Network Administration",
+        "subjectCode": "CNIT",
+        "courseCode": "34220",
+        "instructor": [
+            "Phillip Troy Rawles"
+        ],
+        "description": "This course focuses on the tasks and issues involved in the installation and administration of distributed computing systems. Topics include the administration of network operating systems and network system interoperability. Students will implement and maintain a comprehensive network service infrastructure.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Network Engineering Fundamentals",
+        "subjectCode": "CNIT",
+        "courseCode": "34400",
+        "instructor": [
+            "Robert C Deadman"
+        ],
+        "description": "This course presents the foundations and intermediate levels of understanding required to effectively design, implement, and manage today's networked environments. Details of basic models; network addressing and operations; network protocol interactions; and enterprise-class hardware applications of both wired and wireless networks are provided. Students will gain experience with enterprise-class hardware through laboratory projects and assignments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Internetwork Design And Implementation",
+        "subjectCode": "CNIT",
+        "courseCode": "34500",
+        "instructor": [
+            "Robert C Deadman"
+        ],
+        "description": "This is an advanced course in network architecture. Students learn to design and implement local and wide area networks capable of simultaneous transport of real-time traffic and multiprotocol data over packet-switched and circuit-switched networks. An emphasis is placed on the integration of diverse communications technologies, while considering the effects of engineering decisions on overall performance, from both business and technology perspectives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Wireless Networks",
+        "subjectCode": "CNIT",
+        "courseCode": "34600",
+        "instructor": [
+            "Anthony H Smith"
+        ],
+        "description": "This course introduces wireless networking. Topics include fundamental wireless communication concepts, wireless local area networks (LANs), and cellular systems. Wireless specific protocol elements are addressed in typical application environments. Data communications in multiple wireless environments are emphasized. In the laboratory section, students implement wireless solutions and integrate them into wired LAN environments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Cryptography",
+        "subjectCode": "CNIT",
+        "courseCode": "37000",
+        "instructor": [
+            "Wenhai Sun"
+        ],
+        "description": "Cryptography is an essential component to protect information in cyber systems. This course introduces the inner workings of cryptographic primitives and how to correctly use them. Specifically, the course covers cryptographic algorithms, protocols and techniques. The algorithms illustrate the art of encryption and secure hashing. The cryptographic protocols will expose the students to the world of building trust in an untrusted environment. Cryptographic techniques used in key management and algorithm choice will be explored.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cyberlaw And Ethics",
+        "subjectCode": "CNIT",
+        "courseCode": "37100",
+        "instructor": [
+            "Tatiana Renae Ringenberg"
+        ],
+        "description": "This course focuses on Cyberlaw, a legal framework of cyber activities and cyber operations subject to a diverse array of international, constitutional, U.S. federal, and state law and regulatory policies. Students will learn fundamental concepts designed to help ensure that the cyber operations in which they participate are consistent with the laws, regulations, and values of the society they serve.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Analysis And Design",
+        "subjectCode": "CNIT",
+        "courseCode": "38000",
+        "instructor": [
+            "Victor M Barlow"
+        ],
+        "description": "This course is an advanced study of system analysis and design methods and techniques used by systems analysts to develop information systems. Object-oriented tools and the Unified Modeling Language (UML) will be used for describing object structure and behavior, and use cases will be used for modeling functional processes. Topics include rapid development concepts, application architecture and system design, transition from object-oriented analysis and models to components and services, graphical user interface design, web interface design, prototyping, and commercial software package integration. Emphasis is also placed on the use of an object-oriented CASE tool. This course surveys other important skills for the systems analyst, such as fact-finding (requirements discovery), communications, project management, and cost-benefit analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Enterprise Info Governance",
+        "subjectCode": "CNIT",
+        "courseCode": "38101",
+        "instructor": [
+            "Dawn D Laux",
+            "Kevin C Dittman",
+            "Paul Josekutty Thomas"
+        ],
+        "description": "This variable title course is used to pilot new course offerings.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Packaged Application Software Solutions",
+        "subjectCode": "CNIT",
+        "courseCode": "38301",
+        "instructor": [
+            "Melissa R Casner"
+        ],
+        "description": "This course introduces knowledge, skills, tools, and techniques used to select and implement packaged application software solutions, both small and large (including ERP). Topics will include the make-verses-buy decision, critical success factors for packages, economic analysis, requirements analysis, identifying vendors and products, request for proposals, analysis of vendor proposals, decision analysis, implementation service providers, contracting for software and service, implementation project planning, life-cycle architecture, software installation and configuration, business process redesign organizational change management, integration with legacy system, customization verses adaptation, data conversion, system and application testing, training and support, system cutover and post go-live considerations. The course will focus on best practices, and consequences of less than best practices. This course will benefit students with career aspirations as systems analysts, business analysts, consultants, data and database administrators, and IT managers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Enterprise Data Management",
+        "subjectCode": "CNIT",
+        "courseCode": "39200",
+        "instructor": [
+            "Romila Pradhan"
+        ],
+        "description": "This course examines advanced design techniques and physical issues relating to enterprise-wide data management. Topics include advanced design concepts, enhanced modeling and constructs, objects and unstructured and semi-structured data in databases, data management in non-business contexts, implementation of an enterprise data architecture, and data quality and stewardship.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Basic Cyber Forensics",
+        "subjectCode": "CNIT",
+        "courseCode": "42000",
+        "instructor": [
+            "Umit Karabiyik"
+        ],
+        "description": "This course introduces students to the fundamentals of cyber forensics and cyber-crime scene analysis. The various laws and regulations dealing with computer forensic analysis are discussed. Students are introduced to the emerging international standards for cyber forensic analysis, as well as a formal methodology for conducting computer forensic investigations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cyber Criminology",
+        "subjectCode": "CNIT",
+        "courseCode": "42200",
+        "instructor": [
+            "Kathryn C Seigfried-Spellar"
+        ],
+        "description": "This course examines both the traditional and contemporary forms of cybercrime, including hacking, insider threat, Internet child pornography, cyberbullying, hacktivism, and cyberterrorism. Students will learn how computers can be either the target (e.g., hacking) or the tool (e.g., child pornography) for committing cybercrimes. In addition, this course will apply a variety of sociological, psychological, and criminological theories to help explain, \"Why do some people engage in cybercrimes when others do not?\" Theories discussed include: social learning theory, space transition theory, routine activity theory, social cognitive theory, techniques of neutralization, and personality characteristics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Internetwork Routing And Switching",
+        "subjectCode": "CNIT",
+        "courseCode": "44500",
+        "instructor": [
+            "Abdul Salam"
+        ],
+        "description": "This course extends routing and switching knowledge with specific attention given to emerging trends. This course focuses on the concepts of traffic shaping, advanced exterior gateway routing protocols, label switching technologies, and quality of service. The necessary perspectives of integration of these topics into enterprise networks are addressed in both lecture and laboratory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Wireless Security And Management",
+        "subjectCode": "CNIT",
+        "courseCode": "45600",
+        "instructor": [
+            "Anthony H Smith"
+        ],
+        "description": "This course is an advanced course concerning security and management issues as they apply to wireless networking. Students will gain knowledge on the problems and solutions the wireless industry face when implementing large scale networks. Issues addressed include encryption weaknesses, security methodology tradeoffs, large scale network management techniques and systems, and advanced wireless network architecture. The laboratory portion of the course enforces the learning outcomes with hands-on experiences in implementing secure, manageable complex wireless networks.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Incident Response Management",
+        "subjectCode": "CNIT",
+        "courseCode": "47000",
+        "instructor": [
+            "Nicole M Hands"
+        ],
+        "description": "This course will bridge business operations to IT support of the critical systems that support day-to-day operations. Techniques to detect anomalous behaviors through the configuration and monitoring of modern Intrusion Detection systems, analyzing and decoding network flows, system logs, and reports is covered along with appropriate remediation actions. Multiple approaches, theories, standards, and suggestions for incident response handling will be examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Vulnerability Analysis And Testing",
+        "subjectCode": "CNIT",
+        "courseCode": "47100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "This course will focus on advanced security techniques often referred to as vulnerability analysis or network penetration testing (pen testing). Students will learn the methods, techniques, and tools to test the security of computer networks, infrastructure and applications. The activities will be based in an environment that allows testing and \"hacking\" that does not risk possible legal, ethical, and network availability issues.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Managing Information Technology Projects",
+        "subjectCode": "CNIT",
+        "courseCode": "48000",
+        "instructor": [
+            "Melissa R Casner",
+            "Paul Josekutty Thomas"
+        ],
+        "description": "This course introduces the application of knowledge, skills, tools, and techniques that project managers use to plan, staff, estimate, and manage information technology projects. Special emphasis is placed on learning and applying the concepts of managing scope, risk, budget, time, expectations, quality, people, communications, procurement, and externally provided services. Students will apply project management technology and techniques to business problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intro To Blockchain Technology",
+        "subjectCode": "CNIT",
+        "courseCode": "48101",
+        "instructor": [
+            "Deepak Nadig Anantha",
+            "Wenhai Sun",
+            "Tianyi Li"
+        ],
+        "description": "This variable title course is used to pilot new course offerings.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Six Sigma Data Quality For Continuous Improvement",
+        "subjectCode": "CNIT",
+        "courseCode": "48200",
+        "instructor": [
+            "Chad Matthew Laux"
+        ],
+        "description": "A study of data quality for Six Sigma level of improvement, applying a Six Sigma DMAIC (Define, Measure, Analyze, Improve and Control) improvement methodology, utilizing information tools and techniques. The course addresses advanced topics in statistical based continuous improvement, data quality; and Big Data Analytics concepts, as pertains to systematic problems. An embedded certificate in SS is included in the body of knowledge.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Machine Learning",
+        "subjectCode": "CNIT",
+        "courseCode": "48300",
+        "instructor": [
+            "Jin Kocsis"
+        ],
+        "description": "In the past decade, we have observed the expeditious evolution and tremendous applications of machine learning, such as unmanned vehicle, autonomous language translation, and smart healthcare. This course will introduce both the fundamental knowledge and design/application insights of machine learning techniques via a series of hands-on real-world examples. The overall aim is to provide the students with a good understanding of machine learning technologies, building machine learning models, and applying machine-learning technologies to address real-world problems. In this course, students will also have an opportunity to explore the cutting-edge machine learning technologies, such as deep learning, adversarial attacks, and meta learning, and develop their own machine learning-based solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applications In Data Science",
+        "subjectCode": "CNIT",
+        "courseCode": "48400",
+        "instructor": [
+            "John A Springer"
+        ],
+        "description": "Students investigate practical applications of Data Science and evaluate their effectiveness in guiding decision making. Students will employ tools to assist in these efforts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Topics In Database Technology",
+        "subjectCode": "CNIT",
+        "courseCode": "48900",
+        "instructor": [
+            "Dewey A Swanson"
+        ],
+        "description": "This course will provide students with a chance to explore contemporary issues in the database arena. These issues may be related to new or breakthrough concepts, technologies, and techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Managing Resources And Applications For Homeland Security",
+        "subjectCode": "CNIT",
+        "courseCode": "51200",
+        "instructor": [
+            "James Eric Dietz"
+        ],
+        "description": "An interdisciplinary course providing examples and practice in applying and managing the resources, including technologies, used in the private and public sectors for homeland security programs. Course contents will include: terrorism; corporate security; biosecurity; health care preparedness; personal/community preparedness; risk transfer; and information security and privacy. Additional content includes discussion of local, state, and federal preparedness programs issues in the public/private sectors that are designed to ensure survival during a continuum of emergency events, and continued practice in using collaborative application of team building skills. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mobile And Embedded Device Forensics",
+        "subjectCode": "CNIT",
+        "courseCode": "52500",
+        "instructor": [
+            "Umit Karabiyik"
+        ],
+        "description": "Consumer technologies are rapidly moving forward with items integrating processing, storage, and transmission into their base functionality. The enterprise issues with the trend of \"bring your own device\" has rapidly expanded requirements on forensics investigators to address a plethora of mobile device types. Whether it is the automobile black box or a home thermostat, there are various elements of interesting evidence possible to be gained. The embedded and consumer device pantheon is developing as an important area of forensic science. This course explores techniques for conducting forensic analyses on a wide variety of mobile and embedded devices.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Basic Computer Forensics",
+        "subjectCode": "CNIT",
+        "courseCode": "55600",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Covers the fundamentals of the maturing discipline of computer forensics. The focus of the course is on gaining a broad understanding of the field of study and how technology and law interact to form this forensic science. Emerging standards and current and future issues related to the field are also explored. Examines law and public policy, the computer forensic methodology, report presentation, and expert witness testimony, as well as anti-forensic techniques that can be used to obfuscate evidence. Students are exposed to theory and practice with lab exercises, thought and term papers, and a practical, as well as written, final exam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Topics In Information Technology Project Management",
+        "subjectCode": "CNIT",
+        "courseCode": "58000",
+        "instructor": [
+            "Kevin C Dittman"
+        ],
+        "description": "The course explores and applies the advanced concepts, skills, knowledge, techniques, and tools required to successfully initiate, plan, manage, execute, control, and report on information technology projects. Special emphasis is placed on applying the PM BOK in a real life business case study as well as researching and learning concepts, techniques, and processes experienced project and program managers employ to successfully plan and manage projects. This course enables the student to learn project management through the application of project approaches in a team based setting. Through the application of project methodologies, tools and templates, the student learns the project life-cycle approach as demonstrated through actual and simulated project situations. Permission of Department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sftwre Des &amp; Develop  Robotics",
+        "subjectCode": "CNIT",
+        "courseCode": "58100",
+        "instructor": [
+            "Byung-Cheol Min",
+            "Romila Pradhan",
+            "Smriti Bhatt",
+            "Tianyi Li",
+            "Dominic Kao",
+            "Sudip Vhaduri"
+        ],
+        "description": "Advanced study of technical and professional topics. Emphasis is on new developments relating to technical, operational, and training aspects of industry and technology education.",
+        "capacity": 0,
+        "credits": [
+            0,
+            8
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Applied Statistics In Information Technology",
+        "subjectCode": "CNIT",
+        "courseCode": "60100",
+        "instructor": [
+            "Kathryn C Seigfried-Spellar"
+        ],
+        "description": "This course will survey the field of applied statistics in information technology. Students will gain hands-on experience running statistical analyses on samples from a variety of populations. Students will learn the process of data cleaning, data transforming/coding, identifying the appropriate statistical analyses (descriptive and inferential), as well as writing and interpreting the results. Specifically, this course will survey the following statistical approaches: correlations, t-test, analysis of variance, analysis of co-variance, factorial ANOVA, simple regression, multiple regression, logistic regression, chi-square analysis, factor analysis, and nonparametric tests. In this course, students will be able to differentiate statistical analyses and identify appropriate statistical analyses depending on the research question and variables of interest. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computer Networks",
+        "subjectCode": "CNIT",
+        "courseCode": "62300",
+        "instructor": [
+            "Deepak Nadig Anantha",
+            "Abdul Salam",
+            "Jin Kocsis"
+        ],
+        "description": "&nbsp; Theory and practice in the development of comprehensive solutions to problems in industrial, technical, and human resource development environments. Solutions based on emerging procedures will be emphasized. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Research Methods In Computing",
+        "subjectCode": "CNIT",
+        "courseCode": "62500",
+        "instructor": [
+            "Tatiana Renae Ringenberg"
+        ],
+        "description": "The goal of this course is to provide you with the tools necessary to not only understand how to create your own research study on cyber-physical systems, but how to critically assess the different methodologies and components in various research designs used in applied information technology. In this course, you will learn about the landscape of research in information technology. You will learn to differentiate between different research methodologies used in IT, identify threats to validity, learn specific protocols for commonly used methods in IT, and synthesize empirical literature and theory in order to design a scientific research study. The end product of this course will be the ability to design and report on an IT-related research project. Permission of instructor required. Prerequisites: STAT 50100 or STAT 51100 or other statistics course; 6 credits of CNIT at the 500 level.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

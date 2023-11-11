@@ -1,0 +1,215 @@
+[
+    {
+        "title": "German Level I",
+        "subjectCode": "GER",
+        "courseCode": "10100",
+        "instructor": [
+            "Anja Mewald",
+            "Jason E Baumer"
+        ],
+        "description": "A beginning course in German reserved exclusively for students who have had less than two years of German at the ninth-grade level or above. Students with two years or more of previous German study may not take this course for credit. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level II",
+        "subjectCode": "GER",
+        "courseCode": "10200",
+        "instructor": [
+            "Marlene Burtscher",
+            "Irina A. Hinkel",
+            "Andrew Yost Kroninger"
+        ],
+        "description": "Continuation of GER 10100. CTL:IWL 1921 German Level II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level III",
+        "subjectCode": "GER",
+        "courseCode": "20100",
+        "instructor": [
+            "Viseslava Rasajski Sasic"
+        ],
+        "description": "Readings from the works of nineteenth-century and contemporary German writers; practice in speaking and writing German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level IV",
+        "subjectCode": "GER",
+        "courseCode": "20200",
+        "instructor": [
+            "Vanessa S Felten"
+        ],
+        "description": "Continuation of GER 20100. CTL:IWL 1923 German Level IV",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Lit In Translation",
+        "subjectCode": "GER",
+        "courseCode": "23000",
+        "instructor": [
+            "Jason E Baumer"
+        ],
+        "description": "Reading and analysis of selected German writers and their works, with particular emphasis on the social, political, and intellectual climate of the times. The course content will change from semester to semester. Knowledge of German not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To The Study Of German Literature",
+        "subjectCode": "GER",
+        "courseCode": "24100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "An introduction to the study of German literature based on an overview of the formal elements of poetry, fiction, and drama as well as basic concepts of literary theory. Texts in German; conducted primarily in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level V",
+        "subjectCode": "GER",
+        "courseCode": "30100",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "Continued development of German speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in Germany from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level VI",
+        "subjectCode": "GER",
+        "courseCode": "30200",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in German on the basis of materials dealing with the ideas and events that have shaped present-day Germany. Conducted primarily in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level VI: Science And Engineering",
+        "subjectCode": "GER",
+        "courseCode": "32300",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "This is an alternative course to GER 302. Continued development of German speaking, listening, reading, and writing abilities, using materials from recent publications in science and technology. Building of general and technical vocabulary. Conducted in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Cinema",
+        "subjectCode": "GER",
+        "courseCode": "33000",
+        "instructor": [
+            "Beate I Allert"
+        ],
+        "description": "Viewing and analysis of major German contributions to the cinema from the earliest period to the present. Emphasis on relevant aesthetic theories and on the schools of literature and painting that served as sources. Evaluation of the German film on the basis of social, artistic, and political criteria. Knowledge of German not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German Level VIII",
+        "subjectCode": "GER",
+        "courseCode": "40200",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Further advanced work on speaking, listening, reading, and writing abilities in German. Course materials will cover a variety of topics illustrated by film and other media, both print and nonprint. Conducted in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "German For International Trade",
+        "subjectCode": "GER",
+        "courseCode": "52400",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "A broad spectrum of business and cultural materials to prepare students for work in international firms. Intensive study of technical terminology used in business transactions; stylistics in business correspondence and report writing; training for accurate oral expression in business negotiations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Structure Of German I: Phonology And Derivational Morphology",
+        "subjectCode": "GER",
+        "courseCode": "56100",
+        "instructor": [
+            "John D Sundquist"
+        ],
+        "description": "Linguistic analysis of German, focusing on phonetics, phonology, and word structure. The course will treat various problems of pronunciation, structural sound patterns, and word derivation. One weekly class is devoted to theoretical issues affecting German phonology and morphology. Credit will not be given for both GER 36100 and 56100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Language Acquisition",
+        "subjectCode": "GER",
+        "courseCode": "59600",
+        "instructor": [
+            "Alejandro Cuza-Blanco"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

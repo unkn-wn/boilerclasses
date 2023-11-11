@@ -1,0 +1,182 @@
+[
+    {
+        "title": "French Level I",
+        "subjectCode": "FR",
+        "courseCode": "10100",
+        "instructor": [
+            "Mary E Eddy"
+        ],
+        "description": "A beginning French course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. Permission of department required. CTL:IWL 1901 French Level I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Level II",
+        "subjectCode": "FR",
+        "courseCode": "10200",
+        "instructor": [
+            "Emmanuelle Ben Hadj Ben M'Barek"
+        ],
+        "description": "Continuation of FR 10100. CTL:IWL 1902 French Level II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Level III",
+        "subjectCode": "FR",
+        "courseCode": "20100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "A lower intermediate French course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. CT:IWL 1903 French Level III",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Level IV",
+        "subjectCode": "FR",
+        "courseCode": "20200",
+        "instructor": [
+            "Mary E Eddy"
+        ],
+        "description": "Continuation of FR 20100. CTL:IWL 1904 French Level IV",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Accelerated Intermediate French",
+        "subjectCode": "FR",
+        "courseCode": "20500",
+        "instructor": [
+            "Sacha Henri Ougier"
+        ],
+        "description": "This course is an accelerated intermediate-level course designed to develop language proficiency in French. The course will help students progress toward competence in speaking, listening, reading and writing, as well as toward knowledge of French and Francophone cultures. The course focuses on active language use. Students will interact meaningfully with classmates and develop communicative strategies. Course will be taught in French.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To The Study Of French Literature",
+        "subjectCode": "FR",
+        "courseCode": "24100",
+        "instructor": [
+            "Gwenael Bruno Jouin"
+        ],
+        "description": "Reading and discussion of selected poetry, prose, and theatre from France and the Francophone world; introduction to critical discourse and basic concepts of literary theory. Texts, discussion, and written assignments in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Level V",
+        "subjectCode": "FR",
+        "courseCode": "30100",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Continued development of French speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in France and the other French-speaking countries from various sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Level VI",
+        "subjectCode": "FR",
+        "courseCode": "30200",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in French on the basis of materials dealing with the ideas and events that have shaped present-day France and the other French-speaking countries. Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Food Culture",
+        "subjectCode": "FR",
+        "courseCode": "38000",
+        "instructor": [
+            "Jessica L Sturm"
+        ],
+        "description": "Selected topics on the contemporary civilization of the French-speaking world and on the development of its culture throughout history. Explores trends in society, daily life, the arts, ideas, and technology. Conducted in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Professional French III",
+        "subjectCode": "FR",
+        "courseCode": "42400",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "A study of the terminology and techniques used in commercial transactions, including the interpretation and writing of business materials. Development of the four language skills, with emphasis on writing and speaking.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "French Caribbean Literature",
+        "subjectCode": "FR",
+        "courseCode": "59400",
+        "instructor": [
+            "Germina N Veldwachter"
+        ],
+        "description": "Special topics in French Literature. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Language Acquisition",
+        "subjectCode": "FR",
+        "courseCode": "59600",
+        "instructor": [
+            "Alejandro Cuza-Blanco"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

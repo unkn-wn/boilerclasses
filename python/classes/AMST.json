@@ -1,0 +1,110 @@
+[
+    {
+        "title": "America And The World",
+        "subjectCode": "AMST",
+        "courseCode": "10100",
+        "instructor": [
+            "Kathleen G Burnham",
+            "Hanna Marie Newell"
+        ],
+        "description": "This course examines the evolution of American culture as the United States transitioned from a relatively isolated country at the end of the 19th century to an active shaper of a global community by the 21st century. We will examine ways in which American Culture shaped and was shaped by international relationships that transcend nation states. We will explore reactions to, and the results of, the spread of American culture both inside and outside the United States. By studying traditional cultural forms like art, music, design, literature, film, and technology the course will build a foundation from which to understand the configuration of American culture. Yet the course will also emphasize American culture expression, that in the forms of television, advertising, sport, cartoons, social media, video games, fashion, food, drugs, and automobiles, have transcended the geographical boundaries of the United States to engage in global interplays of material cultural exchange.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Interpreting America",
+        "subjectCode": "AMST",
+        "courseCode": "20100",
+        "instructor": [
+            "Michelle V Tran"
+        ],
+        "description": "Introduction to the interdisciplinary study of American culture, history, and society in its national and global contexts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Technology And Play",
+        "subjectCode": "AMST",
+        "courseCode": "22000",
+        "instructor": [
+            "Derek Andrew Pacheco"
+        ],
+        "description": "&nbsp; This course introduces students to games, as well as investigating&nbsp;innovations and controversies in the gaming industry.&nbsp;It will explore theories of play, how technological innovations and business practices in both digital and analog gaming (through board games, video games, tabletop games, and esports) mediate or structure the experience of play. It will also survey the rise of myriad gaming subcultures, including celebrity streamers and esports.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Asian Amer Pop Cul",
+        "subjectCode": "AMST",
+        "courseCode": "30100",
+        "instructor": [
+            "Cheryl A Cooky",
+            "Monica Mong Trieu",
+            "Matthew N Hannah"
+        ],
+        "description": "Advanced interdisciplinary study of American culture, history, and society in their national and global contexts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "American Studies Interdisciplinary Project",
+        "subjectCode": "AMST",
+        "courseCode": "60300",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Students will conduct independent research under faculty supervision towards completion of the Special Field examination for the Ph.D. degree. The project should be an extended, original research essay, based upon interdisciplinary research. The project should aim to produce original findings on a clearly defined topic or problem. In addition to the research and essay, students must produce a statement of methodology in which they explain their choice of sources and how their project contributes to the field of American Studies. To be taken in the final semester of coursework. Prerequisite: AMST 60100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "American Studies Methods",
+        "subjectCode": "AMST",
+        "courseCode": "60600",
+        "instructor": [
+            "Monica Mong Trieu"
+        ],
+        "description": "This class is specifically designed to be a survey course on the various methods employed by American Studies scholars from different disciplines. The objective of this course is to approach methods from both an epistemological and empirical perspective. In particular, we will investigate the what, why, and how of conducting research in an interdisciplinary field. As such, the following questions will drive this course: What are American Studies methods? Why are certain methodologies utilized (i.e., for what purpose)? How does one conduct research in American Studies? What method(s) should you use in your own research inquiry? And finally, what are some potential drawbacks in using a certain methodology for your project? This is a graduate seminar, and your active participation in discussions is mandatory. You will be asked to submit weekly discussion questions, lead five seminar discussions on selected topics from the required readings, and complete six assignments. The final assignment will include the background and methodological components of a research proposal.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "M A Research Seminar",
+        "subjectCode": "AMST",
+        "courseCode": "63000",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "A research seminar required of all M.A. students in their final semester. Students write substantial essays based upon original research in which they seek to crystallize, in practice, methods and concepts of American Studies. Prerequisite: AMST 60100.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2024"
+    }
+]
