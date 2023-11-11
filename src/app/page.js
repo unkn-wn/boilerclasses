@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { Transition } from '@headlessui/react'
-import classes from './classes.json'
+import classes from './out.json'
 
 const CourseCatalog = () => {
 
@@ -25,7 +25,8 @@ const CourseCatalog = () => {
   let filteredCourses = [];
   if (searchTerm != "") {
     filteredCourses = classes.filter(course =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase())
+//      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.subjectCode.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
@@ -73,8 +74,8 @@ const CourseCatalog = () => {
         >
           <div className='h-full overflow-auto bg-zinc-900 rounded-lg lg:p-16 p-4'>
             <p className='text-3xl font-bold mb-3 break-words'>{title}</p>
-            <p className='font-light'>{subjectCode} {courseCode}</p>
-            <p className='font-light'>Prof. {instructor.join(", ")}</p>
+            <p className='text-xl font-medium'>{subjectCode} {courseCode}</p>
+            <p className='text-xl font-medium'>Prof. {instructor.join(", ")}</p>
             <p className='my-2 break-words'>{description}</p>
             <p className='mt-5'>{capacity}</p>
             <p className=''>Available {term}</p>

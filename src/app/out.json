@@ -1,0 +1,1620 @@
+[
+   {
+      "title":"Aeromechanics I",
+      "subjectCode":"AAE",
+      "courseCode":"20300",
+      "instructor":[
+         "TBA"
+      ],
+      "description":"Fundamental concepts and principles of bodies in motion, with applications to aeronautical and astronautical problems. Subjects covered include rectilinear motion, curvilinear motion, rotation, and plane motion. The static equilibrium and quasistatic equilibrium situations are treated as a part of motion in which the acceleration is zero. Problems involving impact, separation, work, and energy are considered.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Aeromechanics II",
+      "subjectCode":"AAE",
+      "courseCode":"20400",
+      "instructor":[
+         "Danilo De Camargo Branco",
+         "Hashim Hassan",
+         "Ronald F Agyei"
+      ],
+      "description":"Loads on aircraft. Strain, stress, and equations of equilibrium. Description of aircraft structures and materials. Torsion of shafts. Fuselage and wing structures. Symmetrical bending and stiffness analysis of solid and stringer-panel box beams. Structural failures.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Aerospace Design",
+      "subjectCode":"AAE",
+      "courseCode":"25100",
+      "instructor":[
+         "Danilo De Camargo Branco",
+         "Thomas Fletcher Cunningham"
+      ],
+      "description":"The role of design in aerospace engineering. Introduction to aerodynamics, performance, propulsion, structures, stability and control, and weights. Layout and general arrangement of aerospace vehicles. Design concept generation and selection. Computational methods for design. Trade studies and graphical optimization. Conceptual design exercise involving aircraft, spacecraft, or both. Technical presentations and communication for aerospace engineering.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Signal Analysis For Aerospace Engineering",
+      "subjectCode":"AAE",
+      "courseCode":"30100",
+      "instructor":[
+         "Dengfeng Sun"
+      ],
+      "description":"Signal processing and spectral analysis for aerospace engineering. Fourier and fast Fourier transforms. Vibration analysis; estimation of natural frequencies, wing vibrations. Introduction to linear circuits, operational amplifiers and filtering. Noise suppression.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Fluid Mechanics",
+      "subjectCode":"AAE",
+      "courseCode":"33300",
+      "instructor":[
+         "Tom I-P Shih"
+      ],
+      "description":"Kinematics of fluids and conservation equations for mass, momentum, and energy. Viscous and inviscid incompressible flow. Lift and drag in subsonic flow. Introduction to compressibility and boundary layers. Potential flow.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Aerodynamics",
+      "subjectCode":"AAE",
+      "courseCode":"33400",
+      "instructor":[
+         "Gregory A Blaisdell",
+         "James Vincent Canino"
+      ],
+      "description":"Incompressible airfoil and lifting line theory. Steady and unsteady, one-dimensional, linear and nonlinear flows. Normal shock waves. Steady, supersonic, two-dimensional linear and nonlinear flows. Oblique shock waves. Perturbation theory for wings and bodies. Design applications.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Thermal Sciences",
+      "subjectCode":"AAE",
+      "courseCode":"33800",
+      "instructor":[
+         "TBA"
+      ],
+      "description":"A fundamental course covering a range of topics selected from the disciplines of engineering thermodynamics, fluid mechanics, heat transfer and combustion, with an emphasis on their application to propulsion. This is an entry level course to prepare students for advanced analysis of propulsion and energy systems. Upon completion of this course, students are expected to be able to apply fundamental principles to perform thermodynamic analysis for thermophysical problems involving fluid flow, heat transfer and combustion.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Aerospace Propulsion",
+      "subjectCode":"AAE",
+      "courseCode":"33900",
+      "instructor":[
+         "William E Anderson",
+         "Haifeng Wang"
+      ],
+      "description":"Survey of air-breathing and rocket propulsion systems for AAE students not in the propulsion option. Thermodynamic cycles, analysis of air-breathing systems and components. Rocket Equation, rocket cycles, liquid and solid propellants, chemical equilibrium.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Dynamics And Vibrations",
+      "subjectCode":"AAE",
+      "courseCode":"34000",
+      "instructor":[
+         "Keith Allen LeGrand"
+      ],
+      "description":"Kinematics and kinetics of particles and rigid bodies. Topics include a particle in orbit, systems of particles, vibrations, Euler's equations of motion, Eulerian angles, and aerospace vehicle dynamics.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Structural Analysis I",
+      "subjectCode":"AAE",
+      "courseCode":"35200",
+      "instructor":[
+         "Ronald F Agyei",
+         "Wenbin Yu"
+      ],
+      "description":"Properties of wing and fuselage sections. Beam-column moments. Torsion of thin-walled and skin-stringer multiple-cell sections. Nonsymmetrical bending of skin-stringer wing sections. Flexural shear in open and closed thin-walled and skin-stringer sections. Loads and stresses in the rib system. Cutouts and shear lag. Modified beam theory for wing and fuselage design. Deflection by energy method. Introduction to composite structures.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Control System Analysis",
+      "subjectCode":"AAE",
+      "courseCode":"36400",
+      "instructor":[
+         "Ran Dai",
+         "Shaoshuai Mou",
+         "James Michael Goppert",
+         "Arthur E Frazho"
+      ],
+      "description":"Modeling and analysis of dynamical systems with aerospace applications. Laplace transforms, transfer functions, block diagrams.  Transient and steady-state response of dynamical systems. Root Locus, Bode, Nyquist methods for control systems analysis. Introduction to controller design.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Undergraduate Senior Seminar",
+      "subjectCode":"AAE",
+      "courseCode":"40000",
+      "instructor":[
+         "William A Crossley"
+      ],
+      "description":"A lecture-demonstration series emphasizing evaluation of career options, identification and development of professional skills. Example of career-related topics include choosing a job, and post graduate education in engineering or other disciplines. Examples of professional skills topics covered include interviewing, writing, and ethics. Assessment of student achievement of AAE program learning outcomes.",
+      "capacity":0,
+      "credits":[
+         1,
+         1
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Zero-Gravity Flight Experiment",
+      "subjectCode":"AAE",
+      "courseCode":"41800",
+      "instructor":[
+         "Steven H Collicott"
+      ],
+      "description":"Team-based design-build-test engineering experience to maximize the benefits of student participation in the NASA Reduced Gravity Student Flight Opportunity Program (or similar). Gravity, orbits, and weightlessness.  Low-gravity capillary fluid physics, scaling laws, and components. Experiment design for multiple short zero gravity test times. Technical proposal writing, design for manufacturability, experiment fabrication, planning, testing, and execution.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Flight Dynamics And Control",
+      "subjectCode":"AAE",
+      "courseCode":"42100",
+      "instructor":[
+         "Martin Corless",
+         "Ran Dai"
+      ],
+      "description":"Flight vehicle rigid-body equations of motion; linearization via small perturbation techniques. Trim analysis, static and dynamic stability, aerodynamic stability derivatives and control effectiveness. Vehicle transfer functions, stability augmentation, aircraft handling qualities. Introduction to flexible vehicle effects.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Air-Breathing Propulsion",
+      "subjectCode":"AAE",
+      "courseCode":"43800",
+      "instructor":[
+         "Carson D Slabaugh"
+      ],
+      "description":"Basic operating principles and analysis of performance characteristics of propulsion systems for air-breathing aerospace vehicles. Ramjet, turbojet, turbofan and turboprop cycle analysis. Propeller analysis and design. Analysis of flow through inlets, combustors, nozzles, compressors, and turbines. Component matching. Not open to students with credit in ME 43800.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Spacecraft Attitude Dynamics",
+      "subjectCode":"AAE",
+      "courseCode":"44000",
+      "instructor":[
+         "Kathleen Howell"
+      ],
+      "description":"Description of orientation, angular velocity, and angular acceleration in terms of direction cosines, Euler parameters, and angles. Forces and moments acting on space vehicles. Attitude stability of various types of satellites in circular and elliptic orbits. Spin stabilization and gravity gradient torques. Gyroscopic devices and energy dissipation. Introduction to attitude control.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Spacecraft Design",
+      "subjectCode":"AAE",
+      "courseCode":"45000",
+      "instructor":[
+         "Alexey Shashurin",
+         "Thomas Fletcher Cunningham",
+         "James L Garrison"
+      ],
+      "description":"Senior students perform a team-based spacecraft design, requiring application of the education and skills developed in the aerospace curriculum. Components include analysis methods for preliminary design, development of an initial vehicle concept, and development of a complete numerical model of the mission, culminating in oral and written reports by the teams.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Aircraft Design",
+      "subjectCode":"AAE",
+      "courseCode":"45100",
+      "instructor":[
+         "TBA"
+      ],
+      "description":"Senior students perform a team-based aircraft design, requiring application of the education and skills developed in the aerospace curriculum. Aircraft mission requirements include engine cycle selection and airframe/engine integration, performance, stability and control, structures, human factors, avionics, sensors, and manufacturing processes. The teams present oral and written reports on their designs.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Design Of Aerospace Structures",
+      "subjectCode":"AAE",
+      "courseCode":"45400",
+      "instructor":[
+         "Dianyun Zhang"
+      ],
+      "description":"Design/failure criteria for aerospace structures, materials selection, introduction to manufacturing methods, structural assemblies, component details, concurrent engineering, and interdisciplinary design teams.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Orbital Analysis",
+      "subjectCode":"AAE",
+      "courseCode":"49000",
+      "instructor":[
+         "Alexey Shashurin"
+      ],
+      "description":"Hours and credit to be arranged. Permission of instructor required.",
+      "capacity":0,
+      "credits":[
+         0,
+         18
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Computational Aerodynamics",
+      "subjectCode":"AAE",
+      "courseCode":"51200",
+      "instructor":[
+         "Jonathan Poggie"
+      ],
+      "description":"Finite difference methods for solving fluid flow problems. Review of classification of partial differential equations, well-posed problems, and discrete approximation of partial differential equations. Matrix and von Neumann stability analysis. Consistency and convergence. Grid generation: elliptic, hyperbolic, and transfinite mesh generation methods. Methods for solving the unsteady Euler equations: finite-volume formulations, flux-split and flux-difference formulations, shock-capturing, formulation of boundary conditions, artificial viscosity models, and multi-grid acceleration.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Intermediate Aerodynamics",
+      "subjectCode":"AAE",
+      "courseCode":"51400",
+      "instructor":[
+         "Sally Pm Bane"
+      ],
+      "description":"Thin airfoil theory and panel methods. Three-dimensional elementary solutions, lifting-line and lifting-surface models. Slender wing and slender body theory. Normal/oblique shock waves. One- and multi-dimensional flows and conical flows. Method of characteristics. Introduction to transonic flow, hypersonic flow, and airfoil design.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Hypersonic Aerothermodynamics",
+      "subjectCode":"AAE",
+      "courseCode":"51900",
+      "instructor":[
+         "Steven P Schneider"
+      ],
+      "description":"Aerodynamics of satellites and planetary re-entry. Continuum hypersonic flow. Inviscid and viscous effects, boundary layers, and heat transfer. Shock and boundary-layer interactions. Equilibrium flow of high-temperature reacting gases. Nonequilibrium effects. Kinetic theory and rarefied flows. Direct simulation Monte Carlo techniques.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Experimental Aerodynamics",
+      "subjectCode":"AAE",
+      "courseCode":"52000",
+      "instructor":[
+         "Joseph S Jewell"
+      ],
+      "description":"Theory and application of experimental techniques and instrumentation for aerodynamics and fluid mechanics. Computer data acquisition, wind tunnels, force balances, flow visualization, pressure probes, hot wire anemometry, laser Doppler velocimetry and turbulence measurements.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Plasma Laboratory",
+      "subjectCode":"AAE",
+      "courseCode":"52100",
+      "instructor":[
+         "Alexey Shashurin"
+      ],
+      "description":"The laboratory course will include lab prep lectures, practical classes and mini-projects. Lab prep lectures will briefly cover topics of the basic plasma physics and diagnostics relevant to the subsequent practical classes. In addition, details of the corresponding lab procedure, instructions and lab report assignment will be discussed. Practical classes will involve students in practical creation and operation of various plasma sources and plasma diagnostics. Specifically, students will operate DC high voltage breakdown facility, electrostatic accelerator (ion thruster), cross-field accelerator (Hall thruster), Atmospheric-Pressure Plasma Jet facility, and will conduct measurements of plasma parameters using Langmuir probes, microwave interferometer and optical spectrometer.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Remote Sensing",
+      "subjectCode":"AAE",
+      "courseCode":"52300",
+      "instructor":[
+         "James L Garrison"
+      ],
+      "description":"Fundamentals of satellite and airborne remote sensing. Basic physical principles of electromagnetic wave propagation will be introduced. From this foundation, the phenomenology's enabling properties of the atmosphere; ocean and land surface to be measured at a distance will be developed. These principles will be applied to the design of instruments and satellite missions for Earth observation. Microwave instruments will be emphasized, although there will also be discussion of optical systems. Most of the material would also be applicable to remote sensing of other planets. Intended for students in Engineering or the Sciences.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Advanced Rocket Propulsion",
+      "subjectCode":"AAE",
+      "courseCode":"53900",
+      "instructor":[
+         "James Vincent Canino"
+      ],
+      "description":"Generalized internal compressible and incompressible flows. Thermochemistry and heat transfer in rocket applications. Advanced topics in solid rocket motor performance and internal ballistics. Liquid rocket engine cycle analysis and turbopump design. Combustion of liquid and solid propellants. Hybrid rockets and thermal-nuclear engines.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Dynamic Behavior of Materials",
+      "subjectCode":"AAE",
+      "courseCode":"54500",
+      "instructor":[
+         "Weinong W Chen"
+      ],
+      "description":"Materials' responses to high-rate loading are different from their quasi-static behavior. Applications of materials in structures subjected to impact loading from events such as bird strike require the understanding of dynamic material behavior. Such high-rate materials behavior is not available in standard materials handbooks or design manuals. This course introduces stress wave propagation in solids, which is the foundation to characterization and understanding of high-rate response of materials. Then, the theoretical background and working principles of high-rate experimental methods are presented to characterize the material response under high-rate loading conditions. Finally, rate-dependent material models are introduced to describe the dynamic material behavior and deformation mechanisms.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Nondestructive Evaluation Of Structures And Materials",
+      "subjectCode":"AAE",
+      "courseCode":"55200",
+      "instructor":[
+         "Tyler N Tallman"
+      ],
+      "description":"Overview of methods employed for nondestructive evaluation of structures and materials taught in the context of damage tolerant structural analysis. Major inspection topics include: radiography, ultrasonics, eddy current, penetrant, magnetic, and visual/optical techniques. Other new emerging inspection techniques also are discussed. Offered in alternate years.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Mechanics Of Composite Materials",
+      "subjectCode":"AAE",
+      "courseCode":"55500",
+      "instructor":[
+         "Wenbin Yu"
+      ],
+      "description":"Current and potential applications of composite materials. Review of elasticity of anisotropic solids. Methods for determining mechanical properties of heterogeneous materials. Static and dynamic analyses of laminated composites. Fracture and fatigue of laminates. Reliability, testing, and design of composites.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"System-Of-Systems Modeling And Analysis",
+      "subjectCode":"AAE",
+      "courseCode":"56000",
+      "instructor":[
+         "Cesare Guariniello"
+      ],
+      "description":"Introduction to features of system-of-systems problems; problem definition tools; role of complexity; network topology analysis and agent-based simulation models; architecture analysis; metrics for multi-stakeholder problems; semester team projects allow students to exercise and critique such methods for analyzing system-of-systems problems. Some background in probability and statistics (e.g. random variables, probability density and distributions, sampling methods) is expected.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Applied Stochastic Processes",
+      "subjectCode":"AAE",
+      "courseCode":"56700",
+      "instructor":[
+         "Arthur E Frazho"
+      ],
+      "description":"An introductory course in the concept of a discrete and continuous stochastic process based upon physical phenomena that originally gave rise to the specific stochastic models that are studies. Spectral analysis, response of time invariant systems to noise inputs. Estimation theory, Kalman and Winer filtering.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Applied Optimal Control And Estimation",
+      "subjectCode":"AAE",
+      "courseCode":"56800",
+      "instructor":[
+         "Inseok Hwang"
+      ],
+      "description":"This course introduces students to analysis and synthesis methods of optimal controllers and estimators for (stochastic) dynamical systems. The topics in this course include a review of probability and stochastic processes, classical estimation techniques, Pontryagin's maximum principle, dynamic programming. Linear Quadratic Regulator problems (LQR), Kalman filter, duality of LQR with Kalman filter, Linear Quadratic Gaussian (LQG), and a range of engineering applications.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Manfacturing Of Adv Composites",
+      "subjectCode":"AAE",
+      "courseCode":"59000",
+      "instructor":[
+         "David Arnas Martinez",
+         "Shaoshuai Mou",
+         "Kenshiro Oguri",
+         "R. Byron Pipes",
+         "Husheng Li",
+         "Leifur Thor Leifsson",
+         "Haifeng Wang"
+      ],
+      "description":"Topics vary - projects in Aeronautical Engineering. Permission of instructor required.",
+      "capacity":0,
+      "credits":[
+         1,
+         6
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Elastic Wave Propagation",
+      "subjectCode":"AAE",
+      "courseCode":"64600",
+      "instructor":[
+         "James Francis Doyle"
+      ],
+      "description":"Elastic wave propagation in rods, beams, and plates. Wave motion in semi-infinite bodies; Rayleigh, Lamb and Love waves. Pochhammer-Chree theory for rods. General properties of dispersive waves and approximation techniques. Impact. Wave front and ray methods. Introduction to wave propagation in anelastic and nonhomogenous media, and to large amplitude and shock waves. Prerequisite: AAE 55300 or ME 56300.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Modeling Damage And Strengthening Mechanisms In Materials",
+      "subjectCode":"AAE",
+      "courseCode":"64800",
+      "instructor":[
+         "Michael D Sangid"
+      ],
+      "description":"The usage of materials is the backbone of engineering practice. Yet, advances in materials have stagnated due to overly conservative approaches, trial-and-error testing, and long qualification times. Material modeling offers tremendous opportunities to address these issues. This class offers advanced modeling strategies at the intersection of mechanics and materials science for both polycrystalline and composite materials. The course topics are defined as follows: First, advanced micromechanics analysis of modern engineering materials with emphasis on relating elastic microstructural phenomena to the mechanics of material behavior, via the Eshelby inclusion problem and its application to fiber reinforced composites. Second, classical plasticity is summarized via phenomenological and mathematical formulation of the constitutive laws, including yielding, yield surface; von Mises, Tresca yield criteria; Drucker's stability postulate; strain or work hardening, normality rule, perfect plasticity, and stress-strain law. Third, crystal plasticity is discussed, specifically physical and mathematical foundation for plasticity in crystalline materials, with a detailed description of the Bishop and Hill implementation of the Taylor model for deformation of polycrystals. Lastly, concepts of dislocations leading to strengthening mechanisms in metals are discussed: (i) by studying the anisotropy of material and elastoplastic properties at crystal level, microstructural basis for deformation in metals, polymers, and ceramics and (ii) failure mechanisms and toughening in metals, with primary emphasis on work/strain hardening, solid solution hardening, precipitate hardening, and grain boundaries. The course will be comprised of three projects, where the student chooses the topic of the third and final project. Prerequisite: AAE 55300 or equivalent.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Fracture Mechanics",
+      "subjectCode":"AAE",
+      "courseCode":"65400",
+      "instructor":[
+         "Vikas Tomar"
+      ],
+      "description":"Methods of stress analysis in elastic media containing cracks. Fracture criteria. The strain energy release rate and J-integral. Crack tip plasticity. Interface cracks. Cracks in anisotropic solids. Bending of cracked plates. Dynamic crack propagation. Prerequisite: AAE 55300.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Nonlinear Dynamics, Systems, And Control",
+      "subjectCode":"AAE",
+      "courseCode":"66600",
+      "instructor":[
+         "Martin Corless"
+      ],
+      "description":"Fundamental concepts and tools that are useful in the analysis of nonlinear systems and in the design of controllers and estimators for such systems. Results are illustrated by, and applied to, aerospace/mechanical systems. Prerequisite: AAE 56400.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Digital Literacy",
+      "subjectCode":"CS",
+      "courseCode":"10100",
+      "instructor":[
+         "George Bunch Adams"
+      ],
+      "description":"Survey of the digital world, computers as multi-purpose machines, digital information, definition of programming, computers everywhere (the Internet of things), computers that perform simultaneous computations, how apps work, data storage and searching, databases, digital audio, graphics, video, computer networks and the Internet, the World Wide Web and Internet sharing services, network and Internet performance, real-time services, artificial intelligence, cloud computing, security, and privacy. CS students may take course for elective credit only.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"C Programming",
+      "subjectCode":"CS",
+      "courseCode":"15900",
+      "instructor":[
+         "William N Crum",
+         "Maxwell Cullen Rees",
+         "Xiaojin Liu",
+         "Eman Samy Ahmed Diyab"
+      ],
+      "description":"Fundamental principles, concepts, and methods of programming in C, with emphasis on applications in the physical sciences and engineering. Basic problem solving and programming techniques; fundamental algorithms and data structures; and use of programming logic in solving engineering problems. Students are expected to complete assignments in a collaborative learning environment. Credit cannot be obtained for both CS 15900 and any of CS 15600, CS 15800 and CS 18000.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Engineering In Python",
+      "subjectCode":"CS",
+      "courseCode":"17600",
+      "instructor":[
+         "Anthony David Bergstrom"
+      ],
+      "description":"The course introduces students to programming fundamentals in Python, including loops, functions and different data types, and provides an introduction to data engineering including  working with common data formats and learning the basics of data wrangling. Students will format, extract, clean, filter, transform, search, combine, summarize, aggregate, and visualize a diverse range of data sets.  Python libraries including MatPlotLib and Pandas are used.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Programming With Multimedia Objects",
+      "subjectCode":"CS",
+      "courseCode":"17700",
+      "instructor":[
+         "Jessica Mackey Conner-Strunk"
+      ],
+      "description":"Introduction to computers and programming: number representations, primitive data types and operations, basic control structures, programming applets and applications using graphical user interfaces, programming for detecting events and performing actions, processing multimedia objects such as images and sounds. Throughout the course, examples are drawn from a variety of fields in the natural sciences. Not open to CS majors with a grade of C or better in CS 18000.  Not open to non-CS majors with a grade of C or better in any course in computer programming.",
+      "capacity":0,
+      "credits":[
+         4,
+         4
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Problem Solving And Object-Oriented Programming",
+      "subjectCode":"CS",
+      "courseCode":"18000",
+      "instructor":[
+         "Hubert E Dunsmore",
+         "Anthony David Bergstrom"
+      ],
+      "description":"Problem solving and algorithms, implementation of algorithms in a high level programming language, conditionals, the iterative approach and debugging, collections of data, searching and sorting, solving problems by decomposition, the object-oriented approach, subclasses of existing classes, handling exceptions that occur when the program is running, graphical user interfaces (GUIs), data stored in files, abstract data types, a glimpse at topics from other CS courses.  Intended primarily for students majoring in computer sciences. Credit cannot be obtained for both CS 18000 and any of 15600, 15800 and 15900. Not open to students with credit in CS 24000.",
+      "capacity":0,
+      "credits":[
+         4,
+         4
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Foundations Of Computer Science",
+      "subjectCode":"CS",
+      "courseCode":"18200",
+      "instructor":[
+         "Elisha P Sacks",
+         "Sarah H Sellke"
+      ],
+      "description":"Logic and proofs; sets, functions, relations, sequences and summations; number representations; counting; fundamentals of the analysis of algorithms; graphs and trees; proof techniques; recursion; Boolean logic; finite state machines; pushdown automata; computability and undecidability.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Tools",
+      "subjectCode":"CS",
+      "courseCode":"19300",
+      "instructor":[
+         "TBA"
+      ],
+      "description":"This course is designed to introduce new Computer Science students to various programming tools which will aid them in their Computer Science classes, personal projects, and software development job experiences.",
+      "capacity":0,
+      "credits":[
+         1,
+         1
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Freshman Honors Seminar",
+      "subjectCode":"CS",
+      "courseCode":"19700",
+      "instructor":[
+         "Douglas E Comer"
+      ],
+      "description":"A seminar dealing with the history, context, and future of computer science. Open only to students in the Computer Sciences Honors Program. The credit may be used only toward free electives.",
+      "capacity":0,
+      "credits":[
+         1,
+         1
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Competitive Programming I",
+      "subjectCode":"CS",
+      "courseCode":"21100",
+      "instructor":[
+         "Ethan William Dickey"
+      ],
+      "description":"CP1 teaches applied algorithmic ideas and problem solving techniques to solve programming interview and competitive programming questions including usage of basic data structures such as [array, set, map, stack, queue, deque, priority queue], the four main algorithm paradigms: [complete search, greedy, divide and conquer, dynamic programming], other algorithmic ideas including [binary search the answer/bisection, meet-in-the-middle, prefix sum and difference arrays, two pointers, sliding window], and basic graph algorithms covering [strongly/connected components, floodfill, topological sort, shortest paths].",
+      "capacity":0,
+      "credits":[
+         2,
+         2
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Organizational Computing",
+      "subjectCode":"CS",
+      "courseCode":"23500",
+      "instructor":[
+         "Marta A Crowe"
+      ],
+      "description":"People and organizations, decision-making, information systems, telecommunications, desktop systems, integration tools, collaboration and groupware, multimedia, authoring multimedia documents, emerging technologies. May not be taken for credit by Computer Science majors.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Programming In C",
+      "subjectCode":"CS",
+      "courseCode":"24000",
+      "instructor":[
+         "Jeffrey A Turkstra"
+      ],
+      "description":"The UNIX environment, C development cycle, data representation, operators, program structure, recursion, macros, C preprocessor, pointers and addresses, dynamic memory allocation, structures, unions, typedef, bit-fields, pointer/structure applications, UNIX file abstraction, file access, low-level I/O, concurrency.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Data Science",
+      "subjectCode":"CS",
+      "courseCode":"24200",
+      "instructor":[
+         "TBA"
+      ],
+      "description":"This course provides a broad introduction to the field of data science. The course focuses on using computational methods and statistical techniques to analyze massive amounts of data and to extract knowledge. It provides an overview of foundational computational and statistical tools for data acquisition and cleaning, data management and big data systems. The course surveys the complete data science process from data to knowledge and gives students hands-on experience with tools and methods. Basic knowledge of Python required. Computer Science majors cannot count this course as a degree requirement but can take it for credit as a free elective if taken before CS 37300, 34800, 47100, 47300, 44800.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Computer Architecture",
+      "subjectCode":"CS",
+      "courseCode":"25000",
+      "instructor":[
+         "Xuehai Qian"
+      ],
+      "description":"Digital logic: transistors, gates, and combinatorial circuits; clocks; registers and register banks; arithmetic-logic units; data representation: big-endian and little-endian integers; ones and twos complement arithmetic; signed and unsigned values; Von-Neumann architecture and bottleneck; instruction sets; RISC and CISC designs; instruction pipelines and stalls; rearranging code; memory and address spaces; physical and virtual memory; interleaving; page tables; memory caches; bus architecture; polling and interrupts; DMA; device programming; assembly language; optimizations; parallelism; data pipelining.",
+      "capacity":0,
+      "credits":[
+         4,
+         4
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Structures And Algorithms",
+      "subjectCode":"CS",
+      "courseCode":"25100",
+      "instructor":[
+         "Andres M Bejarano Posada"
+      ],
+      "description":"Running time analysis of algorithms and their implementations, one-dimensional data structures, trees, heaps, additional sorting algorithms, binary search trees, hash tables, graphs, directed graphs, weighted graph algorithms, additional topics.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Systems Programming",
+      "subjectCode":"CS",
+      "courseCode":"25200",
+      "instructor":[
+         "Gustavo Rodriguez-Rivera"
+      ],
+      "description":"Low-level programming; review of addresses, pointers, memory layout, and data representation; text, data, and bss segments; debugging and hex dumps; concurrent execution with threads and processes; address spaces; file names; descriptors and file pointers; inheritance; system calls and library functions; standard I/O and string libraries; simplified socket programming; building tools to help programmers; make and make files; shell scripts and quoting; unix tools including sed, echo, test, and find; scripting languages such as awk; version control; object and executable files (.o and a.out); symbol tables; pointers to functions; hierarchical directories; and DNS hierarchy; programming embedded systems.",
+      "capacity":0,
+      "credits":[
+         4,
+         4
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Structures And Algorithms For DS/AI",
+      "subjectCode":"CS",
+      "courseCode":"25300",
+      "instructor":[
+         "Andres M Bejarano Posada"
+      ],
+      "description":"This course gives a broad introduction to the most important data structures and algorithms in computer science. The emphasis is on data structures and their use in algorithms relevant for data science and AI and their applications. The course focuses on developing and comparing efficient implementations, assessing suitability of data structures for massive data sets, and understanding effective use, modifications, and extensions. This course will not fulfill CS 25100 requirement for any Computer Science major or minor.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Software Engineering I",
+      "subjectCode":"CS",
+      "courseCode":"30700",
+      "instructor":[
+         "Xiangyu Zhang"
+      ],
+      "description":"An introduction to the methods and tools of software engineering; software life cycle; specification and design of software, software testing, cost and effort estimation; laboratory exercises with design, testing, and other tools.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Competitive Programming II",
+      "subjectCode":"CS",
+      "courseCode":"31100",
+      "instructor":[
+         "Arvind Ramaswami"
+      ],
+      "description":"CP2 teaches experienced programmers additional techniques to solve interview and competitive programming problems and builds on material learned in CP1. This includes specific algorithmic techniques such as [shortest paths, topological sort, MST, union find, range queries], advanced algorithms surrounding trees and DAGs, advanced problem types in [dynamic programming, backtracking/simulation, mathematics, string processing], and more. It can be viewed as a programming complement to CS 38100, with some overlap in content.",
+      "capacity":0,
+      "credits":[
+         2,
+         2
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Fundamentals Of Computer Graphics",
+      "subjectCode":"CS",
+      "courseCode":"33400",
+      "instructor":[
+         "Aniket Bera"
+      ],
+      "description":"Fundamental principles and techniques of computer graphics. The course covers the basics of going from a scene representation to a raster image using OpenGL. Specific topics include coordinate manipulations, perspective, basics of illumination and shading, color models, texture maps, clipping and basic raster algorithms, fundamentals of scene constructions. C S 314 is recommended.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Information Systems",
+      "subjectCode":"CS",
+      "courseCode":"34800",
+      "instructor":[
+         "Hisham Ramadan Benotman"
+      ],
+      "description":"File organization and index structures; object-oriented database languages; the relational database model with introductions to SQL and DBMS; hierarchical models and network models with introductions to HDDL, HDML, and DBTG Codasyl; data mining; data warehousing; database connectivity; distributed databases; the client/server paradigm; middleware, including ODBC, JDBC, CORBA, and MOM.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Cloud Computing",
+      "subjectCode":"CS",
+      "courseCode":"35100",
+      "instructor":[
+         "Douglas E Comer"
+      ],
+      "description":"Introduction to cloud computing. Cloud data center infrastructure, public and private clouds, servers and virtualized servers, data center networks and virtualized networks, virtualized disk, file, and object storage, the concept of scale-out, algorithms and programming systems used in the design and implementation of cloud-native software, especially using containers and orchestration systems, microservices, serverless designs,&nbsp;controller-based designs, edge and fog computing, security in a cloud environment, programming models.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Compilers: Principles And Practice",
+      "subjectCode":"CS",
+      "courseCode":"35200",
+      "instructor":[
+         "Tiark Rompf"
+      ],
+      "description":"Should not be taken concurrently with CS 354. The theory and practice of programming language translation, compilation, and run-time systems, organized around a significant programming project to build a compiler for a simple but nontrivial programming language. Modules, interfaces, tools. Data structures for tree languages. Lexical analysis, syntax analysis, abstract syntax. Symbol tables, semantic analysis. Translation, intermediate code, basic blocks, traces. Instruction selection, CISC and RISC machines. Liveness analysis, graph coloring register allocation. Supplemental material drawn from garbage collection, object-oriented languages, higher-order languages, dataflow analysis, optimization, polymorphism, scheduling and pipelining, memory hierarchies.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Operating Systems",
+      "subjectCode":"CS",
+      "courseCode":"35400",
+      "instructor":[
+         "Dongyan Xu"
+      ],
+      "description":"Should not be taken concurrently with CS 35200. Introduction to operating systems. Computer system and operating system architectures, processes, inter-process communication, inter-process synchronization, mutual exclusion, deadlocks, memory hierarchy, virtual memory, CPU scheduling, file systems, I/O device management, security.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Cryptography",
+      "subjectCode":"CS",
+      "courseCode":"35500",
+      "instructor":[
+         "Hemanta K Maji"
+      ],
+      "description":"An introduction to cryptography basics: Classic historical ciphers including Caesar, Vigenere and Vernam ciphers; modern ciphers including DES, AES, Pohlig-Hellman, and RSA; signatures and digests; key exchange; simple protocols; block and stream ciphers; network-centric protocols.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Mining And Machine Learning",
+      "subjectCode":"CS",
+      "courseCode":"37300",
+      "instructor":[
+         "Stephen Robert Hanneke"
+      ],
+      "description":"This course will introduce students to the field of data mining and machine learning, which sits at the interface between statistics and computer science. Data mining and machine learning focuses on developing algorithms to automatically discover patterns and learn models of large datasets. This course introduces students to the process and main techniques in data mining and machine learning, including exploratory data analysis, predictive modeling, descriptive modeling, and evaluation.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To The Analysis Of Algorithms",
+      "subjectCode":"CS",
+      "courseCode":"38100",
+      "instructor":[
+         "Jeremiah M Blocki"
+      ],
+      "description":"Techniques for analyzing the time and space requirements of algorithms. Application of these techniques to sorting, searching, pattern-matching, graph problems, and other selected problems. Brief introduction to the intractable (NP-hard) problems.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Great Issues In Computer Sci",
+      "subjectCode":"CS",
+      "courseCode":"39000",
+      "instructor":[
+         "Elisha P Sacks"
+      ],
+      "description":"Topics vary. Permission of instructor required.",
+      "capacity":0,
+      "credits":[
+         1,
+         5
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Software Testing",
+      "subjectCode":"CS",
+      "courseCode":"40800",
+      "instructor":[
+         "Pedro Jose Sousa Da Fonseca"
+      ],
+      "description":"Preliminaries: errors and testing; software quality, requirements, behavior, and correctness; testing, debugging, verification; control flow graphs, dominators; types of testing; Test selection: from requirements, finite state models, and combinatorial designs; regression testing and test minimization; Test adequacy assessment: control and data flow; mutation based; testing tools.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Competitive Programming III",
+      "subjectCode":"CS",
+      "courseCode":"41100",
+      "instructor":[
+         "Zhongtang Luo"
+      ],
+      "description":"CP3 teaches experienced programmers additional techniques to solve competitive programming problems and builds on material learned in CP1 and CP2. This includes algorithmic techniques in topics such as [network flow, computational geometry, graph matching, NP-hard problems]. Primarily, CP3 prepares students to compete in programming contests, which means most class time is focused on simulating contest environments and teaching teamwork and communication alongside problem practice.",
+      "capacity":0,
+      "credits":[
+         2,
+         2
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Computer Networks",
+      "subjectCode":"CS",
+      "courseCode":"42200",
+      "instructor":[
+         "Chunyi Peng"
+      ],
+      "description":"Undergraduate-level introduction to computer networks and data communication. Low-level details of media, signals, and bits: time division and frequency division multiplexing; encoding; modulation; bandwidth, throughput, and noise. Packet transmission: Local Area Network (Ethernet, FDDI) and Wide Area Network technologies (ATM); wireless networks; network interconnection with repeaters, bridges, and switches; DSU/CSU; xDSL and cable modems. Internetworking: router-based architecture; IP addressing; address binding with ARP; datagram encapsulation and fragmentation; UDP and TCP, retransmission; protocol ports; ICMP and error handling. Network applications: client/server concept; port demultiplexing; program interface to protocols (API); use by clients and servers; domain name system; TELNET; Web technologies including HTTP, CGI, Java; RPC and middleware; network management.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Computer Security",
+      "subjectCode":"CS",
+      "courseCode":"42600",
+      "instructor":[
+         "Christina L Garman"
+      ],
+      "description":"A survey of the fundamentals of information security. Risks and vulnerabilities, policy formation, controls and protection methods, database security, encryption, authentication technologies, host-based and network-based security issues, personnel and physical security issues, issues of law and privacy.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Advanced Computer Graphics",
+      "subjectCode":"CS",
+      "courseCode":"43400",
+      "instructor":[
+         "Bedrich Benes"
+      ],
+      "description":"Advanced concepts and techniques of computer graphics. The course covers, in complete detail, going from a scene representation to a raster image without using OpenGL or other graphics packages. The course develops a complete graphics implementation in which the students implement every aspect of the graphics pipeline. This involves a substantial software project in C/C++.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Large Scale Data Analytics",
+      "subjectCode":"CS",
+      "courseCode":"44000",
+      "instructor":[
+         "Hisham Ramadan Benotman"
+      ],
+      "description":"This course provides an integrated view of the key concepts of modern algorithmic data analytics. It focuses on teaching principles and methods needed to analyze large datasets in order to extract novel, transformative insights for the underlying application. The course emphasizes the duality between formulating questions that can be answered by statistical data analysis tools (the statistical perspective) and the algorithmic challenge of actually extracting such answers using available parallel and distributed computational resources from massive datasets. The topics cover three areas: (1) algorithmic concepts necessary for big data analytics, (2) bid data systems, including data management and programming, and (3) advanced analytic methods to address characteristics of real-world big data problems.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Relational Database Systems",
+      "subjectCode":"CS",
+      "courseCode":"44800",
+      "instructor":[
+         "Bharat Kumar Bhargava"
+      ],
+      "description":"An in-depth examination of relational database systems including theory and concepts as well as practical issues in relational databases. Modern database technologies such as object-relational and Web-based access to relational databases. Conceptual design and entity relationship modeling, relational algebra and calculus, data definition and manipulation languages using SQL, schema and view management, query processing and optimization, transaction management, security, privacy, integrity management.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Programming Languages",
+      "subjectCode":"CS",
+      "courseCode":"45600",
+      "instructor":[
+         "Benjamin J Delaware"
+      ],
+      "description":"Concepts for structuring data, computation, and whole programs. Object-oriented languages, functional languages, logic- and rule-based languages. Data types, type checking, exception handling, concurrent processes, synchronization, modularity, encapsulation, interfaces, separate compilation, inheritance, polymorphism, dynamic binding, subtyping, overloading, beta-reduction, unification.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Artificial Intelligence",
+      "subjectCode":"CS",
+      "courseCode":"47100",
+      "instructor":[
+         "Brian Anderson Bullins"
+      ],
+      "description":"Students are expected to spend at least three hours per week gaining experience with artificial intelligence systems and developing software. Basic problem-solving strategies, heuristic search, problem reduction and AND/OR graphs, knowledge representation, expert systems, generating explanations, uncertainty reasoning, game playing, planning, machine learning, computer vision, and programming systems such as Lisp or Prolog.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Human-Computer Interaction",
+      "subjectCode":"CS",
+      "courseCode":"47500",
+      "instructor":[
+         "Sooyeon Jeong"
+      ],
+      "description":"The goal of this course is to teach students how to design useful and usable interactive systems that address important needs of people. Students will experience the entire user-centered design life cycle, from need finding to usability evaluation. Topics covered in the course include user-centered design principles, usability heuristics, need-finding methods such as semi-structured interviews and contextual inquiry, quick prototyping techniques, usability evaluation methods such as hallway testing and human-subjects user study, and theories about user interaction and decision making. As we are entering a new era of AI, the course will also include a brief introduction on how to apply the HCI principles and techniques to AI-powered systems. This course is project-based. Students will form project teams among themselves to work on a semester-long project and apply the user-centered design principles, theories, and techniques that they have learned in class to build a useful and usable interactive system such as a mobile application. This course is also highly interactive, including a series of design studios and in-class activities that require active participation, communication, and discussion with other students.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To The Theory Of Computation",
+      "subjectCode":"CS",
+      "courseCode":"48300",
+      "instructor":[
+         "Simina Branzei"
+      ],
+      "description":"Turing machines and the Church-Turing thesis; decidability; halting problem; reducibility; undecidable problems; decidability of logical theories; Kolmogorov complexity; time classes; P, NP, NP-complete; space classes; Savitch's theorem, PSPACE-completeness, NL-completeness; hierarchy theorems; approximation theorems; probabilistic algorithms; applications of complexity to parallel computation and cryptography.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Science Capstone",
+      "subjectCode":"CS",
+      "courseCode":"49000",
+      "instructor":[
+         "Petros S Drineas",
+         "Voicu S Popescu"
+      ],
+      "description":"Supervised reading and reports in various fields. Permission of instructor required.",
+      "capacity":0,
+      "credits":[
+         1,
+         5
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Compiling And Programming Systems",
+      "subjectCode":"CS",
+      "courseCode":"50200",
+      "instructor":[
+         "Changhee Jung"
+      ],
+      "description":"Basic principles of compilers and compiler design; control of translation, loading, and execution; symbolic coding systems; lexical and syntactic analysis, design and operation of assemblers and macro processors; design of interpretive systems. Students are expected to complete a large programming project as part of the course.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Distributed Systems",
+      "subjectCode":"CS",
+      "courseCode":"50500",
+      "instructor":[
+         "Yongle Zhang"
+      ],
+      "description":"Foundations for building reliable distributed systems, including failure and system models, and basic communication and agreement problems; crash failures, recovery, partition, Byzantine failures; asynchronous systems, failure detectors, communication channels, wireless and sensor networks; software clocks, causality, and cuts. Examples of problems include reliable broadcast consensus, leader election, group communication, and replication. Permission of department required.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Numerical Analysis",
+      "subjectCode":"CS",
+      "courseCode":"51400",
+      "instructor":[
+         "Alex Pothen"
+      ],
+      "description":"(MA 51400)  AIternative methods for solving nonlinear equations; linear difference equations, applications to solution of polynomial equations; differentiation and integration formulas; numerical solution of ordinary differential equations; roundoff error bounds.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Social, Economic, And Legal Aspects Of Security",
+      "subjectCode":"CS",
+      "courseCode":"52300",
+      "instructor":[
+         "Eugene H Spafford"
+      ],
+      "description":"This course focuses on social, legal, and economic aspects of information security and privacy, also including ethics, policies, and human behavioral issues. The course covers the interactions between non-technological aspects of information security as well as relevant technological aspects. It focuses on how non-technological facets can inform and guide technological choices, and how technological choices can enhance or detract from the broader organizational and societal goals.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Parallel Computing",
+      "subjectCode":"CS",
+      "courseCode":"52500",
+      "instructor":[
+         "Ananth Y Grama"
+      ],
+      "description":"Parallel computing for science and engineering applications: parallel programming and performance evaluation, parallel libraries and problem-solving environments, models of parallel computing and run-time support systems, and selected applications..",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Information Security",
+      "subjectCode":"CS",
+      "courseCode":"52600",
+      "instructor":[
+         "Mikhail J Atallah"
+      ],
+      "description":"(CSCI 52600) Basic notions of confidentiality, integrity, availability; authentication models; protection models; security kernels; secure programming; audit; intrusion detection and response; operational security issues; physical security issues; personnel security; policy formation and enforcement; access controls; information flow; legal and social issues; identification and authentication in local and distributed systems; classification and trust modeling; and risk assessment.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Software Security",
+      "subjectCode":"CS",
+      "courseCode":"52700",
+      "instructor":[
+         "Antonio Bianchi"
+      ],
+      "description":"This course focuses on software security fundamentals, secure coding guidelines and principles, and advanced software security concepts. Students will learn to assess and understand threats, learn how to design and implement secure software systems, and get hands-on experience with common security pitfalls. Restricted to CS MS and CS PHD students. Significant programming experience and skills are required to complete the labs and projects.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Network Security",
+      "subjectCode":"CS",
+      "courseCode":"52800",
+      "instructor":[
+         "Jing Tian"
+      ],
+      "description":"The course focuses on the principles and foundations of building secure network systems and on security and privacy challenges in existing and emerging networks. The course compares and analyzes network architectures and network protocols from the physical layer to the access control, network, transport and application layer from an adversarial standpoint to understand how to build more secure protocols that can withstand attacks. Restricted to CS MS and CS PHD students. Significant programming experience and skills are required to complete the projects.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Scientific Visualization",
+      "subjectCode":"CS",
+      "courseCode":"53000",
+      "instructor":[
+         "Xavier Michel Tricoche"
+      ],
+      "description":"Teaches the fundamentals of scientific visualization and prepares students to apply these techniques in fields such as astronomy, biology, chemistry, engineering, and physics. Emphasis is on the representation of scalar, vector, and tensor fields; data sampling and resampling; and reconstruction using multivariate finite elements (surfaces, volumes, and surfaces on surfaces).",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Computational Geometry",
+      "subjectCode":"CS",
+      "courseCode":"53100",
+      "instructor":[
+         "Tamal Krishna Dey"
+      ],
+      "description":"Computational geometry studies how to compute with and reason about geometric objects. The subject is playing an increasingly important role in computer graphics, game software, geometric modeling, geographic information systems, and many other applications. Course topics include convex hull, segment manipulations, triangulations, range searching, Voronoi diagrams, window queries, Delaunay triangulation, and duality. Some key algorithms are implemented. Questions of floating-point accuracy and robust algorithm design are considered throughout the course.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Communication And Computer Networks",
+      "subjectCode":"CS",
+      "courseCode":"53600",
+      "instructor":[
+         "Kihong Park"
+      ],
+      "description":"Data communications: communication hardware technologies including local area and longhaul network hardware, circuit and packet switching, interfaces between computer and network hardware, and performance issues. Network architecture: protocol software and conceptual layering, reliable delivery over an unreliable channel, transport protocols, virtual circuits, datagrams, internetworking as a fundamental design concept, the client-server paradigm, naming and name binding, name servers, addressing and address resolution, routing and routing algorithms, congestion and flow control techniques, network file systems, distribution of computation, and DARPA internet protocols (TCP/IP) as examples of protocol organization.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Database Systems",
+      "subjectCode":"CS",
+      "courseCode":"54100",
+      "instructor":[
+         "Walid G Aref"
+      ],
+      "description":"Fundamentals for the logical design of database systems. The entity-relationship model, semantic model, relational model, hierarchical model, network model. Implementations of the models. Design theory for relational databases. Design of query languages and the use of semantics for query optimization. Design and verification of integrity assertions, and security. Introduction to intelligent query processing and database machines.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Simulation And Modeling Of Computer Systems",
+      "subjectCode":"CS",
+      "courseCode":"54300",
+      "instructor":[
+         "Vernon J Rego"
+      ],
+      "description":"Simulation: discrete event simulation, process oriented simulation, generating random numbers, simulation languages, simulation examples of complex systems. Nondeterministic models: random variables, Poisson process, moment generating functions, statistical inference and data analysis. Modeling: elementary queuing models, networks of queues, applications to performance evaluation of computer systems.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Security And Privacy",
+      "subjectCode":"CS",
+      "courseCode":"55600",
+      "instructor":[
+         "Elisa Bertino"
+      ],
+      "description":"&nbsp; Data security and privacy is an important part of information security. This course provides an introduction to the fundamental principles and techniques for data security and privacy. The course covers fundamental theories of access control, discretionary access control, mandatory access control, and role-based access control, database access control approaches including grant revoke, virtual private databases and labelled databases, database encryption. On privacy, it covers data anonymization, re-identification attacks, definition, primitives, and applications of differential privacy.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To Robot Learning",
+      "subjectCode":"CS",
+      "courseCode":"55800",
+      "instructor":[
+         "Ahmed Hussain Qureshi"
+      ],
+      "description":"Intelligent robot systems are in high demand in many real-world tasks, leading to growing interest in designing scalable robot algorithms for automation. From improving healthcare systems to enhancing the manufacturing capacity of various industrial sectors, the role of Robotics has been acknowledged worldwide. They are now also being considered as necessary tools to build large-scale assistive technologies such as smart vehicles and delivery drones to improve people's quality of life. This course covers topics in robot motion planning, estimation, learning, and control to design algorithms for robots to safely interact with their environments and perform various challenging tasks under constraints. The first part of this course focuses on classical techniques such as search, sampling-based planning, PID control, Model Predictive Control (MPC), and Bayesian Kalman filters. The second part covers modern imitation learning and deep reinforcement learning techniques and their application to planning and decision-making in robotics. The course assumes students are familiar with basic concepts in linear algebra, optimization, elementary probability, statistics, data structures, and algorithms. Students are expected to have good programming and software development skills and have a working knowledge of Python.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Programming Languages",
+      "subjectCode":"CS",
+      "courseCode":"56500",
+      "instructor":[
+         "Suresh Jagannathan"
+      ],
+      "description":"An exploration of modern or unconventional concepts of programming languages, their semantics, and their implementations; abstract data types; axiomatic semantics using Hoare's logic and Dijkstra's predicate transformers; denotational semantics; functional, object-oriented, and logic programming; concurrency and Owicki-Gries theory. Example languages include ML, Ada, Oberon, LISP, PROLOG, and CSP.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Data Mining",
+      "subjectCode":"CS",
+      "courseCode":"57300",
+      "instructor":[
+         "Rajiv Ashu Khanna"
+      ],
+      "description":"(CSCI 57300) Data Mining has emerged at the confluence of artificial intelligence, statistics, and databases as a technique for automatically discovering summary knowledge in large datasets. This course introduces students to the process and main techniques in data mining, including classification, clustering, and pattern mining approaches. Data mining systems and applications are also covered, along with selected topics in current research. Offered in alternate years.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Natural Language Processing",
+      "subjectCode":"CS",
+      "courseCode":"57700",
+      "instructor":[
+         "Dan Goldwasser"
+      ],
+      "description":"This course will cover the key concepts and methods used in modern Natural Language Processing (NLP). Throughout the course several core NLP tasks, such as sentiment analysis, information extraction, syntactic and semantic analysis, will be discussed. The course will emphasize machine-learning and data-driven algorithms and techniques, and will compare several different approaches to these problems in terms of their performance, supervision effort and computational complexity. Prerequisites: A background in linear algebra, calculus, statistics and probability, and completion of CS 57800 or equivalent are highly recommended. Strong programming skills in any modem language (Python, Java, C++) are required.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Statistical Machine Learning",
+      "subjectCode":"CS",
+      "courseCode":"57800",
+      "instructor":[
+         "Anuran Makur"
+      ],
+      "description":"This introductory course will cover many concepts, models, and algorithms in machine learning. Topics include classical supervised learning (e.g., regression and classification), unsupervised learning (e.g., principle component analysis and K-means), and recent development in the machine learning field such as variational Bayes, expectation propagation, and Gaussian processes. While this course will give students the basic ideas and intuition behind modern machine learning methods, the underlying theme in the course is probabilistic inference.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Algorithm Design, Analysis, And Implementation",
+      "subjectCode":"CS",
+      "courseCode":"58000",
+      "instructor":[
+         "Kent Richard Quanrud"
+      ],
+      "description":"Basic techniques for designing and analyzing algorithms: dynamic programming, divide and conquer, balancing. Upper and lower bounds on time and space costs, worst case and expected cost measures. A selection of applications such as disjoint set union/find, graph algorithms, search trees, pattern matching. The polynomial complexity classes P, NP, and co-NP; intractable problems.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Theoretical Computer Science Toolkit",
+      "subjectCode":"CS",
+      "courseCode":"58500",
+      "instructor":[
+         "Paul A Valiant"
+      ],
+      "description":"&nbsp; This course covers fundamental techniques and a range of mathematical tools that underlie today's research in theoretical computer science. The course material is essential for research in theoretical computer science as well as machine learning theory. The course is targeted at students who plan to pursue research in these areas. Topics will be chosen from four core areas: Convex Analysis and Optimization, Spectral Methods, Concentration Inequalities, and Discrete Fourier Analysis. Depending on student and instructor interest, additional topics will be chosen and may include applied analysis, coding theory, probabilistic proofs, and more advanced topics in discrete Fourier analysis. Students will read papers in theoretical computer science and machine learning theory using, exploring and extending the covered techniques and tools. Students are expected to be proficient in probability theory, have the maturity to follow and carry out basic analysis proofs, and have completed courses in calculus, linear algebra, discrete mathematics, and analysis of algorithms. More specifically, the course expects mastery of the material covered in Calculus III, Linear Algebra, Probability, Foundations of CS, and Analysis of Algorithms.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Foundations Of Deep Learning",
+      "subjectCode":"CS",
+      "courseCode":"58700",
+      "instructor":[
+         "Raymond A Yeh"
+      ],
+      "description":"This course provides an integrated view of the key concepts of deep learning (representation learning) methods. This course focuses on teaching principles and methods needed to design and deploy novel deep learning models, emphasizing the relationship between traditional statistical models, causality, invariant theory, and the algorithmic challenges of designing and deploying deep learning models in real-world applications. This course has both a theoretical and coding component. The course assumes familiarity with coding in the language used for state-of-the-art deep learning libraries, linear algebra, probability theory, and statistical machine learning.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Randomized Algorithms",
+      "subjectCode":"CS",
+      "courseCode":"58800",
+      "instructor":[
+         "Kent Richard Quanrud"
+      ],
+      "description":"The area of randomized algorithms has grown from being a tool in computational number theory to finding widespread application in algorithms in all areas of computer science. Two practical benefits of randomization are its simplicity and speed. Deep and important computational complexity connections have been developed,  from bridging the gap between discrete and continuous optimization, bypassing deterministic barriers in online settings, summarizing massive data in polylogarithmic space, probabilistically checkable proofs, privacy enhancing techniques, modeling the web and other large networks, and sparsifying and compressing complicated combinatorial structures such as graphs. Randomization is an essential  key ingredient in the algorithmic breakthroughs today and in the future. This course presents the basic concepts in the design and analysis of randomized algorithms and shows how to apply them to algorithms for a wide range of problems. The course covers a broad range of problems benefitting from randomized computation including data structures, graph algorithms, online algorithms, geometric algorithms, streaming algorithms, derandomization techniques, and tools for probabilistic analysis of algorithms.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Introduction To VR/AR",
+      "subjectCode":"CS",
+      "courseCode":"59000",
+      "instructor":[
+         "Voicu S Popescu"
+      ],
+      "description":"Directed study for students who wish to undertake individual reading and study on approved topics. Permission of instructor required.",
+      "capacity":0,
+      "credits":[
+         1,
+         5
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"CERIAS Security Seminar",
+      "subjectCode":"CS",
+      "courseCode":"59100",
+      "instructor":[
+         "Mohammadkazem Taram"
+      ],
+      "description":"A weekly seminar presented by faculty and invited speakers, normally in a specific area.",
+      "capacity":0,
+      "credits":[
+         1,
+         1
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"AI For Scientific Discovery",
+      "subjectCode":"CS",
+      "courseCode":"59200",
+      "instructor":[
+         "Zeynel Berkay Celik",
+         "Tianyi Zhang",
+         "Ming Yin",
+         "Yexiang Xue"
+      ],
+      "description":"A seminar course for in-depth exploration of a specific topic. Topics vary. Classes consist of both instructor and student presentations. Students read, present and discuss research papers, and may complete and present a research project in the area. For each offering, inclusion on a plan of study is determined by the CS Graduate Study Committee. If approved, may be included on a CS MS or PhD plan of study according to relevant ruleset.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Intro To Quantum Computing",
+      "subjectCode":"CS",
+      "courseCode":"59300",
+      "instructor":[
+         "Mohammadkazem Taram",
+         "Eric Griffin Samperton"
+      ],
+      "description":"A variable title course for topics not currently covered in the CS graduate curriculum. Each offering follows a traditional course structure with textbook(s), assignments, exams, and week-by-week content synopsis described in a syllabus. A CS 59300 offering does not imply that a course is intended to become, or will become, a regular course in the CS graduate curriculum. May be included on a CS MS or PhD plan of study according to the relevant ruleset.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Numerical Methods For Partial Differential Equations I",
+      "subjectCode":"CS",
+      "courseCode":"61500",
+      "instructor":[
+         "Xiangxiong Zhang"
+      ],
+      "description":"Finite element method for elliptic partial differential equations; weak formulation; finite-dimensional approximations; error bounds; algorithmic issues; solving sparse linear systems; finite element method for parabolic partial differential equations; backward difference and Crank-Nicolson time-stepping; introduction to finite difference methods for elliptic, parabolic, and hyperbolic equations; stability, consistency, and convergence; discrete maximum principles. Prerequisite: CS 51400, MA 52300.",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   },
+   {
+      "title":"Pattern Recognition And Decision-Making Processes",
+      "subjectCode":"CS",
+      "courseCode":"66200",
+      "instructor":[
+         "TBA"
+      ],
+      "description":"Introduction to the basic concepts and various approaches of pattern recognition and decision-making processes. Topics include various classifier designs, evaluation of classifiability, learning machines, feature extraction, and modeling. Prerequisite: ECE 30200",
+      "capacity":0,
+      "credits":[
+         3,
+         3
+      ],
+      "term":"Spring 2024"
+   }
+ ]
