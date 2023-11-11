@@ -72,9 +72,9 @@ const CourseCatalog = () => {
           onClick={() => setOpen(!open)}
         >
           <div className='h-full overflow-auto bg-zinc-900 rounded-lg lg:p-16 p-4'>
-            <p className='text-3xl font-semibold mb-3 break-words'>{title}</p>
-            <p className='font-extralight'>{subjectCode} {courseCode}</p>
-            <p className='font-extralight'>Prof. {instructor.join(", ")}</p>
+            <p className='text-3xl font-bold mb-3 break-words'>{title}</p>
+            <p className='font-light'>{subjectCode} {courseCode}</p>
+            <p className='font-light'>Prof. {instructor.join(", ")}</p>
             <p className='my-2 break-words'>{description}</p>
             <p className='mt-5'>{capacity}</p>
             <p className=''>Available {term}</p>
@@ -100,16 +100,20 @@ const CourseCatalog = () => {
 
         <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map(course => (
-            <div key={course.id} onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)} className="bg-white p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
-              <h2 className="text-lg font-semibold mb-2">{course.title}</h2>
-              <p className="text-gray-600 mb-4 break-words"> {course.description.length > 200
+            <div key={course.id}
+              onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
+              className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
+              <h2 className="lg:text-2xl md:text-lg font-bold">{course.subjectCode}{course.courseCode} {course.title}</h2>
+              <p className="lg:text-lg text-small font-medium mb-2">Instructor: {course.instructor.join(", ")}</p>
+              <p className="text-gray-600 mb-4 break-words grow"> {course.description.length > 200
                 ? `${course.description.substring(0, 200)}...`
                 : course.description}
               </p>
-              <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor}`}
+              <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
                 target="_blank"
-                rel="noopener noreferrer">
-                <p className="text-blue-500">Instructor: {course.instructor}</p>
+                rel="noopener noreferrer"
+                className=''>
+                <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
               </a>
 
             </div>
