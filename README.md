@@ -1,3 +1,15 @@
+
+# Todos
+
+- [ ] Get data from previous semesters
+- [ ] Get other metadata from classes (capacity, prerequisites, etc)
+- [ ] Improve Popup UI
+- [ ] Integrate RateMyProfessor
+- [ ] Integrate r/purdue
+- [ ] Integrate boilergrades/exams?
+- [ ] Decide what to do with search?
+
+---
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
