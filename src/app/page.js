@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react'
 import classes from './out.json'
 import { SchemaFieldTypes, createClient } from 'redis';
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 
 
 const CourseCatalog = () => {
@@ -103,16 +105,24 @@ const CourseCatalog = () => {
           />
         </div>
 
-        <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
           {filteredCourses.map(course => (
             <div key={course.id}
               onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
               className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
-              <h2 className="lg:text-2xl md:text-lg font-bold">{course.subjectCode}{course.courseCode}: {course.title}</h2>
-              <p className="lg:text-lg text-small font-medium mb-2">Instructor: {course.instructor.join(", ")}</p>
-              <p className="text-gray-600 mb-4 break-words grow"> {course.description.length > 200
+              <h2 className="lg:text-xl md:text-lg font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
+              <p className="lg:text-sm text-small text-gray-700 font-medium my-1">{course.instructor.length > 1 ? "Instructors: " : "Instructor: "} 
+                <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`} 
+                  target="_blank" rel="noopener noreferrer"
+                  className='underline decoration-dotted'>
+                  {course.instructor[0]}
+                </a>
+              </p>
+              <p className="text-gray-600 mb-4 break-words grow"> 
+                <span className={inter.className}>{course.description.length > 200
                 ? `${course.description.substring(0, 200)}...`
                 : course.description}
+                </span>
               </p>
               <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
                 target="_blank"
