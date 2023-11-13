@@ -2,9 +2,11 @@
 
 // CourseCatalog.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react'
 import classes from './out.json'
+import { SchemaFieldTypes, createClient } from 'redis';
+
 
 const CourseCatalog = () => {
 
@@ -25,10 +27,12 @@ const CourseCatalog = () => {
   let filteredCourses = [];
   if (searchTerm != "") {
     filteredCourses = classes.filter(course =>
-//      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.subjectCode.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
+
+
 
   const openPopUp = (title, scode, ccode, ins, desc, cap, cred, term) => {
     setOpen(!open);

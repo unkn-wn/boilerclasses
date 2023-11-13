@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "net": "^1.0.2",
     "next": "14.0.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "redis": "^4.6.10",
+    "redis-om": "^0.4.3",
+    "tls": "^0.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
