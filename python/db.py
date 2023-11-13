@@ -4,7 +4,6 @@ import redis
 from redis.commands.json.path import Path
 from tqdm import tqdm
 
-r = redis.Redis(host='redis-17153.c257.us-east-1-3.ec2.cloud.redislabs.com', port='17153', username="default", password='gT4S5Gh13m5HUvy2ytT2AxcRDUpKanQH')
 
 all_classes = []
 
