@@ -1,0 +1,500 @@
+[
+    {
+        "title": "Introduction To Interior Design",
+        "subjectCode": "AD",
+        "courseCode": "12500",
+        "instructor": [
+            "Laura E Bittner"
+        ],
+        "description": "Introductory survey of interior spaces and their impact upon the physical, social, psychological, and aesthetic needs of people. Critical evaluation of concepts in the interior design profession and related fields will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Art For Elementary School Teachers",
+        "subjectCode": "AD",
+        "courseCode": "20100",
+        "instructor": [
+            "Heather G Vickers"
+        ],
+        "description": "Art theory and experiences, curriculum theory, and materials preparatory for instruction of elementary school children. No undergraduate students may be enrolled in this course until they have been admitted to teacher education and a copy of this acceptance is on file.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Art Education",
+        "subjectCode": "AD",
+        "courseCode": "20200",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "Lectures, readings, and discussions covering the history, theory, and professional literature of art education.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Art To 1400",
+        "subjectCode": "AD",
+        "courseCode": "22600",
+        "instructor": [
+            "David C Parrish"
+        ],
+        "description": "Review of painting, sculpture, and architecture from their beginnings to the end of the Middle Ages. CTL:IFA 1311 Art History I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Art Since 1400",
+        "subjectCode": "AD",
+        "courseCode": "22700",
+        "instructor": [
+            "Allie Kay Brandt"
+        ],
+        "description": "Review of painting, sculpture, and architecture from 1400 to present. CTL:IFA 1312 Art History II.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Interior Drafting And Drawing",
+        "subjectCode": "AD",
+        "courseCode": "24000",
+        "instructor": [
+            "Stevi Marie Eggers",
+            "Barbara Lynne Young"
+        ],
+        "description": "Basic drafting and drawing techniques used in residential and small commercial buildings. Emphasis on interior projects, on multi-view drawing, isometrics, perspective, and architectural construction drawings, and rendering techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Design Drawing II",
+        "subjectCode": "AD",
+        "courseCode": "24600",
+        "instructor": [
+            "Coco Ree Lemery"
+        ],
+        "description": "Continuation of the work done in A&D 245. Emphasis on development of skills and presentation quality design drawing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Photography I",
+        "subjectCode": "AD",
+        "courseCode": "25100",
+        "instructor": [
+            "Katherine Elizabeth Dean"
+        ],
+        "description": "An introduction of the history of photography from the medium's inception until 1950. Emphasis is placed on understanding photographs from a variety of aesthetic, social, and cultural perspectives, including those of race, class, and gender.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Art Appreciation",
+        "subjectCode": "AD",
+        "courseCode": "25500",
+        "instructor": [
+            "Jessica Marie Peterson",
+            "Laura Lucia Sanz Giraldo"
+        ],
+        "description": "Understanding and appreciation of the problems overcome by mankind in the origins and growth of art. CTL:IFA 1310 Art Appreciation",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Theory And Practice Of Elementary School Art",
+        "subjectCode": "AD",
+        "courseCode": "30200",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "Theory and practice of art education for elementary school from early childhood through middle childhood. Restricted to art education majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Industrial Design I",
+        "subjectCode": "AD",
+        "courseCode": "30500",
+        "instructor": [
+            "Jung Joo Sohn"
+        ],
+        "description": "Introduction to design principles in processes employing basic problem-solving techniques. Emphasis will be placed on man's interaction with form, thought processes, procedures, craftsmanship, and use of materials. Acceptance into professional industrial design concentration by successful performance in the mandatory portfolio review. Prerequisites: Passing mandatory portfolio review.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "New Media Culture",
+        "subjectCode": "AD",
+        "courseCode": "33400",
+        "instructor": [
+            "Shannon C Mcmullen"
+        ],
+        "description": "This lecture course provides a historical overview of the development of new media art. In their research, project papers, and practical assignments, students explore issues of media criticism, technology's impact on culture and society and visions of media utopias.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Interior Design Communication",
+        "subjectCode": "AD",
+        "courseCode": "33800",
+        "instructor": [
+            "Hannah K Bulow"
+        ],
+        "description": "Study of graphic design fundamentals and application of interior design visual presentation. To provide a foundation for developing proficiency in the use visual communication design in interior design presentation. Offered 3rd year in the Interior Design BFA program of study.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Women Artists In The 20th Century",
+        "subjectCode": "AD",
+        "courseCode": "33900",
+        "instructor": [
+            "Catherine Dossin"
+        ],
+        "description": "A critical overview of the lives, works, and experiences of women artists from the late 19th century to the present, examining the social and cultural challenges they faced, and reflecting on the changing roles women have played in art and society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Northern Renaissance Art",
+        "subjectCode": "AD",
+        "courseCode": "34300",
+        "instructor": [
+            "Linda M Martin"
+        ],
+        "description": "The development of a mature North European art originating in the International Gothic tradition and culminating in the works of Albrecht Durer, Jerome Bosch, and Pieter Bruegel, the Elder.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Lighting For Interior Environments",
+        "subjectCode": "AD",
+        "courseCode": "34700",
+        "instructor": [
+            "Laura E Bittner"
+        ],
+        "description": "The study of illuminating principles, design criteria, specifications and environmental systems applied to architectural interiors in public and private spaces. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Islamic Art",
+        "subjectCode": "AD",
+        "courseCode": "34800",
+        "instructor": [
+            "David C Parrish"
+        ],
+        "description": "Islamic art, one of the world's richest artistic traditions, is surveyed from its origins in the 7th century AD to the modern day.  All types of artistic media, from large to small-scale, are included and seen against the background of the Islamic religion and history. Offered on a two-year rotation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Medieval European Art",
+        "subjectCode": "AD",
+        "courseCode": "35900",
+        "instructor": [
+            "Elizabeth Joyce Woodward"
+        ],
+        "description": "A comprehensive study of the varied art forms in Western Europe from the decline of the Roman Empire until the beginnings of the Italian Renaissance: 500 A.D. to 1500 A.D.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Modern Art",
+        "subjectCode": "AD",
+        "courseCode": "38300",
+        "instructor": [
+            "Catherine Dossin"
+        ],
+        "description": "A comprehensive overview of Modern art from Impressionism to Surrealism, designed to help students understand the radical transformations art and society underwent in that period, and reflect upon the influence of new technologies, scientific discoveries, and world events on artistic creation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Design",
+        "subjectCode": "AD",
+        "courseCode": "39500",
+        "instructor": [
+            "Jennifer B Kaufmann-Buhler"
+        ],
+        "description": "A survey of the historical development of design from the industrial revolution to the present that examines the influence of new technologies, materials, and style on design practice as well as the role of design in shaping the technologies and things of everyday life. Throughout the course, students will analyze design within the broader social, cultural, and political context of production, consumption, and use.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Sustainability In The Built Environment",
+        "subjectCode": "AD",
+        "courseCode": "39700",
+        "instructor": [
+            "Hannah K Bulow"
+        ],
+        "description": "The study of philosophical concepts, principles, and theories of sustainability as they pertain to building methods, materials, systems, and occupants. To provide a foundation for evaluation of materials, processes, and applications of design components for environmentally responsible. Field trips will be required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Industrial Design III",
+        "subjectCode": "AD",
+        "courseCode": "40500",
+        "instructor": [
+            "Tong J Kim"
+        ],
+        "description": "Design projects emphasizing sophisticated problem-solving methods. Design projects will stress diversity of industrial design and will trace the development of products from initial concept, research, and development through production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Interior Design V",
+        "subjectCode": "AD",
+        "courseCode": "43000",
+        "instructor": [
+            "Barbara Lynne Young"
+        ],
+        "description": "Design of multi-use complex environments, emphasizing program and problem solving, facility planning, building systems, and materials technology. Application of alternative presentation technologies will be explored.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Professional Practice For Visual Communication Designers",
+        "subjectCode": "AD",
+        "courseCode": "43400",
+        "instructor": [
+            "James David Deal"
+        ],
+        "description": "Specific professional practice topics for the visual communication designer. Topics include contracts, professional associations, ethics, portfolio and resume preparation, self-promotion and exhibition of creative work, the job market and the future of the profession. Field trips may be required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Philosophical Studies In Art Education",
+        "subjectCode": "AD",
+        "courseCode": "50400",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "(EDCI 52100) To introduce students to philosophy as a mode of disciplined inquiry in art education. Students will critically examine the literature of art education and identify problems requiring philosophical resolution. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Furniture Design",
+        "subjectCode": "AD",
+        "courseCode": "53500",
+        "instructor": [
+            "Coco Ree Lemery"
+        ],
+        "description": "Examination of furniture design trends and designers. Explore materials and manufacturing processes. Design and build a full-size seating unit. Shop skills required. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Information Visualization Design",
+        "subjectCode": "AD",
+        "courseCode": "54200",
+        "instructor": [
+            "Zhen Yu Qian"
+        ],
+        "description": "This course starts from exploring visual perception and attention theories, studying modern visualization technologies and toolkits, and reviewing evolving visualization research. Students work on small exercises, and then accomplish complicated virtual and physical visualization projects for information representation and communication.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Tch Asst Practicum:Fdn Draw",
+        "subjectCode": "AD",
+        "courseCode": "59100",
+        "instructor": [
+            "Christine L Wuenschel",
+            "Brian Joseph Hitselberger"
+        ],
+        "description": "Seminar to train new Art and Design teaching assistants in the content, policies, and format of the courses they support in various roles, such as: primary instructor, primary studio technician, primary grader for the course, or primary student teacher supervisor. Topics include problem/project presentation, critique techniques, grading, and knowledge of materials and processes of the discipline. Subsequent semesters focus on improving and refining teaching and operational skills. Open only to Art and Design teaching assistants each semester they teach. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Painting",
+        "subjectCode": "AD",
+        "courseCode": "60000",
+        "instructor": [
+            "Brian Joseph Hitselberger"
+        ],
+        "description": "Painting. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Problems In Industrial Design",
+        "subjectCode": "AD",
+        "courseCode": "60500",
+        "instructor": [
+            "Steve C Visser"
+        ],
+        "description": "Problems in product innovation, product design, product development, and environmental design. Emphasis is placed on the development of working prototypes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Information Design",
+        "subjectCode": "AD",
+        "courseCode": "60900",
+        "instructor": [
+            "Li Zhang"
+        ],
+        "description": "This course aims to teach specific principles and methods pertaining to information design, an emerging discipline within visual communications design (graphic design) involving the selection, organization and presentation of information to a given audience, covering a wide and varied group of delivery mediums. Prerequisite: Admission to the M.F.A. program in Art and Design. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Drawing",
+        "subjectCode": "AD",
+        "courseCode": "61300",
+        "instructor": [
+            "Brian Joseph Hitselberger"
+        ],
+        "description": "Drawing. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Graduate Installation And Critique",
+        "subjectCode": "AD",
+        "courseCode": "61400",
+        "instructor": [
+            "Eli J Craven"
+        ],
+        "description": "A seminar for all graduate students in the studio arts incorporating the process of installation art to facilitate the exchange of ideas and professional criticism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

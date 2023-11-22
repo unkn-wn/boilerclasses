@@ -1,0 +1,186 @@
+[
+    {
+        "title": "Discovery Forum",
+        "subjectCode": "MUS",
+        "courseCode": "10100",
+        "instructor": [
+            "Harry T Bulow"
+        ],
+        "description": "Discovery Forum is a weekly gathering where music majors and faculty perform, share research, compositions, arrangements or other related topics associated with music today. It is a forum where new approaches and ideas about music can be presented. No prior coursework required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fundamentals Of Music",
+        "subjectCode": "MUS",
+        "courseCode": "11200",
+        "instructor": [
+            "Yeon Ji Yun"
+        ],
+        "description": "Fundamentals of music notation, ear training, and music reading.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Music Theory I",
+        "subjectCode": "MUS",
+        "courseCode": "13200",
+        "instructor": [
+            "Gerald B Bodine",
+            "Allen T Mccullough",
+            "Daniel Weiss"
+        ],
+        "description": "Course comprises instruction in melodic and harmonic processes in tonal music; development of analytic, listening and piano techniques with musical equipment. Music reading ability is required, verified through Placement Exam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Class Piano And Musicianship I",
+        "subjectCode": "MUS",
+        "courseCode": "16100",
+        "instructor": [
+            "Ellen Bulow"
+        ],
+        "description": "A study of essential keyboard skills that include reading beginning level piano pieces, major and minor scales, transposition, sight reading and adding chords to a given melody. The musicianship includes essential aural skills: rhythmic dictation, interval and chord identification, and rhythmic and melodic dictation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Class Piano And Musicianship II",
+        "subjectCode": "MUS",
+        "courseCode": "16200",
+        "instructor": [
+            "Ellen Bulow"
+        ],
+        "description": "A continuation of MUS 16100 that include reading intermediate level piano pieces, sight reading, scales, transposition and adding chords to a melody. The musicianship component includes intermediate level aural skills, rhythmic and melodic dictation, intervals, chordal and harmonic dictation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Music Appreciation",
+        "subjectCode": "MUS",
+        "courseCode": "25000",
+        "instructor": [
+            "David Matthew Blon",
+            "Dwight L Monical"
+        ],
+        "description": "The traditions, forms, and styles of classical music. Other types of music may be examined as well. (Students may register through the Continuing Education Student Learning Center at the Tech Statewide locations via distance education.) CTL:IFA 1330 Music Appreciation",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Skills In Music",
+        "subjectCode": "MUS",
+        "courseCode": "27000",
+        "instructor": [
+            "Monte Harrison Taylor"
+        ],
+        "description": "Learn essential music technology skills that include computer based music notation practices, fundamentals of music synthesis and sequencing and basic recording practices.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Teaching Music In The Elementary School",
+        "subjectCode": "MUS",
+        "courseCode": "32400",
+        "instructor": [
+            "Nadya Nadegda N Dubikovsky",
+            "Christopher P Cayari"
+        ],
+        "description": "Develops basic musicianship through singing, playing instruments, reading and writing music, listening and moving to music. Surveys music teaching methods and materials. Includes lesson planning, experiences in teaching, and observation of children in music classes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Music Composition I",
+        "subjectCode": "MUS",
+        "courseCode": "34100",
+        "instructor": [
+            "Allen T Mccullough"
+        ],
+        "description": "Learn essential musical composition skills common in the 20th and 21st Centuries through various writing and analytical projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Jazz History",
+        "subjectCode": "MUS",
+        "courseCode": "37800",
+        "instructor": [
+            "Daniel Weiss"
+        ],
+        "description": "A historical and stylistic study of jazz.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Music History I: Antiquity To Mozart",
+        "subjectCode": "MUS",
+        "courseCode": "38100",
+        "instructor": [
+            "Lynn M Hooker"
+        ],
+        "description": "Survey of the development of Western European music history from antiquity to Mozart.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Audio Recording And Production I",
+        "subjectCode": "MUS",
+        "courseCode": "38300",
+        "instructor": [
+            "Monte Harrison Taylor"
+        ],
+        "description": "  This course is an introduction to digital audio recording and production practices. Topics covered will include design and structure of sound studios, musical sequencing and recording, microphones, fundamentals of sound reinforcement, and sound editing. Students will be required to develop music recording projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

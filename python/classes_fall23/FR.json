@@ -1,0 +1,261 @@
+[
+    {
+        "title": "French Level I",
+        "subjectCode": "FR",
+        "courseCode": "10100",
+        "instructor": [
+            "Bankole Isaac Adesuyan",
+            "Emmanuelle Ben Hadj Ben M'Barek"
+        ],
+        "description": "A beginning French course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. Permission of department required. CTL:IWL 1901 French Level I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Level II",
+        "subjectCode": "FR",
+        "courseCode": "10200",
+        "instructor": [
+            "Doyin Yewande Adigun",
+            "Saeed Ehsanfar"
+        ],
+        "description": "Continuation of FR 10100. CTL:IWL 1902 French Level II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Accelerated Basic French",
+        "subjectCode": "FR",
+        "courseCode": "10500",
+        "instructor": [
+            "Sacha Henri Ougier"
+        ],
+        "description": "This is an accelerated beginning-level course designed to develop language proficiency in French. The course will help students progress toward competence in speaking, listening, reading, and writing, as well as toward knowledge of French and Francophone cultures. The course focuses on active language use. Students will interact meaningfully with classmates and develop communicative strategies. Course will be taught in French. Permission of Department required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Level III",
+        "subjectCode": "FR",
+        "courseCode": "20100",
+        "instructor": [
+            "Regina Abu",
+            "Justyna Czader"
+        ],
+        "description": "A lower intermediate French course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. CT:IWL 1903 French Level III",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Level IV",
+        "subjectCode": "FR",
+        "courseCode": "20200",
+        "instructor": [
+            "Roseline Adebimpe Adewuyi",
+            "Shalom Ablavi Kpetsu"
+        ],
+        "description": "Continuation of FR 20100. CTL:IWL 1904 French Level IV",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To The Study Of French Literature",
+        "subjectCode": "FR",
+        "courseCode": "24100",
+        "instructor": [
+            "Germina N Veldwachter"
+        ],
+        "description": "Reading and discussion of selected poetry, prose, and theatre from France and the Francophone world; introduction to critical discourse and basic concepts of literary theory. Texts, discussion, and written assignments in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Level V",
+        "subjectCode": "FR",
+        "courseCode": "30100",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Continued development of French speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in France and the other French-speaking countries from various sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Level VI",
+        "subjectCode": "FR",
+        "courseCode": "30200",
+        "instructor": [
+            "Jessica L Sturm"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in French on the basis of materials dealing with the ideas and events that have shaped present-day France and the other French-speaking countries. Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Professional French II",
+        "subjectCode": "FR",
+        "courseCode": "32400",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Practical reading, writing, speaking, and listening comprehension skills at an intermediate level will be developed toward the use of French for business purposes. Course materials cover daily business dealing as well as national and international trade.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Cinema",
+        "subjectCode": "FR",
+        "courseCode": "33000",
+        "instructor": [
+            "Emmanuelle Ben Hadj Ben M'Barek"
+        ],
+        "description": "A general survey of major French cinematic trends from the earliest examples (Melies, Lumiere) to the New Wave (Chabrol, Truffaut, Resnais, Godard, etc.), with a discussion of the historical, social, political, aesthetic, and literary contexts. The French film in relation to world cinema. The relationship between the French cinema and French literature. Reading and analysis of scripts and historical and critical materials. Knowledge of French not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Phonetics & Pronunciatn",
+        "subjectCode": "FR",
+        "courseCode": "39600",
+        "instructor": [
+            "Jessica L Sturm"
+        ],
+        "description": "Examines a particular aspect entailed in the study of French language, e.g., language acquisition and teaching, language in society, regional dialects of France, French around the world, French creoles. Conducted in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "French Level VII",
+        "subjectCode": "FR",
+        "courseCode": "40100",
+        "instructor": [
+            "Germina N Veldwachter"
+        ],
+        "description": "Advanced work on development of French speaking, listening, reading, and writing abilities, focusing on materials dealing primarily with culture and the arts in France and the other French-speaking countries. Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Teaching College French",
+        "subjectCode": "FR",
+        "courseCode": "51900",
+        "instructor": [
+            "Colleen A Neary-Sundquist"
+        ],
+        "description": "A course designed to provide a forum for ideas connecting theory and research to teaching practice. Explores issues related to how learning and teaching can be enhanced and presents practical ideas that can be implemented in the classroom. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of The French Language",
+        "subjectCode": "FR",
+        "courseCode": "56300",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "A survey of the historical development of the French language from Vulgar Latin to the present and of the French language of today as a reflection of past cultural and socio-political conditions. Knowledge of a Romance language or of Latin is recommended but not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Morphology",
+        "subjectCode": "FR",
+        "courseCode": "59600",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Bibliography And Literary Criticism",
+        "subjectCode": "FR",
+        "courseCode": "63000",
+        "instructor": [
+            "Jennifer M William"
+        ],
+        "description": "The use of general and specific reference materials and bibliographical aids in literary research: the basic concepts and terminology of literary criticism. Required of all MA candidates in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Classroom SLA",
+        "subjectCode": "FR",
+        "courseCode": "67900",
+        "instructor": [
+            "Mariko M Wei"
+        ],
+        "description": "Advanced study and research on a significant topic in French linguistics. Topic to be announced in advance. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

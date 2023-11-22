@@ -1,0 +1,570 @@
+[
+    {
+        "title": "Modern Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "17200",
+        "instructor": [
+            "Laimei Nie",
+            "Shalini T Low-Nam",
+            "Yulia N Pushkar",
+            "Robert Andreas Austin"
+        ],
+        "description": "Introductory calculus-based physics course using fundamental interactions between atoms to describe Newtonian mechanics, conservation laws, energy quantization, entropy, the kinetic theory of gases, and related topics in mechanics and thermodynamics. Emphasis is on using only a few fundamental principles to describe physical phenomena extending from nuclei to galaxies. 3-D graphical simulations and numerical problem solving by computer are employed by the student from the very beginning. CTL:IPS 1753 Calculus-based Physics I",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Nature Of Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "21400",
+        "instructor": [
+            "David S Koltick"
+        ],
+        "description": "Development of basic concepts and theories in physics; a terminal survey course designed for non-science majors. CTL:IPS 1750 Survey Of Physical Science",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "General Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "22000",
+        "instructor": [
+            "Kenneth P Ritchie",
+            "Andrew W Irrgang"
+        ],
+        "description": "Mechanics, heat, and sound, for students not specializing in physics. CTL:IPS 1751 Algebra-based Physics I",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "General Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "22100",
+        "instructor": [
+            "Michael Anthony Holcomb",
+            "Mark Maurice Crain",
+            "Ephraim Fischbach",
+            "Mark Christian Beveridge",
+            "Denver H Alexander",
+            "Joshua E Dillard"
+        ],
+        "description": "Electricity, light, and modern physics, for students not specializing in physics. CTL:IPS 1752 Algebra-based Physics II",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Physical Science For Elementary Education",
+        "subjectCode": "PHYS",
+        "courseCode": "23000",
+        "instructor": [
+            "Nobel Sanjay Rebello"
+        ],
+        "description": "The course is aimed at facilitating future elementary teachers to learn physical science that will prepare them to teach these concepts to future elementary students grades K-6. The course will be focused on learning physical science by doing science i.e. developing understanding by collaborative activities and discussion in the laboratory and lecture and communicating your ideas to others. The course will have one 50-minute lecture and two 110-minute laboratory meetings each week. The course content is consistent with the CAEP (Council for the Accreditation of Education Preparation) K-6 Elementary Teacher Preparation Standards (Standard 2: Understanding and Applying Content and Curricular  Knowledge for Teaching in Physical Science and Engineering Design) and the NGSS (Next Generation Science Standards) Disciplinary Core Ideas (DCIs) for the Physical Sciences (Physical Sciences PS1, PS2, PS3, and PS4) as well as many of the Science and Engineering Practices (SEPs). The course will be divided into four units: 1) Matter and Interactions 2) Motion and Stability 3) Energy and 4) Waves and their applications. All of these units will be delivered through the paradigm of solving engineering design problems. Engineering design involves many different practices: problem definition, model development and use, investigation, analysis and interpretation of data, application of mathematics and computational thinking, and determination of solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Physics For Life Sciences I",
+        "subjectCode": "PHYS",
+        "courseCode": "23300",
+        "instructor": [
+            "Ian A Arnold"
+        ],
+        "description": "Physics For Life Sciences I builds upon prerequisite knowledge in college level biology, chemistry, and mathematics to present introductory physics that will be useful for applying physical principles, insights, and problem solving approaches for students with life science majors. Content will feature the Newtonian framework with emphasis on friction, drag and viscosity, random motion and diffusion, fluid flow, the Coulomb force, molecular forces and bonding, momentum, conservation of energy, entropy, and the first and second laws of thermodynamics.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Physics For Life Sciences II",
+        "subjectCode": "PHYS",
+        "courseCode": "23400",
+        "instructor": [
+            "Ian A Arnold"
+        ],
+        "description": "Physics For Life Sciences II builds upon prerequisite knowledge in college level biology, chemistry, and mathematics, as well as on Physics For Life Sciences I,  to develop an understanding of how energy, entropy, enthalpy, and Boltzmann distributions affect the dynamics of living systems, of how electric fields and potentials are applied to fluids and membranes, and how the physics of harmonic oscillators, waves, sound, optics, photons, and quantized states are relevant to biological systems and the tools used for their study.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Careers In Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "23500",
+        "instructor": [
+            "Gabor A Csathy"
+        ],
+        "description": "Course is designed to help physics majors evaluate different career options. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Electricity And Optics",
+        "subjectCode": "PHYS",
+        "courseCode": "24100",
+        "instructor": [
+            "Laura Gabriela Urba"
+        ],
+        "description": "Electrostatics, current electricity, electromagnetism, magnetic properties of matter. Electromagnetic waves, geometrical and physical optics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Electric And Magnetic Interactions",
+        "subjectCode": "PHYS",
+        "courseCode": "27200",
+        "instructor": [
+            "Wei Xie",
+            "Laura Gabriela Urba",
+            "Ian A Arnold"
+        ],
+        "description": "Calculus-based physics course using concepts of electric and magnetic fields and an atomic description of matter to describe polarization, fields produced by charge distributions, potential, electrical circuits, magnetic forces, induction, and related topics, leading to Maxwell's equations and electromagnetic radiation and an introduction to waves and interference. 3-D graphical simulations and numerical problem solving by computer are employed throughout. CTL: IPS 1754 Physics 2, Calculus-Based",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mathematical Methods Of Physics II",
+        "subjectCode": "PHYS",
+        "courseCode": "30700",
+        "instructor": [
+            "Marc W Caffee"
+        ],
+        "description": "Discussion of wide-ranging physics problems from mechanics, E&M, thermal, and modern physics with emphasis on reviews and introductions of mathematical methods and techniques that are essential in such discussion. Relevant mathematical methods include vectors, matrices and normal modes as well as ordinary and partial differential equations. Intended primarily for sophomore physics majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Research In Big Data II",
+        "subjectCode": "PHYS",
+        "courseCode": "32400",
+        "instructor": [
+            "Andreas Jung"
+        ],
+        "description": "This course is to conduct physics research in a class-based environment. As such, we will perform authentic research, defined as work with the potential for results that are of interest to the scientific community. We will work with large data sets, such as those collected by survey telescopes, dark matter experiments, or detectors at the Large Hadron Collider.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Modern Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "34200",
+        "instructor": [
+            "Qiyu Liang"
+        ],
+        "description": "A survey of basic concepts and phenomena in atomic, nuclear, and solid-state physics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Quantum Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "36000",
+        "instructor": [
+            "Stephen M Durbin"
+        ],
+        "description": "Historical development of quantum mechanics, wave packets, uncertainty principle, Schrodinger equation, operators, the hydrogen atom, electron spin, angular momentum, perturbation theory, and other selected topics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Physical Mechanics II Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "41100",
+        "instructor": [
+            "David D Nolte"
+        ],
+        "description": "Continuation of mechanics in PHYS 41000. Coupled systems, general theory of small oscillations, the vibrating string, perturbation theory. Rigid body motion. Motion of charged particles in electromagnetic fields. Elements of continuum mechanics.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Waves And Oscillations",
+        "subjectCode": "PHYS",
+        "courseCode": "42200",
+        "instructor": [
+            "Ruichao Ma"
+        ],
+        "description": "Physics of waves and oscillations including sound, elastic waves, and electromagnetic waves such as light. Topics range from the theory of simple harmonic oscillators, transverse modes of a continuous string, and physical optics including interference, Fresnel and Fraunhofer diffraction, and resolution, to diffraction of X-rays and electrons by crystals. Optionally includes topics such as nonlinear waves and surface waves.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Electricity And Magnetism I Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "43000",
+        "instructor": [
+            "Miaoyuan Liu"
+        ],
+        "description": "Electrostatics, solutions of Poisson's equation in spherical and cylindrical coordinates, macroscopic and microscopic theory of dielectrics, electrostatic energy, conduction; magnetostatics, electromagnetic induction, and magnetic properties of matter.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intermediate Laboratory",
+        "subjectCode": "PHYS",
+        "courseCode": "45000",
+        "instructor": [
+            "Chen-Lung Hung"
+        ],
+        "description": "Laboratory primarily intended for junior year physics majors. Assorted experiments in optics and other fields using lasers, photodiodes, computers, and other modern technology.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Quantum Mechanics II Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "46100",
+        "instructor": [
+            "Arnab Banerjee"
+        ],
+        "description": "Angular momenta, radial equation, operators, matrices, spin, time-independent perturbation theory, electron-electromagnetic field interaction, hydrogen atom, structure of atoms, molecules, radiation; selected topics in radiative transitions, collision theory, solids, nuclei, elementary particles and their symmetries.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Thermal And Statistical Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "51500",
+        "instructor": [
+            "Niranjan Hirisave Shivaram"
+        ],
+        "description": "Equilibrium states, the concept of heat, and the laws of thermodynamics; the existence and properties of the entropy; different thermodynamic potentials and their uses; phase diagrams; introduction to statistical mechanics and its relation to thermodynamics; treatment of ideal gases.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Physics Of Quantum Computing And Quantum Information",
+        "subjectCode": "PHYS",
+        "courseCode": "52600",
+        "instructor": [
+            "Yuli Lyanda-Geller"
+        ],
+        "description": "An introduction to the physics of quantum information science. Starting with the concepts of quantum superposition, it defines and describes qubits (quantum bits) and their manipulation by quantum logic gates. The topics of quantum entanglement and the EPR paradox are introduced, and their importance for quantum teleportation, communication, and quantum cryptography are covered. Quantum computing is described in terms of quantum circuits of logic gates, and also in terms of quantum algorithms, such as Deutsch's algorithm, the quantum Fourier transform, Shor's prime factoring algorithm, and Grover's search algorithm. The final topic is quantum decoherence and the limits it places on practical implementations of quantum computing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Electronic Techniques For Research",
+        "subjectCode": "PHYS",
+        "courseCode": "53600",
+        "instructor": [
+            "Timothy Matthew Jones"
+        ],
+        "description": "A summary of principles of modern electronics currently used in research. Coursework will include broad coverage of the field and selected topics in electronics instrumentation.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Solid-State Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "54500",
+        "instructor": [
+            "Oana Malis"
+        ],
+        "description": "Crystal structure; lattice vibrations and electronic band structure of crystals; electrical, optical, and thermal properties of solids; transport and other nonequilibrium phenomena in uniform and nonuniform materials.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Stellar Evolution",
+        "subjectCode": "PHYS",
+        "courseCode": "56000",
+        "instructor": [
+            "Kyoung-Soo Lee"
+        ],
+        "description": "(ASTR 56000) Observational basis of astrophysics; formation of galaxies and stars; evolution of stars; white dwarfs, supernovae and neutron stars, pulsars, quasars, black holes; cosmic rays, their origin and acceleration; radio astronomy, radio galaxies; the H-21 cm line and the 3mK blackbody radiation; gravitational radiation; X-ray and g-ray astronomy; cosmology; space physics, magnetosphere, and solar wind.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To High Energy Astrophysics",
+        "subjectCode": "PHYS",
+        "courseCode": "56200",
+        "instructor": [
+            "John R Peterson"
+        ],
+        "description": "(ASTR 56200) An overview of important physical processes in a variety of astronomical settings and of the experimental techniques employed in the field of high energy astrophysics. Covered in more detail are individual systems that include black holes, neutron stars, white dwarfs, supernova remnants, active galactic nuclei, clusters of galaxies, gamma-ray bursts, and cosmic rays, with special emphasis on several research frontiers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Elementary Particle Physics II",
+        "subjectCode": "PHYS",
+        "courseCode": "56500",
+        "instructor": [
+            "Norbert Neumeister"
+        ],
+        "description": "This course follows PHYS 56400, and it continues to present current topics in elementary particle physics. It focuses on the Higgs mechanism, and it explores physics beyond the standard model. Special attention is devoted to supersymmetry and searches for new particles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biophys II:Quantm Effects Biol",
+        "subjectCode": "PHYS",
+        "courseCode": "57000",
+        "instructor": [
+            "Maxim Y Lyutikov",
+            "Francis J Robicheaux",
+            "Sergei F Savikhin"
+        ],
+        "description": "Specialized topics in physics selected from time to time. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computational Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "58000",
+        "instructor": [
+            "Fuqiang Wang"
+        ],
+        "description": "Introduction to computationally based problem solving in physics, emphasis on understanding and applying various numerical algorithms to different types of physics problems. Topics will include chaos in mechanical systems, stochastic systems including percolation and fractal structures, molecular dynamics and the properties of simple fluids, Monte Carlo methods and phase transitions, and time dependent as well as time dependent problems in quantum mechanics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Artificial Intell In STEM Educ",
+        "subjectCode": "PHYS",
+        "courseCode": "59000",
+        "instructor": [
+            "Amogh Sirnoorkar"
+        ],
+        "description": "(Calumet, Fort Wayne) 1.00 to 6.00 (West Lafayette, IUPUI).  Reading and research in Physics. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Methods Of Theoretical Physics II",
+        "subjectCode": "PHYS",
+        "courseCode": "60100",
+        "instructor": [
+            "Dimitrios Giannios"
+        ],
+        "description": "A continuation of PHYS 600. Prerequisite: PHYS 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Statistical Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "61700",
+        "instructor": [
+            "Paul Cole Duffell"
+        ],
+        "description": "Classical and quantum statistical mechanics. Prerequisite: PHYS 66000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Theory Of Electricity And Magnetism",
+        "subjectCode": "PHYS",
+        "courseCode": "63000",
+        "instructor": [
+            "Rudro R Biswas"
+        ],
+        "description": "The experimental origins of Maxwell's equations. Electrostatics and magnetostatics; solution of boundary value problems. Quasi-static currents. Electromagnetic energy and momentum and the Maxwell stress tensor. Foundations of optics. Radiation from antennas, multi-pole expansion; waveguides. Prerequisite: PHYS 53000, 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Theory Of Electricity And Magnetism",
+        "subjectCode": "PHYS",
+        "courseCode": "63100",
+        "instructor": [
+            "Jukka Ilmari Vayrynen"
+        ],
+        "description": "Covariant formulation of electrodynamics; Lienard-Wiechert potentials; radiation from accelerated particles; Cerenkov radiation; dynamics of relativistic particles; radiation damping; introduction to magneto-hydrodynamics. Prerequisite: PHYS 63000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Quantum Mechanics I",
+        "subjectCode": "PHYS",
+        "courseCode": "66000",
+        "instructor": [
+            "Luis Martin Kruczenski"
+        ],
+        "description": "Origins of the quantum theory, the uncertainty and complementarity principles. The Schrodinger equation and its solutions for simple physical systems. Mathematical formulation of the quantum theory. Applications: simple harmonic oscillator, theory of angular momentum, the hydrogen atom. Time-independent and time-dependent perturbation theory. The Pauli exclusion principle. Spin of the electron. Elementary theory of scattering. Prerequisite: PHYS 53000, 55000, 60000, 61000. Corequisite: PHYS 60100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Quantum Mechanics II",
+        "subjectCode": "PHYS",
+        "courseCode": "66100",
+        "instructor": [
+            "Christopher H Greene"
+        ],
+        "description": "Symmetry and conservation laws. The Klein-Gordon and Dirac equations. Interaction of radiation with matter. Applications of quantum mechanics to atomic structure. Scattering theory. Prerequisite: PHYS 60100, 63000, 66000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Quantum Field Theory II",
+        "subjectCode": "PHYS",
+        "courseCode": "66300",
+        "instructor": [
+            "Nima Lashkari"
+        ],
+        "description": "Concepts and techniques of relativistic quantum field theory. Quantum Electrodynamics: radiative corrections, renormalization program, infrared divergences, external field problem. Feynman path integral quantization. Global symmetries and Ward identities. Quantum effective action: effective potential, loop expansion. Non-Abelian gauge theories: quantization via Faddeev-Popov prescription, Feynman rules, BRS invariance. Quantum Chromodynamics. Callen-Symanzik equation and renormalization group.  Prerequisite: PHYS 66200. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Physics Research",
+        "subjectCode": "PHYS",
+        "courseCode": "69600",
+        "instructor": [
+            "Gabor A Csathy"
+        ],
+        "description": "Seminar designed to acquaint first-year physics graduate students with the research programs of the department.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

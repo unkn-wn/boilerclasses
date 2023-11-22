@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Introduction To African American Studies",
+        "subjectCode": "AAS",
+        "courseCode": "27100",
+        "instructor": [
+            "Mindy Hui Tan",
+            "Ronald J Stephens"
+        ],
+        "description": "Introduction to the philosophical and methodological principles underlying Afro-American studies. Dimensions of the black experience, including history, education, politics, psychology, economics, religion, social organization, and art, will be covered, and the requisite academic tools and sources will be examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "African American Popular Culture",
+        "subjectCode": "AAS",
+        "courseCode": "27700",
+        "instructor": [
+            "Mindy Hui Tan"
+        ],
+        "description": "This course focuses on the production of popular culture through African-based and non African-based traditions among African Americans in the United States. Pop culture forms covered include film, theatre, visual arts, literature, dance, sports, music and religious traditions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Black Leisure & Recrtion",
+        "subjectCode": "AAS",
+        "courseCode": "37100",
+        "instructor": [
+            "Ronald J Stephens"
+        ],
+        "description": "Focus on specific topics of the personal experiences of blacks, in Africa and the diaspora, including black identity, black culture, and the relationships between blacks and society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Black Radical Thought",
+        "subjectCode": "AAS",
+        "courseCode": "37300",
+        "instructor": [
+            "Mindy Hui Tan"
+        ],
+        "description": "Focuses on a specific topic that relates to selected issues in the life, history, and culture of peoples of African ancestry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Theories Of African American Studies",
+        "subjectCode": "AAS",
+        "courseCode": "57500",
+        "instructor": [
+            "Amber M Neal-Stanley"
+        ],
+        "description": "This course addresses the development of an African American intellectual tradition. The course will span disciplines and swathes of time in order to understand how scholars not only created new ideas but developed theories that shaped and changed academic inquiry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

@@ -1,0 +1,138 @@
+[
+    {
+        "title": "Italian Level I",
+        "subjectCode": "ITAL",
+        "courseCode": "10100",
+        "instructor": [
+            "Brett T Bogart"
+        ],
+        "description": "A beginning Italian course with emphasis on communicative skills (listening and speaking), literacy (reading and writing) and culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Italian Level II",
+        "subjectCode": "ITAL",
+        "courseCode": "10200",
+        "instructor": [
+            "Giuseppina Grande"
+        ],
+        "description": "Continuation of ITAL 10100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Accelerated Basic Italian",
+        "subjectCode": "ITAL",
+        "courseCode": "10500",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "An accelerated basic Italian course that substitutes for ITAL 10100 and 10200. Knowledge of a foreign language required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Italian Level III",
+        "subjectCode": "ITAL",
+        "courseCode": "20100",
+        "instructor": [
+            "Annalisa Mosca",
+            "Giuseppina Grande"
+        ],
+        "description": "A continuation of ITAL 10200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Italian Level IV",
+        "subjectCode": "ITAL",
+        "courseCode": "20200",
+        "instructor": [
+            "Annalisa Mosca"
+        ],
+        "description": "An intermediate Italian course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Italian Level V",
+        "subjectCode": "ITAL",
+        "courseCode": "30100",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "Continued development of Italian speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in Italy from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in Italian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Italian Level VI",
+        "subjectCode": "ITAL",
+        "courseCode": "30200",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in Italian, on the basis of materials dealing with the ideas and events that have shaped present-day Italy. Conducted primarily in Italian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "The Italian Cinema",
+        "subjectCode": "ITAL",
+        "courseCode": "33000",
+        "instructor": [
+            "Elena Coda"
+        ],
+        "description": "The development and evolution of Italian cinema after World War II. The class will center on the viewing and discussion of films and will survey a broad spectrum of directors and styles. Knowledge of Italian not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Italian Literature I: From The Middle Ages To The Enlightenment",
+        "subjectCode": "ITAL",
+        "courseCode": "34100",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "This is the first course of a two-semester sequence presenting an overview of Italian literature. Students will read and discuss major authors and texts and will write critical essays on literary topics. Readings, discussion, and papers in Italian. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

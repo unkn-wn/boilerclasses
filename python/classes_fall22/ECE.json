@@ -1,0 +1,1039 @@
+[
+    {
+        "title": "Electrical Engineering Fundamentals I",
+        "subjectCode": "ECE",
+        "courseCode": "20001",
+        "instructor": [
+            "Daniel S Elliott"
+        ],
+        "description": "This course covers fundamental concepts and applications for electrical and computer engineers as well as for engineers who need to gain a broad understanding of these disciplines. The course starts by the basic concepts of charge, current, and voltage as well as their expressions with regards to resistors and resistive circuits. Essential concepts, devices, theorems, and applications of direct-current (DC), 1st order, and alternating-current (AC) circuits are subsequently discussed. Besides electrical devices and circuits, basic electronic components including diodes and transistors as well as their primary applications are also discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electrical Engineering Fundamentals II",
+        "subjectCode": "ECE",
+        "courseCode": "20002",
+        "instructor": [
+            "Joseph Gerard Makin",
+            "Luis Javier Gomez"
+        ],
+        "description": "Continuation of Electrical and Computer Engineering Fundamentals I. The course addresses mathematical and computational foundations of circuit analysis (differential equations, Laplace Transform techniques) with a focus on application to linear circuits having variable behavior as a function of frequency, with emphasis on filtering. Variable frequency behavior is further considered for applications of electronic components through single-transistor and operational amplifiers. The course ends with consideration of how circuits behave and may be modeled for analysis at high frequencies. Permission of Department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Python For Data Science",
+        "subjectCode": "ECE",
+        "courseCode": "20875",
+        "instructor": [
+            "Philip Eugene Pare",
+            "Mahsa Ghasemi",
+            "Rajeev Sahay",
+            "Qiang Qiu"
+        ],
+        "description": "This course will introduce Python programming to students through data science problems. Students will learn Python concepts as well as introductory data science topics, and will use their knowledge of Python (and prior programming experience) to implement data analyses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced C Programming",
+        "subjectCode": "ECE",
+        "courseCode": "26400",
+        "instructor": [
+            "Cheng-Kok Koh",
+            "Alexander J Quinn",
+            "Xiaoqian Wang"
+        ],
+        "description": "Continuation of a first programming course. Topics include files, structures, pointers, and the proper use of dynamic data structures. A basic knowledge of the UNIX operating system and an introductory C programming course; C programming knowledge should include basic syntax, control structures, and file I/O, as well as experience in declaring and using functions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Digital System Design",
+        "subjectCode": "ECE",
+        "courseCode": "27000",
+        "instructor": [
+            "Yung-Hsiang Lu"
+        ],
+        "description": "An introduction to digital system design and hardware engineering, with an emphasis on practical design techniques and circuit implementation.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electrical And Computer Engineering Sophomore Seminar",
+        "subjectCode": "ECE",
+        "courseCode": "29401",
+        "instructor": [
+            "Leigh Ann Fabries",
+            "Yuxiang Wang",
+            "Tatyanna Dashia Jordan",
+            "Cynthia L Quillen",
+            "Giselle Marie Vega Salina-Bender",
+            "Jamie L Seadeek",
+            "Jennifer C Dexter",
+            "Zachary L Wyman"
+        ],
+        "description": "An introduction to the School of Electrical and Computer Engineering, the program's objectives, and outcomes, BSEE and BSCmpE degree requirements, professional writing and multicultural and professional development.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Signals And Systems",
+        "subjectCode": "ECE",
+        "courseCode": "30100",
+        "instructor": [
+            "Amy R Reibman",
+            "Christopher Greg Brinton"
+        ],
+        "description": "Classification, analysis and design of systems in both the time- and frequency-domains. Continuous-time linear systems: Fourier Series, Fourier Transform, bilateral Laplace Transform. Discrete-time linear systems: difference equations, Discrete-Time Fourier Transform, bilateral Z-Transform. Sampling, quantization, and discrete-time processing of continuous-time signals. Discrete-time nonlinear systems: median-type filters, threshold decomposition. System design examples such as the compact disc player and AM radio.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Probabilistic Methods In Electrical And Computer Engineering",
+        "subjectCode": "ECE",
+        "courseCode": "30200",
+        "instructor": [
+            "Saul B Gelfand",
+            "Stanley H Chan"
+        ],
+        "description": "An introductory treatment including probability of events, discrete and continuous random variables, multiple random variables, sums of random variables and long-term averages, and elementary random processes.  Applications involving uniform, Gaussian, exponential, geometric and related random variables. Introduction to parameter estimation and hypothesis testing. Discussion of wide-sense stationary random processes, including correlation functions, spectral densities and the response of linear time invariant systems. Course examples are drawn from signal processing, wireless communications, system reliability, and data science.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electromagnetics I",
+        "subjectCode": "ECE",
+        "courseCode": "30411",
+        "instructor": [
+            "Dana Weinstein",
+            "Michael R Melloch"
+        ],
+        "description": "This course is a continued study of vector calculus, electrostatics, magnetostatics, and Maxwell's Equations. It serves as an introduction to electromagnetic waves and transmission lines, which is continued in ECE 30412.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electromagnetics II",
+        "subjectCode": "ECE",
+        "courseCode": "30412",
+        "instructor": [
+            "Kevin J Webb"
+        ],
+        "description": "Electromagnetics II builds on Electromagnetics I (ECE 31100) and  emphasizes time-varying electromagnetic fields. Both fundamental understanding and an appreciation for applications that span all technologies related to electrical and computer engineering are emphasized. The topics covered include:  Maxwell's equations, plane waves, transmission lines, waveguides and cavities, and antennas and radiation. Applications addressed relate to photonics, communications, and imaging and sensing. More generally, illustrations cover the basic principles on which devices and systems used every day operate.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Elements Of Fiber Optics, Lasers And Optoelectronics",
+        "subjectCode": "ECE",
+        "courseCode": "30414",
+        "instructor": [
+            "Jason Dwight Mckinney"
+        ],
+        "description": "Fundamental of photonics, guided-wave optics, optical fibers, lasers, photon detectors, integrated optical components, optical information processing, devices in communication and sensor applications. Topics include generation, transformation, modulation and detection of laser beams and their applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Semiconductor Devices",
+        "subjectCode": "ECE",
+        "courseCode": "30500",
+        "instructor": [
+            "Zhihong Chen"
+        ],
+        "description": "Introduces and explains terminology, models, properties, and concepts associated with semiconductor devices. Provides detailed insight into the internal workings of the \"building-block\" device structures such as the pn-junction diode, Schottky diode, BJT, and MOSFET. Presents information about a wide variety of other devices including solar cells, LEDs, HBTs, and modern field-effect devices. Systematically develops the analytical tools needed to solve practical device problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fundamentals Of Computer Graphics",
+        "subjectCode": "ECE",
+        "courseCode": "30834",
+        "instructor": [
+            "Voicu S Popescu"
+        ],
+        "description": "Fundamental principles and techniques of computer graphics. The course covers the basics of going from a scene representation to a raster image using OpenGL. Specific topics include coordinate manipulations, perspective, basics of illumination and shading, color models, texture maps, clipping and basic raster algorithms, fundamentals of scene constructions. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Power Systems Engineering",
+        "subjectCode": "ECE",
+        "courseCode": "31032",
+        "instructor": [
+            "Junjie Qin"
+        ],
+        "description": "Introduction to the economic operation of power systems, three-phase circuit analysis, modeling of transformers and transmission lines, steady-state network analysis using a power flow, analysis during faults and state estimation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electromechanical Motion Devices",
+        "subjectCode": "ECE",
+        "courseCode": "32100",
+        "instructor": [
+            "Steven D Pekarek"
+        ],
+        "description": "The general theory of electromechanical motion devices relating electric variables and electromagnetic forces. The basic concepts and operational behavior of DC, induction, brushless DC, and stepper motors used in control applications are presented.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "ASIC Design Laboratory",
+        "subjectCode": "ECE",
+        "courseCode": "33700",
+        "instructor": [
+            "Mark C Johnson"
+        ],
+        "description": "Introduction to standard cell design of Application Specific Integrated Circuits (ASICs) using modern hardware description languages (HDLs). Emphasis on how to write HDL code that will map readily to hardware. Laboratory experiments using commercial grade computer-aided design (CAD) tools for HDL based design, logic simulation, automatic placement and routing, timing analysis and verification.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Microprocessor Systems And Interfacing",
+        "subjectCode": "ECE",
+        "courseCode": "36200",
+        "instructor": [
+            "Timothy G Rogers"
+        ],
+        "description": "An introduction to basic computer organization, microprocessor instruction sets, assembly language programming, and microcontroller peripherals.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Structures",
+        "subjectCode": "ECE",
+        "courseCode": "36800",
+        "instructor": [
+            "Phillip B Walter",
+            "Lu Su"
+        ],
+        "description": "Provides insight into the use of data structures. Topics include stacks, queues and lists, trees, graphs, sorting, searching, and hashing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Discrete Mathematics For Computer Engineering",
+        "subjectCode": "ECE",
+        "courseCode": "36900",
+        "instructor": [
+            "Milind V Kulkarni"
+        ],
+        "description": "This course introduces discrete mathematical structures and finite-state machines. Students will learn how to use logical and mathematical formalisms to formulate and solve problems in computer engineering. Topics include formal logic, proof techniques, recurrence relations, sets, combinatorics, relations, functions, algebraic structures, and finite-state machines.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Feedback System Analysis And Design",
+        "subjectCode": "ECE",
+        "courseCode": "38200",
+        "instructor": [
+            "Vijay Gupta"
+        ],
+        "description": "In this course, classical concepts of feedback system analysis and associated compensation techniques are presented. In particular, the root locus, Bode diagram, and Nyquist criterion are used as determinants of stability.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Professional Communications And Diversity",
+        "subjectCode": "ECE",
+        "courseCode": "39401",
+        "instructor": [
+            "Brooke A Parks"
+        ],
+        "description": "This course provides ECE students with practice in relevant aspects of communication. Topics include: successfully seeking employment, working effectively in teams, delivering engaging presentations, and leveraging the advantages and challenges of diversity and inclusion.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": " Obj Oriented Pgming With C++",
+        "subjectCode": "ECE",
+        "courseCode": "39595",
+        "instructor": [
+            "Thomas Edgar Roth",
+            "Sanjay G Rao",
+            "Samuel P Midkiff"
+        ],
+        "description": "Topics vary. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            5
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Industrial Practice Seminar I",
+        "subjectCode": "ECE",
+        "courseCode": "39600",
+        "instructor": [
+            "Jamie L Seadeek"
+        ],
+        "description": "A special seminar for cooperative education and curricular practical training students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Software For Embedded Systems",
+        "subjectCode": "ECE",
+        "courseCode": "40862",
+        "instructor": [
+            "Vijay Raghunathan"
+        ],
+        "description": "This course provides an introduction to software design for embedded computing systems. Major topics covered include the importance of time and timing in embedded systems, embedded software organization (FSM-based program design, polled loop systems, foreground-background systems, event driven architectures, multi-tasking, etc.), real-time scheduling and real-time operating systems, wired/wireless networked embedded systems, debugging techniques for embedded software, and advanced topics such as memory-safe programming, implementing reentrant functions, and minimizing code space, memory usage, and power consumption. The course features a series of integrated assignments using state-of-the-art embedded hardware platforms, embedded software design tools, and real-time operating systems that reinforce the concepts taught in the lectures.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Design And Prototyping",
+        "subjectCode": "ECE",
+        "courseCode": "43700",
+        "instructor": [
+            "T N Vijaykumar"
+        ],
+        "description": "An introduction to computer organization and design, including instruction set selection, arithmetic logic unit design, data path design, control strategies, pipelining, memory hierarchy, and I/O interface design.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Signal Processing With Applications",
+        "subjectCode": "ECE",
+        "courseCode": "43800",
+        "instructor": [
+            "Fengqing Zhu"
+        ],
+        "description": "The course is presented in five units. Foundations: the review of continuous-time and discrete-time signals and spectral analysis; design of finite impulse response and infinite impulse response digital filters; processing of random signals. Speech processing; vocal tract models and characteristics of the speech waveform; short-time spectral analysis and synthesis; linear predictive coding. Image processing: two-dimensional signals, systems and spectral analysis; image enhancement; image coding; and image reconstruction. The laboratory experiments are closely coordinated with each unit. Throughout the course, the integration of digital signal processing concepts in a design environment is emphasized.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Transmission Of Information",
+        "subjectCode": "ECE",
+        "courseCode": "44000",
+        "instructor": [
+            "James V Krogmeier"
+        ],
+        "description": "Analysis and design of analog and digital communication systems. Emphasis on engineering applications of theory to communication system design. The laboratory introduces the use of advanced engineering workstations in the design and testing of communication systems.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrated Circuit Engineering",
+        "subjectCode": "ECE",
+        "courseCode": "45500",
+        "instructor": [
+            "Saeed Mohammadi"
+        ],
+        "description": "Analysis, design, and fabrication of silicon bipolar and MOSFET monolithic integrated circuits. Consideration of amplifier circuit design and fabrication techniques with circuit simulation using Spice-2. Integrated operational amplifiers with difference amplifiers, current sources, active loads, and voltage references. Design of IC analog circuit building blocks.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Computer Communication Networks",
+        "subjectCode": "ECE",
+        "courseCode": "46300",
+        "instructor": [
+            "Vishal Shrivastav"
+        ],
+        "description": "An introduction to the design and implementation of computer communication networks. The focus is on the concepts and the fundamental design principles that have contributed to the global Internet success.  Topics include:  digital transmission and multiplexing, protocols, MAC layer design (Ethernet/802.11), LAN interconnects and switching, congestion/flow/error control, routing, addressing, performance evaluation, internetworking (Internet) including TCP/IP, HTTP, DNS etc. This course will include one or more programming projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Compilers And Translation Engineering",
+        "subjectCode": "ECE",
+        "courseCode": "46800",
+        "instructor": [
+            "Xiaokang Qiu"
+        ],
+        "description": "The design and construction of compilers and other translators. Topics include compilation goals, organization of a translator, grammars and languages, symbol tables, lexical analysis, syntax analysis (parsing), error handling, intermediate and final code generation, assemblers, interpreters, and an introduction to optimization. Emphasis is on engineering a compiler or interpreter for a small programming language - typically a C or Pascal subset. Projects involve the stepwise implementation (and documentation) of such a system. Department permission required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Systems Senior Project",
+        "subjectCode": "ECE",
+        "courseCode": "47700",
+        "instructor": [
+            "Shreyas Sen"
+        ],
+        "description": "A structured approach to the development and integration of embedded microcontroller hardware and software that provides senior-level students with significant design experience applying microcontrollers to a wide range of embedded systems (e.g., instrumentation, process control, telecommunications, and intelligent devices). The primary objective is to provide practical experience developing integrated hardware and software for embedded microcontroller systems in an environment that models one which students will most likely encounter in industry.  Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electrical Engineering Senior Design Projects",
+        "subjectCode": "ECE",
+        "courseCode": "49022",
+        "instructor": [
+            "Ryan M Beasley"
+        ],
+        "description": "Lecture sessions provide the student with background information on the design and management of projects. Formal lectures cover, for example, design for manufacturability, design for quality, test and evaluation, reliability and ethics, patents and copyrights, plus case studies. During the laboratory sessions, the students work in teams on challenging open-ended electrical engineering project that draws on previous coursework. Projects routinely involve standard design facets (such as consideration of alternative solutions, feasibility considerations, and detailed system descriptions) and include a number of realistic constraints (such as cost, safety, reliability, and aesthetics). Lectures require use of the I-Clicker system.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fundamentals Of Current Flow",
+        "subjectCode": "ECE",
+        "courseCode": "50631",
+        "instructor": [
+            "Supriyo Datta"
+        ],
+        "description": "  Traditional description of electronic motion through a solid is based on diffusive transport which means that the electron takes a random walk from the source to the drain. However, modern nanoelectronic devices often have channel lengths comparable to a mean free path so that electrons travel ballistically, or \"like a bullet.\" This course provides a unified conceptual framework for ballistic and diffusive transport of both electrons and phonons, that is very different from what is taught in standard courses, but indispensable to understanding nanolectronic devices.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Quantum Transport",
+        "subjectCode": "ECE",
+        "courseCode": "50632",
+        "instructor": [
+            "Supriyo Datta"
+        ],
+        "description": "This course introduces the Schrodinger equation, uses the tight-binding method to discuss the concept of band structure and E(k) relations, along with simple quantum transport problems. No prior background in quantum mechanics or statistical mechanics is assumed.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Boltzmann Law: Physics To Computing",
+        "subjectCode": "ECE",
+        "courseCode": "50633",
+        "instructor": [
+            "Supriyo Datta"
+        ],
+        "description": "  This course introduces the key concepts of equilibrium statistical mechanics leading to the celebrated Boltzmann law and how it leads to Boltzmann machines and related concepts in modern machine learning. No prior background in statistical mechanics is assumed.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Signal Processing I",
+        "subjectCode": "ECE",
+        "courseCode": "53800",
+        "instructor": [
+            "Michael D Zoltowski"
+        ],
+        "description": "Theory and algorithms for processing of deterministic and stochastic signals. Topics include discrete signals, systems, and transforms, linear filtering, fast Fourier transform, nonlinear filtering, spectrum estimation, linear prediction, adaptive filtering, and array signal processing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Communications",
+        "subjectCode": "ECE",
+        "courseCode": "54400",
+        "instructor": [
+            "James S Lehnert"
+        ],
+        "description": "Introduction to digital communication systems and spread spectrum communications. Topics include analog message digitization, signal space representation of digital signals, binary and M-ary signaling methods, detection of binary and M-ary signals, comparison of digital communication systems in terms of signal energy and signal bandwidth requirements. The principal types of spread spectrum systems are analyzed and compared. Application of spread spectrum to multiple access systems and to secure communication systems is discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Computer Communication Networks",
+        "subjectCode": "ECE",
+        "courseCode": "54700",
+        "instructor": [
+            "Xiaojun Lin"
+        ],
+        "description": "A qualitative and quantitative study of the issues in design, analysis, and operation of computer communication and telecommunication networks as they evolve toward the integrated networks of the future, employing both packet and circuit switching technology. The course emphasizes a fundamental understanding of network design, routing, dimensioning, and control. The students will study various network functions such as error-recovery algorithms, flow control, congestion control, routing, multi-access, switching, etc. These will also be studied in the context of current Internet solutions (e.g. TCP, IP, etc.) and future open problems, and possible solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "MOS VLSI Design",
+        "subjectCode": "ECE",
+        "courseCode": "55900",
+        "instructor": [
+            "Kaushik Roy"
+        ],
+        "description": "An introduction to most aspects of large-scale MOS integrated circuit design including: device fabrication and modeling; inverter characteristics; designing CMOS combinational and sequential circuits; designing arithmetic building blocks and memory structures; interconnect and timing issues; testing and verification; and system design considerations. Term projects involve the complete design of a functional logic block or system using CAD tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Programming Parallel Machines",
+        "subjectCode": "ECE",
+        "courseCode": "56300",
+        "instructor": [
+            "Samuel P Midkiff"
+        ],
+        "description": "This course presents methods and techniques for programming parallel computers, such as multicore and high-end parallel architectures. Various parallel algorithms will be presented to demonstrate different techniques for identifying parallel tasks and mapping them onto parallel machines. Realistic science/engineering applications and their characteristics will be discussed. Parallel architectures to be considered are shared-memory and distributed-memory multiprocessor systems. Programming paradigms for these machines will be compared, including directive-based (OpenMP), message passing (MPI) and thread-based (Posix threads) methods. Methodologies for analyzing and improving the performance of parallel programs will be discussed. There will be a class project in which each student parallelizes and tunes the performance of a large computation application or develops/improves a tool that helps this process. Each student will prepare one lecture for a selected topic. Offered during odd years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Architecture",
+        "subjectCode": "ECE",
+        "courseCode": "56500",
+        "instructor": [
+            "Mithuna S Thottethodi"
+        ],
+        "description": "An introduction to the problems involved in designing and analyzing current machine architectures. Major topics include performance and cost analysis, pipeline processing, vector machines and numerical applications, hierarchical memory design, and multiprocessor architectures. A quantitative approach allowing a computer system designer to determine the extent to which a design meets design goals is emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Artificial Intelligence",
+        "subjectCode": "ECE",
+        "courseCode": "57000",
+        "instructor": [
+            "David Iseri Inouye"
+        ],
+        "description": "Introduction to the basic concepts and various approaches of artificial intelligence. The first part of the course deals with heuristic search and shows how problems involving search can be solved more efficiently by the use of heuristics and how, in some cases, it is possible to discover heuristics automatically. The next part of the course presents ways to represent knowledge about the world and how to reason logically with that knowledge. The third part of the course introduces the student to advanced topics of AI drawn from machine learning, natural language understanding, computer vision, and reasoning under uncertainty. The emphasis of this part is to illustrate that representation and search are fundamental issues in all aspects of artificial intelligence.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Compilers And Translator Writing Systems",
+        "subjectCode": "ECE",
+        "courseCode": "57300",
+        "instructor": [
+            "Xiaokang Qiu"
+        ],
+        "description": "This course presents the concepts needed to efficiently design and implement translators. Basic compiler/translation theory and technology are briefly reviewed, after which the course focuses on software tools for the automatic construction of translators, as well as more complex concepts involving the construction of compiler symbol tables, etc. Using C on ECN UNIX, each student will construct a simple lexical-recognizer generator, parser generator, and code-generator generator. Basic understanding of compilers and  proficiency in C language required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "MEMS I",
+        "subjectCode": "ECE",
+        "courseCode": "59500",
+        "instructor": [
+            "Mahdi Hosseini",
+            "Muhammad Mustafa Hussain",
+            "Sunil A Bhave",
+            "Byunghoo Jung",
+            "Santiago Torres Arias",
+            "Sergey O Macheret",
+            "Muhammad A Alam",
+            "Jing Gao"
+        ],
+        "description": "Formal classroom or individualized instruction on topics of current interest. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Random Variables And Signals",
+        "subjectCode": "ECE",
+        "courseCode": "60000",
+        "instructor": [
+            "Mary L Comer"
+        ],
+        "description": "Engineering applications of probability theory. Problems on events, independence, random variables, distribution and density functions, expectations, and characteristic functions. Dependence, correlation, and regression; multivariate Gaussian distribution. Stochastic processes, stationarity, ergodicity, correlation functions, spectral densities, random inputs to linear systems; Gaussian processes. Prerequisite: Master's student standing or higher.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Lumped System Theory",
+        "subjectCode": "ECE",
+        "courseCode": "60200",
+        "instructor": [
+            "Jianghai Hu"
+        ],
+        "description": "An investigation of the basic theory and techniques of modern system theory, emphasizing linear state model formulations of continuous and discrete time systems in the time domain and frequency domain. Coverage includes notions of linearity, time invariance, discrete and continuous time state models, canonical forms, associated transfer functions and impulse response models, the state transition matrix, the Jordan form, controllability, observability, and stability. Prerequisite: Master's student standing or higher and concurrent prerequisite:  MA 51100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electromagnetic Field Theory",
+        "subjectCode": "ECE",
+        "courseCode": "60400",
+        "instructor": [
+            "Weng C Chew"
+        ],
+        "description": "Review of general concepts (Maxwell's equations, materials interaction, boundary conditions, energy flow); statics (Laplace's equation, Poisson's equation); distributed parameter systems (classification of solutions, transmission lines, and wave-guides); radiation and antennas (arrays, reciprocity, Huygen's principle); a selected special topic (e.g., magnetostatics, waves in anisotropic media and optical fibers).  Offered in alternate years.  Prerequisite: Master's student standing or higher.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Primer On RF Design",
+        "subjectCode": "ECE",
+        "courseCode": "60422",
+        "instructor": [
+            "Dimitrios Peroulis"
+        ],
+        "description": "  This course covers the fundamentals of RF design. It is designed as a first course for students or engineers with limited background in high-frequency electronics. Engineers that need to understand the 'RF language' and gain working knowledge of critical RF concepts will benefit from taking this course. Students in this class will learn the basic RF tools and design principles. By the end of this class students will be able to understand important RF concepts and how these are related to the design of practical RF blocks. Pre-requisite: ECE 31100 or equivalent.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "RF System Design",
+        "subjectCode": "ECE",
+        "courseCode": "60423",
+        "instructor": [
+            "Dimitrios Peroulis"
+        ],
+        "description": "  Following the 'Primer on RF Design' course, this class focuses on system-level issues. We discuss several important design considerations including noise, non-linearity, distortion, sensitivity and dynamic range and their impact in selecting the appropriate system architecture. The course also covers common receiver architectures including superheterodyne and direct-conversion receivers. Pre-requisite: ECE 60422.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "RF Design: Passive And Active Components",
+        "subjectCode": "ECE",
+        "courseCode": "60424",
+        "instructor": [
+            "Dimitrios Peroulis"
+        ],
+        "description": "  Following the 'Primer on RF Design' course, this class focuses on passive and active components. We use the techniques learnt in the previous course, to design advanced RF devices including couplers, filters and amplifiers. Current research topics are discussed as appropriate. Pre-requisite: ECE 60422.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Solid State Devices",
+        "subjectCode": "ECE",
+        "courseCode": "60600",
+        "instructor": [
+            "Gerhard Klimeck"
+        ],
+        "description": "A relatively-broad, moderate-depth coverage of semiconductor devices and related topics. The first portion of the course presents and examines semiconductor fundamentals required in the operational analysis of solid state devices. A detailed examination of the PN junction diode and PN junction devices follows. The final portion of the course treats heterojunction surface devices including the Schottky diode, the MOS capacitor and the MOSFET. Offered in alternate years.  Prerequisite: Master's student standing or higher.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computational Models And Methods",
+        "subjectCode": "ECE",
+        "courseCode": "60800",
+        "instructor": [
+            "Irith Pomeranz"
+        ],
+        "description": "Computation models and techniques for the analysis of algorithm complexity. The design and complexity analysis of recursive and non-recursive algorithms for searching, sorting, set operations, graph algorithms, matrix multiplication, polynomial evaluation and FFT calculations. NP-complete problems. Prerequisite: Master's student standing or higher.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Energy Conversion",
+        "subjectCode": "ECE",
+        "courseCode": "61000",
+        "instructor": [
+            "Dionysios Aliprantis"
+        ],
+        "description": "Basic principles of static and electromechanical energy conversion. Control of static power converters. Reference frame theory applied to the analysis of rotating devices. Analysis and dynamic characteristics of induction and synchronous machines. State variable analysis of electromechanical devices and converter supplied electromechanical drive systems. Prerequisite: Master's student standing or higher.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Time Domain Simulation And Optimization For Design",
+        "subjectCode": "ECE",
+        "courseCode": "61010",
+        "instructor": [
+            "Scott D Sudhoff"
+        ],
+        "description": "  This is a skills course that teaches time domain simulation and multi-objective design optimization. This course will serve the needs of students in power and energy system and component design, but is widely applicable to all areas of engineering and does not require domain specific knowledge.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Power Electronic Converters And Systems",
+        "subjectCode": "ECE",
+        "courseCode": "61016",
+        "instructor": [
+            "Scott D Sudhoff"
+        ],
+        "description": "The objective of this course is to educate students in the operation, detailed modeling, average-value modeling, and control design of power electronics converters and systems of converters. Prerequisite by Topic: Basic knowledge of ordinary differential equations, solution of ODEs using numerical methods, state-space system representation, basic feedback control design with frequency domain methods, reference frame theory, some knowledge of rotating electric machinery. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced VLSI Devices",
+        "subjectCode": "ECE",
+        "courseCode": "61200",
+        "instructor": [
+            "Joerg Appenzeller"
+        ],
+        "description": "Device physics of advanced transistors. Process, device, circuit, and systems considerations affecting development of new integrated circuit technologies. Review of metal oxide semiconductor (MOS) fundamentals along with key process and circuit concepts. Short channel effects in sub-micron channel length metal oxide semiconductor field-effect transistors (MOSFETs) including device scaling considerations. Device physics and technology issues for sub-100 nm (nanoscale) MOSFETs.  Limits of silicon device technology and key issues in the continuing miniaturization of devices. Alternative device structures to replace bulk MOSFET. Computer simulation employed throughout the course to examine device issues and prototype new device technologies. Offered in alternate years. Prerequisite:  ECE 60600.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Nonlinear Optics",
+        "subjectCode": "ECE",
+        "courseCode": "61500",
+        "instructor": [
+            "Evgeniy E Narimanov"
+        ],
+        "description": "An in-depth study of nonlinear optics. After a review of linear effects, several nonlinear optical processes and applications are discussed. These include electro-optic switches and modulators, harmonic light generators, sum and difference frequency mixing, parametric amplifiers and oscillators, and phase conjugate mirrors. Discussions of nonlinear spectroscopy include topics such as two-photon absorption, saturation spectroscopy, Raman spectroscopy and double-optical resonance measurements. Photon echoes and other transient effects, and surface effects are also discussed. Offered in alternate years. Prerequisite:  ECE 55200, 60400.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Multimedia Systems",
+        "subjectCode": "ECE",
+        "courseCode": "62400",
+        "instructor": [
+            "Arif Ghafoor"
+        ],
+        "description": "Provides a general coverage of three major areas that include multimedia data management (logical and physical modeling), broadband network architectures and protocols for distributed multimedia communication, and user interface environments. Various models and specification methodologies in these areas are introduced. The discussion is augmented with various case studies. Prerequisite: ECE 54700, 56200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Neural Networks",
+        "subjectCode": "ECE",
+        "courseCode": "62900",
+        "instructor": [
+            "Okan K Ersoy"
+        ],
+        "description": "Information processing with neural networks, biological and engineering implications, learning algorithms, current neural network models and architectures, implementational topics, applications in areas such as signal/image processing, pattern recognition, optimization, simulation, system identification, nonlinear prediction, communications, and control. Concurrent prerequisite: ECE 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Error Control Coding",
+        "subjectCode": "ECE",
+        "courseCode": "63900",
+        "instructor": [
+            "Chih-Chun Wang"
+        ],
+        "description": "The theory and practice of error control coding is examined. The study includes the arithmetic of Galois fields as well as linear block, cyclic, and convolutional codes. Some applications of codes in digital communication systems and in computer systems are presented.  Offered every third semester. Concurrent prerequisite: ECE 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Image Processing II",
+        "subjectCode": "ECE",
+        "courseCode": "64100",
+        "instructor": [
+            "Charles A Bouman"
+        ],
+        "description": "An advanced treatment of selected topics in digital image processing. Image models, color, digital video, synthetic aperture radar, magnetic resonance imaging, stack filters, morphological filters, in-verse problems in computational vision, multiscale techniques. Offered every third semester. Prerequisite: ECE 60000, 63700.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Information Theory And Source Coding",
+        "subjectCode": "ECE",
+        "courseCode": "64200",
+        "instructor": [
+            "Murat Kocaoglu"
+        ],
+        "description": "A treatment of the basic concepts of information theory. Determination of channel capacity and its relation to actual communication systems. Rate distortion theory is introduced, and the performance of various source codes is presented. Offered in alternate years.  Prerequisite: ECE 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electronic Transport In Semiconductors",
+        "subjectCode": "ECE",
+        "courseCode": "65600",
+        "instructor": [
+            "Pramey Upadhyaya"
+        ],
+        "description": "A treatment of the microscopic and phenomenological physics of carrier transport in bulk semiconductors and in semiconductor devices. The Boltzmann transport equation is introduced as are techniques for solving it analytically and numerically. The physics of carrier scattering in common semiconductors is explored. Theoretical treatments of low and high field transport are compared with measured results. Balance equations are derived as moments of the Boltzmann Transport Equation and are applied to the analysis of sub-micron semiconductor devices. Students are expected to be able to apply elementary concepts of quantum mechanics and solid state physics. Offered every third semester.  Prerequisite: ECE 60600.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Vision",
+        "subjectCode": "ECE",
+        "courseCode": "66100",
+        "instructor": [
+            "Avinash C Kak"
+        ],
+        "description": "This course deals with how an autonomous or a semi-autonomous system can be endowed with visual perception. The issues discussed include: sampling from a topological standpoint; grouping processes; data structures, especially hierarchical types such as pyramids, quadtrees, octrees, etc.; graphic theoretic methods for structural description and consistent labeling; issues in 3-D vision such as object representation by Gaussian spheres, generalized cylinders, etc. Prerequisite: ECE 57000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Radar Engineering",
+        "subjectCode": "ECE",
+        "courseCode": "67800",
+        "instructor": [
+            "Mark R Bell"
+        ],
+        "description": "An introduction to the system aspects of modern radar engineering. The theoretical basis for radar performance analysis is developed and applied to radars designed for a variety of different applications. Consideration is given to system parameters such as receiver noise, antenna characteristics, operating frequency, target characteristics, transmitted signal modulation, and methods of detection. Attention is given to radars for special purposes, such as automatic range and angle tracking, moving target indication, and resolution enhancement through synthetic aperture techniques. Offered in alternate years. Prerequisite: ECE 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electrical And Computer Engineering Seminar",
+        "subjectCode": "ECE",
+        "courseCode": "69400",
+        "instructor": [
+            "Gerhard Klimeck"
+        ],
+        "description": "Seminar presentations by representatives from industry, members of the faculty of the School of Electrical and Computer Engineering, and other staff and faculty of Purdue University. The presentations introduce the student to a wide variety of current topics relevant to the technical and career aspects of electrical and computer engineering. Technical topics span the entire spectrum of electrical and computer engineering. Career topics include the importance of interpersonal communications, opportunities beyond graduate school, interviewing techniques, and descriptions of non-typical jobs. Required of electrical and computer engineering graduate students at Purdue during one of their first two semesters in residence.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Ideas To Innovation Part I",
+        "subjectCode": "ECE",
+        "courseCode": "69500",
+        "instructor": [
+            "Anand Raghunathan",
+            "Abolfazl Hashemi",
+            "Aravind Kumar Machiry",
+            "David B Janes",
+            "Zubin Jacob",
+            "Jianghai Hu",
+            "Y Charlie Hu"
+        ],
+        "description": "Formal classroom or individualized instruction on advanced topics of current interest. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,287 @@
+[
+    {
+        "title": "Veterinary Nursing Techniques For The Normal Animal (SA & LA)",
+        "subjectCode": "VCS",
+        "courseCode": "22100",
+        "instructor": [
+            "Rose P Giroux"
+        ],
+        "description": "The course will introduce the students to concepts related to normal, healthy large and small animal patients. The course includes both lecture and laboratory components.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Dentistry For The Veterinary Technician",
+        "subjectCode": "VCS",
+        "courseCode": "22200",
+        "instructor": [
+            "Liane K Shaw"
+        ],
+        "description": "Credit Hours: 0.50.  This course is an introduction to veterinary dentistry for the technician, with emphasis on basic dental anatomy, pathologies and treatments, dental charting, intraoral radiography, dental cleaning and periodontal disease management.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Surgical Nursing And Operating Room Protocols",
+        "subjectCode": "VCS",
+        "courseCode": "22300",
+        "instructor": [
+            "Cassandra K H Simmons"
+        ],
+        "description": "This course is an introduction to the surgical environment and all aspects related to the principles of asepsis and the practice of sterile technique. Students will learn using a variety of teaching modalities (lecture, group work, laboratory experience).",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Small And Large Animal Well Animal Nutrition",
+        "subjectCode": "VCS",
+        "courseCode": "22800",
+        "instructor": [
+            "Nolie K Parnell"
+        ],
+        "description": "This course will introduce students to an overview of nutritional concepts as it applies to common domestic small and large animal species and selected exotic companion/avian pets. Basic concepts for understanding nutritional needs for all species will be introduced as well as therapeutic use of diets as it relates to animal nursing.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Diagnostic Imaging For The Veterinary Technician",
+        "subjectCode": "VCS",
+        "courseCode": "25100",
+        "instructor": [
+            "Liane K Shaw"
+        ],
+        "description": "Credit Hours: 0.50.  This course is an introduction to veterinary diagnostic imaging and is designed to instruct the veterinary technician student in the basic principles of imaging, necessary to perform imaging tasks within a veterinary hospital. This course will introduce the fundamentals needed in the clinical imaging rotations and in practice.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Large Animal Nursing II",
+        "subjectCode": "VCS",
+        "courseCode": "32100",
+        "instructor": [
+            "Rose P Giroux"
+        ],
+        "description": "This course build on concepts learned in VCS 22100 and VCS 22500 related to normal, healthy large animals patients. It also introduces the student to higher level patient care for the large animal patient.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Small Animal Nursing II",
+        "subjectCode": "VCS",
+        "courseCode": "32200",
+        "instructor": [
+            "Jessica N Reed"
+        ],
+        "description": "This course will cover management of hospitalized patients, client education, and preventative medicine programs. Emphasis will be on the role of the veterinary technician in the veterinary hospital.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Diagnostic Instrumentation",
+        "subjectCode": "VCS",
+        "courseCode": "46700",
+        "instructor": [
+            "Liane K Shaw"
+        ],
+        "description": "A laboratory in the utilization, care, and maintenance of electronic equipment used in veterinary diagnostics.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Emergency And Critical Care For Veterinary Nurses",
+        "subjectCode": "VCS",
+        "courseCode": "46800",
+        "instructor": [
+            "Megan L Brashear"
+        ],
+        "description": "This course is a culmination of previously studied clinical skills, disease processes, and small animal nursing that is focused on transferring knowledge to practical use. The course will be taught utilizing emergency and critical care case studies to highlight disease processes, physiology, critical thinking skills, and the role of the veterinary nurse in providing high level patient care. The course goal is to prepare graduates to respond to emergent and critical patient scenarios in all types of small animal veterinary practices.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Clinical Research, Trials and Translational Research",
+        "subjectCode": "VCS",
+        "courseCode": "60300",
+        "instructor": [
+            "Melissa Jean Lewis"
+        ],
+        "description": "This course is designed for students entering the Graduate Program in the Department of Veterinary Clinical Sciences. During the course, lectures are presented which introduce students to the elements and scope of clinical research, including the methods used in clinical research, trials and translational research. Topics covered will explain the principles of safe and ethical conduct of clinical research. Students will also be introduced to the principles of data collection, management and interpretation. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Veterinary Skills And Competencies I",
+        "subjectCode": "VCS",
+        "courseCode": "80110",
+        "instructor": [
+            "Kellie L Taylor Mcgrady"
+        ],
+        "description": "Credit Hours: 2.50.  This course is designed to allow students to develop competence in communication, husbandry, diagnostic, and therapeutic skills of veterinary medicine and surgery. In addition, instruction will be delivered in the areas of veterinary business, professionalism, and health professional wellness. Instruction will be provided by online modules, hands-on laboratories using models, cadavers, and live animals, as well as, self-paced training in the veterinary skills lab. Students will further develop these skills through the care of teaching animals.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Population Medicine And Veterinary Ethics",
+        "subjectCode": "VCS",
+        "courseCode": "80130",
+        "instructor": [
+            "Teresa M Buchheit Baisden"
+        ],
+        "description": "This course will introduce first year veterinary students to the fundamental principles of population medicine. This will include concepts behind population versus individual animal medicine, population animal industries and their management practices, population animal diseases, outbreak investigation, regulatory medicine, and interactions between wild and domestic animals. Following an introduction to population medicine, students will shift to a discussion of veterinary ethics and its application to various animal industries. Students will explore basic concepts in animal use ethics and welfare, ethical and moral reasoning, and critical thinking and problem solving in population medicine.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Behavior In Domestic Animals",
+        "subjectCode": "VCS",
+        "courseCode": "80400",
+        "instructor": [
+            "Niwako Ogata"
+        ],
+        "description": "Instruction in basic principles of behavior; factors determining normal and abnormal behavior; and the different types of learning. The main domestic species will be characterized in terms of their normal behavior with which behavior problems are most important in the different species.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Small Animal Medicine I",
+        "subjectCode": "VCS",
+        "courseCode": "80610",
+        "instructor": [
+            "Carolyn F Guptill-Yoran"
+        ],
+        "description": "Credit Hours: 3.50.  This course is the first in a series that provides an overview of clinical approaches to common medical diseases of dogs and cats. A systems approach is used to teach the major concepts of diseases affecting each body system. The focus of this course is disease recognition based on initial medical information (ex. signalment, presenting complaint, physical examination), diagnosis, and treatment of common diseases encountered in small animal clinical practice.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Small Animal Surgery",
+        "subjectCode": "VCS",
+        "courseCode": "80630",
+        "instructor": [
+            "Marije Risselada"
+        ],
+        "description": "Credit Hours: 2.50.  This course will teach basic surgical principles applicable across species such as suture materials and patterns and principles of hemostasis. Common surgical diseases affecting the various body systems of dogs and cats will be discussed with a focus on pre- and postoperative care. Routinely performed surgical procedures (neuter, spay, C-section) will be discussed. Orthopedic topics will include bone healing, management of musculoskeletal trauma, fracture management, and fundamentals of external and internal fracture stabilization techniques for dogs and cats. The course will conclude with discussions of select musculotendinous conditions, principles of amputation and joint and limb salvage, and an introduction to principles of physical therapy.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Equine Medicine",
+        "subjectCode": "VCS",
+        "courseCode": "80801",
+        "instructor": [
+            "Sandra D Taylor"
+        ],
+        "description": "Credit Hours: 2.50.  Core course focused on the major equine diseases and preventive medicine/herd health (biosecurity, vaccination, parasite control, dental disease). The course will cover pathogenesis, diagnosis, and treatment/management of these conditions or syndromes.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Food Animal Medicine",
+        "subjectCode": "VCS",
+        "courseCode": "80910",
+        "instructor": [
+            "Darryl Ragland"
+        ],
+        "description": "This course focuses on the major infectious, metabolic, and parasitic diseases of ruminants, camelids, swine, poultry and other avian flocks. The pathogenesis, diagnosis, and treatment of these conditions or syndromes will be reviewed. Additionally, the course will cover proper management, including vaccinations and animal husbandry, to prevent the development of these conditions.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles Of Veterinary Anesthesiology",
+        "subjectCode": "VCS",
+        "courseCode": "81201",
+        "instructor": [
+            "Ann B Weil"
+        ],
+        "description": "Introduction to basic principles of anesthesiology. Pharmacology of anesthesia and analgesic drugs, anesthetic equipment, monitoring, regional and local anesthetic techniques, pain management and anesthesia care of multiple species and special disease considerations will be covered.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Comparative Theriogenology",
+        "subjectCode": "VCS",
+        "courseCode": "81410",
+        "instructor": [
+            "Justin Travis Hayna"
+        ],
+        "description": "This course develops a broad clinical knowledge of common reproductive management strategies and clinical conditions associated with reproduction in the major domestic species. It provides information and strategies for the conduct of breeding soundness examinations and infertility work-ups in the male; estrous cycle characteristics, diagnostics and control in females; breeding management strategies, pregnancy diagnosis, and management of gestation; investigation and control strategies for pregnancy loss; management of parturition and treatment of dystocia; normal postpartum changes and diseases of the peripartum period and the pathophysiology and treatment of uterine infections. Material will be presented in both comparative and species-specific manner. Students should review reproductive anatomy and physiology notes in preparation for this course.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    }
+]

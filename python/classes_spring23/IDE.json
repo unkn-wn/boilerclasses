@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Professional Preparation In Interdisciplinary Engineering",
+        "subjectCode": "IDE",
+        "courseCode": "30100",
+        "instructor": [
+            "Robin S Adams"
+        ],
+        "description": "Seminar covering topics required for professional preparation of engineers including functioning in teams, communication, ethics, global and societal impacts, how people learn, and contemporary issues impacting and impacted by engineering.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Multidisciplinary Engineering Statistics",
+        "subjectCode": "IDE",
+        "courseCode": "36000",
+        "instructor": [
+            "Muhsin Menekse"
+        ],
+        "description": "Statistical methodology is critical to the engineering problem-solving process. This course introduces engineering students to the role of statistics in problem-solving, and to the design and presentation of simple models and experiments. An emphasis will be placed on using computer software to perform statistical analyses and to the interpretation of the software results. This is a recommended course for the MOE statistics elective. Permission of instructor is required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Multidisciplinary Engineering Design Project",
+        "subjectCode": "IDE",
+        "courseCode": "48500",
+        "instructor": [
+            "Morgan M Hynes"
+        ],
+        "description": "Capstone design experience for multidisciplinary engineering students. Physical system or process system design projects, related to contemporary or potential problems involving interdisciplinary teams of engineers. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Eng Ethics In Interdis Context",
+        "subjectCode": "IDE",
+        "courseCode": "49500",
+        "instructor": [
+            "Justin L Hess"
+        ],
+        "description": "Primarily designed for interdisciplinary engineering subject areas for which there is no specific course offered, but for which there is sufficient student interest to justify teaching a specialized course on a trial basis. May be repeated for credit as long as the topic being taught is not repeated.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    }
+]

@@ -1,0 +1,108 @@
+[
+    {
+        "title": "Chinese Level I",
+        "subjectCode": "CHNS",
+        "courseCode": "10100",
+        "instructor": [
+            "Yi-Fang Cheng"
+        ],
+        "description": "A comprehensive course in elementary Mandarin, designed to develop basic proficiency in listening, speaking, reading, and writing. Systematic coverage of syntactical patterns. After oral foundation work, 20 characters are introduced each lesson in unsimplified and simplified forms.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chinese Level III",
+        "subjectCode": "CHNS",
+        "courseCode": "20100",
+        "instructor": [
+            "Zhengyu Tang",
+            "Jingying Hu"
+        ],
+        "description": "A course in intermediate Mandarin, with integrated spoken and written tracks emphasizing the cultural contexts of usage. Mastery of more advanced syntactic patterns, with enriched vocabulary. Character recognition built to 800. Introduction to Chinese dictionaries.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To The Study Of Chinese Literature",
+        "subjectCode": "CHNS",
+        "courseCode": "24100",
+        "instructor": [
+            "Ai-Jen Wann"
+        ],
+        "description": "Class reading and discussion of selected Chinese poetry, prose, and drama; introduction to the methods of literary criticism, applied to the reading of Chinese literary discourse. Texts, discussion, and written assignments primarily in Chinese. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Chinese Food Culture",
+        "subjectCode": "CHNS",
+        "courseCode": "28100",
+        "instructor": [
+            "Ai-Jen Wann"
+        ],
+        "description": "Selected topics on Chinese food history, production, preparation, festivals, as well as food in literature, film, business and folk beliefs. Discussion will also include civilization and food as cultural diplomacy. Lectures in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chinese Level V",
+        "subjectCode": "CHNS",
+        "courseCode": "30100",
+        "instructor": [
+            "Jingying Hu"
+        ],
+        "description": "Continued development of Chinese speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization from a variety of sources, e.g., newspapers, magazines, television, recent literature, etc.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Reading And Writing Practice",
+        "subjectCode": "CHNS",
+        "courseCode": "31300",
+        "instructor": [
+            "Chi-Ying A Wang"
+        ],
+        "description": "Concentration on further development of reading and writing abilities for students with conversational proficiency, using materials primarily from modern social and cultural studies, including annotated literary texts. Conducted in Chinese.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chinese Level VII",
+        "subjectCode": "CHNS",
+        "courseCode": "40100",
+        "instructor": [
+            "Chi-Ying A Wang"
+        ],
+        "description": "Continued development of Mandarin Chinese speaking, listening, reading, and writing skills. Emphasis will be upon modern, everyday language and culture (with some introduction to traditional culture) using various sources such as textbooks, newspapers, and literary works.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

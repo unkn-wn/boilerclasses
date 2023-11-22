@@ -1,0 +1,413 @@
+[
+    {
+        "title": "Being Human: Introduction To Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "10000",
+        "instructor": [
+            "Melanie M Beasley"
+        ],
+        "description": "Introduces anthropology's holistic approach to human nature and behavior. This course uses the tools of cultural, biological, archaeological, and linguistic anthropology to follow the human journey of uniformity and diversity through time and across space.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Archaeology And World Prehistory",
+        "subjectCode": "ANTH",
+        "courseCode": "20100",
+        "instructor": [
+            "Erik R Otarola-Castillo"
+        ],
+        "description": "Introduction to the ideas and practices of archaeology that are used in the contemporary study of human prehistory. Emphasis is placed on the social and technological changes that accompanied major turning points in the human past, including the earliest stone tools, the development of farming, through the advent of writing and monumental architecture among ancient states.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Biological Bases Of Human Social Behavior",
+        "subjectCode": "ANTH",
+        "courseCode": "20300",
+        "instructor": [
+            "Amanda J Veile"
+        ],
+        "description": "This course is an introduction to human social behavior from the perspective of biological anthropology, with special emphasis on human evolution and non-human primates. Topics include aggression, communication, learning, maturation, sexuality, and the evolution of social systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Origins",
+        "subjectCode": "ANTH",
+        "courseCode": "20400",
+        "instructor": [
+            "Amanda J Veile"
+        ],
+        "description": "Surveys our evolutionary journey, from fossil primates to modern humans, through a review of evolutionary theory and genetics, the fossil evidence for current theories in human evolution with insight from modern non-human primates, and the influence of environmental stressors on modern human biological variation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Cultural Diversity",
+        "subjectCode": "ANTH",
+        "courseCode": "20500",
+        "instructor": [
+            "Suzanne Marie Barber"
+        ],
+        "description": "Offers an engaging introduction to concepts, themes, methods, and ethical concerns that guide research and analysis in cultural anthropology. Students will learn how to identify and interpret the complexities of human culture - what makes cultures different, and in what ways are they more alike than we might assume? Topics include: race and racism; ethnicity and nationalism; gender; sexuality; kinship, family, and marriage; class and inequality; the global economy; politics and power; religion; and health and illness.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Technology And Culture",
+        "subjectCode": "ANTH",
+        "courseCode": "21000",
+        "instructor": [
+            "Natali Theresa Valdez",
+            "Ian C Lindsay"
+        ],
+        "description": "This course explores the social dimensions of technology from the perspective of ancient, modern, and post-modern society.  Topics include the origins of particular technologies; processes of technical development and dissemination; the politics of everyday artifacts; virtual identities; and technologies of the body. Suggested courses (not pre-requisite): ANTH 10000, 20100 and/or 20500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Culture, Food And Health",
+        "subjectCode": "ANTH",
+        "courseCode": "21200",
+        "instructor": [
+            "Elizabeth Joan Wirtz",
+            "Stacy M Lindshield"
+        ],
+        "description": "This course is designed to provide an introduction to the field of Nutritional Anthropology in which we will examine issues related to diet, health and illness from holistic anthropological perspectives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Gender Across Cultures",
+        "subjectCode": "ANTH",
+        "courseCode": "23000",
+        "instructor": [
+            "Suzanne Marie Barber"
+        ],
+        "description": "Explores gender and sexuality from a cross-cultural perspective. Draws on case studies to explore the complexities of women's and men's lives. Examines gender hierarchies, gender in a globalized world, and the cultural construction of sexuality and gender.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "The Great Apes",
+        "subjectCode": "ANTH",
+        "courseCode": "23500",
+        "instructor": [
+            "Stacy M Lindshield"
+        ],
+        "description": "Students will learn the behavior and conservation of our closest relatives and how early ape studies changed our understanding of what it meant to be human. Topics include gender in science, ethics of research and cross-cultural understandings.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Archaeological Hoaxes, Myths And Frauds",
+        "subjectCode": "ANTH",
+        "courseCode": "25400",
+        "instructor": [
+            "Ian C Lindsay"
+        ],
+        "description": "This course examines why the ancient past inspires so many theories about aliens, dark conspiracies, lost civilizations, and apocalyptic predictions. Topics include the popularity of pseudoscientific theories in American culture and the historical contexts in which common pseudoscientific ideas have emerged; why they persist in the face of archaeological evidence; and the role of pseudo-archaeology in the growing antagonism toward scientific expertise. Through an understanding of datasets and methods archaeologists use to evaluate claims about the past, the course goes beyond debunking ancient aliens and Atlantis to develop important critical thinking skills to evaluate evidence and recognize pseudo-scientific arguments in the media.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "The Development Of Contemporary Anthropological Theory",
+        "subjectCode": "ANTH",
+        "courseCode": "30700",
+        "instructor": [
+            "Elizabeth Joan Wirtz"
+        ],
+        "description": "Explores the history of anthropological theories pertaining to the understanding of commonality and variation in human biology, behavior, society, and cultures as they have developed over the approximately two centuries since anthropology was founded as a separate discipline. Considers those social, cultural, and historical factors that have influenced the history of anthropological ideas. Permission of instructor  required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Archaeology Of North America",
+        "subjectCode": "ANTH",
+        "courseCode": "31300",
+        "instructor": [
+            "Harold Kory Cooper"
+        ],
+        "description": "Archaeological overview of North America emphasizing Indigenous cultures prior to the arrival of Europeans, but including Contact and Post-Contact communities of the Historic Period. Topics will include the peopling of the Americas, culture and environment, social complexity, and Cultural Resource Management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Variation",
+        "subjectCode": "ANTH",
+        "courseCode": "33600",
+        "instructor": [
+            "Michele R Buzon"
+        ],
+        "description": "Biological differences between human individuals and groups, causes of variations, the role of genetics, concepts of race, and the interrelationship between the social and biological meanings of race will be considered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Diet: Origins And Evolution",
+        "subjectCode": "ANTH",
+        "courseCode": "33700",
+        "instructor": [
+            "Erik R Otarola-Castillo"
+        ],
+        "description": "This course will survey humans evolving relationship with food over the last few million years; from our Plio-pleistocene origins (foraging) through the origins of agriculture to modern industrial food production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Global Perspectives On Health",
+        "subjectCode": "ANTH",
+        "courseCode": "34000",
+        "instructor": [
+            "Kalliopi M Christodoulaki",
+            "Elizabeth Joan Wirtz",
+            "Suzanne Marie Barber"
+        ],
+        "description": "This course examines health issues and risks faced by individuals around the world, but especially in resource poor geographical areas. We will explore in-depth the gendered, ethnic, cultural, and class dimensions that underlie the patterning of disease and illness worldwide.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Culture And Personality",
+        "subjectCode": "ANTH",
+        "courseCode": "34100",
+        "instructor": [
+            "Myrdene Anderson"
+        ],
+        "description": "A cross-cultural survey stressing different basic personality types and the processes by which adult personality is acquired. Case studies of selected non-Western cultures will be used to provide comparative perspective.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Native American Cultures",
+        "subjectCode": "ANTH",
+        "courseCode": "37900",
+        "instructor": [
+            "Harold Kory Cooper"
+        ],
+        "description": "General survey of Native cultures of the Americas. Topics to be covered include prehistory, language, religion, aesthetics, culture contact and change, contemporary issues, and social, economic and political organization.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Using Anthropology In The World",
+        "subjectCode": "ANTH",
+        "courseCode": "38000",
+        "instructor": [
+            "Sarah R Renkert"
+        ],
+        "description": "The use of anthropology in practical contexts. What anthropological practice is, how it originated, how it can be applied in non- academic and interdisciplinary contexts and careers. The main contemporary issues surrounding anthropological practice, including training, ethics, relevance, and rigor. For majors and non-majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Designing For People: Anthropological Approaches",
+        "subjectCode": "ANTH",
+        "courseCode": "38400",
+        "instructor": [
+            "Todd R Kelley"
+        ],
+        "description": "This course is about designing for people. You will use anthropological knowledge and skills to better understand human and technology interactions. With students from other fields, you will learn how to apply an anthropological perspective to human centered design and design with the needs of a specific user group in mind.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Evidence:How Things BecomeTrue",
+        "subjectCode": "ANTH",
+        "courseCode": "39200",
+        "instructor": [
+            "Zoe Nyssa",
+            "Andrew T Flachs"
+        ],
+        "description": "Various topics in anthropology that may change from semester to semester are presented by anthropology faculty members.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Senior Capstone In Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "41001",
+        "instructor": [
+            "Sherylyn H Briller"
+        ],
+        "description": "Culminating experience required for all anthropology majors. Course synthesizes four-field anthropology coursework and training, and discusses academic/career options that benefit from anthropological training. Major element of the course will include synthesis paper and presentation, senior portfolio, and professional development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Culture And Society",
+        "subjectCode": "ANTH",
+        "courseCode": "50500",
+        "instructor": [
+            "Kali Rubaii"
+        ],
+        "description": "Introduces contemporary sociocultural anthropology theory and practices, relating material to anthropology's history and its place in the social sciences. Covers problem formulation, study of cultural change, representation of human cultural diversity, and key case studies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "History Of Theory In Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "50700",
+        "instructor": [
+            "Laura C Zanotti"
+        ],
+        "description": "Connects the theoretical foundations of anthropology throughout the development of the discipline and related disciplines. Unpacks the when, how, and why of various theoretical positions, their shaping of research, and their concomitant logics of evidence.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Anthropological Linguistics",
+        "subjectCode": "ANTH",
+        "courseCode": "51400",
+        "instructor": [
+            "Myrdene Anderson"
+        ],
+        "description": "Investigates the varieties of communication in human behavior, while exploring linguistics as a tool in social science research. Also considers origins of human language and speech, and relations of language with other aspects of culture, with societal phenomena and with individual cognition.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Osteology",
+        "subjectCode": "ANTH",
+        "courseCode": "53400",
+        "instructor": [
+            "Michele R Buzon"
+        ],
+        "description": "Anatomy of the human skeleton and dentition. Detailed study of skeletal elements and teeth, morphology, function, disease, and pathology. Identification of human remains with regard to age at death, gender, growth, and development in biocultural context.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Anthropology Proseminar",
+        "subjectCode": "ANTH",
+        "courseCode": "59200",
+        "instructor": [
+            "Andrew T Flachs",
+            "Melissa J Remis"
+        ],
+        "description": "Topics vary.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Foundations And Frameworks: Applying Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "64000",
+        "instructor": [
+            "Zoe Nyssa"
+        ],
+        "description": "This course focuses on using anthropology to address social issues. The course examines topics including: the history of anthropologists working in applied settings, the relationship between theory and practice, professional ethics, job opportunities, and skills needed as anthropological practitioners. Students should have some background in anthropology if coming from another discipline e.g. prior coursework or relevant experience as determined by instructor.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

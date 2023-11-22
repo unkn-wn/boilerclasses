@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Small Farm Experience II",
+        "subjectCode": "SFS",
+        "courseCode": "21100",
+        "instructor": [
+            "Moriah Tzivia Bilenky"
+        ],
+        "description": "This course is a continuation of SFS 21000 and is designed to help students gain an understanding of what is needed to establish a productive small farm enterprise. There will be short field trips to local small farming enterprises. Classes will also be taught by guest lecturers and local farmers who have been successful at establishing small farming enterprises. Students in the class will be responsible for working on the Purdue Student Farm to gain practical experience on the topics and concepts being taught in the class.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Agroecology",
+        "subjectCode": "SFS",
+        "courseCode": "30100",
+        "instructor": [
+            "Kevin D Gibson"
+        ],
+        "description": "This course introduces students to the application of ecological concepts to food production systems and farm management. We will consider species interactions, nutrient and water cycles, regenerative practices, alternative approaches to agriculture, and ecosystem services provided to and by agro-ecosystems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Urban Agriculture",
+        "subjectCode": "SFS",
+        "courseCode": "31200",
+        "instructor": [
+            "Lori A Hoagland"
+        ],
+        "description": "Urban agriculture has the potential to address a range of social, economic and environmental issues including food insecurity, energy conservation, and human health and well-being. During this 5-week course, students will learn about the forces driving urban agriculture as well as the political and biophysical factors constraining it by reading articles, reviewing case studies, and visiting urban farms, vertical farm factories, food pantries, and local food advocacy groups. At the end of this course, students will apply the knowledge they've gained by developing a plan to increase urban agriculture in the greater Lafayette metropolitan area.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Farm To Fork",
+        "subjectCode": "SFS",
+        "courseCode": "31300",
+        "instructor": [
+            "Steven G Hallett"
+        ],
+        "description": "This course will investigate the culinary opportunities of local and seasonal foods and the horticultural demands of producing and marketing them. Dr. Hallett will represent the \"farm\", giving students a brief overview of the production of local and seasonal foods in Indiana. The \"farm\" will harvest produce at the student farm and deliver it to the \"fork\" - Chef Ambarish Lulay - who will work his culinary magic in the teaching kitchens in the HTM department. The focus, from both \"sides\" of the course will be the importance of niche marketing for farmers and chefs. This course is going to be tasty and fun!",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Boilermaker Sauces & Pickles",
+        "subjectCode": "SFS",
+        "courseCode": "39100",
+        "instructor": [
+            "Christopher T Adair"
+        ],
+        "description": "Contemporary topics in sustainable food and farming systems are explored. Topic selection is based on student interest. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Environmental Communication",
+        "subjectCode": "SFS",
+        "courseCode": "48500",
+        "instructor": [
+            "Linda J Pfeiffer"
+        ],
+        "description": "This is an interactive course in science and environmental communication with a strong emphasis on development of practical writing and communication skills for students who will become professionals in environment or natural resources. The public primarily obtains environmental information through the media, as such, scientists need to develop the understanding and skills necessary to engage with a range of audiences through the design of effective communication products. This course provides a unique balance of communication theory and skills training in which students develop the confidence to meaningfully communicate environmental issues. Permission of instructor required if not Junior or Senior standing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

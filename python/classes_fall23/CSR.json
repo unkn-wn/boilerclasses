@@ -1,0 +1,258 @@
+[
+    {
+        "title": "Introduction To CSR",
+        "subjectCode": "CSR",
+        "courseCode": "10000",
+        "instructor": [
+            "Rodney Carl Runyan"
+        ],
+        "description": "A workshop to familiarize students with the CSR department, department majors, advising resources, and major requirements. Special emphasis on basic freshman survival skills.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Retail Management",
+        "subjectCode": "CSR",
+        "courseCode": "20900",
+        "instructor": [
+            "Tongxiao Zhang"
+        ],
+        "description": "Retail career paths, management training, merchandise control, organization and service structure, and a comparison of store types.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Customer Relations Management",
+        "subjectCode": "CSR",
+        "courseCode": "28200",
+        "instructor": [
+            "Amy Alexandra Faria",
+            "Courtney J Wade"
+        ],
+        "description": "A course that provides insight into the structure and working of customer relations management and its role in business and government agency. Analysis of how consumer needs, complaints, and education are handled. Customer relations' management in the real world and techniques used in managing customer relations toward the goal of maximizing customer satisfaction. This course has a real world focus and is more applied than the usual introductory course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Leadership Strategies",
+        "subjectCode": "CSR",
+        "courseCode": "30900",
+        "instructor": [
+            "Rodney Carl Runyan"
+        ],
+        "description": "Provides knowledge of humanistic processes that contribute to development of effective leadership.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Buying Of Merchandise",
+        "subjectCode": "CSR",
+        "courseCode": "31000",
+        "instructor": [
+            "Tongxiao Zhang"
+        ],
+        "description": "  Principles of volume buying applicable to department, chain, specialty, and independent stores.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Relationship Selling",
+        "subjectCode": "CSR",
+        "courseCode": "31500",
+        "instructor": [
+            "Anita K Dale"
+        ],
+        "description": "This course focuses on long term relationship selling. The course is organized around a seven step selling process which has proven to be effective. The course adds to this process some principles of marketing and business strategy. The elements are necessary for the success of professional salesperson both in successful prospecting and making strategic choices as to how to allocate their time within the territory. Important to the learning process is actually practice of principles. Students will do various exercises of principles such as prospecting and negotiation. At the end of the semester, students will hone the skills learned through the semester with a series of roll plays designed to put them in position of both seller and buyer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Visual Merchandising",
+        "subjectCode": "CSR",
+        "courseCode": "32300",
+        "instructor": [
+            "Ji Yun Kang"
+        ],
+        "description": "Creative experimentation, production, and analysis of promotional formats for merchandising of product in a retail setting. Study of the elements and principles of design and their application for promotion of retail merchandise and/or services.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Consumer Behavior",
+        "subjectCode": "CSR",
+        "courseCode": "33100",
+        "instructor": [
+            "Ji Yun Kang"
+        ],
+        "description": "An interdisciplinary survey of consumer behavior theory focused on psychological, sociological, and cultural influences on consumer choice and use of products and services. Credit will not be given for both CSR 33100 and PSY 28500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Personal Finance",
+        "subjectCode": "CSR",
+        "courseCode": "34200",
+        "instructor": [
+            "Wookjae Heo"
+        ],
+        "description": "The class covers a comprehensive discussion of investments, consumer credit, insurance and retirement issues. The goal is to show how these components are interconnected in order to create a complete picture of financial health of an individual. CTL:IPO 1811 Personal Finance.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Negotiations",
+        "subjectCode": "CSR",
+        "courseCode": "34400",
+        "instructor": [
+            "Tongxiao Zhang"
+        ],
+        "description": "This course is designed to be relevant to the broad spectrum of bargaining problems that are traditionally faced by the manager, sales personnel and financial advisors. The course explores the processes of bargaining and negotiation as social and managerial activities. Special emphasis will be given to the areas of interpersonal and interpersonal and intergroup conflict, in addition to the interpersonal influence techniques and the tactics and strategies involved with improved bargaining and negotiation. The major purpose of the course is for each student to gain insight into his or her own negotiating style and to become a more effective negotiator, as well as a more astute observer of social process. The course will involve extensive use of cases, role-plays, and related participative activities, enhanced by rigorous self-review and introspection.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Risk Management",
+        "subjectCode": "CSR",
+        "courseCode": "38600",
+        "instructor": [
+            "Jonathan J Bauchet"
+        ],
+        "description": "The course includes principles of insurance, analysis and evaluation of risk exposures, legal aspects of insurance, insurance needs and analysis, policy selection, and insurance company selection and due diligence. Types of insurance that are studied include:  property and casualty, health, life, long-term care, disability and general business liability.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Strategic Issues For Sales And Retailing",
+        "subjectCode": "CSR",
+        "courseCode": "40400",
+        "instructor": [
+            "Seon Jeong Lee"
+        ],
+        "description": "Analysis of selected retail organizations and their channel partners through in-depth discussion of contemporary paradigms in strategic marketing for both sales and retailing perspectives and their applications to management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "E-Retailing",
+        "subjectCode": "CSR",
+        "courseCode": "40600",
+        "instructor": [
+            "Jiong Sun"
+        ],
+        "description": "To provide understanding of the technological and retail infrastructure that underlines doing retailing over the internet. Build an understanding of business strategies over the net. To identify management issues and consumer issues in e-retailing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Sales Force Management",
+        "subjectCode": "CSR",
+        "courseCode": "41500",
+        "instructor": [
+            "Tongxiao Zhang"
+        ],
+        "description": "An introduction to sales force management. An examination of the sales force management process, including principles of recruiting and selecting, training, compensation, motivation, supervision, and evaluation. Planning skills, including sales force deployment and the role of the sales force in sales forecasting, are also covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Selling And Sales Management Capstone",
+        "subjectCode": "CSR",
+        "courseCode": "41800",
+        "instructor": [
+            "Anita K Dale"
+        ],
+        "description": "A capstone course in advanced professional selling taught in a seminar format and designed to prepare students for the transition from student to professional. Students are introduced to practitioner-focused issues involved in long-term, major B2B account sales and an emphasis is placed on professional presentation skills. Students will complete a senior group research project and a major account sales project. Professional dress code from business-casual to full-business attire required based on the scheduled day-to-day activity.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Consumer Investment And Savings Decisions",
+        "subjectCode": "CSR",
+        "courseCode": "48400",
+        "instructor": [
+            "Jonathan J Bauchet"
+        ],
+        "description": "A survey of consumer investment alternatives, with emphasis on financial assets.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Retirement Planning And Employee Benefits",
+        "subjectCode": "CSR",
+        "courseCode": "48600",
+        "instructor": [
+            "William P Gettings"
+        ],
+        "description": "Analysis of employee benefit plans, retirement needs analysis, and types of retirement plans including employer sponsored plans and participant directed plans.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

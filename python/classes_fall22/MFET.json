@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Automated Manufacturing Processes",
+        "subjectCode": "MFET",
+        "courseCode": "34400",
+        "instructor": [
+            "Milan Rakita"
+        ],
+        "description": "Shop floor components of computer-integrated manufacturing are explored. Emphasis is focused on current applications and programming practices of various computer-automated manufacturing processes and technologies. Topics include CAD/CAM integration, computer-assisted numerical control programming for 2-1/2 and 3-axis contouring, and CNC program verification.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Industrial Robotics",
+        "subjectCode": "MFET",
+        "courseCode": "34800",
+        "instructor": [
+            "Xiumin Diao"
+        ],
+        "description": "This course introduces the fundamentals of robotics with emphasis on solutions to the basic problems in kinematics, dynamics, and control of robot manipulators of serial type. It covers modeling of rigid body motion, kinematics of articulated multi-body systems, robot dynamics and simulation, sensing and actuation, robot controls, task planning, and robot operations. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Machine Learning And Manufacturing Analytics",
+        "subjectCode": "MFET",
+        "courseCode": "36100",
+        "instructor": [
+            "Xiumin Diao"
+        ],
+        "description": "Machine learning (ML) algorithms are used to extract and analyze large amounts of manufacturing data. Fundamental ML analytic techniques and commonly used ML algorithms for manufacturing applications will be introduced. Students will create, train, and deploy ML models on a cloud platform to create enterprise-ready smart manufacturing artificial intelligence (AI) solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Robotics and IoT Seminar",
+        "subjectCode": "MFET",
+        "courseCode": "44100",
+        "instructor": [
+            "Richard M Voyles"
+        ],
+        "description": "  The Robotics Seminar is a series of lectures from eminent local, national and international researchers in the field of robotics and the internet of things (IoT) and related areas, such as computer vision, autonomy, cyber-physical systems, wearables, etc.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2022"
+    }
+]

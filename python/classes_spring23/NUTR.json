@@ -1,0 +1,302 @@
+[
+    {
+        "title": "Food Safety Certification And Career Development",
+        "subjectCode": "NUTR",
+        "courseCode": "12500",
+        "instructor": [
+            "Alvin Jun Furiya"
+        ],
+        "description": "Training in ServSafe food safety certification program.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Food Science I",
+        "subjectCode": "NUTR",
+        "courseCode": "20500",
+        "instructor": [
+            "Alvin Jun Furiya"
+        ],
+        "description": "Chemical and physical composition of foods: their changes during processing, storage, and preparation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fundamentals Of Nutrition",
+        "subjectCode": "NUTR",
+        "courseCode": "31500",
+        "instructor": [
+            "Kimberly K Buhman"
+        ],
+        "description": "Basic principles of nutrition and their application in meeting nutritional needs during the life cycle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Diet Selection And Planning",
+        "subjectCode": "NUTR",
+        "courseCode": "33000",
+        "instructor": [
+            "Hannah Corrine Boeh"
+        ],
+        "description": "Diet selection for health maintenance in culturally diverse populations based on current dietary guides with utilization of the computer for diet evaluation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nutrition Counseling",
+        "subjectCode": "NUTR",
+        "courseCode": "33200",
+        "instructor": [
+            "Rachel A Clark"
+        ],
+        "description": "Develop communication skills and counseling techniques necessary to elicit nutrition-related behavior changes in individuals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Physiology And Nutrition During The Life Cycle",
+        "subjectCode": "NUTR",
+        "courseCode": "36500",
+        "instructor": [
+            "Alvin Jun Furiya"
+        ],
+        "description": "Physiology and Nutrition During the Life Cycle explores the life stages of pregnancy, childhood, adulthood and older adulthood from physiological, social, and behavioral perspectives, focusing on the biological underpinnings of special nutritional needs for each life stage for optimal growth and development, maturation, aging, and overall health and well-being.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Communication Techniques In Foods And Nutrition",
+        "subjectCode": "NUTR",
+        "courseCode": "42400",
+        "instructor": [
+            "Rachel A Clark"
+        ],
+        "description": "Communication of foods and nutrition information to lay and professional audiences through oral, written, and mass media channels.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Public Health Nutrition",
+        "subjectCode": "NUTR",
+        "courseCode": "43000",
+        "instructor": [
+            "Laura Elaine Murray-Kolb"
+        ],
+        "description": "Assessment of nutritional needs of the community and the programs that service these needs.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nutritional Assessment",
+        "subjectCode": "NUTR",
+        "courseCode": "43600",
+        "instructor": [
+            "Adam S Huffield"
+        ],
+        "description": "Nutrition assessment in humans, including anthropometric, biochemical, clinical, and dietary assessment.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Macronutrient Metabolism In Human Health And Disease",
+        "subjectCode": "NUTR",
+        "courseCode": "43700",
+        "instructor": [
+            "Tzu Wen L Cross"
+        ],
+        "description": "Metabolism of the macronutrients, carbohydrate, lipids and protein in humans integrating physiology, biochemistry, and nutrition with a focus on maintaining optimal health and preventing disease.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Foodservice Systems Management",
+        "subjectCode": "NUTR",
+        "courseCode": "44200",
+        "instructor": [
+            "Donna L Zoss"
+        ],
+        "description": "Systems approach to foodservice management. Foodservice operations based on nutritional goals of the target market. Food sanitation and safety, management of human resources, and supervision. Emphasis on applications to health-care facilities.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Medical Nutrition Therapy II",
+        "subjectCode": "NUTR",
+        "courseCode": "48100",
+        "instructor": [
+            "Donna L Zoss"
+        ],
+        "description": "Application of the Nutrition Care Process in various disease states and conditions to prepare students for supervised practice programs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Topics In Nutrition, Fitness, And Health",
+        "subjectCode": "NUTR",
+        "courseCode": "48800",
+        "instructor": [
+            "Wayne W Campbell"
+        ],
+        "description": "This course critically evaluates the interrelationships between nutrition and exercise and their impact on physical performance and health. Concepts combining nutritional sciences and exercise physiology will be presented. Emerging science and controversies in the current literature will be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Evaluation Of Nutrition Science Research",
+        "subjectCode": "NUTR",
+        "courseCode": "49600",
+        "instructor": [
+            "Gregory C Henderson"
+        ],
+        "description": "Evaluation of nutrition science research as it relates to health and disease.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Journey Through Digstv Tract",
+        "subjectCode": "NUTR",
+        "courseCode": "59000",
+        "instructor": [
+            "Richard D Mattes"
+        ],
+        "description": "Individual problems dealing with various aspects of nutrition. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nutritional Biochemistry And Physiology II",
+        "subjectCode": "NUTR",
+        "courseCode": "60600",
+        "instructor": [
+            "Kolapo Matthew Ajuwon"
+        ],
+        "description": "(ANSC 62600) Integration of biochemical and physiological functions of nutrients in humans and animals emphasizing post-absorptive use of nutrients as sources of energy and for the synthesis of macromolecules, emphasizing integrative metabolism in liver, muscle and adipose tissues. Offered weeks 1 - 8. Prerequisite: NUTR 60500.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nutritional Biochemistry And Physiology III",
+        "subjectCode": "NUTR",
+        "courseCode": "60700",
+        "instructor": [
+            "Qing Jiang"
+        ],
+        "description": "(ANSC 62700) Integration of biochemical and physiological functions of nutrients in humans and animals, emphasizing lipid metabolism and transport in the context of cardiovascular function. Offered weeks 9 - 16. Prerequisite: NUTR 60600.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Presentation Skills",
+        "subjectCode": "NUTR",
+        "courseCode": "62600",
+        "instructor": [
+            "Dorothy Teegarden"
+        ],
+        "description": "This course will teach graduate students how to synthesize information from multiple scientific studies and then communicate that information effectively to others in the form of a 40 minute long scientific seminar. The course is designed to provide students with clear guidelines for effective long-form oral communication of scientific information and then give students an opportunity to put those guidelines into practice. Prerequisites: Graduate standing past the first year. NUTR 69400 or equivalent course (determined by instructor review). For PhD students; INP Scientific Writing Course NUTR 62700. For MS students; a statement from the research mentor that the student has a clear thesis topic, that the student has completed the majority of work on the thesis, and that the student has conducted background reading on the thesis topic.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introductory Presentation Skills In Nutrition Science",
+        "subjectCode": "NUTR",
+        "courseCode": "69400",
+        "instructor": [
+            "Kimberly K Buhman"
+        ],
+        "description": "Introductory training and application of concepts for effective communication through oral and poster presentations in the field of nutrition science.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Interdepartmental Nutrition Program Seminar",
+        "subjectCode": "NUTR",
+        "courseCode": "69500",
+        "instructor": [
+            "Laura Elaine Murray-Kolb"
+        ],
+        "description": "Develop and strengthen skills in organization, preparation, and presentation of scientific information relevant to nutrition science to an audience of scientists.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Spring 2023"
+    }
+]

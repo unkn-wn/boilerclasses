@@ -1,0 +1,108 @@
+[
+    {
+        "title": "Russian Level I",
+        "subjectCode": "RUSS",
+        "courseCode": "10100",
+        "instructor": [
+            "Deliya Pavlovna Kuleshova",
+            "Ekaterina Dmitrievna Dick"
+        ],
+        "description": "  A beginning course in Russian which builds basic skills in speaking, oral comprehension, reading, and writing in Russian through class participation, structured conversation, and short writing assignments.  ",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Russian Level III",
+        "subjectCode": "RUSS",
+        "courseCode": "20100",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "An intermediate-level course designed to develop higher skills in speaking, listening, reading, and writing Russian, as well as in intercultural competence and communication through further work on conversational and writing ability. Students work individually and in small groups using authentic reading and audio materials.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Russian Level V",
+        "subjectCode": "RUSS",
+        "courseCode": "30100",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "Continued development of Russian speaking, listening, reading, and writing abilities, using material dealing primarily with everyday life and civilization in the Soviet Union from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in Russian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Post-Soviet Russian Cinema",
+        "subjectCode": "RUSS",
+        "courseCode": "33100",
+        "instructor": [
+            "Lyubov Mikhailovna Sylayeva"
+        ],
+        "description": "Viewing and analysis of significant post-Soviet Russian films, providing an understanding of the nuanced sociopolitical situation in contemporary Russia. Evolution of Russian cinema in the post-Soviet era, its place in world cinema, and its relation to cultural, political, and social trends. The course builds an understanding of the Russian political, historical, and cultural context through an exploration of cinematic artistry. It presents and analyzes films that depict aspects of contemporary Russia, covering subjects from the collapse of the Soviet Union to the rise and hold on power of Vladimir Putin, through cinematic adaptation of literary and theatrical works. Conducted in English. Knowledge of Russian is not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Revolution, Repression, Renewal: Soviet Literature And Beyond",
+        "subjectCode": "RUSS",
+        "courseCode": "34200",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "Selected Russian poetry, prose, and drama of the 20th century in historical and cultural context. Students will read and discuss major authors and texts and will write critical essays on literary topics. Conducted largely in Russian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Russian Level VII",
+        "subjectCode": "RUSS",
+        "courseCode": "40100",
+        "instructor": [
+            "Olga V Lyanda-Geller"
+        ],
+        "description": "Advanced work on development of Russian speaking, listening, reading, and writing abilities, focusing on materials dealing primarily with culture and the arts in Russia and the Soviet Union. Conducted primarily in Russian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Structure Of Russian I: Phonology And Syntax",
+        "subjectCode": "RUSS",
+        "courseCode": "56100",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "This course treats the sound system and sentence structure of Russian, dealing with the structural pattern on various levels (phonetic, phonemic, syntactic) from various points of view. One weekly class is devoted to theoretical issues affecting Russian phonology and syntax. Credit will not be given for both RUSS 36100 and 56100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

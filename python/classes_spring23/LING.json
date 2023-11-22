@@ -1,0 +1,178 @@
+[
+    {
+        "title": "Introduction To Linguistics",
+        "subjectCode": "LING",
+        "courseCode": "20100",
+        "instructor": [
+            "Yue Li",
+            "Eunice Opoku",
+            "Alexis Nicole Zhou",
+            "Laura M Solano Escobar",
+            "Chien-Min Kuo"
+        ],
+        "description": "Basic concepts of linguistics and methods of analysis of language; overview of linguistics and the role of language in society. Introduction to phonology, morphology, syntax, and semantics, and to problem-solving techniques, with material drawn from a variety of languages. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fundamentals Of Phonology And Morphology",
+        "subjectCode": "LING",
+        "courseCode": "31100",
+        "instructor": [
+            "Yuhyeon Seo"
+        ],
+        "description": "Basic concepts and tools of phonological and morphological analysis viewed through the material of American English. Current theoretical approaches to phonology and morphology, including word-formation processes and applications. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Elements Of Phonetics",
+        "subjectCode": "LING",
+        "courseCode": "31500",
+        "instructor": [
+            "Alexander L Francis"
+        ],
+        "description": "Introduction to articulatory phonetics. Mechanisms of production of speech sounds. Sounds of languages of the world, ear training for discriminating speech sounds, and practice in broad and narrow phonetic transcription. Introduction to the International Phonetic Alphabet (IPA). Credit will not be given for both LING 31500 and SLHS 30600. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Foundations Of Syntax And Semantics",
+        "subjectCode": "LING",
+        "courseCode": "32100",
+        "instructor": [
+            "Elena E Benedicto"
+        ],
+        "description": "Introduction to syntactic and semantic analysis based on American English and its dialects. Underlying structure and its relation to meaning. Analysis of parts of speech, constituent phrases, sentence structure, representations, ambiguity, and applications of current theory. Credit will not be given for both LING 32100 and ENGL 32800. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Language & Humor",
+        "subjectCode": "LING",
+        "courseCode": "39800",
+        "instructor": [
+            "Victor Raskin",
+            "Elaine J Francis",
+            "Leah Michelle Nodar"
+        ],
+        "description": "Investigation of a special topic in linguistics. The topic will vary from semester to semester. Permission of instructor required. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intro Langua Culture",
+        "subjectCode": "LING",
+        "courseCode": "49800",
+        "instructor": [
+            "Nuur Hamad Zahonero",
+            "Myrdene Anderson"
+        ],
+        "description": "Investigation of a special topic in linguistics.  The topic will vary from semester to semester. Permission of instructor required. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Historical Linguistics And Language Change",
+        "subjectCode": "LING",
+        "courseCode": "54100",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "A general examination of the ways in which languages and their subsystems change over time and of the forces that produce change. The comparative method; internal reconstruction; geographical variation; and social variation. Overview of world language families and genetic relationships. Offered in conjunction with ENGL 56300 or LC 56300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Field Methods In Linguistics",
+        "subjectCode": "LING",
+        "courseCode": "57000",
+        "instructor": [
+            "Elena E Benedicto"
+        ],
+        "description": "This course deals with the basic techniques for collecting language data, and is designed to reproduce and explore the conditions and methods of linguistic fieldwork in a classroom.  The course also addresses questions related to the ethics of retrieving linguistic data, the relations between the linguist and the speaking communities, and the use of the collected data.  A non-Indoeuropean lesser-studied language will be examined with the help of a native speaker of the language.  The main area of its grammar will be covered: phonetic and phonological system, inflectional and derivational morphology, basic syntactic structures and basic semantic phenomena.  The final goal is to obtain a basic grammatical description of the language.  Lab sessions will be directed towards the training in the software and audio and video tools used for the trade.  Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intro To Semiotics",
+        "subjectCode": "LING",
+        "courseCode": "59300",
+        "instructor": [
+            "Myrdene Anderson"
+        ],
+        "description": "Investigation of an advanced topic in semantics. Topic varies from semester to semester. Permission of instructor required. Typically offered Spring Fall.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engl Secnd Lg Prin/Prc",
+        "subjectCode": "LING",
+        "courseCode": "59800",
+        "instructor": [
+            "Nuur Hamad Zahonero",
+            "Olga Dmitrieva",
+            "Clyde Joseph Sorell",
+            "Atsushi Fukada"
+        ],
+        "description": "Investigation of an advanced topic in linguistics. Topic varies from semester to semester. Permission of instructor required. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Linguistic Applications",
+        "subjectCode": "LING",
+        "courseCode": "68900",
+        "instructor": [
+            "Daniel J Olson",
+            "Victor Raskin"
+        ],
+        "description": "Intensive study and research on a selected topic in linguistics. Topic varies from semester to semester. Permission of instructor required. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

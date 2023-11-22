@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Professional Preparation In Interdisciplinary Engineering",
+        "subjectCode": "IDE",
+        "courseCode": "30100",
+        "instructor": [
+            "Ruth Eileen Haaser Wertz"
+        ],
+        "description": "Seminar covering topics required for professional preparation of engineers including functioning in teams, communication, ethics, global and societal impacts, how people learn, and contemporary issues impacting and impacted by engineering.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Multidisciplinary Engineering Statistics",
+        "subjectCode": "IDE",
+        "courseCode": "36000",
+        "instructor": [
+            "Muhsin Menekse"
+        ],
+        "description": "Statistical methodology is critical to the engineering problem-solving process. This course introduces engineering students to the role of statistics in problem-solving, and to the design and presentation of simple models and experiments. An emphasis will be placed on using computer software to perform statistical analyses and to the interpretation of the software results. This is a recommended course for the MOE statistics elective. Permission of instructor is required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Design Methodologies For Diverse Stakeholders",
+        "subjectCode": "IDE",
+        "courseCode": "38500",
+        "instructor": [
+            "Justin L Hess"
+        ],
+        "description": "This course focuses on engineering design methodologies with a concern for the needs of diverse stakeholders. The course brings together topics drawn from a variety of disciplines (including anthropology, education, psychology, human-computer interaction and engineering) to introduce interdisciplinary engineering approaches to: (1) design tools, systems, and/or environments to support cognitive processes and (2) engage in human-centered and learner-centered design. The semester design project provides a context for students to apply these methods. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Multidisciplinary Engineering Analysis And Decision Making",
+        "subjectCode": "IDE",
+        "courseCode": "48300",
+        "instructor": [
+            "Robert Pierpont Loweth"
+        ],
+        "description": "Application of product evaluation, cost estimating, and product/project feasibility and viability analysis from multidisciplinary perspectives in the context of new product development. Topics include exposure to company success measures, quantitative and qualitative analysis, sensitivity analysis, cost-benefit analysis, project comparisons, new product life-cycle analysis, and related engineering decisions. Topics are explored through case-based, industrially focused examples. The course centers on the creation and use of analytical spreadsheets with computer tools/software for routine engineering analysis and decision-making.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Multidisciplinary Engineering Design Methodology",
+        "subjectCode": "IDE",
+        "courseCode": "48400",
+        "instructor": [
+            "Morgan M Hynes"
+        ],
+        "description": "Engineering design methods targeted for MDE students. Introduction to Multidisciplinary Teams, Design Project Scoping and Task Clarification, Design Data Acquisition & Management, Design Communication & Iteration. and Design Review Processes. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Multidisciplinary Engineering Senior Professional Development",
+        "subjectCode": "IDE",
+        "courseCode": "48700",
+        "instructor": [
+            "Robin S Adams"
+        ],
+        "description": "Senior professional development covers and assesses students in Multidisciplinary Engineering professional outcomes including, teamwork, professional and ethical responsibility, communication, impact of engineering in context, lifelong learning, impact of contemporary issues, and leadership. Methods to obtain a professional position after graduation.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,138 @@
+[
+    {
+        "title": "Foundations Of Engineering Education",
+        "subjectCode": "ENE",
+        "courseCode": "50101",
+        "instructor": [
+            "Brent K Jesiek"
+        ],
+        "description": "In this course, new doctoral students in engineering education explore their roles within the field of engineering education, create a learning plan that maps to program requirements, and develop habits of mind to support their ongoing professional development. Students learn to write clearly and coherently in an academic context. Students examine research trends and faculty interests so they can make informed choices about advising and program opportunities. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "History And Philosophy Of Engineering Education",
+        "subjectCode": "ENE",
+        "courseCode": "50200",
+        "instructor": [
+            "Alice L Pawley"
+        ],
+        "description": "Examines the history and philosophy of engineering education by: (1) exploring the history of engineering education through archival research and historical documents (critical moments, tensions, issues); (2) investigating philosophies of education and the philosophies that have guided engineering as a profession; and (3) critiquing the evolution of engineering education, identifying alternative scenarios, and imagining a future role in engineering education.  This course introduces students to the field of engineering education while broadening their views of the roles of interrelationships between teaching and research.  Open to students in Engineering Education.  Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Education Inquiry",
+        "subjectCode": "ENE",
+        "courseCode": "50300",
+        "instructor": [
+            "Senay Purzer"
+        ],
+        "description": "This course is conceived as a bridge between beginning graduate students' knowledge of technical research and modes of inquiry appropriate to the new field of engineering education. It is designed as the entryway to required research method courses taken as part of the students' plan of study. By the end of this survey course, students will be able to critique research in terms of the quality of the authors' argument based on their chain of reasoning, and will recognize that the articulation of a research question, the significance of the question, the choice of methods in regards to the research goals, and the transparency of the explanation of the methodology are all the parts of the chain of reasoning. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Content, Assessment And Pedagogy: An Integrated Engineering Design Approach",
+        "subjectCode": "ENE",
+        "courseCode": "50600",
+        "instructor": [
+            "Joyce B Main"
+        ],
+        "description": "The course is explicitly identified in the ENE -PhD requirements as a \"foundation course\" required for all students.  This course is intended to be taken early in a graduate student's curriculum and therefore is designed to be a bridge between the student's previous experience with engineering (education, work, and teaching) and new engineering education research-based approaches.  It is intended as an entryway to help students apply an engineering design approach to the design of instruction.  To meet this aim, the course involves an iterative project-based approach in a context (design site) that is chosen by the student for its relevance, interest and potential application.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Design, Cognition And Learning",
+        "subjectCode": "ENE",
+        "courseCode": "62000",
+        "instructor": [
+            "Robin S Adams"
+        ],
+        "description": "Design is central to engineering: it is an integral part of the engineering profession and how we educate future professionals. Design cognition and learning is an area of engineering education research that seeks to understand what designers know and how they learn, and what tools best support design activity (e.g., collaboration, innovation, etc.). This research draws from many perspectives including cognitive psychology and the learning sciences, organizational learning, engineering and product design, architecture, human-centered interaction, and creativity and innovation. Themes in the course include (1) design knowledge, (2) what theories help understand design knowing and learning, (3) what are ways to study designers and design activity, and (4) how may design research inform design education and practice? Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Educational Methods In Engineering",
+        "subjectCode": "ENE",
+        "courseCode": "68500",
+        "instructor": [
+            "Matthew W Ohland"
+        ],
+        "description": "(CHE 68500)  Students will learn how to teach in an engineering environment where both classroom and laboratory instruction is intertwined. Classroom techniques, such as lectures, cooperative groups, mastery and PSI, TV and video, and guided design will be studied, in addition to class preparation issues, such as ABET accreditation and design content. Students will study motivation, learning theories and cycles, and personality types.  Includes teaching practice and group projects. Student must be admitted into a Ph.D. program in Engineering or other technical discipline (Finished with MS or MS-bypass).  Not open to students who have taken PSY 69500/EDPS 63400. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Mentored Teaching In Engineering",
+        "subjectCode": "ENE",
+        "courseCode": "68700",
+        "instructor": [
+            "Matthew W Ohland"
+        ],
+        "description": "Mentored experience in the teaching of engineering, with structured opportunities for individual reflection. All students create a scholarly teaching portfolio. Students who register for three credits conduct a scholarship of teaching and learning project. Prerequisites: Significant concurrent responsibility for teaching an engineering course. Registration in or completion of ENE 50600 (Content, Assessment And Pedagogy) or ENE 68500 (Educational Methods In Engineering); or instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Seminar In Engineering Education",
+        "subjectCode": "ENE",
+        "courseCode": "69000",
+        "instructor": [
+            "Edward J Berger"
+        ],
+        "description": "Seminar course covering a broad range of current discovery, learning, and engagement topics in Engineering Education. Seminar presentations by representatives from academia, industry, other external institutions, and members of the Purdue University community. This is a required course for the graduate program in the Department of Engineering Education. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Succeeding As Engr Professor",
+        "subjectCode": "ENE",
+        "courseCode": "69500",
+        "instructor": [
+            "Alejandra J Magana Deleon",
+            "Audeen W Fentiman"
+        ],
+        "description": "Primarily designed for specialized topic areas for which there is no specific course, workshop, or individual study plan, but having enough student interest to justify the formalized teaching of a course. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Fall 2022"
+    }
+]

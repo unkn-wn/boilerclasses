@@ -1,0 +1,34 @@
+[
+    {
+        "title": "Brit Lit Thru 18 Ct",
+        "subjectCode": "CMPL",
+        "courseCode": "23000",
+        "instructor": [
+            "Jason E Baumer",
+            "Ahmed Idrissi Alami",
+            "Michael Robert Johnston"
+        ],
+        "description": "(LC 23000) Foundations for comparison of works in different languages, thematic (philosophical, sociological, psychological), and structural (genre, composition, use of linguistic devises); parallel interrelation of theme and structure in works of different literatures. The importance of literary norms and systems of genres. Examination of crosscurrents in different literatures during successive periods of development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "World Literature: From 1700 A D To The Present",
+        "subjectCode": "CMPL",
+        "courseCode": "26700",
+        "instructor": [
+            "Ching Jen Sun"
+        ],
+        "description": "(ENGL 26700) World literature in translation. A comparative and chronological survey of the masterpieces of Eastern and Western literature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

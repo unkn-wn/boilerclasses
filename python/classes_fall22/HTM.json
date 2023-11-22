@@ -1,0 +1,476 @@
+[
+    {
+        "title": "Introduction To The Hospitality And Tourism Industry",
+        "subjectCode": "HTM",
+        "courseCode": "10010",
+        "instructor": [
+            "Stephen R Leitch"
+        ],
+        "description": "This course gives students an opportunity in one of the world's top-ranked programs to accompany award-winning professors in an exploration of the dynamic and evolving world of people management, also known as the hospitality and tourism industry; one of the largest industries in the world. This course describes the varied market segment and vast opportunities that exist for our graduates in areas such as hotels, restaurants, event planning, tourism, and healthcare, just to name a few.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hospitality And Tourism Student Seminar",
+        "subjectCode": "HTM",
+        "courseCode": "10100",
+        "instructor": [
+            "Stephen R Leitch"
+        ],
+        "description": "Course assists the student new to Purdue to become acquainted with the Purdue system and with the HTM department and program. Information presented to assist students with developing strategies for academic and career-related success at Purdue.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Financial Accounting For The Service Industries",
+        "subjectCode": "HTM",
+        "courseCode": "14100",
+        "instructor": [
+            "Soo Cheong Jang",
+            "Richard F Ghiselli"
+        ],
+        "description": "This course covers fundamental accounting principles and procedures applied to the hospitality and service industries. Topics include the uniform system of accounts, financial statements, special purpose journals, and subsidiary ledgers unique to the hospitality and service industries. This course also introduces financial statement analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Event And Meeting Planning Industry",
+        "subjectCode": "HTM",
+        "courseCode": "16200",
+        "instructor": [
+            "Shinyong Jung"
+        ],
+        "description": "Upon completion of this course, students will have a comprehensive overview of the event and meeting industry. Topics will include the supply and demand side of event and meeting management, the basic planning process needed for any event or meeting, sustainability, business ethics, and keeping pace with current industry trends through guest lectures from event and meeting planners.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Tourism Management",
+        "subjectCode": "HTM",
+        "courseCode": "17300",
+        "instructor": [
+            "Stephen R Leitch"
+        ],
+        "description": "This is an introduction to tourism management using a system approach that integrates a variety of hospitality and travel organizations and businesses. It focuses on the understanding of tourism from the perspectives of travelers and destinations, while identifying tourism's economic, socio-cultural, and environmental impacts on communities.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Lodging Management",
+        "subjectCode": "HTM",
+        "courseCode": "18100",
+        "instructor": [
+            "Susan E Gordon",
+            "Annmarie J Nicely"
+        ],
+        "description": "History, features, operation procedures and management of lodging facilities both in the United States and in other parts of the world. The course involves an experiential learning component.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Sanitation And Health In Foodservice, Lodging, And Tourism",
+        "subjectCode": "HTM",
+        "courseCode": "19100",
+        "instructor": [
+            "Bruce A Goad"
+        ],
+        "description": "This course introduces students to the foodservice component of the Hospitality and Tourism industry and explores food safety and other health-related issues. Application of sanitation principles in restaurants, hospitals, schools, hotels, cruise ships, airlines, and international travel are covered. Students must pass a National Sanitation Certification Examination to receive credit.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Management And Leadership In Hospitality And Tourism",
+        "subjectCode": "HTM",
+        "courseCode": "21200",
+        "instructor": [
+            "Seon Jeong Lee"
+        ],
+        "description": "This course addresses the basic principles of management and leadership. Students will be able to apply management principles of planning, organizing, directing, and controlling human and physical resources. Students will also identify key leadership skills including motivating employees, effective decision-making, and business communication. Students will identify individual, team, and organizational behaviors necessary to effectively manage hospitality businesses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hospitality And Tourism Marketing",
+        "subjectCode": "HTM",
+        "courseCode": "23100",
+        "instructor": [
+            "Mohamed E Mohamed",
+            "Xinran Y Lehto"
+        ],
+        "description": "This course teaches students a customer-oriented approach to marketing in hospitality and tourism. This course emphasizes the role of marketing in an organization's overall strategic planning. Techniques available to hotels, restaurants, and other tourism businesses are described and evaluated including travel packaging, the travel trade, advertising, sales promotion, positioning and branding.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Managerial Accounting And Financial Management In Hospitality Operations",
+        "subjectCode": "HTM",
+        "courseCode": "24100",
+        "instructor": [
+            "Soo Cheong Jang",
+            "Chun-Hung Hugo Tang",
+            "Yueqian Zhang"
+        ],
+        "description": "This course teaches decision-making using managerial accounting, financial analyses, and time value of money. Consideration will be given to systems, techniques, information types, and Excel as used by hospitality management. Emphasis on situations oriented to the hospitality industry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Festivals And Special Events",
+        "subjectCode": "HTM",
+        "courseCode": "26200",
+        "instructor": [
+            "Casey Michelle Cox Dexter"
+        ],
+        "description": "This course offers a comprehensive overview of the theory and procedures associated with the coordination of festivals and special events. Essential topics will include the conceptualization, planning, coordination, sponsorship, marketing, funding, staffing, legal issues, and assessment of festivals and special events. Students will gain hands-on experience by volunteering to work a minimum of six hours to set up, help coordinate, or tear down a large-scale festival or special event.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Foodservice Management",
+        "subjectCode": "HTM",
+        "courseCode": "29102",
+        "instructor": [
+            "Theresa Marie Hamilton"
+        ],
+        "description": "An introduction to food preparation methods and service techniques in quantity food settings. Students become familiar with ingredients and culinary terminology, and learn to read, write and evaluate menus. Recipe conversion, inventory and costing skills are developed. Production methods, equipment, and product flow are examined. Front-of-the-house service techniques as well as front-and-back-of-the-house interactions will be studied.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Procurement Management For Foodservice",
+        "subjectCode": "HTM",
+        "courseCode": "31100",
+        "instructor": [
+            "Karen Sue Byrd"
+        ],
+        "description": "Identifies and describes food, supplies, and related merchandise used in the foodservice industry. Provides methods and criteria for recognizing quality, evaluating, specifying, purchasing, and inspecting these products. Discusses the use of technology in the purchasing component of the foodservice industry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Resources Management For The Service Industries",
+        "subjectCode": "HTM",
+        "courseCode": "31200",
+        "instructor": [
+            "Annmarie J Nicely"
+        ],
+        "description": "The principles and practices of managing human resources for effective operations of hospitality and tourism businesses will be covered including: analysis and design of work, recruiting, selection, training and development, performance management, compensation, employee relations, and strategies for supporting organizational strategies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Business Etiquette For Managers",
+        "subjectCode": "HTM",
+        "courseCode": "31700",
+        "instructor": [
+            "Anthony P Cawdron"
+        ],
+        "description": "A review of contemporary standards of human interaction in the workplace. How manners, etiquette and style affect and enhance everyday dealings with others.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hospitality Facilities Management",
+        "subjectCode": "HTM",
+        "courseCode": "32200",
+        "instructor": [
+            "Douglas C Nelson"
+        ],
+        "description": "Technical and managerial issues relating to the operation and maintenance of the physical plant and equipment in hospitality industry facilities.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Operations Control And Analysis In The Hospitality Industry",
+        "subjectCode": "HTM",
+        "courseCode": "34100",
+        "instructor": [
+            "Chun-Hung Hugo Tang",
+            "Carl A Behnke"
+        ],
+        "description": "Applications of the control process and quantitative analysis to effectively manage an efficient and profitable hospitality business. The emphasis is on planning budgets, controlling operational activities, and evaluating performance.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Event And Meeting Management",
+        "subjectCode": "HTM",
+        "courseCode": "36200",
+        "instructor": [
+            "Shinyong Jung"
+        ],
+        "description": "The principles and practices of event and meeting management will be covered in this course, including: strategic event planning process, project management, risk management, financial management, human resources, stakeholder management, meeting or event design, site location and management, marketing, professionalism, and ethics. Students will gain hands-on experience planning, directing, organizing and controlling a small-scale event.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Global Tourism Geography",
+        "subjectCode": "HTM",
+        "courseCode": "37200",
+        "instructor": [
+            "Liping A Cai"
+        ],
+        "description": "Introduction and analysis of specific world travel destinations, including the exploration of geographic features, customs and tradition, population centers, visitor attractions, political, religious, language and other cultural differences as these relate to the hospitality and travel industry. The course is designed to teach students specific geographic knowledge and develop a deeper understanding and empathy for cultural values and traditions that exist outside their own culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Revenue Management In The Lodging Industry",
+        "subjectCode": "HTM",
+        "courseCode": "38110",
+        "instructor": [
+            "Alei Fan"
+        ],
+        "description": "This course will add to and build upon the knowledge acquired in HTM 18100 Lodging Management. The class will provide a theoretical perspective on service management and how service management concepts can be applied to the hospitality business. The course will also provide an understanding of revenue management's key concepts and applicability of revenue maximization strategies and their operational aspects, components of effective revenue management will be analyzed and its effects on overall profitability. The course will also review the latest issues and trends affecting all aspects and segments of the lodging industry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Leadership Development",
+        "subjectCode": "HTM",
+        "courseCode": "39900",
+        "instructor": [
+            "Xinran Y Lehto",
+            "Susan E Gordon",
+            "Karen Sue Byrd"
+        ],
+        "description": "Various topics that may change from semester to semester are presented by HTM faculty.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hospitality And Tourism Law",
+        "subjectCode": "HTM",
+        "courseCode": "41100",
+        "instructor": [
+            "Douglas C Nelson"
+        ],
+        "description": "Overview of the fundamental legal framework that governs the conduct of hospitality and tourism managers. Topics include civil rights, contracts, court procedures, ethics, and risk management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Financial Management For The Hospitality Industry",
+        "subjectCode": "HTM",
+        "courseCode": "44100",
+        "instructor": [
+            "Richard F Ghiselli"
+        ],
+        "description": "This course deals with subjects and issues facing a financial manager in the hospitality and tourism industry. The primary purposes of this course are to understand the role of financial management, to learn analytic concepts and managerial tools for making capital investment decisions and to become familiar with major financial instruments and concepts such as time value of money, risk-return, capital budgeting, cost of capital, and capital structure.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Beverage Operation Management",
+        "subjectCode": "HTM",
+        "courseCode": "49111",
+        "instructor": [
+            "Courtney J Wade"
+        ],
+        "description": "This course teaches students the historical background and modern day principles and management practices regarding the production, selection, purchasing, storage and service of beverage alcohol in all aspects of the hospitality industry. Students must pass the ServSafe Responsible Service of Alcohol certification examination to earn course credit.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Management And Service Of Beverage Alcohol",
+        "subjectCode": "HTM",
+        "courseCode": "49112",
+        "instructor": [
+            "Carl A Behnke"
+        ],
+        "description": "This course introduces the principles and practices associated with the production of beverage alcohol in the hospitality industry.  Lectures and structured tastings will guide students in identifying and describing the unique characteristics of fermented beverages commonly found in the hospitality industry. Course fee. Students will be tasting alcohol as part of this course, they need to be at least 21 years of age to do so legally. Department permission required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hospitality Operation Management And Leadership",
+        "subjectCode": "HTM",
+        "courseCode": "49201",
+        "instructor": [
+            "Theresa Marie Hamilton"
+        ],
+        "description": "Students apply managerial skills and techniques in organizing, directing and controlling a full-service restaurant operation as they rotate through a variety of managerial positions. Students will also participate in lectures, assignments, and projects on topics related to leadership, such as interpersonal communications (emphasis on culture, gender and age differences), ethical leadership (emphasis on integrity and credibility), public speaking, teamwork and critical thinking. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Business Development In Hospitality And Tourism",
+        "subjectCode": "HTM",
+        "courseCode": "49901",
+        "instructor": [
+            "Joseph A Ismail",
+            "Sandra B Sydnor"
+        ],
+        "description": "This capstone course is one of the final courses in an HTM student's undergraduate career. This course will cover all stages in the business development process of a proposed business. By integrating the student's academic and experiential knowledge, the course's culminating project serves as a repository for the student's undergraduate learning and industry experiences. Emphasis will be on strategic planning, the design of systems, and models and problem analysis, leading to the opening of a successful business. The course concludes in the presentation of a proposed business. The course is designed to help the student transition from college to the workforce.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Economics Of Travel And Tourism",
+        "subjectCode": "HTM",
+        "courseCode": "57100",
+        "instructor": [
+            "Joseph A Ismail"
+        ],
+        "description": "This course includes the asset theory of tourism, cost-benefit analysis, tax policy impacts, and other economic and statistical aspects of tourism. The course will examine research designed to determine economic impacts of the hospitality and tourism industries.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Hotel Management",
+        "subjectCode": "HTM",
+        "courseCode": "58100",
+        "instructor": [
+            "Susan E Gordon"
+        ],
+        "description": "A study of current service management theories as they apply to hotel management. Theory topics include strategic planning, hotel organization and communication, organizational leadership, and control systems. Topics will be discussed from the viewpoint of the hotel's general manager.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Research Topics And Methods Seminar",
+        "subjectCode": "HTM",
+        "courseCode": "60200",
+        "instructor": [
+            "Carl A Behnke"
+        ],
+        "description": "Examination of current research in hospitality and tourism. Focuses on industry research needs and appropriate methodologies. Open to graduate students and honors undergraduates. Required for doctoral students. Prerequisite: HTM 50100, STAT 50100, 50200.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "HTM Management Challenge Analysis",
+        "subjectCode": "HTM",
+        "courseCode": "61200",
+        "instructor": [
+            "Alei Fan"
+        ],
+        "description": "A course designed to discuss specific management problems in the hospitality and tourism industries. Through the use of case studies, students study current challenges, management analysis, the process of decision-making, and the impacts of corporate decisions. Prerequisite: basic management organization class.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

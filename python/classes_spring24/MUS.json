@@ -1,0 +1,230 @@
+[
+    {
+        "title": "Discovery Forum",
+        "subjectCode": "MUS",
+        "courseCode": "10100",
+        "instructor": [
+            "Harry T Bulow"
+        ],
+        "description": "Discovery Forum is a weekly gathering where music majors and faculty perform, share research, compositions, arrangements or other related topics associated with music today. It is a forum where new approaches and ideas about music can be presented. No prior coursework required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamentals Of Music",
+        "subjectCode": "MUS",
+        "courseCode": "11200",
+        "instructor": [
+            "Nadya Nadegda N Dubikovsky"
+        ],
+        "description": "Fundamentals of music notation, ear training, and music reading.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music Theory I",
+        "subjectCode": "MUS",
+        "courseCode": "13200",
+        "instructor": [
+            "Yeon Ji Yun",
+            "Gerald B Bodine",
+            "Daniel Weiss"
+        ],
+        "description": "Course comprises instruction in melodic and harmonic processes in tonal music; development of analytic, listening and piano techniques with musical equipment. Music reading ability is required, verified through Placement Exam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music Theory II",
+        "subjectCode": "MUS",
+        "courseCode": "13300",
+        "instructor": [
+            "Gerald B Bodine"
+        ],
+        "description": "A variety of styles and forms of music serve to exemplify melodic and harmonic processes and voice-leading practices in diatonic tonal music. Activities include analytic reading of musical scores, developing musical listening skills, and acquiring functional piano techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Class Piano And Musicianship I",
+        "subjectCode": "MUS",
+        "courseCode": "16100",
+        "instructor": [
+            "Ellen Bulow"
+        ],
+        "description": "A study of essential keyboard skills that include reading beginning level piano pieces, major and minor scales, transposition, sight reading and adding chords to a given melody. The musicianship includes essential aural skills: rhythmic dictation, interval and chord identification, and rhythmic and melodic dictation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Class Piano And Musicianship II",
+        "subjectCode": "MUS",
+        "courseCode": "16200",
+        "instructor": [
+            "Ellen Bulow"
+        ],
+        "description": "A continuation of MUS 16100 that include reading intermediate level piano pieces, sight reading, scales, transposition and adding chords to a melody. The musicianship component includes intermediate level aural skills, rhythmic and melodic dictation, intervals, chordal and harmonic dictation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music Theory IV: Contemporary Music",
+        "subjectCode": "MUS",
+        "courseCode": "23300",
+        "instructor": [
+            "Harry T Bulow"
+        ],
+        "description": "A study of the music of the 20th century and beyond. Class activities are focused on analysis of music representative of various genres.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music Appreciation",
+        "subjectCode": "MUS",
+        "courseCode": "25000",
+        "instructor": [
+            "Dwight L Monical"
+        ],
+        "description": "The traditions, forms, and styles of classical music. Other types of music may be examined as well. (Students may register through the Continuing Education Student Learning Center at the Tech Statewide locations via distance education.) CTL:IFA 1330 Music Appreciation",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computer Skills In Music",
+        "subjectCode": "MUS",
+        "courseCode": "27000",
+        "instructor": [
+            "Monte Harrison Taylor"
+        ],
+        "description": "Learn essential music technology skills that include computer based music notation practices, fundamentals of music synthesis and sequencing and basic recording practices.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Teaching Music In The Elementary School",
+        "subjectCode": "MUS",
+        "courseCode": "32400",
+        "instructor": [
+            "Christopher P Cayari",
+            "Nadya Nadegda N Dubikovsky"
+        ],
+        "description": "Develops basic musicianship through singing, playing instruments, reading and writing music, listening and moving to music. Surveys music teaching methods and materials. Includes lesson planning, experiences in teaching, and observation of children in music classes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music Composition II",
+        "subjectCode": "MUS",
+        "courseCode": "34200",
+        "instructor": [
+            "Tae Hong Park"
+        ],
+        "description": "Credit Hours: 3:00.  A continuation of Music Composition I with emphasis upon musical techniques after WWII through various writing and analytical assignments. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Jazz History",
+        "subjectCode": "MUS",
+        "courseCode": "37800",
+        "instructor": [
+            "Daniel Weiss"
+        ],
+        "description": "A historical and stylistic study of jazz.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music History II: Beethoven To The Present",
+        "subjectCode": "MUS",
+        "courseCode": "38200",
+        "instructor": [
+            "Nolan Michael Warden"
+        ],
+        "description": "Survey of the development of Western European music history from Beethoven to the present.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Digital Record And Production II",
+        "subjectCode": "MUS",
+        "courseCode": "38400",
+        "instructor": [
+            "Monte Harrison Taylor"
+        ],
+        "description": "  This course is a continuation of MUS 38300, Digital Audio Recording and Production I. Topics covered will include advanced musical sequencing, multitrack audio recording, audio signal processing, mixing, mastering and advanced audio and digital production. Students will be required to develop music recording and production projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Music, Sound & Computing",
+        "subjectCode": "MUS",
+        "courseCode": "49000",
+        "instructor": [
+            "Tae Hong Park"
+        ],
+        "description": "For students with specialized needs and interests in the field. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2024"
+    }
+]

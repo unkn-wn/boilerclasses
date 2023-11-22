@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Introduction To Pharmaceutical Manufacturing Processes",
+        "subjectCode": "IPPH",
+        "courseCode": "56200",
+        "instructor": [
+            "Tonglei Li"
+        ],
+        "description": "A course intended to provide the student with basic understanding of both the theoretical and practical aspects of pharmaceutical manufacturing by combining a thorough classroom treatment of the underlying principles of each pharmaceutical unit operation with hands-on execution of these activities in the laboratory. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Physical Chemical Principles",
+        "subjectCode": "IPPH",
+        "courseCode": "58000",
+        "instructor": [
+            "Lynne S Taylor"
+        ],
+        "description": "Applications of physical chemical principles to pharmaceutical systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles Pharmaceutic Engr",
+        "subjectCode": "IPPH",
+        "courseCode": "59000",
+        "instructor": [
+            "Gintaras V Reklaitis"
+        ],
+        "description": "Special topics in selected areas of industrial and physical pharmacy. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intro To Pharm Sci Research",
+        "subjectCode": "IPPH",
+        "courseCode": "69000",
+        "instructor": [
+            "Danzhou Yang"
+        ],
+        "description": "Individual research topics selected from the areas of industrial pharmacy, physical pharmacy, or biopharmaceutics. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Seminar In Industrial And Physical Pharmacy",
+        "subjectCode": "IPPH",
+        "courseCode": "69600",
+        "instructor": [
+            "Sandro Matosevic"
+        ],
+        "description": "Discussion of recent research developments in physical pharmacy, industrial pharmacy, and biopharmaceutics related to the physicochemical properties, availability, effectiveness, and safety of drugs and drug products. Topics are presented by staff, students, and invited speakers.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Survey Of Latin Literature",
+        "subjectCode": "CLCS",
+        "courseCode": "23100",
+        "instructor": [
+            "Daniel A Conner"
+        ],
+        "description": "Highlights of literature written in Ancient Rome at times of political, social, and intellectual turbulence. Reading (all in English) includes Vergil's Aeneid, as well as selections from other influential Latin texts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Comparative Mythology",
+        "subjectCode": "CLCS",
+        "courseCode": "23300",
+        "instructor": [
+            "Charles Steele Campbell"
+        ],
+        "description": "Comparative study of the myths of major ancient cultures, with emphasis on shared typological features.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Gender And Sexuality In Greek And Roman Antiquity",
+        "subjectCode": "CLCS",
+        "courseCode": "23700",
+        "instructor": [
+            "Erin K Moodie"
+        ],
+        "description": "How identities based on gender, sexual behavior and sexual desire, and socio-economic status are established in ancient Greece and Rome. Exploration of why these ancient views of gender and sexuality remain of continuing importance in the 21st century. All readings in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Alexander The Great And Hellenistic World",
+        "subjectCode": "CLCS",
+        "courseCode": "38000",
+        "instructor": [
+            "Nicholas Kregotis Rauh"
+        ],
+        "description": "Course examines the career of Alexander the Great and the rise of Macedonia in the Hellenistic Era. Topics include the emergence of Macedonia under Philip II; the achievements of Alexander the Great; and the wars of succession following his demise.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Ancient Western Medicine",
+        "subjectCode": "CLCS",
+        "courseCode": "38400",
+        "instructor": [
+            "Keith M Dickson"
+        ],
+        "description": "Historical and cultural study of Western medicine, from Mesopotamian origins to the late Roman Empire, based on written texts and archaeological evidence. Addresses the development of rational medical frameworks against the background traditional beliefs about illness as a sign of demonic possession, and charts the growth of the medical profession from individual avocation to institutional practice.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

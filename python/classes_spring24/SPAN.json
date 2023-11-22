@@ -1,0 +1,427 @@
+[
+    {
+        "title": "Spanish Level I",
+        "subjectCode": "SPAN",
+        "courseCode": "10100",
+        "instructor": [
+            "Lourdes Barranco Cortes"
+        ],
+        "description": "A beginning Spanish course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. CTL:IWL 1910 Spanish Level I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level II",
+        "subjectCode": "SPAN",
+        "courseCode": "10200",
+        "instructor": [
+            "Lourdes Barranco Cortes"
+        ],
+        "description": "Continuation of SPAN 10100. CTL:IWL 1911 Spanish Level II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Accelerated Basic Spanish",
+        "subjectCode": "SPAN",
+        "courseCode": "10500",
+        "instructor": [
+            "Lourdes Barranco Cortes"
+        ],
+        "description": "Accelerated Basic Spanish course that substitutes for SPAN 10100 and 10200.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level III",
+        "subjectCode": "SPAN",
+        "courseCode": "20100",
+        "instructor": [
+            "Lourdes Barranco Cortes"
+        ],
+        "description": "An intermediate Spanish course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. CTL:IWL 1912 Spanish Level III",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level IV",
+        "subjectCode": "SPAN",
+        "courseCode": "20200",
+        "instructor": [
+            "Lourdes Barranco Cortes"
+        ],
+        "description": "Continuation of SPAN 20100. CTL:IWL 1913 Spanish Level IV",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Latin American Short Stories",
+        "subjectCode": "SPAN",
+        "courseCode": "23500",
+        "instructor": [
+            "Song I No"
+        ],
+        "description": "Reading and discussion of selected masterpieces of Spanish American literature. The course context will change from semester to semester. Knowledge of Spanish not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To The Study Of Hispanic Literature",
+        "subjectCode": "SPAN",
+        "courseCode": "24100",
+        "instructor": [
+            "Yonsoo Kim",
+            "Cara A Kinnally",
+            "Paul B Dixon",
+            "Dawn F Stinchcomb"
+        ],
+        "description": "Reading and discussion of selected poetry, prose, and theatre from Spain and Spanish-speaking America; introduction to critical discourse and basic concepts of literary theory. Texts, discussion, and written assignments in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Second-Year Spanish: Special Topics",
+        "subjectCode": "SPAN",
+        "courseCode": "28000",
+        "instructor": [
+            "David Javier Williams Tortolini"
+        ],
+        "description": "Selected topics on the civilization, culture, and literature of Spain and Spanish America. Lectures and readings primarily in English, but knowledge of Spanish at the first-year level necessary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level V",
+        "subjectCode": "SPAN",
+        "courseCode": "30100",
+        "instructor": [
+            "Kely Y Paez Urbano",
+            "Dawn F Stinchcomb"
+        ],
+        "description": "Continued development of Spanish speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in the Spanish-speaking countries from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level VI",
+        "subjectCode": "SPAN",
+        "courseCode": "30200",
+        "instructor": [
+            "Inigo Sanchez-Llama",
+            "Kely Y Paez Urbano"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in Spanish on the basis of materials dealing with the ideas and events that have shaped the present-day Spanish-speaking countries. Conducted primarily in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Spanish For Heritage Speakers",
+        "subjectCode": "SPAN",
+        "courseCode": "30801",
+        "instructor": [
+            "Francisco Javier Clavijo"
+        ],
+        "description": "This course is a continuation of SPAN 30500. It is an advanced grammar course designed for Spanish-English bilinguals exposed to Spanish as a minority/native language during early childhood or adolescence but who have not received formal instruction or education in the language. It aims to develop advanced grammar and writing skills.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Spanish For The Professions",
+        "subjectCode": "SPAN",
+        "courseCode": "32100",
+        "instructor": [
+            "Cecilia I Tenorio"
+        ],
+        "description": "Continued work at the advanced-intermediate level with a focus on vocabulary and grammar for contexts in a wide variety of professional settings. Conducted primarily in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish For The Health Professions",
+        "subjectCode": "SPAN",
+        "courseCode": "32200",
+        "instructor": [
+            "Cecilia I Tenorio"
+        ],
+        "description": "Intermediate level course directed towards the use of Spanish in the health care professions. It covers specialized vocabulary from the medical fields, as well as grammar and syntax with the goal of developing speaking, listening, reading and writing abilities. Students will have the opportunity to apply their skills in practical contexts and discuss cultural considerations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Humanities-Informed Engineering Projects",
+        "subjectCode": "SPAN",
+        "courseCode": "32300",
+        "instructor": [
+            "Gabriel Octavio Rios-Rojas"
+        ],
+        "description": "The main goal of this course is to encourage students to think like global engineers by focusing curricular activities on engineering case studies from a humanistic-engineering perspective. The case studies examined in the course may include past, present, and hypothetical engineering successes and failures; analyses will require engineering skills combined with understanding of cultural perspectives of local communities and cultural context (i.e., sociological, anthropological, and historical information and analyses that contribute to cultural understanding). This humanities-infused approach will encourage students to develop a new mindset--a way of seeing current and hypothetical engineering plans, projects, and impacts through local communities' pasts and presents, unique values, perspectives, and daily ways of life. Taught in Spanish.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish For Engineering And Technology",
+        "subjectCode": "SPAN",
+        "courseCode": "32500",
+        "instructor": [
+            "Gabriel Octavio Rios-Rojas"
+        ],
+        "description": "This is an intermediate-level course directed towards the use of Spanish in Engineering and Technology professions. It covers specialized vocabulary from the different technical areas, as well as grammar and syntax, with the goal of developing speaking, listening, reading, and writing abilities. Students will have the opportunity to apply their skills in practical contexts, including job interviews, internships, formal presentations and communication in the workplace.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Hispanic Literature II: Prose",
+        "subjectCode": "SPAN",
+        "courseCode": "34200",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Reading of selected novels and short fiction from Spain and Spanish-speaking America in their historical and cultural contexts. Readings, discussion, and papers in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Structure Of Spanish II: Morphology, Lexicology, And Syntax",
+        "subjectCode": "SPAN",
+        "courseCode": "36200",
+        "instructor": [
+            "Lori A Czerwionka"
+        ],
+        "description": "Linguistic analysis of Spanish, focusing on morphology, lexicology, and syntax. This course will present the grammatical structure of Spanish dealing with word-level phenomena (derivational and inflectional morphology, the lexicon) and phrase- and sentence-level phenomena (constituents, word order, sentence structure, etc.).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level VII",
+        "subjectCode": "SPAN",
+        "courseCode": "40100",
+        "instructor": [
+            "Nuur Hamad Zahonero"
+        ],
+        "description": "Advanced work on development of Spanish speaking, listening, reading, and writing abilities, focusing on materials dealing primarily with culture and the arts in the Spanish-speaking countries. Conducted primarily in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Level VIII",
+        "subjectCode": "SPAN",
+        "courseCode": "40200",
+        "instructor": [
+            "Nuur Hamad Zahonero"
+        ],
+        "description": "Spanish 40200 is a content-based course that includes an overview of Spanish grammar. Students will therefore be required to learn a considerable amount of information about the different aspects of the Hispanic, Peninsular and Latin American culture that will include history, politics, art, gastronomy, music, traditions, and literature, among others.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business Spanish",
+        "subjectCode": "SPAN",
+        "courseCode": "42400",
+        "instructor": [
+            "Blanca L Cabrera De Morales"
+        ],
+        "description": "A study of the terminology and techniques used in commercial transactions, including the interpretation and writing of business materials. Development of the four language skills, with emphasis on writing and speaking.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish Civilization",
+        "subjectCode": "SPAN",
+        "courseCode": "48000",
+        "instructor": [
+            "Yonsoo Kim"
+        ],
+        "description": "The study of modern Spanish life, with special emphasis on social institutions and customs. Lectures in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Latin American Culture",
+        "subjectCode": "SPAN",
+        "courseCode": "48300",
+        "instructor": [
+            "Cara A Kinnally"
+        ],
+        "description": "Study of Latin American cultures and U.S. Latino culture, from pre-Columbian times to the present. The course will focus on selected aspects of the cultures of Latin American groups. Conducted in Spanish.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Food And Culture In The Hispanic World",
+        "subjectCode": "SPAN",
+        "courseCode": "48500",
+        "instructor": [
+            "Cecilia I Tenorio"
+        ],
+        "description": "Advanced-level language and culture course about food culture in the Spanish-speaking world. It covers gastronomy, celebrations, history, art, mythology, and other aspects of daily life related to the culinary traditions of the Hispanic countries. Students will further develop their speaking, listening, reading and writing abilities in Spanish. They will have the opportunity to apply their skills in practical contexts and discuss cultural considerations, as well as participate in some hands-on cooking experience.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spanish American Literature Of The 19th Century",
+        "subjectCode": "SPAN",
+        "courseCode": "55100",
+        "instructor": [
+            "Paul B Dixon"
+        ],
+        "description": "A survey of Spanish American literature of the 19th century. Reading and discussion of a number of representative works as well as excerpts from several others.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Structure Of Spanish I: Phonetics, Phonology, And Dialectology",
+        "subjectCode": "SPAN",
+        "courseCode": "56100",
+        "instructor": [
+            "Daniel J Olson"
+        ],
+        "description": "  Linguistic analysis of Spanish phonology, phonetics, and dialectology. Selected topics within the areas of Spanish sociolinguistics and language acquisition. Each of these topics will be approached from a theoretical and contrastive Spanish/English perspective. ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Structure Of Spanish II: Morphology, Lexicology, And Syntax",
+        "subjectCode": "SPAN",
+        "courseCode": "56200",
+        "instructor": [
+            "Alejandro Cuza-Blanco"
+        ],
+        "description": "Linguistic analysis of Spanish focusing on morphology, lexicology, and syntax. This course will present the grammatical structure of Spanish dealing with word-level phenomena (derivational and inflectional morphology, the lexicon) and phrase- and sentence-level phenomena (constituents, word order, sentence structure, etc.).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Language Acquisition",
+        "subjectCode": "SPAN",
+        "courseCode": "59600",
+        "instructor": [
+            "Alejandro Cuza-Blanco"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mod Spanish Women Writers",
+        "subjectCode": "SPAN",
+        "courseCode": "65900",
+        "instructor": [
+            "Inigo Sanchez-Llama"
+        ],
+        "description": "Advanced study of special subject. Topics to be announced in advance. Content varies. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

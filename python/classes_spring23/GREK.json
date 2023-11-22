@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Ancient Greek Level II",
+        "subjectCode": "GREK",
+        "courseCode": "10200",
+        "instructor": [
+            "Elizabeth E Mercier"
+        ],
+        "description": "Continuation of the study of Attic Greek grammar and reading of connected prose of the Classical period.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Ancient Greek Level IV",
+        "subjectCode": "GREK",
+        "courseCode": "20200",
+        "instructor": [
+            "Elizabeth E Mercier"
+        ],
+        "description": "Upper intermediate reading course in ancient Greek, designed to consolidate students' knowledge of grammar and syntax, broaden vocabulary, and develop precision and confidence in reading and translation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

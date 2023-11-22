@@ -1,0 +1,487 @@
+[
+    {
+        "title": "American Government And Politics",
+        "subjectCode": "POL",
+        "courseCode": "10100",
+        "instructor": [
+            "Michael Roderick Brownstein",
+            "John W T Megson"
+        ],
+        "description": "A study of the nature of democratic government, the U.S. Constitution, federalism, civil rights, political dynamics, the presidency, Congress, and the judiciary. CTL:ISH 1002 American Government",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Public Policy And Public Administration",
+        "subjectCode": "POL",
+        "courseCode": "12000",
+        "instructor": [
+            "Daniel Stuart Schiff"
+        ],
+        "description": "An introduction to the fields of public policy and public administration. Processes of policy formation and administration are examined. Different approaches to evaluating and improving public policies are discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To International Relations",
+        "subjectCode": "POL",
+        "courseCode": "13000",
+        "instructor": [
+            "Kyle E Haynes"
+        ],
+        "description": "An analysis of the fundamentals of international law, organization, and politics, particularly as relevant to contemporary international relations. CTL:ISH 1003 Introduction To World Politics",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Governments Of The World",
+        "subjectCode": "POL",
+        "courseCode": "14100",
+        "instructor": [
+            "William Adam Dory"
+        ],
+        "description": "An introduction to the politics and government in selected foreign countries. The course presents the tools and background needed to understand contemporary events in the world beyond the United States. Readings and discussions pay special attention to democratization and development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Political Thought",
+        "subjectCode": "POL",
+        "courseCode": "15000",
+        "instructor": [
+            "Mary F Scudder"
+        ],
+        "description": "Introduction to basic concepts in political philosophy, such as conflict and community, justice and the good society, the origins of democracy, and the intersections of class, race, gender, and sexuality.  Selected classical and contemporary political thinks covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Spies And Lies: Studies In Intelligence And National Security",
+        "subjectCode": "POL",
+        "courseCode": "20400",
+        "instructor": [
+            "Melissa C Will"
+        ],
+        "description": "  This course examines the role that the collection, analysis, and dissemination of intelligence plays in US foreign policy and national security. We will unpack the missions and methods of the US Intelligence Community. Who does what? What are the different challenges for those engaged in the different aspects of intelligence? Why is the intelligence community configured like it is? We will also spend time with more contemporary topics in intelligence. What role does intelligence play meeting future national security and foreign policy challenges? What is the role of intelligence in modern warfare, including cyber-warfare? What role does intelligence play in a liberal democracy? What should intelligence oversight look like? ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Women, Politics, And Public Policy",
+        "subjectCode": "POL",
+        "courseCode": "22200",
+        "instructor": [
+            "Rosalee A Clawson"
+        ],
+        "description": "An introduction to women's participation in politics, with an emphasis on America. Structural and attitudinal conditions limiting women's political roles and contemporary efforts to change women's status in society through politics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Environmental Policy",
+        "subjectCode": "POL",
+        "courseCode": "22300",
+        "instructor": [
+            "Shan Zhou"
+        ],
+        "description": "(FNR 22310)  Study of decision making as modern societies attempt to cope with environmental and natural resources problems. Focuses on the American political system, with some attention to the international dimension. Current policies and issues will be examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Social And Polit Phil",
+        "subjectCode": "POL",
+        "courseCode": "22900",
+        "instructor": [
+            "Leonard Harris"
+        ],
+        "description": "This course focuses on problems and issues that are beginning to be recognized as worthy of public discussion or policy action, or that may be new areas of expertise and interest for our faculty members. We use it to introduce new topics and approaches, including experimental pedagogies, courses that involve travel, and the like. The content of the course varies from one offering to the next. Possible topics are Bioethics and Politics, Food Policy, and Bicycle Politics.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To United States Foreign Policy",
+        "subjectCode": "POL",
+        "courseCode": "23100",
+        "instructor": [
+            "Alexander Thomas Wilhelm"
+        ],
+        "description": "Designed to introduce students to the major themes and issues in contemporary U.S. foreign policy. Lectures, discussion, and readings will examine such areas as U.S. relationships with the major powers, the Third World, and international organizations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "International Relations Among Rich And Poor Nations",
+        "subjectCode": "POL",
+        "courseCode": "23500",
+        "instructor": [
+            "Alexander J Pijanowski"
+        ],
+        "description": "Introduction to the major themes in the contemporary international relations among rich and poor nations. Examines such areas as North-South relations, interdependence, international organizations, and global development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Political Analysis",
+        "subjectCode": "POL",
+        "courseCode": "30000",
+        "instructor": [
+            "Eric N Waltenburg"
+        ],
+        "description": "An introduction to the study of politics, its basic concepts and major areas of concern; also review of important research techniques, including methods of data collection and analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Global Green Politics",
+        "subjectCode": "POL",
+        "courseCode": "32700",
+        "instructor": [
+            "Reed Michael Kurtz"
+        ],
+        "description": "Analysis and assessment of the nature of global environmentalism, its connections with other new social movements, and its impact on domestic and international politics worldwide, with particular attention to green political parties and nongovernmental organizations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Congress: Structure And Functioning",
+        "subjectCode": "POL",
+        "courseCode": "41100",
+        "instructor": [
+            "Robert X Browning"
+        ],
+        "description": "A study of how Congress actually operates. Formal and informal power structures within both chambers and roles of the individual members of Congress are analyzed. Attention is directed to latent, as well as manifest, functions of legislative, investigative, and other major activities of Congress. The problem of bringing expertise to bear on the legislative process is considered throughout.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "International Environmental Policy",
+        "subjectCode": "POL",
+        "courseCode": "42300",
+        "instructor": [
+            "Reed Michael Kurtz"
+        ],
+        "description": "Environmental policy development in the international arena, with attention to international law, international organizations, and transboundary environmental problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Am Political Communication",
+        "subjectCode": "POL",
+        "courseCode": "42900",
+        "instructor": [
+            "David R Johnson",
+            "Jessica Renee Collier",
+            "Eric N Waltenburg"
+        ],
+        "description": "Contemporary political problems in the United States affecting the interpretation of democracy, human rights and welfare, social pressures, and intergovernmental relations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "International Law And Conflict",
+        "subjectCode": "POL",
+        "courseCode": "43000",
+        "instructor": [
+            "Liana Eustacia Reardon"
+        ],
+        "description": "An in-depth analysis of selected problems in international relations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "International Organization",
+        "subjectCode": "POL",
+        "courseCode": "43300",
+        "instructor": [
+            "Ann Marie Clark"
+        ],
+        "description": "A study of the structure and functions of the United Nations and associated agencies, with an emphasis on the role of this system in contemporary international relations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Constitutional Law I",
+        "subjectCode": "POL",
+        "courseCode": "46100",
+        "instructor": [
+            "Martin Jay Sweet"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Democracy And Its Critics",
+        "subjectCode": "POL",
+        "courseCode": "49100",
+        "instructor": [
+            "Jesse Durow Crosson",
+            "Kyle E Haynes",
+            "Mary F Scudder"
+        ],
+        "description": "This is a variable-title seminar focusing on contemporary issues in political science at the senior level. It is part of the \"capstone\" experience for political science majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Legal Writing",
+        "subjectCode": "POL",
+        "courseCode": "49300",
+        "instructor": [
+            "Brian A Karle"
+        ],
+        "description": "An undergraduate seminar devoted to an interdisciplinary examination of social, economic, political, and intellectual movements, using the faculty resources of the participating departments. Subject matter will vary. Each offering of the seminar will be approved by a committee of department heads from the sponsoring departments. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Political Science: Methodology",
+        "subjectCode": "POL",
+        "courseCode": "50100",
+        "instructor": [
+            "Minh Duc Trinh"
+        ],
+        "description": "Introduction to the basic techniques of statistical analysis applicable to political science data. Elementary descriptive statistics and statistical inference. Introduction to multivariate analysis. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Transportation Equity",
+        "subjectCode": "POL",
+        "courseCode": "52000",
+        "instructor": [
+            "Rosalee A Clawson"
+        ],
+        "description": "This is a course focused on a specific current public policy topic, chosen for its contemporary political relevance, which varies from semester to semester. In general, each topic will be examined in terms of its historical roots, past policy initiatives, present policy proposals, and its enduring political and social challenges.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Political Science: Discipline And Profession",
+        "subjectCode": "POL",
+        "courseCode": "60000",
+        "instructor": [
+            "Logan R Strother"
+        ],
+        "description": "An exploration of the scope of political science and of its development as a profession, with a focus on what American political scientists do as disciplinary professionals. Analysis of major approaches to the study of politics and of current developments. Prerequisite: 6 credit hours in Political Science.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Methods Topics",
+        "subjectCode": "POL",
+        "courseCode": "60600",
+        "instructor": [
+            "Bryce Jensen Dietrich"
+        ],
+        "description": "This course deals with advanced quantitative techniques useful in political science research. These include multiple correlation and regression, causal modeling, dynamic (time series) analysis, dimensional analysis (Coombsean scaling, Shepard-Kruskal scaling, and factor analysis), and cross-level inference techniques. Prerequisite: POL 50100, 60500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Proseminar In American Political Systems, Processes, And Behavior",
+        "subjectCode": "POL",
+        "courseCode": "61000",
+        "instructor": [
+            "James A Mccann"
+        ],
+        "description": "An introduction to American political systems, processes, and behavior as a field of graduate study with an emphasis on literature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Research Seminar In Political Behavior",
+        "subjectCode": "POL",
+        "courseCode": "61600",
+        "instructor": [
+            "Mollie Jane Cohen"
+        ],
+        "description": "Extends the work of POL 51600 (Group Politics) to the empirical study of primary groups, cliques, social groups, voluntary associations, experimental and occupational groups (insofar as they have political impacts) and of political clubs and associations, paraparties, and inchoate political movements and parties. Training will be given in the use of phenomenological observation, interaction analysis, content analysis, personality inventories, and other instruments that reveal the social structure and dynamics of groups. Students will conduct field studies of politically-relevant groups, or will conduct or participate in conducting laboratory experiments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Proseminar In International Relations",
+        "subjectCode": "POL",
+        "courseCode": "63000",
+        "instructor": [
+            "Ann Marie Clark"
+        ],
+        "description": "An introduction to international relations as a field of graduate study with an emphasis on literature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "IR Research Seminar",
+        "subjectCode": "POL",
+        "courseCode": "63100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Topics vary. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Comparative Research Seminar",
+        "subjectCode": "POL",
+        "courseCode": "64100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Topics vary. Prerequisite: POL 64000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Professional Development Practicum",
+        "subjectCode": "POL",
+        "courseCode": "68500",
+        "instructor": [
+            "James A Mccann"
+        ],
+        "description": "This course examines the ethics, norms, and expectations of the profession of political science and public policy for those engaged in doctoral level study. The course explores topics of professional development to support progress in the degree and building a successful career. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Career And Placement Practicum",
+        "subjectCode": "POL",
+        "courseCode": "68600",
+        "instructor": [
+            "James A Mccann"
+        ],
+        "description": "Provide practical guidance and workshops to help students plan job searches, prepare application materials, and develop skills in public presentations such as video interviews, in-person interviews, job talks, teaching talks, and other public talks. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    }
+]

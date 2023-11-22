@@ -1,0 +1,63 @@
+[
+    {
+        "title": "Introduction To African American Studies",
+        "subjectCode": "AAS",
+        "courseCode": "27100",
+        "instructor": [
+            "Miron Javionne Clay-Gilmore"
+        ],
+        "description": "Introduction to the philosophical and methodological principles underlying Afro-American studies. Dimensions of the black experience, including history, education, politics, psychology, economics, religion, social organization, and art, will be covered, and the requisite academic tools and sources will be examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Harlem Renaissance",
+        "subjectCode": "AAS",
+        "courseCode": "37100",
+        "instructor": [
+            "Miron Javionne Clay-Gilmore",
+            "Mindy Hui Tan"
+        ],
+        "description": "Focus on specific topics of the personal experiences of blacks, in Africa and the diaspora, including black identity, black culture, and the relationships between blacks and society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Hist Of Injustice In America",
+        "subjectCode": "AAS",
+        "courseCode": "37300",
+        "instructor": [
+            "Ronald J Stephens"
+        ],
+        "description": "Focuses on a specific topic that relates to selected issues in the life, history, and culture of peoples of African ancestry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Blacks In Hollywood Film",
+        "subjectCode": "AAS",
+        "courseCode": "47300",
+        "instructor": [
+            "Ronald J Stephens"
+        ],
+        "description": "A history of the representation of blacks in mainstream film throughout the twentieth century.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

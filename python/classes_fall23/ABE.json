@@ -1,0 +1,334 @@
+[
+    {
+        "title": "Thermodynamics In Biological Systems I",
+        "subjectCode": "ABE",
+        "courseCode": "20100",
+        "instructor": [
+            "Kurt David Ristroph"
+        ],
+        "description": "Thermodynamic principles associated with biological systems and processing of biological materials. Emphasis on the first law of thermodynamics. Fundamentals of steady-state mass and energy balances for reacting and non-reacting processes including multiple unit operations emphasizing living systems and bioprocessing. Applications of the first law conservation of energy to biological systems, energy conversion systems, and the environmental impacts of energy production. Development of engineering problem solving skills via MathCad and MatLab software. Laboratory emphasizes combining technical engineering skills with professional skill development through computer and laboratory exercises including two extensive projects that result in a biological product design.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Computations For Engineering Systems",
+        "subjectCode": "ABE",
+        "courseCode": "20500",
+        "instructor": [
+            "Grace Lynn Baldwin Kan-Uge"
+        ],
+        "description": "Development of engineering problem solving and design skills. Use of Excel, Matlab, and MathCad for problem solving, data analysis, numerical modeling, and statistics. Introduction to elementary statics, dynamics, materials, thermodynamics, fluid mechanics, and energy topics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Sophomore Seminar",
+        "subjectCode": "ABE",
+        "courseCode": "29000",
+        "instructor": [
+            "Jane R Frankenberger"
+        ],
+        "description": "Current agricultural and biological engineering issues will be discussed by students, staff, and guest speakers. Career planning, employment opportunities, professionalism, ethics, and improvement of communication skills will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Applications Of Physical Chemistry To Biological Processes",
+        "subjectCode": "ABE",
+        "courseCode": "30300",
+        "instructor": [
+            "Mohit S Verma"
+        ],
+        "description": "Physical chemical principles associated with transport of mass, momentum and energy in bioprocesses. Principles for measuring physical chemical properties, a description of predictive equations for their evaluation and the role of these principles in the design and optimization of bioprocesses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physical Properties Of Biological Materials",
+        "subjectCode": "ABE",
+        "courseCode": "30500",
+        "instructor": [
+            "Rose Prabin Kingsly Ambrose"
+        ],
+        "description": "Physical properties of agricultural crops and food products and their relationship to harvesting, storage, and processing. Physical properties covered include: density, shape, moisture content, water potential, water activity, friction and flow or particulate solids, terminal velocity, thermal properties, interaction with electromagnetic radiation, and viscoelastic behavior of solids.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Momentum Transfer In Food And Biological Systems",
+        "subjectCode": "ABE",
+        "courseCode": "30700",
+        "instructor": [
+            "Shweta Singh"
+        ],
+        "description": "Fluid statics, Newton's law of viscosity, shell momentum balances, equations of continuity and motion, one dimensional flow problems, flow through porous media, velocity distributions with more than one independent variable, two dimensional flow through a channel, stream function, velocity potential, dimensional analysis, boundary layer, turbulent flow, Reynolds stress, form and skin friction, application of macroscopic momentum and mechanical energy balances to engineering problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Soil And Water Resource Engineering",
+        "subjectCode": "ABE",
+        "courseCode": "32500",
+        "instructor": [
+            "Keith A Cherkauer"
+        ],
+        "description": "Interrelationships of the plant-water-air-soil system; hydrologic processes; protection of surface and ground water quality; GIS targeting of soil and water protection measures; and design of subsurface and overland drainage systems, irrigation systems, and soil erosion control practices.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Biological/Microbial Kinetics And Reaction Engineering",
+        "subjectCode": "ABE",
+        "courseCode": "37000",
+        "instructor": [
+            "Meng Deng"
+        ],
+        "description": "Study of the rates of chemical/biochemical reaction and catalysis in agricultural, food, and biological systems with applications to engineering process design. Applications include microbial growth, enzyme catalysis, fermentation and reactor design. Introductory enzymatic and microbial reaction concepts will be taught and incorporated into reactor design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Ag/Biol Engineering Ambassador Leadership Seminar",
+        "subjectCode": "ABE",
+        "courseCode": "40600",
+        "instructor": [
+            "Daniel C Taylor"
+        ],
+        "description": "Students engage in weekly seminar/lab that includes topics such as leadership, professional skills, teamwork, engaging audiences and Purdue culture. Students utilize these skills while representing the Department of Agricultural and Biological Engineering to current and prospective students, alumni, donors, legislators, and other supporters of Purdue Agricultural and Biological Engineering department. Students must be selected as an ABE Ambassador. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Hydraulic Control Systems For Mobile Equipment",
+        "subjectCode": "ABE",
+        "courseCode": "43500",
+        "instructor": [
+            "Andrea Vacca"
+        ],
+        "description": "Design of basic fluid power components and systems. Includes power steering, hydrostatic and hydromechanical transmission, electrohydraulic servovalves, servomechanism, and manually controlled systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Finite Element Method In Design And Optimization",
+        "subjectCode": "ABE",
+        "courseCode": "45000",
+        "instructor": [
+            "Sadegh Dabiri"
+        ],
+        "description": "Fundamentals of the finite element method as it is used in modeling, analysis, and design of thermal/fluid and mechanical systems; one- and two-dimensional elements; boundary value problems, heat transfer and fluid flow problems; structural and solid mechanics problems involving beam, truss, plate and shell elements; computer-aided design and optimization of machine components, structural elements and thermal/fluid system.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Sensors And Process Control",
+        "subjectCode": "ABE",
+        "courseCode": "46000",
+        "instructor": [
+            "Lizhi Shang"
+        ],
+        "description": "Fundamental aspects of transducers, biosensors, instrumentation, and computer control are presented, with particular emphasis on sensors and controls used in agricultural, biological, and food applications. Laboratory and pilot plant scale computer controlled equipment is used to examine response of process variables, sensor calibration, control system modeling, and controller selection and tuning. Prereq: differential equations and a course in either heat transfer or fluid mechanics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Project Planning And Management",
+        "subjectCode": "ABE",
+        "courseCode": "48400",
+        "instructor": [
+            "John H Lumkes"
+        ],
+        "description": "Review of topics relevant to project planning and execution in industry, including technical communication, budgeting, team management, intellectual property rights, contracts and timelines. Students will select a Capstone project and assemble a project proposal within a team environment.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Agricultural Engineering Project Management And Design",
+        "subjectCode": "ABE",
+        "courseCode": "48500",
+        "instructor": [
+            "John H Lumkes"
+        ],
+        "description": "Team based projects are completed during the semester and documented with a written report and oral presentations. Projects encompass a broad range of topics within agricultural engineering such as the design of environmental systems, machinery, precision agriculture and robotics, and student design competitions.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Design And Modeling Of Fluid Power Systems",
+        "subjectCode": "ABE",
+        "courseCode": "53500",
+        "instructor": [
+            "Andrea Vacca"
+        ],
+        "description": "Introduction to fluid power technology. Design of hydraulic systems for mobile and industrial application for functionality, cost and energy efficiency. Modeling strategies for fluid power systems. Demo labs and class projects are given to reinforce the design and modeling learning projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Design Of Off-Highway Vehicles",
+        "subjectCode": "ABE",
+        "courseCode": "54500",
+        "instructor": [
+            "Robert M Stwalley"
+        ],
+        "description": "Problems associated with the design of off-highway vehicles, with special emphasis on farm and industrial tractors and self-propelled machines; engines; power trains; traction; vehicle control systems; human factors; testing and evaluation of performance.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Models And Microbiomes",
+        "subjectCode": "ABE",
+        "courseCode": "54700",
+        "instructor": [
+            "Mohit S Verma"
+        ],
+        "description": "Determine the use of computational, physical, and biological models for studying and engineering microbiomes. Study peer-reviewed literature and synthesize findings in the form of oral and written deliverables. Background in microbiology either from coursework or research and interest in microbiomes recommended.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Transport Operations In Food And Biological Systems II",
+        "subjectCode": "ABE",
+        "courseCode": "55700",
+        "instructor": [
+            "Martin R Okos"
+        ],
+        "description": "Course includes analysis and design of operations, such as dehydration, fermentation, and separation processes. Development of experimental designs, integration of pilot plant results into the design, operation and scale-up process systems. Emphasis on how the properties of biological materials influence the quality of the processed product.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Biological & Food Process Dsgn",
+        "subjectCode": "ABE",
+        "courseCode": "59100",
+        "instructor": [
+            "Martin R Okos",
+            "Rakesh Agrawal",
+            "Shweta Singh"
+        ],
+        "description": "Primarily designed for students (two or more) desiring credit from subject areas for which no specific course, workshop, or individual study plan is offered. Area of study will deal with topics that have enough student interest to justify the formalized teaching of a specialized topic. The course may be repeated by a student as long as the topic being taught is not repeated. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Life Of A Faculty Entrepreneur: Discovery, Delivery, Translation",
+        "subjectCode": "ABE",
+        "courseCode": "62600",
+        "instructor": [
+            "Nathalie A L Duval-Couetil"
+        ],
+        "description": "(TLI 62600)  The course is designed to introduce graduate students and faculty mentors to the intellectual, financial, and management processes associated with translating research into tangible products through university initiated, early-stage commercialization (start-up) activities. Lectures will present case studies of technologies and pathways to commercialization. Guest speakers will illustrate the start-up process through real-world experience, and will also address approaches for managing entrepreneurial activities, intellectual property and conflicts of interest in a university environment. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Graduate Research Training",
+        "subjectCode": "ABE",
+        "courseCode": "69400",
+        "instructor": [
+            "Nathan S Mosier"
+        ],
+        "description": "Strategies for success in graduate study are taught. Students will learn how to write a graduate research proposal, effectively plan for degree milestones, and learn about benefits of participating in professional societies. Students will also complete required training for graduate student researchers, including responsible conduct of research, laboratory safety, and an equal access/equal opportunity briefing.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Doctoral Professional Development",
+        "subjectCode": "ABE",
+        "courseCode": "69700",
+        "instructor": [
+            "Abigail S Engelberth"
+        ],
+        "description": "Discussion of research problems, methods, procedure, and reports. Discussion and practice to improve written and oral communication. Professional development activities.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    }
+]

@@ -1,0 +1,183 @@
+[
+    {
+        "title": "General Entomology",
+        "subjectCode": "ENTM",
+        "courseCode": "20600",
+        "instructor": [
+            "Stephen L Cameron"
+        ],
+        "description": "A general course on insect structure, function, biology, ecology and population management. Coordinated with the ENTM 20700 laboratory as an introductory course in entomology.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Insect Behavior",
+        "subjectCode": "ENTM",
+        "courseCode": "21000",
+        "instructor": [
+            "Matthew D Ginzel"
+        ],
+        "description": "Description and introductory analysis of innate and learned insect behavior, including basic orientations and movements, behavioral periodicity, communication, chemical and structural defenses, host selection and feeding, reproduction, and insect societies. General biology and introductory entomology are desirable, but not essential.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Forensic Analysis",
+        "subjectCode": "ENTM",
+        "courseCode": "22820",
+        "instructor": [
+            "Krystal Rae Hans"
+        ],
+        "description": "Forensic science evidence analysis, crime lab evidence management and data analysis techniques. Focuses on the accuracy, precision and integrity in evidence analysis for a survey of forensic disciplines. Emphasizes the place of forensic analysis as a necessary second step in a sequence that takes evidence from scene, to the lab for analysis and finally into the court of law.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Insect Physiology And Biochemistry",
+        "subjectCode": "ENTM",
+        "courseCode": "25300",
+        "instructor": [
+            "Laramy S Enders"
+        ],
+        "description": "Introductory course in insect cell biology, biochemistry, and physiology including structures and functions of insect internal and external tissues and organs. A year of college biology or equivalent knowledge is expected.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Insect Ecology",
+        "subjectCode": "ENTM",
+        "courseCode": "31100",
+        "instructor": [
+            "Ian Kaplan"
+        ],
+        "description": "Insect ecology investigates the fundamental concepts of ecology as they relate to insects, including insect interactions, other insects and their environment. Topics include population and community ecology, plant-insect interactions, insect biodiversity and biogeography, and theoretical and applied ecology. Examples from current entomological and ecological studies are used. Completion of college biology or an introductory course in entomology is recommended.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Insect Chemical Ecology",
+        "subjectCode": "ENTM",
+        "courseCode": "31200",
+        "instructor": [
+            "John J Couture"
+        ],
+        "description": "An overview of the structure and function of natural and synthetic chemical products in insect ecology. One year of college biology. One year of college chemistry strongly recommended.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Medico-Legal Entomology",
+        "subjectCode": "ENTM",
+        "courseCode": "32820",
+        "instructor": [
+            "Krystal Rae Hans"
+        ],
+        "description": "This course explores the main topics covered under medico-legal entomology (MLE). Specifically, the course will focus on the role that insects play in abuse, neglect, and death investigations. Students will experience rearing and identifying the major forensically important insect groups associated with medico-legal investigations. Finally, students will gain an appreciation of the scope of MLE through the analysis of two mock cases.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Insecticides And Environment",
+        "subjectCode": "ENTM",
+        "courseCode": "35300",
+        "instructor": [
+            "Madison Patricia Gits"
+        ],
+        "description": "Insecticides, their interactions with biological organisms and the environment, regulatory policies, environmental and human health outcomes, and current controversies. A year of college biology and college chemistry or equivalent knowledge is expected.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Addressing Grand Challenges Through Insect Biology",
+        "subjectCode": "ENTM",
+        "courseCode": "40100",
+        "instructor": [
+            "Dieudonne Baributsa"
+        ],
+        "description": "This course engages students in an examination of societal grand challenges by identifying the problems, understanding the current state of knowledge, identifying knowledge gaps, and implementing possible solutions. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Human-Wildlife Conflicts",
+        "subjectCode": "ENTM",
+        "courseCode": "43100",
+        "instructor": [
+            "Lee A Humberg"
+        ],
+        "description": "Exploration of conflicts between human interests and wildlife and the regulations policies and legislation used to minimize conflicts. Negative interactions may be real or perceived, economic or aesthetic, social or political, and may pose risks to human health and safety. Emphasis on the causes of conflict and resolutions that seek to balance protection or conservation of wildlife with protection of other public resources and individual property owners. Prior knowledge of college-level general biology and ecology is expected.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Analysis Of Ecological Data",
+        "subjectCode": "ENTM",
+        "courseCode": "64200",
+        "instructor": [
+            "Jeffrey D Holland"
+        ],
+        "description": "Intermediate course in analysis options for biological and ecological data. Topics include: univariate, multivariate, parametric and non-parametric analysis and their basis; advanced graphical techniques; basic mapping with and without geographical information systems; simulation modeling; associated coding for open source platforms. A previous graduate-level course in statistics is required. Working knowledge of ANOVA, t-tests, linear regression, and assumptions and distributions of test statistics for these is assumed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Experimentation And Analysis",
+        "subjectCode": "ENTM",
+        "courseCode": "69200",
+        "instructor": [
+            "John S Yaninek",
+            "Douglas Scott Richmond"
+        ],
+        "description": "Advanced topics in specialties of department members such as, but not limited to: biochemistry and physiology; biological control; insect pest management; veterinary entomology; nematode systematics; pathology; systematics. The field in which work is offered will appear on the student's record.  Doctoral student standing. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    }
+]

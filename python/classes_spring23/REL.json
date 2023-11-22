@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Introduction To Christian Theology",
+        "subjectCode": "REL",
+        "courseCode": "20400",
+        "instructor": [
+            "Sarah N Jaran"
+        ],
+        "description": "This course is an introductory survey of the goals and aims of theology in the Christian tradition. Focus is on the content of Christian theology, its methodological presuppositions and principles of development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Religions Of The East",
+        "subjectCode": "REL",
+        "courseCode": "23000",
+        "instructor": [
+            "Michael D Nichols"
+        ],
+        "description": "(PHIL 33000) A study of the history, teaching, and present institutions of the religions of India, Southeast Asia, China, and Japan. This will include Hinduism, Jainism, Sikhism, Buddhism, Confucianism, Taoism, Shintoism, and Zoroastrianism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Religions Of The West",
+        "subjectCode": "REL",
+        "courseCode": "23100",
+        "instructor": [
+            "Thomas W Ryba"
+        ],
+        "description": "(PHIL 33100) A comparative study of the origins, institutions, and theologies of the three major Western religions, Judaism, Christianity, and Islam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "A History Of The Christian Afterlife",
+        "subjectCode": "REL",
+        "courseCode": "25000",
+        "instructor": [
+            "Thomas W Ryba"
+        ],
+        "description": "An exploration of the ways Christians have envisioned the afterlife, including New Testament descriptions. Apocryphal notions, Patristic conceptions, mystical and 19th century descriptions of heaven as sexual union, and 20th century understandings of the afterlife as a \"process of education\".",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Bible And Its Early Interpreters",
+        "subjectCode": "REL",
+        "courseCode": "31800",
+        "instructor": [
+            "Marianne Blickenstaff"
+        ],
+        "description": "This course will start with observation of the development of early themes in later parts of the Hebrew Bible and proceed to the on-going influence of these themes in Jewish literature outside the Hebrew canon (apocrypha, pseudepigrapha, targums, midrash, Josephus, Philo, and other Hellenistic Jewish authors), as well as in pagan literature of this era and in early Christian literature, particularly the New Testament.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engaging Religious Diversity",
+        "subjectCode": "REL",
+        "courseCode": "49100",
+        "instructor": [
+            "Ashley M Purpura"
+        ],
+        "description": "  Investigation of a special topic in Religious Studies. The topic will vary from semester to semester.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

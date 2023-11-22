@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Gateway To Engineering Technology",
+        "subjectCode": "ENGT",
+        "courseCode": "18200",
+        "instructor": [
+            "Brittany A Newell"
+        ],
+        "description": "  This course introduces School of Engineering Technology students to the resources and skills needed to define and solve technical problems, which will help them be successful in their studies and ultimately in their careers. Instruction is given in analytical and computational problem-solving techniques. The application of software for analysis and problem solving is emphasized. Foundational principles for electrical, industrial, manufacturing, and mechanical engineering technology are studied. Teamwork, global and societal concerns, and professional ethics are integrated into course.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engineering Technology Capstone I",
+        "subjectCode": "ENGT",
+        "courseCode": "48000",
+        "instructor": [
+            "Frederick C Berry"
+        ],
+        "description": "This is the first course of a two-term senior capstone sequence. The skills needed to define, design and develop engineering technology solutions are introduced and developed. Planning and designing alternatives that meet cost, performance, and user-interface goals are emphasized. Project planning, scheduling, and management techniques are studied. Different design approaches are compared. Teamwork, global and societal concerns, and professional ethics are integrated into course projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engineering Technology Capstone II",
+        "subjectCode": "ENGT",
+        "courseCode": "48100",
+        "instructor": [
+            "Miles A Creasy",
+            "James G Maley",
+            "Joseph F Dues",
+            "Frederick C Berry",
+            "Jeffrey R Heiking",
+            "Sarah E Leach",
+            "Kyler Michael Blowers"
+        ],
+        "description": "This is the second course of two-term capstone sequence, addressing an industry-based problem. The focus of the course is on designing and implementing an acceptable solution.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

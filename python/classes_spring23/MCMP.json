@@ -1,0 +1,93 @@
+[
+    {
+        "title": "Organic Chemistry I",
+        "subjectCode": "MCMP",
+        "courseCode": "20400",
+        "instructor": [
+            "Daniel P Flaherty"
+        ],
+        "description": "Organic chemistry; a study of the compounds of carbon on a functional group basis, with particular emphasis on those organic compounds of pharmaceutical and physiological importance; microlaboratory experiments involving the methods of purification, reactions, and synthesis of organic compounds.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Biochemistry For Pharmaceutical Sciences",
+        "subjectCode": "MCMP",
+        "courseCode": "20800",
+        "instructor": [
+            "Casey J Krusemark"
+        ],
+        "description": "The overall objectives of this course are to increase students' biomedical understanding and knowledge and their ability to apply that understanding and knowledge. This requires the students in this course to learn and understand the facts, concepts, and formulaic processes, and to become skilled at applying what they have learned.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Immunology",
+        "subjectCode": "MCMP",
+        "courseCode": "42200",
+        "instructor": [
+            "Tony R Hazbun"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Drug Classes And Mechanisms",
+        "subjectCode": "MCMP",
+        "courseCode": "54400",
+        "instructor": [
+            "Douglas J Lacount"
+        ],
+        "description": "The course will integrate basic principles of medicinal chemistry and pharmacology to achieve an understanding of drug mechanisms as applied to autonomic/endocrine, cardiovascular/renal, CNS, and chemotherapy/infectious diseases. The course will apply concepts from organic chemistry, biochemistry, anatomy, physiology, and principles of drug action to describe how drugs are used to treat the symptoms and causes of disease.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intro To Pharm Sci Research",
+        "subjectCode": "MCMP",
+        "courseCode": "69000",
+        "instructor": [
+            "Jianing Li",
+            "Danzhou Yang"
+        ],
+        "description": "Special topics, projects, or laboratory exercises in selected areas of medicinal chemistry and molecular pharmacology. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar In Medicinal Chemistry And Molecular Pharmacology",
+        "subjectCode": "MCMP",
+        "courseCode": "69600",
+        "instructor": [
+            "Casey J Krusemark"
+        ],
+        "description": "Faculty and student participation in discussion of current research and developments in synthetic medicinal products, quality control, instrumentation, biosynthesis, and structure elucidation of natural products.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Spring 2023"
+    }
+]

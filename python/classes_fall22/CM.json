@@ -1,0 +1,200 @@
+[
+    {
+        "title": "Introduction To Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "10000",
+        "instructor": [
+            "Mark D Zimpfer"
+        ],
+        "description": "This course is a survey of the construction industry. Topics include the overall construction process, career opportunities in the construction industry, an introduction to construction materials as well as management and technology tools used in the industry. There will be an emphasis on construction specific vocabulary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Construction Management Fundamentals",
+        "subjectCode": "CM",
+        "courseCode": "15000",
+        "instructor": [
+            "Jason Lawrence Merchant"
+        ],
+        "description": "An introductory course dealing with construction materials and methods, contracts, and layout of basic commercial, residential, heavy/civil, and industrial projects. Students will acquire fundamental skills in quantity estimating, construction plan reading, project layout, and project documentation through hands-on laboratory experiences.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intermediate Pre-Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "20000",
+        "instructor": [
+            "Deniz Besiktepe"
+        ],
+        "description": "A project course covering intermediate level commercial, residential, heavy/civil, and industrial construction projects. Students will expand their understanding of construction company management, design, cost, project controls, and safety. In addition, students will explore the areas of concentration within the construction management program.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Mechanical, Electrical And Piping Systems In The Built Environment",
+        "subjectCode": "CM",
+        "courseCode": "23301",
+        "instructor": [
+            "Christopher S Allison"
+        ],
+        "description": "An introductory course dealing with construction materials and methods related to building systems, focusing on mechanical, electrical, and piping (MEP) systems. Students will acquire fundamental skills in MEP construction plan reading, quantity estimating, basic systems' design and construction execution through lectures, laboratories and integrated project team exercises.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intermediate Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "25000",
+        "instructor": [
+            "James Robert Weida"
+        ],
+        "description": "A project course covering intermediate level commercial, residential, heavy/civil, and industrial construction projects. Students will expand their understanding of construction materials and methods, layout, documentation, site planning, site supervision, cost control, and MEP systems.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Pre-Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "30000",
+        "instructor": [
+            "James L Jenkins"
+        ],
+        "description": "A project course covering advanced level commercial, residential, heavy/civil, and industrial construction projects. Students will further develop their understanding of construction company management, design, cost, project controls, and safety. In addition, students will pursue their desired area of concentration within the construction management program.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Architectural Design, Construction Techniques And Society",
+        "subjectCode": "CM",
+        "courseCode": "33200",
+        "instructor": [
+            "Luciana De Cresce El Debs"
+        ],
+        "description": "A course in which students will be exposed to the evolution of architecture and building techniques that influenced the western built environment. Emphasis will be given to the use of appropriate vocabulary and also how social and cultural factors have influenced the design of the built environment throughout the centuries. The course will survey topics from XVII century to recent times.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "35000",
+        "instructor": [
+            "Christopher S Allison"
+        ],
+        "description": "A project course covering advanced level commercial, residential, heavy/civil, and industrial construction projects. Students will further develop their understanding of construction materials and methods, layout, documentation, site planning, site supervision, cost control, and MEP systems.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Construction Work Experience I",
+        "subjectCode": "CM",
+        "courseCode": "39000",
+        "instructor": [
+            "Kyubyung Kang"
+        ],
+        "description": "This course shall be taken when approximately half of a student's required 800 hours of work experience within the construction industry are completed. Students will be required to share their experiences with faculty and other construction management students. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Construction Capstone I",
+        "subjectCode": "CM",
+        "courseCode": "40000",
+        "instructor": [
+            "Dan A Wyman"
+        ],
+        "description": "A project course covering specialized construction projects related to a student's area of concentration within the construction management program. Students will synthesize their previous knowledge of pre-construction management into a capstone project.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Construction Capstone II",
+        "subjectCode": "CM",
+        "courseCode": "45000",
+        "instructor": [
+            "Mark D Zimpfer"
+        ],
+        "description": "A project course covering specialized construction projects related to a student's area of concentration within the construction management program. Students will synthesize their previous knowledge of construction management into a capstone project.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Construction Work Experience II",
+        "subjectCode": "CM",
+        "courseCode": "49000",
+        "instructor": [
+            "Kyubyung Kang"
+        ],
+        "description": "This course completes a student's required 800 hours of work experience within the construction industry. Students will be required to share their experiences with faculty and other construction management students. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Comp Dsgn Data & Interpblty",
+        "subjectCode": "CM",
+        "courseCode": "58100",
+        "instructor": [
+            "Shanyue Guan",
+            "Jiansong Zhang",
+            "Yunfeng Chen",
+            "Soowon Chang"
+        ],
+        "description": "Advanced study of technical and professional topics. Emphasis is on new developments relating to technical, operational, and training aspects of industry and technology education.",
+        "capacity": 0,
+        "credits": [
+            0,
+            8
+        ],
+        "term": "Fall 2022"
+    }
+]

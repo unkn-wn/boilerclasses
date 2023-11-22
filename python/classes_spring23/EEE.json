@@ -1,0 +1,173 @@
+[
+    {
+        "title": "Environmental And Ecological Systems Modeling",
+        "subjectCode": "EEE",
+        "courseCode": "30000",
+        "instructor": [
+            "Amisha D Shah"
+        ],
+        "description": "Introduction to computational methods for describing physical, chemical, and microbiological processes that occur in natural and engineered aqueous systems, including rivers and lakes, and within water and wastewater treatment systems.  Emphases on understanding and conceptualizing important processes, data analysis, algorithm development, and competency in the use of programming tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Environmental And Ecological Engineering",
+        "subjectCode": "EEE",
+        "courseCode": "35000",
+        "instructor": [
+            "Ernest R Blatchley"
+        ],
+        "description": "Introduction to water pollution, air pollution, noise, hazardous and solid wastes, and their control. Environmental impact statements and global pollution issues. Field trips required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engineering Environmental Sustainability",
+        "subjectCode": "EEE",
+        "courseCode": "35500",
+        "instructor": [
+            "Loring F Nies"
+        ],
+        "description": "(CE 35500) An introduction to the examination of global-scale resource utilization, food, energy and commodity production, population dynamics, and their ecosystem impacts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Design Of Experiments For EEE",
+        "subjectCode": "EEE",
+        "courseCode": "36000",
+        "instructor": [
+            "John Michael Surfus Mulrow"
+        ],
+        "description": "An introduction to laboratory methods of analysis of Environmental and Ecological Engineering systems.  Topics will change from semester to semester and will be announced in advance.  The list of possible topics includes experimental design, treatment of data, the analytical determination of chemical and biological constituents in water, soil, and air; analysis of environmental and ecological engineering processes; analysis of life-cycle characteristics and impacts of consumer products and commodities; methods of prevention and remediation of manufacturing waste streams.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Environmental Chemodynamics",
+        "subjectCode": "EEE",
+        "courseCode": "38000",
+        "instructor": [
+            "Chad T Jafvert"
+        ],
+        "description": "Introduction to chemical thermodynamics and general equilibrium processes in environmental and ecological engineering systems. Introduction to the first and second laws of thermodynamics; properties of pure substances; ideal and real gases; thermodynamic cycles and processes; heat transfer and combustion; and chemical equilibrium in aquatic solutions, including equilibria between phases and reaction equilibria. Emphasis is on understanding and conceptualizing important processes, and competency in thermodynamic calculations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Environmental And Ecological Engineering Professional Practice Seminar",
+        "subjectCode": "EEE",
+        "courseCode": "39000",
+        "instructor": [
+            "John W Sutherland"
+        ],
+        "description": "Seminar lectures and discussions to introduce students to aspects of professional practice within Environmental and Ecological Engineering. Topics include career planning and placement skills, professional responsibility and ethics, functioning as a professional, and other current important topics in the profession. Students will interact with several practicing Environmental and Ecological Engineers.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Community-Engaged Engineering & Design",
+        "subjectCode": "EEE",
+        "courseCode": "47200",
+        "instructor": [
+            "Lindsey B Payne Haugen"
+        ],
+        "description": "Utilizing a transdisciplinary approach in a real-world, client-based service-learning design experience, students will lead the design and implementation of community-engaged sustainability projects integrating not only their discipline-specific knowledge, but community partner and stakeholder knowledge as well. This course will require travel outside of class to community partner sites to collaborate in the design process. Sustainability projects to improve the health and wellness of communities will be implemented at multiple sites. The complex and dynamic relationships between social, economic, environmental, and political sectors in such community-engaged projects will be investigated. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Environmental And Ecological Engineering Senior Design",
+        "subjectCode": "EEE",
+        "courseCode": "48000",
+        "instructor": [
+            "Loring F Nies"
+        ],
+        "description": "Senior-level environmental and ecological engineering design projects. Projects will integrate knowledge and skills earlier in the degree program and stress the application of the design process to interdisciplinary environmental and/or ecological engineering systems. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Case Studies In Eng Ethics",
+        "subjectCode": "EEE",
+        "courseCode": "56000",
+        "instructor": [
+            "Robin M Ridgway",
+            "Amisha D Shah",
+            "Florentino Banaag De La Cruz",
+            "Caitlin Rose Proctor"
+        ],
+        "description": "An introduction to current challenges and issues in Environmental and Ecological Engineering (EEE) applications. Topics will change from semester to semester and will be announced in advance. The list of possible topics includes current events, emerging challenges, adaptations to new regulations, innovative environmental and ecological engineering processes, life-cycle impacts of manufactured products, and sustainable management of industrial waste streams.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Water Supply In Dev Countries",
+        "subjectCode": "EEE",
+        "courseCode": "59500",
+        "instructor": [
+            "Ernest R Blatchley",
+            "Brandon E Boor",
+            "John A Howarter",
+            "Andrew J Whelton"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Environmental And Ecological Engineering Graduate Seminar",
+        "subjectCode": "EEE",
+        "courseCode": "69000",
+        "instructor": [
+            "John A Howarter"
+        ],
+        "description": "Combination of invited speakers (outside and inside Purdue) including graduate students. Topics will range across environmental and ecological engineering with an emphasis on current topics.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2023"
+    }
+]

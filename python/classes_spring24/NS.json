@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Naval Ships Systems II (Weapons)",
+        "subjectCode": "NS",
+        "courseCode": "21200",
+        "instructor": [
+            "Jennifer L Kwiatek"
+        ],
+        "description": "This course outlines the theory and employment of weapons systems. Students explore the processes of detection, evaluation, threat analysis, weapon selection, delivery, guidance, and explosives. Fire control systems and major weapons types are discussed, including capabilities and limitations. The physical aspects of radar and underwater sound are described. Facets of command, control, communications, computers, and intelligence are explored as a means of weapons system integration. The tactical and strategic significance of command and control warfare and information warfare is discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sea Power And Maritime Affairs",
+        "subjectCode": "NS",
+        "courseCode": "21300",
+        "instructor": [
+            "Zachary L Morris"
+        ],
+        "description": "This course is a study of the U.S. Navy and sea power's influence on history and the political process. Students will explore the major events, attitudes, personalities, and circumstances that have imbued the U.S. Navy with its proud history and rich tradition. It deals with issues of national imperatives in peacetime, as well as war, varying maritime philosophies that were interpreted into naval strategies/doctrines, budgetary concerns that shaped force realities, and the pursuit of American diplomatic objectives. It concludes with a discussion of the Navy's strategic and structural changes at the end of the Cold War and its new focus, mission, and strategy in the post-September 11, 2001 world.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Naval Navigation",
+        "subjectCode": "NS",
+        "courseCode": "31000",
+        "instructor": [
+            "Brandon M Alcorn"
+        ],
+        "description": "This course is an in-depth study of the theory, principles, procedures, and application of plotting, piloting, and electronic navigation, as well as an introduction to maneuvering boards. Students learn piloting techniques, the use of charts, the use of visual and electronic aids, and the theory of operation of both magnetic and gyrocompasses. Students develop practical skills in plotting and electronic navigation. Other topics include tides, currents, effects of wind/weather, voyage planning, and an application and introduction to the international/inland rules of navigation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Evolution Of Warfare",
+        "subjectCode": "NS",
+        "courseCode": "33000",
+        "instructor": [
+            "Joshua A Calderon"
+        ],
+        "description": "The purpose of Evolution of Warfare is to imbue students with an understanding of the origins of modern warfighting theory through an analysis of historical philosophies, domains, tactics and technology. Through a study of military history, students explore the timeless fundamentals of armed conflict as well as the central role of innovation. They will apply these fundamental warfighting concepts to historic amphibious and expeditionary operations through guided analysis and decision games.  ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Naval Leadership And Ethics",
+        "subjectCode": "NS",
+        "courseCode": "41300",
+        "instructor": [
+            "Christopher M Nelson"
+        ],
+        "description": "This course completes the final preparations of ensigns and second lieutenants for service in the Navy and Marine Corps. The course integrates an intellectual exploration of Western moral traditions and ethical philosophy with a variety of topics, such as military leadership, core values, professional ethics, the UCMJ and Navy regulations, and discussions relating to the roles of enlisted members, junior and senior officers, command relationships, and the conduct of warfare. The course provides midshipmen with a foundation of moral traditions, combined with a discussion of actual current and historical events in the Navy and Marine Corps, to prepare them for the roles and responsibilities of leadership in the Naval Service of the 21st century. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

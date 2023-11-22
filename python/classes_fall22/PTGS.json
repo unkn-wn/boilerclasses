@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Portuguese Level I",
+        "subjectCode": "PTGS",
+        "courseCode": "10100",
+        "instructor": [
+            "Carolina Alvim Ferreira"
+        ],
+        "description": "A beginning course in Portuguese.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Portuguese Level III",
+        "subjectCode": "PTGS",
+        "courseCode": "20100",
+        "instructor": [
+            "Thiago Brito Santos"
+        ],
+        "description": "An intermediate Portuguese course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

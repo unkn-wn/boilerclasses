@@ -1,0 +1,35 @@
+[
+    {
+        "title": "Introduction To Digital Humanities",
+        "subjectCode": "IDIS",
+        "courseCode": "20100",
+        "instructor": [
+            "Spencer Dean Stewart"
+        ],
+        "description": "This is an interdisciplinary foundational course that combines theory and practice to teach students in and about digitally mediated culture. Accordingly, this course fosters a critical understanding of the digital and its implication for the development of a technologically driven society. Students will be introduced to digital inquiry and critical practice and explore the ways that the digital transforms knowledge acquisition and production across the humanities, social sciences and sciences. Students will engage in readings and activities that help them form substantive perspectives on the digital formulations and practice through digital technologies and tools. Students will also experiment with digital methods and tools by building a digital project. This course places an emphasis on engaged learning through online and in-class discussion, digital activities, and collaborative work.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intro To Islamic Civ & Cul",
+        "subjectCode": "IDIS",
+        "courseCode": "49100",
+        "instructor": [
+            "William G Sartore",
+            "Ahmed Idrissi Alami",
+            "Jason E Baumer",
+            "Alon Kantor"
+        ],
+        "description": "Special topics or projects under the direction of the instructor in a particular field of specialization.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

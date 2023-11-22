@@ -1,0 +1,908 @@
+[
+    {
+        "title": "Digital Literacy",
+        "subjectCode": "CS",
+        "courseCode": "10100",
+        "instructor": [
+            "Xiaojin Liu"
+        ],
+        "description": "Survey of the digital world, computers as multi-purpose machines, digital information, definition of programming, computers everywhere (the Internet of things), computers that perform simultaneous computations, how apps work, data storage and searching, databases, digital audio, graphics, video, computer networks and the Internet, the World Wide Web and Internet sharing services, network and Internet performance, real-time services, artificial intelligence, cloud computing, security, and privacy. CS students may take course for elective credit only.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "C Programming",
+        "subjectCode": "CS",
+        "courseCode": "15900",
+        "instructor": [
+            "Eman Samy Ahmed Diyab",
+            "Maxwell Cullen Rees",
+            "William N Crum"
+        ],
+        "description": "Fundamental principles, concepts, and methods of programming in C, with emphasis on applications in the physical sciences and engineering. Basic problem solving and programming techniques; fundamental algorithms and data structures; and use of programming logic in solving engineering problems. Students are expected to complete assignments in a collaborative learning environment. Credit cannot be obtained for both CS 15900 and any of CS 15600, CS 15800 and CS 18000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Engineering In Python",
+        "subjectCode": "CS",
+        "courseCode": "17600",
+        "instructor": [
+            "Xiaojin Liu"
+        ],
+        "description": "The course introduces students to programming fundamentals in Python, including loops, functions and different data types, and provides an introduction to data engineering including  working with common data formats and learning the basics of data wrangling. Students will format, extract, clean, filter, transform, search, combine, summarize, aggregate, and visualize a diverse range of data sets.  Python libraries including MatPlotLib and Pandas are used.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Programming With Multimedia Objects",
+        "subjectCode": "CS",
+        "courseCode": "17700",
+        "instructor": [
+            "Vernon J Rego"
+        ],
+        "description": "Introduction to computers and programming: number representations, primitive data types and operations, basic control structures, programming applets and applications using graphical user interfaces, programming for detecting events and performing actions, processing multimedia objects such as images and sounds. Throughout the course, examples are drawn from a variety of fields in the natural sciences. Not open to CS majors with a grade of C or better in CS 18000.  Not open to non-CS majors with a grade of C or better in any course in computer programming.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Problem Solving And Object-Oriented Programming",
+        "subjectCode": "CS",
+        "courseCode": "18000",
+        "instructor": [
+            "Hubert E Dunsmore",
+            "Jeffrey A Turkstra"
+        ],
+        "description": "Problem solving and algorithms, implementation of algorithms in a high level programming language, conditionals, the iterative approach and debugging, collections of data, searching and sorting, solving problems by decomposition, the object-oriented approach, subclasses of existing classes, handling exceptions that occur when the program is running, graphical user interfaces (GUIs), data stored in files, abstract data types, a glimpse at topics from other CS courses.  Intended primarily for students majoring in computer sciences. Credit cannot be obtained for both CS 18000 and any of 15600, 15800 and 15900. Not open to students with credit in CS 24000.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Foundations Of Computer Science",
+        "subjectCode": "CS",
+        "courseCode": "18200",
+        "instructor": [
+            "Tamal Krishna Dey"
+        ],
+        "description": "Logic and proofs; sets, functions, relations, sequences and summations; number representations; counting; fundamentals of the analysis of algorithms; graphs and trees; proof techniques; recursion; Boolean logic; finite state machines; pushdown automata; computability and undecidability.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Freshman Resources Seminar",
+        "subjectCode": "CS",
+        "courseCode": "19100",
+        "instructor": [
+            "Megan Louise Fish",
+            "Julia Kaye Hamrick",
+            "Jean M Shidler",
+            "Prudence W Miller",
+            "Marsha B Rhees",
+            "Emily Katherine Russ",
+            "Paul R Sewell",
+            "Joanna R Harrell",
+            "Kirsten Anne Mikesell",
+            "Ranjani L Rao",
+            "Kevin B Jones",
+            "Philip M Leblanc",
+            "Emily Deanne Brandt Olivas",
+            "Kristal V Doty",
+            "Kathryn B Van Ness"
+        ],
+        "description": "This course is intended to integrate freshman majors in computer sciences into the department, help them adjust to university life, and assist them in developing academic and intellectual survival skills. Weekly recitation sections enable the students to work in teams. Strongly recommended for freshmen. The credit may be used only toward free electives.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Tools",
+        "subjectCode": "CS",
+        "courseCode": "19300",
+        "instructor": [
+            "Tae Woo Kim",
+            "Elijah Robert Colwill",
+            "Theo Park"
+        ],
+        "description": "This course is designed to introduce new Computer Science students to various programming tools which will aid them in their Computer Science classes, personal projects, and software development job experiences.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Organizational Computing",
+        "subjectCode": "CS",
+        "courseCode": "23500",
+        "instructor": [
+            "Marta A Crowe"
+        ],
+        "description": "People and organizations, decision-making, information systems, telecommunications, desktop systems, integration tools, collaboration and groupware, multimedia, authoring multimedia documents, emerging technologies. May not be taken for credit by Computer Science majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Programming In C",
+        "subjectCode": "CS",
+        "courseCode": "24000",
+        "instructor": [
+            "Gustavo Rodriguez-Rivera"
+        ],
+        "description": "The UNIX environment, C development cycle, data representation, operators, program structure, recursion, macros, C preprocessor, pointers and addresses, dynamic memory allocation, structures, unions, typedef, bit-fields, pointer/structure applications, UNIX file abstraction, file access, low-level I/O, concurrency.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Data Science",
+        "subjectCode": "CS",
+        "courseCode": "24200",
+        "instructor": [
+            "Anthony David Bergstrom"
+        ],
+        "description": "(STAT 24200) This course provides a broad introduction to the field of data science. The course focuses on using computational methods and statistical techniques to analyze massive amounts of data and to extract knowledge. It provides an overview of foundational computational and statistical tools for data acquisition and cleaning, data management and big data systems. The course surveys the complete data science process from data to knowledge and gives students hands-on experience with tools and methods. Basic knowledge of Python required. Computer Science majors cannot count this course as a degree requirement but can take it for credit as a free elective if taken before CS 37300, 34800, 47100, 47300, 44800.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Architecture",
+        "subjectCode": "CS",
+        "courseCode": "25000",
+        "instructor": [
+            "George Bunch Adams"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Structures And Algorithms",
+        "subjectCode": "CS",
+        "courseCode": "25100",
+        "instructor": [
+            "Jeremiah M Blocki",
+            "Andres M Bejarano Posada"
+        ],
+        "description": "Running time analysis of algorithms and their implementations, one-dimensional data structures, trees, heaps, additional sorting algorithms, binary search trees, hash tables, graphs, directed graphs, weighted graph algorithms, additional topics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Systems Programming",
+        "subjectCode": "CS",
+        "courseCode": "25200",
+        "instructor": [
+            "Gustavo Rodriguez-Rivera"
+        ],
+        "description": "Low-level programming; review of addresses, pointers, memory layout, and data representation; text, data, and bss segments; debugging and hex dumps; concurrent execution with threads and processes; address spaces; file names; descriptors and file pointers; inheritance; system calls and library functions; standard I/O and string libraries; simplified socket programming; building tools to help programmers; make and make files; shell scripts and quoting; unix tools including sed, echo, test, and find; scripting languages such as awk; version control; object and executable files (.o and a.out); symbol tables; pointers to functions; hierarchical directories; and DNS hierarchy; programming embedded systems.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Sophomore Development Seminar",
+        "subjectCode": "CS",
+        "courseCode": "29100",
+        "instructor": [
+            "Sally L Luzader"
+        ],
+        "description": "Presentations by corporate partners about careers in computer science. Presentations by faculty about careers in academia and research. Students learn about upper-division courses, tour research laboratories, and attend job fairs.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Software Engineering I",
+        "subjectCode": "CS",
+        "courseCode": "30700",
+        "instructor": [
+            "Jeffrey A Turkstra"
+        ],
+        "description": "An introduction to the methods and tools of software engineering; software life cycle; specification and design of software, software testing, cost and effort estimation; laboratory exercises with design, testing, and other tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Numerical Methods",
+        "subjectCode": "CS",
+        "courseCode": "31400",
+        "instructor": [
+            "Alex Pothen"
+        ],
+        "description": "Iterative methods for solving nonlinear equations; direct and iterative methods for solving linear systems; approximations of functions, derivatives, and integrals; error analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fundamentals Of Computer Graphics",
+        "subjectCode": "CS",
+        "courseCode": "33400",
+        "instructor": [
+            "Voicu S Popescu"
+        ],
+        "description": "Fundamental principles and techniques of computer graphics. The course covers the basics of going from a scene representation to a raster image using OpenGL. Specific topics include coordinate manipulations, perspective, basics of illumination and shading, color models, texture maps, clipping and basic raster algorithms, fundamentals of scene constructions. C S 314 is recommended.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Information Systems",
+        "subjectCode": "CS",
+        "courseCode": "34800",
+        "instructor": [
+            "Hisham Ramadan Benotman"
+        ],
+        "description": "File organization and index structures; object-oriented database languages; the relational database model with introductions to SQL and DBMS; hierarchical models and network models with introductions to HDDL, HDML, and DBTG Codasyl; data mining; data warehousing; database connectivity; distributed databases; the client/server paradigm; middleware, including ODBC, JDBC, CORBA, and MOM.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Compilers: Principles And Practice",
+        "subjectCode": "CS",
+        "courseCode": "35200",
+        "instructor": [
+            "Tiark Rompf"
+        ],
+        "description": "Should not be taken concurrently with CS 354. The theory and practice of programming language translation, compilation, and run-time systems, organized around a significant programming project to build a compiler for a simple but nontrivial programming language. Modules, interfaces, tools. Data structures for tree languages. Lexical analysis, syntax analysis, abstract syntax. Symbol tables, semantic analysis. Translation, intermediate code, basic blocks, traces. Instruction selection, CISC and RISC machines. Liveness analysis, graph coloring register allocation. Supplemental material drawn from garbage collection, object-oriented languages, higher-order languages, dataflow analysis, optimization, polymorphism, scheduling and pipelining, memory hierarchies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Operating Systems",
+        "subjectCode": "CS",
+        "courseCode": "35400",
+        "instructor": [
+            "Chunyi Peng",
+            "Douglas E Comer"
+        ],
+        "description": "Should not be taken concurrently with CS 35200. Introduction to operating systems. Computer system and operating system architectures, processes, inter-process communication, inter-process synchronization, mutual exclusion, deadlocks, memory hierarchy, virtual memory, CPU scheduling, file systems, I/O device management, security.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Cryptography",
+        "subjectCode": "CS",
+        "courseCode": "35500",
+        "instructor": [
+            "Hemanta K Maji"
+        ],
+        "description": "An introduction to cryptography basics: Classic historical ciphers including Caesar, Vigenere and Vernam ciphers; modern ciphers including DES, AES, Pohlig-Hellman, and RSA; signatures and digests; key exchange; simple protocols; block and stream ciphers; network-centric protocols.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Mining And Machine Learning",
+        "subjectCode": "CS",
+        "courseCode": "37300",
+        "instructor": [
+            "Dan Goldwasser",
+            "Bruno Felisberto Martins Ribeiro"
+        ],
+        "description": "This course will introduce students to the field of data mining and machine learning, which sits at the interface between statistics and computer science. Data mining and machine learning focuses on developing algorithms to automatically discover patterns and learn models of large datasets. This course introduces students to the process and main techniques in data mining and machine learning, including exploratory data analysis, predictive modeling, descriptive modeling, and evaluation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To The Analysis Of Algorithms",
+        "subjectCode": "CS",
+        "courseCode": "38100",
+        "instructor": [
+            "Christos Alexandros Psomas"
+        ],
+        "description": "Techniques for analyzing the time and space requirements of algorithms. Application of these techniques to sorting, searching, pattern-matching, graph problems, and other selected problems. Brief introduction to the intractable (NP-hard) problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Great Issues In Computer Sci",
+        "subjectCode": "CS",
+        "courseCode": "39000",
+        "instructor": [
+            "Eugene H Spafford",
+            "Mikail Habib Khan"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            5
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Honors Seminar",
+        "subjectCode": "CS",
+        "courseCode": "39700",
+        "instructor": [
+            "Antonio Bianchi"
+        ],
+        "description": "A seminar for all sophomores, juniors, and seniors in the Computer Sciences Honors Program. Meets eight times each semester under the supervision of the Honors coordinator. The meetings focus on honors research projects, helping students to identify appropriate projects and form groups, and providing a forum for juniors and seniors to report on their projects as required in the honors program.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Software Testing",
+        "subjectCode": "CS",
+        "courseCode": "40800",
+        "instructor": [
+            "Lin Tan"
+        ],
+        "description": "Preliminaries: errors and testing; software quality, requirements, behavior, and correctness; testing, debugging, verification; control flow graphs, dominators; types of testing; Test selection: from requirements, finite state models, and combinatorial designs; regression testing and test minimization; Test adequacy assessment: control and data flow; mutation based; testing tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Networks",
+        "subjectCode": "CS",
+        "courseCode": "42200",
+        "instructor": [
+            "Sonia A Fahmy"
+        ],
+        "description": "Undergraduate-level introduction to computer networks and data communication. Low-level details of media, signals, and bits: time division and frequency division multiplexing; encoding; modulation; bandwidth, throughput, and noise. Packet transmission: Local Area Network (Ethernet, FDDI) and Wide Area Network technologies (ATM); wireless networks; network interconnection with repeaters, bridges, and switches; DSU/CSU; xDSL and cable modems. Internetworking: router-based architecture; IP addressing; address binding with ARP; datagram encapsulation and fragmentation; UDP and TCP, retransmission; protocol ports; ICMP and error handling. Network applications: client/server concept; port demultiplexing; program interface to protocols (API); use by clients and servers; domain name system; TELNET; Web technologies including HTTP, CGI, Java; RPC and middleware; network management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer Security",
+        "subjectCode": "CS",
+        "courseCode": "42600",
+        "instructor": [
+            "Jing Tian"
+        ],
+        "description": "A survey of the fundamentals of information security. Risks and vulnerabilities, policy formation, controls and protection methods, database security, encryption, authentication technologies, host-based and network-based security issues, personnel and physical security issues, issues of law and privacy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Data Visualization",
+        "subjectCode": "CS",
+        "courseCode": "43900",
+        "instructor": [
+            "Xavier Michel Tricoche"
+        ],
+        "description": "The course offers an introduction to the fundamentals principles, design strategies, and techniques needed to visually communicate, explore, and analyze data. The course focuses primarily on the visual representation of inherently non-spatial data (e.g., tables and spreadsheets, graphs and networks, trees, text, and time series), but also considers the visualization of maps and of data in geospatial context. The course project fulfills the Capstone requirement for Data Science majors who have previously completed CS 37300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Large Scale Data Analytics",
+        "subjectCode": "CS",
+        "courseCode": "44000",
+        "instructor": [
+            "Jianguo Wang"
+        ],
+        "description": "This course provides an integrated view of the key concepts of modern algorithmic data analytics. It focuses on teaching principles and methods needed to analyze large datasets in order to extract novel, transformative insights for the underlying application. The course emphasizes the duality between formulating questions that can be answered by statistical data analysis tools (the statistical perspective) and the algorithmic challenge of actually extracting such answers using available parallel and distributed computational resources from massive datasets. The topics cover three areas: (1) algorithmic concepts necessary for big data analytics, (2) bid data systems, including data management and programming, and (3) advanced analytic methods to address characteristics of real-world big data problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Relational Database Systems",
+        "subjectCode": "CS",
+        "courseCode": "44800",
+        "instructor": [
+            "Elisa Bertino"
+        ],
+        "description": "An in-depth examination of relational database systems including theory and concepts as well as practical issues in relational databases. Modern database technologies such as object-relational and Web-based access to relational databases. Conceptual design and entity relationship modeling, relational algebra and calculus, data definition and manipulation languages using SQL, schema and view management, query processing and optimization, transaction management, security, privacy, integrity management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Programming Languages",
+        "subjectCode": "CS",
+        "courseCode": "45600",
+        "instructor": [
+            "Benjamin J Delaware"
+        ],
+        "description": "Concepts for structuring data, computation, and whole programs. Object-oriented languages, functional languages, logic- and rule-based languages. Data types, type checking, exception handling, concurrent processes, synchronization, modularity, encapsulation, interfaces, separate compilation, inheritance, polymorphism, dynamic binding, subtyping, overloading, beta-reduction, unification.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Artificial Intelligence",
+        "subjectCode": "CS",
+        "courseCode": "47100",
+        "instructor": [
+            "Ming Yin"
+        ],
+        "description": "Students are expected to spend at least three hours per week gaining experience with artificial intelligence systems and developing software. Basic problem-solving strategies, heuristic search, problem reduction and AND/OR graphs, knowledge representation, expert systems, generating explanations, uncertainty reasoning, game playing, planning, machine learning, computer vision, and programming systems such as Lisp or Prolog.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Web Information Search And Management",
+        "subjectCode": "CS",
+        "courseCode": "47300",
+        "instructor": [
+            "Hisham Ramadan Benotman"
+        ],
+        "description": "This course teaches important concepts and knowledge of information retrieval for managing unstructured data such as text data on Web or in emails. At the same time, students will be exposed to a large number of important applications. Students in the course will get hands on experience from homework and a course project. The first part of the course focuses on general concepts/techniques such as stemming, indexing, vector space model, and feedback procedure. The second part of the course shows how to apply the set of techniques on different applications such as Web search, text categorization, and information recommendation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction to Bioinformatics",
+        "subjectCode": "CS",
+        "courseCode": "47800",
+        "instructor": [
+            "Michael R Gribskov"
+        ],
+        "description": "(BIOL 47800) Bioinformatics is broadly defined as the study of molecular biological information, targeting particularly the enormous volume of DNA sequence and functional complexity embedded in entire genomes. Topics will include understanding the evolutionary organization of genes (genomics), the structure and function of gene products (proteomics), and the dynamics of gene expression in biological processes (transcriptomics). Inherently, bioinformatics is interdisciplinary, melding various applications of computational science with biology. This jointly taught course introduces analytical methods from biology, statistics and computer science that are necessary for bioinformatics investigations. The course is intended for junior and senior undergraduates from various science backgrounds. Our objective is to develop the skills of both tool users and tool designers in this important new field of research.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computational Genomics",
+        "subjectCode": "CS",
+        "courseCode": "49000",
+        "instructor": [
+            "Majid Kazemian",
+            "Ahmed Hussain Qureshi",
+            "Antonio Bianchi"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computing For Science And Engineering",
+        "subjectCode": "CS",
+        "courseCode": "50100",
+        "instructor": [
+            "Ananth Y Grama"
+        ],
+        "description": "Credit in this course may not be used toward a graduate degree in Computer Sciences. Computational concepts, tools, and skills for computational science and engineering scripting for numerical computing, scripting for file processing, high performance computing, and software development. Project may be required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Compiling And Programming Systems",
+        "subjectCode": "CS",
+        "courseCode": "50200",
+        "instructor": [
+            "Zhiyuan Li"
+        ],
+        "description": "Basic principles of compilers and compiler design; control of translation, loading, and execution; symbolic coding systems; lexical and syntactic analysis, design and operation of assemblers and macro processors; design of interpretive systems. Students are expected to complete a large programming project as part of the course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Operating Systems",
+        "subjectCode": "CS",
+        "courseCode": "50300",
+        "instructor": [
+            "Kihong Park"
+        ],
+        "description": "Basic principles of operating systems: addressing modes, indexing, relative addressing, indirect addressing, stack maintenance; implementation of multitask systems; control and coordination of tasks, deadlocks, synchronization, mutual exclusion; storage management, segmentation, paging, virtual memory; protection, sharing, access control; file systems; resource management; evaluation and prediction of performance. Students are expected to spend at least three hours per week gaining hands-on experience in using and modifying a small operating system.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Numerical Analysis",
+        "subjectCode": "CS",
+        "courseCode": "51400",
+        "instructor": [
+            "Suchuan Dong"
+        ],
+        "description": "(MA 51400)  AIternative methods for solving nonlinear equations; linear difference equations, applications to solution of polynomial equations; differentiation and integration formulas; numerical solution of ordinary differential equations; roundoff error bounds.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Numerical Linear Algebra",
+        "subjectCode": "CS",
+        "courseCode": "51500",
+        "instructor": [
+            "David F Gleich"
+        ],
+        "description": "Direct and iterative solvers of dense and sparse linear systems of equations, numerical schemes for handling symmetric algebraic eigenvalue problems, and the singular-value decomposition and its applications in linear least squares problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Information Security",
+        "subjectCode": "CS",
+        "courseCode": "52600",
+        "instructor": [
+            "Christina L Garman"
+        ],
+        "description": "(CSCI 52600) Basic notions of confidentiality, integrity, availability; authentication models; protection models; security kernels; secure programming; audit; intrusion detection and response; operational security issues; physical security issues; personnel security; policy formation and enforcement; access controls; information flow; legal and social issues; identification and authentication in local and distributed systems; classification and trust modeling; and risk assessment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Security Analytics",
+        "subjectCode": "CS",
+        "courseCode": "52900",
+        "instructor": [
+            "Zeynel Berkay Celik"
+        ],
+        "description": "This course focuses on applied data mining, machine learning, data analytics techniques, and their application and relevance in information security. The course covers basic concepts of data mining and machine learning, computation platforms in support of big data analytics including Map-Reduce and Spark, machine learning algorithms such as classification trees, logistic regression, naive Bayes, k Nearest Neighbors, Support Vector Machines, Artificial Neural Networks (including Feed Forward, Convolutional, and Recurrence), the application of these algorithms to security tasks such as Spam/Phishing detection, malware detection, intrusion detection, and situational awareness. The future and potential role of applying machine learning techniques in information and data security is explored.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Interactive Computer Graphics",
+        "subjectCode": "CS",
+        "courseCode": "53500",
+        "instructor": [
+            "Bedrich Benes"
+        ],
+        "description": "(ME 57300) The principles of computer graphics and interactive graphical methods for problem solving. Emphasis placed on both development and use of graphical tools for various display devices. Several classes of graphics hardware considered in detail. Topics include pen plotting, storage tubes, refresh, dynamic techniques, three dimensions, color, modeling of geometry, and hidden surface removal. Part of the laboratory involves use of an interactive minicomputer graphics system. Knowledge of programming required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Communication And Computer Networks",
+        "subjectCode": "CS",
+        "courseCode": "53600",
+        "instructor": [
+            "Muhammad Shahbaz"
+        ],
+        "description": "Data communications: communication hardware technologies including local area and longhaul network hardware, circuit and packet switching, interfaces between computer and network hardware, and performance issues. Network architecture: protocol software and conceptual layering, reliable delivery over an unreliable channel, transport protocols, virtual circuits, datagrams, internetworking as a fundamental design concept, the client-server paradigm, naming and name binding, name servers, addressing and address resolution, routing and routing algorithms, congestion and flow control techniques, network file systems, distribution of computation, and DARPA internet protocols (TCP/IP) as examples of protocol organization.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Cryptography",
+        "subjectCode": "CS",
+        "courseCode": "55500",
+        "instructor": [
+            "Vasileios Zikas"
+        ],
+        "description": "(CSCI 55500) Concepts and principles of cryptography and data security. Cryptography (secret codes): principles of secrecy systems; classical cryptographic systems, including Vigenere and Vernam ciphers; the Data Encryption Standard (DES); public-key encryption; privacy-enhanced email; digital signatures. Proprietary software protection; information theory and number theory; complexity bounds on encryption; key escrow; traffic analysis; attacks against encryption; basic legal issues; e-commerce; and the role of protocols.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Programming Languages",
+        "subjectCode": "CS",
+        "courseCode": "56500",
+        "instructor": [
+            "Suresh Jagannathan"
+        ],
+        "description": "An exploration of modern or unconventional concepts of programming languages, their semantics, and their implementations; abstract data types; axiomatic semantics using Hoare's logic and Dijkstra's predicate transformers; denotational semantics; functional, object-oriented, and logic programming; concurrency and Owicki-Gries theory. Example languages include ML, Ada, Oberon, LISP, PROLOG, and CSP.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Artificial Intelligence",
+        "subjectCode": "CS",
+        "courseCode": "57100",
+        "instructor": [
+            "Clifton W Bingham"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Mining",
+        "subjectCode": "CS",
+        "courseCode": "57300",
+        "instructor": [
+            "Rajiv Ashu Khanna"
+        ],
+        "description": "(CSCI 57300) Data Mining has emerged at the confluence of artificial intelligence, statistics, and databases as a technique for automatically discovering summary knowledge in large datasets. This course introduces students to the process and main techniques in data mining, including classification, clustering, and pattern mining approaches. Data mining systems and applications are also covered, along with selected topics in current research. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Statistical Machine Learning",
+        "subjectCode": "CS",
+        "courseCode": "57800",
+        "instructor": [
+            "Anuran Makur"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Algorithm Design, Analysis, And Implementation",
+        "subjectCode": "CS",
+        "courseCode": "58000",
+        "instructor": [
+            "Simina Branzei"
+        ],
+        "description": "Basic techniques for designing and analyzing algorithms: dynamic programming, divide and conquer, balancing. Upper and lower bounds on time and space costs, worst case and expected cost measures. A selection of applications such as disjoint set union/find, graph algorithms, search trees, pattern matching. The polynomial complexity classes P, NP, and co-NP; intractable problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Theory Of Computation And Computational Complexity",
+        "subjectCode": "CS",
+        "courseCode": "58400",
+        "instructor": [
+            "Elena Grigorescu"
+        ],
+        "description": "The theory of general purpose programming systems. Recursive and partial-recursive functions; recursive and recursively enumerable sets. The Church-Turing thesis. The recursion theorem, Rogers' translation theorem, Rice's undecidability theorem. The general theory of computational complexity: there are no general solutions to natural optimization problems. Complexity for specific models of computation: the polynomial complexity classes P, NP, and PSPACE; NP-hard and PSPACE-hard problems, inherently exponential problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Randomized Algorithms",
+        "subjectCode": "CS",
+        "courseCode": "58800",
+        "instructor": [
+            "Kent Richard Quanrud"
+        ],
+        "description": "The area of randomized algorithms has grown from being a tool in computational number theory to finding widespread application in algorithms in all areas of computer science. Two practical benefits of randomization are its simplicity and speed. Deep and important computational complexity connections have been developed,  from bridging the gap between discrete and continuous optimization, bypassing deterministic barriers in online settings, summarizing massive data in polylogarithmic space, probabilistically checkable proofs, privacy enhancing techniques, modeling the web and other large networks, and sparsifying and compressing complicated combinatorial structures such as graphs. Randomization is an essential  key ingredient in the algorithmic breakthroughs today and in the future. This course presents the basic concepts in the design and analysis of randomized algorithms and shows how to apply them to algorithms for a wide range of problems. The course covers a broad range of problems benefitting from randomized computation including data structures, graph algorithms, online algorithms, geometric algorithms, streaming algorithms, derandomization techniques, and tools for probabilistic analysis of algorithms.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computing For Life Sciences",
+        "subjectCode": "CS",
+        "courseCode": "59000",
+        "instructor": [
+            "Daisuke Kihara"
+        ],
+        "description": "Directed study for students who wish to undertake individual reading and study on approved topics. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            5
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Blckchains From Thry To Prctce",
+        "subjectCode": "CS",
+        "courseCode": "59100",
+        "instructor": [
+            "Mikhail J Atallah",
+            "Vasileios Zikas",
+            "Daniel G Aliaga"
+        ],
+        "description": "A weekly seminar presented by faculty and invited speakers, normally in a specific area.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "New Trends In Big Data Systems",
+        "subjectCode": "CS",
+        "courseCode": "59200",
+        "instructor": [
+            "Pedro Jose Sousa Da Fonseca",
+            "Raymond A Yeh",
+            "Aniket Bera",
+            "Brian Anderson Bullins",
+            "Ruqi Zhang",
+            "Walid G Aref",
+            "Roopsha Samanta"
+        ],
+        "description": "A seminar course for in-depth exploration of a specific topic. Topics vary. Classes consist of both instructor and student presentations. Students read, present and discuss research papers, and may complete and present a research project in the area. For each offering, inclusion on a plan of study is determined by the CS Graduate Study Committee. If approved, may be included on a CS MS or PhD plan of study according to relevant ruleset.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Computer Architecture",
+        "subjectCode": "CS",
+        "courseCode": "59300",
+        "instructor": [
+            "Xuehai Qian",
+            "Tianyi Zhang",
+            "Stephen Robert Hanneke",
+            "Pan Li"
+        ],
+        "description": "A variable title course for topics not currently covered in the CS graduate curriculum. Each offering follows a traditional course structure with textbook(s), assignments, exams, and week-by-week content synopsis described in a syllabus. A CS 59300 offering does not imply that a course is intended to become, or will become, a regular course in the CS graduate curriculum. May be included on a CS MS or PhD plan of study according to the relevant ruleset.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,193 @@
+[
+    {
+        "title": "BIDC Intro To Manufacturing",
+        "subjectCode": "ENGR",
+        "courseCode": "10301",
+        "instructor": [
+            "Joseph M Tort",
+            "Alexandra Boltasseva",
+            "Michael R Melloch",
+            "Matthew A Swabey",
+            "Audeen W Fentiman",
+            "Lisa Wildman Jones",
+            "Patrick Michael Francis"
+        ],
+        "description": "Weekly small seminars led by faculty designed to introduce a specific topic, problem or discipline of engineering to First-Year Engineering students. Seminars are designed to help students explore a single area of engineering and/or assist in their decision of an engineering degree. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Honors Introduction To Innovation And The Physical Science Of Engineering Design II",
+        "subjectCode": "ENGR",
+        "courseCode": "16200",
+        "instructor": [
+            "Timothy M Whalen",
+            "Sean Brophy",
+            "Joseph Alan Lyon"
+        ],
+        "description": "Students will take an in-depth and holistic approach to integrating multiple disciplines perspectives while constructing innovative engineering solutions to open-ended problems. The students continue to explore more complicated models of physical systems, especially internal energy, entropy, models of gases and fluids, and statistical thermodynamics. The students will extend the concepts learned in ENGR 16100 and continue to develop skills in project management, engineering fundamentals, oral and graphical communication, logical thinking, teamwork, and modern engineering tools (e.g., Matlab, and Python). In addition, students will learn how to use hypothesis testing to make informed, quantitative decisions. Finally, they will build systems that incorporate feedback control in an effort to identify and characterize physical material systems.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Python Programming",
+        "subjectCode": "ENGR",
+        "courseCode": "19500",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cooperative Education Seminar I",
+        "subjectCode": "ENGR",
+        "courseCode": "23099",
+        "instructor": [
+            "Michael J Reckowsky"
+        ],
+        "description": "(PSY 23099) This seminar course is optional for Co-Op students when they are on campus. In this course, students share their work experiences, receive feedback from the instructor and seminar participants, and continue their professional development. Prerequisite: Student must have completed at least one Co-Op work term. May be repeated once after the second work term. Can be taken for two credits subsequent to completing two back-to-back work terms. Instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cross Cultural Lead For Engr",
+        "subjectCode": "ENGR",
+        "courseCode": "29600",
+        "instructor": [
+            "Heidi E Parker",
+            "Tyson J Mcfall-Wankat",
+            "Heather Pherson Fabries"
+        ],
+        "description": "Experimental classes offered at the freshmen/sophomore level on a temporary basis to test the viability of offering the course on a permanent basis.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cooperative Education Seminar II",
+        "subjectCode": "ENGR",
+        "courseCode": "33099",
+        "instructor": [
+            "Michael J Reckowsky"
+        ],
+        "description": "This seminar is optional for Co-Op students when they are on-campus. In this course, students share their work experiences, receive feedback from the instructor and seminar participants, and continue their professional development. Prerequisite: Student must have completed at least two Co-Op work terms. May be repeated once after the fourth work term. Can be taken for two credits subsequent to completing two back-to-back work terms. Instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Vehicle Dsgn & Fabrctn",
+        "subjectCode": "ENGR",
+        "courseCode": "39600",
+        "instructor": [
+            "Jacqueline C Linnes",
+            "Todd A Nelson"
+        ],
+        "description": "Experimental classes offered at the junior level on a temporary basis to test the viability of offering the course on a permanent basis.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Humanities-Informed Engr Proj",
+        "subjectCode": "ENGR",
+        "courseCode": "39697",
+        "instructor": [
+            "Gabriel Octavio Rios-Rojas"
+        ],
+        "description": "Students will work in teams to formulate solutions to engineering problems. Project topics will focus on a problem outside the U.S. and/or incorporate teammates from international universities. International teams may work remotely with the possibility for international travel and in-person collaboration. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Instr,Mentorshp&Ldrshp-Honors",
+        "subjectCode": "ENGR",
+        "courseCode": "40400",
+        "instructor": [
+            "Makenzie Rae Campbell"
+        ],
+        "description": "  This course provides students with valuable mentorship, leadership, and instructional opportunities through participation in the College of Engineering mentorship programs. The weekly seminar will feature a combination of student-led discussions, guest speakers, and practical team-building skills.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Engineering Ambassador Leadership Seminar",
+        "subjectCode": "ENGR",
+        "courseCode": "40600",
+        "instructor": [
+            "Nathan P Engelberth"
+        ],
+        "description": "Students will engage in a weekly seminar that includes topics such as leadership, professional skills, teamwork, and Purdue culture. Students will utilize these skills while representing Purdue College of Engineering to current and prospective students, alumni, donors, legislators, and other supporters of Purdue College of Engineering. Student must be selected as a College of Engineering Ambassador; be currently enrolled full-time in the College of Engineering; have completed no less than three academic semesters at Purdue; have a cumulative GPA of 2.8 or higher. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cooperative Education Seminar III",
+        "subjectCode": "ENGR",
+        "courseCode": "43099",
+        "instructor": [
+            "Michael J Reckowsky"
+        ],
+        "description": "This seminar course is optional for Co-Op students when they are on-campus. In this course, students share their work experiences, receive feedback from the instructor and seminar participants, and continue their professional development. Prerequisite: Student must have completed at least three Co-Op work terms. Can be taken for two credits subsequent to completing two back-to-back work terms. Instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Women In Engineering Senior Seminar: Gender In The Workplace",
+        "subjectCode": "ENGR",
+        "courseCode": "49400",
+        "instructor": [
+            "Suzanne M Zurn-Birkhimer"
+        ],
+        "description": "This course provides junior and senior engineering students an opportunity to maximize their earning potential, promotion opportunities, and retention within engineering or related fields. Enrolled students will 1) become aware of and discuss solutions for internal and external barriers which can prevent women from reaching their greatest potential in the workforce; 2) enhance professional development and transition skills required to move successfully from an academic to professional environment; and 3) acquire skills and knowledge to serve as engineering role models/ambassadors for diverse populations. The content and activities of the course may be of particular interest to women. Permission by instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

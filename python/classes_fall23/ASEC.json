@@ -1,0 +1,227 @@
+[
+    {
+        "title": "Agriculture, Science And Social Issues",
+        "subjectCode": "ASEC",
+        "courseCode": "10100",
+        "instructor": [
+            "Beth A Forbes"
+        ],
+        "description": "This course introduces Purdue Agriculture students to social issues that influence the future of science innovation and the agriculture industry. It will particularly focus on areas of apparent disconnect with regard to agriculture, scientific evidence and the general public. In order to learn how to communicate with others on controversial issues, concepts of engagement will be discussed as ways to better understand audiences and find areas of common interest. Featuring guest speakers on current social issues, students will learn how issues impact the agriculture industry and science innovation and consider how to engage stakeholders regarding these concerns.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Agricultural Communication Seminar",
+        "subjectCode": "ASEC",
+        "courseCode": "15200",
+        "instructor": [
+            "Mark A Tucker"
+        ],
+        "description": "This course provides an introduction to agricultural communication as a professional field, including its current status and role within the larger U.S. mass media system. The course will also provide an overview of career options and professional skills and competencies required of agricultural communicators.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Seminar In Agricultural Education",
+        "subjectCode": "ASEC",
+        "courseCode": "24000",
+        "instructor": [
+            "Amy K Conrad"
+        ],
+        "description": "Development of an understanding of the origin, scope, and objectives of agricultural education; role of the agricultural science and business teacher as a professional educator; basic responsibilities of a teacher of agricultural science and business; and significance of legislation affecting agricultural education.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Digital Storytelling",
+        "subjectCode": "ASEC",
+        "courseCode": "28000",
+        "instructor": [
+            "Kevin Leigh Smith"
+        ],
+        "description": "Students will plan, shoot, and edit videos; collaborate in teams; plan and generate social media; and write feature pieces for digital platforms. Students will gain meaningful digital storytelling experiences that will enhance their understanding of various platforms and build their professional portfolios.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Building Intercultural Partnerships",
+        "subjectCode": "ASEC",
+        "courseCode": "30100",
+        "instructor": [
+            "Maria Julia Bello Bravo"
+        ],
+        "description": "This course uses a combination of readings, videos, experiential activities, presentations, and face-to-face & virtual excursions/engagement with \"other/different\" international cultural groups to deepen students' ownership of their own learning and to identify and understand both similarities and differences in values and social norms across countries and cultures. Students will enhance their intercultural communication skills, their emotional resilience, and their ability to engage effectively and equitably in conversations and partnerships with people from other countries and cultures.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Laboratory Practices In Agricultural Education",
+        "subjectCode": "ASEC",
+        "courseCode": "34000",
+        "instructor": [
+            "Sarah E LaRose"
+        ],
+        "description": "This course is designed to introduce pre-service agricultural education teachers to laboratory integration into the agricultural education curriculum at the middle school and secondary school level. Emphasis is placed on laboratory safety, skill acquisition, developing knowledge of laboratory components in Agriscience, laboratory utilization, facilitating student learning in the laboratory setting, appropriate teaching methods and techniques, curriculum applications, and classroom resources. Travel to on and off-campus sites will be required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Controversial Science And Media In The Public Sphere",
+        "subjectCode": "ASEC",
+        "courseCode": "35500",
+        "instructor": [
+            "Beth A Forbes"
+        ],
+        "description": "This course will utilize case studies of controversial science news to explore the multiple factors that converge to influence how science and technology become controversial issues across a variety of social/ political domains. In addition to foundational understanding of communication theory, students will develop two primary skills: 1) a structure for the critical analysis of science news, 2) the skills to meaningfully communicate across stakeholders. The science content (GMOs, climate change, pesticide use, etc.) will provide the background information for analysis of the main focus of the course, which is in learning the communication  process for effectively communicating science to non-science audiences. Case studies and applied critical media theory will be utilized to explore such controversies as climate change, genetically modified foods, and other emergent science controversies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Feature Writing And Production",
+        "subjectCode": "ASEC",
+        "courseCode": "38000",
+        "instructor": [
+            "Kevin Leigh Smith"
+        ],
+        "description": "Students gain hands-on studio experiences in all phases of features writing, storytelling, and production. Students will analyze audiences, generate story ideas, research, interview, write, edit, shoot photos, plan social media, design pages, and can shoot short-form video.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Methods Of Teaching Agricultural Education",
+        "subjectCode": "ASEC",
+        "courseCode": "44000",
+        "instructor": [
+            "Sarah E LaRose"
+        ],
+        "description": "Principles and procedures for teaching agricultural science and business in public schools. Must be admitted to teacher education program.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Agricultural Communication Capstone Seminar",
+        "subjectCode": "ASEC",
+        "courseCode": "48000",
+        "instructor": [
+            "Mark A Tucker"
+        ],
+        "description": "Prepares graduating students for entry to the workplace, assesses and enhances their communication knowledge and skills, and provides project experiences that will demonstrate their ability to communicate scientific and technical information through a variety of media. Projects will include student presentations and magazine style articles on issues of concern to agricultural and general audiences; and a final project that requires students to conceive and create a web site that uses converging media to communicate effectively a topical issue.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Environmental Communication",
+        "subjectCode": "ASEC",
+        "courseCode": "48500",
+        "instructor": [
+            "Linda J Pfeiffer"
+        ],
+        "description": "This is an interactive learning course in science and environmental communication with a strong emphasis on development of practical writing and communication skills for students who will become professionals in environment or natural resources. The public primarily obtains environmental information through the media, as such, scientists need to develop the understanding and skills necessary to engage with a range of audiences through the design of effective communication products. This course provides a unique balance of communication theory and skills training in which students develop the confidence to meaningfully communicate environmental issues.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Adult Education",
+        "subjectCode": "ASEC",
+        "courseCode": "56500",
+        "instructor": [
+            "Casey Downs Mull"
+        ],
+        "description": "(EDCI 56500) Principles of adult education applied to helping adults learn, evaluating their performance, and determining their needs. Examines history, philosophy, and research of adult education. Explores techniques required in design and delivery of instruction for adults.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Global Engagement Challenges",
+        "subjectCode": "ASEC",
+        "courseCode": "59100",
+        "instructor": [
+            "Maria Julia Bello Bravo"
+        ],
+        "description": "Specialized topics not covered in other courses. Topics, requirements, and credits to be determined yearly. To be arranged with the instructor or departmental representative prior to registering. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Adolescent Development In Context",
+        "subjectCode": "ASEC",
+        "courseCode": "62000",
+        "instructor": [
+            "Zoe E Taylor"
+        ],
+        "description": "This course is a graduate level seminar of major issues concerning adolescents, with attention to developmental perspective. The social ecology of adolescent development--an understanding of adolescents in their social contexts--is emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "ASEC Graduate Seminar",
+        "subjectCode": "ASEC",
+        "courseCode": "64400",
+        "instructor": [
+            "Neil A Knobloch"
+        ],
+        "description": "Students are familiarized with planning and presenting ASEC research through written and oral presentations based on the student's proposed thesis topic. Weekly attendance and participation at seminars help graduate students use appropriate and effective presentation skills, understand expectations regarding responsible conduct of research, and learn about current topics in ASEC related research areas.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    }
+]

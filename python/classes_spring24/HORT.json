@@ -1,0 +1,168 @@
+[
+    {
+        "title": "Fundamentals Of Horticulture",
+        "subjectCode": "HORT",
+        "courseCode": "10100",
+        "instructor": [
+            "Michael N Dana"
+        ],
+        "description": "Biology and technology involved in the production, storage, processing, and marketing of horticultural plants and products. Laboratories include experiments demonstrating both the theoretical and practical aspects of horticultural plant growth and development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Opportunities In Horticulture",
+        "subjectCode": "HORT",
+        "courseCode": "11000",
+        "instructor": [
+            "Linda S Prokopy"
+        ],
+        "description": "A survey of the field of horticulture, with emphasis on horticultural information and career opportunities. This course will utilize a lecture format with a combination of presentations by the instructor and guest speakers with expertise and experience in specialized areas of horticulture.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Plant Propagation",
+        "subjectCode": "HORT",
+        "courseCode": "20100",
+        "instructor": [
+            "Michael N Dana"
+        ],
+        "description": "Theoretical and applied aspects of controlled plant reproduction by sexual and asexual techniques, including seeds, grafting and budding, layering, cuttings, micropropagation (in vitro culture), and specialized structures. Lectures emphasize morphological changes and physiological processes involved in plant propagation. Laboratory exercises illustrate the practical applications of propagation techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamentals Of Turfgrass Culture",
+        "subjectCode": "HORT",
+        "courseCode": "21000",
+        "instructor": [
+            "Cale A Bigelow"
+        ],
+        "description": "(AGRY 21000) An introductory course in turfgrass management emphasizing turfgrass growth and development, species characteristics, their adaptation and basic cultural requirements for ornamental and functional turfgrass areas. The requirements and cultural inputs needed for proper establishment and maintenance of a high-quality, low-maintenance lawn will be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Plant Physiology",
+        "subjectCode": "HORT",
+        "courseCode": "30100",
+        "instructor": [
+            "Peter M Hirst"
+        ],
+        "description": "Basic physiological processes of higher plants, particularly as related to the influence of environmental factors on growth, metabolism, and reproduction. Laboratory experiments involve hands-on experience with numerous aspects of plant physiology, including water relations, photosynthesis, growth, dormancy, hormones, and flowering.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Greenhouse Crop Production",
+        "subjectCode": "HORT",
+        "courseCode": "49100",
+        "instructor": [
+            "Celina Gomez",
+            "Jada S Powlen"
+        ],
+        "description": "Training in research techniques, statistical methods, and record procedures. Assigned research problems. A written report of work accomplished is required. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Computing For Biologists",
+        "subjectCode": "HORT",
+        "courseCode": "53000",
+        "instructor": [
+            "Kranthi K Varala"
+        ],
+        "description": "This course will teach the basic skills and knowledge required to operate in UNIX environment and program in Python. The course is designed to teach graduate, and advanced undergraduate students in plant and animal sciences the skill set required to analyze and interpret their own datasets. The lectures and associated lab section will provide students hands-on experience in working within a high-performance computing environment to analyze genome-scale datasets.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Planning And Presenting Plant Science Research",
+        "subjectCode": "HORT",
+        "courseCode": "60100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "The purpose of this course is to acquaint students with the culture of scientific research and the processes of scientific discovery and review. This course will: (1) acquaint students with techniques used in presenting short scientific talks, as e.g., at national meetings, (2) expose students to procedures used in preparing scientific papers, proposals, etc., (3) introduce students to the outcomes expected to be achieved by graduate education and the processes by which students are mentored and evaluated, (4) help students begin formulating their research project proposal, (5) acquaint students with guidelines for biosafety and responsible conduct of research and provide a forum for discussion of ethical issues confronting researchers, particularly those inherent in participating in extramurally-funded research, (6) acquaint students with intellectual property issues involved in scientific research, (7) acquaint students with core research facilities across campus, and (8) expose students to discussions regarding the importance of diversity and an atmosphere of mutual respect to research excellence. This course is taken for a letter grade and carries one hour of credit.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Horticulture Research Seminar",
+        "subjectCode": "HORT",
+        "courseCode": "60200",
+        "instructor": [
+            "Kashchandra G Raghothama"
+        ],
+        "description": "Weekly attendance at the Horticulture and Landscape Architecture Departmental seminars to help graduate students develop an appreciation for attending seminars and learning appropriate and effective presentation skills. HORT 602 compliments HORT 601 and HORT 603 by extending the presentation and project development approaches learned, so that students are better ready to prepare and defend their project proposals in HORT 603. Prerequisite: BCHM 56100.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Grants And Grantsmanship",
+        "subjectCode": "HORT",
+        "courseCode": "60300",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Focuses on funding opportunities in agricultural research and techniques of writing successful scientific grant proposals. Students will write a proposal on a research topic of their choice during the course, and they will gain experience in the peer review process by preparing written reviews of proposals and participating in a panel meeting in which proposals are discussed and ranked.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Horticulture Seminar",
+        "subjectCode": "HORT",
+        "courseCode": "69500",
+        "instructor": [
+            "Joshua R Widhalm"
+        ],
+        "description": "Topics of current interest to staff and students.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    }
+]

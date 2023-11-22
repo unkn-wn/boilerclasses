@@ -1,0 +1,422 @@
+[
+    {
+        "title": "Introduction To Medical Laboratory Science",
+        "subjectCode": "HSCI",
+        "courseCode": "13000",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "An introduction to career opportunities in medical technology. Preprofessional and professional requirements. A survey of the major clinical laboratory departments and their applications to patient care and management. Discussion and interpretation of some of the major diagnostic tests, i.e., for cardiac enzymes, cholesterol, blood cells, diabetes, and drug monitoring.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Medical Terminology",
+        "subjectCode": "HSCI",
+        "courseCode": "13100",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "This self-paced learning course is designed to familiarize the student with terms used in medicine. Each body system will be studied individually. Word roots, prefixes, and suffixes will be used to build words relating to the system. Diagnostic and symptomatic terms will be introduced. CTL:IPO 1820 Medical Terminology",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "School Of Health Sciences Freshman Honors Seminar",
+        "subjectCode": "HSCI",
+        "courseCode": "19501",
+        "instructor": [
+            "Aaron B Bowman"
+        ],
+        "description": "This course is for Freshman students in the School of Health Sciences Honors Program. This course consists of a 50-minute weekly seminar meeting designed to orient and familiarize Freshman HSCI Honors students with the School of Health Sciences including research areas and current topics in public health and biomedical research. Students will interact with guest speakers and expand their knowledge base in health science research. In addition to the seminar, students will be matched to a faculty mentor in a research area of their interest during the fall semester. Students will develop and design a research project with their faculty mentor (to be conducted in HSCI 19601 during the spring semester). In the spring semester, students will enroll in the seminar series (HSCI 19501) and in the research project course (HSCI 19601) to complete their project. Each student will be responsible for presenting and reporting on their research project during the spring seminar series. Permission of departmental required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Principles Of Public Health Science",
+        "subjectCode": "HSCI",
+        "courseCode": "20100",
+        "instructor": [
+            "Andrew Anthony Havics"
+        ],
+        "description": "This course begins with a definition of public health and a review of its history and its role in disease prevention. The basic tools of public health practice, vital statistics and epidemiology, are then presented. After gaining an understanding of how these tools are used in assessing the health status of a community, the etiology and control of infectious and non-infectious threats to our health will be examined. The course concludes with risk analysis as a basis for public health policy determination.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Healthcare Leadership And Safety",
+        "subjectCode": "HSCI",
+        "courseCode": "22500",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "This course will present topics related to effective leadership and management strategies within an organization. The course will focus on implementation of these strategies from a health and safety perspective. Specific leadership and management topics to be discussed include communication strategies, motivation, conflict management, negotiation, ethics, and professional development. In addition, important safety topics, such as fire & life safety, workplace violence, terrorism, hazard communication, and slip & fall hazards will also be addressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "School Of Health Sciences Sophomore Honors Seminar",
+        "subjectCode": "HSCI",
+        "courseCode": "29501",
+        "instructor": [
+            "Aaron B Bowman"
+        ],
+        "description": "This course is for sophomore students in the School of Health Sciences Honors Program. This course consists of a 50-minute weekly seminar meeting to discuss current topics in health science, public health, and biomedical research. Students will interact with guest speakers and expand their knowledge base in health sciences research. In addition, each student will be responsible for presenting and reporting on their ongoing honors research project. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Imaging In Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "31000",
+        "instructor": [
+            "Uzay E Emir"
+        ],
+        "description": "This course will introduce students to develop essential understandings of all primary medical imaging techniques utilized in hospitals such as Computer tomography, X-ray imaging, MRI, Ultrasound and Nuclear medicine imaging modalities. The course will cover basic scientific principles of each modality and introduce their underlying clinical requirements and applications. In addition, this course introduces the student to human anatomy as seen in the transverse, coronal, and sagittal planes. Anatomy of the brain, thorax, abdomen, and pelvis will be studies using CT and MRI images. Normal anatomy, anatomic variants, and selected pathologies will be discussed in the various body regions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Immunology",
+        "subjectCode": "HSCI",
+        "courseCode": "33300",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "Introduction to Immunology will meet twice weekly and provide an overview of this evolving field of science with an emphasis on the clinical implications and application of learned knowledge. The immunologic mechanisms associated with the normal and abnormal immune response will be discussed and students will put this knowledge into practice by directing their own case study. In addition, a number of common clinical concerns with respect to immunity will be reviewed. Furthermore, we will explore the critical role our knowledge of this branch of science plays in patient diagnosis, treatment and care both now and in the future.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Lung Physiology And Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "33400",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "This course will explore the normal functioning of the respiratory system, along with a variety of diseases and disorders affecting this system. Special emphasis will be placed upon diseases which result from, or are aggravated by, environmental pollutants. The course will begin with discussing the anatomy and physiology of the respiratory system. Individual lung disorders will then be discussed with consideration of the sources of air pollution contaminants and the interaction of those contaminants with normal lung tissue.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Heart Physiology And Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "33500",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "This course will provide a discussion about diseases affecting the heart and cardiovascular system. The normal anatomy and physiology of the heart and blood vessels with be discussed. Various diseases of the heart and vasculature, including atherosclerosis, cardiomyopathies, valvular heart disease, hypertension, and stroke will be explored. Included in the discussion of each disease process will be environmental agents, which are associated with disease development and progression.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Industrial Hygiene Instrumentation Techniques",
+        "subjectCode": "HSCI",
+        "courseCode": "34800",
+        "instructor": [
+            "Jae Hong Park"
+        ],
+        "description": "Sophisticated field and laboratory instrumentation and techniques, sampling methodology for organic vapors, dust, fibers, noise, and heat; calibration and validation techniques; emphasis on critical analysis of data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Everyday Toxicology: Poisonings From Clinics To Courtrooms",
+        "subjectCode": "HSCI",
+        "courseCode": "36000",
+        "instructor": [
+            "Wei Zheng"
+        ],
+        "description": "Exposure to chemicals happens every day in human life through the living environment and diet; yet the health impact and toxicological consequences of these exposures are often unknown to general populations. This 300-level course examines basic concepts of toxicology in human health as they apply to the exposure of environmental agents, e.g., chemicals, metals, and poisons in daily life and attempted poisoning in criminal cases and political assassins. With an emphasis on historical accounts of poisonings and case analyses, the course describes commonly encountered chemicals and poisons, their symptoms, clinical diagnosis, basic toxicological mechanisms, and medical interventions. Students will also learn some of the large-scale environmental and occupational incidents that have led to legal actions, and the role of toxicology in forensic investigation of purposed poisoning. The course is ideal to students who are inspired to become a future healthcare professional in any of the health-oriented pre-professional programs or students with majors in biomedical health sciences, environmental and occupational health sciences, medical laboratory science, and/or public health.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "School Of Health Sciences Junior Honors Seminar",
+        "subjectCode": "HSCI",
+        "courseCode": "39501",
+        "instructor": [
+            "Aaron B Bowman"
+        ],
+        "description": "This course is for Junior students in the School of Health Sciences Honors Program. This course consists of a 50-minute weekly seminar meeting to discuss current topics in health science, public health, and biomedical research. Students will interact with guest speakers and expand their knowledge base in health sciences research. In addition, each student will be responsible for presenting and reporting on their ongoing honors research project. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "School Of Health Sciences Senior Honors Seminar",
+        "subjectCode": "HSCI",
+        "courseCode": "49501",
+        "instructor": [
+            "Aaron B Bowman"
+        ],
+        "description": "This course is for Senior students in the School of Health Sciences Program. This course consists of a 50-minute weekly seminar meeting to discuss current topics in health science, public health, and biomedical research. Students will interact with guest speakers and expand their knowledge base in health sciences research. In addition, each student will be responsible for presenting and reporting on their ongoing honors research project. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Radiation Instrumentation Laboratory",
+        "subjectCode": "HSCI",
+        "courseCode": "51400",
+        "instructor": [
+            "Linda H Nie"
+        ],
+        "description": "Laboratory techniques required for the application of radiation and radionuclides.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Applied Health Physics",
+        "subjectCode": "HSCI",
+        "courseCode": "53400",
+        "instructor": [
+            "Linda H Nie"
+        ],
+        "description": "Lecture and case studies related to the application of radiation dosimetry and shielding principles to the practice of health physics, including environmental and in-plant monitoring, emergency response, decommissioning and decontamination, operational criteria for meeting ALARA exposure limits, and the transport, disposal and treatment of radioactive waste. Epidemiological studies related to radiological accidents and nuclear power are also examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Radiation Biology",
+        "subjectCode": "HSCI",
+        "courseCode": "54000",
+        "instructor": [
+            "Matthew Louis Scarpelli"
+        ],
+        "description": "Effects of ionizing radiation on living systems at the molecular, cellular and tissue levels. Biological basis for radiation therapy treatment planning and radiation protection.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Topics In Exposure Assessment",
+        "subjectCode": "HSCI",
+        "courseCode": "54400",
+        "instructor": [
+            "Sa Liu"
+        ],
+        "description": "The course will prepare students to use techniques of exposure assessment as it relates to environmental and occupational epidemiological studies as well as regulatory compliance at workplace and in community settings, risk science, and susceptibility factors. It will include exposure assessment study design, the strengths and weaknesses of various exposure assessment techniques, and how to link exposure assessment with occupational and environmental health. Core concepts to be covered include exposure variability and its implications for reconstructing historical exposures, the choice of exposure metric, surrogate measures and measurement errors, exposure modeling, and biomarkers of exposure. The course emphasizes critical and analytical discussions of seminal exposure assessment literature. Students are required to critically evaluate exposure assessment strategies in selected epidemiological studies from the peer-reviewed literature. Students participate in the class through presentations, class discussions, and a semester project.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Industrial Hygiene Instrumentation Techniques",
+        "subjectCode": "HSCI",
+        "courseCode": "54800",
+        "instructor": [
+            "Jae Hong Park"
+        ],
+        "description": "This course covers sophisticated field and laboratory instrumentation and techniques, sampling methodology for organic vapors, dust, fibers, noise, and heat; calibration and validation techniques; emphasis on critical analysis of data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Physical Agents In Environmental Health",
+        "subjectCode": "HSCI",
+        "courseCode": "55100",
+        "instructor": [
+            "Jason T Harris"
+        ],
+        "description": "Physical characterization and biological interactions of non-ionizing radiation with emphasis on the adverse effects of human exposure. Topics include source characterization, environmental exposure assessment, measurement instrumentation, toxicological and epidemiological findings, control strategies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Medical Diagnostic Imaging",
+        "subjectCode": "HSCI",
+        "courseCode": "57000",
+        "instructor": [
+            "Keith M Stantz"
+        ],
+        "description": "This course teaches the fundamentals of medical imaging, including the basic physics and engineering associated with each imaging modality (CT, MRI, PET, and ultrasound), as well as mathematics and computational tools associated with image reconstruction and image processing. The course is intended for students in health sciences, biomedical engineering, physics, and life sciences.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Radiation Oncology Physics",
+        "subjectCode": "HSCI",
+        "courseCode": "57200",
+        "instructor": [
+            "Jeffrey Robert Frensemeier"
+        ],
+        "description": "An introductory course to the physical principles, equipment, processes, imaging guidance, and clinical techniques involved in the treatment of cancer patients with external radiation beams and radioactive sources. Various external radiation beam types and their energy deposition characteristics are described. Treatment planning dose calculation algorithms and point dose calculations are discussed. The use of international dosimetry protocols for radiation beam calibration are covered in detail.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Environmental Health",
+        "subjectCode": "HSCI",
+        "courseCode": "57500",
+        "instructor": [
+            "Jennifer L Freeman"
+        ],
+        "description": "An introduction to chemical, physical and biological factors in the environment that affect the health of the community. This course examines health issues, scientific understanding of causes and approaches to the control of major environmental health problems in industrialized and developed countries. This is a core course for the Masters in Public Health (MPH) degree at Purdue.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Basics Of MR Spectroscopy",
+        "subjectCode": "HSCI",
+        "courseCode": "59000",
+        "instructor": [
+            "Ulrike Dydak"
+        ],
+        "description": "Special topics, projects, or readings in selected areas of health sciences at a level appropriate for seniors and graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Biochemical Toxicology",
+        "subjectCode": "HSCI",
+        "courseCode": "67100",
+        "instructor": [
+            "Jason R Cannon"
+        ],
+        "description": "Toxicologists in all fields are concerned with mechanism of action or how a specific toxicant or class of toxicants produces toxicity. Introductory toxicology courses typically focus on the adverse effects exerted by a specific compound, with some examination of mechanisms. The entire focus of this upper-level graduate course is on the \"how\" and the \"why\", or a detailed examination of biochemical mechanism of toxicity. There will be some lectures, but the majority of the course will consist of student-led discussions on specific mechanisms of action. Further, students will write a review-style article on a chosen mechanism of action. Prerequisite: HSCI 56000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Radiological Diagnostic Imaging Internship",
+        "subjectCode": "HSCI",
+        "courseCode": "67400",
+        "instructor": [
+            "Keith M Stantz"
+        ],
+        "description": "This internship course provides the student with hands-on experience with clinical imaging equipment, lectures on the fundamental operation of the equipment, and quality assurance/control methods/assessment of this equipment. Students will learn the safety and imaging performance of flat panel digital x-ray system, fluoroscopy, CT scanner, Ultrasound system, and MRI scanner. Lectures will provide fundamental physics and operation of each system, perform quality assurance methods employed by board certified Medical Physics, and subsequent analysis of these methods. This course is to be delivered as a 50-minute lecture, a 150-minute lab, which includes additional time for image analysis (computational lab). The goal of this course is to provide the necessary information as part of CAMPEP/ABR and ACVR. Prerequisite: HSCI 57000 Introduction to Medical Imaging.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Hlth Sci Grad Dev & Profsnalsm",
+        "subjectCode": "HSCI",
+        "courseCode": "69000",
+        "instructor": [
+            "Jonathan H Shannahan"
+        ],
+        "description": "Special topics, projects, or readings in selected areas of health sciences at a level appropriate for graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar In Health Science",
+        "subjectCode": "HSCI",
+        "courseCode": "69600",
+        "instructor": [
+            "Jason R Cannon"
+        ],
+        "description": "Selected topics in health sciences presented by staff, students, and invited speakers.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Spring 2023"
+    }
+]

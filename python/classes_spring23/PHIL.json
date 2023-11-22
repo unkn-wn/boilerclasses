@@ -1,0 +1,484 @@
+[
+    {
+        "title": "The Big Questions: Introduction To Philosophy",
+        "subjectCode": "PHIL",
+        "courseCode": "11000",
+        "instructor": [
+            "Jacqueline Marina"
+        ],
+        "description": "The basic problems and types of philosophy, with special emphasis on the problems of knowledge and the nature of reality. CTL:ISH 1050 Introduction To Philosophy",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "I Play, Therefore I Am: Introduction To Philosophy Through Video Games",
+        "subjectCode": "PHIL",
+        "courseCode": "11005",
+        "instructor": [
+            "Jashiel E Resto Quinones",
+            "Troy Daniel Seagraves"
+        ],
+        "description": "This course uses video games to demonstrate many of the fundamental problems of philosophy. To better understand the philosophical problems presented in text, students will watch online walkthroughs and live demonstrations of video games in class. Students will also engage with these problems through active learning by occasionally playing video games.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Ethics",
+        "subjectCode": "PHIL",
+        "courseCode": "11100",
+        "instructor": [
+            "Patrick Paul Kain",
+            "Leonard Harris"
+        ],
+        "description": "A study of the nature of moral value and obligation. Topics such as the following will be considered: different conceptions of the good life and standards of right conduct; the relation of nonmoral and moral goodness; determinism, free will, and the problem of moral responsibility; the political and social dimensions of ethics; the principles and methods of moral judgment. Readings will be drawn both from contemporary sources and from the works of such philosophers as Plato, Aristotle, Aquinas, Butler, Hume, Kant, and J. S. Mill. CTL:ISH 1051 Ethics",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Global Moral Issues",
+        "subjectCode": "PHIL",
+        "courseCode": "11400",
+        "instructor": [
+            "Taylor T Davis"
+        ],
+        "description": "A systematic and representative examination of significant contemporary moral problems with a focus on global issues such as international justice, poverty and foreign aid, nationalism and patriotism, just war, population and the environment, human rights, gender equality, and national self-determination.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Philosophy: What Are You Going To Do With That?",
+        "subjectCode": "PHIL",
+        "courseCode": "11500",
+        "instructor": [
+            "Samantha Lee Walker Ooley"
+        ],
+        "description": "This course is designed for all philosophy majors, but is open to anyone interested in minor/majoring in philosophy. The format for this course is based on three components: reading and reflection, along with in-class discussion; in-class guest speakers who will address various topics in philosophy as a field, and/or professionalization (both within and outside of academia); and short written exercises, often done in class, which are designed to build up to the final project. Most classes will begin with a guest speaker giving a brief introduction to a particular area or topic within philosophy. Students will have a short reading assigned for each class period that will be discussed with the instructor following the guest's presentation. The course readings will be, as best as possible, related to the area/topic introduced by the guest. Certain classes will be dedicated solely to career/professionalization interests and will feature guests with expertise in these areas. The professionalization experts will help students develop their career goals, identify possible internships and scholarships to pursue while a student at Purdue, and develop career goals for after they have graduated. Finally, certain classes will be dedicated to writing and the development of the final project, which will include a proposed 8-semester path of study, a polished resume/CV, and career/professionalization goals.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Principles Of Logic",
+        "subjectCode": "PHIL",
+        "courseCode": "15000",
+        "instructor": [
+            "Dana Tulodziecki"
+        ],
+        "description": "A first course in formal deductive logic; mechanical and other procedures for distinguishing good arguments from bad. Truth-tables and proofs for sentential (Boolean) connectives, followed by quantificational logic with relations. Although metatheoretic topics are treated, the emphasis is on methods.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Ethics For Technology, Engineering, And Design",
+        "subjectCode": "PHIL",
+        "courseCode": "20700",
+        "instructor": [
+            "Taylor T Davis"
+        ],
+        "description": "This course is designed to increase your understanding of professional and ethical responsibilities in national, international and cross-cultural environments, helping you to anticipate, understand, and navigate issues that will likely arise in your working life as an engineer or designer. The focus of the course is on developing the ability to apply a general ethical framework to new and unique situations, including those arising from the global cultural context of modern engineering. The course covers how this ethical framework should be constituted, and provides practice in applying this framework to specific, concrete cases. Together, these components work toward your development as a better engineer and more responsible global citizen. The readings, case studies and exercises are geared towards the development of a well-researched original case study that you will present to the class, which is informed by your past experiences and future aspirations related to engineering.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Philosophy Of Science",
+        "subjectCode": "PHIL",
+        "courseCode": "22100",
+        "instructor": [
+            "Sebastian Murgueitio Ramirez"
+        ],
+        "description": "An introduction to the scope and methods of science and to theories of its historical development. Topics include scientific revolutions, theories of scientific method, the nature of scientific discovery, explanation, and the role of values in scientific change.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fate And Free Will",
+        "subjectCode": "PHIL",
+        "courseCode": "22300",
+        "instructor": [
+            "Michael Abram Bergmann"
+        ],
+        "description": "This course encourages critical reflection on the nature and possibility of human freedom in a world like ours that appears to be determined by unchanging causal and physical laws. Topics include the compatibility of free will and determinism, the possibility of moral responsibility without free will, and the incentives (if any) for future planning if our future fate is already sealed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Science And Religion",
+        "subjectCode": "PHIL",
+        "courseCode": "22700",
+        "instructor": [
+            "Paul R Draper"
+        ],
+        "description": "Are science and religion irrelevant to each other? Or can one of them challenge, support, shape, presuppose, explain- or explain away-the other? This course examines how science in general, as well as specific scientific disciplines such as evolutionary biology, physical cosmology, and cognitive science, are related to religion in general, and to particular religious traditions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Religions Of The East",
+        "subjectCode": "PHIL",
+        "courseCode": "23000",
+        "instructor": [
+            "Michael D Nichols"
+        ],
+        "description": "(REL 23000) A study of the history, teachings, and present institutions of the religions of India, Southeast Asia, China, and Japan. This will include Hinduism, Jainism, Sikhism, Buddhism, Confucianism, Taoism, Shintoism, and Zoroastrianism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Religions Of The West",
+        "subjectCode": "PHIL",
+        "courseCode": "23100",
+        "instructor": [
+            "Thomas W Ryba"
+        ],
+        "description": "(REL 23100) A comparative study of the origins, institutions, and theologies of the three major Western religions, Judaism, Christianity, and Islam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Philosophy And Law",
+        "subjectCode": "PHIL",
+        "courseCode": "26000",
+        "instructor": [
+            "Michael L Jacovides"
+        ],
+        "description": "A discussion of philosophical issues in the law: a critical examination of such basic concepts in law as property, civil liberty, punishment, right, contract, crime and responsibility; and a survey of some main philosophical theories about the nature and justification of legal systems. Readings will be drawn from both law and philosophy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Ethics And Animals",
+        "subjectCode": "PHIL",
+        "courseCode": "28000",
+        "instructor": [
+            "Ana Carolina Gomez Sierra"
+        ],
+        "description": "An exploration through the study of major historical and contemporary philosophical writings of basic moral issues as they apply to our treatment of animals. Rational understanding of the general philosophical problems raised by practices such as experimentation on animals or meat-eating will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Environmental Ethics",
+        "subjectCode": "PHIL",
+        "courseCode": "29000",
+        "instructor": [
+            "Lynn Parrish"
+        ],
+        "description": "An introduction to philosophical issues surrounding debates about the environment and our treatment of it. Topics may include endangered species, \"deep ecology,\" the scope and limits of cost-benefit analyses, and duties to future generations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "History Of Ancient Philosophy",
+        "subjectCode": "PHIL",
+        "courseCode": "30100",
+        "instructor": [
+            "Michael L Jacovides"
+        ],
+        "description": "A survey of Greek philosophy from its beginning in the Milesian school through the Presocratics to Plato and Aristotle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "History Of Medieval Philosophy",
+        "subjectCode": "PHIL",
+        "courseCode": "30200",
+        "instructor": [
+            "Richard Jordan Lavender"
+        ],
+        "description": "A survey of the main trends and figures of medieval philosophy, with an emphasis on metaphysics, epistemology, and ethics.  Readings (in English translation) may include Augustine, Boethius, Avicenna, Anselm, Abelard, Maimonides, Aquinas, Scotus, Ockham and Suarez.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "History Of Modern Philosophy",
+        "subjectCode": "PHIL",
+        "courseCode": "30300",
+        "instructor": [
+            "Jan A Cover"
+        ],
+        "description": "Concentrates on the major philosophical writers from the Renaissance to the beginning of the nineteenth century: Descartes, Hobbes, Spinoza, Locke, Leibniz, Berkeley, Hume, Kant. Some in other areas, e.g., Galileo, Newton, Calvin, are also considered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Twentieth-Century Philosophy",
+        "subjectCode": "PHIL",
+        "courseCode": "30600",
+        "instructor": [
+            "Jacqueline Marina"
+        ],
+        "description": "A critical examination of the main currents of contemporary philosophical thought, such as pragmatism, analytic philosophy, phenomenology, and existentialism, and other recent developments. The course will cover selected works of such philosophers as Russell, Wittgenstein, Peirce, Whitehead, Heidegger, and Sartre.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Modern Ethical Theories",
+        "subjectCode": "PHIL",
+        "courseCode": "41100",
+        "instructor": [
+            "Patrick Paul Kain"
+        ],
+        "description": "An examination of the major controversies in the history of modern ethics, including: the place of reason in ethics, the basis of moral obligation, and the relation between science and morals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Philosophy Of Science",
+        "subjectCode": "PHIL",
+        "courseCode": "42100",
+        "instructor": [
+            "Sebastian Murgueitio Ramirez"
+        ],
+        "description": "An examination of central issues in philosophy of science. Topics include theories of explanation, confirmation, reduction, laws, the status of theoretical entities, and the epistemological foundations of scientific theories.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Philosophy Of Language",
+        "subjectCode": "PHIL",
+        "courseCode": "46500",
+        "instructor": [
+            "Jamin Frederick Asay"
+        ],
+        "description": "An examination of some of the central issues in the philosophy of language, such as meaning, reference, truth, propositions, and speech acts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fun & The Meaning Of Life",
+        "subjectCode": "PHIL",
+        "courseCode": "49000",
+        "instructor": [
+            "Daniel R Kelly"
+        ],
+        "description": "An advanced study of a significant topic in philosophy.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Philosophy Of Religion",
+        "subjectCode": "PHIL",
+        "courseCode": "50600",
+        "instructor": [
+            "Paul R Draper"
+        ],
+        "description": "A detailed critical investigation of some central problems in a philosophical approach to religion. Readings will be selected from leading representatives of traditional theism and various contemporary schools. The thought of the representative thinkers will be analyzed, discussed, and critically evaluated. The problems discussed will be selected from the existence of God, the problem of evil, freedom and determinism, the problem of immortality, and the nature of religious language. Variable content.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Twentieth-Century Analytical Philosophy II",
+        "subjectCode": "PHIL",
+        "courseCode": "51500",
+        "instructor": [
+            "Jamin Frederick Asay"
+        ],
+        "description": "The development of philosophical analysis through logical positivism and the various forms of linguistic philosophy. An examination of some of the important writings of Moore, Ayer, Ryle, Wisdom, Austin, and the later Wittgenstein. Need not be preceded by PHIL 51400.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Existentialism",
+        "subjectCode": "PHIL",
+        "courseCode": "52000",
+        "instructor": [
+            "William L Mcbride"
+        ],
+        "description": "A detailed exploration and examination of the existentialist movement in modern thought, including its historical roots, its philosophical formulations, and its influence and expression in and relation to art, literature, psychology, social criticism, and religion. Readings will be from at least some of the major existentialists: Kierkegaard, Nietzsche, Jaspers, Heidegger, and Sartre. In addition, texts from existentialist thinkers in other areas will be used.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Studies In Theory Of Knowledge",
+        "subjectCode": "PHIL",
+        "courseCode": "53200",
+        "instructor": [
+            "Michael Abram Bergmann"
+        ],
+        "description": "An intensive examination of selected problems concerning the nature of human knowledge, its scope and limits, its relation to sense-perception and memory. Variable content.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Mathematical Logic",
+        "subjectCode": "PHIL",
+        "courseCode": "55300",
+        "instructor": [
+            "Dana Tulodziecki"
+        ],
+        "description": "This class is an introduction to various logical foundations of mathematics as well as the basics of logical metatheory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Reading To Argue",
+        "subjectCode": "PHIL",
+        "courseCode": "56200",
+        "instructor": [
+            "Gabriele Dillmann"
+        ],
+        "description": "Repeatable twice for a maximum of 9 credits. Closely and critically reading philosophical arguments is the first step to composing your own arguments in philosophy. In addition, developing these skills will help you to orally discuss philosophical ideas, both in classroom discussions as well as when giving presentations. This class aims to prepare students for these tasks by developing the skills of close and critical reading in philosophical discourse. All the while, students will continue improving their reading, writing, and speaking skills in the English language through specifically designed language learning components for non-native English speakers. Students are also supported in their regular philosophy courses. This course is linked to one or more 500+ level philosophy seminars that students in this course are enrolled in. Reading materials, writing activities, and projects for the course are designed to complement tasks and projects required in the linked philosophy seminar. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Writing To Argue",
+        "subjectCode": "PHIL",
+        "courseCode": "57200",
+        "instructor": [
+            "Gabriele Dillmann"
+        ],
+        "description": "Repeatable twice for a maximum of 9 credits. Writing is a primary mode of communication in philosophy. This course aims to prepare students for the writing demands of philosophy by having students develop their ability to analyze, interpret, and critique philosophical arguments through written works and, in the process, construct their own philosophical arguments. Students will also learn writing processes that will aid their ability to effectively and clearly compose philosophical arguments, including outlining, drafting, and editing. Finally, the class will also pay attention to genre and rhetorical features of philosophical discourse, such as how philosophers enact criticism and write introductions to research papers. All the while, students will continue improving their writing and speaking skills in the English language through specifically designed language learning components for non-native English speakers. Students can use their course paper as a draft of a writing sample for PhD programs. Students are also supported in their regular philosophy courses. This course is linked to one or more 500+ level philosophy seminars that students in this course are enrolled in. Reading materials, writing activities, and projects for the course are designed to complement tasks and projects required in the linked philosophy seminar.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nature Of Philosophy",
+        "subjectCode": "PHIL",
+        "courseCode": "58000",
+        "instructor": [
+            "Leonard Harris"
+        ],
+        "description": "Designed primarily for majors in philosophy who have already successfully completed six hours in philosophy. Other students may be admitted to the course with the special consent of the instructor in charge. Topic to be selected by the department.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Dissertation Workshop",
+        "subjectCode": "PHIL",
+        "courseCode": "68000",
+        "instructor": [
+            "Taylor T Davis"
+        ],
+        "description": "An intensive course for graduate students majoring or minoring in philosophy. The content of the seminar will be determined in accordance with the needs and interests of the students. Prerequisite: 6 credit hours at the graduate level in Philosophy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

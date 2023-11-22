@@ -1,0 +1,396 @@
+[
+    {
+        "title": "Being Human: Introduction To Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "10000",
+        "instructor": [
+            "Suzanne Marie Barber"
+        ],
+        "description": "Introduces anthropology's holistic approach to human nature and behavior. This course uses the tools of cultural, biological, archaeological, and linguistic anthropology to follow the human journey of uniformity and diversity through time and across space.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Archaeology And World Prehistory",
+        "subjectCode": "ANTH",
+        "courseCode": "20100",
+        "instructor": [
+            "Erik R Otarola-Castillo"
+        ],
+        "description": "Introduction to the ideas and practices of archaeology that are used in the contemporary study of human prehistory. Emphasis is placed on the social and technological changes that accompanied major turning points in the human past, including the earliest stone tools, the development of farming, through the advent of writing and monumental architecture among ancient states.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Human Origins",
+        "subjectCode": "ANTH",
+        "courseCode": "20400",
+        "instructor": [
+            "Stacy M Lindshield"
+        ],
+        "description": "Surveys our evolutionary journey, from fossil primates to modern humans, through a review of evolutionary theory and genetics, the fossil evidence for current theories in human evolution with insight from modern non-human primates, and the influence of environmental stressors on modern human biological variation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Human Cultural Diversity",
+        "subjectCode": "ANTH",
+        "courseCode": "20500",
+        "instructor": [
+            "Elizabeth Joan Wirtz"
+        ],
+        "description": "Offers an engaging introduction to concepts, themes, methods, and ethical concerns that guide research and analysis in cultural anthropology. Students will learn how to identify and interpret the complexities of human culture - what makes cultures different, and in what ways are they more alike than we might assume? Topics include: race and racism; ethnicity and nationalism; gender; sexuality; kinship, family, and marriage; class and inequality; the global economy; politics and power; religion; and health and illness.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Technology And Culture",
+        "subjectCode": "ANTH",
+        "courseCode": "21000",
+        "instructor": [
+            "Zoe Nyssa",
+            "Risa Denae Cromer"
+        ],
+        "description": "This course explores the social dimensions of technology from the perspective of ancient, modern, and post-modern society.  Topics include the origins of particular technologies; processes of technical development and dissemination; the politics of everyday artifacts; virtual identities; and technologies of the body. Suggested courses (not pre-requisite): ANTH 10000, 20100 and/or 20500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Culture, Food And Health",
+        "subjectCode": "ANTH",
+        "courseCode": "21200",
+        "instructor": [
+            "Elizabeth Joan Wirtz"
+        ],
+        "description": "This course is designed to provide an introduction to the field of Nutritional Anthropology in which we will examine issues related to diet, health and illness from holistic anthropological perspectives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Forensic Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "21500",
+        "instructor": [
+            "Melanie M Beasley"
+        ],
+        "description": "Introduction to forensic anthropology, the science that utilizes methods from skeletal biology and archaeology as tools in human identification in a medico-legal context. This course introduces students to methods used to recover and positively identify human remains, and to evaluate trauma and taphonomy in medico-legal situations. Topics include an overview of historical and current developments in the field. Students will develop a comprehensive understanding of the sequential order of applied work from the search for forensic scenes through the recovery of remains, and skeletal analysis in the laboratory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Gender Across Cultures",
+        "subjectCode": "ANTH",
+        "courseCode": "23000",
+        "instructor": [
+            "Natali Theresa Valdez"
+        ],
+        "description": "Explores gender and sexuality from a cross-cultural perspective. Draws on case studies to explore the complexities of women's and men's lives. Examines gender hierarchies, gender in a globalized world, and the cultural construction of sexuality and gender.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Archaeological Hoaxes, Myths And Frauds",
+        "subjectCode": "ANTH",
+        "courseCode": "25400",
+        "instructor": [
+            "Ian C Lindsay"
+        ],
+        "description": "This course examines why the ancient past inspires so many theories about aliens, dark conspiracies, lost civilizations, and apocalyptic predictions. Topics include the popularity of pseudoscientific theories in American culture and the historical contexts in which common pseudoscientific ideas have emerged; why they persist in the face of archaeological evidence; and the role of pseudo-archaeology in the growing antagonism toward scientific expertise. Through an understanding of datasets and methods archaeologists use to evaluate claims about the past, the course goes beyond debunking ancient aliens and Atlantis to develop important critical thinking skills to evaluate evidence and recognize pseudo-scientific arguments in the media.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Mortuary Practices Across Cultures",
+        "subjectCode": "ANTH",
+        "courseCode": "31000",
+        "instructor": [
+            "Michele R Buzon"
+        ],
+        "description": "Explores how death is treated or has been treated in diverse world cultures and time periods. Death is viewed as an expression of social behavior and as an expression of symbolic meaning.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Archaeology Of Ancient Egypt And The Near East",
+        "subjectCode": "ANTH",
+        "courseCode": "31200",
+        "instructor": [
+            "Michele R Buzon"
+        ],
+        "description": "Selected topics on the archaeology of ancient Near Eastern cultures in Mesopotamia, the circum-Mediterranean area, Egypt, and the Nile Valley, emphasizing an anthropological interpretation of the political, social, religious, and economic systems that contributed to their development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Primate Behavior",
+        "subjectCode": "ANTH",
+        "courseCode": "33500",
+        "instructor": [
+            "Stacy M Lindshield"
+        ],
+        "description": "This course is an introduction to the primate order and primate studies. The emphasis is on field studies. Ecological influences on social organization and behavior, learning, play, and communication will be considered as adaptations within an evolutionary framework.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Global Perspectives On Health",
+        "subjectCode": "ANTH",
+        "courseCode": "34000",
+        "instructor": [
+            "Elizabeth Joan Wirtz",
+            "Suzanne Marie Barber"
+        ],
+        "description": "This course examines health issues and risks faced by individuals around the world, but especially in resource poor geographical areas. We will explore in-depth the gendered, ethnic, cultural, and class dimensions that underlie the patterning of disease and illness worldwide.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Designing For People: Anthropological Approaches",
+        "subjectCode": "ANTH",
+        "courseCode": "38400",
+        "instructor": [
+            "Todd R Kelley",
+            "Sherylyn H Briller"
+        ],
+        "description": "This course is about designing for people. You will use anthropological knowledge and skills to better understand human and technology interactions. With students from other fields, you will learn how to apply an anthropological perspective to human centered design and design with the needs of a specific user group in mind.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Pregnancy, Birth & Babies",
+        "subjectCode": "ANTH",
+        "courseCode": "39200",
+        "instructor": [
+            "Amanda J Veile",
+            "Andrew T Flachs"
+        ],
+        "description": "Various topics in anthropology that may change from semester to semester are presented by anthropology faculty members.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Language And Culture",
+        "subjectCode": "ANTH",
+        "courseCode": "41400",
+        "instructor": [
+            "Myrdene Anderson"
+        ],
+        "description": "An exploration into the nature of human communication, particularly the structures, functions, and substance of human language. Focus is on the interpenetration of language, culture and cognition, on the evolution of language and speech, and on their uses in everyday life.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Archaeological Method And Theory",
+        "subjectCode": "ANTH",
+        "courseCode": "42500",
+        "instructor": [
+            "Ian C Lindsay"
+        ],
+        "description": "Introduction to the theory and methods of contemporary American archaeology. Basic field and laboratory methods are placed in the context of theoretical viewpoints and problems. Major theoretical issues in the field are explored, showing the integration of American archaeology with anthropology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Human Evolution",
+        "subjectCode": "ANTH",
+        "courseCode": "43600",
+        "instructor": [
+            "Melanie M Beasley"
+        ],
+        "description": "This class examines the fossil evidence for human evolution and theories proposed to explain the development that led from the origin of primates to modern humans. This course will include lectures, exercises with fossil casts, presentation, and discussions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Semiotics",
+        "subjectCode": "ANTH",
+        "courseCode": "51900",
+        "instructor": [
+            "Myrdene Anderson"
+        ],
+        "description": "(AUSL 58900, COM 50700, ENGL 57000, LC 57000) The study of languages, literatures, and other systems of human communication. Includes a wide range of phenomena which can be brought together by means of a general theory of signs. The course deals with three fundamental areas: 1) verbal communication, 2) nonverbal communication (iconic systems, gestures, body language, etc.), and 3) communication through art forms.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Foundations Of Biological Anthropology",
+        "subjectCode": "ANTH",
+        "courseCode": "53500",
+        "instructor": [
+            "Amanda J Veile"
+        ],
+        "description": "Covers topics in biological anthropology, applying to both living and extinct humans and to non-human primates. Topics include: evolutionary theory; genetics; human variation and the race concept; intersections of biology and culture; fossils and paleoanthropology; ecology and speciation, primate behavior, and theories on the social behavior of early and contemporary humans.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Historical Linguistics",
+        "subjectCode": "ANTH",
+        "courseCode": "56300",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "( ENGL 56300, LC 56300) A survey of mechanisms and motivations of linguistic change. Topics include: phonological, morphological, semantic and syntactic change, comparative and internal reconstruction, linguistic variation, language contact, and linguistic typology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Anthropology Proseminar",
+        "subjectCode": "ANTH",
+        "courseCode": "59200",
+        "instructor": [
+            "Melissa J Remis"
+        ],
+        "description": "Topics vary.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar In Ethnographic Analysis",
+        "subjectCode": "ANTH",
+        "courseCode": "60500",
+        "instructor": [
+            "Andrew T Flachs"
+        ],
+        "description": "Focuses on ethnographic research design, methodology, and ethics, discussing the appropriate selection of any method. Students gain experience with the varieties of ethnographic practice across anthropology and sibling sciences, the generation and analysis of data, and the writing up of ethnographic and of other qualitative research.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Quantitative Research Design",
+        "subjectCode": "ANTH",
+        "courseCode": "60600",
+        "instructor": [
+            "Erik R Otarola-Castillo"
+        ],
+        "description": "Focuses on quantitative research design, methodology, and ethics, discussing the appropriate selection of any methods. Students gain experience in generating and analyzing of quantitative and mixed-method data, and in the writing up and communication of quantitative research, altogether aiming for statistical theory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Anth Of Medicine, Science&Tech",
+        "subjectCode": "ANTH",
+        "courseCode": "62000",
+        "instructor": [
+            "Risa Denae Cromer"
+        ],
+        "description": "Critical examination of a selected aspect of contemporary cultural anthropology research and theory. Topics will vary from year to year.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Discovery And Design: Making Projects Work",
+        "subjectCode": "ANTH",
+        "courseCode": "64100",
+        "instructor": [
+            "Zoe Nyssa"
+        ],
+        "description": "This course is about using anthropology to make projects work. Students will learn anthropological approaches and methods to discover salient aspects of a design problem and use this understanding to devise responses. Anthropological discovery, design and delivery processes are demonstrated. Students should have some background in anthropology if coming from another discipline e.g. prior coursework or relevant experience as determined by instructor.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

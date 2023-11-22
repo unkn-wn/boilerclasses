@@ -1,0 +1,126 @@
+[
+    {
+        "title": "Elementary Tamil 101",
+        "subjectCode": "LC",
+        "courseCode": "10100",
+        "instructor": [
+            "Soledad Na Morales-Serrano"
+        ],
+        "description": "Special topics in Foreign Languages. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Arabic Lit In Translation",
+        "subjectCode": "LC",
+        "courseCode": "23000",
+        "instructor": [
+            "Ahmed Idrissi Alami"
+        ],
+        "description": "(CMPL 23000) Foundations for comparison of works in different languages, thematic (philosophical, sociological, psychological) and structural (genre, composition, use of linguistic devices); parallel interrelation of theme and structure in works of different literatures. The importance of literary norms and systems of genres. Examination of crosscurrents in different literatures during successive periods of development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fairytale, Folktale, Fable",
+        "subjectCode": "LC",
+        "courseCode": "23100",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "This course provides an overview of fairytale, folklore, and fable traditions across various cultures and historical periods, as well as an examination of their ongoing influence on contemporary cultures. Taught in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To The Linguistic Study Of Foreign Languages",
+        "subjectCode": "LC",
+        "courseCode": "26100",
+        "instructor": [
+            "Alexis Nicole Zhou",
+            "Seyyed Hatam Tamimi Sa'd",
+            "Yuhyeon Seo",
+            "Elaine J Francis",
+            "Leah Michelle Nodar"
+        ],
+        "description": "Overview of linguistics and the role of language in society; fundamental concepts of linguistic analysis. The course focuses on linguistic phenomena found in French, German, Russian, and Spanish, with material, examples, and assignments drawn primarily from those languages whenever appropriate.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Sound And Form In Language",
+        "subjectCode": "LC",
+        "courseCode": "36100",
+        "instructor": [
+            "Ye-Jee Jung"
+        ],
+        "description": "Examination of the nature of sound systems (phonology) and form systems (morphology) of language, as well as techniques of phonological and morphological analysis, using material from various languages. Central focus on phonetic and phonological structure, and on inflectional and derivational morphology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Teaching Of Foreign Languages",
+        "subjectCode": "LC",
+        "courseCode": "51900",
+        "instructor": [
+            "Colleen A Neary-Sundquist"
+        ],
+        "description": "A basic course designed to provide a forum for ideas connecting theory and research to teaching practice. Explores issues related to how learning and teaching can be enhanced and presents ideas that can be implemented in the classroom. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Theories Of Foreign Language Acquisition",
+        "subjectCode": "LC",
+        "courseCode": "57500",
+        "instructor": [
+            "Mariko M Wei"
+        ],
+        "description": "An advanced course designed to provide an overview of major theoretical issues in foreign language acquisition research. Provides a broad historical introduction to theories of acquisition that underlie these different perspectives. This course also provides an understanding of skills assessment and selection of instructional materials. Permission of instructor required. Typically offered Summer Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "History Of Russian Lang",
+        "subjectCode": "LC",
+        "courseCode": "59600",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "Special topics in Linguistics.  Permission of instructor required. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -19,10 +19,12 @@ link = "https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched"
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
-# class_codes = ["AAE","AAS","ABE","AD","AFT","AGEC","AGR","AGRY","AMST","ANSC","ANTH","ARAB","ASAM","ASEC","ASL","ASM","ASTR","AT","BAND","BCHM","BIOL","BME","BMS","BTNY","CAND","CDIS","CE","CEM","CGT","CHE","CHM","CHNS","CLCS","CLPH","CM","CMPL","CNIT","COM","CPB","CS","CSR","DANC","EAPS","ECE","ECET","ECON","EDCI","EDPS","EDST","EEE","ENE","ENGL","ENGR","ENGT","ENTM","ENTR","EPCS","FNR","FR","FS","FVS","GEP","GER","GRAD","GREK","GS","GSLA","HDFS","HEBR","HIST","HK","HONR","HORT","HSCI","HSOP","HTM","IDE","IDIS","IE","IET","ILS","IPPH","IT","ITAL","JPNS","JWST","KOR","LA","LALS","LATN","LC","LING","MA","MCMP","ME","MET","MFET","MGMT","MSE","MSL","MUS","NRES","NS","NUCL","NUPH","NUR","NUTR","OBHR","OLS","PES","PHIL","PHPR","PHRM","PHYS","POL","PSY","PTGS","PUBH","REG","REL","RUSS","SA","SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
+class_codes = ["AAE","AAS","ABE","AD","AFT","AGEC","AGR","AGRY","AMST","ANSC","ANTH","ARAB","ASAM","ASEC","ASL","ASM","ASTR","AT","BAND","BCHM","BIOL","BME","BMS","BTNY","CAND","CDIS","CE","CEM","CGT","CHE","CHM","CHNS","CLCS","CLPH","CM","CMPL","CNIT","COM","CPB","CS","CSR","DANC","EAPS","ECE","ECET","ECON","EDCI","EDPS","EDST","EEE","ENE","ENGL","ENGR","ENGT","ENTM","ENTR","EPCS","FNR","FR","FS","FVS","GEP","GER","GRAD","GREK","GS","GSLA","HDFS","HEBR","HIST","HK","HONR","HORT","HSCI","HSOP","HTM","IDE","IDIS","IE","IET","ILS","IPPH","IT","ITAL","JPNS","JWST","KOR","LA","LALS","LATN","LC","LING","MA","MCMP","ME","MET","MFET","MGMT","MSE","MSL","MUS","NRES","NS","NUCL","NUPH","NUR","NUTR","OBHR","OLS","PES","PHIL","PHPR","PHRM","PHYS","POL","PSY","PTGS","PUBH","REG","REL","RUSS","SA","SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
+# class_codes = ["CDIS", "CE","CEM","CGT","CHE","CHM","CHNS","CLCS","CLPH","CM","CMPL","CNIT","COM","CPB","CS","CSR","DANC","EAPS","ECE","ECET","ECON","EDCI","EDPS","EDST","EEE","ENE","ENGL","ENGR","ENGT","ENTM","ENTR","EPCS","FNR","FR","FS","FVS","GEP","GER","GRAD","GREK","GS","GSLA","HDFS","HEBR","HIST","HK","HONR","HORT","HSCI","HSOP","HTM","IDE","IDIS","IE","IET","ILS","IPPH","IT","ITAL","JPNS","JWST","KOR","LA","LALS","LATN","LC","LING","MA","MCMP","ME","MET","MFET","MGMT","MSE","MSL","MUS","NRES","NS","NUCL","NUPH","NUR","NUTR","OBHR","OLS","PES","PHIL","PHPR","PHRM","PHYS","POL","PSY","PTGS","PUBH","REG","REL","RUSS","SA","SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
 # class_codes = ["AGEC"]
 # add BMS manually?
-class_codes = ["REG","REL","RUSS","SA","SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
+# class_codes = ["REG","REL","RUSS","SA","SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
+# class_codes = ["SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
 
 for code in class_codes:
   print(f"starting {code}...")
@@ -30,7 +32,7 @@ for code in class_codes:
 
   dropdown_element = driver.find_element(By.NAME, "p_term")
   dropdown = ui.Select(dropdown_element)
-  dropdown.select_by_visible_text("Spring 2024")
+  dropdown.select_by_visible_text("Fall 2022 (View only)")
 
   xpath_expression = "//input[@type='submit']"
   element = driver.find_element(By.XPATH, xpath_expression)
@@ -40,7 +42,11 @@ for code in class_codes:
 
   code_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_subj']")
   code_dropdown = ui.Select(code_dropdown)
-  code_dropdown.select_by_value(code)
+  try:
+    code_dropdown.select_by_value(code)
+  except:
+    print("no classes found")
+    continue
   type_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_schd']")
   type_dropdown = ui.Select(type_dropdown)
   type_dropdown.deselect_all()
@@ -71,7 +77,7 @@ for code in class_codes:
       "description": None,
       "capacity": 0,
       "credits": None,
-      "term": "Spring 2024"
+      "term": "Fall 2022"
     }
     th = ths[i]
     a = th.find_element(By.TAG_NAME, 'a')
@@ -127,5 +133,5 @@ for code in class_codes:
   for x in doneIds:
     jsonData.append(doneIds[x])
 
-  outfile = open(f"classes/{code}.json", "w")
+  outfile = open(f"classes_fall22/{code}.json", "w")
   json.dump(jsonData, outfile, indent=4)

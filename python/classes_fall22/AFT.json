@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Heritage And Values I",
+        "subjectCode": "AFT",
+        "courseCode": "11000",
+        "instructor": [
+            "Kathleen H Le"
+        ],
+        "description": "A survey course designed to introduce students to the United States Air and Space Forces and provides an overview of the basic characteristics, missions, and organization of the Air and Space Forces.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Team And Leadership Fundamentals I",
+        "subjectCode": "AFT",
+        "courseCode": "23000",
+        "instructor": [
+            "Adam J Willis"
+        ],
+        "description": "Provides a fundamental understanding of both leadership and team building. The lessons and course flow are designed to prepare students for field training and leadership positions in the detachment.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Leading People And Effective Communication I",
+        "subjectCode": "AFT",
+        "courseCode": "35100",
+        "instructor": [
+            "Michael T Meoli"
+        ],
+        "description": "Leading People and Effective Communication utilizes student's field training experience to take a more in-depth look at leadership. Special emphasis is placed on enhancing communication skills, and why that is important as a leader. Students have an opportunity to try out these leadership and management techniques in a supervised environment as juniors and seniors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "National Security/Commissioning Preparation I",
+        "subjectCode": "AFT",
+        "courseCode": "47100",
+        "instructor": [
+            "Ken David Callahan"
+        ],
+        "description": "National Security/Commissioning Preparation is designed for college seniors and gives them the foundation to understand their role as military officers and how they are directly tied to our National Security Strategy. It is an overview of the complex social and political issues facing the military profession and requires a measure of sophistication commensurate with the senior college level.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

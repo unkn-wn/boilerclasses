@@ -1,0 +1,392 @@
+[
+    {
+        "title": "Introduction To The Health Sciences Professions",
+        "subjectCode": "HSCI",
+        "courseCode": "10100",
+        "instructor": [
+            "Wei Zheng"
+        ],
+        "description": "This course will present an overview of the fields in both the preventive, Public Health, as well as the clinical, Private Health, sides of the Allied Health Science Professions as it presents the holistic nature of health maintenance. Students will have the opportunity to hear from health professionals practicing in the allied health and preprofessional concentrations as well as from School of Health Sciences faculty in their areas of expertise in the fields of industrial hygiene, ergonomics, radiological sciences, toxicology and environmental health science.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Medical Terminology",
+        "subjectCode": "HSCI",
+        "courseCode": "13100",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "This self-paced learning course is designed to familiarize the student with terms used in medicine. Each body system will be studied individually. Word roots, prefixes, and suffixes will be used to build words relating to the system. Diagnostic and symptomatic terms will be introduced. CTL:IPO 1820 Medical Terminology",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Healthcare Uncovered",
+        "subjectCode": "HSCI",
+        "courseCode": "19000",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "Special topics, projects, or readings in selected areas of health sciences at a level appropriate for freshmen students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "School Of Health Sciences Freshman Honors Seminar",
+        "subjectCode": "HSCI",
+        "courseCode": "19501",
+        "instructor": [
+            "Aaron B Bowman"
+        ],
+        "description": "This course is for Freshman students in the School of Health Sciences Honors Program. This course consists of a 50-minute weekly seminar meeting designed to orient and familiarize Freshman HSCI Honors students with the School of Health Sciences including research areas and current topics in public health and biomedical research. Students will interact with guest speakers and expand their knowledge base in health science research. In addition to the seminar, students will be matched to a faculty mentor in a research area of their interest during the fall semester. Students will develop and design a research project with their faculty mentor (to be conducted in HSCI 19601 during the spring semester). In the spring semester, students will enroll in the seminar series (HSCI 19501) and in the research project course (HSCI 19601) to complete their project. Each student will be responsible for presenting and reporting on their research project during the spring seminar series. Permission of departmental required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Essentials Of Environmental, Occupational, And Radiological Health Sciences",
+        "subjectCode": "HSCI",
+        "courseCode": "20200",
+        "instructor": [
+            "Aaron James Specht"
+        ],
+        "description": "This course is designed to introduce the essential concepts of Environmental, Occupational, and Radiological Health Science. The principles of these three fields including the environmental impacts on human health and disease, environmental toxicology, occupational health concerns, contemporary occupational health issues, radioactivity, and the human health effects of exposure to ionizing radiation will be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Healthcare Leadership And Safety",
+        "subjectCode": "HSCI",
+        "courseCode": "22500",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "This course will present topics related to effective leadership and management strategies within an organization. The course will focus on implementation of these strategies from a health and safety perspective. Specific leadership and management topics to be discussed include communication strategies, motivation, conflict management, negotiation, ethics, and professional development. In addition, important safety topics, such as fire & life safety, workplace violence, terrorism, hazard communication, and slip & fall hazards will also be addressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Basics Of Oncology",
+        "subjectCode": "HSCI",
+        "courseCode": "30500",
+        "instructor": [
+            "Matthew Louis Scarpelli"
+        ],
+        "description": "This course will introduce the student to the biology of cancer and some basics of oncology. Focus will be placed on what makes cancer different from normal tissues and how those differences can be leveraged for diagnostic and treatment purposes. This course will touch on topics of epidemiology, cancer biology, common therapeutic and diagnostic approaches, and other considerations of cancer care.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Radiation Science Fundamentals",
+        "subjectCode": "HSCI",
+        "courseCode": "31200",
+        "instructor": [
+            "Ulrike Dydak"
+        ],
+        "description": "This course introduces principles and concepts related to nuclear energetics, radioactive decay, the interactions of ionizing radiation with matter, and the human health effects of exposure to ionizing radiation. Fundamental concepts related to atomic and sub-atomic physical processes as well as relevant aspects of modern physics are briefly reviewed. Students gain practical experience and enhance their understanding of radiation protection by participating in a radiological emergency response exercise (RERE).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Radiation Detection And Measurement",
+        "subjectCode": "HSCI",
+        "courseCode": "31300",
+        "instructor": [
+            "Shuang Liu"
+        ],
+        "description": "Course presents an introduction to the principles of radiation detection and measurement, including statistical models, counting statistics, error analysis, detection limits, ionization chambers, proportional counters, GM counters, scintillation counters, gamma-ray spectroscopy, solid-state detectors, TLDs, track-etch and bubble detectors.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Lung Physiology And Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "33400",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "This course will explore the normal functioning of the respiratory system, along with a variety of diseases and disorders affecting this system. Special emphasis will be placed upon diseases which result from, or are aggravated by, environmental pollutants. The course will begin with discussing the anatomy and physiology of the respiratory system. Individual lung disorders will then be discussed with consideration of the sources of air pollution contaminants and the interaction of those contaminants with normal lung tissue.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Heart Physiology And Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "33500",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "This course will provide a discussion about diseases affecting the heart and cardiovascular system. The normal anatomy and physiology of the heart and blood vessels with be discussed. Various diseases of the heart and vasculature, including atherosclerosis, cardiomyopathies, valvular heart disease, hypertension, and stroke will be explored. Included in the discussion of each disease process will be environmental agents, which are associated with disease development and progression.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Occupational And Environmental Health Sciences",
+        "subjectCode": "HSCI",
+        "courseCode": "34500",
+        "instructor": [
+            "Sa Liu"
+        ],
+        "description": "Principles of occupational health (industrial hygiene) and environmental health as related to anticipation, recognition, evaluation, and control of hazards in the workplace and the surrounding community. Emphasis is on hazards of chemicals and their role in occupationally and environmentally related diseases. Historical basis and current legislation are discussed. In addition, the principles of epidemiology, toxicology, exposure standards, and respiratory protection are addressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Eye Physiology & Disease",
+        "subjectCode": "HSCI",
+        "courseCode": "39000",
+        "instructor": [
+            "Patrick Charles Kerstein"
+        ],
+        "description": "Special topics, projects, or readings in selected areas of health sciences at a level appropriate for junior students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Applied Anatomy For Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "42000",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "With a focus on preparing students to be practitioners of health sciences, Applied Anatomy for Medicine (HSCI 42000) will build upon the foundational knowledge of form and function obtained in prerequisite courses through enhancement of the relationship between bony structures, musculature, innervation, vascular perfusion, and interconnectedness with respect to human health. The significance of regional anatomy and important anatomical landmarks from a clinical perspective will be learned. The incorporation of student driven dissection will promote a more comprehensive understanding of the correlation between structure, function, dysfunction and disease signalments. The integration of clinical application and case study investigation will facilitate the transition from learner to practitioner.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Dissecting Dementia",
+        "subjectCode": "HSCI",
+        "courseCode": "49000",
+        "instructor": [
+            "Lisa M Hilliard"
+        ],
+        "description": "Special topics, projects, or readings in selected areas of health sciences at a level appropriate for senior students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Molecular Imaging-Nuclear Medicine",
+        "subjectCode": "HSCI",
+        "courseCode": "51600",
+        "instructor": [
+            "Shuang Liu"
+        ],
+        "description": "This course is related to molecular imaging by SPECT (single-photon emission computed tomography) and/or PET (positron emission tomography). This course is particularly useful for graduate and senior undergraduate students in the medical physics programs. It has been offered to MP and HP graduate students over the last 4 years (2014-2018) as a part of the 3-credit molecular imaging course with magnetic resonance spectroscopy (MRS: 1-credit) taught by Dr. Ulrike Dydak, computed tomography (CT: 1-credit) taught by Dr. Keith Stantz, and nuclear medicine (NM: 1-credit) taught by Dr. Shuang Liu. In the future, it will be expanded the \"Nuclear Medicine\" section as a 2-credit course on the basis on the previous lectures. This course focuses on recent development in nuclear medicine techniques for noninvasive imaging of brain diseases, cancer, and heart diseases. Students are expected to spend more time for homework and literature reading.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Health Physics And Dosimetry",
+        "subjectCode": "HSCI",
+        "courseCode": "52600",
+        "instructor": [
+            "Keith M Stantz"
+        ],
+        "description": "Principles of health physics, radiation dosimetry, and radiation shielding. Topics covered include natural and man-made radiation environments, operational radiation quantities and units, radiation protection philosophy, risk and dose limits, dose-response models, mortality estimates and risk calculations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Epidemiology",
+        "subjectCode": "HSCI",
+        "courseCode": "54700",
+        "instructor": [
+            "Ellen M Wells"
+        ],
+        "description": "This course is an introduction to epidemiology, which is the study of the patterns, causes, and impact of disease in populations. Epidemiology is increasingly important for public health and clinical medicine research and policy. This course will discuss the basic principles and methods of epidemiology, including measurements of disease occurrence and association, study designs, and determination of causality. Contemporary examples will be used to illustrate the application of these concepts, with an emphasis on environmental causes of disease.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Aerosol Science",
+        "subjectCode": "HSCI",
+        "courseCode": "55200",
+        "instructor": [
+            "Jae Hong Park"
+        ],
+        "description": "The principles of aerosol behavior and sampling, with particular emphasis on applications in the health sciences. Topics include aerosol aerodynamics, aerosol filtration, pulmonary deposition of aerosols, methods of environmental sampling, and generation of laboratory aerosols.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Toxicology",
+        "subjectCode": "HSCI",
+        "courseCode": "56000",
+        "instructor": [
+            "Jonathan H Shannahan"
+        ],
+        "description": "(MCMP 56000) Introduction to general principles of toxicology, target organ toxicity, and safety evaluation. Covers toxicity of metals, solvents, pesticides, gases, dusts, and food additives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Medical Health Physics",
+        "subjectCode": "HSCI",
+        "courseCode": "57400",
+        "instructor": [
+            "Mack Richards"
+        ],
+        "description": "This course introduces the legislation and international and national recommendations relevant to the practice of radiation protection in medicine. Principles for the design of radiation use monitoring programs and shielding for radiation facilities is covered. Radiation risk avoidance and management for staff, patients and their families, and members of the public are discussed.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Occupational Biomechanics And Ergonomics",
+        "subjectCode": "HSCI",
+        "courseCode": "58000",
+        "instructor": [
+            "Mark D Wilson"
+        ],
+        "description": "Occupational safety is a cross-disciplinary area concerned with protecting the safety, health and welfare of people engaged in work. Occupational ergonomics is a branch of science that focuses on optimizing the relationships between workers and their work environment. This course focuses on the principles and applications of safety and ergonomics as it applies to workers. The first part of the course will consist of lectures on the fundamentals of safety standards and liability and the development of work-related musculoskeletal disorders, ergonomic risk factors including work practices, tools and workstation design. The last part will consist of identification and use of safety and ergonomic controls to reduce and prevent work-related fatalities, injuries, and musculoskeletal disorders.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Human Sectional Anatomy",
+        "subjectCode": "HSCI",
+        "courseCode": "59000",
+        "instructor": [
+            "Uzay E Emir"
+        ],
+        "description": "Special topics, projects, or readings in selected areas of health sciences at a level appropriate for seniors and graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Grant Writing For Health Sciences",
+        "subjectCode": "HSCI",
+        "courseCode": "62500",
+        "instructor": [
+            "Jason T Harris"
+        ],
+        "description": "  The ability to clearly communicate research concepts, ideas, and hypotheses is an essential skill for all researchers. Specifically, concise expression of complex research rationale, experimental design, and innovation through the grant application process benefits all disciplines and career paths. This course will provide students with an overview of the entire grant writing process through expert lectures, active discussion, writing activities, and peer-review processes. ",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "MRI Quality Assurance Internship I",
+        "subjectCode": "HSCI",
+        "courseCode": "67200",
+        "instructor": [
+            "Nathan Allan Ooms"
+        ],
+        "description": "This internship course provides didactic training and practical experience in clinical diagnostic medical physics. Students will spend 3-4 hours per week learning the responsibilities of a medical physicist in MRI quality assurance (QA) such as MRI system performance testing, setting up weekly MRI QA procedures, analysis of MRI QA data, and annual clinical system evaluations. In Part I students will observe and review the weekly MRI QA tests performed by the MR Technologists  on clinical MRI scanners and be involved with data analysis of these tests (image quality assessment, reporting). Annual MRI system performance evaluations of different clinical scanners will be observed and discussed. This includes assessing magnetic field homogeneity, slice position accuracy and slice thickness accuracy, and performance of radio frequency coil tests on the various coils available at different clinical MRI sites in the Indianapolis area. Students will also work as a team with the instructors on a course project to develop and evaluate advanced MR QA methods and procedures. Prerequisites: HSCI 57000. Having documented experience in running an MRI scanner, e.g., having primary operator status on one of the research scanners at Purdue or IU. Level II MRI Safety Training: http://www.indiana.edu/~mri/safety_nonIU/safety.html. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Seminar In Health Science",
+        "subjectCode": "HSCI",
+        "courseCode": "69600",
+        "instructor": [
+            "Jason R Cannon"
+        ],
+        "description": "Selected topics in health sciences presented by staff, students, and invited speakers.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2023"
+    }
+]

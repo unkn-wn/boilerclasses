@@ -1,0 +1,218 @@
+[
+    {
+        "title": "French Level I",
+        "subjectCode": "FR",
+        "courseCode": "10100",
+        "instructor": [
+            "Saeed Ehsanfar",
+            "Regina Abu"
+        ],
+        "description": "A beginning French course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. Permission of department required. CTL:IWL 1901 French Level I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Level II",
+        "subjectCode": "FR",
+        "courseCode": "10200",
+        "instructor": [
+            "Roseline Adebimpe Adewuyi",
+            "Lou Migliorini",
+            "Emmanuelle Ben Hadj Ben M'Barek"
+        ],
+        "description": "Continuation of FR 10100. CTL:IWL 1902 French Level II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Level III",
+        "subjectCode": "FR",
+        "courseCode": "20100",
+        "instructor": [
+            "Jessica L Sturm",
+            "Myriam Rose-Cecile Souffrant"
+        ],
+        "description": "A lower intermediate French course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture. CT:IWL 1903 French Level III",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Level IV",
+        "subjectCode": "FR",
+        "courseCode": "20200",
+        "instructor": [
+            "Emmanuelle Ben Hadj Ben M'Barek",
+            "Justyna Czader"
+        ],
+        "description": "Continuation of FR 20100. CTL:IWL 1904 French Level IV",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Professional French I",
+        "subjectCode": "FR",
+        "courseCode": "22400",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Practical reading, writing, speaking, and listening comprehension skills will be developed toward use of French for business purposes. Course materials cover daily business dealings as well as national and international trade.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To The Study Of French Literature",
+        "subjectCode": "FR",
+        "courseCode": "24100",
+        "instructor": [
+            "Mathilde France Brigitte Jocteur-Monrozier"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Level V",
+        "subjectCode": "FR",
+        "courseCode": "30100",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Continued development of French speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in France and the other French-speaking countries from various sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Level VI",
+        "subjectCode": "FR",
+        "courseCode": "30200",
+        "instructor": [
+            "Ana Isabel Valero Pena"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in French on the basis of materials dealing with the ideas and events that have shaped present-day France and the other French-speaking countries. Conducted primarily in French. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Cinema",
+        "subjectCode": "FR",
+        "courseCode": "33000",
+        "instructor": [
+            "Paula E Leverage"
+        ],
+        "description": "A general survey of major French cinematic trends from the earliest examples (Melies, Lumiere) to the New Wave (Chabrol, Truffaut, Resnais, Godard, etc.), with a discussion of the historical, social, political, aesthetic, and literary contexts. The French film in relation to world cinema. The relationship between the French cinema and French literature. Reading and analysis of scripts and historical and critical materials. Knowledge of French not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Level VII",
+        "subjectCode": "FR",
+        "courseCode": "40100",
+        "instructor": [
+            "Germina N Veldwachter"
+        ],
+        "description": "Advanced work on development of French speaking, listening, reading, and writing abilities, focusing on materials dealing primarily with culture and the arts in France and the other French-speaking countries. Conducted primarily in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Teaching College French",
+        "subjectCode": "FR",
+        "courseCode": "51900",
+        "instructor": [
+            "Colleen A Neary-Sundquist"
+        ],
+        "description": "A course designed to provide a forum for ideas connecting theory and research to teaching practice. Explores issues related to how learning and teaching can be enhanced and presents practical ideas that can be implemented in the classroom. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "History Of The French Language",
+        "subjectCode": "FR",
+        "courseCode": "56300",
+        "instructor": [
+            "Paula E Leverage"
+        ],
+        "description": "A survey of the historical development of the French language from Vulgar Latin to the present and of the French language of today as a reflection of past cultural and socio-political conditions. Knowledge of a Romance language or of Latin is recommended but not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "French Culture",
+        "subjectCode": "FR",
+        "courseCode": "58100",
+        "instructor": [
+            "Germina N Veldwachter"
+        ],
+        "description": "Development of the cultural life of the French people as reflected in architecture, art, history, literature, music, and philosophy. Lectures in French.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Theories-For Lang Acq",
+        "subjectCode": "FR",
+        "courseCode": "59600",
+        "instructor": [
+            "Robert Channon",
+            "Mariko M Wei"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2022"
+    }
+]

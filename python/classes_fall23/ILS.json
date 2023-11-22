@@ -1,0 +1,108 @@
+[
+    {
+        "title": "Introduction To Data Lifecycle Management",
+        "subjectCode": "ILS",
+        "courseCode": "10300",
+        "instructor": [
+            "Michael C Witt"
+        ],
+        "description": "Introduces concepts of the management of data throughout its lifecycle. Understanding different types of data and their functions. Managing data in the context of a particular discipline or profession. Finding and evaluating data purposefully. Using data ethically and responsibly. Creating and sharing data for reuse, accountability, and enhancement. Making decisions and communicating using data, including data analysis and visualization. Protecting and archiving data.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Information Strategies For Hospitality & Tourism Management",
+        "subjectCode": "ILS",
+        "courseCode": "17500",
+        "instructor": [
+            "Heather A Howard"
+        ],
+        "description": "This course will provide students with a framework of information search skills and problem-solving they can utilize in their area of study and in everyday life. It will also incorporate technology literacy components with active learning. Class sessions will consist of lecture, group discussion, demonstrations, and in-class activities and out-of-class activities. The course is intended for first-semester freshman students. Department permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Data Science And Society: Ethical Legal Social Issues",
+        "subjectCode": "ILS",
+        "courseCode": "23000",
+        "instructor": [
+            "Jerilyn Pia Tinio"
+        ],
+        "description": "This course provides an introduction to Ethical, Legal Social Issues (ELSI) in Data Science. Students will be introduced to interdisciplinary theoretical and practical frameworks that can aid in exploring the impact and role of Data Science in society. This is a writing intensive course. Students will work individually and on collaborative assignments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To GIS",
+        "subjectCode": "ILS",
+        "courseCode": "29500",
+        "instructor": [
+            "Thomas Edward Gerrish"
+        ],
+        "description": "Study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Information Skills For Health Professionals",
+        "subjectCode": "ILS",
+        "courseCode": "51400",
+        "instructor": [
+            "Jane F Yatcilla"
+        ],
+        "description": "  This course is designed to help you develop essential information skills to support your professional goals and prepare you to succeed in graduate or professional school in the health sciences. Learn how to navigate PubMed and other subject-specific databases, and differentiate between various types of research articles. Become adept at saving, organizing, and annotating articles so you can easily locate them, \"cite while you write,\" and share them with your classmates or research group. Prepare for writing for publication. And avail yourself of the resources and services academic libraries provide, beyond books and journals, to support your coursework and research. Permission from department or instructor required. ",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intro Sys Rev Health Sciences",
+        "subjectCode": "ILS",
+        "courseCode": "59500",
+        "instructor": [
+            "Chao Cai",
+            "Jason B Reed"
+        ],
+        "description": "Intensive study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science. Permission of the instructor is required for undergraduates.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Digital Humanities Foundations",
+        "subjectCode": "ILS",
+        "courseCode": "63000",
+        "instructor": [
+            "Matthew N Hannah"
+        ],
+        "description": "This course introduces graduate students to the core theoretical and practical components of Digital Humanities. Students engage key theoretical texts in weekly seminars and practice central methodologies in weekly work sessions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

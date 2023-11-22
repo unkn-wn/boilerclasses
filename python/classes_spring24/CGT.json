@@ -1,0 +1,568 @@
+[
+    {
+        "title": "Introduction To Games",
+        "subjectCode": "CGT",
+        "courseCode": "10501",
+        "instructor": [
+            "Robert Thomas Howard"
+        ],
+        "description": "Students learn the history of computer game design. Students engage in learning activities that help them remember basic game design principles. These principles are then applied using simple exercises within game engine technology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sketching For Visualization And Communication",
+        "subjectCode": "CGT",
+        "courseCode": "11200",
+        "instructor": [
+            "Daniel P Triplett"
+        ],
+        "description": "This course applies fundamental computer graphics concepts of visualization, communication, and creativity within a sketching metaphor. Exercises and projects in graphic theory, problem solving, and sketching skill development provide students with activities that focus on further development within the discipline. A variety of sketching techniques are used to gather critical information and transform data into effective communication instruments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Geometric Modeling For Visualization And Communication",
+        "subjectCode": "CGT",
+        "courseCode": "11600",
+        "instructor": [
+            "Raymond P Hassan"
+        ],
+        "description": "A core introductory computer graphics course that provides entry-level experiences in geometric modeling. Students develop geometric analysis and modeling construction techniques and processes to produce accurate computer models for graphic visualization and communication.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamentals Of Imaging Technology",
+        "subjectCode": "CGT",
+        "courseCode": "11800",
+        "instructor": [
+            "Esteban Garcia"
+        ],
+        "description": "This course provides a foundation for the development and use of raster and vector images for a variety of industries. Full-color images and illustrations are produced using computer technologies, with a focus on both technical and aesthetic aspects. Topics include color theory and perception, surface and lighting analysis, rendering techniques, and technical characteristics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Internet Foundations Technologies And Development",
+        "subjectCode": "CGT",
+        "courseCode": "14100",
+        "instructor": [
+            "Carlos R Morales"
+        ],
+        "description": "(CNIT 14100) The course explores the history, architecture, and development of the World Wide Web. Current tagging and scripting languages are covered in a tool-independent environment. Topics also include authoring tools, design, graphic and multimedia formats, and commerce, implementation, and security issues. PC literacy required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Visual Effects Introduction",
+        "subjectCode": "CGT",
+        "courseCode": "14700",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "This course introduces students to the visual effects techniques using common methodologies and tools. Topics include procedural frameworks, 3D pipeline implementation, vector operations, and simulating physical phenomena for entertainment graphics. Special emphasis is placed on achieving aesthetically please entertainment-grade graphics using visual effects techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Portfolio Review",
+        "subjectCode": "CGT",
+        "courseCode": "20500",
+        "instructor": [
+            "Michele A Walker"
+        ],
+        "description": "Portfolio review for students in Computer Graphics Technology.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computer Graphics Programming I",
+        "subjectCode": "CGT",
+        "courseCode": "21500",
+        "instructor": [
+            "Jeffrey Peter Kesselman"
+        ],
+        "description": "This course focuses on programming fundamentals, logic, and problem solving necessary for advancement into upper level CGT courses. A cross-section of languages and technologies will be introduced and demonstrated.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Computer Animation",
+        "subjectCode": "CGT",
+        "courseCode": "24100",
+        "instructor": [
+            "Raymond P Hassan"
+        ],
+        "description": "This course introduces the knowledge base on which digital animation and spatial graphics technology are founded and developed. Emphasis will be placed on developing a working knowledge of the mechanics of 3D geometric formats, spline-based modeling with polygon mesh & NURBS, procedural mapping of raster images, simplified polygon modeling, rendering methods, hierarchical linking, and kinematic fundamentals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Compositing I",
+        "subjectCode": "CGT",
+        "courseCode": "24600",
+        "instructor": [
+            "Nasheet Zaman"
+        ],
+        "description": "This course focuses on applying node-based video compositing techniques as applied to 3D visual effects and animation. Students explore the major areas of video compositing, including node-based workflows, integration with 3D animation and visual effects tools, image tracking, rotoscoping, and chroma keying. Special emphasis is placed on creating aesthetically pleasing video composites using production tools and techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computer Graphics Professional Practices I",
+        "subjectCode": "CGT",
+        "courseCode": "25001",
+        "instructor": [
+            "John C Finnegan",
+            "Ronald J Glotzbach"
+        ],
+        "description": "CGT 25001 is a course in the CGT professional practices sequence, with a focus on student professional development and communications in the field of computer graphics. Emphasis will be placed on industry engagement for the development and refinement of a student's professional resume and portfolio; and professional communications practices necessary for securing professional practical work experience. CGT 25001 will be taught in a seminar format with one meeting per week focused on guest speakers, status checks for portfolio and resume development, and professional networking.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Development II: Design And Psychology",
+        "subjectCode": "CGT",
+        "courseCode": "25500",
+        "instructor": [
+            "Jeffrey Peter Kesselman"
+        ],
+        "description": "(CNIT 30800) This course examines video game design, theory, and development from aesthetic, psychological, and technical perspectives. Students will gain experience with a commercial game development platform. Advanced game development techniques will be taught in this course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Data Visualization",
+        "subjectCode": "CGT",
+        "courseCode": "27000",
+        "instructor": [
+            "Angus Graeme Forbes"
+        ],
+        "description": "This course is designed for students with little or no background in Data Visualization. It provides an introductory examination of data visualization through lecture, readings and hands-on experience with current visualization tools. Students will obtain an overview of the various types of data, the fundamentals of the visualization process for information and scientific visualization, and examine detail visualizations workflows that aim to answer \"when\" (temporal data), \"where\" (geospatial data), \"what\" (topical data), and \"with whom\" (trees and networks) questions when visualizing data. After taking the course students will have both the theoretical foundation and practical skills needed to create insightful visualizations for a wide range of data types.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data Visualization II",
+        "subjectCode": "CGT",
+        "courseCode": "27500",
+        "instructor": [
+            "Vetria L Byrd"
+        ],
+        "description": "This course provides a practical introduction to exploratory data analysis and data mining to better inform data visualization applications. The course introduces a practical approach for making sense out of data. Students are introduced to issues inherent to the data analysis process or data mining projects. The course covers: (1) how to prepare data prior to analysis, (2) how to generate summaries of the data, (3) how to identify non-trivial facts, patterns and relationships in the data and (4) how to create models from the data to better understand the data and make predictions. After data is analyzed students will use the data visualization process and techniques to visually represent the data. The course will also introduce the use of high-level programming languages for data analysis and data visualization.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Portfolio II",
+        "subjectCode": "CGT",
+        "courseCode": "30505",
+        "instructor": [
+            "Michele A Walker"
+        ],
+        "description": "Students present online portfolios, and the course instructors review and give feedback to help direct students' online presence in  efforts to meet industry standards.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Prepress Production And Design",
+        "subjectCode": "CGT",
+        "courseCode": "30800",
+        "instructor": [
+            "Michele A Walker"
+        ],
+        "description": "This course focuses on the process of designing, creating, and preparing documents for commercial printing. Students will develop proficiency with publishing software. Topics include page layout, font and image management, color, printing processes, papers, bindings and proofing methods. Projects emphasize designing single and multi-page documents for business and advertising such as identities, flyers, brochures, forms, catalogs, newsletters and booklets.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Scripting",
+        "subjectCode": "CGT",
+        "courseCode": "33500",
+        "instructor": [
+            "Robert Thomas Howard"
+        ],
+        "description": "Students gain a deeper understanding into video game scripting. Utilizing a common project, students use scripted objects to customize and enhance a small existing game. While the projects are individualized for the student, they are trained to utilize best practices for team based, industry applications of their work. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Digital Lighting And Rendering For Computer Animation",
+        "subjectCode": "CGT",
+        "courseCode": "34000",
+        "instructor": [
+            "Michele A Walker",
+            "Nasheet Zaman"
+        ],
+        "description": "The development of a working knowledge of perspective display of three-dimensional models and the resulting effects of projected light sources on shade, shadow, color, texture, and atmospheric effects in architecture, product illustration, and animation. Emphasis will be placed on lighting design, analysis, and photorealistic simulation for commercial graphic applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Motion For Computer Animation",
+        "subjectCode": "CGT",
+        "courseCode": "34100",
+        "instructor": [
+            "Raymond P Hassan"
+        ],
+        "description": "An applied course covering three-dimensional computer graphic animation for graphics specialists and professionals involved in the use of technical design, time and motion study, surface texture mapping, digital lighting, color, and the technology required to produce computer animations for commercial applications in manufacturing design, marketing, and training.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Digital Video And Audio",
+        "subjectCode": "CGT",
+        "courseCode": "34600",
+        "instructor": [
+            "Daniel P Triplett"
+        ],
+        "description": "Covers the use of digital technologies for video and audio in multimedia, hypermedia, and animation products. Students examine the methods for creating, sampling, and storing digital video and digital audio and the constraints placed on these media assets when used for media-based products. Emphasis is placed upon the technology of digital video and audio, including formats, data rates, compressors, and the advantages and disadvantages of the different technologies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Photorealistic Shaders",
+        "subjectCode": "CGT",
+        "courseCode": "34800",
+        "instructor": [
+            "Daniel P Triplett"
+        ],
+        "description": "This course focuses on the creation and application of photorealistic custom shaders to visual effect problems. Students learn to tender common material photorealistically using common industry tools and techniques. Emphasis is placed on meeting specified aesthetic and photorealistic requirements within computationally constrained environments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Web Programming, Development And Data Integration",
+        "subjectCode": "CGT",
+        "courseCode": "35600",
+        "instructor": [
+            "John C Finnegan",
+            "Ronald J Glotzbach"
+        ],
+        "description": "A course focusing on the development of dynamic content and applications to facilitate information distribution. The course stresses development strategies for managing the rapidly changing information of corporations and organizations for just-in-time distribution, using authoring programs to create interactive multimedia products that utilize database management systems, file systems, and XML to provide a method for visualizing and manipulating that data. Significant time is spent on intermediate to advanced programming and scripting.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Development Practicum",
+        "subjectCode": "CGT",
+        "courseCode": "36500",
+        "instructor": [
+            "David M Whittinghill"
+        ],
+        "description": "This course provides an opportunity for teams of game developers to focus on a project without distraction by competing course deliverables. Students propose a game project and spend the entire semester working only on that project. Course instructors will function as facilitators, producers, and supervisors, helping each student team scaffold their work such that all course goals are met.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Interactive Data Visualization",
+        "subjectCode": "CGT",
+        "courseCode": "37000",
+        "instructor": [
+            "Yingjie Chen"
+        ],
+        "description": "Data visualization is the art and science of putting quantitative numbers into pictorial or graphical format that are easy for users to understand, use, and take action upon the data. In this course, we will learn basic data visualization design principles, theories, data management skills, and fundamental web technologies to design and develop web based interactive date visualizations. The students will be able to design the proper visual representations of the data based on the data's characteristics, business needs, and prospective users.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Production II",
+        "subjectCode": "CGT",
+        "courseCode": "39000",
+        "instructor": [
+            "Jeffrey Peter Kesselman",
+            "Robert Thomas Howard"
+        ],
+        "description": "Course topics will be determined by the CGT faculty. Hours and subject matter will be arranged by the instructor and approved by the CGT curriculum committee.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Senior Portfolio Review",
+        "subjectCode": "CGT",
+        "courseCode": "40500",
+        "instructor": [
+            "Michele A Walker"
+        ],
+        "description": "Portfolio review for seniors in Computer Graphics Technology.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Contemporary Problems In Applied Computer Graphics II",
+        "subjectCode": "CGT",
+        "courseCode": "41201",
+        "instructor": [
+            "John C Finnegan",
+            "Carlos R Morales",
+            "Sarah J George"
+        ],
+        "description": "CGT 41201 is the second course in the CGT applied computer graphics capstone sequence with a focus on execution and evaluation of the senior capstone project. Emphasis will be placed  on industry engagement for the execution of the project plan that was developed in CGT 41101. Students will work in teams to execute the project plan; develop and execute a project evaluation plan, and make a professional final presentation to industry members, faculty, and peers. Students will execute a project refinement process based on feedback received and incorporate that into a final presentation and project report. CGT 41201 will be taught in a seminar format with one meeting per week focused on project status checks, evaluation plan development and execution, and project presentations.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Production For Computer Animation",
+        "subjectCode": "CGT",
+        "courseCode": "44200",
+        "instructor": [
+            "Nasheet Zaman"
+        ],
+        "description": "An applied course covering advanced spline modeling techniques, lighting techniques, applied shading, motion dynamics and controllers, particle systems, application customization programming, and pre-production development and planning. Study of emerging advancements in computer animation and spatial graphic technologies will be included.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Development IV: Procedural Asset Creation For Games",
+        "subjectCode": "CGT",
+        "courseCode": "44500",
+        "instructor": [
+            "Christos Mousas"
+        ],
+        "description": "This course teaches a procedural approach to game development ranging from geometric modeling techniques, crowd simulation, particle systems, fluid simulation and flame simulation. The course will examine procedural nondestructive workflows that can be translated into real-time assets for game development. Students will learn how to set up nodal and parameter based graphs that carry the ability to be interactively updated and changed, thus having the flexibility expected in an industry pipeline.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computer Graphics Professional Practices II",
+        "subjectCode": "CGT",
+        "courseCode": "45001",
+        "instructor": [
+            "Sarah J George",
+            "John C Finnegan",
+            "Ronald J Glotzbach"
+        ],
+        "description": "Preparation for professional employment in computer graphics professions. Topics covered include professional and technical writing, correspondence, corporate and freelance employment considerations; portfolio planning; and interviewing. Students will arrange interviews and portfolio reviews.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Web Programming, Development And Data Integration",
+        "subjectCode": "CGT",
+        "courseCode": "45600",
+        "instructor": [
+            "Ronald J Glotzbach"
+        ],
+        "description": "This course presents the advanced technologies available for use on the World Wide Web and within corporate intranet environments. Emphasis and discussion is focused on the advantages and disadvantages of these technologies as well as on implementation to create unique solutions for business and industry. Strategies for planning, development, and implementation will be discussed and demonstrated.   Significant time is spent on advanced programming and scripting as well as manipulation and visualization of data from various sources, including robust database management systems. Students are required to plan, design and implement a major project.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Computer Graphics Technology",
+        "subjectCode": "CGT",
+        "courseCode": "50100",
+        "instructor": [
+            "Esteban Garcia"
+        ],
+        "description": "A variable topics course that addresses contemporary problems and issues related to M.S. students in Computer Graphics Technology. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Real-Time Computer Graphics",
+        "subjectCode": "CGT",
+        "courseCode": "52100",
+        "instructor": [
+            "Tim E Mcgraw"
+        ],
+        "description": "This course focuses on a working knowledge of real-time rendering and shaders using GPI. Students will learn how to program advanced computer graphics techniques and how to benefit from the existing graphics hardware in an efficient way. The main focus is on programming modern graphical processing units (GPUs) using the GLSL, CG and OpenGL. Students will learn what the data-flow programming model is, and how to write vertex, geometry, tessellation, and fragment shaders. Another output is using texturing and lighting on the low level of the GPU and the next step is to provide animations using vertex shaders. Advanced texturing techniques such as bump mapping or environment mapping will be explained. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Game Development II",
+        "subjectCode": "CGT",
+        "courseCode": "55500",
+        "instructor": [
+            "David M Whittinghill"
+        ],
+        "description": "This course introduces students to the advanced concepts, technologies, skills that enable the creation of sophisticated video games, simulations, and game systems. Students are taught using student-led, active-learning pedagogy in which students co-develop and present lectures, demonstrations, and assignments for their peers, with the facilitation of the course instructor. A thorough understanding of how game engines work is therefore a requisite element of the game development process and lever for research in most domains involving interactive simulations and games. As game engine development, research, and application is a large and complex topic, the course material is distributed across two semesters. In addition to the continuation of technical topics this course also emphasizes the experiential, conceptual, and aesthetic dimensions of game development, prioritizing implementation completeness with creative, aesthetically-pleasing implementations that are informed by current research. As research in this field continues to rapidly iterate, the latest findings are incorporated into each new offering of the course, refreshing its content as the technology evolves in its implementation and theoretical underpinnings. Production of original research focused upon an aspect of game development or game engine design is required. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data Visualization Tools And Applications",
+        "subjectCode": "CGT",
+        "courseCode": "57500",
+        "instructor": [
+            "Vetria L Byrd"
+        ],
+        "description": "This course provides hands-on experience in data visualization tools and applications. The course is designed for students with little or no background in Data Visualization. It introduces students to design principles for creating meaningful displays of quantitative and qualitative data to facilitate insight and decision-making. The goal is to introduce visualization as a tool, explore and identify which visualization tools are better suited to visualize different types of data, and understand the role visualization plays in understanding what the data represent. This course gives students an in-depth view of the various branches of visualization and the visualization tools in each area. After taking the course students will be able to evaluate data visualization tools and determine which tool to use for different types of data. This course is targeted towards students interested in using visualization in their own work and future academic courses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Player Centrd Apprch Game Dsgn",
+        "subjectCode": "CGT",
+        "courseCode": "58100",
+        "instructor": [
+            "Christos Mousas",
+            "Jeffrey Peter Kesselman",
+            "Tim E Mcgraw",
+            "Nandhini Giri"
+        ],
+        "description": "Advanced study of technical and professional topics. Emphasis is on new developments relating to technical, operational, and training aspects of industry and technology education.",
+        "capacity": 0,
+        "credits": [
+            0,
+            8
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "UXD Grad Capstone",
+        "subjectCode": "CGT",
+        "courseCode": "59700",
+        "instructor": [
+            "Rua Mae Williams"
+        ],
+        "description": "An original investigation of a particular problem under the guidance of the instructor(s). The resulting product is a substantial project report with an evaluation or research component. Not applicable to a thesis option plan of study. Enrollment for a total of six credits is required. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Spring 2024"
+    }
+]

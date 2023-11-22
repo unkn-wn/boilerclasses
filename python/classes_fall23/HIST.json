@@ -1,0 +1,531 @@
+[
+    {
+        "title": "Introduction To The Medieval World",
+        "subjectCode": "HIST",
+        "courseCode": "10300",
+        "instructor": [
+            "Christopher D Beck"
+        ],
+        "description": "Barbarians, kings, queens, peasants, witches, saints, teachers, students, heretics, Muslims, Jews, Christians, love, death, monks, farm life, city life, ordinary men, women, and children as Europe develops from A.D. 500 to 1500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Survey Of Global History",
+        "subjectCode": "HIST",
+        "courseCode": "10500",
+        "instructor": [
+            "Tithi Bhattacharya",
+            "Deborah L Fleetham"
+        ],
+        "description": "A survey of the interaction between the civilizations of Asia, Africa, Europe, and the Americas since 1500, with attention to cultural comparisons over time, and to the implications of global interdependence for the environment, health, economy, and geopolitics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "American History To 1877",
+        "subjectCode": "HIST",
+        "courseCode": "15100",
+        "instructor": [
+            "Trenton C Jones"
+        ],
+        "description": "A study of the development of American political, economic, and social institutions from the early explorations and colonial settlements through Reconstruction. CTL:ISH 1010 American History I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "United States Since 1877",
+        "subjectCode": "HIST",
+        "courseCode": "15200",
+        "instructor": [
+            "Cornelius L Bynum",
+            "Tina Anne Irvine"
+        ],
+        "description": "A study of the growth of the United States from 1877 to the present. The new industrialism, agrarian problems, depression, the New Deal, the two world wars, the cold war, and similar topics are analyzed. CTL:ISH 1011 American History II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Anc Jud & Early Christ",
+        "subjectCode": "HIST",
+        "courseCode": "20100",
+        "instructor": [
+            "Stuart Dunbar Robertson"
+        ],
+        "description": "This variable title course deals with broad historical topics that transcend and telescope traditional analytical, chronological, and geographical boundaries. Content will vary with the instructors teaching the class.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "East Asia And Its Historic Tradition",
+        "subjectCode": "HIST",
+        "courseCode": "24000",
+        "instructor": [
+            "Huiying Chen"
+        ],
+        "description": "Survey of the great historic traditions of China, Japan, and Korea from earliest times to approximately 1600, with special attention to state formation, society, intellectual, philosophical, and religious developments, and the visual, musical, and literary arts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "South Asian History And Civilizations",
+        "subjectCode": "HIST",
+        "courseCode": "24300",
+        "instructor": [
+            "Tithi Bhattacharya"
+        ],
+        "description": "Survey history of India, Pakistan, and Bangladesh, from the origins of South Asian civilization to the present. Topics include ancient India, the Mughal Empire, the colonial experience, the independence movement, and conflict and popular culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "United States Relations With The Middle East And North Africa",
+        "subjectCode": "HIST",
+        "courseCode": "25000",
+        "instructor": [
+            "Stacy E Holden"
+        ],
+        "description": "This course examines US relations with the Middle East and North Africa since World War II.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Colonial Latin American History (1492-1810)",
+        "subjectCode": "HIST",
+        "courseCode": "27100",
+        "instructor": [
+            "Ariel E De La Fuente"
+        ],
+        "description": "The purpose of this general survey course is to introduce students to the principle historical themes of Latin America during the colonial period (roughly, from 1492 to 1810). No prior knowledge of Latin American history is required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Artificial Intelligence: Minds And Machines",
+        "subjectCode": "HIST",
+        "courseCode": "30701",
+        "instructor": [
+            "Ekaterina Babintseva"
+        ],
+        "description": "  This course examines the long history of efforts in automating human cognition. Historically, the attempts to automate human cognitive functions - from the mere reckoning of numbers to complex decision-making have been entangled with heated debates about what counts as good, proper, and desirable thinking; whose thinking machines should emulate; and whether the thinking of some humans is inferior to that of machines. In this course, we will examine how the invention of calculating machines - analogue and then digital - has developed in tandem with philosophical and scientific theories of human thinking and intelligence. In their turn, the latter developed as a response to changing social, political, and economic currents. ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Life Sciences",
+        "subjectCode": "HIST",
+        "courseCode": "30805",
+        "instructor": [
+            "Michelle Lynne Labonte"
+        ],
+        "description": "This course will examine the development of life sciences from 1750 to the present, introducing students to critical problems related to biology and society through the study of primary and secondary sources. The \"life sciences\" include all the sciences that deal with life as an organic entity. A prominent theme in this historical treatment is the impact of social and political ideas on the life sciences. Topics will include theories of life, the origin of life, taxonomy and classification, theories of development, natural selection, genetics, eugenics, science and religion, the evolutionary synthesis, biodiversity, ecology and environmentalism, sociobiology, the discovery of DNA, cognition and the brain, and gender in science. Students will develop crucial skills in the interpretation of primary and secondary sources, research, analysis, and presentation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "German History",
+        "subjectCode": "HIST",
+        "courseCode": "32300",
+        "instructor": [
+            "Deborah L Fleetham"
+        ],
+        "description": "A survey of German history from the earliest times until the present. After a brief description of the medieval empire, we will turn to the Germany of Bismarck and Hitler and its successor states. A recurring theme will be the struggle between forces of liberalism and democracy and those of authoritarianism and militarism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Nuclear Age",
+        "subjectCode": "HIST",
+        "courseCode": "33205",
+        "instructor": [
+            "Austin Rory Cooper"
+        ],
+        "description": "Once seen as a revolutionary and exceptional, nuclear technologies have become central to many aspects of life in the U.S. This course uses the history of nuclear technologies to trace how American society has grappled with technological change.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Europe In The Age Of The Cold War",
+        "subjectCode": "HIST",
+        "courseCode": "33700",
+        "instructor": [
+            "Christopher Boal Ewing"
+        ],
+        "description": "Examines the power vacuum created in western and central Europe by the defeat of Nazi Germany and explores the influence of the superpowers' policy on the political, cultural, and economic development of European countries within their respective spheres of influence.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Traditional China",
+        "subjectCode": "HIST",
+        "courseCode": "33900",
+        "instructor": [
+            "Margaret M Tillman"
+        ],
+        "description": "Chinese civilization from its origins to the end of the Ming Dynasty. Attention is divided equally between political and cultural history, giving emphasis to the development of traditional institutions in Chinese society as well as to art, literature, religion, and philosophy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Arabs in American Eyes",
+        "subjectCode": "HIST",
+        "courseCode": "34505",
+        "instructor": [
+            "Stacy E Holden"
+        ],
+        "description": "This course explores Arab-American relations over the past 300 years, using American writings on the Middle East and North Africa as a prism for viewing evolving conceptions of national identity and global power in the United States.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Second World War",
+        "subjectCode": "HIST",
+        "courseCode": "35100",
+        "instructor": [
+            "Randy W Roberts"
+        ],
+        "description": "A study of the diplomacy, economic mobilization, and military operations of World War II, 1939-1945.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of American Military Affairs",
+        "subjectCode": "HIST",
+        "courseCode": "35500",
+        "instructor": [
+            "Jonathan Steven Lande"
+        ],
+        "description": "Surveys American military policy from the colonial militia to the atomic age. Covers major wars and limited wars. The course also investigates the peacetime military functions, i.e., the Navy's role in diplomacy and the Army's involvement in Indian affairs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The History Of Medicine And Public Health",
+        "subjectCode": "HIST",
+        "courseCode": "36305",
+        "instructor": [
+            "Wendy K Kline"
+        ],
+        "description": "The purpose of this course is to provide students with a historical understanding of the role public health and medicine has played in American history during the 19th and 20th centuries. How does the health status of Americans reflect and shape the U.S.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Society, Culture, And Rock And Roll",
+        "subjectCode": "HIST",
+        "courseCode": "37100",
+        "instructor": [
+            "David C Atkinson"
+        ],
+        "description": "Surveys American society and culture through the prism of rock and roll music. Looks at politics, gender, race, and class in the postwar era to examine and explain the social, economic, and technological forces that shaped rock and roll.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "American Constitutional History",
+        "subjectCode": "HIST",
+        "courseCode": "38200",
+        "instructor": [
+            "Devan Charles Lindey"
+        ],
+        "description": "Survey of the fundamental principles of American constitutionalism and dominant trends in judicial interpretation, from the creation of the Constitution to the period of the New Deal.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History Of Aviation",
+        "subjectCode": "HIST",
+        "courseCode": "38400",
+        "instructor": [
+            "Zachary Thomas Logsdon"
+        ],
+        "description": "A comparative history of human flight and air power (in Europe, the Americas, and Asia) from its origin in the early inventors and pilots, through its reflection in the popular media, to the global development of civil and military aviation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Purdue's Formosa Project",
+        "subjectCode": "HIST",
+        "courseCode": "39500",
+        "instructor": [
+            "Margaret M Tillman",
+            "Jennifer L Foray"
+        ],
+        "description": "Variable title seminar for history majors in their junior year intended to teach historical skills, including research in primary sources, analytical skills, and forming historical arguments. It is a writing-intensive course and counts as one of the major requirements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Modern European Imperialism: Repression And Resistance",
+        "subjectCode": "HIST",
+        "courseCode": "41300",
+        "instructor": [
+            "Jennifer L Foray"
+        ],
+        "description": "This course examines the expansion, transformation and collapse of 19th and 20th-century European empires, focusing on colonial encounters and relationships. Students should come to the course familiar with major developments, events and themes in modern European and/or global history.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Honors Historical Methods",
+        "subjectCode": "HIST",
+        "courseCode": "42100",
+        "instructor": [
+            "David C Atkinson"
+        ],
+        "description": "Designed as a prequel to Honors Thesis; this course introduces the Honors students to various advanced interpretative approaches to history and methods of historical research. Students also choose their topic for their Honors Thesis and begin research.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Germany & The First World War",
+        "subjectCode": "HIST",
+        "courseCode": "42300",
+        "instructor": [
+            "William G Gray"
+        ],
+        "description": "This course offers a reading-intensive study of a specific period or theme in modern German history. Semester-long topics might include Imperial Germany; Weimar Germany; Divided Germany (1945-1990); or thematic studies on culture, religion, or military affairs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Women And Health In America",
+        "subjectCode": "HIST",
+        "courseCode": "47005",
+        "instructor": [
+            "Wendy K Kline"
+        ],
+        "description": "This course examines the historical relationship between women and health by exploring a number of critical themes that have affected women's health in the United States.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Madness And The Asylum In The United States",
+        "subjectCode": "HIST",
+        "courseCode": "48005",
+        "instructor": [
+            "Yvonne M Pitts"
+        ],
+        "description": "This course explores how Americans have understood insanity and asylums. We analyze historical concepts of insanity, the evolution of asylums, how psychiatrists have debated therapeutics, and how ordinary people have experienced treatments and diagnoses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Modern Arab Thought",
+        "subjectCode": "HIST",
+        "courseCode": "49200",
+        "instructor": [
+            "Ahmed Idrissi Alami"
+        ],
+        "description": "Course description will vary according to specific topic proposed to study.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Legal History",
+        "subjectCode": "HIST",
+        "courseCode": "49500",
+        "instructor": [
+            "Kathryn C Brownell",
+            "Yvonne M Pitts"
+        ],
+        "description": "This course is designed to train history majors in the fundamentals of historical research and writing. Course descriptions vary according to specific topics proposed for study by instructors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Trans-Atlantic Capitalism",
+        "subjectCode": "HIST",
+        "courseCode": "60100",
+        "instructor": [
+            "William G Gray"
+        ],
+        "description": "Bibliography and historiography of selected fields of topics in European history; may vary in subject matter from semester to semester. Prerequisite: Master's student standing.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "History: Theory And Methods",
+        "subjectCode": "HIST",
+        "courseCode": "61000",
+        "instructor": [
+            "Trenton C Jones"
+        ],
+        "description": "This is the first part of an introductory two-course sequence for new graduate students intended to acquaint them with some important issues regarding the modern professional practice of history. This semester concentrates on historiography, theoretical questions, and methodological debates that today's working historians inevitably encounter. Students read about the practice of historical scholarship and read several important example texts representing different approaches to the discipline over the past 200 years. Students write several short book reviews, position papers, and a mock grant proposal during this semester. The course is required of incoming graduate students in history. It usually will be followed by HIST 61100, Research Practicum.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Hist W/ Econ, Psych, Lit, Art",
+        "subjectCode": "HIST",
+        "courseCode": "64100",
+        "instructor": [
+            "Ariel E De La Fuente"
+        ],
+        "description": "Individual and group study of topics in global history. Topics reflect the research, teaching, or historiographic specialties of the faculty offering the course. Subtitles indicate the focus of the research seminar. Prerequisite: Master's student standing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Readngs Af-Amer Hist In 20th C",
+        "subjectCode": "HIST",
+        "courseCode": "65100",
+        "instructor": [
+            "Cornelius L Bynum"
+        ],
+        "description": "Bibliography and historiography of selected fields or topics in American history; may vary in subject matter from semester to semester. Prerequisite: Master's student standing.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Entering The History Profession",
+        "subjectCode": "HIST",
+        "courseCode": "68000",
+        "instructor": [
+            "Kathryn C Brownell"
+        ],
+        "description": "This seminar is for advanced graduate students who are in the final two years of the program. In your earlier courses, you have become proficient in various methodological approaches and have gotten well acquainted with the historiography in various fields of study. You also have pursued original research and have navigated the classroom challenges. Now is the time to prepare for the job market, thinking critically about the skills you have acquired during graduate school and discerning strategies to communicate your credentials to a hiring committee. During this seminar, we will focus on how to structure a curriculum vitae, write a cover letter, create a teaching portfolio, craft a diversity statement, and select writing samples. We will also hold mock interviews to prepare you to orally communicate your skills, experiences, and expertise. Graduate students will also meet with professionals outside academia to learn about navigating the world of business, journalism, politics, non-profits, and public history. Permission of department required. Prerequisites: HIST 61000 and HIST 61100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

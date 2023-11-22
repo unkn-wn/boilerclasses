@@ -1,0 +1,515 @@
+[
+    {
+        "title": "Art For Elementary School Teachers",
+        "subjectCode": "AD",
+        "courseCode": "20100",
+        "instructor": [
+            "Heather G Vickers"
+        ],
+        "description": "Art theory and experiences, curriculum theory, and materials preparatory for instruction of elementary school children. No undergraduate students may be enrolled in this course until they have been admitted to teacher education and a copy of this acceptance is on file.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "History Of Art Since 1400",
+        "subjectCode": "AD",
+        "courseCode": "22700",
+        "instructor": [
+            "Allie Kay Brandt",
+            "David C Parrish"
+        ],
+        "description": "Review of painting, sculpture, and architecture from 1400 to present. CTL:IFA 1312 Art History II.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Visual Communication Design Computing II",
+        "subjectCode": "AD",
+        "courseCode": "22900",
+        "instructor": [
+            "Felicia J Barrett",
+            "Alexandra Lopez Jacobson"
+        ],
+        "description": "An intermediate course in visual design computing programs used in the study and production of visual communication design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Art And Design Internship Preparation",
+        "subjectCode": "AD",
+        "courseCode": "23400",
+        "instructor": [
+            "James David Deal"
+        ],
+        "description": "Introduction and preparation for Art & Design Internship experience. Students will develop a resume, cover letter, and other resources in their search for a suitable internship placement.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Art Appreciation",
+        "subjectCode": "AD",
+        "courseCode": "25500",
+        "instructor": [
+            "Brian Joseph Hitselberger",
+            "Laura Lucia Sanz Giraldo"
+        ],
+        "description": "Understanding and appreciation of the problems overcome by mankind in the origins and growth of art. CTL:IFA 1310 Art Appreciation",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Human Behavior And Designed Environment",
+        "subjectCode": "AD",
+        "courseCode": "28000",
+        "instructor": [
+            "Kevin H Woolley"
+        ],
+        "description": "This foundation course examines issues pertaining to the environment's effects on human behavior and how humans' physiological, informational, and social needs impact the design of interior spaces. Specific topics explored include: personal and social use of space, proxemics, ergonomics, anthropometrics, cultural factors and universal design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Interior Components And Materials",
+        "subjectCode": "AD",
+        "courseCode": "28500",
+        "instructor": [
+            "Laura E Bittner"
+        ],
+        "description": "Study of surface materials and subsystems and their application to architectural interior spaces. Emphasis on specification guidelines, including product performance, building codes, fire, safety, and health regulations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Art in Middle/Junior High Schools",
+        "subjectCode": "AD",
+        "courseCode": "30300",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "Theory and practice of art education for early adolescent students in the middle/junior high school.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "History Of Contemporary Photography",
+        "subjectCode": "AD",
+        "courseCode": "30701",
+        "instructor": [
+            "Eli J Craven"
+        ],
+        "description": "This course examines evolution of major themes in contemporary photography (Digital era to Present) from a variety of aesthetic, social, and cultural perspectives, fostering an awareness of pertinent theoretical issues.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar On Ideas In Industrial Design I: Design And Society",
+        "subjectCode": "AD",
+        "courseCode": "31600",
+        "instructor": [
+            "Zhen Yu Qian"
+        ],
+        "description": "A study of design and the designer and the factors in society that affect his or her work.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Italian Renaissance Art",
+        "subjectCode": "AD",
+        "courseCode": "34600",
+        "instructor": [
+            "Linda M Martin"
+        ],
+        "description": "A study of the painting, sculpture and architecture of Italy between 1300 and 1545 AD, including artists such as Leonardo da Vinci, Raphael and Michelangelo. The course will also relate these works of art to the culture, religion, politics, economics and social life of the period.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Contemporary Art",
+        "subjectCode": "AD",
+        "courseCode": "38400",
+        "instructor": [
+            "Charmaine Renee Griffith"
+        ],
+        "description": "A comprehensive overview of the visual arts from the 1940's to the present, designed to help students understand the cultural, social, and historical dynamics that influence artistic creation, and reflect upon the artists' role in contemporary societies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "History Of Interior Design",
+        "subjectCode": "AD",
+        "courseCode": "38500",
+        "instructor": [
+            "Jennifer B Kaufmann-Buhler"
+        ],
+        "description": "A survey of the historical changes in interior design and architecture from the 18th century to the present in their social, cultural, and political contexts. The course situates the history of interior design within broader debates about the social uses of space and the cultural significance of architecture and interiors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Art Museum Practices",
+        "subjectCode": "AD",
+        "courseCode": "39600",
+        "instructor": [
+            "David C Parrish"
+        ],
+        "description": "This course examines art museums as cultural institutions with varied collections, serving an important social role. Museum administration and operation are discussed, as are exhibition preparation and museum architecture; a few field trips are required. Museum careers also are explored.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Art In Secondary School",
+        "subjectCode": "AD",
+        "courseCode": "40200",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "Theory and practice of art education for adolescent and young adult students in the secondary school. Required prior to professional semester.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar On Ideas In Industrial Design II: Design And Creative Problem Solving Methods",
+        "subjectCode": "AD",
+        "courseCode": "41600",
+        "instructor": [
+            "Tong J Kim"
+        ],
+        "description": "A study of creative problem solving methods as used by the designer in his or her work.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Interior Detailing And Construction",
+        "subjectCode": "AD",
+        "courseCode": "44000",
+        "instructor": [
+            "Genell Wells Ebbini"
+        ],
+        "description": "The process of designing, detailing, specifying, and constructing interior environments. Emphasis on teams, building systems, architectural drawing, and building codes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Professional Practice",
+        "subjectCode": "AD",
+        "courseCode": "46500",
+        "instructor": [
+            "Kevin H Woolley"
+        ],
+        "description": "The study of professional office and business procedures for the practice of interior design. Includes project administration, contracts, forms, and documents as used in the marketplace.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intr Museum Studies: UK Survey",
+        "subjectCode": "AD",
+        "courseCode": "49100",
+        "instructor": [
+            "Erika I Kvam"
+        ],
+        "description": "Topics will vary.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Studio Arts Professional Practice/Senior Exhibition",
+        "subjectCode": "AD",
+        "courseCode": "49900",
+        "instructor": [
+            "Eli J Craven"
+        ],
+        "description": "Study of professional practice in the contemporary art world: ethics, gallery, exhibition, studio practice, writing, visual documentation, and business of art. Seniors meet throughout spring semester to organize, install, and de-install Fine Arts Senior Exhibition.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Curriculum Studies In Art Education",
+        "subjectCode": "AD",
+        "courseCode": "50200",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "(EDCI 52000) Study of selected theories of curriculum conception as they apply to constructing arts education curricula in the schools. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Philosophical Studies In Art Education",
+        "subjectCode": "AD",
+        "courseCode": "50400",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "(EDCI 52100) To introduce students to philosophy as a mode of disciplined inquiry in art education. Students will critically examine the literature of art education and identify problems requiring philosophical resolution. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Interaction Design Studies",
+        "subjectCode": "AD",
+        "courseCode": "51200",
+        "instructor": [
+            "Tong J Kim"
+        ],
+        "description": "This course examines concepts and methods for interaction design (IXD). It emphasizes a human-centered perspective and explores fundamental components involved in IXD research. Students will explore a wide range of literature and implement IXD theories in multi-disciplinary collaborative projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Research Methods In Art And Design",
+        "subjectCode": "AD",
+        "courseCode": "55000",
+        "instructor": [
+            "Shannon C Mcmullen"
+        ],
+        "description": "An intensive course in research methods to assist students in developing a topic for directed study. Introduction to various research tools; exercises exploring issues of style, content, and organization; research methods and how they pertain to art and design. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Tch Asst Practicum:Fdn Des II",
+        "subjectCode": "AD",
+        "courseCode": "59100",
+        "instructor": [
+            "Brian Joseph Hitselberger"
+        ],
+        "description": "Seminar to train new Art and Design teaching assistants in the content, policies, and format of the courses they support in various roles, such as: primary instructor, primary studio technician, primary grader for the course, or primary student teacher supervisor. Topics include problem/project presentation, critique techniques, grading, and knowledge of materials and processes of the discipline. Subsequent semesters focus on improving and refining teaching and operational skills. Open only to Art and Design teaching assistants each semester they teach. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Hist Of Dsg,Disability& Access",
+        "subjectCode": "AD",
+        "courseCode": "59200",
+        "instructor": [
+            "Jennifer B Kaufmann-Buhler"
+        ],
+        "description": "This is a graduate seminar that focuses on a particular theme, period or movement in the history of art or design. Permission from department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Painting",
+        "subjectCode": "AD",
+        "courseCode": "60000",
+        "instructor": [
+            "Jennifer Scheuer"
+        ],
+        "description": "Painting. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Typography",
+        "subjectCode": "AD",
+        "courseCode": "60800",
+        "instructor": [
+            "Li Zhang"
+        ],
+        "description": "Explores the communicative and structural aspects of traditional and non-traditional typography, its current and past practitioners, and its evolving role in society. Independent research and group projects will supplement lectures, assigned readings, and field trips. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Drawing",
+        "subjectCode": "AD",
+        "courseCode": "61300",
+        "instructor": [
+            "Jennifer Scheuer"
+        ],
+        "description": "Drawing. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Electronic And Time-Based Art",
+        "subjectCode": "AD",
+        "courseCode": "61600",
+        "instructor": [
+            "Fabian Winkler"
+        ],
+        "description": "This seminar explores contemporary artistic practices in Electronic and Time-Based Art, including emerging fields such as: generative and interactive art, audio-visual installation, and new media performance. The format of the course is a mixture of critique, workshops, research, presentations, and discussion. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Printmaking",
+        "subjectCode": "AD",
+        "courseCode": "66500",
+        "instructor": [
+            "Jennifer Scheuer"
+        ],
+        "description": "Printmaking. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Sculpture",
+        "subjectCode": "AD",
+        "courseCode": "67500",
+        "instructor": [
+            "Sigrid K Zahner"
+        ],
+        "description": "Sculpture. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Historical Problems In Art Education",
+        "subjectCode": "AD",
+        "courseCode": "69300",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "(EDCI 63000) Examination of methods used to investigate art education's history, past theory, and practices. Class work will include readings and discussion and will culminate in guided research and a short historical study. Permission of instructor required. Prerequisite: BA in art education.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Aesthetic Development In Children",
+        "subjectCode": "AD",
+        "courseCode": "69600",
+        "instructor": [
+            "Frank Robert Sabol"
+        ],
+        "description": "(EDCI 63100) Examination of historical and contemporary theory and research in children's aesthetic development (response and production) and analysis of the influences of such development on art education curricula and methodology. Permission of Instructor required. Prerequisite: BA in Art Education or an equivalent area.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

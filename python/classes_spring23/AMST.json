@@ -1,0 +1,99 @@
+[
+    {
+        "title": "America And The World",
+        "subjectCode": "AMST",
+        "courseCode": "10100",
+        "instructor": [
+            "Rachel Lauren Ramlawi",
+            "Kathleen G Burnham"
+        ],
+        "description": "This course examines the evolution of American culture as the United States transitioned from a relatively isolated country at the end of the 19th century to an active shaper of a global community by the 21st century. We will examine ways in which American Culture shaped and was shaped by international relationships that transcend nation states. We will explore reactions to, and the results of, the spread of American culture both inside and outside the United States. By studying traditional cultural forms like art, music, design, literature, film, and technology the course will build a foundation from which to understand the configuration of American culture. Yet the course will also emphasize American culture expression, that in the forms of television, advertising, sport, cartoons, social media, video games, fashion, food, drugs, and automobiles, have transcended the geographical boundaries of the United States to engage in global interplays of material cultural exchange.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Interpreting America",
+        "subjectCode": "AMST",
+        "courseCode": "20100",
+        "instructor": [
+            "David Javier Williams Tortolini"
+        ],
+        "description": "Introduction to the interdisciplinary study of American culture, history, and society in its national and global contexts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Asian Amer Pop Cul",
+        "subjectCode": "AMST",
+        "courseCode": "30100",
+        "instructor": [
+            "Matthew N Hannah",
+            "Monica Mong Trieu",
+            "Pamela Kristina Sari",
+            "Ahmed Idrissi Alami",
+            "Cheryl A Cooky"
+        ],
+        "description": "Advanced interdisciplinary study of American culture, history, and society in their national and global contexts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Deadstock:Politics Of Culture",
+        "subjectCode": "AMST",
+        "courseCode": "59000",
+        "instructor": [
+            "Aaron Joseph Dial",
+            "Shannon C Mcmullen",
+            "Derek Andrew Pacheco"
+        ],
+        "description": "A reading course in aspects of American Studies directed by the instructor in whose particular field of specialization the content on the reading falls. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Transnational American Studies",
+        "subjectCode": "AMST",
+        "courseCode": "60400",
+        "instructor": [
+            "Monica Mong Trieu"
+        ],
+        "description": "What does the term \"transnational\" mean? How is the term defined, practiced, and studied in different fields? How does one take a transnational perspective, or examine the transnational variable? This course will draw from various fields (sociology, history, anthropology, ethnic studies, etc.) to explore contemporary scholarship on transnationalism in theory and in practice. Specifically, we will examine scholarship that either, 1) utilizes the transnational perspective in understanding history, the globe, and human behavior/interactions, or 2) utilizes transnational behaviors/ties as a variable to measurement adaptation. Materials in this course will examine - through the lens of race, ethnicity, class, gender, and sexuality - individual and comparative transnational case studies related to the Americas, Africa, Asia, and Europe. This is a graduate seminar, and your active participation in discussions is mandatory. You will be asked to lead four seminar discussions on selected topics from the required readings, write three memos, and submit an extended book review.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Comp Race, Ethnicity Differ",
+        "subjectCode": "AMST",
+        "courseCode": "65000",
+        "instructor": [
+            "Stephen K Horrocks"
+        ],
+        "description": "A reading seminar on a selected topic in American Studies, taught by two faculty members from different disciplines, usually one from the humanities and one from the social sciences. Prerequisite: AMST 60100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

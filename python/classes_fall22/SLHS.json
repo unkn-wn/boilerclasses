@@ -1,0 +1,447 @@
+[
+    {
+        "title": "Exploring The Science And Practice Of Speech, Language, And Hearing Sciences",
+        "subjectCode": "SLHS",
+        "courseCode": "11000",
+        "instructor": [
+            "Preeti M Sivasankar"
+        ],
+        "description": "The Speech, Language, and Hearing Sciences (SLHS) Learning Community will provide SLHS majors with an opportunity to connect with each other, with SLHS graduate students, and with SLHS faculty. Students will be exposed to a variety of different learning and career opportunities within the SLHS field. Participants will also enroll in  SLHS 11500 (Introduction to Communication Sciences and Disorders).",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Communicative Disorders",
+        "subjectCode": "SLHS",
+        "courseCode": "11500",
+        "instructor": [
+            "Arianna Nicole Lacroix",
+            "Christi M Masters"
+        ],
+        "description": "Nature, systems, and causes of communicative disorders and the principal methods used for remediation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Perception, Action, And Cognition In The Speech, Language, And Hearing Sciences",
+        "subjectCode": "SLHS",
+        "courseCode": "13000",
+        "instructor": [
+            "Alexander L Francis"
+        ],
+        "description": "  This course provides a broad introduction to basic science topics that underlie research in the speech, language, and hearing sciences. Topics center around biological and psychological aspects of perception (especially hearing), action (especially speech production), and cognition (especially language). Topics are addressed in terms of developing an understanding of material drawn from popular media aimed at interested non-specialists, including long-form journalism, essays and editorials, documentaries, TED Talks, popular films and TV shows, etc.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Elements Of Linguistics",
+        "subjectCode": "SLHS",
+        "courseCode": "22700",
+        "instructor": [
+            "Natalya B Kaganovich"
+        ],
+        "description": "(ENGL 22700) Credit will not be awarded for both SLHS 22700 and LC 26100. A summary of what is known about human language, its structure, its universality, and its diversity; language in its social setting; language in relation to other aspects of human inquiry and knowledge.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hearing Science",
+        "subjectCode": "SLHS",
+        "courseCode": "30200",
+        "instructor": [
+            "Aditi Gargeshwari"
+        ],
+        "description": "An introduction to the scientific foundations of auditory sensation and perception. The course covers those aspects of acoustics most pertinent to understanding auditory processing of simple and complex sounds (e.g. speech and music), the anatomy and physiology of the peripheral and central auditory systems, and a range of auditory perceptual phenomena and their physiological correlates.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Phonetics",
+        "subjectCode": "SLHS",
+        "courseCode": "30600",
+        "instructor": [
+            "Alexander L Francis"
+        ],
+        "description": "Credit will not be given for both SLHS 30600 and LING 31500. An introduction to articulatory phonetics, speech sounds in languages of the world, and principles and symbols of the International Phonetic Alphabet. Extensive practice in phonetic transcription.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Language Development",
+        "subjectCode": "SLHS",
+        "courseCode": "30900",
+        "instructor": [
+            "Arielle Borovsky"
+        ],
+        "description": "(PSY 42600) Specific nature, sequence, and pattern of oral language development from birth through adolescence. Numerous examples illustrating the nature of language acquisition and approaches to the study of children's language are presented. Linguistic and psychological explanations of the sequence of development are discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Speech Vs Sign: Perception, Production, Structure",
+        "subjectCode": "SLHS",
+        "courseCode": "41100",
+        "instructor": [
+            "Ronnie B Wilbur"
+        ],
+        "description": "  This course offers a 'compare and contrast' of signed languages and spoken languages, and in the process provides a review of what students have learned about language and speech in their other classes. Issues covered include the definition of 'language,' understanding the interaction of cognition and language, neural resources necessary for use of language in speech and in signing, the relationship between gesture and sign languages, and perception and production in both modalities.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Understanding Autism",
+        "subjectCode": "SLHS",
+        "courseCode": "41800",
+        "instructor": [
+            "Brandon M Keehn"
+        ],
+        "description": "(HDFS 41800, PSY 41800) This course will explore the etiology, neuroscience, diagnosis, and treatment of autism spectrum disorder (ASD). Approached from a multi-disciplinary perspective this course brings together gene, brain, and behavioral sciences with the aim of developing a better understanding of autism. The course will begin with an overview of ASD as a complex behavioral phenotype. This will include discussion of the history ASD and the expansion of the diagnostic criteria associated with the disorder. This introduction will be followed by several classes in which we will examine some of the key domains of impairment in ASD: reciprocal social interaction, language and communication, and restricted and repetitive behaviors. We will also consider the deficits associate with, but not defining of ASD, and examine co-morbid conditions frequently present in individuals with ASD. We will then address the topics of brain architecture, neurochemistry, and genetics and gene expression, all of which we will attempt to relate back to the behavioral features of autism. We will end the course with a review of treatment practices and their efficacy and an examination of impact of ASD on the family and society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intro To Neurodegen Disorders",
+        "subjectCode": "SLHS",
+        "courseCode": "41900",
+        "instructor": [
+            "Allison J Schaser",
+            "Francoise Brosseau-Lapre"
+        ],
+        "description": "Study of selected topics, varying from semester to semester. Course content will be drawn from areas for which there are no permanent courses.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Speech-Language Disorders In Health Care Settings",
+        "subjectCode": "SLHS",
+        "courseCode": "43000",
+        "instructor": [
+            "Jiyeon Lee"
+        ],
+        "description": "Presents speech-language disorders across the lifespan, encountered in a variety of health care settings. Discusses the etiology, evaluation, and management of these disorders; addresses administrative structures, team approaches, and reimbursement issues in health care settings.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Assessment Audiology And Aural Rehabilitation Across The Lifespan",
+        "subjectCode": "SLHS",
+        "courseCode": "46000",
+        "instructor": [
+            "Joshua M Alexander"
+        ],
+        "description": "This course will provide an introduction to disorders of the auditory system, the basic assessments that are used to diagnose disorders, and habilitation/rehabilitation. The laboratory provides practical instruction in the procedures discussed in class.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Neural Bases Of Speech And Hearing",
+        "subjectCode": "SLHS",
+        "courseCode": "50100",
+        "instructor": [
+            "David L Kemmerer"
+        ],
+        "description": "Study of normal human neuroanatomy and neurophysiology related to speech, language, and hearing functions. Includes material concerning normal and abnormal neurological development over the lifespan.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Auditory Perception",
+        "subjectCode": "SLHS",
+        "courseCode": "50300",
+        "instructor": [
+            "Elizabeth A Strickland"
+        ],
+        "description": "Behavioral measurement of the capabilities of the normal and impaired auditory system. The laboratory experience includes an exposure to the measures and methods of hearing science.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "The Auditory Periphery",
+        "subjectCode": "SLHS",
+        "courseCode": "50401",
+        "instructor": [
+            "Michael G Heinz"
+        ],
+        "description": "Acoustics and Fourier analysis; outer ear resonance and interaural differences; middle ear impedance and structure; inner ear mechanical responses; hair-cell transduction, electrophysiology, motility; cochlear potentials; cochlear amplifier; suppression; otoacoustic emissions; efferent feedback to the cochlea; damage to the ear; treatments for damaged ears. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Neural Bases Of Hearing",
+        "subjectCode": "SLHS",
+        "courseCode": "50601",
+        "instructor": [
+            "Ananthanarayan Krishnan"
+        ],
+        "description": "Section I: Neuroanatomy, Anatomy terminology, overview of cochlear neuroanatomy; afferent and efferent cochlear innervation; auditory nerve formation and termination points in the cochlear nucleus; Neuroanatomy of Cochlear Nucleus, Superior Olivary complex, Nuclei of Lateral lemniscus, Inferior colliculus, Medial geniculate body and the auditory cortex, corticofugal efferent pathways complex. Section II: Physiology, Neuronal Physiology; response properties of the auditory nerve, cochlear nucleus, superior olivary complex, inferior colliculus, medial geniculate body and auditory cortex, rate-place and temporal-place neural encoding schemes in the auditory nerve, intensity encoding, frequency tuning in normal and cochlear loss, binaural processing in the superior olivary complex and inferior colliculus, feature maps in the inferior colliculus and medial geniculate body and serial, parallel, hierarchical processing in the auditory cortex and role of cortico thalamic and corticocollicular pathways in shaping subcortical neural representation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Speech Disorders In Children",
+        "subjectCode": "SLHS",
+        "courseCode": "51900",
+        "instructor": [
+            "Francoise Brosseau-Lapre",
+            "Arianna Nicole Lacroix",
+            "Michelle L Gutmann",
+            "Katherine Stein Gore"
+        ],
+        "description": "Study of special topics, drawn from areas not covered in permanent courses. Topics may vary from semester to semester.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Language Disorders Of Exceptional Children",
+        "subjectCode": "SLHS",
+        "courseCode": "52200",
+        "instructor": [
+            "Laurence B Leonard"
+        ],
+        "description": "Description and diagnosis of children with language disorders and procedures for management. Students in a certification program for EMR, ED, LD or TMR should register for this course rather than AUS 52300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Language Disorders In Children: Basic Principles",
+        "subjectCode": "SLHS",
+        "courseCode": "52300",
+        "instructor": [
+            "Laurence B Leonard"
+        ],
+        "description": "Principles of description assessment and intervention for children with language disorders. Specific language evaluation and treatment procedures for children in the preschool years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Motor Disorders Of Speech",
+        "subjectCode": "SLHS",
+        "courseCode": "53800",
+        "instructor": [
+            "Joanne M Gutek"
+        ],
+        "description": "A study of the neuropathologies that affect the speech production system. Emphasizes the differential diagnosis and management of acquired motor speech disorders.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Dysphagia",
+        "subjectCode": "SLHS",
+        "courseCode": "53900",
+        "instructor": [
+            "Georgia Malandraki"
+        ],
+        "description": "A study of the normal and disordered anatomy and physiology of the swallowing process. Principles of evaluation and treatment of dysphagia are discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Clinical Practice In Speech-Language Pathology I",
+        "subjectCode": "SLHS",
+        "courseCode": "54900",
+        "instructor": [
+            "Chenell Loudermill"
+        ],
+        "description": "The second in a series of practicum courses designed to provide instruction and practical experience in fundamental diagnostic and therapeutic approaches to speech and language disorders. AUS 43000 is recommended. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Audiologic Diagnostics",
+        "subjectCode": "SLHS",
+        "courseCode": "56000",
+        "instructor": [
+            "Jillian R Hubertz"
+        ],
+        "description": "Audiometers, audiometric standards, and the use of pure tone and speech signals in the measurement of auditory abilities. Laboratory provides practical instruction in the procedures discussed in class.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Pediatric Audiology",
+        "subjectCode": "SLHS",
+        "courseCode": "56300",
+        "instructor": [
+            "Zachary S La Fratta"
+        ],
+        "description": "Examination of protocols for the identification and evaluation of infants and children with hearing loss, using behavioral, physiologic, and electro-physiologic assessment methods. Course content places an emphasis on clinical decision-making and problem-solving skills.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Hearing Aids II",
+        "subjectCode": "SLHS",
+        "courseCode": "57401",
+        "instructor": [
+            "Joshua M Alexander"
+        ],
+        "description": "The focus of this course is on the evolving technology in hearing aids with an emphasis on the information students will need to make efficacious clinical decisions not only for the hearing aids of today but also for the hearing aids of tomorrow. For each of the hearing aid features that are discussed, we review (1) the need or potential benefit to the patient, (2) the engineering behind the feature, (3) research supporting its efficacy and effectiveness, (4) its limitations, and (5) how to conduct routine clinical measurements to document its functioning.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Clinical Practice In Audiology",
+        "subjectCode": "SLHS",
+        "courseCode": "57900",
+        "instructor": [
+            "Jennifer M Simpson",
+            "Shannon M Van Hyfte"
+        ],
+        "description": "Supervised clinical practicum in evaluation of hearing and communication status and in remediation of communication problems. Clinical practices include, but are not limited to, auditory site of lesion, sensory aid selection, fitting and evaluation and communication training for children and adults. Clinical practicum is available in the M. D. Steer Audiology Center and off-campus facilities. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            12
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Research & Professional Issues",
+        "subjectCode": "SLHS",
+        "courseCode": "61900",
+        "instructor": [
+            "Allison J Schaser",
+            "Maureen Joyce Shader",
+            "Brandon M Keehn",
+            "Georgia Malandraki",
+            "Jessica E Huber"
+        ],
+        "description": "Study of advanced topics, varying from semester to semester. Course content will be drawn from areas for which there are no permanent courses.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrative Audiology Grand Rounds",
+        "subjectCode": "SLHS",
+        "courseCode": "67000",
+        "instructor": [
+            "Jennifer M Simpson"
+        ],
+        "description": "  This course provides advanced audiology students an opportunity to share and think deeply about the complex cases they are experiencing on off-campus placements. Students share cases online with their peer students who will provide thoughtful responses and reflections based on their own experiences. This course also provides a summative assessment of the students' knowledge in the final two years of their education. Due to the highly complex nature of the cases, students must use past clinical experiences and knowledge learned in multiple courses in order to successfully present cases and to respond in thoughtful ways that contribute to the online learning environment. Permission of department required; must also be currently enrolled in SLHS 57900 or SLHS 67900 completing an audiology externship.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Research Integration And Dissemination For Evidence Based Practice",
+        "subjectCode": "SLHS",
+        "courseCode": "68800",
+        "instructor": [
+            "Arielle Borovsky"
+        ],
+        "description": "The focus of this course is on developing skills, integrating current research, and communicating about research in clinical practice. Students complete a comprehensive project involving a literature review, clinical decision and poster. They gain guidance from a skilled mentor in their research area and receive course instruction on best practices in scientific communication in a variety of modes, including developing an oral pitch, preparing a literature review and evaluation, and creating and delivering a poster and writing a research abstract. Prerequisite: Students must complete Evaluating Research - currently offered as SLHS 51900.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    }
+]

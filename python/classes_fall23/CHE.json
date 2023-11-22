@@ -1,0 +1,416 @@
+[
+    {
+        "title": "Chemical Engineering Seminar",
+        "subjectCode": "CHE",
+        "courseCode": "20000",
+        "instructor": [
+            "Karissa L Raderstorf"
+        ],
+        "description": "An orientation course to inform students of the various areas in chemical engineering, to assist them in selection of electives suited to their particular abilities and interest, and to instill a sense of professional ethics and responsibility. Lectures drawn from all fields of chemical engineering.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Cooperative Seminar I",
+        "subjectCode": "CHE",
+        "courseCode": "20100",
+        "instructor": [
+            "Gabriela Nagy"
+        ],
+        "description": "Lectures by faculty and students on subjects that relate the academic work and the industrial experience. Written reports on the industrial experience are required and will include a documentation of the student's success in finding application of specified academic activities.   For students returning from the first and second work periods.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chemical Engineering Calculations",
+        "subjectCode": "CHE",
+        "courseCode": "20500",
+        "instructor": [
+            "Julie C Liu"
+        ],
+        "description": "Quantitative applications of steady-state mass and energy balances to solve problems involving multi-component systems  and multi-unit chemical processes. Single-component and multi-component phase equilibria, single-reaction and multiple-reaction stoichiometry, coupled mass and energy balances, chemical processes involving bypass and recycle streams.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introductory Chemical Engineering Thermodynamics",
+        "subjectCode": "CHE",
+        "courseCode": "21100",
+        "instructor": [
+            "Michael T Harris"
+        ],
+        "description": "Basic principles and concepts of thermodynamics applied to chemical engineering problems; use of basic thermodynamic functions of enthalpy, entropy, free energy to solutions, phase equilibria, and chemical equilibria; thermodynamic processes and efficiencies; equations of state; and relation of macroscopic to molecular properties.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chemical Engineering Seminar",
+        "subjectCode": "CHE",
+        "courseCode": "30000",
+        "instructor": [
+            "Gabriela Nagy"
+        ],
+        "description": "Continuation of CHE 20000. Lectures to acquaint the junior students with professional ethics, career choices, including graduate studies, and services of professional societies.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Cooperative Seminar II",
+        "subjectCode": "CHE",
+        "courseCode": "30100",
+        "instructor": [
+            "Gabriela Nagy"
+        ],
+        "description": "Continuation of CHE 20100. For students returning from the third and fourth work periods.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Design Of Staged Separation Processes",
+        "subjectCode": "CHE",
+        "courseCode": "30600",
+        "instructor": [
+            "Enrico Martinez Sainz"
+        ],
+        "description": "The application of equilibria and mass and energy balances for the design of staged separation processes. Use of various equilibrium data and thermodynamic principles for the design of batch and continuous distillation, absorption, stripping, and extraction systems. Stagewise calculations and graphical methods for design of binary systems. Design of multicomponent separators. Determination of stage efficiency and column size.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Statistical Modeling And Quality Enhancement",
+        "subjectCode": "CHE",
+        "courseCode": "32000",
+        "instructor": [
+            "Can Li"
+        ],
+        "description": "Statistical modeling methods, design of experiments, error analysis, curve fitting and regression, analysis of variance, confidence intervals, quality control and enhancement: emphasizes preparation for designing chemical engineering laboratory experiments and analyzing data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chemical Reaction Engineering",
+        "subjectCode": "CHE",
+        "courseCode": "34800",
+        "instructor": [
+            "Brian Michael Tackett"
+        ],
+        "description": "Application of kinetic rate equations, mass balances and energy balances to the analysis and design of chemical reactors involving homogeneous and heterogeneous chemical reactions. Chemical equilibria, kinetic rate equations for homogeneous and heterogeneously catalyzed reactions, design of ideal isothermal reactors, effects of non-isothermal operation, effects of diffusion in porous catalysts and non-ideal mixing in continuous flow reactors.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Momentum Transfer",
+        "subjectCode": "CHE",
+        "courseCode": "37700",
+        "instructor": [
+            "Stephen P Beaudoin"
+        ],
+        "description": "Differential (microscopic) and integral (macroscopic) mass, momentum, and energy balances. Newtonian and non-Newtonian fluids. Fluid statics. One-dimensional steady and transient laminar flows. Turbulence. Dimensional analysis and similarity. Friction factors and drag coefficients. Applications to engineering analysis of practical problems. Introduction to numerical analysis and visualization of flows.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Heat And Mass Transfer",
+        "subjectCode": "CHE",
+        "courseCode": "37800",
+        "instructor": [
+            "Vivek Narsimhan"
+        ],
+        "description": "Macroscopic and differential energy balances. Heat transfer coefficients for free and forced convection and phase change. Conductive and radiative heat transfer. Applications to heat transfer equipment design and compressible fluid flow. Macroscopic and differential species balances. Mass transfer coefficients and analogies. Mass transfer with and without chemical reaction. Mass transfer equipment design.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Cooperative Seminar III",
+        "subjectCode": "CHE",
+        "courseCode": "40100",
+        "instructor": [
+            "Gabriela Nagy"
+        ],
+        "description": "Continuation of CHE 30100. For senior students returning from the last work period.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Process Safety Management And Analysis",
+        "subjectCode": "CHE",
+        "courseCode": "42000",
+        "instructor": [
+            "Ray A Mentzer"
+        ],
+        "description": "Develop knowledge of process safety management and analysis in the process industries, including hazard identification, hazard analysis and risk management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chemical Engineering Laboratory",
+        "subjectCode": "CHE",
+        "courseCode": "43500",
+        "instructor": [
+            "Enrico Martinez Sainz"
+        ],
+        "description": "Quantitative experimental study of projects involving problems in fluid mechanics and heat and mass transfer or operation and evaluation of equipment; projects include analysis and data-based design of operations involving mass transfer such as distillation, absorption, drying, humidification, etc.; study of rates and equilibria in simple chemical reaction systems; study of chemical processes; application of methods of data analysis in practice; some library work; emphasis on group work, report writing, and oral communication.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Design And Analysis Of Processing Systems",
+        "subjectCode": "CHE",
+        "courseCode": "45000",
+        "instructor": [
+            "Jeffrey J Siirola"
+        ],
+        "description": "Use of process synthesis methods and concepts; detailed design of unit operation equipment, the economics of chemical plants and flow sheet optimization methods. Synthesize, develop, and evaluate a preliminary design of a chemical process that meets market requirements for a specific product. Analysis of design alternatives using case studies and optimization methods.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Process Dynamics And Control",
+        "subjectCode": "CHE",
+        "courseCode": "45600",
+        "instructor": [
+            "Zoltan Nagy"
+        ],
+        "description": "Dynamic response and control of chemical processing equipment, such as heat exchangers, chemical reactors, and absorption towers. Use is made of fundamental techniques of servomechanism theory, such as block diagrams, transfer functions, and frequency response. Introduction to advanced control techniques.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Anly Aprch Hlthcre Del-Honors",
+        "subjectCode": "CHE",
+        "courseCode": "49700",
+        "instructor": [
+            "William R Clark"
+        ],
+        "description": "Primarily designed for subject areas for which there is no specific course offered. Areas of study will deal with topics that have enough student interest to justify the teaching of specialized courses on a trial basis. The course can be repeated by a student as long as the topic being taught is not repeated. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Polymerization Reaction Engineering And Reactor Analysis",
+        "subjectCode": "CHE",
+        "courseCode": "54300",
+        "instructor": [
+            "You-Yeon Won"
+        ],
+        "description": "Polymerization kinetics, polycondensation, gelation, radical polymerization, ionic polymerization, copolymerizations, Ziegler-Natta polymerizations, polymerization in bulk, solution, suspension and emulsion, modeling, stochastic processes, Z-transforms, batch, CSTR and tubular reactors, stability analysis, computer control, separation, and drying.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Pharmaceutical Process, Development And Design",
+        "subjectCode": "CHE",
+        "courseCode": "55300",
+        "instructor": [
+            "Gintaras V Reklaitis"
+        ],
+        "description": "This course introduces the engineering methodologies involved in translating a laboratory recipe for a drug compound produced via synthetic organic chemistry methods to an industrial process. The basic features of common unit operations used in the pharmaceutical industry will be reviewed, including batch reaction, solid-liquid separation, crystallization, drying, mixing, batch distillation and other separation systems. Both dedicated and multi-product production system design and batch and semi-continuous operating modes will be covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Industrial Catalytic Processes",
+        "subjectCode": "CHE",
+        "courseCode": "59700",
+        "instructor": [
+            "James M Caruthers",
+            "Jeffrey J Siirola",
+            "Rakesh Agrawal",
+            "Jeffrey T Miller",
+            "Swati Bhagwat",
+            "Cornelius Mduduzi Masuku",
+            "Robert E Brown",
+            "William R Clark",
+            "Ray A Mentzer"
+        ],
+        "description": "Hours and credits to be arranged. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Chemical Engineering Thermodynamics",
+        "subjectCode": "CHE",
+        "courseCode": "61000",
+        "instructor": [
+            "David S Corti"
+        ],
+        "description": "Properties of pure fluids and mixtures are described in the context of classical and statistical thermodynamics. Equations of state and solution theories are developed for this description of fluid phase equilibrium and chemical equilibrium. Fluids encountered in mass transfer and separation operations are treated.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Transport Phenomena I",
+        "subjectCode": "CHE",
+        "courseCode": "62000",
+        "instructor": [
+            "Osman A Basaran"
+        ],
+        "description": "Analysis of transport of momentum, energy, and mass by molecular and turbulent mechanisms. Prerequisite: CHE 52700.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Applied Mathematics For Chemical Engineers",
+        "subjectCode": "CHE",
+        "courseCode": "63000",
+        "instructor": [
+            "Jeffrey P Greeley"
+        ],
+        "description": "Determinants and matrices: solution of a system of algebraic equations; applications to dimensional analysis, stoichiometry, thermodynamics, kinetics of first order reaction systems, and stagewise operations. Differential equations: series solutions, Sturm-Liouville systems, boundary value problems, applications to heat and mass transfer and chemical reactor problems. Elements of complex variables: LaPlace and infinite Fourier transforms, applications to heat and mass transfer problems. First order partial differential equations: applications to separation processes, chromatography. Prerequisite: MA 26200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Probabilistic Methods In Chemical Engineering",
+        "subjectCode": "CHE",
+        "courseCode": "63300",
+        "instructor": [
+            "Doraiswami Ramkrishna"
+        ],
+        "description": "Introduction to probability, random variables, and stochastic processes. Ito calculus and stochastic differential equations. Brownian dynamics and Bridge processes. Applications to chemical engineering systems. Master equations and system size expansion concepts to nonequilibrium processes. Stochastic point processes and population balance. Theory of fluctuations. Prerequisite: CHE 63000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Methods In Catalysis",
+        "subjectCode": "CHE",
+        "courseCode": "66600",
+        "instructor": [
+            "Rajamani P Gounder"
+        ],
+        "description": "Various spectroscopic and other techniques for characterizing catalysts and for probing the chemistry of solid surfaces and their interactions with adsorbing and reacting gases are discussed. Topics include infrared, X-ray photoelectron, Mossbauer, and secondary ion mass spectroscopies. Emphasis is on understanding the principles underlying each method and gaining an awareness of the kind of information each can provide in a broad spectrum of research problems. Offered in alternate years. Prerequisite: CHM 37500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Seminar In Chemical Engineering",
+        "subjectCode": "CHE",
+        "courseCode": "69000",
+        "instructor": [
+            "David S Corti"
+        ],
+        "description": "Required of all graduate students.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Chem Engr Teaching Experience",
+        "subjectCode": "CHE",
+        "courseCode": "69700",
+        "instructor": [
+            "Kendall T Thomson",
+            "Gabriela Nagy"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2023"
+    }
+]

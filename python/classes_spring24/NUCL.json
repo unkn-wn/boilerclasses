@@ -1,0 +1,348 @@
+[
+    {
+        "title": "Introduction to Nuclear Engineering",
+        "subjectCode": "NUCL",
+        "courseCode": "20000",
+        "instructor": [
+            "Xiaoyuan Lou"
+        ],
+        "description": "A course designed to acquaint students with the field of nuclear engineering and design. Concepts of fission, fusion, radioactivity, and neutron physics are introduced. Modern applications of nuclear technology, including nuclear medicine, food preservation, space reactors and propulsion.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Engineering Undergraduate Laboratory I",
+        "subjectCode": "NUCL",
+        "courseCode": "20500",
+        "instructor": [
+            "Stylianos Chatzidakis"
+        ],
+        "description": "A laboratory course designed for the study of the properties of radiation, radioactive material, and radiation detectors. The hazards of radiation and safe handling techniques are emphasized.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mechanics Of Materials",
+        "subjectCode": "NUCL",
+        "courseCode": "27300",
+        "instructor": [
+            "Martin A Lopez-De-Bertodano"
+        ],
+        "description": "Analysis of stress and strain; equations of equilibrium and compatibility; stress-strain laws; extension, torsion, and bending of bars; membrane theory of pressure vessels; combined loading conditions; transformation of stresses and principal stresses; elastic stability, elected topics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sophomore Seminar",
+        "subjectCode": "NUCL",
+        "courseCode": "29800",
+        "instructor": [
+            "Seungjin Kim"
+        ],
+        "description": "Career areas in nuclear engineering, job opportunities, areas of related study, topics of current interest, orientation, professional ethics, and responsibility.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Neutron Physics",
+        "subjectCode": "NUCL",
+        "courseCode": "31000",
+        "instructor": [
+            "Yunlin Xu"
+        ],
+        "description": "Development of diffusion theory for neutrons. Neutron interactions and development of one-group neutron diffusion theory with point, plane, and fission sources. Application to one- and two-region reactors. Introduction to buckling, multiplication constants, critical size, neutron slowing down, and resonance capture. Applications using two-group theory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Thermal-Hydraulics II",
+        "subjectCode": "NUCL",
+        "courseCode": "35100",
+        "instructor": [
+            "Hitesh Bindra"
+        ],
+        "description": "Emphasis is given to the fluid transport of heat from reactor fuel elements. Heat transfer in fluids, analogies, and applications to reactor coolant channel analysis. Two-phase flow and convective boiling. Radiative heat transfer. Applications to safety analysis and reactor design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Thermohydraulics Laboratory",
+        "subjectCode": "NUCL",
+        "courseCode": "35500",
+        "instructor": [
+            "Shripad T Revankar"
+        ],
+        "description": "Laboratory course corresponding to NUCL 35000 and NUCL 35100.  Various fluid flow and heat transfer phenomena applied to nuclear reactor systems and design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Junior Seminar",
+        "subjectCode": "NUCL",
+        "courseCode": "39800",
+        "instructor": [
+            "Seungjin Kim"
+        ],
+        "description": "Continuation of NUCL 29800.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Design In Nuclear Engineering",
+        "subjectCode": "NUCL",
+        "courseCode": "45000",
+        "instructor": [
+            "Hitesh Bindra"
+        ],
+        "description": "Application of the design process to the project design topics identified in NUCL 44900. The design process usually includes, but not limited to, mathematical modeling in design, neutronic, thermal-hydraulics and safety studies, risk assessment, economics, policy and regulation, environmental impact.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Controlled Thermonuclear Fusion",
+        "subjectCode": "NUCL",
+        "courseCode": "46000",
+        "instructor": [
+            "Chan K Choi"
+        ],
+        "description": "Energy resources and the potential role of nuclear fusion. Ignition and breakeven conditions for fusion power plants. Particle and energy confinement in linear and toroidal magnetic fields. Review of magnetic and inertial confinement experiments and conceptual reactor configurations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intro To Computational Physics",
+        "subjectCode": "NUCL",
+        "courseCode": "49700",
+        "instructor": [
+            "Ahmed Hassanein"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Senior Seminar",
+        "subjectCode": "NUCL",
+        "courseCode": "49800",
+        "instructor": [
+            "Seungjin Kim"
+        ],
+        "description": "Lectures to acquaint the senior students with professional ethics, job opportunities, graduate schools, continuing study, and services of professional societies.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Engineering Systems",
+        "subjectCode": "NUCL",
+        "courseCode": "50200",
+        "instructor": [
+            "Shripad T Revankar"
+        ],
+        "description": "Engineering aspects of nuclear power. Materials of construction; fuel and fuel cycles; heat removal; radiation shielding; economics; and nuclear power systems. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Engineering Experiments",
+        "subjectCode": "NUCL",
+        "courseCode": "50400",
+        "instructor": [
+            "Stylianos Chatzidakis"
+        ],
+        "description": "A laboratory course that, when coupled with NUCL 50100, produces a sequence that contains both the theoretical and engineering aspects of nuclear engineering. Topics include radiation detection and analysis, neutronics, and nuclear reactor experiments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Reactor Theory I",
+        "subjectCode": "NUCL",
+        "courseCode": "51000",
+        "instructor": [
+            "Hany S Abdel-Khalik"
+        ],
+        "description": "Methodologies of neutron flux calculations, diffusion and slowing down theory, flux separation, material buckling, resonance absorption, Doppler effect, 2-group and multi-group theories, and reactivity balances for design and operation. Introduction to reactor kinetics, delayed neutrons, point reactor kinetics, transient behavior, load changes, reactivity feedback, and safety implications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Radiation Effects And Reactor Materials",
+        "subjectCode": "NUCL",
+        "courseCode": "52000",
+        "instructor": [
+            "Yi Xie"
+        ],
+        "description": "Introduction to radiation effects in solids and a survey of nuclear reactor materials. Radiation interaction mechanisms and effects on properties. Reactor material characteristics, selection criteria, testing, and economic considerations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Thermal-Hydraulics And Reactor Safety",
+        "subjectCode": "NUCL",
+        "courseCode": "55200",
+        "instructor": [
+            "Mamoru Ishii"
+        ],
+        "description": "Applications of thermal-sciences to nuclear reactor safety design and risk assessment. Emphasis on illustrating the use of basic principles in quantitative safety assessments of practical and current interest. The basic topics revolve around multiphase transients and applications which include study of accident analysis and its applications to licensing for light water reactor systems and for liquid metal fast breeder reactor.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nano-Macro Scale Applications Of Nuclear Technology",
+        "subjectCode": "NUCL",
+        "courseCode": "55300",
+        "instructor": [
+            "Rusi P Taleyarkhan"
+        ],
+        "description": "Introduction of the principles of nuclear science and engineering for addressing industrial and scientific issues ranging from sub-nano-to-macro scales. Areas to be covered include: propulsion, high-energy density materials, supercooling, medical applications, sonoluminescence, novel detection systems for special nuclear and contraband materials, and advanced nuclear fusion power systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Direct Energy Conversion",
+        "subjectCode": "NUCL",
+        "courseCode": "56300",
+        "instructor": [
+            "Chan K Choi"
+        ],
+        "description": "Review of energy sources and study of the basic processes of direct energy conversion and their applications to energy utilization, based on both conventional and nuclear energy conversion schemes. Conventional schemes include thermoelectric, photovoltaic, thermionic, magnetohydrodynamic generators, fuel cell systems, etc.; and nuclear energy conversion schemes correspond to nuclear radiation and fusion energy conversion. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fuzzy Approaches In Engineering",
+        "subjectCode": "NUCL",
+        "courseCode": "57000",
+        "instructor": [
+            "Lefteri Tsoukalas"
+        ],
+        "description": "Presentation of the mathematical fundamentals of fuzzy logic theory and a survey of engineering applications. Fuzzy sets; the extension principle; fuzzy numbers; fuzzy relations and composition; linguistic descriptions; implication operators and fuzzy algorithms are formally developed. Applications emphasize the engineering utilization of approximate reasoning to diagnostics, control, safety, and decision-making problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Manuf & Mater For Nuclear",
+        "subjectCode": "NUCL",
+        "courseCode": "59700",
+        "instructor": [
+            "Xiaoyuan Lou",
+            "Allen L Garner"
+        ],
+        "description": "Development of individual research and study projects. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Two-Phase Flow Computational Fluid Dynamics Applications",
+        "subjectCode": "NUCL",
+        "courseCode": "65500",
+        "instructor": [
+            "Martin A Lopez-De-Bertodano"
+        ],
+        "description": "The course guides the student to two-fluid model solutions using computational fluid dynamics (CFD). Topics include: review of the two-fluid model, review of elliptic and parabolic partial differential equations, description of numerical algorithms, and two-phase flow channel and jet flows. Prerequisite: NUCL 55100 or ME 50600.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Nuclear Engineering Seminar",
+        "subjectCode": "NUCL",
+        "courseCode": "69600",
+        "instructor": [
+            "Seungjin Kim"
+        ],
+        "description": "Discussion by graduate students and invited speakers of their research projects and topics of interest in nuclear engineering.  Prerequisite: Master's student standing and Nuclear Engineering majors only.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    }
+]

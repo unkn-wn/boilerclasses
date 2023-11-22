@@ -1,0 +1,508 @@
+[
+    {
+        "title": "Fundamentals Of Biology I",
+        "subjectCode": "BIOL",
+        "courseCode": "11000",
+        "instructor": [
+            "Alan M Friedman"
+        ],
+        "description": "This course is designed primarily to provide an introduction to the principles of biology for students in agriculture and health sciences. Principles of biology, focusing on diversity, ecology, evolution, and the development, structure, and function of organisms.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamentals Of Biology II",
+        "subjectCode": "BIOL",
+        "courseCode": "11100",
+        "instructor": [
+            "Sean E Humphrey"
+        ],
+        "description": "This course is designed primarily to provide an introduction to the principles of biology for students in agriculture and health sciences. Continuation of BIOL 11000. Principles of biology, focusing on cell structure and function, molecular biology, and genetics.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamentals Of Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "11200",
+        "instructor": [
+            "Alan M Friedman"
+        ],
+        "description": "This course is designed primarily to provide an introduction to the principles of biology. BIOL 11200, 11300 is a two-semester principles of biology sequence that introduces students to the major concepts of the discipline, with emphasis on the experimental and logical basis of the information presented. BIOL 11200/11300 includes lectures on diversity and evolution, and on the development, structure, and function of organisms, cell structure, cell function, ecology, genetics, biochemistry, and molecular biology.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fundamentals Of Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "11300",
+        "instructor": [
+            "Sean E Humphrey"
+        ],
+        "description": "This course is designed primarily to provide an introduction to the principles of biology. BIOL 11200, 11300 is a two-semester principles of biology sequence that introduces students to the major concepts of the discipline, with emphasis on the experimental and logical basis of the information presented. BIOL 11200/11300 includes lectures on diversity and evolution, and on the development, structure, and function of organisms, cell structure, cell function, ecology, genetics, biochemistry, and molecular biology.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biology II: Development, Structure, And Function Of Organisms",
+        "subjectCode": "BIOL",
+        "courseCode": "13100",
+        "instructor": [
+            "Ignacio G Camarillo"
+        ],
+        "description": "Principles of development of plants and animals and the relationship between the structure and function of selected systems of these organisms.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Human Anatomy And Physiology",
+        "subjectCode": "BIOL",
+        "courseCode": "20400",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Continuation of BIOL 20300. Not available for credit toward graduation for majors in the Department of Biological Sciences.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biology For Elementary School Teachers",
+        "subjectCode": "BIOL",
+        "courseCode": "20600",
+        "instructor": [
+            "Stuart K White"
+        ],
+        "description": "Continuation of BIOL 20500. Does not satisfy requirements for College of Science Majors. Not available for credit toward graduation for majors in the Department of Biological Sciences.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Microbiology",
+        "subjectCode": "BIOL",
+        "courseCode": "22100",
+        "instructor": [
+            "Donald Lewis Pappas"
+        ],
+        "description": "The isolation, growth, structure, function, heredity, identification, classification, and ecology of microorganisms; their role in nature; and significance to man. Not available for credit toward graduation for majors in the Department of Biological Sciences. CTL: ILS 1505 Microbiology for the Health Sciences",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biology IV: Genetics And Molecular Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "24100",
+        "instructor": [
+            "Henry C Chang"
+        ],
+        "description": "An introduction to the principles of classical genetics and to molecular genetics. Topics covered are transmission of the genetic material (both in eukaryotes and prokaryotes); changes in the genetic material, structure, and function of the genetic material; and the manipulation of genetic material (recombinant DNA technology).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Ecology And Evolution",
+        "subjectCode": "BIOL",
+        "courseCode": "28600",
+        "instructor": [
+            "Denise L Zielinski"
+        ],
+        "description": "Evolutionary processes and ecological principles associated with individuals, populations, communities, and ecosystems. Topics include genetic drift, natural selection, adaptation, life tables, population dynamics, competition, predation, biodiversity, and ecological stability, with emphasis on natural systems.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sophomore Seminar: Planning Your Future In Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "29300",
+        "instructor": [
+            "Richard J Kuhn"
+        ],
+        "description": "Biology 29300 is a one-credit course designed for sophomores in the Department of Biological Sciences. This course will help students maximize the remainder of their undergraduate career. The course will cover biology career information and suggestions for professional development. Students will learn about the various disciplines that make up modern Biological Sciences. Students will learn about opportunities in undergraduate research and tour a research laboratory. In-depth presentations from biology alumni from a variety of fields are featured. Assignments include a Plan of Study, a resume, and a written paper evaluating the career path of one alumni speaker and describing the student's response to the presentation.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Principles Of Physiology",
+        "subjectCode": "BIOL",
+        "courseCode": "32800",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "This course is designed to provide students with an introduction to physiology with an emphasis on cellular mechanisms that underlie anatomical and physiological adaptations used by animals to survive in their habitat. Topics covered will range from cellular respiration to the physical limits of animal performance as we deconstruct and then reconstruct the body to examine how animals can live in extreme environments. Goals for this course are for students to gain a foundation in basic physiological principles, to learn about the integrative nature of the systems of animals, and to appreciate how and why animals have evolved and strategies to help them survive in their unique environment.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Preparing For Your Future In Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "39300",
+        "instructor": [
+            "Evelyn C Orick"
+        ],
+        "description": "Biology 39300 is a one-credit course for junior and seniors in the Department of Biological Sciences. This course will help students begin to prepare for life after Purdue. Students will learn about interviewing, job searching, graduate and professional school searching, resumes, industrial practices, and how to evaluate job/school offers. Construct a polished image on top of your solid biology foundation! Get the job or get admitted to the school you want.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Premedical Planning Seminar",
+        "subjectCode": "BIOL",
+        "courseCode": "39600",
+        "instructor": [
+            "Caralynn S Hines-Pham"
+        ],
+        "description": "This course is designed for sophomore and junior students who are planning to attend medical school. The course offers information and advice on the MCAT, the application process, the personal statement, the interview, and letters of recommendation. Students in the course will also formulate an alternative career plan. The course meets the first 10 weeks of the semester.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Molecular Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "41500",
+        "instructor": [
+            "Jason A Hanna"
+        ],
+        "description": "An introduction to modern molecular biology techniques and how they are used to address current topics in gene regulation. Emphasis will be placed on experimental procedures and model systems, such as site-directed mutagenesis of isolated genes and their subsequent introduction into prokaryotic and eukaryotic cells. Topics will address the molecular control mechanisms associated with DNA replication, RNA transcription, RNA processing, and differential gene expression.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Viruses And Viral Disease",
+        "subjectCode": "BIOL",
+        "courseCode": "41600",
+        "instructor": [
+            "Richard J Kuhn"
+        ],
+        "description": "The objective of this course is to provide students with an introductory understanding of viruses and their impact on human health. The course will be divided into two sections. During the first section, we will discuss the cellular and organismal events that occur following virus infection, including viral entry, replication, modulation of cell biology by viral proteins, the host immune response to infection, evasion of the immune response by viruses, and resulting virus-induced disease. The emphasis of this first section will be on the general strategies used by viruses to establish and maintain infection in a population. In the second section, we will discuss in relative detail our current understanding of select important human viruses including influenza, HIV, smallpox, the herpesviruses, and tumor-causing viruses. The objective of this section will be to understand how the unique aspects of each virus's biology affect the outcome of infection with these pathogens. In addition to virus-associated diseases, we will discuss potential ways that viruses may provide symbiotic benefits to their hosts and thereby shape the course of human evolution.  Throughout the course, we will emphasize societal and political aspects of virology and virus-derived technologies, including vaccine development, the use of viruses as gene therapy vectors, and the threat of viral bioterror of bio-error.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Human Medical Genetics",
+        "subjectCode": "BIOL",
+        "courseCode": "44400",
+        "instructor": [
+            "Yuk Fai Leung"
+        ],
+        "description": "An intermediate-level survey course of human genetics with a balanced review of both Mendelian and molecular aspects. Review of current development and application of DNA technology emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Eukaryotic Genetics",
+        "subjectCode": "BIOL",
+        "courseCode": "48100",
+        "instructor": [
+            "Donald Lewis Pappas"
+        ],
+        "description": "This course presents the fundamental concepts of classical and modern molecular genetics in eukaryotic systems, using examples from the model genetic organisms, yeast, Drosophila, Caenorhabditis, Arabidopsis, maize, mice and humans. These concepts are applied to solving problems of genetic analysis. Recent advances in developmental, cancer, and behavioral genetics and genomics, and applications of genetic technology, are used to demonstrate the impact that modern genetics makes at the cutting edge of biological research.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Great Issues: Environmental And Conservation Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "48300",
+        "instructor": [
+            "Ximena Bernal"
+        ],
+        "description": "Concerned with the application of ecological principles to environmental issues, the course introduces fundamental ecology, emphasizing the interplay of theoretical models, natural history, and experimentation. New research developments are stressed, with the outlook for application to environmental management and restoration. Whole-biosphere issues, such as the loss of biological diversity, frame a focus at the population level to understand local and global extinction and community stability. In-depth case studies of endangered ecosystems (both temperate and tropical), with computer modeling, field trips, and discussions of policy formulation, demonstrate the range of tools and information necessary to accomplish coexistence of humans with the rest of nature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Tpcs In Endocrinology & Cancer",
+        "subjectCode": "BIOL",
+        "courseCode": "49500",
+        "instructor": [
+            "Ignacio G Camarillo"
+        ],
+        "description": "Readings, discussions, written reports, seminar presentations, and field or laboratory work provided for enrichment in special areas of the biological sciences. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biology Honors Seminar",
+        "subjectCode": "BIOL",
+        "courseCode": "49700",
+        "instructor": [
+            "Donald F Ready"
+        ],
+        "description": "Required of all students participating in honors research. Discussions and presentations of research, including seminars by those students who are completing their honors research thesis.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Molecular Biology Of Cancer",
+        "subjectCode": "BIOL",
+        "courseCode": "51600",
+        "instructor": [
+            "Brittany Lee Allen-Petersen"
+        ],
+        "description": "A detailed course examining the molecular mechanisms controlling the growth of animal cells. Emphasis will be placed on current experimental approaches to defining the molecular basis of growth regulation in developing systems and the uncontrolled proliferation of cells in metabolic disorders, such as cancer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Bacterial Physiology",
+        "subjectCode": "BIOL",
+        "courseCode": "52900",
+        "instructor": [
+            "Zhao-Qing Luo"
+        ],
+        "description": "A detailed consideration of the central metabolic routes, their role in generation of energy and key intermediates, and the conversion of those intermediates to small molecule building blocks. Regulatory mechanisms will be stressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Molecular, Cellular, And Developmental Neurobiology",
+        "subjectCode": "BIOL",
+        "courseCode": "53800",
+        "instructor": [
+            "Donald F Ready"
+        ],
+        "description": "Molecular mechanisms of neural cell biology and development are considered. Topics and readings are drawn from the current primary literature. Biology 420 recommended as a prerequisite.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Microbial Ecology",
+        "subjectCode": "BIOL",
+        "courseCode": "54900",
+        "instructor": [
+            "Bruce M Applegate"
+        ],
+        "description": "A study of microbial interactions with other organisms and the environment. Aquatic and terrestrial ecosystems as well as interactions between nonpathogenic microbes and plants and animals will be discussed.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Eukaryotic Molecular Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "55001",
+        "instructor": [
+            "Stanton B Gelvin"
+        ],
+        "description": "This is a general survey course intended for advanced undergrads and beginning grad students. The course will draw upon examples from the plant, animal, and fungal kingdoms, and will familiarize students with the basic principles of molecular biology analyses as they apply to eukaryotic organisms. By the end of the course students should have knowledge of these molecular processes and should be able to design and analyze experiments dealing with these topics. This is not a first course in molecular biology. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Neural Systems",
+        "subjectCode": "BIOL",
+        "courseCode": "56200",
+        "instructor": [
+            "Edward L Bartlett"
+        ],
+        "description": "(SLHS 50700, PSY 51200) Overview of the structure and function of neural systems including those involved with motor, somatosensory, visual, auditory, learning, memory, and higher cortical processes. Molecular and cellular aspects of neural function are integrated with discussion of relevant neuroanatomy. Background in cell biology, psychobiology, physiology or anatomy is recommended.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Evolution Of Behavior",
+        "subjectCode": "BIOL",
+        "courseCode": "59200",
+        "instructor": [
+            "Esteban Fernandez-Juricic"
+        ],
+        "description": "An investigation of behaviors as adaptations: specializations of sensory and motor mechanisms involved in behavior; animal communication systems; behavioral ecology; patterns of social behavior as solutions to ecological problems, such as predator avoidance and resource exploitation. Emphasis will be on theoretical principles; examples will be broadly comparative, ranging from microorganisms to mammals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Water Supply In Dev Countries",
+        "subjectCode": "BIOL",
+        "courseCode": "59500",
+        "instructor": [
+            "Qixin He",
+            "Jason T Hoverman",
+            "Ernest R Blatchley",
+            "Matthew Olson",
+            "Stanton B Gelvin",
+            "Leifu Chang",
+            "Daoguo Zhou",
+            "Michael R Gribskov",
+            "David A Sanders"
+        ],
+        "description": "Special work, such as directed reading, independent study or research, supervised library, laboratory, or field work, or presentation of material not available in the formal courses of the department. The field in which work is offered will be indicated in the student's record. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Topics In Eukaryotic Cell Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "62000",
+        "instructor": [
+            "Ruben C Aguilar"
+        ],
+        "description": "A study of current areas of cell biological research, including the cytoskeleton, the regulation of the cell cycle, and the functions and dynamics of membrane-bound organelles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar Methods And Professional Development II",
+        "subjectCode": "BIOL",
+        "courseCode": "66300",
+        "instructor": [
+            "Janice Perry Evans"
+        ],
+        "description": "This course is a continuation of BIOL 66200 and expands the introduction for incoming graduate students to methods of seminar presentation and critique and to various guidelines for professional development during their graduate school experience. Topics include seminar topic selection and 20-minute seminar design, tutorials on electronic services at the PU Library and Citation Management programs, and evaluating classmate presentations. Using the skills learned the previous semester, each student is required to make a 20-minute PowerPoint presentation to the class, based on a pre-approved topic of their choice. The speaker is asked questions and the presentation receives written evaluations by all members of the class. Each student practices with the course instructor prior to the public presentation. The course also continues to socialize the incoming cohort of students among themselves and with more senior students in the broad range of research disciplines available.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Microscopy For Life Scientists",
+        "subjectCode": "BIOL",
+        "courseCode": "69500",
+        "instructor": [
+            "Ximena Bernal",
+            "Meng Cui",
+            "Stephanie M Gardner",
+            "Leifu Chang"
+        ],
+        "description": "Special work, such as directed reading; independent study or research; supervised library, laboratory, or field work; or presentation of material not available in the formal courses of the department. The field in which work is offered will be indicated in the student's record. Primarily for Ph.D. candidates. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Cell And Molecular Biology",
+        "subjectCode": "BIOL",
+        "courseCode": "69600",
+        "instructor": [
+            "Stanton B Gelvin"
+        ],
+        "description": "Each semester there are several separate seminar offerings. They will likely be on the following topics: biochemistry, crystallography, ecology and population biology, genetics, mechanisms of development, microbiology, neurobiology, and plant physiology. The student's record will indicate the specific seminars in which he/she has participated. Oral presentations required. At least two credits are required of Ph.D. candidates.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Hispanic Lit I",
+        "subjectCode": "LALS",
+        "courseCode": "30100",
+        "instructor": [
+            "Inigo Sanchez-Llama"
+        ],
+        "description": "Focuses on Latin American literatures and cultural products, such as film, music, and/or art. As a variable-topics course, individual sections may variously focus on South and/or Central America, Mexico, the Caribbean, U.S. Latina/o populations, or any combination of the above. Individual sections may also examine major cultural and historical movements, and/or canonical and emerging authors and artists. May be repeated for credit.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Struc Spanish I",
+        "subjectCode": "LALS",
+        "courseCode": "30300",
+        "instructor": [
+            "Daniel J Olson"
+        ],
+        "description": "Focuses on the languages and linguistic practices of Latin American and/or U.S. Latina/o populations, also including the Caribbean. As a variable-topics course, individual sections may variously focus on the nature and structure of specific languages, as well as the study of their dialects, semantics, and histories; the history, structure, uses, and educational concerns of Latin American indigenous, Caribbean Creole and/or U.S. Latina/o speech communities; or any combination of the above. May be repeated for credit.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": " Latin Amer Civiliztn",
+        "subjectCode": "LALS",
+        "courseCode": "40100",
+        "instructor": [
+            "Song I No"
+        ],
+        "description": "Investigation of a special topic in Latin American or US Latina/o studies. The topic will vary from semester to semester.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

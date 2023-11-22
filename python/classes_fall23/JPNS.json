@@ -1,0 +1,204 @@
+[
+    {
+        "title": "Japanese Level I",
+        "subjectCode": "JPNS",
+        "courseCode": "10100",
+        "instructor": [
+            "Samet Baydar",
+            "Akiko O Brennan",
+            "Hitomi Kurita",
+            "Ayaka Matsuo",
+            "Mirei Uchida",
+            "Akari Osumi"
+        ],
+        "description": "A basic study of standard Japanese. Students will be introduced to spoken and written forms of the language from the beginning. Language form and use are equally emphasized. Relevant cultural aspects. Hiragana, Katakana, and 85 Kanji.",
+        "capacity": 0,
+        "credits": [
+            3,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Japanese Level III",
+        "subjectCode": "JPNS",
+        "courseCode": "20100",
+        "instructor": [
+            "Bayan Konysbekkyzy",
+            "Hitomi Kurita",
+            "Marina Ishii"
+        ],
+        "description": "A study of intermediate Japanese. Occasional use of authentic materials for listening and reading practice. Task-oriented exercises, communicative activities, and pattern practice are used to facilitate learning of the spoken and written language. 110 Kanji.",
+        "capacity": 0,
+        "credits": [
+            3,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Modern Japanese Civilization",
+        "subjectCode": "JPNS",
+        "courseCode": "28000",
+        "instructor": [
+            "Alexis Nicole Zhou"
+        ],
+        "description": "A survey of modern Japanese culture. Various aspects are covered, such as geography, economy, society, the political system, family, education, traditional arts, business, and language. Current issues will be discussed in a timely manner. Lectures in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Japanese Level V",
+        "subjectCode": "JPNS",
+        "courseCode": "30100",
+        "instructor": [
+            "Sayuri Ogiuchi"
+        ],
+        "description": "Continued development of Japanese speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in Japan from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in Japanese.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intermediate Reading In Japanese I",
+        "subjectCode": "JPNS",
+        "courseCode": "31300",
+        "instructor": [
+            "Marina Ishii"
+        ],
+        "description": "This course provides students with further study in reading Japanese at the intermediate level. The course also reviews and introduces 500 basic kanji.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Elementary Survey Of Japanese Linguistics",
+        "subjectCode": "JPNS",
+        "courseCode": "36100",
+        "instructor": [
+            "Masaki Minobe"
+        ],
+        "description": "This course surveys all areas of Japanese Linguistics, including phonetics, phonology, morphology, syntax, semantics, and pragmatics, focusing on systematizing fragmentary knowledge students are assumed to have acquired through Japanese language courses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Japanese Level VII",
+        "subjectCode": "JPNS",
+        "courseCode": "40100",
+        "instructor": [
+            "Sayuri Ogiuchi"
+        ],
+        "description": "Advanced work on the development of Japanese speaking, reading, and writing abilities, focusing on materials dealing with culture and the arts of Japan. Conducted mostly in Japanese.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Culinary Culture Of Japan",
+        "subjectCode": "JPNS",
+        "courseCode": "48500",
+        "instructor": [
+            "Kazumi Hatasa"
+        ],
+        "description": "Advanced-level language and culture course about the food of Japan. It covers gastronomy, celebrations, history, art, mythology, and other aspects of daily life related to the culinary traditions of Japan. Students will further develop their speaking, listening, reading and writing abilities in Japanese. They will have the opportunity to apply their skills in practical contexts and discuss cultural considerations, as well as participate in some hands-on cooking experience. Conducted entirely in Japanese. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Rding Current Affairs In Japan",
+        "subjectCode": "JPNS",
+        "courseCode": "49000",
+        "instructor": [
+            "Mariko M Wei"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Teaching Japanese As A Foreign Language",
+        "subjectCode": "JPNS",
+        "courseCode": "52100",
+        "instructor": [
+            "Colleen A Neary-Sundquist"
+        ],
+        "description": "Introduces a wide range of techniques used in teaching Japanese as a foreign language. Discusses theoretical issues concerned with the learning and teaching of Japanese. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Survey Of Japanese Linguistics",
+        "subjectCode": "JPNS",
+        "courseCode": "56000",
+        "instructor": [
+            "Atsushi Fukada"
+        ],
+        "description": "This course is intended to provide the student with a systematic overview of the Japanese language. It covers most major areas of linguistics, from phonetics to pragmatics. Conducted in Japanese.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Morphology",
+        "subjectCode": "JPNS",
+        "courseCode": "59600",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Classroom SLA",
+        "subjectCode": "JPNS",
+        "courseCode": "67900",
+        "instructor": [
+            "Mariko M Wei"
+        ],
+        "description": "Advanced study and research on a significant topic in Japanese linguistics. Topic to be announced in advance. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

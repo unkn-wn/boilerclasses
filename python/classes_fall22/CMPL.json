@@ -1,0 +1,33 @@
+[
+    {
+        "title": "Arab-American Literature",
+        "subjectCode": "CMPL",
+        "courseCode": "23000",
+        "instructor": [
+            "Ahmed Idrissi Alami",
+            "Erin K Moodie"
+        ],
+        "description": "(LC 23000) Foundations for comparison of works in different languages, thematic (philosophical, sociological, psychological), and structural (genre, composition, use of linguistic devises); parallel interrelation of theme and structure in works of different literatures. The importance of literary norms and systems of genres. Examination of crosscurrents in different literatures during successive periods of development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "World Literature: From The Beginnings To 1700 A D",
+        "subjectCode": "CMPL",
+        "courseCode": "26600",
+        "instructor": [
+            "Gwenael Bruno Jouin"
+        ],
+        "description": "(ENGL 26600) World literature in translation. A comparative and chronological survey of the masterpieces of Eastern and Western literature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

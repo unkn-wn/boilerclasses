@@ -1,0 +1,422 @@
+[
+    {
+        "title": "Crop Production",
+        "subjectCode": "AGRY",
+        "courseCode": "10500",
+        "instructor": [
+            "Corey K Gerber"
+        ],
+        "description": "Fundamental principles of crop production and distribution. Emphasis is placed on applying technological advances in agronomy to active crop-production situations, including basic soils, agricultural meteorology, and crop physiology and breeding.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Environmental Science And Conservation",
+        "subjectCode": "AGRY",
+        "courseCode": "12500",
+        "instructor": [
+            "John B Dunning"
+        ],
+        "description": "(EAPS 12500, FNR 12500, NRES 12500) Introduction to environmental science and conservation includes topics in ecological principles, conservation and natural resource management, human impacts on the environment, toxic waste disposal, climate change, energy, air and water pollution, environmental geology and geologic hazards.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Soil Science",
+        "subjectCode": "AGRY",
+        "courseCode": "25500",
+        "instructor": [
+            "Shams Rahman R Rahmani"
+        ],
+        "description": "(NRES 25500) Differences in soils; soils genesis; physical, chemical, and biological properties of soils; relation of soils to problems of land use and pollution; soil management relative to tillage, erosion, drainage, moisture supply, temperature, aeration, fertility, and plant nutrition. Introduction to fertilizer chemistry and use. Not available to students who have taken AGRY 27000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Genetics",
+        "subjectCode": "AGRY",
+        "courseCode": "32000",
+        "instructor": [
+            "Mohsen Mohammadi"
+        ],
+        "description": "The transmission of heritable traits; probability; genotypic-environmental interactions; chromosomal aberrations; polyploidy; gene mutations; genes in populations; the structure and function of nucleic acids; biochemical genetics; molecular genetics; coding.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Soil Ecology",
+        "subjectCode": "AGRY",
+        "courseCode": "34900",
+        "instructor": [
+            "Cindy H Nakatsu"
+        ],
+        "description": "An introductory course that will cover the basic concepts of soil ecology. Biological diversity and the interactions between and within biotic and abiotic components of the soil ecosystem, nutrient cycling, and genetic engineering are introduced.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Crop Production Systems",
+        "subjectCode": "AGRY",
+        "courseCode": "37500",
+        "instructor": [
+            "Lee E Schweitzer"
+        ],
+        "description": "Factors affecting management decisions in crop production systems. Development of small grain and row cropping systems. Interaction of factors affecting efficient production systems, including seed selection, tillage, planting management, pest management, and harvesting and storage considerations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Environmental Soil Chemistry",
+        "subjectCode": "AGRY",
+        "courseCode": "38500",
+        "instructor": [
+            "Linda S Lee"
+        ],
+        "description": "(NRES 38500) Designed as an upper level introductory course covering environmental soil chemistry concepts in framework most applicable to inorganic and organic chemical contamination of soil and water resources and intended for students in environmental science fields that may not have a strong chemistry and/or math background. (el.5).",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Agronomy Seminar",
+        "subjectCode": "AGRY",
+        "courseCode": "39800",
+        "instructor": [
+            "Lee E Schweitzer"
+        ],
+        "description": "Weekly discussions of agronomic topics and other subjects relative to agronomic interest. Students are expected to participate in the discussions.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Soil And Civilization",
+        "subjectCode": "AGRY",
+        "courseCode": "39900",
+        "instructor": [
+            "Gary C Steinhardt"
+        ],
+        "description": "Supervised individual study or research over topics not covered in other courses. Arrange with agronomy faculty before registering. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Atmospheric Thermodynamics",
+        "subjectCode": "AGRY",
+        "courseCode": "43100",
+        "instructor": [
+            "Alexandria Vincenza Johnson"
+        ],
+        "description": "(EAPS 42100)  Structure and composition of the atmosphere. Thermodynamics of dry and moist air, including adiabatic and pseudoadiabatic processes, hydrostatic stability, and air mass determination.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Atmospheric Dynamics II",
+        "subjectCode": "AGRY",
+        "courseCode": "43300",
+        "instructor": [
+            "Andrea Elise Orton"
+        ],
+        "description": "(EAPS 42300) An extension of AGRY 43200 with the emphasis on perturbation theory and hydrodynamic stability, air mass and frontal theory, barotrophic and baroclinic models, wave cyclone theory, and numerical weather prediction.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Soil Conservation and Water Management",
+        "subjectCode": "AGRY",
+        "courseCode": "45000",
+        "instructor": [
+            "Shalamar D Armstrong"
+        ],
+        "description": "(NRES 45000) Principles of soil conservation with emphasis on control of soil erosion by wind and water; impact of soil management decisions on environment; soil-water-plant relations, includes agronomic aspects of water management for both irrigation and drainage.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Plant Genetics",
+        "subjectCode": "AGRY",
+        "courseCode": "48000",
+        "instructor": [
+            "Jianxin Ma"
+        ],
+        "description": "Principles and recent advances in plant genetics including: genetic segregation, linkage, DNA markers and applications, chromosomes and genomes, variation in chromosome number and structure, mutation, recombination and DNA repair, quantitatively inherited traits, introduction to principles of population genetics, gene expression, gene organization, regulation of gene activity, gene function, identifying important genes, cloning genes, reverse genetics, plant transformation, applications of genetic engineering, genome sequencing, using sequence data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Precision Crop Management",
+        "subjectCode": "AGRY",
+        "courseCode": "48500",
+        "instructor": [
+            "Lee E Schweitzer"
+        ],
+        "description": "An experiential lecture, discussion and field laboratory course for graduating seniors majoring in Agronomy.  Analysis of multi-layer digital georeferenced crop data is used to inform the development and evaluation of zone-specific agronomic input prescriptions. Variables include factors affecting soil productivity, soil fertility and N management (including emerging sensor and crop modeling technologies). Prescriptions for variable crop genetics and seeding rates are also discussed. Sound agronomic use of emerging technologies such as real time soil moisture, organic matter, temperature and moisture sensing to affect variable seeding depth, rate and precision are included.  May be used in combination with AGRY 49800 to meet the Agronomy undergraduate capstone requirement; will also meet the GIS/GPS requirement in Agronomy plans of study.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Agronomy Senior Seminar",
+        "subjectCode": "AGRY",
+        "courseCode": "49800",
+        "instructor": [
+            "Ronald F Turco"
+        ],
+        "description": "Weekly discussions and presentations on assigned topics in Agronomy, interpersonal interactions, professional ethics, and leadership skills. Student teams will evaluate case studies and present their analysis orally and in writing.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Turfgrass Science",
+        "subjectCode": "AGRY",
+        "courseCode": "51000",
+        "instructor": [
+            "Cale A Bigelow"
+        ],
+        "description": "An advanced course in turfgrass management which focuses on the management requirements of intensively cultured turfgrass areas, with a specific emphasis on golf course and athletic fields. Interrelationships among soil, plant and atmospheric environments, management practices and turfgrass quality will be stressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrated Turfgrass Systems",
+        "subjectCode": "AGRY",
+        "courseCode": "51200",
+        "instructor": [
+            "Aaron J Patton"
+        ],
+        "description": "Integration of agronomic principles for professionally managing golf courses, athletic complexes, lawn care companies, and sod production facilities in an efficient and environmentally friendly manner. Emphasizes independent thinking and team cooperation for understanding the social, ethical, and economical aspects underlying the daily agronomic management decisions, including construction, establishment, cultural practices, fertilization, and pest management. Course meets for weeks 1-10.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Environmental Stress Management For Turfgrass",
+        "subjectCode": "AGRY",
+        "courseCode": "51400",
+        "instructor": [
+            "Yiwei Jiang"
+        ],
+        "description": "Designed for students who desire an understanding of how environmental stresses influence turfgrass growth and how they can be managed with cultural practices. The course covers current research findings in stress management and integrates turfgrass environmental physiology with turfgrass management.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles And Methods Of Plant Breeding",
+        "subjectCode": "AGRY",
+        "courseCode": "52000",
+        "instructor": [
+            "Katherine Martin Rainey"
+        ],
+        "description": "Introduction to methods and techniques of breeding field crops, with emphasis on the application of genetic principles; analysis of and present approach to the solution of specific breeding problems in selected field crops.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Remote Sensing Of Land Resources",
+        "subjectCode": "AGRY",
+        "courseCode": "54500",
+        "instructor": [
+            "Melba M Crawford"
+        ],
+        "description": "Application of remote sensing and spatial databases for observing and managing land resources within the Earth System; analysis and interpretation of remotely sensed data in combination with field observations and other data sources; conceptualization and design of a global earth resources information system.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Soil Physics",
+        "subjectCode": "AGRY",
+        "courseCode": "56000",
+        "instructor": [
+            "Eileen J Kladivko"
+        ],
+        "description": "Fundamentals of soil physics; transport of chemicals, heat, and gases; field spatial variability; principles and methods of physical analysis of soils; the influence of soil physical processes on environmental quality and agricultural production. Students having an understanding of introductory soil science will be suitably prepared.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Soils And Landscapes",
+        "subjectCode": "AGRY",
+        "courseCode": "56500",
+        "instructor": [
+            "Darrell G Schulze"
+        ],
+        "description": "Soils as natural components of landscapes, geomorphology and soil characteristics; processes of soil formation; principal soils of Indiana, their adaptations, limitations, productivity and use; global soil distributions; application of GPS and mobile GIS in the field. This course requires two all-day field trips. Students will pay individual meal expenses when necessary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Plants Data & Comput Thinking",
+        "subjectCode": "AGRY",
+        "courseCode": "59800",
+        "instructor": [
+            "Diane Ran Wang"
+        ],
+        "description": "Research on agronomic problems conducted in laboratory, field, or library; report required; arrange with an agronomy staff member before registering. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Graduate Research",
+        "subjectCode": "AGRY",
+        "courseCode": "60100",
+        "instructor": [
+            "Richard H Grant"
+        ],
+        "description": "This course provides framework for graduate studies. It helps the new graduate student understand the roles and responsibilities in graduate education, providing guidance for scientific reading, writing, and research activities. Topics include understanding ethical issues in science, enhancing their ability to communicate with a broad range of people, and establishing initial perspectives on professional development. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Quantitative Genetics",
+        "subjectCode": "AGRY",
+        "courseCode": "61100",
+        "instructor": [
+            "Mohsen Mohammadi"
+        ],
+        "description": "Continuation of AGRY (ANSC) 511. Quantitative genetics in animals and plants. Genotypic and environmental variances; covariances between relatives; single- and multiple-trait selection and correlated responses; genotype-environment interaction. Inbreeding and crossbreeding: means, variances, heterosis, intra- and inter-population improvement. Prerequisite: STAT 51200; Prerequisite: AGRY 51100 OR ANSC 51100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Plant Ecophysiology",
+        "subjectCode": "AGRY",
+        "courseCode": "62400",
+        "instructor": [
+            "Yiwei Jiang"
+        ],
+        "description": "This course will explore the influence of the environment on growth and development, reproduction, adaptation, survival and evolution of plants. The fundamental study of physiological mechanisms underlying adaptive strategies and their ecological consequences will be included. Prerequisites: Undergraduate or graduate level of Plant Physiology (HORT 30100 or AGRY 52500 or HORT 55100 or FNR 43400 or equivalent).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Statistical Hydrology",
+        "subjectCode": "AGRY",
+        "courseCode": "64100",
+        "instructor": [
+            "Laura C Bowling"
+        ],
+        "description": "This course is designed to serve as an advanced graduate course in the statistical analysis of hydrologic data, including time series analysis and modeling, frequency analysis and uncertainty. Prerequisites: AGRY 33700 or CE 54200 or ABE 32500 and STAT 51100 or STAT 50300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Molecular Microbial Ecology",
+        "subjectCode": "AGRY",
+        "courseCode": "64900",
+        "instructor": [
+            "Cindy H Nakatsu"
+        ],
+        "description": "Focuses on the application of various molecular genetic techniques for studying micro-organisms from and in the environment. The method, theoretical basis of each method, and interpretation of results are covered. The major areas discussed are the application of molecular genetic techniques to study: (1) total microbial communities; (2) diversity of micro-organisms in a community; and (3) biotechnological uses of micro-organisms. Prerequisite: AGRY 32000 or 58000 or BCHM 56200 or BIOL 24100 or 43800 or 54900.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

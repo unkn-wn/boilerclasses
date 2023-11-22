@@ -1,0 +1,190 @@
+[
+    {
+        "title": "Introduction To Linguistics",
+        "subjectCode": "LING",
+        "courseCode": "20100",
+        "instructor": [
+            "Yue Li",
+            "Eunice Opoku",
+            "Edier Gomez Alzate",
+            "Vanessa Sheu",
+            "Leah Michelle Nodar"
+        ],
+        "description": "Basic concepts of linguistics and methods of analysis of language; overview of linguistics and the role of language in society. Introduction to phonology, morphology, syntax, and semantics, and to problem-solving techniques, with material drawn from a variety of languages.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Phonology And Morphology",
+        "subjectCode": "LING",
+        "courseCode": "31100",
+        "instructor": [
+            "Yuhyeon Seo"
+        ],
+        "description": "Basic concepts and tools of phonological and morphological analysis viewed through the material of American English. Current theoretical approaches to phonology and morphology, including word-formation processes and applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Elements Of Phonetics",
+        "subjectCode": "LING",
+        "courseCode": "31500",
+        "instructor": [
+            "Alexander L Francis"
+        ],
+        "description": "Introduction to articulatory phonetics. Mechanisms of production of speech sounds. Sounds of languages of the world, ear training for discriminating speech sounds, and practice in broad and narrow phonetic transcription. Introduction to the International Phonetic Alphabet (IPA). Credit will not be given for both LING 31500 and SLHS 30600.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Foundations Of Syntax And Semantics",
+        "subjectCode": "LING",
+        "courseCode": "32100",
+        "instructor": [
+            "Elena E Benedicto"
+        ],
+        "description": "Introduction to syntactic and semantic analysis based on American English and its dialects. Underlying structure and its relation to meaning. Analysis of parts of speech, constituent phrases, sentence structure, representations, ambiguity, and applications of current theory. Credit will not be given for both LING 32100 and ENGL 32800.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Sociolinguistic Study Of African American English",
+        "subjectCode": "LING",
+        "courseCode": "36800",
+        "instructor": [
+            "Felicia D Roberts"
+        ],
+        "description": "A study of the history, structure, uses, and educational concerns of African American English in African American speech communities and the United States culture at large.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Language And Thought",
+        "subjectCode": "LING",
+        "courseCode": "39800",
+        "instructor": [
+            "Elsayed Sabry Abdelaal Issa",
+            "Elaine J Francis"
+        ],
+        "description": "Investigation of a special topic in linguistics. The topic will vary from semester to semester. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Phonology I: Descriptive Analysis",
+        "subjectCode": "LING",
+        "courseCode": "51100",
+        "instructor": [
+            "Olga Dmitrieva"
+        ],
+        "description": "Foundations of phonological analysis. Development of concepts and methods for the analysis of phonological data and the phonological structures of natural languages within the framework of generative phonology. Focuses on problem solving and linguistic argumentation. Offered in conjunction with ENGL 51300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Syntax I: Syntactic Analysis",
+        "subjectCode": "LING",
+        "courseCode": "52100",
+        "instructor": [
+            "Elena E Benedicto"
+        ],
+        "description": "Foundations of syntactic analysis and syntactic theory within the framework of generative grammar. Focuses on the central concepts of syntactic theory and on the principles and methods of syntactic analysis and argumentation using a core of topics relevant for syntactic theory. Offered in conjunction with ENGL 51200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Struc Russian I",
+        "subjectCode": "LING",
+        "courseCode": "59100",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "Investigation of an advanced topic in phonology. Topic varies from semester to semester. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Anthrop Linguistics",
+        "subjectCode": "LING",
+        "courseCode": "59800",
+        "instructor": [
+            "Yan Cong",
+            "Harris J Bras",
+            "Robert Channon",
+            "Myrdene Anderson"
+        ],
+        "description": "Investigation of an advanced topic in linguistics. Topic varies from semester to semester. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Experimental Syntax",
+        "subjectCode": "LING",
+        "courseCode": "62900",
+        "instructor": [
+            "Elaine J Francis"
+        ],
+        "description": "Intensive study and research on a selected topic in syntax. Topic varies from semester to semester.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Classroom SLA",
+        "subjectCode": "LING",
+        "courseCode": "68900",
+        "instructor": [
+            "Mariko M Wei"
+        ],
+        "description": "Intensive study and research on a selected topic in linguistics. Topic varies from semester to semester. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

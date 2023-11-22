@@ -1,0 +1,174 @@
+[
+    {
+        "title": "Elementary Tamil",
+        "subjectCode": "LC",
+        "courseCode": "10200",
+        "instructor": [
+            "Off Campus Instructor"
+        ],
+        "description": "Topics vary. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "East Asian Literature In Translation",
+        "subjectCode": "LC",
+        "courseCode": "23500",
+        "instructor": [
+            "Daniel Hsieh"
+        ],
+        "description": "Reading and discussion of selected East Asian poetry, prose, and drama. Focus will be on the traditions of China and Japan, but may include works of other cultures such as Korea. Emphasis may vary yearly, stressing traditional or modern literatures.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Our Common Bond: Languages And Cultures In A Global Context",
+        "subjectCode": "LC",
+        "courseCode": "23700",
+        "instructor": [
+            "Ahmed Idrissi Alami"
+        ],
+        "description": "(CMPL 23700) Students learn what lies behind the concept of Liberal Arts: the capabilities, insights and skills of individuals who think critically and freely. It exposes students from across the university to the ideas, skill-set and inspiration that emanates from the liberal arts. They will be introduced to the discipline of Comparative Literature by examining the specific roles that languages and cultures play in the globalized world. The course also demonstrates how a Language and Cultures degree will put students at a greater advantage in career opportunities. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To The Linguistic Study Of Foreign Languages",
+        "subjectCode": "LC",
+        "courseCode": "26100",
+        "instructor": [
+            "Yue Li",
+            "Eunice Opoku",
+            "Alexis Nicole Zhou",
+            "Laura M Solano Escobar",
+            "Chien-Min Kuo"
+        ],
+        "description": "Overview of linguistics and the role of language in society; fundamental concepts of linguistic analysis. The course focuses on linguistic phenomena found in French, German, Russian, and Spanish, with material, examples, and assignments drawn primarily from those languages whenever appropriate.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Middle Ages On Film",
+        "subjectCode": "LC",
+        "courseCode": "33300",
+        "instructor": [
+            "Paula E Leverage"
+        ],
+        "description": "Introduction to the Middle Ages through films in various languages and genres from the beginning of film history to the present. Reading literary, historical, legal, and film theory texts in conjunction with the films, students critically analyze representations of the Middle Ages and the cultural context from which these emerge.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Phonetics Of Foreign Languages",
+        "subjectCode": "LC",
+        "courseCode": "37100",
+        "instructor": [
+            "Alexander L Francis"
+        ],
+        "description": "Introduction to articulatory phonetics for students of foreign languages. Mechanisms of production of speech sounds. Production and discrimination of sounds of other languages; contrast with English sounds; practice in pronunciation and phonetic transcription. Introduction to the International Phonetic Alphabet (IPA). Credit will not be awarded for more than one of SLHS 30600, LING 31500, and LC 37100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Bible & Early Intrpret",
+        "subjectCode": "LC",
+        "courseCode": "49000",
+        "instructor": [
+            "Marianne Blickenstaff",
+            "Leah Michelle Nodar",
+            "Olga V Lyanda-Geller"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Historical Linguistics",
+        "subjectCode": "LC",
+        "courseCode": "56300",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "(ANTH 56300, ENGL 56300) A survey of mechanisms and motivations of linguistic change. Topics include phonological, morphological, semantic and syntactic change, comparative and internal reconstruction, linguistic variation, language contact, and linguistic typology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Semiotics",
+        "subjectCode": "LC",
+        "courseCode": "57000",
+        "instructor": [
+            "Myrdene Anderson"
+        ],
+        "description": "(ANTH 51900, SLHS 58900, COM 50700, ENGL 57000)  The study of languages, literatures, and other systems of human communication. Includes a wide range of phenomena that can be brought together by means of a general theory of signs. The course deals with three fundamental areas: 1) verbal communication, 2) nonverbal communication (iconic systems, gestures, body language, etc. ), and 3) communication through art forms. Typically offered Spring Fall Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intro To Corp Ling With Python",
+        "subjectCode": "LC",
+        "courseCode": "59600",
+        "instructor": [
+            "Olga Dmitrieva",
+            "Atsushi Fukada"
+        ],
+        "description": "Special topics in Linguistics.  Permission of instructor required. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Language And Code-Switching",
+        "subjectCode": "LC",
+        "courseCode": "67900",
+        "instructor": [
+            "Daniel J Olson"
+        ],
+        "description": "Advanced study and research on a significant topic in linguistics. Topic to be announced in advance. Permission of instructor required. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

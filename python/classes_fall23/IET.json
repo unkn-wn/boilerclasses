@@ -1,0 +1,155 @@
+[
+    {
+        "title": "Introduction To Systems Thinking And Process Improvement",
+        "subjectCode": "IET",
+        "courseCode": "23500",
+        "instructor": [
+            "Gaurav Nanda"
+        ],
+        "description": "This course provides the foundation for technology systems processes and practices. The content covers the discussion of current systems issues, basic systems technology processes, and the role of systems engineering professionals in a global business environment. Topics include basic principles of systems thinking, the concepts of performance and cost measures, alternative design concepts, lean processes, and sustainable life-cycle management within an enterprise and across the supply chain. ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Technology Innovation And Integration: Bar Codes To Biometrics",
+        "subjectCode": "IET",
+        "courseCode": "31300",
+        "instructor": [
+            "Rushikumar Sanatkumar Pandya"
+        ],
+        "description": "This course provides the foundation for automatically capturing data in a system. The content covers an introduction to technology used in automatic identification and data capture systems, including: bar codes; radio frequency identification; smart cards, and biometrics. Topics also include an immersive semester project that examines the integration of these technologies, as well as advanced problem-solving.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Statistical Quality Control",
+        "subjectCode": "IET",
+        "courseCode": "31600",
+        "instructor": [
+            "Matthew P Stephens",
+            "Thomas Glenn Parker"
+        ],
+        "description": "This course introduces the application of statistical and probability tools to develop, implement, and maintain effective quality assurance in technology and service systems. A systems approach to product or service quality from inception to disposal is employed. Factors affecting variation in quality are studied. The concepts and implications of quality from a global business environment are examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Economic Analysis For Technology Systems",
+        "subjectCode": "IET",
+        "courseCode": "33400",
+        "instructor": [
+            "Ragu Athinarayanan",
+            "Mathias J Sutton"
+        ],
+        "description": "This course examines techniques of economic analysis for systems technologists, engineers, and leaders who evaluate and determine the financial attractiveness of multiple alternatives. Emphasizes economic feasibility and applying time value of money concepts to cost-volume-profit decisions. Topics include present worth, rate of return, benefit-cost, payback, breakeven analysis, depreciation, economic optimization, and decision-making under uncertainty.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Total Productive Maintenance",
+        "subjectCode": "IET",
+        "courseCode": "33620",
+        "instructor": [
+            "Matthew P Stephens"
+        ],
+        "description": "This course emphasizes the importance of effective maintenance planning and execution for efficient and economical operation of service or technology systems. A systems approach to maintenance planning is taken. Maintenance activities are discussed from reliability and productivity perspectives in the context of technology systems. Semester-long, team-based research project is typically required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Technical And Service Selling",
+        "subjectCode": "IET",
+        "courseCode": "34300",
+        "instructor": [
+            "James J Tanoos"
+        ],
+        "description": "A study of sales models and techniques for technical and service sales in business-to-business environments, including development of channel relationships, long-term sales agreements, customer relationship management efforts, total cost of ownership tools and complex sales presentations. Covers critical sales skills such as e-economy sales and marketing, lead management, building credibility, consultative selling, ethical negotiations, and sustainable product management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Financial Analysis For Technology Systems",
+        "subjectCode": "IET",
+        "courseCode": "41400",
+        "instructor": [
+            "Kathryne A Newton"
+        ],
+        "description": "The course provides students with financial tools needed by managers in technical and service fields. Topics include financial statement analysis, using common-sized statements and financial ratios; the strategic profit model; total cost of ownership; pricing for profitability; margin management; cash flow cycles; and budgeting. A corporate financial analysis project is typically required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Operations Planning And Management",
+        "subjectCode": "IET",
+        "courseCode": "43530",
+        "instructor": [
+            "Gaurav Nanda",
+            "Thomas Glenn Parker"
+        ],
+        "description": "A study of enterprise operations and management, demand forecasting, capacity analysis, research and development, production, personnel, and sales. Examples of the procedures necessary to provide a product or service are included. The course focuses on the tools necessary to solve problems, such as decision analysis, linear programming, transportation modeling, enterprise resource planning (ERP) systems, and forecasting models. Field trips may be required and industry-sponsored research projects are typically completed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Lean Six Sigma",
+        "subjectCode": "IET",
+        "courseCode": "43640",
+        "instructor": [
+            "Tho Van Le"
+        ],
+        "description": "A study of the Lean Six Sigma quality and process improvement methodology, using the define, measure, analyze, improve, and control (DMAIC) process. The course addresses advanced topics in statistical quality; introduces quality management concepts as they pertain to the Lean Six Sigma methodology; and provides preparation for the Green Belt Certification exam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Global Transportation And Logistics Management",
+        "subjectCode": "IET",
+        "courseCode": "44275",
+        "instructor": [
+            "Tho Van Le"
+        ],
+        "description": "A study of the various aspects of logistics. The development, implementation, and control of physical transportation systems, product distribution, warehousing, and inventory policy models will be emphasized. A working knowledge of third and fourth-party logistics and transportation strategies will be analyzed. The impact of logistics and transportation in the global environment will be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

@@ -1,0 +1,509 @@
+[
+    {
+        "title": "Industrial Engineering Seminar",
+        "subjectCode": "IE",
+        "courseCode": "20000",
+        "instructor": [
+            "Patrick Alan Brunese"
+        ],
+        "description": "An orientation course to inform students of  the major options in the industrial engineering program, assistance in selection of appropriate electives to meet career objectives, introduction to the faculty, and selection of an academic advisor.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Probability And Statistics In Engineering I",
+        "subjectCode": "IE",
+        "courseCode": "23000",
+        "instructor": [
+            "Lu Liu"
+        ],
+        "description": "An introduction to probability and statistics. Probability and probability distributions. Mathematical expectation. Functions of random variables. Estimation. Applications oriented to engineering problems. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Probability And Statistics In Engineering II",
+        "subjectCode": "IE",
+        "courseCode": "33000",
+        "instructor": [
+            "Mohamed Salama"
+        ],
+        "description": "Introduction to statistical inference and experimental design. Correlation, regression, single and multi-factor ANOVA, non-parametric methods. Applications to statistical quality control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Computing In Industrial Engineering",
+        "subjectCode": "IE",
+        "courseCode": "33200",
+        "instructor": [
+            "John A Biechele-Speziale"
+        ],
+        "description": "Introduction to computing in industrial engineering. Reinforcement of scientific programming skills on typical IE tasks, together with introduction to simulation and related computer tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Operations Research",
+        "subjectCode": "IE",
+        "courseCode": "33500",
+        "instructor": [
+            "Gesualdo Scutari"
+        ],
+        "description": "Introduction to deterministic optimization modeling and algorithms in operations research. Emphasis on formulation and solution of linear programs, networks flows, and integer programs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Operations Research",
+        "subjectCode": "IE",
+        "courseCode": "33600",
+        "instructor": [
+            "Joaquin Goni Cortes"
+        ],
+        "description": "Introduction to probabilistic models in operations research. Emphasis on Markov chains, Poisson processes, and their application to queuing systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engineering Economics",
+        "subjectCode": "IE",
+        "courseCode": "34300",
+        "instructor": [
+            "Mark R Lehto",
+            "Erhan Karakaya"
+        ],
+        "description": "Cost measurement and control in engineering studies. Basic accounting concepts, income measurement, and valuation problems. Manufacturing cost control and standard cost systems. Capital investment, engineering alternatives, and equipment replacement studies. Not open to students with credit in CE 39400.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Manufacturing Processes I",
+        "subjectCode": "IE",
+        "courseCode": "37000",
+        "instructor": [
+            "Ramses Martinez"
+        ],
+        "description": "Principal manufacturing processes; metal cutting, grinding and metal forming operations, machine tools, and tools and tooling. Nontraditional machining and welding. Introduction to computer-aided manufacturing and computer-aided graphics and design, N/C programming, robots, and flexible manufacturing systems. Classroom and laboratory demonstrations included. Not open to students with credit in ME 36300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Integrated Production Systems I",
+        "subjectCode": "IE",
+        "courseCode": "38300",
+        "instructor": [
+            "Yuehwern Yih"
+        ],
+        "description": "Basic concepts in the design and operational control of integrated production systems. Includes topics on facility layout and material handling, material flow and information flow, resource and capacity planning, and shop floor control and scheduling.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Work Analysis And Design I",
+        "subjectCode": "IE",
+        "courseCode": "38600",
+        "instructor": [
+            "Mark R Lehto"
+        ],
+        "description": "Fundamentals of work methods and measurement. Applications of engineering, psychological, and physiological principles to the analysis and design of human work systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Industrial Engineering Design",
+        "subjectCode": "IE",
+        "courseCode": "43100",
+        "instructor": [
+            "Patrick Alan Brunese"
+        ],
+        "description": "Capstone design experience for industrial engineering students involving analysis and synthesis of unstructured problems in practical settings. Students work in teams to formulate issues, propose solutions, and communicate results in formal written and oral presentations. Prerequisite: all 30000-level industrial engineering courses required for the BS IE degree.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Manufacturing Processes II",
+        "subjectCode": "IE",
+        "courseCode": "47000",
+        "instructor": [
+            "Gary J Cheng"
+        ],
+        "description": "The interrelations of materials, processes, and design with various aspects of manufacturing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Industrial Control Systems",
+        "subjectCode": "IE",
+        "courseCode": "47400",
+        "instructor": [
+            "Sivaranjani Seetharaman"
+        ],
+        "description": "Introduction to automatic controls with reference to automation of industrial machines and processes, including linear dynamic systems, feedback control, and elements of systems analysis. Introduction to digital control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To System Simulation",
+        "subjectCode": "IE",
+        "courseCode": "48100",
+        "instructor": [
+            "Erhan Karakaya"
+        ],
+        "description": "The course presents a general introduction to simulation concept and methodology. It covers simulation modeling in specialized simulation environments. Practical application of simulation to diverse systems will be discussed. Proper design and analysis of the simulation experiment is emphasized. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Integrated Production Systems II",
+        "subjectCode": "IE",
+        "courseCode": "48400",
+        "instructor": [
+            "Seokcheon Lee"
+        ],
+        "description": "Extensions of topics on the design and operational control of integrated production systems. Includes production databases, facility layout, material handling, advanced control and scheduling, and physical distribution. Case studies, lab assignments, and projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Work Analysis And Design II",
+        "subjectCode": "IE",
+        "courseCode": "48600",
+        "instructor": [
+            "Brandon J Pitts"
+        ],
+        "description": "Continuation of IE 38600. Applications of engineering, computer sciences, information sciences, and psychological principles and methods to the analysis and design of human work systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Grnd Challngs In Accessibility",
+        "subjectCode": "IE",
+        "courseCode": "49000",
+        "instructor": [
+            "Stephan Robert Biller",
+            "Bradley S Duerstock",
+            "Ana Maria Estrada Gomez"
+        ],
+        "description": "Special topic courses and projects of contemporary importance or of special interest that are outside the scope of the standard undergraduate curriculum. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Quality Control",
+        "subjectCode": "IE",
+        "courseCode": "53000",
+        "instructor": [
+            "Stephen John Kubricki"
+        ],
+        "description": "Principles and practices of statistical quality control in industry. Control charts for measurements and for attributes. Acceptance sampling by attributes and by measurements. Standard sampling plans. Sequential analysis. Sampling inspection of continuous production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Industrial Applications Of Statistics",
+        "subjectCode": "IE",
+        "courseCode": "53300",
+        "instructor": [
+            "Zachary J Hass"
+        ],
+        "description": "The application of statistics to the effective design and analysis of industrial studies relating to manufacturing and human factors engineering in order to optimize the utilization of equipment and resources. Emphasis on conducting these studies at the least cost.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Stochastic Models In Operations Research I",
+        "subjectCode": "IE",
+        "courseCode": "53600",
+        "instructor": [
+            "Susan R Hunter"
+        ],
+        "description": "An introduction to techniques for modeling random processes used in operations research. Markov chains, continuous time Markov processes, Markovian queues, reliability and inventory models.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nonlinear Optimization Algorithms And Models",
+        "subjectCode": "IE",
+        "courseCode": "53800",
+        "instructor": [
+            "Lu Liu"
+        ],
+        "description": "Survey of computational tools for solving constrained and unconstrained nonlinear optimization problems. Emphasis on algorithmic strategies and characteristic structures of nonlinear problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Economic Decisions In Engineering",
+        "subjectCode": "IE",
+        "courseCode": "54600",
+        "instructor": [
+            "Behzad Esmaeili"
+        ],
+        "description": "Topics in decision-making and rationality including decision analysis, decision-making under uncertainty, and various descriptive and prescriptive models from operations research, economics, psychology, and business. Applications are drawn from engineering decision-making, public policy, and personal decision-making. Attention also is paid to designing aids to improve decision-making.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Job Design",
+        "subjectCode": "IE",
+        "courseCode": "55600",
+        "instructor": [
+            "Vincent G Duffy"
+        ],
+        "description": "(PSY 55600) Task analysis, personnel selection and training, job and organization design, and criteria development and use. Human factors related to job design in order to increase job satisfaction and productivity.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Safety Engineering",
+        "subjectCode": "IE",
+        "courseCode": "55800",
+        "instructor": [
+            "Vincent G Duffy"
+        ],
+        "description": "Application of human factors and engineering practice in accident prevention and the reduction of health hazards are presented. The objective of this course is to provide an understanding of the safety and health practices which fall within the responsibilities of the engineer in industry. Special attention is devoted to the detection and correction of hazards and to contemporary laws and enforcement on occupational safety and health.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Industrial Robotics And Flexible Assembly",
+        "subjectCode": "IE",
+        "courseCode": "57400",
+        "instructor": [
+            "Yu She"
+        ],
+        "description": "Lab by arrangement. Design, analysis, and operation of robotic systems. System components and their control. Languages for robot control. Application design and analysis. Part feeders and tooling for robot workstations and automated assembly. Methods for planning robotic and assembly applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Human Factors In Engineering",
+        "subjectCode": "IE",
+        "courseCode": "57700",
+        "instructor": [
+            "Robert W Proctor"
+        ],
+        "description": "(PSY 57700) Survey of human factors in engineering with particular reference to human functions in human-machine systems, and consideration of human abilities and limitations in relation to design of equipment and work environments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Simulation Design And Analysis",
+        "subjectCode": "IE",
+        "courseCode": "58100",
+        "instructor": [
+            "Susan R Hunter"
+        ],
+        "description": "An introduction to simulation of stochastic systems on digital computers. Emphasis is on the fundamentals of simulation as a statistical experiment. Topics include uniform random numbers, input modeling, random variate generation, output analysis, variance reduction, and optimization.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Topics In Matl Process & Mfg",
+        "subjectCode": "IE",
+        "courseCode": "59000",
+        "instructor": [
+            "Harsha Honnappa",
+            "Srinivasan Chandrasekar",
+            "David R Johnson",
+            "Nga Hin Benjamin Fong",
+            "Salim Abed Semssar",
+            "Barrett S Caldwell",
+            "Denny Yu",
+            "Steven R Dunlop"
+        ],
+        "description": "Selected topics in industrial engineering for seniors and graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Dynamic Programming",
+        "subjectCode": "IE",
+        "courseCode": "63300",
+        "instructor": [
+            "Harsha Honnappa"
+        ],
+        "description": "Theory and applications of finite and infinite stage sequential decision processes, including Markovian decision problems, efficient computational methods, and computer software package. Prerequisite: IE 53500, 53600.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Theoretical Foundations Of Optimization",
+        "subjectCode": "IE",
+        "courseCode": "63500",
+        "instructor": [
+            "Nagabhushana Prabhu"
+        ],
+        "description": "An advanced course in theoretical foundations of mathematical programming. Convex analysis, global and local duality and optimality, general algorithmic convergence. Offered in alternate years. Prerequisite: IE 53500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Adv Topics In Mnfg Engineering",
+        "subjectCode": "IE",
+        "courseCode": "67000",
+        "instructor": [
+            "Srinivasan Chandrasekar",
+            "Wenzhuo Wu",
+            "Ramses Martinez"
+        ],
+        "description": "Advanced research topics and approaches in manufacturing engineering, including processes and equipment. Research methodology, nontraditional processes, manufacturing systems, and competitive aspects of manufacturing. Prerequisite: IE 57000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Sensing Approaches For HF Res",
+        "subjectCode": "IE",
+        "courseCode": "69000",
+        "instructor": [
+            "Denny Yu"
+        ],
+        "description": "Advanced study in various fields of industrial engineering for graduate students. Credits and hours to be arranged.  Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar",
+        "subjectCode": "IE",
+        "courseCode": "69700",
+        "instructor": [
+            "Patrick Alan Brunese"
+        ],
+        "description": "Industrial engineering problems with particular emphasis on current research.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2023"
+    }
+]

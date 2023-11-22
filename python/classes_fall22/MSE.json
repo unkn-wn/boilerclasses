@@ -1,0 +1,397 @@
+[
+    {
+        "title": "Introduction To Materials Engineering",
+        "subjectCode": "MSE",
+        "courseCode": "19000",
+        "instructor": [
+            "Chelsea S Davis"
+        ],
+        "description": "An introduction to materials science and engineering. Emphasis on the \"processing, structure, properties, performance\" relationships that lead to the development of materials for society's needs. Examples drawn from the major materials classes.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Structure And Properties Of Materials",
+        "subjectCode": "MSE",
+        "courseCode": "23000",
+        "instructor": [
+            "Kendra A Erk"
+        ],
+        "description": "The relationship between the structure of materials and the resulting mechanical, thermal, electrical, and optical properties. Atomic structure, bonding, atomic arrangement; crystal symmetry, crystal structure, habit, lattices, defects, and the use of X-ray diffraction. Phase equilibria and microstructural development. Applications to design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Properties Laboratory",
+        "subjectCode": "MSE",
+        "courseCode": "23500",
+        "instructor": [
+            "Janelle P Wharry"
+        ],
+        "description": "Laboratory experiments involving usage of standard equipment in the measurement of mechanical, microstructural, thermal, electrical, and optical properties. Introduction to computer-aided data analysis. Experiments are carried out with metal, ceramic, and polymeric materials to illustrate property-structure-processing relationships.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Physical Properties In Engineering Systems",
+        "subjectCode": "MSE",
+        "courseCode": "25000",
+        "instructor": [
+            "Michael S Titus"
+        ],
+        "description": "Class connects math, science and engineering practice and applications. Presents foundational aspects of engineering problem solving, use of computer math tools for engineering problem solving, basic engineering statics, dynamics and mechanics, group problem solving approaches, and introductory aspects of design and materials selection.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Thermodynamics Of Materials",
+        "subjectCode": "MSE",
+        "courseCode": "26000",
+        "instructor": [
+            "Robert H Spitzer"
+        ],
+        "description": "Fundamental laws of thermodynamics and their applications to material systems; criteria for equilibrium; reaction and phase equilibria; properties of solutions; thermodynamic origins of phase diagrams.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Atomistic Materials Science",
+        "subjectCode": "MSE",
+        "courseCode": "27000",
+        "instructor": [
+            "Haiyan Wang"
+        ],
+        "description": "Introductory course with an atomistic view point on material properties. Three primary class sections: bonding crystallography and statistical mechanics. Bonding topics include introduction to quantum mechanics, emphasis on understanding of metallic, ionic and covalent bonding. Crystallography topics include crystal descriptions and symmetry principles. Statistical mechanics development with application to electronic and thermodynamic properties.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Characterization Laboratory",
+        "subjectCode": "MSE",
+        "courseCode": "33500",
+        "instructor": [
+            "Eric P Kvam"
+        ],
+        "description": "The principles of analytical methods for characterization of materials for structure and composition; optical microscopy, scanning electron microscopy, X-ray spectroscopy and diffraction, atomic absorption, emission spectroscopy, and mass spectrometry. Laboratory experiments in X-ray spectroscopy, X-ray diffraction, optical microscopy, and scanning electron microscopy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Transport Phenomena",
+        "subjectCode": "MSE",
+        "courseCode": "34000",
+        "instructor": [
+            "Matthew J M Krane"
+        ],
+        "description": "Mechanism and rates of heat, mass, and momentum transfer. Macroscopic and differential energy, mass, and momentum balances. Application to systems with phase transformations and chemical reaction.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Processing Laboratory",
+        "subjectCode": "MSE",
+        "courseCode": "36700",
+        "instructor": [
+            "John E Blendell"
+        ],
+        "description": "This laboratory is intended as an intensive experience in processing techniques used for ceramics, metals, and polymers. Sintering of a ceramic, casting and post-processing (work hardening, heat treatment, etc.) of a metal, and preparation and extrusion of a polymer are the suggested processes. The measurements (e.g., powder size, compaction force, temperature, grain size, molecular weight) applicable to the successful processing of the material and the final properties (e.g., hardness, ductility, strength, stiffness) will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Electrical, Optical, And Magnetic Properties Of Materials",
+        "subjectCode": "MSE",
+        "courseCode": "37000",
+        "instructor": [
+            "Rahim Rahimi"
+        ],
+        "description": "An introductory course to provide basic background on the behavior of materials; electronic band structure, electronic and ionic conduction, electronic processes in semiconductors, dielectric, optical, and magnetic properties, and superconductivity; emphasis is on the relation between the properties and the structural aspects of materials.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Engineering Seminar",
+        "subjectCode": "MSE",
+        "courseCode": "39000",
+        "instructor": [
+            "David F Bahr"
+        ],
+        "description": "Presentation and discussion of current topics in materials engineering.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Structure And Properties Of Organic Materials",
+        "subjectCode": "MSE",
+        "courseCode": "42000",
+        "instructor": [
+            "Carlos J Martinez"
+        ],
+        "description": "This course presents information on the chemical and physical structure and basic material properties of organic materials, including synthetic plastics and specialty polymers and surfactants as well as select natural materials (e.g., proteins, carbohydrates, lipids). Fundamental concepts from organic chemistry will be presented along with descriptions of how the chemical and physical structures of organic molecules directly impact the properties of bulk materials over multiple length scales, from the molecular-level to the macroscale. This course will prepare students to be successful in higher-level polymer and soft material elective courses in materials engineering.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Processing And Design I",
+        "subjectCode": "MSE",
+        "courseCode": "43000",
+        "instructor": [
+            "Paul R Mort"
+        ],
+        "description": "Experience in the initiation and execution of a specific materials project or study involving research, processing, and design; a written proposal on the project prepared by the student under the supervision of an individual faculty member; oral progress report at the end of the semester.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Engineering Systems Analysis And Design",
+        "subjectCode": "MSE",
+        "courseCode": "44500",
+        "instructor": [
+            "Elliott B Slamovich"
+        ],
+        "description": "Integration of materials engineering core coursework with statistical, economic and environmental considerations for analysis and design of systems. Analysis of primary materials processing operations using mathematical and statistical models for predicting interactive effects and process optimization. Specification of materials and processes for mechanical designs, incorporating properties assessment and tradeoffs, cost analysis, and performance optimization with multiple constraints.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Phase Transformations In Solids",
+        "subjectCode": "MSE",
+        "courseCode": "50800",
+        "instructor": [
+            "Anter A El-Azab"
+        ],
+        "description": "Description of stress effects on transforming systems. Development of classical models for nucleation and growth and spinodal decomposition. Application of models to discontinuous precipitation, bainite formation, and martensitic transformations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Mechanical Behavior Of Polymers",
+        "subjectCode": "MSE",
+        "courseCode": "52400",
+        "instructor": [
+            "Jeffrey P Youngblood"
+        ],
+        "description": "This course will focus on the mechanical properties and behaviors of polymeric materials. The course will utilize fundamental solid and fluid mechanics to understand the response of bulk polymers (solid and liquid, above and below Tg). The impact of deformation rate and temperature on the mechanical response of polymers will be covered in detail. The course will start with an overview of linear elastic mechanics, move to rubber elasticity, and then viscoelasticity (concentrating on time-temperature superposition). We will also cover fluid dynamics and the rheology of non-Newtonian fluids. We will conclude with a section on deformation, yield, and fracture mechanisms (focusing on those phenomena that are unique to polymers such as rubber cavitation, drawing, and crazing).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Quantitative Analysis Of Microstructure",
+        "subjectCode": "MSE",
+        "courseCode": "53100",
+        "instructor": [
+            "Maria A Okuniewski"
+        ],
+        "description": "A review will be presented of basic probability theory and statistical analysis, with particular emphasis on terms and definitions of a microstructure. The properties accessible to quantification, the basic stereological relationships and the mathematical foundations, and the microstructural tools needed to quantify the structure will be emphasized. The last one-third of the course will cover applications of quantitative metallography to problems in failure analysis, solidification, heat treatment, phase equilibria, and deformation behavior. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Deposition Processing Of Thin Films And Coatings",
+        "subjectCode": "MSE",
+        "courseCode": "54800",
+        "instructor": [
+            "Xinghang Zhang"
+        ],
+        "description": "Processing and microstructural development of thin films and layered structures. Includes vapor, liquid, and reactive processing, as well as layer modification by annealing and beam techniques. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fracture Of Materials",
+        "subjectCode": "MSE",
+        "courseCode": "55600",
+        "instructor": [
+            "Nikhilesh Chawla"
+        ],
+        "description": "The failure and fracture of materials under applied stress are the focal points of this course, with particular emphasis on the material characteristics that influence fracture. The initial subjects covered in this course will include introductions to linear elastic fracture mechanics (LEFM) and elastic plastic fracture mechanics (EPFM). Subsequently, the strength and toughness of metals, ceramics, and polymers will be explored with regard to processing property relationships and microstructure. Special topics will include fracture mechanism maps, Weibull statistics, toughening mechanisms, and failure analysis. This course is distinct from a course on fracture mechanics in that the fundamental materials aspects of fracture are of paramount importance. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Phase Equilibria In Multicomponent Systems",
+        "subjectCode": "MSE",
+        "courseCode": "55900",
+        "instructor": [
+            "Kenneth H Sandhage"
+        ],
+        "description": "A detailed examination of the thermodynamics of phase equilibria in multicomponent systems, experimental methods of determining these equilibria by measurements of thermodynamic activity and graphical method of representing the equilibria. This is followed by an examination of theoretical models of the behavior of solutions and an examination of the extent to which observed phenomena can be understood and predicted in terms of the models. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Experimental Characterization Of Advanced Composite Materials",
+        "subjectCode": "MSE",
+        "courseCode": "58600",
+        "instructor": [
+            "R. Byron Pipes"
+        ],
+        "description": "The characterization of advanced composite materials is a combined lecture/laboratory course in which polymeric composite laminates will be fabricated of carbon fiber epoxy and subjected to classical test methods appropriate to the determination of the anisotropic, thermoelastic properties. Properties measured will include thermal expansion coefficients, anisotropic elastic constants, biaxial strength properties and interlaminar fracture strengths. The autoclave processing of composite laminates will be discussed and the consolidation, degree of cure and glass transition temperature of the polymeric matrix will be modeled. Microscopic analysis of the composite will be carried out to observe microstructure and measure composition fractions. Lectures will precede each experiment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Magnetic Materials",
+        "subjectCode": "MSE",
+        "courseCode": "59700",
+        "instructor": [
+            "Esteban E Marinero-Caceres",
+            "Arun Kumar Mannodi Kanakkithodi",
+            "Jan-Anders E Mansson",
+            "R Edwin Garcia",
+            "Mukerrem Cakmak",
+            "Kevin P Trumble"
+        ],
+        "description": "Hours and credits to be arranged. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Materials Engineering Fundamentals",
+        "subjectCode": "MSE",
+        "courseCode": "60000",
+        "instructor": [
+            "Rodney W Trice"
+        ],
+        "description": "Fundamental relationships between the internal structure, properties and processing in all classes of engineering materials. Comprehensive coverage spanning physical, chemical, thermal, mechanical, electrical, magnetic, and optical responses. The course is intended for materials researchers from all backgrounds, as well as engineers working in product design, development and manufacturing who seek a deeper understanding of the full spectrum of engineering materials.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Atomistic View of Materials: Theory, Modeling And Simulations",
+        "subjectCode": "MSE",
+        "courseCode": "67000",
+        "instructor": [
+            "Alejandro H Strachan"
+        ],
+        "description": "In this course students will be introduced to the fundamental physics required to describe materials in terms of electrons and atoms, learn how these processes relate to macroscopic behavior and become familiar with advanced modeling and simulation techniques that enable quantitative predictions. Students will gain hands-on experience with several simulation tools, including ab initio calculations using density functional theory, molecular dynamics simulations and other advanced modeling techniques. Pre-Requisites: BS degree in materials, mechanical, chemical, electrical or aerospace engineering or in physics or chemistry. Permission of department and instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Seminar In Materials Engineering",
+        "subjectCode": "MSE",
+        "courseCode": "69000",
+        "instructor": [
+            "Lia A Stanciu-Gregory"
+        ],
+        "description": "Required of all MSE graduate students.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Matls Engr Teach Exper",
+        "subjectCode": "MSE",
+        "courseCode": "69700",
+        "instructor": [
+            "Lia A Stanciu-Gregory"
+        ],
+        "description": "Hours and credits to be arranged.  Prerequisite: two upper-division mathematics courses: one on linear algebra and one on abstract algebra. Permission of instructor required. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2022"
+    }
+]

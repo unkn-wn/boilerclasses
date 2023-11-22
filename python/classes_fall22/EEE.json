@@ -1,0 +1,154 @@
+[
+    {
+        "title": "Introduction To Environmental And Ecological Engineering Seminar",
+        "subjectCode": "EEE",
+        "courseCode": "29000",
+        "instructor": [
+            "Lindsey B Payne Haugen"
+        ],
+        "description": "Guest presenters, peer panelists, and small group discussions introduce students to the knowledge, skills, and abilities needed in order to exhibit the highest levels of professionalism and stewardship expected of an Environmental and Ecological Engineering graduate. Topics include planning a course of study; internship, research, study abroad opportunities; career planning and placement skills; professional responsibility and ethics; and functioning as a professional.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Econ & Environment",
+        "subjectCode": "EEE",
+        "courseCode": "29500",
+        "instructor": [
+            "John A Howarter"
+        ],
+        "description": "Topics vary. Arrange hours and credit. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Environmental And Ecological Engineering",
+        "subjectCode": "EEE",
+        "courseCode": "35000",
+        "instructor": [
+            "Ernest R Blatchley"
+        ],
+        "description": "Introduction to water pollution, air pollution, noise, hazardous and solid wastes, and their control. Environmental impact statements and global pollution issues. Field trips required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Environmental Sustainability",
+        "subjectCode": "EEE",
+        "courseCode": "35500",
+        "instructor": [
+            "Loring F Nies"
+        ],
+        "description": "(CE 35500) An introduction to the examination of global-scale resource utilization, food, energy and commodity production, population dynamics, and their ecosystem impacts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Environmental And Ecological Engineering Laboratory",
+        "subjectCode": "EEE",
+        "courseCode": "36000",
+        "instructor": [
+            "Florentino Banaag De La Cruz"
+        ],
+        "description": "An introduction to laboratory methods of analysis of Environmental and Ecological Engineering systems.  Topics will change from semester to semester and will be announced in advance.  The list of possible topics includes experimental design, treatment of data, the analytical determination of chemical and biological constituents in water, soil, and air; analysis of environmental and ecological engineering processes; analysis of life-cycle characteristics and impacts of consumer products and commodities; methods of prevention and remediation of manufacturing waste streams.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Environmental Soil Chemistry",
+        "subjectCode": "EEE",
+        "courseCode": "38500",
+        "instructor": [
+            "Linda S Lee"
+        ],
+        "description": "(AGRY 38500) Designed as an upper level introductory course covering environmental soil chemistry concepts in framework most applicable to inorganic and organic chemical contamination of soil and water resources and intended for students in environmental science fields that may not have a strong chemistry and/or math background. (el.5).",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Wastewater Treatment Processes",
+        "subjectCode": "EEE",
+        "courseCode": "45600",
+        "instructor": [
+            "Zhi Zhou"
+        ],
+        "description": "(CE 45600) Fundamental design principles and practice of wastewater treatment to prepare students for designing wastewater treatment systems. The major topics include design and construction process, preliminary treatment of wastewater, primary treatment, wastewater microbiology, secondary treatment, nitrogen removal, phosphorus removal, attached microbial growth, secondary settling, disinfection and post-aeration, tertiary treatment, and wastewater plant residuals management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Life Cycle Assessment: Principles And Applications",
+        "subjectCode": "EEE",
+        "courseCode": "53000",
+        "instructor": [
+            "Fu Zhao"
+        ],
+        "description": "This course covers the basic concept of life cycle thinking, framework and computational structure of process and economic input-output based life cycle assessment (LCA), state-of-the-art LCA software tools, industrial case studies, and recent advances in LCA methodology. Students are required to complete a group project that could potentially facilitate the adaptation of LCA tools in engineering research, education, or practice.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Redlining Past And Present",
+        "subjectCode": "EEE",
+        "courseCode": "56000",
+        "instructor": [
+            "Lindsay Elaine Darling",
+            "John Michael Surfus Mulrow",
+            "Lindsey B Payne Haugen"
+        ],
+        "description": "An introduction to current challenges and issues in Environmental and Ecological Engineering (EEE) applications. Topics will change from semester to semester and will be announced in advance. The list of possible topics includes current events, emerging challenges, adaptations to new regulations, innovative environmental and ecological engineering processes, life-cycle impacts of manufactured products, and sustainable management of industrial waste streams.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Environmental And Ecological Engineering Graduate Seminar",
+        "subjectCode": "EEE",
+        "courseCode": "69000",
+        "instructor": [
+            "John A Howarter"
+        ],
+        "description": "Combination of invited speakers (outside and inside Purdue) including graduate students. Topics will range across environmental and ecological engineering with an emphasis on current topics.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    }
+]

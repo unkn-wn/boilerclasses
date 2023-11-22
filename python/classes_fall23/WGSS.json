@@ -1,0 +1,95 @@
+[
+    {
+        "title": "Women's, Gender, And Sexuality Studies: An Introduction",
+        "subjectCode": "WGSS",
+        "courseCode": "28000",
+        "instructor": [
+            "Molly H Barnard",
+            "Marlo Denice David",
+            "Rachel Lauren Ramlawi"
+        ],
+        "description": "An introductory survey of the concepts and research data in the new scholarship on women. Topics covered include biology, sexuality, socialization, family and work, creativity, and politics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Wom Pol And Publ Pol",
+        "subjectCode": "WGSS",
+        "courseCode": "28100",
+        "instructor": [
+            "Rosalee A Clawson"
+        ],
+        "description": "This course examines in depth particular topics from the introductory course in Women's Studies. It addresses gender issues for both men and women. Possible topics include gender and popular culture, women's bodies, body image, and health, masculinities, queering gender and gender transgression.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To LGBTQ Studies",
+        "subjectCode": "WGSS",
+        "courseCode": "28200",
+        "instructor": [
+            "Marisa J Bryans"
+        ],
+        "description": "(ANTH 28200)  This course offers students an introduction to the interdisciplinary study of lesbian, gay, bisexual, transgender and queer lives. It provides a basic grounding in theories of sexuality and LGBT histories, identities and movements in the U.S. and globally.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Comparative Studies In Gender And Culture",
+        "subjectCode": "WGSS",
+        "courseCode": "38000",
+        "instructor": [
+            "Juanita M Crider"
+        ],
+        "description": "This course expands students' understanding of gender issues by exploring the multicultural diversity of women's lives. It examines how race, class, sexuality, and culture interact and shape society and ecology in the United States and in a global context.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Understanding The NFL",
+        "subjectCode": "WGSS",
+        "courseCode": "39000",
+        "instructor": [
+            "Wendy K Kline",
+            "Cheryl A Cooky"
+        ],
+        "description": "Variable topics under the direction of an instructor in a particular field of specialization.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Issues In Feminist Research And Methodology",
+        "subjectCode": "WGSS",
+        "courseCode": "68200",
+        "instructor": [
+            "Marlo Denice David"
+        ],
+        "description": "This course provides a methodological framework for theorizing, constructing and executing research from a feminist perspective. Students acquire knowledge of the diversity of feminist research projects and methods; they learn to pose research questions; and they will be able to prepare a research or grant proposal drawing on interdisciplinary methods. The course is designed to meet the needs of graduate students in Women's Studies and is open to students in other programs who are interested in feminist research. The course deals with both theoretical and practical issues in methodology. Prerequisites: WGSS 68000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

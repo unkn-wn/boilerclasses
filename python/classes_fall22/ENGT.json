@@ -1,0 +1,99 @@
+[
+    {
+        "title": "Engineering Technology Foundations",
+        "subjectCode": "ENGT",
+        "courseCode": "18000",
+        "instructor": [
+            "Grant P Richards",
+            "Keenan Arthur Estese",
+            "Jeffrey R Heiking"
+        ],
+        "description": "This course introduces School of Engineering Technology students to resources and skills that will help them to be successful in their studies and ultimately in their careers. The skills needed to define and solve technical problems in engineering technology are developed. Instruction is given in analytical and computational problem-solving techniques. Application of software for analysis and communication is emphasized. Teamwork, global and societal concerns, and professional ethics are integrated into course projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Gateway To Engineering Technology",
+        "subjectCode": "ENGT",
+        "courseCode": "18200",
+        "instructor": [
+            "Keenan Arthur Estese",
+            "Brittany A Newell",
+            "Jeffrey R Heiking"
+        ],
+        "description": "  This course introduces School of Engineering Technology students to the resources and skills needed to define and solve technical problems, which will help them be successful in their studies and ultimately in their careers. Instruction is given in analytical and computational problem-solving techniques. The application of software for analysis and problem solving is emphasized. Foundational principles for electrical, industrial, manufacturing, and mechanical engineering technology are studied. Teamwork, global and societal concerns, and professional ethics are integrated into course.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Technology Capstone I",
+        "subjectCode": "ENGT",
+        "courseCode": "48000",
+        "instructor": [
+            "Frederick C Berry",
+            "Miles A Creasy",
+            "Kyler Michael Blowers",
+            "Jeffrey R Heiking"
+        ],
+        "description": "This is the first course of a two-term senior capstone sequence. The skills needed to define, design and develop engineering technology solutions are introduced and developed. Planning and designing alternatives that meet cost, performance, and user-interface goals are emphasized. Project planning, scheduling, and management techniques are studied. Different design approaches are compared. Teamwork, global and societal concerns, and professional ethics are integrated into course projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Technology Capstone II",
+        "subjectCode": "ENGT",
+        "courseCode": "48100",
+        "instructor": [
+            "Frederick C Berry"
+        ],
+        "description": "This is the second course of two-term capstone sequence, addressing an industry-based problem. The focus of the course is on designing and implementing an acceptable solution.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Graduate Research Seminar",
+        "subjectCode": "ENGT",
+        "courseCode": "50100",
+        "instructor": [
+            "Xiaoming Wang"
+        ],
+        "description": "This course is intended to orient new graduate students to the Engineering Technology (ET) program and faculty. This includes PhD students and students pursuing a Master's degree through a thesis or directed project option. This does not include students pursuing a Master's degree with coursework only. Research activities within ET and throughout Purdue University are discussed. Student resources and opportunities are reviewed to give the students the tools they need to be successful. In addition, this course provides a way to develop a natural cohort of graduate students. This course is a graduate seminar course focused on the ET program. Graduate status or upper-division undergraduate. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Applied Computational Methods",
+        "subjectCode": "ENGT",
+        "courseCode": "50900",
+        "instructor": [
+            "Richard Mark French"
+        ],
+        "description": "This class covers the mathematics typically needed for research in engineering technology and is especially suited to the needs of ENGT student. The class includes basic calculus, introductory numerical methods, implemented in MATLAB, and elementary linear algebra. It uses relevant, practical problems to teach concepts and provides the students with actionable information. The starting point is graphical and numerical solutions of systems of non-linear algebraic equations. The class progresses to simple ordinary differential equations. Prerequisite: Six credits of undergraduate classes in technical mathematics, focusing on calculus.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

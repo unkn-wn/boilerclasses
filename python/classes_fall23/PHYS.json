@@ -1,0 +1,618 @@
+[
+    {
+        "title": "First Year Physics Seminar",
+        "subjectCode": "PHYS",
+        "courseCode": "10400",
+        "instructor": [
+            "Carrie J Harris"
+        ],
+        "description": "A one-credit course for first-year Physics majors designed to develop concepts and skills in team building, time management, and professional development that complement the students' academic and research training. Talks from a broad range of speakers are included.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Modern Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "17200",
+        "instructor": [
+            "Qiyu Liang",
+            "Stephen M Durbin",
+            "Robert Andreas Austin",
+            "Srividya Iyer-Biswas"
+        ],
+        "description": "Introductory calculus-based physics course using fundamental interactions between atoms to describe Newtonian mechanics, conservation laws, energy quantization, entropy, the kinetic theory of gases, and related topics in mechanics and thermodynamics. Emphasis is on using only a few fundamental principles to describe physical phenomena extending from nuclei to galaxies. 3-D graphical simulations and numerical problem solving by computer are employed by the student from the very beginning. CTL:IPS 1753 Calculus-based Physics I",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Nature Of Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "21400",
+        "instructor": [
+            "Ian A Arnold"
+        ],
+        "description": "Development of basic concepts and theories in physics; a terminal survey course designed for non-science majors. CTL:IPS 1750 Survey Of Physical Science",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "General Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "22000",
+        "instructor": [
+            "Michael Anthony Holcomb",
+            "Jonathan D Hood",
+            "Denver H Alexander",
+            "Joshua E Dillard",
+            "Mark Christian Beveridge",
+            "Andrew W Irrgang",
+            "Jeffrey Miles Gerber",
+            "Mark Maurice Crain"
+        ],
+        "description": "Mechanics, heat, and sound, for students not specializing in physics. CTL:IPS 1751 Algebra-based Physics I",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "General Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "22100",
+        "instructor": [
+            "Andrew W Irrgang",
+            "Wei Xie"
+        ],
+        "description": "Electricity, light, and modern physics, for students not specializing in physics. CTL:IPS 1752 Algebra-based Physics II",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physical Science For Elementary Education",
+        "subjectCode": "PHYS",
+        "courseCode": "23000",
+        "instructor": [
+            "Nobel Sanjay Rebello"
+        ],
+        "description": "The course is aimed at facilitating future elementary teachers to learn physical science that will prepare them to teach these concepts to future elementary students grades K-6. The course will be focused on learning physical science by doing science i.e. developing understanding by collaborative activities and discussion in the laboratory and lecture and communicating your ideas to others. The course will have one 50-minute lecture and two 110-minute laboratory meetings each week. The course content is consistent with the CAEP (Council for the Accreditation of Education Preparation) K-6 Elementary Teacher Preparation Standards (Standard 2: Understanding and Applying Content and Curricular  Knowledge for Teaching in Physical Science and Engineering Design) and the NGSS (Next Generation Science Standards) Disciplinary Core Ideas (DCIs) for the Physical Sciences (Physical Sciences PS1, PS2, PS3, and PS4) as well as many of the Science and Engineering Practices (SEPs). The course will be divided into four units: 1) Matter and Interactions 2) Motion and Stability 3) Energy and 4) Waves and their applications. All of these units will be delivered through the paradigm of solving engineering design problems. Engineering design involves many different practices: problem definition, model development and use, investigation, analysis and interpretation of data, application of mathematics and computational thinking, and determination of solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physics For Life Sciences I",
+        "subjectCode": "PHYS",
+        "courseCode": "23300",
+        "instructor": [
+            "Ian A Arnold"
+        ],
+        "description": "Physics For Life Sciences I builds upon prerequisite knowledge in college level biology, chemistry, and mathematics to present introductory physics that will be useful for applying physical principles, insights, and problem solving approaches for students with life science majors. Content will feature the Newtonian framework with emphasis on friction, drag and viscosity, random motion and diffusion, fluid flow, the Coulomb force, molecular forces and bonding, momentum, conservation of energy, entropy, and the first and second laws of thermodynamics.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physics For Life Sciences II",
+        "subjectCode": "PHYS",
+        "courseCode": "23400",
+        "instructor": [
+            "Ian A Arnold"
+        ],
+        "description": "Physics For Life Sciences II builds upon prerequisite knowledge in college level biology, chemistry, and mathematics, as well as on Physics For Life Sciences I,  to develop an understanding of how energy, entropy, enthalpy, and Boltzmann distributions affect the dynamics of living systems, of how electric fields and potentials are applied to fluids and membranes, and how the physics of harmonic oscillators, waves, sound, optics, photons, and quantized states are relevant to biological systems and the tools used for their study.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Electricity And Optics",
+        "subjectCode": "PHYS",
+        "courseCode": "24100",
+        "instructor": [
+            "Laura J Pyrak-Nolte",
+            "Jeffrey Miles Gerber",
+            "Daniel S Elliott"
+        ],
+        "description": "Electrostatics, current electricity, electromagnetism, magnetic properties of matter. Electromagnetic waves, geometrical and physical optics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Electric And Magnetic Interactions",
+        "subjectCode": "PHYS",
+        "courseCode": "27200",
+        "instructor": [
+            "Ephraim Fischbach",
+            "Laura Gabriela Urba"
+        ],
+        "description": "Calculus-based physics course using concepts of electric and magnetic fields and an atomic description of matter to describe polarization, fields produced by charge distributions, potential, electrical circuits, magnetic forces, induction, and related topics, leading to Maxwell's equations and electromagnetic radiation and an introduction to waves and interference. 3-D graphical simulations and numerical problem solving by computer are employed throughout. CTL: IPS 1754 Physics 2, Calculus-Based",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Mathematical Methods Of Physics I",
+        "subjectCode": "PHYS",
+        "courseCode": "30600",
+        "instructor": [
+            "Yuli Lyanda-Geller"
+        ],
+        "description": "Discussion of wide-ranging physics problems from mechanics, E&M, thermal, and modern physics with emphasis on reviews and introductions of mathematical methods and techniques that are essential in such discussion. Relevant mathematical methods include one-and multi-variable calculus, complex numbers and functions of a complex variable, and vector calculus. Intended primarily for sophomore physics majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intermediate Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "31000",
+        "instructor": [
+            "Qi Zhou"
+        ],
+        "description": "For students familiar with calculus. Elements of vector algebra; statics of particles and rigid bodies; theory of couples; principle of virtual work; kinematics; dynamics of particles and rigid bodies; work, power, and energy.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intermediate Optics",
+        "subjectCode": "PHYS",
+        "courseCode": "32200",
+        "instructor": [
+            "Niranjan Hirisave Shivaram"
+        ],
+        "description": "Wave optics and properties of light, including reflection, refraction interference. Fraunhofer and Fresnel diffraction dispersion, polarization, double refraction, introduction to lasers and holography.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Research With Big Data I",
+        "subjectCode": "PHYS",
+        "courseCode": "32300",
+        "instructor": [
+            "Andreas Jung"
+        ],
+        "description": "This course is to conduct physics research in a class-based environment. As such, we will perform authentic research, defined as work with the potential for results that are of interest to the scientific community. We will work with large data sets, such as those collected by survey telescopes, dark matter experiments, or detectors at the Large Hadron Collider.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intermediate Electricity And Magnetism",
+        "subjectCode": "PHYS",
+        "courseCode": "33000",
+        "instructor": [
+            "Oana Malis"
+        ],
+        "description": "Electrostatics; electric currents; magnetostatics; electromagnetic induction; Maxwell's equation; electromagnetic waves.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Modern Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "34200",
+        "instructor": [
+            "Ruichao Ma"
+        ],
+        "description": "A survey of basic concepts and phenomena in atomic, nuclear, and solid-state physics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Quantum Science",
+        "subjectCode": "PHYS",
+        "courseCode": "34400",
+        "instructor": [
+            "Erica Carlson"
+        ],
+        "description": "  This course offers an introduction to quantum mechanics, exploring how it has transformed our understanding of the physical world and revolutionized modern technology. The concepts will be illustrated with a variety of contemporary physics results and applications, including relativistic effects and a brief overview of the emerging field of quantum information science and engineering.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physical Mechanics I Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "41000",
+        "instructor": [
+            "David D Nolte"
+        ],
+        "description": "Newtonian, Lagrangian, and Hamiltonian mechanics. Emphasis on point mass mechanics. Free, driven, and damped harmonic motion, central force problem.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Thermal And Statistical Physics Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "41600",
+        "instructor": [
+            "Arnab Banerjee"
+        ],
+        "description": "Thermal equilibrium; first, second, and third laws; entropy; probability and statistics; canonical ensembles; chemical potential and Grand Canonical Ensemble; classical and quantum ideal gases; chemical reactions; phase equilibria; critical phenomena.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Electricity And Magnetism II Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "43100",
+        "instructor": [
+            "Dimitrios Giannios"
+        ],
+        "description": "A continuation of PHYS 43000. Magnetic energy; applications of Maxwell's equations to a.c. circuits, filters, transmission lines, waveguides, and antennae; Lienard-Wiechert potentials.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intermediate Laboratory",
+        "subjectCode": "PHYS",
+        "courseCode": "45000",
+        "instructor": [
+            "Chen-Lung Hung"
+        ],
+        "description": "Laboratory primarily intended for junior year physics majors. Assorted experiments in optics and other fields using lasers, photodiodes, computers, and other modern technology.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Quantum Mechanics I Honors",
+        "subjectCode": "PHYS",
+        "courseCode": "46000",
+        "instructor": [
+            "Timothy Matthew Jones"
+        ],
+        "description": "Limits of classical physics, wave packets. Bohr model, atomic systems, Schrodinger equation, eigen-functions, one-dimensional potentials, wave mechanics general structure, multiparticle systems, Pauli principle, operator methods.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physical Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "51000",
+        "instructor": [
+            "David S Koltick"
+        ],
+        "description": "Mechanics of particles, rigid bodies, and vibrating systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Thermal And Statistical Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "51500",
+        "instructor": [
+            "Tongcang Li"
+        ],
+        "description": "Equilibrium states, the concept of heat, and the laws of thermodynamics; the existence and properties of the entropy; different thermodynamic potentials and their uses; phase diagrams; introduction to statistical mechanics and its relation to thermodynamics; treatment of ideal gases.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Electricity And Magnetism",
+        "subjectCode": "PHYS",
+        "courseCode": "53000",
+        "instructor": [
+            "Marc W Caffee"
+        ],
+        "description": "Electrostatic problems; theory of dielectrics; theory of electric conduction; electromagnetic effects due to steady and changing currents; magnetic properties of matter; Maxwell's equations; electromagnetic radiation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Quantum Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "55000",
+        "instructor": [
+            "Leonid P Rokhinson"
+        ],
+        "description": "Brief historical survey of the development of quantum mechanics; wave-packets, uncertainty principle, wave functions, operators, Schrodinger equation with application to one-dimensional problems, the hydrogen atom, electron spin, selected topics in perturbation theory, scattering theory, and compounding of angular momenta. Not available for students with credit in PHYS 36000 or 46000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introductory Nuclear Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "55600",
+        "instructor": [
+            "Fuqiang Wang"
+        ],
+        "description": "Theory of relativity, brief survey of systematics of nuclei and elementary particles, structure of stable nuclei, radioactivity, interaction of nuclear radiation with matter, nuclear reactions, particle accelerators, nuclear instruments, fission, nuclear reactors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Elements Particle Physics",
+        "subjectCode": "PHYS",
+        "courseCode": "56400",
+        "instructor": [
+            "Norbert Neumeister"
+        ],
+        "description": "This course brings students up to the current status of research in elementary particle physics. The focus of the course is the construction of the Standard Model with emphasis on the electroweak theory. The seminal experiments that confirmed the predictions of the Standard Model is presented. The solar neutrino problem, the search for nonzero neutrino masses, and the efforts to construct a theory which unifies all interactions, including gravity, is discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Observational Techniques In Astronomy",
+        "subjectCode": "PHYS",
+        "courseCode": "56700",
+        "instructor": [
+            "Danny Milisavljevic"
+        ],
+        "description": "(ASTR 56700) Fundamental concepts in observational astronomy, including coordinate and time systems, telescopes and detectors, radiation and optics, and methods of statistical data analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intro To Biophysics",
+        "subjectCode": "PHYS",
+        "courseCode": "57000",
+        "instructor": [
+            "Miaoyuan Liu",
+            "Yulia N Pushkar",
+            "Nobel Sanjay Rebello"
+        ],
+        "description": "Specialized topics in physics selected from time to time. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Methods Of Theoretical Physics I",
+        "subjectCode": "PHYS",
+        "courseCode": "60000",
+        "instructor": [
+            "Francis J Robicheaux"
+        ],
+        "description": "This course is designed to provide first-year physics graduate students with the mathematical background for subsequent studies of advanced mechanics, electrodynamics, and quantum theory. Topics treated include functions of complex variable, ordinary and partial differential equations, eigenvalue problems and orthogonal functions. Green's functions, matrix theory, and tensor analysis in three and four dimensions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Pedagogical Methods For Physics Graduate Students",
+        "subjectCode": "PHYS",
+        "courseCode": "60500",
+        "instructor": [
+            "Nobel Sanjay Rebello"
+        ],
+        "description": "This course prepares physics graduate students for classroom and laboratory teaching assignments. Through 100 minutes per week of lectures and hands-on recitations, it provides an intensive survey of basic pedagogical methods, both theoretically and in practice. Students will learn and practice teaching techniques via various forms and microteaching, reading, and class discussion. A broad range of results from physics education research will be studied in detail. Additional topics include grading and assessment, responsible conduct in teaching related to issues such as gender, culture and ethnicity, students with disabilities, and ethics in academia, generally, including ethical conduct of research.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Theoretical Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "61000",
+        "instructor": [
+            "Sergei Khlebnikov"
+        ],
+        "description": "Lagrangian and Hamiltonian mechanics; variational principles; canonical transformations; Hamilton-Jacobi theory; theory of small oscillations; Lagrangian formulation for continuous systems and fields. Prerequisite: PHYS 51000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Statistical Mechanics",
+        "subjectCode": "PHYS",
+        "courseCode": "61700",
+        "instructor": [
+            "Luis Martin Kruczenski"
+        ],
+        "description": "Classical and quantum statistical mechanics. Prerequisite: PHYS 66000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Theory Of Electricity And Magnetism",
+        "subjectCode": "PHYS",
+        "courseCode": "63000",
+        "instructor": [
+            "Maxim Y Lyutikov"
+        ],
+        "description": "The experimental origins of Maxwell's equations. Electrostatics and magnetostatics; solution of boundary value problems. Quasi-static currents. Electromagnetic energy and momentum and the Maxwell stress tensor. Foundations of optics. Radiation from antennas, multi-pole expansion; waveguides. Prerequisite: PHYS 53000, 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Quantum Mechanics I",
+        "subjectCode": "PHYS",
+        "courseCode": "66000",
+        "instructor": [
+            "Christopher H Greene"
+        ],
+        "description": "Origins of the quantum theory, the uncertainty and complementarity principles. The Schrodinger equation and its solutions for simple physical systems. Mathematical formulation of the quantum theory. Applications: simple harmonic oscillator, theory of angular momentum, the hydrogen atom. Time-independent and time-dependent perturbation theory. The Pauli exclusion principle. Spin of the electron. Elementary theory of scattering. Prerequisite: PHYS 53000, 55000, 60000, 61000. Corequisite: PHYS 60100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Quantum Mechanics II",
+        "subjectCode": "PHYS",
+        "courseCode": "66100",
+        "instructor": [
+            "Rudro R Biswas"
+        ],
+        "description": "Symmetry and conservation laws. The Klein-Gordon and Dirac equations. Interaction of radiation with matter. Applications of quantum mechanics to atomic structure. Scattering theory. Prerequisite: PHYS 60100, 63000, 66000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Quantum Field Theory I",
+        "subjectCode": "PHYS",
+        "courseCode": "66200",
+        "instructor": [
+            "Nima Lashkari"
+        ],
+        "description": "Introduction to relativistic quantum field theory. Representations of the Lorentz and Poincare groups. Noether's theorem: symmetries and conservation laws. Canonical quantization of free Klein-Gordon, Dirac, Maxwell fields. Interacting field theory: Lehmann-Kallen representations. LSZ reduction formula. Schwinger action principle. Quantum Electrodynamics (QED): Gell-Mann Low expansion, Wick's theorem, Feynman rules for Green functions and S-matrix elements. Scattering processes in QED: cross sections in low orders of perturbation theory.  Prerequisite: PHYS 66100. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "General Relativity",
+        "subjectCode": "PHYS",
+        "courseCode": "67500",
+        "instructor": [
+            "Paul Cole Duffell"
+        ],
+        "description": "Theoretical and experimental general relativity. The equivalence principle and its experimental basis. The Einstein field equations; classical tests of general relativity; gravitational radiation, cosmological considerations; topics to be chosen. Prerequisite: PHYS 60000, 61000, 63000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Physics Research",
+        "subjectCode": "PHYS",
+        "courseCode": "69600",
+        "instructor": [
+            "Gabor A Csathy"
+        ],
+        "description": "Seminar designed to acquaint first-year physics graduate students with the research programs of the department.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    }
+]

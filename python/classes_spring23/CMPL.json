@@ -1,0 +1,64 @@
+[
+    {
+        "title": "North African Lit & Culture",
+        "subjectCode": "CMPL",
+        "courseCode": "23000",
+        "instructor": [
+            "Ahmed Idrissi Alami",
+            "Michael Robert Johnston",
+            "Alon Kantor"
+        ],
+        "description": "(LC 23000) Foundations for comparison of works in different languages, thematic (philosophical, sociological, psychological), and structural (genre, composition, use of linguistic devises); parallel interrelation of theme and structure in works of different literatures. The importance of literary norms and systems of genres. Examination of crosscurrents in different literatures during successive periods of development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "World Literature: From 1700 A D To The Present",
+        "subjectCode": "CMPL",
+        "courseCode": "26700",
+        "instructor": [
+            "Andrew Yost Kroninger"
+        ],
+        "description": "(ENGL 26700) World literature in translation. A comparative and chronological survey of the masterpieces of Eastern and Western literature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "International Cinema",
+        "subjectCode": "CMPL",
+        "courseCode": "33000",
+        "instructor": [
+            "Shaun F D Hughes"
+        ],
+        "description": "This course is designed to develop students' seeing, reading, speaking writing and critical thinking skills, and especially to improve visual competency, awareness of visual culture, and knowledge of selected international cinema. All films will be show with English subtitles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Engl Lit 1660-1783",
+        "subjectCode": "CMPL",
+        "courseCode": "65000",
+        "instructor": [
+            "Manushag Powell"
+        ],
+        "description": "(ENGL 66500 and LC 63900)  Exploration of a significant topic in comparative literature, e.g., the arts of translation, thematology, genre studies, literary movements, literary relations among countries.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

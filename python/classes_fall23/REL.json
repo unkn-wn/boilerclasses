@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Introduction To Christian Theology",
+        "subjectCode": "REL",
+        "courseCode": "20400",
+        "instructor": [
+            "Sarah N Jaran"
+        ],
+        "description": "This course is an introductory survey of the goals and aims of theology in the Christian tradition. Focus is on the content of Christian theology, its methodological presuppositions and principles of development.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Religions Of The East",
+        "subjectCode": "REL",
+        "courseCode": "23000",
+        "instructor": [
+            "Thomas W Ryba"
+        ],
+        "description": "(PHIL 33000) A study of the history, teaching, and present institutions of the religions of India, Southeast Asia, China, and Japan. This will include Hinduism, Jainism, Sikhism, Buddhism, Confucianism, Taoism, Shintoism, and Zoroastrianism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Religions Of The West",
+        "subjectCode": "REL",
+        "courseCode": "23100",
+        "instructor": [
+            "Thomas W Ryba"
+        ],
+        "description": "(PHIL 33100) A comparative study of the origins, institutions, and theologies of the three major Western religions, Judaism, Christianity, and Islam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Ancient Judaism And Early Christianity",
+        "subjectCode": "REL",
+        "courseCode": "31700",
+        "instructor": [
+            "Stuart Dunbar Robertson"
+        ],
+        "description": "This course is a study of the emergence of Judaism and the rise of Christianity out of roots in the history of ancient Israel. This will include noticing the effects of Greek culture, evidence of anti-Semitism and admiration of the Jews, conversion in a setting of religious pluralism, and the development of Jewish and Christian self-definition in this climate.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Milton God Champ Devil Advo",
+        "subjectCode": "REL",
+        "courseCode": "49100",
+        "instructor": [
+            "Angelica A Duran"
+        ],
+        "description": "  Investigation of a special topic in Religious Studies. The topic will vary from semester to semester.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

@@ -1,0 +1,348 @@
+[
+    {
+        "title": "Introduction To Animal Agriculture",
+        "subjectCode": "ANSC",
+        "courseCode": "10200",
+        "instructor": [
+            "Elizabeth L Karcher"
+        ],
+        "description": "A study of animal agriculture emphasizing the efficient production of animal food products from poultry, dairy and meat animals.  Course may also be offered for dual credit with cooperating Indiana high schools upon documented approval by Department of Animal Sciences. This course is required for ANSC majors classified as Freshman and Sophomores.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Ethics Of Animal Use",
+        "subjectCode": "ANSC",
+        "courseCode": "12100",
+        "instructor": [
+            "Juan Marcos Fernandez"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Animal Nutrition",
+        "subjectCode": "ANSC",
+        "courseCode": "22100",
+        "instructor": [
+            "Dale M Forsyth"
+        ],
+        "description": "Classification and function of nutrients, deficiency symptoms, digestive processes, characterization of feedstuffs, and formulation of diets for domestic animals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physiology Of Domestic Animals",
+        "subjectCode": "ANSC",
+        "courseCode": "23000",
+        "instructor": [
+            "James Frederick Markworth"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Animal Production",
+        "subjectCode": "ANSC",
+        "courseCode": "24000",
+        "instructor": [
+            "John R Blanton"
+        ],
+        "description": "A comprehensive overview of production systems including life cycles and animal requirements for non-ruminant and ruminant farm animals species. How animal production is affected by the environment, availability of resources, and market access will emphasized. Data requirements and interpretation for decision making will be highlighted.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Animal Products",
+        "subjectCode": "ANSC",
+        "courseCode": "25500",
+        "instructor": [
+            "Stacy M Zuelly"
+        ],
+        "description": "Survey of the animal product industries; meat, dairy, eggs, and wool. Meat as a food, conversion of muscle to meat, conversion of dairy to dairy products, food safety, food quality, inspection, and basic processing, in addition to basic wool production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Readings: Anthrozoology",
+        "subjectCode": "ANSC",
+        "courseCode": "29500",
+        "instructor": [
+            "Juan Marcos Fernandez"
+        ],
+        "description": "Lecture presentation of specialized material not available in formal courses of the department. The specific topic that is offered will be indicated on the student's record.  May be repeated for credit with variable title. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Animal Breeding And Genetics",
+        "subjectCode": "ANSC",
+        "courseCode": "31100",
+        "instructor": [
+            "Luiz Fernando Brito"
+        ],
+        "description": "Genetic principles and their applications in improvement of production efficiency in livestock.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Applied Ruminant Nutrition",
+        "subjectCode": "ANSC",
+        "courseCode": "32500",
+        "instructor": [
+            "Jon Schoonmaker"
+        ],
+        "description": "Application of the principles of ruminant nutrition to the formulation and feeding of supplements and complete rations for animals; ration ingredients and substitution values; computer applications; legal aspects of feed formulation; and industry practices.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Applied Non-ruminant Nutrition",
+        "subjectCode": "ANSC",
+        "courseCode": "32600",
+        "instructor": [
+            "Kolapo Matthew Ajuwon"
+        ],
+        "description": "Application of the principles of non-ruminant nutrition to the formulation and feeding of supplements and complete rations for animals; ration ingredients and substitution values; computer applications; legal aspects of feed formulation; and industry practices.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physiology Of Reproduction",
+        "subjectCode": "ANSC",
+        "courseCode": "33300",
+        "instructor": [
+            "Greg S Fraley"
+        ],
+        "description": "This course is designed to introduce students to the essential principles of mammalian reproduction and apply this knowledge in a hands-on laboratory setting. Upon completion of this course, students are expected to understand the processes of sexual determination, sexual differentiation, steroid hormone signaling, spermatogenesis, oogenesis, fertilization, gestation, parturition and lactation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Animal Health Management",
+        "subjectCode": "ANSC",
+        "courseCode": "34500",
+        "instructor": [
+            "Rodney D Allrich"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Muscle Food Production And Safety",
+        "subjectCode": "ANSC",
+        "courseCode": "36000",
+        "instructor": [
+            "Stacy M Zuelly"
+        ],
+        "description": "Study the science, art, and economics of processed meats. Investigate methods to add value to meat and meat products, including hands-on processing, new product development, and industry tours. Study of meat-borne pathogens and methods of control. Science and practical aspects of food safety in meat production. Seven principles of HACCP will be investigated and each student will receive HACCP Certification from the International HACCP Alliance.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Animal Welfare",
+        "subjectCode": "ANSC",
+        "courseCode": "40400",
+        "instructor": [
+            "Marisa A Erasmus"
+        ],
+        "description": "A multi-disciplinary course that introduces students to the fields of animal welfare and the ethics of animal use. The course will emphasize farm animal welfare and production issues. Requires class trips. Students will pay individual lodging or meal expenses when necessary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Animal Physiology",
+        "subjectCode": "ANSC",
+        "courseCode": "41500",
+        "instructor": [
+            "Zoltan Machaty"
+        ],
+        "description": "This course is an advanced physiology course building on concepts and knowledge introduced in ANSC 23000 about whole body physiology. Additionally, this course will introduce interpretation of scientific literature to understand physiological processes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Beef Management",
+        "subjectCode": "ANSC",
+        "courseCode": "44100",
+        "instructor": [
+            "Ronald P Lemenager"
+        ],
+        "description": "Breeding, feeding, and management practices essential for economical beef production, including performance testing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Dairy Management",
+        "subjectCode": "ANSC",
+        "courseCode": "44400",
+        "instructor": [
+            "Jacquelyn P Boerman"
+        ],
+        "description": "Current breeding, feeding, physiology, disease prevention, and management practices essential for economical milk production.  Requires class trips. Students will pay individual lodging or meal expenses when necessary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Companion Animal Management",
+        "subjectCode": "ANSC",
+        "courseCode": "44600",
+        "instructor": [
+            "Rodney D Allrich"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Contemporary Issues In Animal Sciences",
+        "subjectCode": "ANSC",
+        "courseCode": "48100",
+        "instructor": [
+            "Barry L Delks"
+        ],
+        "description": "Industry-led and student-led discussions and debate of current issues facing animal industries. Experiences from internships, research problems, study abroad, or job shadowing will be shared among the students.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Meat Science",
+        "subjectCode": "ANSC",
+        "courseCode": "55200",
+        "instructor": [
+            "Yuan H Kim"
+        ],
+        "description": "The overall goal of the course is to provide students with an advanced understanding of meat science and technology. In order to complete this goal, students will participate in activities including classroom lecture, group discussion, critical reading of literature, written assignments and exams, and/or student projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Quantitative Genomics Breeding",
+        "subjectCode": "ANSC",
+        "courseCode": "59500",
+        "instructor": [
+            "Luiz Fernando Brito",
+            "Marisa A Erasmus"
+        ],
+        "description": "Lecture presentation of specialized material not available in the formal courses of the department. The specific topic offered is indicated on the student's record. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intestinal Microbiology And Immunology",
+        "subjectCode": "ANSC",
+        "courseCode": "66000",
+        "instructor": [
+            "Arun K Bhunia"
+        ],
+        "description": "(FS 66000) Discussion and critique of recent journal articles related to intestinal microbiology/immunology. The specific areas covered under this forum are: (1) intestinal microbiology, (2) food microbiology as it relates to gastrointestinal diseases, (3) probiotics and prebiotics-related to intestinal health or pathogen control, and (4) mucosal immunity with major emphasis on intestinal immunology.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Animal Sciences Graduate Seminar",
+        "subjectCode": "ANSC",
+        "courseCode": "68100",
+        "instructor": [
+            "Timothy A Johnson"
+        ],
+        "description": "Instruction and application of concepts for effective oral professional presentations in the field of Animal Sciences. The course will provide students with knowledge for effective oral communication of scientific information and an opportunity to put guidelines into practice. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    }
+]

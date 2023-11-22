@@ -1,0 +1,125 @@
+[
+    {
+        "title": "Italian Level I",
+        "subjectCode": "ITAL",
+        "courseCode": "10100",
+        "instructor": [
+            "Giuseppina Grande",
+            "Brett T Bogart"
+        ],
+        "description": "A beginning Italian course with emphasis on communicative skills (listening and speaking), literacy (reading and writing) and culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Italian Level II",
+        "subjectCode": "ITAL",
+        "courseCode": "10200",
+        "instructor": [
+            "Annalisa Mosca",
+            "Brett T Bogart"
+        ],
+        "description": "Continuation of ITAL 10100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Accelerated Basic Italian",
+        "subjectCode": "ITAL",
+        "courseCode": "10500",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "An accelerated basic Italian course that substitutes for ITAL 10100 and 10200. Knowledge of a foreign language required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Italian Level III",
+        "subjectCode": "ITAL",
+        "courseCode": "20100",
+        "instructor": [
+            "Giuseppina Grande",
+            "Annalisa Mosca"
+        ],
+        "description": "A continuation of ITAL 10200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Italian Level IV",
+        "subjectCode": "ITAL",
+        "courseCode": "20200",
+        "instructor": [
+            "Annalisa Mosca"
+        ],
+        "description": "An intermediate Italian course with emphasis on communicative skills (listening and speaking), literacy skills (reading and writing) and culture.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Italian Renaissance And Its Scientific And Cultural Impact On Western Civilization",
+        "subjectCode": "ITAL",
+        "courseCode": "28100",
+        "instructor": [
+            "Elena Coda"
+        ],
+        "description": "This course introduces students to the most important cultural and scientific writings of the Italian Renaissance, and shows the pivotal influence of the Renaissance on the development of Western civilization as a whole. Classes and readings entirely in English; no knowledge of Italian needed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Italian Level V",
+        "subjectCode": "ITAL",
+        "courseCode": "30100",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "Continued development of Italian speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in Italy from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in Italian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Italian Level VI",
+        "subjectCode": "ITAL",
+        "courseCode": "30200",
+        "instructor": [
+            "Tatjana Babic Williams"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in Italian, on the basis of materials dealing with the ideas and events that have shaped present-day Italy. Conducted primarily in Italian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

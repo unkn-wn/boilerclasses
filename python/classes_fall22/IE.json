@@ -1,0 +1,478 @@
+[
+    {
+        "title": "Industrial Engineering Seminar",
+        "subjectCode": "IE",
+        "courseCode": "20000",
+        "instructor": [
+            "Elizabeth Pearson"
+        ],
+        "description": "An orientation course to inform students of  the major options in the industrial engineering program, assistance in selection of appropriate electives to meet career objectives, introduction to the faculty, and selection of an academic advisor.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Probability And Statistics In Engineering I",
+        "subjectCode": "IE",
+        "courseCode": "23000",
+        "instructor": [
+            "Susan R Hunter"
+        ],
+        "description": "An introduction to probability and statistics. Probability and probability distributions. Mathematical expectation. Functions of random variables. Estimation. Applications oriented to engineering problems. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Probability And Statistics In Engineering II",
+        "subjectCode": "IE",
+        "courseCode": "33000",
+        "instructor": [
+            "Mohamed Salama"
+        ],
+        "description": "Introduction to statistical inference and experimental design. Correlation, regression, single and multi-factor ANOVA, non-parametric methods. Applications to statistical quality control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computing In Industrial Engineering",
+        "subjectCode": "IE",
+        "courseCode": "33200",
+        "instructor": [
+            "Mario Ventresca"
+        ],
+        "description": "Introduction to computing in industrial engineering. Reinforcement of scientific programming skills on typical IE tasks, together with introduction to simulation and related computer tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Operations Research",
+        "subjectCode": "IE",
+        "courseCode": "33500",
+        "instructor": [
+            "Nagabhushana Prabhu",
+            "Erhan Karakaya"
+        ],
+        "description": "Introduction to deterministic optimization modeling and algorithms in operations research. Emphasis on formulation and solution of linear programs, networks flows, and integer programs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Operations Research",
+        "subjectCode": "IE",
+        "courseCode": "33600",
+        "instructor": [
+            "Mohamed Salama"
+        ],
+        "description": "Introduction to probabilistic models in operations research. Emphasis on Markov chains, Poisson processes, and their application to queuing systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Economics",
+        "subjectCode": "IE",
+        "courseCode": "34300",
+        "instructor": [
+            "Md Mahmudur Rahman",
+            "Erin R Groll"
+        ],
+        "description": "Cost measurement and control in engineering studies. Basic accounting concepts, income measurement, and valuation problems. Manufacturing cost control and standard cost systems. Capital investment, engineering alternatives, and equipment replacement studies. Not open to students with credit in CE 39400.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Manufacturing Processes I",
+        "subjectCode": "IE",
+        "courseCode": "37000",
+        "instructor": [
+            "Wenzhuo Wu"
+        ],
+        "description": "Principal manufacturing processes; metal cutting, grinding and metal forming operations, machine tools, and tools and tooling. Nontraditional machining and welding. Introduction to computer-aided manufacturing and computer-aided graphics and design, N/C programming, robots, and flexible manufacturing systems. Classroom and laboratory demonstrations included. Not open to students with credit in ME 36300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrated Production Systems I",
+        "subjectCode": "IE",
+        "courseCode": "38300",
+        "instructor": [
+            "Yuehwern Yih"
+        ],
+        "description": "Basic concepts in the design and operational control of integrated production systems. Includes topics on facility layout and material handling, material flow and information flow, resource and capacity planning, and shop floor control and scheduling.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Work Analysis And Design I",
+        "subjectCode": "IE",
+        "courseCode": "38600",
+        "instructor": [
+            "Denny Yu"
+        ],
+        "description": "Fundamentals of work methods and measurement. Applications of engineering, psychological, and physiological principles to the analysis and design of human work systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Industrial Engineering Design",
+        "subjectCode": "IE",
+        "courseCode": "43100",
+        "instructor": [
+            "Barrett S Caldwell"
+        ],
+        "description": "Capstone design experience for industrial engineering students involving analysis and synthesis of unstructured problems in practical settings. Students work in teams to formulate issues, propose solutions, and communicate results in formal written and oral presentations. Prerequisite: all 30000-level industrial engineering courses required for the BS IE degree.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Manufacturing Processes II",
+        "subjectCode": "IE",
+        "courseCode": "47000",
+        "instructor": [
+            "Gary J Cheng"
+        ],
+        "description": "The interrelations of materials, processes, and design with various aspects of manufacturing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Imagine, Model, Make",
+        "subjectCode": "IE",
+        "courseCode": "47200",
+        "instructor": [
+            "Ramses Martinez"
+        ],
+        "description": "This course develops a holistic view of an initial competency in engineering design by conceiving, designing, manufacturing, and optimizing a system component such as a complex structural part. Activities include hand sketching, CAD modeling, and operation of CNC machining equipment for rapid prototyping. Tolerance requirements will be verified and optimized prior to the fabrication of the part in the laboratory using rapid prototyping techniques. The focus is on the design process itself as well as the complementary roles of human creativity and computational methods and tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Industrial Control Systems",
+        "subjectCode": "IE",
+        "courseCode": "47400",
+        "instructor": [
+            "Yu She"
+        ],
+        "description": "Introduction to automatic controls with reference to automation of industrial machines and processes, including linear dynamic systems, feedback control, and elements of systems analysis. Introduction to digital control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrated Production Systems II",
+        "subjectCode": "IE",
+        "courseCode": "48400",
+        "instructor": [
+            "Praditya Ajidarma"
+        ],
+        "description": "Extensions of topics on the design and operational control of integrated production systems. Includes production databases, facility layout, material handling, advanced control and scheduling, and physical distribution. Case studies, lab assignments, and projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Work Analysis And Design II",
+        "subjectCode": "IE",
+        "courseCode": "48600",
+        "instructor": [
+            "Md Mahmudur Rahman"
+        ],
+        "description": "Continuation of IE 38600. Applications of engineering, computer sciences, information sciences, and psychological principles and methods to the analysis and design of human work systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Quality Control",
+        "subjectCode": "IE",
+        "courseCode": "53000",
+        "instructor": [
+            "Erhan Karakaya"
+        ],
+        "description": "Principles and practices of statistical quality control in industry. Control charts for measurements and for attributes. Acceptance sampling by attributes and by measurements. Standard sampling plans. Sequential analysis. Sampling inspection of continuous production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Linear Programming",
+        "subjectCode": "IE",
+        "courseCode": "53500",
+        "instructor": [
+            "Lu Liu"
+        ],
+        "description": "Optimization of linear objective functions subject to linear constraints. Development of theory and algorithmic strategies for solving linear programming problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Nature-Inspired Computation",
+        "subjectCode": "IE",
+        "courseCode": "54100",
+        "instructor": [
+            "Mario Ventresca"
+        ],
+        "description": "This course is about algorithms that are inspired by naturally occurring phenomena and applying them to optimization, design and learning problems. The focus is on the process of abstracting algorithms from the observed phenomenon, their outcome analysis and comparison as well as their \"science\". This will be done primarily through the lens of evolutionary computation, swarm intelligence (ant colony and particle-based methods) and neural networks.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Economic Analysis",
+        "subjectCode": "IE",
+        "courseCode": "54500",
+        "instructor": [
+            "David R Johnson"
+        ],
+        "description": "Analysis of engineering costs and capital investments. Applications of classical optimization, mathematical programming, and the theory of production to the analysis of investment proposals. Evaluation and selection of individual projects and formulation of capital investment programs. Typically offered Fall.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Cognitive Engineering Of Interactive Software",
+        "subjectCode": "IE",
+        "courseCode": "55900",
+        "instructor": [
+            "Brandon J Pitts"
+        ],
+        "description": "Theory and applications of software design to improve productivity and job satisfaction on information processing and cognitive tasks in the workplace. Human information processing models and cognitive theories will be used to provide a theoretical basis for how to choose and display information to the user. Other topics include user-friendly displays and empirical approaches to software design. Applications of the design theory are stressed by class projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Convex Optimization",
+        "subjectCode": "IE",
+        "courseCode": "56100",
+        "instructor": [
+            "Dengfeng Sun"
+        ],
+        "description": "(AAE 56100) Introduction to convex analysis, convex optimization problems, algorithms of convex optimization and measures of their complexity, and application of convex optimization in aerospace engineering. Recognition of convex optimization problems that arise in scientific and engineering applications. Introduction to software tools to solve convex optimization problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Manufacturing Process Engineering",
+        "subjectCode": "IE",
+        "courseCode": "57000",
+        "instructor": [
+            "Srinivasan Chandrasekar"
+        ],
+        "description": "Theories and applications of materials forming and removal processes in manufacturing, including product properties, process capabilities, processing equipment design, and economics. A systems approach to all aspects of manufacturing process engineering.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Factors In Engineering",
+        "subjectCode": "IE",
+        "courseCode": "57700",
+        "instructor": [
+            "Robert W Proctor"
+        ],
+        "description": "(PSY 57700) Survey of human factors in engineering with particular reference to human functions in human-machine systems, and consideration of human abilities and limitations in relation to design of equipment and work environments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Applied Ergonomics",
+        "subjectCode": "IE",
+        "courseCode": "57800",
+        "instructor": [
+            "Vincent G Duffy"
+        ],
+        "description": "Analysis, modeling, and design of jobs and systems to be consistent with human factors and ergonomic principles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Design And Control Of Production And Manufacturing Systems",
+        "subjectCode": "IE",
+        "courseCode": "57900",
+        "instructor": [
+            "Seokcheon Lee"
+        ],
+        "description": "Design and control of discrete part manufacturing systems in contemporary production environments, with emphasis on flexible, demand-driven, product-based manufacturing. Currently used planning and control methodologies, such as MRP, OPT, and JIT are reviewed and integrated with appropriate facility design methodologies, including cellular design algorithms. Introduction to Computer Integrated Manufacturing (CIM) architecture and reference models and relevant control procedures, including basis approaches to appropriate data management methodologies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Systems Simulation",
+        "subjectCode": "IE",
+        "courseCode": "58000",
+        "instructor": [
+            "Seokcheon Lee"
+        ],
+        "description": "Philosophy and elements of digital simulation language. Practical application of simulation to diverse systems. Computer simulation exercises and applications are required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Assistive Technology Practice",
+        "subjectCode": "IE",
+        "courseCode": "59000",
+        "instructor": [
+            "Gesualdo Scutari",
+            "Nagabhushana Prabhu",
+            "Brandon J Pitts",
+            "Ana Maria Estrada Gomez",
+            "Nga Hin Benjamin Fong",
+            "Gary J Cheng",
+            "Bradley S Duerstock",
+            "Wenzhuo Wu"
+        ],
+        "description": "Selected topics in industrial engineering for seniors and graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Decision Theory",
+        "subjectCode": "IE",
+        "courseCode": "64600",
+        "instructor": [
+            "Mark R Lehto"
+        ],
+        "description": "An advanced course on the theory and models of decision-making and rationality. Material includes advanced topics in decision analysis, models of probabilistic reasoning, decision-making in competitive situations, and models of human and computer reasoning (including artificial intelligence). Prerequisite: IE 54600.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Appl Prob For Machine Learning",
+        "subjectCode": "IE",
+        "courseCode": "69000",
+        "instructor": [
+            "Harsha Honnappa",
+            "Sivaranjani Seetharaman",
+            "Joaquin Goni Cortes"
+        ],
+        "description": "Advanced study in various fields of industrial engineering for graduate students. Credits and hours to be arranged.  Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Seminar",
+        "subjectCode": "IE",
+        "courseCode": "69700",
+        "instructor": [
+            "Patrick Alan Brunese"
+        ],
+        "description": "Industrial engineering problems with particular emphasis on current research.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,349 @@
+[
+    {
+        "title": "Drug Abuse/Addiction Education",
+        "subjectCode": "PHRM",
+        "courseCode": "31600",
+        "instructor": [
+            "Jane E Krause"
+        ],
+        "description": "An overview of alcoholism and other chemical addictions. Students are given the information and experience necessary to present a five-hour drug abuse education program to the public and specifically middle school students. Course is taught by undergraduate pharmacy students with oversight by staff.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mindfulness",
+        "subjectCode": "PHRM",
+        "courseCode": "40500",
+        "instructor": [
+            "Cynthia P Koh-Knox Sharp"
+        ],
+        "description": "The goal of the course is to introduce students to intercultural development, identify stressors in life, and learn simple methods to reduce stress of pharmacy students. This introductory course comprises of class activities/discussions and assignments. It is very important that respect is demonstrated by being considerate, courteous, and professional, and by maintaining confidentiality of others' information. There are no exams in this course.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Professional Communications",
+        "subjectCode": "PHRM",
+        "courseCode": "41000",
+        "instructor": [
+            "Cynthia P Koh-Knox Sharp"
+        ],
+        "description": "  Professional communications will focus on developing verbal, written, and nonverbal communication skills. The goals of the course are to augment the students' knowledge about soft and hard communications, reinforce necessary skills for interactions and engagement in various healthcare settings, and develop professional and personal confidence. Class participation is expected and the format will be active learning with very few lectures. All pharmacy students are welcome -- this course is not intended to focus on any particular group or class. This course comprises of home study and class discussions. All discussions in class shall remain confidential. There are no exams in this course.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pharmacy Leadership And Innovation Forum",
+        "subjectCode": "PHRM",
+        "courseCode": "42500",
+        "instructor": [
+            "Eric L Barker"
+        ],
+        "description": "This course introduces students to emerging trends and career opportunities in pharmacy and the pharmaceutical sciences through exposure to leaders in professional and corporate environments.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Dosage Forms II",
+        "subjectCode": "PHRM",
+        "courseCode": "42900",
+        "instructor": [
+            "Yoon Yeo"
+        ],
+        "description": "The purpose of this course is to educate beginning pharmacy students to thoroughly understand the basic physical-chemical principles involved in preparing liquid and semisolid dosage forms and controlled drug delivery systems used in the practice of pharmacy.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Vulnerable And Underserved Patient Care",
+        "subjectCode": "PHRM",
+        "courseCode": "43900",
+        "instructor": [
+            "Kimberly S Illingworth"
+        ],
+        "description": "The goal of this course is to increase knowledge of the challenges faced by underserved patient populations and ways healthcare providers can assist patients in overcoming these challenges. The course also provides exposure and experience in patient care provided in two rural federally qualified health centers (FQHCs). Students will be able to challenge preconceived notions that they may have about underserved populations and learn the impact that pharmacists can have in caring for these populations.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Drug Discovery And Development II",
+        "subjectCode": "PHRM",
+        "courseCode": "46100",
+        "instructor": [
+            "Sandro Matosevic"
+        ],
+        "description": "The course focuses on the process of drug development from pre-formulation to unit operations. The emphasis is on the scientific principles behind every step in moving from a drug molecule to its products.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Preparing For Postgraduate Residency Program",
+        "subjectCode": "PHRM",
+        "courseCode": "46400",
+        "instructor": [
+            "Monica L Miller"
+        ],
+        "description": "This elective course will focus on preparing for the pharmacy residency program selection process. The purpose of this course is to discuss various aspects of the selection process, provide students with guidance regarding each step of the process, and provide feedback regarding materials such as curriculum vitaes (CVs), letters of intent, and thank you notes. This course is intended to guide the students through the process using events, which normally occur during the residency search including pre-Midyear preparation, navigating American Society of Health-System Pharmacists (ASHP) Midyear, the post-Midyear application and interview process, and the Match. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intercultural And Global Health Issues",
+        "subjectCode": "PHRM",
+        "courseCode": "48500",
+        "instructor": [
+            "Cynthia P Koh-Knox Sharp"
+        ],
+        "description": "This course is designed to meet the University Embedded Outcomes of Intercultural Knowledge, and Global Citizenship and Social Awareness. Students will discuss and develop presentations (verbal and written) about various intercultural and global health issues.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pharmacy Entrepreneurship",
+        "subjectCode": "PHRM",
+        "courseCode": "49000",
+        "instructor": [
+            "Kyle E Hultgren",
+            "Daniel D Degnan",
+            "Emily M Pavich"
+        ],
+        "description": "Subject matter and method of approach individually directed by instructor. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Pharmaceutical Sciences Research",
+        "subjectCode": "PHRM",
+        "courseCode": "69500",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Credit Hours: 0.50.  Introduction of new graduate students to graduate programs, various disciplines, and the research environment in the College of Pharmacy, and prepare them for their graduate studies at Purdue College of Pharmacy. Each meeting is expected to have ~90 minutes presentation(s) and 30 minutes student discussion. Permission from department required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pharmacy Skills And Patient Counseling",
+        "subjectCode": "PHRM",
+        "courseCode": "82200",
+        "instructor": [
+            "Ryan Sumner Ades"
+        ],
+        "description": "Pharmacy Skills and Patient Counseling is a two credit hour, required first professional year experiential course combining practical experience in the Purdue University Pharmacy with lecture. Students are monitored by faculty instructors, staff pharmacists and Advanced Pharmacy Practice Experience (APPE) students. Students must have a valid Social Security number the first week of class.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Integrated Pharmacotherapy I",
+        "subjectCode": "PHRM",
+        "courseCode": "82500",
+        "instructor": [
+            "Chiwook Park"
+        ],
+        "description": "This course will serve as an integrated approach to the physiology/pathophysiology, medicinal chemistry, pharmacology, pharmacokinetics/ pharmaceutics, and pharmacotherapeutics of the following topics: fluids/electrolyte pharmacotherapy, renal diseases, acid/base disorders, clinical nutrition, autonomic nervous system (ANS), pulmonary diseases, hematology, immunology, and rheumatology. The emphasis of this course is knowledge and skill development. Also in the process of completing the objectives, attitudes toward the role of the pharmacist and patient-related issues will be imparted.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Dosage Forms II",
+        "subjectCode": "PHRM",
+        "courseCode": "82900",
+        "instructor": [
+            "Yoon Yeo"
+        ],
+        "description": "Education in the use of dosage forms to deliver drugs. Collaboration with peers and other members of the health care team regarding the proper use of the various dosage forms so that the desired therapeutic objective is achieved.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Health Care Systems",
+        "subjectCode": "PHRM",
+        "courseCode": "83100",
+        "instructor": [
+            "Matthew M Murawski"
+        ],
+        "description": "This course is envisioned as a primarily didactic course whose main purpose is to provide students with an introduction to the structures and functions of the United States Health Care System. It is also designed to provide the student an opportunity to compare and contrast the methods used in other countries to address the needs of society for provision of health care to its members.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Principles Of Pharmacokinetics",
+        "subjectCode": "PHRM",
+        "courseCode": "83500",
+        "instructor": [
+            "Hyunyoung Jeong"
+        ],
+        "description": "This course introduces the theory and concepts of pharmacokinetics and biopharmaceutics. It provides the student with a foundation for more advanced therapeutic concepts in subsequent courses. The learner will develop expertise in quantifying drug absorption, distribution and elimination from concentration vs. time data or urinary drug excretion vs. time data to estimate primary pharmacokinetic parameters. Use of these parameters is required to design and modify individual drug-dosing regimens.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Integrated Pharmacotherapy III",
+        "subjectCode": "PHRM",
+        "courseCode": "84500",
+        "instructor": [
+            "Kevin M Sowinski"
+        ],
+        "description": "This course will develop knowledge and skills regarding the physiology/ pathophysiology, medicinal chemistry, pharmacology, pharmacokinetics/pharmaceutics, and pharmacotherapy of specific cardiovascular diseases, neurology diseases, and psychiatric disorders.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Principles Of Pharmacogenomics",
+        "subjectCode": "PHRM",
+        "courseCode": "84700",
+        "instructor": [
+            "Brian R Overholser"
+        ],
+        "description": "This course is designed to introduce the theory and concepts of pharmacogenetics, pharmacogenomics, and precision medicine. The course will provide the student learner broad knowledge for advanced integrated therapeutic strategy based on a patient's genetic information. The learner will develop expertise in informed patient care by selecting the proper drug, dose, and/or dosage form for a specific patient care based on personalized data and pharmacogenomic information. This course offers a platform for shaping next-generation pharmacists into an era of precision medicine.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Population Health Management",
+        "subjectCode": "PHRM",
+        "courseCode": "84900",
+        "instructor": [
+            "Steven A Scott"
+        ],
+        "description": "This two-credit hour course aims to provide students with the core knowledge and basic skills used in managing the health of populations. Core content will include managed care principles, pharmacist involvement in managed care, and program designs. The course will also provide instruction in the topic areas of pharmacoepidemiology and pharmacoeconomics.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Integrated Pharmacotherapy V",
+        "subjectCode": "PHRM",
+        "courseCode": "86500",
+        "instructor": [
+            "Michael B Kays"
+        ],
+        "description": "This course provides an integrated approach to the physiology, pathophysiology, medicinal chemistry, pharmacology, pharmacokinetics, pharmacodynamics and pharmacotherapeutics of infectious diseases. It covers a vast array of microbiological pathogens, including bacteria, fungi, viruses, mycobacteria, parasites, protozoa and malaria.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To The Advanced Pharmacy Practice Experience",
+        "subjectCode": "PHRM",
+        "courseCode": "86700",
+        "instructor": [
+            "Brian M Shepler"
+        ],
+        "description": "The Introduction to Advanced Pharmacy Practice Experience (APPE) course was designed to provide students with the tools needed to be successful clerkship students. Students will participate in a variety of activities, including case studies, group work, evaluations and assessment, review of therapeutic topics, and student/preceptor panel interactions. Activities will be supplemented by didactic lecturing for each topic. The activities and lecture topics were selected based on feedback from previous clerkship students, preceptors, and faculty, and are intended to de-mystify the clerkship experience. This course prepares students to enter the clerkship year with the ability to successfully submit required clerkship forms, evaluate preceptors and peers, avoid common clerkship student mistakes, document clinical interventions, review medical charts, and prepare for therapeutic and pharmacokinetic responsibilities.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Practice Management And Marketing Of Professional Services",
+        "subjectCode": "PHRM",
+        "courseCode": "86900",
+        "instructor": [
+            "Kyle E Hultgren"
+        ],
+        "description": "Introduces essential pharmacy practice managerial skills including personnel management, addressing conflict, CQI, change management and leadership. Builds upon these skills in the development of a business plan to implement an innovative pharmacy service.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Jurisprudence",
+        "subjectCode": "PHRM",
+        "courseCode": "87100",
+        "instructor": [
+            "Kristin R Villa"
+        ],
+        "description": "An in depth study of federal and Indiana laws, regulations, and rules affecting pharmacy practice. Primary emphasis is on Retail and Hospital Pharmacy settings. Lecture is supported by an instructor-created text covering the Food, Drug, and Cosmetic Act (21 USC), the Controlled Substances Act 21 CFR 1300 et. seq. and Indiana Food and Drug law IC 25-26-13 et. seq. and Indiana rules 856 IAC-1-43.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    }
+]

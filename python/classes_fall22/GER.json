@@ -1,0 +1,245 @@
+[
+    {
+        "title": "German Level I",
+        "subjectCode": "GER",
+        "courseCode": "10100",
+        "instructor": [
+            "Anja Mewald",
+            "Jason E Baumer"
+        ],
+        "description": "A beginning course in German reserved exclusively for students who have had less than two years of German at the ninth-grade level or above. Students with two years or more of previous German study may not take this course for credit. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level II",
+        "subjectCode": "GER",
+        "courseCode": "10200",
+        "instructor": [
+            "Irina A. Hinkel"
+        ],
+        "description": "Continuation of GER 10100. CTL:IWL 1921 German Level II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level III",
+        "subjectCode": "GER",
+        "courseCode": "20100",
+        "instructor": [
+            "Jaider David De La Hoz Garcia",
+            "Andrew Yost Kroninger"
+        ],
+        "description": "Readings from the works of nineteenth-century and contemporary German writers; practice in speaking and writing German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level IV",
+        "subjectCode": "GER",
+        "courseCode": "20200",
+        "instructor": [
+            "Viseslava Rasajski Sasic"
+        ],
+        "description": "Continuation of GER 20100. CTL:IWL 1923 German Level IV",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To The Study Of German Literature",
+        "subjectCode": "GER",
+        "courseCode": "24100",
+        "instructor": [
+            "Jeffrey Turco"
+        ],
+        "description": "An introduction to the study of German literature based on an overview of the formal elements of poetry, fiction, and drama as well as basic concepts of literary theory. Texts in German; conducted primarily in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level V",
+        "subjectCode": "GER",
+        "courseCode": "30100",
+        "instructor": [
+            "John D Sundquist",
+            "Viseslava Rasajski Sasic"
+        ],
+        "description": "Continued development of German speaking, listening, reading, and writing abilities, using materials dealing primarily with everyday life and civilization in Germany from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level VI",
+        "subjectCode": "GER",
+        "courseCode": "30200",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "Further work to develop speaking, listening, reading, and writing abilities in German on the basis of materials dealing with the ideas and events that have shaped present-day Germany. Conducted primarily in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level VI: Science And Engineering",
+        "subjectCode": "GER",
+        "courseCode": "32300",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "This is an alternative course to GER 302. Continued development of German speaking, listening, reading, and writing abilities, using materials from recent publications in science and technology. Building of general and technical vocabulary. Conducted in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Literature II: From The 18th Century To The 21st Century",
+        "subjectCode": "GER",
+        "courseCode": "34200",
+        "instructor": [
+            "Jennifer M William"
+        ],
+        "description": "Reading and discussion of selected texts in German with the dual context of literary movements and historical developments between the 18th and 21st centuries.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Level VII",
+        "subjectCode": "GER",
+        "courseCode": "40100",
+        "instructor": [
+            "Jeffrey Turco"
+        ],
+        "description": "Advanced work on development of German speaking, listening, reading, and writing abilities, focusing on materials dealing primarily with culture and the arts in Germany. Conducted in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Business German",
+        "subjectCode": "GER",
+        "courseCode": "42400",
+        "instructor": [
+            "Marc O Rathmann"
+        ],
+        "description": "A study of the terminology and techniques used in commercial transactions, including the interpretation and writing of business materials. Development of the four language skills, with emphasis on writing and speaking.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Teaching College German",
+        "subjectCode": "GER",
+        "courseCode": "51900",
+        "instructor": [
+            "Colleen A Neary-Sundquist"
+        ],
+        "description": "A course designed to provide a forum for ideas connecting theory and research to teaching practice. Explores issues related to how learning and teaching can be enhanced and presents practical ideas that can be implemented in the classroom. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "The Structure Of German II: Inflectional Morphology And Syntax",
+        "subjectCode": "GER",
+        "courseCode": "56200",
+        "instructor": [
+            "John D Sundquist"
+        ],
+        "description": "Linguistic analysis of German, focusing on inflectional morphology, syntax, and semantics. The course will present the grammatical structure of German, dealing with word-level phenomena (inflectional morphology), and phrase- and sentence-level phenomena (constituents, word order, syntactic structure, etc.). Credit will not be given for both GER 36200 and 56200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Theories Of German Language Acquisition",
+        "subjectCode": "GER",
+        "courseCode": "57500",
+        "instructor": [
+            "Mariko M Wei"
+        ],
+        "description": "Advanced course designed to provide an overview of major theoretical issues in German language acquisition research. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "German Culture",
+        "subjectCode": "GER",
+        "courseCode": "58100",
+        "instructor": [
+            "Jason E Baumer"
+        ],
+        "description": "The development of the cultural life in German-speaking lands as reflected in architecture, art, history, literature, music, and philosophy. Lectures in German.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Indo-Eur Language Family",
+        "subjectCode": "GER",
+        "courseCode": "59600",
+        "instructor": [
+            "Robert Channon"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2022"
+    }
+]

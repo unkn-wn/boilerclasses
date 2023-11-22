@@ -1,0 +1,212 @@
+[
+    {
+        "title": "Introduction To Fermentation Sciences",
+        "subjectCode": "FS",
+        "courseCode": "16300",
+        "instructor": [
+            "Maria Fernanda San Martin-Gonzalez"
+        ],
+        "description": "This course will provide an overview of the use of microorganisms in the food, pharmaceutical and chemical industries. The course will introduce fundamental concepts associated to the microbiological transformation of various substrates to produce desirable products such as foods, beverages, pharmaceuticals or chemical compounds. As an introductory course, the scientific principles of fermentation processes will be gradually introduced through the analysis of familiar fermented food products, such as bread, cheese, beer, wine, cocoa, coffee, etc. Once the fundamental concepts are learned, examples of advanced fermentation technology for production of pharmaceutical products and fine chemicals will be presented.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Food Packaging",
+        "subjectCode": "FS",
+        "courseCode": "24500",
+        "instructor": [
+            "Lisa J Mauer"
+        ],
+        "description": "Elements of packaging science and technology applied to preservation, distribution, and marketing of food products; packaging materials; principles of diffusion and permeability; procedures for developing, evaluating, and testing food packages; packaging requirements for specific types of foods; other special topics of current interest.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Food Law And Regulations",
+        "subjectCode": "FS",
+        "courseCode": "34000",
+        "instructor": [
+            "Bruce R Hamaker"
+        ],
+        "description": "This course will cover basic knowledge and familiarity of the principal law and regulations governing raw and processed foods. Class meets during weeks 1-5.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fermentation Microbiology",
+        "subjectCode": "FS",
+        "courseCode": "37200",
+        "instructor": [
+            "Stephen R Lindemann"
+        ],
+        "description": "This course explores the principles underlying the design of microbes for their use in biotechnological applications. This project-based course will teach students fundamental molecular biology techniques, important parameters for strain selection and genetic engineering, and reactor design and operation in bioprocessing. Additionally, this course will cover today's diverse bioengineering goals and tools and the role of microbial biotechnology in society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sensory Science",
+        "subjectCode": "FS",
+        "courseCode": "43500",
+        "instructor": [
+            "Andrea M Liceaga"
+        ],
+        "description": "Introduction to the fundamental concepts and practices of sensory analysis of food products. Technical aspects of planning and conducting human sensory panels on food products including analysis and interpretation of collected data. Course meets weeks 1-8.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Food Product Design (Capstone)",
+        "subjectCode": "FS",
+        "courseCode": "44300",
+        "instructor": [
+            "Andrea M Liceaga"
+        ],
+        "description": "Teams develop a new product from concept through marketing. Final case study defense is presented to faculty and peers. Classes include guest lectures from the food industry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Food Chemistry",
+        "subjectCode": "FS",
+        "courseCode": "45300",
+        "instructor": [
+            "Han Chen"
+        ],
+        "description": "Application of fundamental laws and concepts of chemistry, physics, and biology to the properties, composition, and storage of foods.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Food Analysis",
+        "subjectCode": "FS",
+        "courseCode": "46700",
+        "instructor": [
+            "Bradley L Reuhs"
+        ],
+        "description": "Application of quantitative and qualitative physical, chemical, and instrumental methods of analysis to the examination of food products; evaluation of methods for specific applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fresh Produce Food Safety",
+        "subjectCode": "FS",
+        "courseCode": "49100",
+        "instructor": [
+            "Amanda J Deering"
+        ],
+        "description": "Open primarily to qualified seniors who desire to study special problems in science not covered in regular coursework. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Aseptic Processing Technologies",
+        "subjectCode": "FS",
+        "courseCode": "53500",
+        "instructor": [
+            "Dharmendra K Mishra"
+        ],
+        "description": "Overview of aseptic processing and packaging systems; thermal processing and fluid flow in continuous heat exchangers; food microbiology, chemistry, and packaging as applied to aseptic processing. Establishing processes for aseptic processing of liquid and particulate foods.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Case Study",
+        "subjectCode": "FS",
+        "courseCode": "55501",
+        "instructor": [
+            "Yuan Yao"
+        ],
+        "description": "A brief overview of problem-solving and teamwork concepts will be presented in class. A problem will be given by an industrial sponsor, and work groups (teams) will be assigned to solve the problem and present the findings.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Microbial Foodborne Pathogens",
+        "subjectCode": "FS",
+        "courseCode": "56500",
+        "instructor": [
+            "Arun K Bhunia"
+        ],
+        "description": "The primary focus is to study the microbial pathogens involved with foodborne diseases. Course emphasis is on molecular and genetic basis of virulence of foodborne pathogens and host-parasite interactions. Topics include incidence and source of pathogens, immune response to infection, virulence factors, and mechanism of pathogenesis of specific infectious and intoxicating foodborne bacteria, mycotoxins, viruses and parasites. Typically offered odd years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Adv Material Characterization",
+        "subjectCode": "FS",
+        "courseCode": "59000",
+        "instructor": [
+            "Jozef L Kokini"
+        ],
+        "description": "Specialized study in research laboratories, libraries, or computer laboratories for problems related to food science that are not taught in regular courses. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            5
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Food Science Seminar",
+        "subjectCode": "FS",
+        "courseCode": "68400",
+        "instructor": [
+            "Lavanya Reddivari"
+        ],
+        "description": "Current topics in food science.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

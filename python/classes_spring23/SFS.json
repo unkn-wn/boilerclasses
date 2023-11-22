@@ -1,0 +1,107 @@
+[
+    {
+        "title": "Small Farm Experience I",
+        "subjectCode": "SFS",
+        "courseCode": "21000",
+        "instructor": [
+            "Moriah Tzivia Bilenky"
+        ],
+        "description": "This is the first course of two designed to help students gain an understanding of what is needed to establish a productive small farm enterprise. There will be short field trips to local small farming enterprises. Classes will also be taught by guest lecturers and local farmers who have been successful at establishing small farming enterprises. Students in the class will be responsible for working on the Purdue Student Farm to gain practical experience on the topics and concepts being taught in the class.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Principles Of Sustainability",
+        "subjectCode": "SFS",
+        "courseCode": "30200",
+        "instructor": [
+            "Steven G Hallett"
+        ],
+        "description": "Principles of sustainability is an experiential (discussion/debate) course that delivers an expansive overview of the principles of sustainability as they relate to energy and resources, communities, and agriculture. Students will learn to understand and analyze different food and farming systems and how they relate to environmental, economic and social sustainability.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Principles Of Permaculture",
+        "subjectCode": "SFS",
+        "courseCode": "31500",
+        "instructor": [
+            "Steven G Hallett"
+        ],
+        "description": "The goal of this class is to encourage students to think of farming systems, including their energy and resource flows, economics and social characteristics, in the ways that ecologists think of ecological systems. How does energy flow through farming systems, and how do resources recycle (or not)? What are the weaknesses of farming systems that could be mitigated by mimicking natural systems? Issues of efficiency, sustainability and resilience will be investigated in the context of permaculture, a theory of food production and landscape design that has an emphasis on perennial crops, low input production, and ecological diversity. The centerpiece of the course will be to further develop the Purdue Student Farm using permaculture principles.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fresh Produce Food Safety",
+        "subjectCode": "SFS",
+        "courseCode": "39100",
+        "instructor": [
+            "Amanda J Deering"
+        ],
+        "description": "Contemporary topics in sustainable food and farming systems are explored. Topic selection is based on student interest. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Structural Racism In US Agriculture",
+        "subjectCode": "SFS",
+        "courseCode": "41100",
+        "instructor": [
+            "Steven G Hallett"
+        ],
+        "description": "A discussion-based exploration of the history and legacies of structural racism in American agriculture. We will analyze the barriers to success faced by non-white farmers in the US, the structures that have oppressed minority groups in agriculture, and ways in which these forces might be reversed or resisted.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Colonialism, Globalization, And Food Justice",
+        "subjectCode": "SFS",
+        "courseCode": "41200",
+        "instructor": [
+            "Andrew T Flachs"
+        ],
+        "description": "This course will uncover the foundations of inequities in access to healthy, nutritious food from the first era of colonization to the modern era of globalization. The course will make students aware of the racial and ethnic inequities in farming and food systems and consider mechanisms of decolonization: resistance against the status quo and the development of new food systems.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Cultures And Agricultures Of The United States",
+        "subjectCode": "SFS",
+        "courseCode": "41300",
+        "instructor": [
+            "Kathryn S Orvis"
+        ],
+        "description": "The United States is a vast country encompassing many climates, geographies, and human histories. This course will investigate the diversity of the United States by examining a dozen locations with respect to people-and-place. How have people shaped these places, and how have these places shaped the people who have lived in them?",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    }
+]

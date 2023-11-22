@@ -1,0 +1,212 @@
+[
+    {
+        "title": "Introduction To Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "10000",
+        "instructor": [
+            "Kyle Aaron Cottrell"
+        ],
+        "description": "A survey of modern biochemistry using case studies that highlight general theories and unifying concepts. This course is open to all majors and does not require any college science courses as background or prerequisite.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Analytical Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "22100",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Discussion of qualitative and quantitative analysis of biological compounds including pH measurement and control, spectrophotometry, measurement of radioactivity; theoretical basis of various separation techniques, including chromatography and electrophoresis; application of these methods to separation and analysis of biological compounds. Laboratory sessions will provide practical experience in the use of these methods. This course is designed for biochemistry majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Experimental Design Seminar",
+        "subjectCode": "BCHM",
+        "courseCode": "29000",
+        "instructor": [
+            "Brian P Dilkes"
+        ],
+        "description": "Introduction to fundamentals of scientific principles and practice in biochemistry. Students will learn how to develop hypotheses, design experiments, and critically analyze results to create new knowledge. Intended for sophomores.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "30700",
+        "instructor": [
+            "Orla M Hart"
+        ],
+        "description": "Students will have an understanding of the following content areas: structure/function of amino acids, carbohydrates, lipids and nucleic acids; protein structure, function and purification; basic enzymology; replication, transcription and translation; intermediary metabolism including glycolysis, the citric acid cycle, oxidative phosphorylation, photosynthesis. Students will also develop an appreciation for some of the contributions that have been made by biochemistry to society, including improvements to medicine, agriculture, and the economy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Molecules",
+        "subjectCode": "BCHM",
+        "courseCode": "36100",
+        "instructor": [
+            "Vikki Marie Weake"
+        ],
+        "description": "A lecture course that relates biochemistry to organic chemistry. Chemical principles relevant to the assembly and function of macromolecules, the logic of biological free energy conversion, and enzyme catalysis are emphasized, all of which provide a foundation for the study of metabolism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "R For Molecular Biosciences",
+        "subjectCode": "BCHM",
+        "courseCode": "42100",
+        "instructor": [
+            "Pete E Pascuzzi"
+        ],
+        "description": "Students will acquire, assess, clean, visualize and analyze biological data sets with R. Students will be able to describe the link between complex biological phenomena and the data captured through human observation or scientific instrumentation. Students will learn how to organize data sets to optimize clarity and analytic possibilities while minimizing errors with examples drawn from the literature or biological databases. R will be taught starting with small-scale data such as drug sensitivity assays moving to genome-scale analyses such as gene expression and pathway analysis later in the course. These skills will be taught in the light of increasing data literacy and enabling reproducible research through clear documentation of data and communication of analyses. Relevant concepts from biology and statistics will be reviewed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Medical Topics In Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "43400",
+        "instructor": [
+            "James D Forney"
+        ],
+        "description": "This course applies the principles of biochemistry and metabolic regulation to understand the diagnosis and treatment of human disease. The course emphasizes the biochemistry relevant to diabetes, blood disorders and the medical consequences of liver disease and aging. Roughly half of the class time is focused on small group activities including team-based learning and problem-based learning using patient cases. Students will search authoritative sources to discover links between biochemistry and clinical symptoms and communicate that information to their peers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Biochemistry Of Life Processes",
+        "subjectCode": "BCHM",
+        "courseCode": "46500",
+        "instructor": [
+            "Joseph P Ogas"
+        ],
+        "description": "Major questions in biochemistry and contemporary approaches to these problems. Material covered in class will primarily be derived from primary literature. Students will continue to develop the skills needed to critically read, evaluate, and assimilate the primary scientific literature.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Undergraduate Seminar",
+        "subjectCode": "BCHM",
+        "courseCode": "49000",
+        "instructor": [
+            "Orla M Hart"
+        ],
+        "description": "Discussion of individual student's research projects. Preparation of posters and public seminars based upon research results. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Comparative Genomics",
+        "subjectCode": "BCHM",
+        "courseCode": "52100",
+        "instructor": [
+            "Jennifer H Wisecaver"
+        ],
+        "description": "The course provides an understanding of the forces that act on genome content and organization, and the ability to interpret genetic variation between genomes. Students will acquire skills to utilize public genome databases, visualize genomic regions/features of interest using a genome browser, and perform phylogenetic analysis. The knowledge gained is central within the fields of genetics, bioinformatics, microbiology, and evolutionary biology and have important applications in numerous related fields including medicine, biotechnology, agriculture, and ecology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "General Biochemistry II",
+        "subjectCode": "BCHM",
+        "courseCode": "56200",
+        "instructor": [
+            "Elizabeth J Tran"
+        ],
+        "description": "This course provides upper-division undergraduate and graduate students with an understanding of core metabolic pathways. Anabolic and catabolic processes of metabolic pathways are studied. Biochemical and structural knowledge is used to determine how enzymes and coenzymes are needed to regulate and control metabolic pathways.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Regulation Of Eukaryotic Gene Expression",
+        "subjectCode": "BCHM",
+        "courseCode": "61000",
+        "instructor": [
+            "Hana Hall"
+        ],
+        "description": "This course will provide students with a basic understanding of gene expression mechanisms with a s specific focus on newly emerging topics. This course will be taught from current primary literature, using a textbook as a background resource. Topics will include transcription, messenger RNA decay, microRNAs and connections between gene expression steps. Students will learn how to read and interpret scientific literature through class presentations, discussions and take home assignments. Additionally, students will gain experience in developing and testing hypotheses within the class topic areas and writing a research proposal. Prerequisites: BCHM 56100 and 56200, or BCHM 60501. Lack of these prerequisites will require approval by the instructor.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Protein Mass Spectrometry And Proteomics",
+        "subjectCode": "BCHM",
+        "courseCode": "62000",
+        "instructor": [
+            "Weiguo Andy Tao"
+        ],
+        "description": "The goals of this course are to introduce students to 1) basic principles of mass spectrometry, 2) the most common instruments used for protein mass spectrometry including the advantages and disadvantages of each, 3) the most common applications of protein mass spectrometry in biological research, 4) current approaches to quantitative protein mass spectrometry and their use in proteomic studies 5) the skills necessary to analyze mass spec data from a variety of experiment types including the ability to use and understand common database search programs, and 6) contemporary issues associated with large-scale proteomics experiments (including technical challenges and limitations) culminating in the ability to design appropriate experiments to answer a specific proteomic question. Prerequisite: Students need to have taken an undergraduate level biochemistry course and be familiar with basic aspects of protein structure that are taught in such courses. In the absence of an undergraduate biochemistry course, students should discuss their qualifications with the instructor before registering.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "69000",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Seminary In Biochemistry. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

@@ -1,0 +1,388 @@
+[
+    {
+        "title": "Introductory Sociology",
+        "subjectCode": "SOC",
+        "courseCode": "10000",
+        "instructor": [
+            "Michael William Steinhour",
+            "Brandon Jackson",
+            "Kooi Chin Tong",
+            "Brittany Nicole Ganser",
+            "Jeremy E Reynolds"
+        ],
+        "description": "A survey course designed to introduce the student to the scene of human society. Fundamental concepts, description, and analysis of society, culture, the socialization process, social institutions, and social change. Students of junior or senior standing should take SOC 31200, unless they are sociology or law and society majors. CTL:ISH 1060 Introduction To Sociology",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Social Problems",
+        "subjectCode": "SOC",
+        "courseCode": "22000",
+        "instructor": [
+            "Marcus Larson Mann",
+            "Lindsay M Hamm",
+            "Michael William Steinhour",
+            "Nicole Marie Frame"
+        ],
+        "description": "Contemporary problems at the community, society, and international levels, focusing on patterns of social organization and social change in American society, with concentration on such topics as technological militarism and war, poverty, racism, political protest, and cybernation. CTL:ISH 1061 Social Problems",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Race And Ethnicity",
+        "subjectCode": "SOC",
+        "courseCode": "31000",
+        "instructor": [
+            "Brandon Jackson"
+        ],
+        "description": "This course is a sociological examination and analysis of the presence and significance of race and ethnicity in our society. The purpose of this course is to provide a foundation and critical framework for assessing the origins and manifestations of race and ethnicity. Race and ethnicity have historically been one basis for differentiation and stratification in the United States and other societies, and this persists today. In this course, we will examine the emergence of race and ethnicity as concepts, and how they shape our everyday lives. We will be guided by the following questions: Why do we study race and ethnicity? How and why are they relevant in our society? How do we experience race and ethnicity, and how has this changed over time? Topics include multiculturalism and diversity; media representations; racism and discrimination; colorism; racial hierarchies; immigration; and different domains of racial inequality.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Criminology",
+        "subjectCode": "SOC",
+        "courseCode": "32400",
+        "instructor": [
+            "Brittany Nicole Ganser",
+            "Christopher Han-Fai Seto"
+        ],
+        "description": "(CRJU 32400) Nature and cause of crime; methods of dealing with adult and juvenile offenders, consideration of present programs for the social treatment of crime in the light of needed changes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Criminal Justice",
+        "subjectCode": "SOC",
+        "courseCode": "32800",
+        "instructor": [
+            "William M Coghill"
+        ],
+        "description": "Introduction to institutionalized responses of society to the problem of crime. Analysis of the administration of justice in each of the major components of the criminal justice system and laws regulating their operations. Some consideration given to comparative criminal justice. CTL:ISH 1030 Introduction To Criminal Justice",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "General Social Psychology",
+        "subjectCode": "SOC",
+        "courseCode": "34000",
+        "instructor": [
+            "Michael William Steinhour"
+        ],
+        "description": "Social influences on the individual and processes of social interaction. Individual attitudes and behavior as related to socialization, social norms, social roles, communication and propaganda, and other social influences. Among the interaction processes considered are interpersonal attraction, influence, leadership, cooperation, and conflict. Not open to students with credit in PSY 24000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sociology Of Family",
+        "subjectCode": "SOC",
+        "courseCode": "35000",
+        "instructor": [
+            "Catherine G Stepniak"
+        ],
+        "description": "Designed to provide an understanding of contemporary courtship, marriage, and family interaction as cultural, social, and social-psychological phenomena. Consideration of the major sources of marital strain and conflict within a heterogeneous, rapidly changing society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Drugs, Culture, And Society",
+        "subjectCode": "SOC",
+        "courseCode": "35200",
+        "instructor": [
+            "Brittany Nicole Ganser"
+        ],
+        "description": "The course provides an overview of the social and cultural underpinnings of drug use across societies. Students engage with various topics, including addiction, global markets, drug epidemics, public policy, and cross-cultural differences in drug use.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Hate And Violence",
+        "subjectCode": "SOC",
+        "courseCode": "35600",
+        "instructor": [
+            "Rachel L Einwohner"
+        ],
+        "description": "Examines the causes of and solutions to hatred and violence. Concepts such as anti-Semitism, discrimination, hate crimes, prejudice, racism, bullying, homosexual prejudice, terrorism and other topics will be addressed. This course uses experiential activities, videos, guest speakers and classroom discussion.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data And Society",
+        "subjectCode": "SOC",
+        "courseCode": "38100",
+        "instructor": [
+            "David Andrew Peterson"
+        ],
+        "description": "We are currently witnessing amazing technological innovations brought about by the production, accumulation, and analysis of unimaginable amounts of data. These technologies are disrupting industries, creating new classes of wealthy and poor, and providing novel opportunities for social control and resistance. This course will look at how the increasing centrality of data is changing our world. Among the questions we will answer: What's so big about Big Data? How intelligent is artificial intelligence? Why does everyone want my data? Will there still be jobs when I graduate?",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Statistics In Sociology",
+        "subjectCode": "SOC",
+        "courseCode": "38200",
+        "instructor": [
+            "Christie A Sennott"
+        ],
+        "description": "Introduction to the basic techniques of statistical analysis applicable to sociological data. Elementary descriptive statistics and statistical inference. Introduction to multivariate analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Research Methods In Sociology",
+        "subjectCode": "SOC",
+        "courseCode": "38300",
+        "instructor": [
+            "Kevin M Stainback"
+        ],
+        "description": "Introduction to the methods of data collection and analysis and to the use of the scientific method of social research. Formulation of hypotheses and research designs for their testing. Elementary principles for the conduct of experiments, observation and interviewing, documentation, content analysis, and surveys. Relationship between social research and social theory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sociology Of Policing",
+        "subjectCode": "SOC",
+        "courseCode": "39100",
+        "instructor": [
+            "William M Coghill",
+            "Leslie A Charters"
+        ],
+        "description": "Various topics in sociology that may change from semester to semester are presented by Sociology faculty members.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sociological Theory",
+        "subjectCode": "SOC",
+        "courseCode": "40200",
+        "instructor": [
+            "Adam Kotanko",
+            "Kevin M Stainback"
+        ],
+        "description": "An advanced critical treatment of the theories, concepts, and methods of sociology. A basic course required of undergraduate majors in sociology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Social Inequality",
+        "subjectCode": "SOC",
+        "courseCode": "41100",
+        "instructor": [
+            "Lindsay M Hamm"
+        ],
+        "description": "Examination of systems of class and caste, with special attention to the United States; status, occupation, income, and other elements in stratification.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sociology Of Law",
+        "subjectCode": "SOC",
+        "courseCode": "41900",
+        "instructor": [
+            "David R Mcelhattan",
+            "Elizabeth A Hoffmann"
+        ],
+        "description": "Provides an overview of American legal thought and legal processes. Major topics include definitions of law; anthropological studies of law; origin and development of law; jurisprudence; police behavior; lawyers and courts; deterrent and labeling effects of legal sanctions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Field Practicum In Sociology And Law And Society",
+        "subjectCode": "SOC",
+        "courseCode": "42300",
+        "instructor": [
+            "William M Coghill"
+        ],
+        "description": "Field experience in criminal justice system or social services. Students serve as \"interns\" in a criminal justice or social service agency one day (or its equivalent) per week, under the supervision of agency personnel. Application of theory and empirical research findings to field problems. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Gender Roles In Modern Society",
+        "subjectCode": "SOC",
+        "courseCode": "45000",
+        "instructor": [
+            "Daniel Golbeck Rudel"
+        ],
+        "description": "A critical examination of the complementary roles of men and women, with particular attention to problems of role adjustment in the contemporary United States. The neofeminist movement and countermovements. Role conflicts and adjustments in such areas as family, education, employment, and the political arena.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Health And Social Behavior",
+        "subjectCode": "SOC",
+        "courseCode": "46100",
+        "instructor": [
+            "Patricia A Thomas"
+        ],
+        "description": "This course provides a sociological examination of health and illness, with a particular focus on social position (e.g., race, socioeconomic status, gender), stress and social support, and health care. Goals for this course include developing critical thinking skills, understanding the broader implications of issues related to health, and thinking creatively about potential societal solutions to these issues.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Methods Of Social Research I",
+        "subjectCode": "SOC",
+        "courseCode": "58000",
+        "instructor": [
+            "Linda A Renzulli"
+        ],
+        "description": "An intermediate-level examination of research designs, measurement, and sampling with emphasis on issues of problem formulation and the logic and application of methodological procedures.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Sociology Proseminar",
+        "subjectCode": "SOC",
+        "courseCode": "59100",
+        "instructor": [
+            "Shawn G Bauldry"
+        ],
+        "description": "Topics vary.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In The Sociology Of Religion",
+        "subjectCode": "SOC",
+        "courseCode": "66700",
+        "instructor": [
+            "Fenggang Yang"
+        ],
+        "description": "Examines topics of traditional or emerging interest in the sociology of religion. Topics covered depend on the theoretical research interests of participating faculty and students. Prerequisite: SOC 56700 or 56800.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Medical Sociology",
+        "subjectCode": "SOC",
+        "courseCode": "67400",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Seminar in Medical Sociology. Prerequisite: SOC 57100, 57400.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Social Research Methods",
+        "subjectCode": "SOC",
+        "courseCode": "68000",
+        "instructor": [
+            "Jeremy E Reynolds"
+        ],
+        "description": "Survey analysis using regression models. Emphasizes ordinary least squares model applied to sociological problems. Also considered are path analysis and logit and logistic regression. A series of projects are required using the PUCC mainframe computer applying course concepts. Prerequisite: SOC 58100 or 60000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Qualitative Methods",
+        "subjectCode": "SOC",
+        "courseCode": "68600",
+        "instructor": [
+            "Danielle Kane"
+        ],
+        "description": "Surveys qualitative research methods. Considers methods of data collection and data analysis, including computer-assisted techniques. Critical examination of perspectives, assumptions, and issues, including protection of human subjects. Students conduct research projects and write papers using techniques encountered in class. Prerequisite: SOC 58000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

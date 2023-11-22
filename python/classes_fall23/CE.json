@@ -1,0 +1,795 @@
+[
+    {
+        "title": "Principles And Practice Of Geomatics",
+        "subjectCode": "CE",
+        "courseCode": "20300",
+        "instructor": [
+            "Melba M Crawford"
+        ],
+        "description": "  This course provides a broad overview of geomatics engineering including fundamental principles required for practical geomatics applications. This course includes subjects in traditional surveying, GPS surveying, remote sensing, photogrammetry, laser scanning, and Geographic Information Systems (GIS). Basic concepts on these subjects are applied to solve practical problems in various civil engineering applications; including computations for engineering project control and construction layout; theory of error propagation; fundamental concepts of horizontal and vertical curves; topographic mapping using various geospatial data acquisition technologies from ground, air, and space; GIS for visualization and analysis of geospatial data.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Thermal And Energy Sciences",
+        "subjectCode": "CE",
+        "courseCode": "21101",
+        "instructor": [
+            "Brandon E Boor"
+        ],
+        "description": "This course includes applications of thermal science and energy fundamentals to civil engineering topics. Emphasis is placed on fundamental concepts of properties of materials, work, heat, internal energy, entropy, equilibrium, and relations derived from the first and second laws of thermodynamics. Example applications include: power plants; fluid flow in ducts/pipes; thermal properties of building/construction materials and processes; geothermal systems; heating, ventilation, and air conditioning (HVAC) processes; energy balances in buildings; refrigeration; hydroelectric power; contaminant transport in air, water, and soil; climate change; the urban heat island effect; and energy use in the transportation sector.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Life Cycle Engineering And Management Of Constructed Facilities",
+        "subjectCode": "CE",
+        "courseCode": "22200",
+        "instructor": [
+            "Geoffrey H Graff"
+        ],
+        "description": "The objective of this course is to introduce concepts relating to the engineering and construction of facilities throughout their life cycle. Topics that will be explored include the nature of the construction industry, construction contracts, legal and management organization of construction companies, basics of the design and construction process, as well as an introduction to the role estimating and project scheduling. Cost, time, safety and quality concepts of construction management relationships will also be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introductory Structural Mechanics",
+        "subjectCode": "CE",
+        "courseCode": "27000",
+        "instructor": [
+            "Johnny Wilfredo Condori Uribe"
+        ],
+        "description": "Loads; structural forms; analysis of axially loaded members, flexural members, torsional members; combined loading conditions; buckling. Basic behavioral characteristics of structural elements and systems illustrated by laboratory experiments.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Contemporary Issues In Civil Engineering",
+        "subjectCode": "CE",
+        "courseCode": "29202",
+        "instructor": [
+            "John C Tompkins"
+        ],
+        "description": "This course provides a forum on issues in the civil engineering profession in a contemporary context. Topics include professionalism and ethics, entrepreneurship, cultural differences, and collaborating globally. Students have interactions with engineering faculty and professionals outside the University. Guidance on the preparation of individual plans of study and information on civil engineering career options are provided. Students learn and apply fundamental aspects of written communication in professional settings. Emphasis is placed on delivery of technical and managerial content. Students will compile a professional portfolio of communication assignments, including lab reports prepared in other CE courses.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Basic Mechanics I (Statics)",
+        "subjectCode": "CE",
+        "courseCode": "29700",
+        "instructor": [
+            "Behzad Esmaeili",
+            "Mohammadreza Nmi Mirzahosseini"
+        ],
+        "description": "Statics of particles. Rigid bodies: equivalent systems of forces, equilibrium. Centroids and centers of gravity. Static analysis of trusses, frames, and machines. Friction. Area moments of inertia.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Basic Mechanics II Dynamics",
+        "subjectCode": "CE",
+        "courseCode": "29800",
+        "instructor": [
+            "Johnny Wilfredo Condori Uribe"
+        ],
+        "description": "Kinematics of particles. Kinetics of particles and systems of particles. Kinematics of rigid bodies. Mass moments of inertia. Kinetics of rigid bodies. Mechanical vibrations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Next Generation Mobility",
+        "subjectCode": "CE",
+        "courseCode": "29900",
+        "instructor": [
+            "Darcy M Bullock"
+        ],
+        "description": "Topics vary. Projects, special topics, or supplemental instruction. Arrange Hours and Credit. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Architectural Engineering",
+        "subjectCode": "CE",
+        "courseCode": "31100",
+        "instructor": [
+            "Nusrat Jung"
+        ],
+        "description": "This course introduces energy efficiency, thermal comfort, indoor environmental quality and green building design concepts. The course covers engineering fundamentals required for the design and analysis of building systems such as thermodynamics, fluid mechanics, heat and mass transfer, light and sound transmission. The course presents engineering principles and selected applications related to hydrothermal analysis of building enclosures, air conditioning processes in heating, ventilating and air conditioning systems, building illumination, and building acoustics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Project Control And Life Cycle Execution Of Constructed Facilities",
+        "subjectCode": "CE",
+        "courseCode": "32201",
+        "instructor": [
+            "Sogand Mohammadhasanzadeh"
+        ],
+        "description": "The objective of this course is to continue an introduction to construction management and engineering concepts for future engineers, contractors and owner representatives involved at different stages in the life-cycle of constructed faculties. Building on the broad framework introduced in the prerequisite course, this course develops further ability with analytical tools and extends the basic foundation for advanced topics in construction engineering and management. Specifically, this course focuses on the principles, tools, and procedures used in the construction industry for project selection and financing, advanced planning and scheduling techniques, resource management, and project monitoring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Civil Engineering Materials",
+        "subjectCode": "CE",
+        "courseCode": "33500",
+        "instructor": [
+            "Pablo D Zavattieri"
+        ],
+        "description": "An introduction to the relationships between fundamental structure of materials and their properties presented through a combination of materials science and engineering approaches. Emphasis on materials of particular interest for civil engineering applications, including metals, aggregates, portland cement concrete, bituminous materials, asphalt binders, asphalt mixtures, wood, polymers, composites, and masonry. Laboratory exercises illustrate atomic structure, elastic and inelastic properties, and demonstrate applications of selected principles of mechanics, testing of aggregates, as well as designing and testing of asphalt and concrete mixtures.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Hydraulics",
+        "subjectCode": "CE",
+        "courseCode": "34000",
+        "instructor": [
+            "Dennis A Lyn"
+        ],
+        "description": "Fluid properties; hydrostatics; kinematics and dynamics of fluid flows; conservation of mass, energy, and momentum; flows in pipes and open channels. Formal laboratory experiments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Environmental And Ecological Engineering",
+        "subjectCode": "CE",
+        "courseCode": "35000",
+        "instructor": [
+            "Inez Hua"
+        ],
+        "description": "Introduction to water pollution, air pollution, noise, hazardous and solid wastes, and their control. Environmental impact statements and global pollution issues. Field trips required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Engineering Environmental Sustainability",
+        "subjectCode": "CE",
+        "courseCode": "35500",
+        "instructor": [
+            "Loring F Nies"
+        ],
+        "description": "(EEE 35500) An introduction to the examination of global-scale resource utilization, food, energy and commodity production, population dynamics, and their ecosystem impacts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Transportation Engineering",
+        "subjectCode": "CE",
+        "courseCode": "36100",
+        "instructor": [
+            "Darcy M Bullock"
+        ],
+        "description": "Transportation functions; transportation systems, including land, air, and marine modes; transportation system elements, including traveled way, vehicle, controls, and terminals; techniques of transportation system planning, design, and operation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Structural Analysis I",
+        "subjectCode": "CE",
+        "courseCode": "37100",
+        "instructor": [
+            "Ayhan Irfanoglu"
+        ],
+        "description": "Stress resultants (reactions, axial forces, shear forces, and bending moments) for beams and framed structures. Deflections of beams and frames by geometric methods (moment-area theorems and applications; conjugate beam analogy). Analysis of statically indeterminate beams and frames by classical stiffness methods; slope deflection and moment distribution. Influence functions and their applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Geotechnical Engineering I",
+        "subjectCode": "CE",
+        "courseCode": "38300",
+        "instructor": [
+            "Rodrigo Salgado"
+        ],
+        "description": "Introduction to the nature and origin of soils and rocks; engineering significance of geologic landforms and soil deposits; identification and engineering classification of soils; engineering behavior and properties of soils; permeability, compressibility, shearing resistance; soil compaction.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Technical Communication In Civil Engineering",
+        "subjectCode": "CE",
+        "courseCode": "39201",
+        "instructor": [
+            "John C Tompkins"
+        ],
+        "description": "This course will build upon the technical communication components of CE 29202, adding instruction in oral communication, projects, and working in teams. This course involves both individual and team assignments intended to offer students the opportunity to practice preparing and delivering written correspondence and reports, as well as oral presentations. These activities may be coordinated with other CE courses being taken by students in CE 39201.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Civil Engineering Systems Design",
+        "subjectCode": "CE",
+        "courseCode": "39800",
+        "instructor": [
+            "Samuel Labi"
+        ],
+        "description": "An introduction to engineering economy and systems analysis. A systematic approach to the engineering method of design and problem solving.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Building Envelope Design And Thermal Loads",
+        "subjectCode": "CE",
+        "courseCode": "41300",
+        "instructor": [
+            "Huijeong Kim"
+        ],
+        "description": "This course discusses the basic thermal processes in buildings and presents comprehensive methods for thermal design of envelope assemblies in commercial and residential buildings. The first part of the course includes steady-state transient conduction through envelope assemblies, convection and radiation heat transfer in buildings, solar radiation and solar gains, thermal performance of windows, internal gains, ventilation and infiltration. The second part of the course considers surface and room energy balance equations and presents analytical and computational models for calculation of hourly heating and cooling loads throughout the year. Climate-based standards, passive solar design, advanced energy guides, and innovative technologies for high performance buildings are discussed. The course also includes a design project on analytical heating/cooling load calculations for a commercial building.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Urban Hydraulics",
+        "subjectCode": "CE",
+        "courseCode": "44000",
+        "instructor": [
+            "Rao S Govindaraju"
+        ],
+        "description": "Sources and distribution of water in urban environment, including surface reservoir requirements, utilization of groundwater, and distribution systems. Analysis of sewer systems and drainage courses for the disposal of both wastewater and storm water. Pumps and lift stations. Urban planning and storm drainage practice.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Wastewater Treatment Processes",
+        "subjectCode": "CE",
+        "courseCode": "45600",
+        "instructor": [
+            "Zhi Zhou"
+        ],
+        "description": "(EEE 45600) Fundamental design principles and practice of wastewater treatment to prepare students for designing wastewater treatment systems. The major topics include design and construction process, preliminary treatment of wastewater, primary treatment, wastewater microbiology, secondary treatment, nitrogen removal, phosphorus removal, attached microbial growth, secondary settling, disinfection and post-aeration, tertiary treatment, and wastewater plant residuals management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Roadway And Pavement Design",
+        "subjectCode": "CE",
+        "courseCode": "46100",
+        "instructor": [
+            "John E Haddock"
+        ],
+        "description": "Design of highway and airport pavement systems, subgrades, subbases and bases, soil stabilization, flexible and rigid pavements; cost analysis and pavement selection; quality control; drainage; earthwork; pavement evaluation and maintenance.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Highway Transportation Characteristics",
+        "subjectCode": "CE",
+        "courseCode": "46300",
+        "instructor": [
+            "Andrew P Tarko"
+        ],
+        "description": "Analysis of basic characteristics of highway transportation systems and the elements influencing these characteristics: drivers, vehicles, pedestrians, flow, density, speed, travel time, delay, stream flow, intersection performance, capacity, accidents, traffic demand, and parking. Techniques used include experimental observation, deterministic and probabilistic queueing theory, probability and statistics, and graphical analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Structural Steel Design",
+        "subjectCode": "CE",
+        "courseCode": "47000",
+        "instructor": [
+            "Robert J Connor"
+        ],
+        "description": "The elements of structural steel design, including tension members and their connections; structural connections, including welding, and high-strength bolts; compression members; rolled and built-up flexural members; and combined axial and flexural loading effects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Reinforced Concrete Design",
+        "subjectCode": "CE",
+        "courseCode": "47300",
+        "instructor": [
+            "Akanshu Sharma"
+        ],
+        "description": "Design and behavior of reinforced concrete beams, one-way slabs, and columns.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Design Of Building Components And Systems",
+        "subjectCode": "CE",
+        "courseCode": "47900",
+        "instructor": [
+            "Susan M Khalifah"
+        ],
+        "description": "Design of simple floor and roof systems and load bearing walls; uses of building materials; fundamentals of design of metal form decking, steel joists, masonry (beams, columns and load bearing walls), and timber (beams, trusses, and mechanical connections).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Geotechnical Engineering II",
+        "subjectCode": "CE",
+        "courseCode": "48300",
+        "instructor": [
+            "Monica Prezzi"
+        ],
+        "description": "Subsurface investigations and techniques for sampling soils, lateral earth pressures, and stability of retaining structures; stability of earth slopes; shallow and deep foundations design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Ldrshp & Adv Proj Mgmt",
+        "subjectCode": "CE",
+        "courseCode": "49700",
+        "instructor": [
+            "Robert L Bowen"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Digital Photogrammetric Systems",
+        "subjectCode": "CE",
+        "courseCode": "50301",
+        "instructor": [
+            "Ayman F Habib"
+        ],
+        "description": "This course deals with various aspects related to 3D reconstruction from 2D imagery. The course starts with comprehensive coverage of data acquisition systems while focusing on different factors that affect the quality of image measurements. Then, the course focuses on the mathematical details for deriving 3D information from imagery including 2D/3D rotation, collinearity equations, projective transformation, direct linear transformation, theory of orientation, bundle adjustment, image resampling according to epipolar geometry, image matching, and orthophoto generation. The course also covers the similarities/differences between photogrammetric and computer vision approaches toward 3D reconstruction.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Adjustment Of Geospatial Observations",
+        "subjectCode": "CE",
+        "courseCode": "50601",
+        "instructor": [
+            "Jinha Jung"
+        ],
+        "description": "This course presents a thorough and comprehensive look at the topic of fitting data to a mathematical model. The techniques presented will free the scientist or engineer from dependence on restrictive software applications, and allow customization of solutions using weighting, constraints, parameter dependencies, and robust techniques which minimize the influence of blunders. Example applications include 2D/3D ranging, 2D/3D triangulation, curve and surface fitting, coordinate transformations, leveling, and image triangulation. Pre-analysis and design techniques permit the precision of unknown parameters to be determined in advance, prior to expending time and effort in field measurements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Geospatial Data Analytics",
+        "subjectCode": "CE",
+        "courseCode": "50701",
+        "instructor": [
+            "Jie Shan"
+        ],
+        "description": "The course will introduce fundamental theories, analytical methods and programming skills that are needed to work with geospatial data. Students will learn the theories, methods, and techniques to visualize, analyze and model various geospatial data through hands-on computer programming practice based on various open source geospatial libraries. To be specific, the course will use R and its related packages as the basic tool for implementation. The goal is to enable the learners to develop their own geospatial analytical applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Building Energy Audits",
+        "subjectCode": "CE",
+        "courseCode": "51501",
+        "instructor": [
+            "William Travis Horton"
+        ],
+        "description": "This course is designed to provide students with the necessary skills to perform an energy audit on commercial and residential buildings. Energy accounting procedures for all major building subsystems are covered in detail, along with operational cost analysis of these systems. Students learn fundamental techniques for auditing the building envelope; electrical and lighting systems; heating, ventilation, and air conditioning systems; internal thermal loads; and building maintenance and operation procedures. Students also learn to analyze electric and natural gas utility tariffs and rate structures and apply their findings to the energy auditing process.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Construction Project Control Systems",
+        "subjectCode": "CE",
+        "courseCode": "52000",
+        "instructor": [
+            "Dulcy M Abraham"
+        ],
+        "description": "Techniques used for planning and scheduling, estimating, and cost control for construction projects. The interface of cost control with the financial management at the company level will be considered. Work breakdown structure as a method of control will be developed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Computer Applications In Construction",
+        "subjectCode": "CE",
+        "courseCode": "52200",
+        "instructor": [
+            "Hubo Cai"
+        ],
+        "description": "A study of current computer usage in the construction industry; basic computer hardware and software concepts; computer applications in construction; commercially available software applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Experimental Methods In Construction Materials Research",
+        "subjectCode": "CE",
+        "courseCode": "53800",
+        "instructor": [
+            "Jan Olek"
+        ],
+        "description": "This course will introduce the student to the fundamental aspects of the computer control of experimental equipment. Emphasis is placed on the difficulties of interfacing computers and instruments. Experimental techniques for measuring important properties of construction materials are discussed. For example, techniques involving the use of strain gages, optical measurements, and measurement of properties such as pore structure and surface area are considered. Emphasis is placed on the effects of experimental techniques on the resulting measurements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Open Channel Hydraulics",
+        "subjectCode": "CE",
+        "courseCode": "54000",
+        "instructor": [
+            "Dennis A Lyn"
+        ],
+        "description": "Energy and momentum principles, design of open channels for uniform and nonuniform flow, boundary layer and roughness effects, flow over spillways, energy dissipation, flow in channels of nonlinear alignment and non-prismatic section.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Coastal Engineering",
+        "subjectCode": "CE",
+        "courseCode": "54300",
+        "instructor": [
+            "Cary D Troy"
+        ],
+        "description": "An introduction to coastal engineering with emphasis on the interaction between oceanic dynamic processes (waves, currents, and tides) and coastal regions (beaches, harbors, structures, and estuaries) and on the engineering approaches necessary to prevent adverse effects caused by this interaction.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Computational Watershed Hydrology",
+        "subjectCode": "CE",
+        "courseCode": "54900",
+        "instructor": [
+            "Venkatesh Mohan Merwade"
+        ],
+        "description": "Use of professional computer programs for the calculation of the runoff from complex basins. Generation of unit hydrographs. Calculation of losses, channel and reservoir routing, parameter optimization, and application of Kinematic wave technique to urban catchments.  Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Physico-Chemical Processes In Environmental Engineering I",
+        "subjectCode": "CE",
+        "courseCode": "55000",
+        "instructor": [
+            "Ernest R Blatchley"
+        ],
+        "description": "Theory and principles of design for processes used in environmental engineering, with emphasis on water and wastewater treatment. Processes include: coagulation, flocculation, sedimentation, centrifugation, filtration, disinfection, adsorption, and gas/liquid transfer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Air Quality Management",
+        "subjectCode": "CE",
+        "courseCode": "55700",
+        "instructor": [
+            "Robert B Jacko"
+        ],
+        "description": "Discussion of fugitive, mobile, and point sources of air pollution with attendant effects on materials, plants, and humans. Development and status of state and federal regulations with emphasis on the development and use of mathematical dispersion models including meteorological fundamentals and atmospheric transport. Discussion of concepts for ambient air quality control strategies including urban planning and transportation considerations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Transportation Systems Evaluation",
+        "subjectCode": "CE",
+        "courseCode": "56100",
+        "instructor": [
+            "Konstantina Gkritza"
+        ],
+        "description": "Concepts and principles of transportation economic analysis, transportation costs and benefits, user and nonuser consequences, needs studies, finance and taxation, methods of evaluation of plans and projects, cost-effectiveness, environmental impact assessment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Traffic Engineering: Operations And Controls",
+        "subjectCode": "CE",
+        "courseCode": "56500",
+        "instructor": [
+            "Yiheng Feng"
+        ],
+        "description": "Traffic laws and ordinances; design and application of signs, markings, and signals; timing of isolated and interconnected signals; speed regulation; one-way streets; pedestrian, bicycle, and mass transit considerations; traffic engineering administration.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Structural Mechanics",
+        "subjectCode": "CE",
+        "courseCode": "57000",
+        "instructor": [
+            "Arun Prakash"
+        ],
+        "description": "Studies of stress and strain, failure theories, and yield criteria; flexure and torsion theories for solid and thin-walled members; and energy methods.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Structural Dynamics",
+        "subjectCode": "CE",
+        "courseCode": "57300",
+        "instructor": [
+            "Shirley J Dyke"
+        ],
+        "description": "Analysis of structural members and systems subject to dynamic loads such as wind and earthquake loads; basic theory for single-degree-of-freedom and multi-degree-of-freedom analytical models of civil engineering structures; free vibration, harmonic and transient excitation, foundation motion, resonance spectrum, Lagrange's equation, modal analysis, lumped parameter methods, computer methods.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Reinforced Concrete Design",
+        "subjectCode": "CE",
+        "courseCode": "57600",
+        "instructor": [
+            "Julio Alfonso Ramirez"
+        ],
+        "description": "Design and behavior of columns, two-way slab and slab-beam floor systems, and beam-column joints; strut-and-tie models.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Geotechnical Engineering",
+        "subjectCode": "CE",
+        "courseCode": "58000",
+        "instructor": [
+            "Maria Caterina Santagata"
+        ],
+        "description": "Advanced treatment of topics in geotechnical engineering, including the engineering response to loading, soil properties, earth pressures, shear strength, soil compaction and fabric, permeability, and consolidation and settlement analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Structural Steel Design",
+        "subjectCode": "CE",
+        "courseCode": "59100",
+        "instructor": [
+            "Soheil Shafaei"
+        ],
+        "description": "Design and behavior of plate girders; design of composite beam and column members; behavior and design of bolted and welded connections, including moment-resistant connections, seated connections, and gusset-plate connections.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Entrepreneurship And Business Strategy In Engineering",
+        "subjectCode": "CE",
+        "courseCode": "59601",
+        "instructor": [
+            "Joseph V Sinfield"
+        ],
+        "description": "This course offers students the opportunity to learn and apply the core skills required to build and grow engineering- and technology-based businesses through lecture, case discussions, and weekly activities tied to a semester-long team project. Course content includes market analysis techniques to link technology attributes to opportunity and vice versa, combinatorial business design and planning methods, strategic innovation theories, competitive analysis, methods of emergent strategy and risk mitigation, as well as examination of team building, firm influence and navigation, and organizational design principles. Emphasis throughout is placed on the implications of research and development uncertainty, long-lifecycle economics, and the management of subcontracts and multi-disciplinary teams often encountered when developing and delivering complex engineering outputs. Case studies are used to contrast the challenges faced when creating new businesses (entrepreneurial) with those encountered in attempts to grow an existing enterprise (intrapreneurial). Coursework and project activities also facilitate development of business acumen, and skill building in conceptual thinking, synthesis, and persuasive communication. This course is particularly relevant for engineering students intending to progress into managerial roles in technology or R&D driven organizations. This course can be counted toward the College of Engineering Minor in Innovation and Transformational Change and the Burton D. Morgan Center for Entrepreneurship (BDMCE) Certificate in Entrepreneurship and Innovation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Sustain Bldg Dsgn Constr&Oper",
+        "subjectCode": "CE",
+        "courseCode": "59700",
+        "instructor": [
+            "Melba M Crawford",
+            "Mohammad Reza Jahanshahi",
+            "Dulcy M Abraham",
+            "Andrew J Whelton",
+            "Ziran Wang",
+            "Satish V Ukkusuri",
+            "Panagiota Karava",
+            "Robert L Bowen"
+        ],
+        "description": "Hours and credits to be arranged. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Underground Construction",
+        "subjectCode": "CE",
+        "courseCode": "68600",
+        "instructor": [
+            "Antonio Bobet"
+        ],
+        "description": "Planning, analysis, design, and construction of underground structures in soft ground and rock. Ground structure interaction. Static and seismic stresses on tunnel support. Relative stiffness method. Ground deformations. Construction methods, types of support, and their effects on the surrounding ground. The focus of the course is on the understanding of the interaction between ground and structure. Prerequisite: CE 48300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "CE Sem-Hydraul & Hyd",
+        "subjectCode": "CE",
+        "courseCode": "69100",
+        "instructor": [
+            "Dulcy M Abraham",
+            "Julio Alfonso Ramirez",
+            "Jinha Jung",
+            "Kumares C Sinha",
+            "Makarand Hastak",
+            "Venkatesh Mohan Merwade"
+        ],
+        "description": "An interdisciplinary seminar which provides a forum for invited speakers and staff to discuss new developments in practice and current research in civil engineering.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    }
+]

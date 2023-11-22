@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Global Science Ldrshp Seminar",
+        "subjectCode": "SCI",
+        "courseCode": "19500",
+        "instructor": [
+            "Laura J Starr"
+        ],
+        "description": "This is a special projects course that will be used for special circumstances with individual study or for experimental courses, pointed toward students who are first- or second-year students.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Dean\u2019s Leadership Forum",
+        "subjectCode": "SCI",
+        "courseCode": "49000",
+        "instructor": [
+            "Danielle E Sheese"
+        ],
+        "description": "Selected interdisciplinary topics. Offered as a scheduled course when appropriate. Also available for supervised reading and reports of an interdisciplinary nature. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            5
+        ],
+        "term": "Fall 2022"
+    }
+]

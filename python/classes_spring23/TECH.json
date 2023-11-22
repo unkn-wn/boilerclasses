@@ -1,0 +1,108 @@
+[
+    {
+        "title": "Design Thinking In Technology",
+        "subjectCode": "TECH",
+        "courseCode": "12000",
+        "instructor": [
+            "Randale J Glaze"
+        ],
+        "description": "Student will engage in critical analysis of real-world problems and global challenges. They will demonstrate the ability to recognize opportunity and to take initiative in developing solutions applying the principles of human centered design. Students will be able to communicate effectively and to work well on teams. Problems and solutions will be examined from societal, cultural, and ethical perspectives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Designing Technology For People",
+        "subjectCode": "TECH",
+        "courseCode": "22000",
+        "instructor": [
+            "Todd R Kelley",
+            "Sherylyn H Briller"
+        ],
+        "description": "Innovating in our complex world requires understanding people and the issues and challenges they face. This unique course brings together perspectives from technology and anthropology to address this by exploring ethnographic studies of people and technology interactions. Through this process, students will practice the problem scoping skills necessary to identify and define problems and begin to generate appropriate design solutions. In addition, students will learn how to observe and talk with people about technology and discuss a range of ways people use technology. Accordingly, the course will focus on human-centered design and how to empathize with people during the design process. This will allow students to learn how to identify opportunities for innovation that emerge when designers carefully observe and listen to humans using technology and/or experiencing problems with current technology. Note: This class engages the material in both the classroom and innovation labs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Technology And The Global Society",
+        "subjectCode": "TECH",
+        "courseCode": "33000",
+        "instructor": [
+            "Abrar Hammoud"
+        ],
+        "description": "The course examines the interplay of technology, globalization, intercultural awareness, political reforms, education, religion, gender roles, and history to allow students to gain insight into leading/enabling technology adoption and global business practices to address global markets and global challenges in their future professions. Students will explore concepts and issues related to outsourcing; global competitiveness; intercultural communications; contemporary issues; cultural differences such as inequality, security, sustainability, and quality of life; and the ethical dilemmas that often emerge as a result of the impact of technology. This course will expose students to strategic and operational management topics that support decision making in global expansion of Business and Technology. This course is designed to provide knowledge and a higher level understanding of the principles behind globalization of technology and its regional and global markets. The course utilizes formal assessment instruments and intercultural activities to aid students in the development of increased intercultural capacity.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Prototyping Technology For People",
+        "subjectCode": "TECH",
+        "courseCode": "34000",
+        "instructor": [
+            "Douglas E Pruim"
+        ],
+        "description": "Innovating in our complex world requires us to think strategically and make the best decisions possible for both designing and business development. Accordingly, this unique course brings together perspectives from technology and business management to iteratively prototype innovative solutions to student-selected problems. This process will include creating prototypes in a variety of media, using the appropriate methods/tools, as well as exploring the processes and biases related to how people process information and make decisions. This type of work will help to guide the innovation process by gaining insights from testing prototypes and interacting with people to deepen one's understanding of customer needs, market segments, costs of goods, competitor operations, and market strategies. At the conclusion of the course, students will pitch a viable design solution and business model for a validated problem to a variety of potential investors and/or stakeholders. Note: This class engages the material in both the classroom and innovation labs. Students of all levels of experience will explore tools/programs related to computer aided design, 3D printing, app development, and digital prototyping.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Tech Realiz Workshop",
+        "subjectCode": "TECH",
+        "courseCode": "58100",
+        "instructor": [
+            "Timothy R Peoples"
+        ],
+        "description": "Advanced study of technical and professional topics. Emphasis is on new developments relating to technical, operational, and training aspects of industry and technology education.",
+        "capacity": 0,
+        "credits": [
+            0,
+            8
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Insd Res Prb Supv Per",
+        "subjectCode": "TECH",
+        "courseCode": "62100",
+        "instructor": [
+            "Nathan Mentzer"
+        ],
+        "description": "Current problems in Technology.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Analysis Of Research In Industry And Technology",
+        "subjectCode": "TECH",
+        "courseCode": "64600",
+        "instructor": [
+            "Michael J Dyrenfurth"
+        ],
+        "description": "Analysis of research and evaluation of research reports. Emphasis on understanding the application of fundamental statistical methods in design and interpretation of research findings in industrial, technical, and human resource development environments. Prerequisite: Master's student standing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

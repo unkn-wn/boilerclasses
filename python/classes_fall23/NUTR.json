@@ -1,0 +1,348 @@
+[
+    {
+        "title": "Nutrition In The 21st Century",
+        "subjectCode": "NUTR",
+        "courseCode": "10500",
+        "instructor": [
+            "Gregory C Henderson"
+        ],
+        "description": "Overview of the discipline of nutrition science including undergraduate and professional opportunities, research and critical thinking requirements.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To The Profession Of Dietetics",
+        "subjectCode": "NUTR",
+        "courseCode": "10600",
+        "instructor": [
+            "Donna L Zoss"
+        ],
+        "description": "Overview of the dietetics profession, including standards, ethics, educational and employment opportunities, and professional credentialing. Spring semester offered only through distance learning.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Nutrition Science",
+        "subjectCode": "NUTR",
+        "courseCode": "10700",
+        "instructor": [
+            "Annabel Biruete"
+        ],
+        "description": "An overview of professional opportunities for nutrition scientists. Introduces tools and resources available for becoming a nutrition scientist.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Food Safety Certification And Career Development",
+        "subjectCode": "NUTR",
+        "courseCode": "12500",
+        "instructor": [
+            "Alvin Jun Furiya"
+        ],
+        "description": "Training in ServSafe food safety certification program.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Food Science I",
+        "subjectCode": "NUTR",
+        "courseCode": "20500",
+        "instructor": [
+            "Alvin Jun Furiya"
+        ],
+        "description": "Chemical and physical composition of foods: their changes during processing, storage, and preparation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Honors Research",
+        "subjectCode": "NUTR",
+        "courseCode": "29700",
+        "instructor": [
+            "Dorothy Teegarden"
+        ],
+        "description": "Introduces students to the design and implementation of an honors research project.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Nutrition",
+        "subjectCode": "NUTR",
+        "courseCode": "31500",
+        "instructor": [
+            "Heather A Eicher-Miller"
+        ],
+        "description": "Basic principles of nutrition and their application in meeting nutritional needs during the life cycle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Diet Selection And Planning",
+        "subjectCode": "NUTR",
+        "courseCode": "33000",
+        "instructor": [
+            "Alvin Jun Furiya"
+        ],
+        "description": "Diet selection for health maintenance in culturally diverse populations based on current dietary guides with utilization of the computer for diet evaluation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Dietetics Career Planning",
+        "subjectCode": "NUTR",
+        "courseCode": "41100",
+        "instructor": [
+            "Donna L Zoss"
+        ],
+        "description": "This course will prepare students to successfully apply and interview for dietetics supervised practice experience, jobs and graduate programs.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communication Techniques In Foods And Nutrition",
+        "subjectCode": "NUTR",
+        "courseCode": "42400",
+        "instructor": [
+            "Rachel A Clark"
+        ],
+        "description": "Communication of foods and nutrition information to lay and professional audiences through oral, written, and mass media channels.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Micronutrient And Phytochemical Metabolism In Human Health And Disease",
+        "subjectCode": "NUTR",
+        "courseCode": "43800",
+        "instructor": [
+            "Qing Jiang"
+        ],
+        "description": "Metabolism of the micronutrients and phytochemicals in humans integrating physiology, biochemistry and nutrition with a focus on maintaining optimal health and preventing disease.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Medical Nutrition Therapy I",
+        "subjectCode": "NUTR",
+        "courseCode": "48000",
+        "instructor": [
+            "Donna L Zoss"
+        ],
+        "description": "Nutrition assessment in humans and introduction to the nutrition care process. Application of the nutrition care process to various disease states.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Topics In Nutrition, Fitness, And Health",
+        "subjectCode": "NUTR",
+        "courseCode": "48800",
+        "instructor": [
+            "Brandon M Kistler"
+        ],
+        "description": "This course critically evaluates the interrelationships between nutrition and exercise and their impact on physical performance and health. Concepts combining nutritional sciences and exercise physiology will be presented. Emerging science and controversies in the current literature will be discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Food Chemistry",
+        "subjectCode": "NUTR",
+        "courseCode": "49200",
+        "instructor": [
+            "Cordelia A Running"
+        ],
+        "description": "Problems dealing with various aspects of nutrition. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            5
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Dietary Supplements",
+        "subjectCode": "NUTR",
+        "courseCode": "51200",
+        "instructor": [
+            "Adam S Huffield"
+        ],
+        "description": "Provides advanced training to evaluate concepts and issues of dietary supplement use in various populations. Students develop critical thinking skills through activities such as case studies to make appropriate recommendations for nutrition supplementation. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Ethics Practice And Professionalism In Dietetics",
+        "subjectCode": "NUTR",
+        "courseCode": "53100",
+        "instructor": [
+            "Dinah C Dalder"
+        ],
+        "description": "Evaluation of concepts and issues of ethical practice in the dietetics profession and the application of the Scope/Standards of Practice for Nutrition and Dietetics Practitioners and the Code of Ethics for the Nutrition and Dietetics Profession. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Human Sensory Systems And Food Evaluation",
+        "subjectCode": "NUTR",
+        "courseCode": "53400",
+        "instructor": [
+            "Richard D Mattes"
+        ],
+        "description": "Overview of human chemosensory (taste, smell, chemesthetic) mechanisms and function, as well as procedural and statistical methods for evaluating the sensory responsiveness of people and the sensory properties of foods.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Food Policy And Nutrition",
+        "subjectCode": "NUTR",
+        "courseCode": "54100",
+        "instructor": [
+            "Dennis A Savaiano"
+        ],
+        "description": "  We will explore the nature of contemporary United States food policy and key events throughout history that have shaped what it is today. We will investigate and discuss the roles individuals, corporations, and federal, state, and other government agencies play in creating food policy, and how these stakeholders as well as complex sociological and economic factors influence the way Americans eat. These questions will lead us to consider the future of food and food policy in the United States. Can Americans develop food policy that supports the agricultural economy AND promotes the consumption of healthy foods? Could our agricultural system support this? We will learn about and explore these questions with class discussions, debate, research, guest lectures, relevant documentary films, and thought-provoking readings that present a variety of viewpoints. You will explore current, real-life problems and have an opportunity to develop potential solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Eat Dis And Health Weight Main",
+        "subjectCode": "NUTR",
+        "courseCode": "59000",
+        "instructor": [
+            "Selena Lauren Baker",
+            "Laura Elaine Murray-Kolb"
+        ],
+        "description": "Individual problems dealing with various aspects of nutrition. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Nutritional Biochemistry And Physiology I",
+        "subjectCode": "NUTR",
+        "courseCode": "60500",
+        "instructor": [
+            "Dorothy Teegarden"
+        ],
+        "description": "(ANSC 62500) Integration of biochemical and physiological functions of nutrients in humans and animals emphasizing interactions in bone and gut metabolism and physiology. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Scientific Writing In Nutrition Science",
+        "subjectCode": "NUTR",
+        "courseCode": "62700",
+        "instructor": [
+            "Kimberly K Buhman"
+        ],
+        "description": "The goal of this course is to develop and practice skills for clear scientific writing. The course is designed to introduce and practice the building blocks of scientific writing, including word choice, sentence structure and paragraph structure. In addition, students will be introduced to components of a hypothesis testing biomedical research paper in order to communicate a storyline. In addition, the publication cycle will be discussed. Prerequisites: Graduate standing past the first year. NUTR 60500 and NUTR 60600 and NUTR 60700. Other students can be approved for entry by permission of the instructor.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Carbohydrates",
+        "subjectCode": "NUTR",
+        "courseCode": "63000",
+        "instructor": [
+            "Yuan Yao"
+        ],
+        "description": "(FS 63000) Carbohydrates with an emphasis on those of low molecular weight in foods. Structures, reactions, and properties of mono- and oligosaccharides. Introduction to polysaccharides and food gums. Offered in alternate years. Prerequisite: 6 credit hours in Organic Chemistry.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Interdepartmental Nutrition Program Seminar",
+        "subjectCode": "NUTR",
+        "courseCode": "69500",
+        "instructor": [
+            "Tzu Wen L Cross"
+        ],
+        "description": "Develop and strengthen skills in organization, preparation, and presentation of scientific information relevant to nutrition science to an audience of scientists.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2023"
+    }
+]

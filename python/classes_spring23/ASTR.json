@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Descriptive Astronomy: Stars And Galaxies",
+        "subjectCode": "ASTR",
+        "courseCode": "26400",
+        "instructor": [
+            "Robert Andreas Austin"
+        ],
+        "description": "A descriptive, nonmathematical course in astronomy intended for non-physics majors. Topics include: properties of stars; stellar birth and death; the Hertzsprung-Russel diagram; main sequence stars; binary systems; stellar clusters; red giants and white dwarfs, nova and supernova; neutron stars and black holes; galaxies and the cosmological red shift. Includes required observing sessions. Not available to students with credit in ASTR 36400.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Stars And Galaxies",
+        "subjectCode": "ASTR",
+        "courseCode": "36400",
+        "instructor": [
+            "Danny Milisavljevic"
+        ],
+        "description": "This course is intended for students in Science or Engineering. This is the second of a two-semester introductory sequence on astronomy and astrophysics, although it is designed to be a standalone course. It is intended mainly for Science and Engineering majors who are comfortable with calculus-based contents. The course provides an overview on the formation and evolution of stars, galaxies, and clusters of galaxies. Selected topics that are covered in more detail include stellar structure and atmosphere, properties of black holes, neutron stars, and white dwarfs, galactic dynamics, and dark matter in galaxies and clusters of galaxies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Stellar Evolution",
+        "subjectCode": "ASTR",
+        "courseCode": "56000",
+        "instructor": [
+            "Kyoung-Soo Lee"
+        ],
+        "description": "(PHYS 56000) Observational basis of astrophysics; formation of galaxies and stars; evolution of stars; white dwarfs, supernovae and neutron stars, pulsars, quasars, black holes; cosmic rays, their origin and acceleration; radio astronomy, radio galaxies; the H-21 cm line and the 3mK blackbody radiation; gravitational radiation; X-ray and g-ray astronomy; cosmology; space physics, magnetosphere, and solar wind.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To High Energy Astrophysics",
+        "subjectCode": "ASTR",
+        "courseCode": "56200",
+        "instructor": [
+            "John R Peterson"
+        ],
+        "description": "(PHYS 56200) An overview of important physical processes in a variety of astronomical settings and of the experimental techniques employed in the field of high energy astrophysics. Covered in more detail are individual systems that include black holes, neutron stars, white dwarfs, supernova remnants, active galactic nuclei, clusters of galaxies, gamma-ray bursts, and cosmic rays, with special emphasis on several research frontiers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Astroparticle Physics",
+        "subjectCode": "ASTR",
+        "courseCode": "56300",
+        "instructor": [
+            "Rafael F Lang"
+        ],
+        "description": "(PHYS 56300) An overview of an emerging research frontier in modern physics that lies at the interface of particle physics and astrophysics. Emphasis is on topics that are particularly relevant to both fields, including cosmology, cosmic ray physics, very-high-energy gamma ray astrophysics, neutrino astrophysics, and gravitational wave physics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

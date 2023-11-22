@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Korean Level I",
+        "subjectCode": "KOR",
+        "courseCode": "10100",
+        "instructor": [
+            "Muni Jean",
+            "Huai-Rhin Kim"
+        ],
+        "description": "This course is the first half of the Elementary Korean language sequence. It is designed for those who have no prior (or very limited) knowledge of Korean. Lecture will introduce new material and explain conversational patterns considering grammatical, lexical, and pragmatic aspects of Korean. Some class meetings will be conducted entirely in Korean. Emphasis is placed on the fundamentals of listening, speaking, reading, and writing. In addition, students will be exposed to everyday life contexts (e.g., language use, culture, etc.) likely to be encountered in contemporary Korean society. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Korean Level III",
+        "subjectCode": "KOR",
+        "courseCode": "20100",
+        "instructor": [
+            "Jungeun A Kim",
+            "Huai-Rhin Kim"
+        ],
+        "description": "This course is the first half of the intermediate Korean language sequence. The main purpose of this course is to expand on the study of the Korean language and culture, and develop an Intermediate Low proficiency level. Some class meetings are conducted entirely in Korean. Students practice reading and listening comprehension, grammar, vocabulary building, and conversations that require a variety of styles, pragmatic considerations, and knowledge of Korean cultural topics. Skills for simple narration and written report will be enhanced. Students rely on authentic materials for introduction of Korean culture and authentic language usage. Typically offered Fall Spring.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Korean Level V",
+        "subjectCode": "KOR",
+        "courseCode": "30100",
+        "instructor": [
+            "Muni Jean"
+        ],
+        "description": "This course aims to help students develop their language skills in four areas-speaking, listening, reading, and writing- in Korean at the advanced level. It covers grammar and vocabulary, reading comprehension, fluency, conversation manners, and public speaking. Emphasis will be on the appropriate use of Korean in a variety of situations including schools, companies, and formal/informal meetings. This course also enables students to understand Korean culture and history and to develop cross-cultural insights by comparing Korean society with US society. Korean history, image of Korea, and current social trends in Korea will be discussed for a solid understanding of Korean culture in which Korean language is embedded. Typically offered Fall.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Korean Culture",
+        "subjectCode": "KOR",
+        "courseCode": "38000",
+        "instructor": [
+            "Song I No",
+            "Huai-Rhin Kim"
+        ],
+        "description": "This course will be offered as a variable-title course focusing on traditional, historical, social, and political themes of Korea. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,317 @@
+[
+    {
+        "title": "Clinical Pathology-VN",
+        "subjectCode": "CPB",
+        "courseCode": "25500",
+        "instructor": [
+            "Katherine Alexzandria Tate"
+        ],
+        "description": "Basic instruction in clinical pathology, including theory and techniques of hematology, clinical chemistry, urinalysis, cytology, and specimen handling.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Microbiology-VN",
+        "subjectCode": "CPB",
+        "courseCode": "35100",
+        "instructor": [
+            "Deepti K Pillai"
+        ],
+        "description": "Biology and laboratory identification of bacteria and fungi that cause infectious diseases in animals. Emphasis will be placed on the collection of specimens for culture, the isolation and identification of pathogenic organisms, and antibiotic susceptibility testing. Procedures and commercial systems available to veterinary practices will be utilized.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Parasitology-VN",
+        "subjectCode": "CPB",
+        "courseCode": "35200",
+        "instructor": [
+            "Sriveny Dangoudoubiyam"
+        ],
+        "description": "Biology and life cycles of selected protozoan, helminth, and arthropod parasites of veterinary importance. Emphasis will be placed on laboratory procedures for the identification of common parasites of domestic and laboratory animals.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Animal Models Of Human Disease",
+        "subjectCode": "CPB",
+        "courseCode": "57800",
+        "instructor": [
+            "Amanda K Darbyshire"
+        ],
+        "description": "A mixed didactic and discussion course focusing on animal models used in biomedical research. Didactic instruction on principles of model development and use will be coupled with student presentations of models currently used in various research disciplines or disease states. Advantages and limitations of research with various spontaneous and experimentally induced models of human disease, including genetically engineered models. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Comparative Medicine",
+        "subjectCode": "CPB",
+        "courseCode": "57900",
+        "instructor": [
+            "Amanda K Darbyshire"
+        ],
+        "description": "A discussion course focusing on current issues of laboratory animal medicine. Review of current activities, health surveillance reports, etc. Selected cases are presented in detail, including clinical presentation, interpretation of diagnostic tests, and gross and microscopic pathology. In addition, this seminar includes discussions on animal resource management; surgery; animal experimentation; current journal reports; zoonoses; and clinical animal disease diagnosis, prevention, treatment, and control, and other species and topics not formally covered in other core courses.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pathology Of Avian Diseases",
+        "subjectCode": "CPB",
+        "courseCode": "60500",
+        "instructor": [
+            "Geoffrey Alan Lossie"
+        ],
+        "description": "Avian diseases presented from a gross and histopathological viewpoint. Pathogenesis and differential diagnosis of avian diseases discussed. Prerequisite: DVM degree.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Clinical Biostatistics",
+        "subjectCode": "CPB",
+        "courseCode": "62500",
+        "instructor": [
+            "George E Moore"
+        ],
+        "description": "Intended for veterinary medical and biological science graduate students, this course is designed to familiarize them with the appropriate usage (and reporting) of different statistical tests in biomedical research. Students are taught the basic theories underlying the different tests, the data assumptions underlying the application of those tests, and review/critique published scientific articles that employed these tests.  Students have the opportunity to describe the appropriate statistical methods to be used in their proposed research and/or report the usage or appropriate statistical tests on their own data.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Use & Care Lab Animals",
+        "subjectCode": "CPB",
+        "courseCode": "68000",
+        "instructor": [
+            "Amanda K Darbyshire"
+        ],
+        "description": "Directed readings, discussions, and other intensive studies in specialized topics of the disciplines of the department. The topic of study will be selected and announced prior to the semester offered and will be indicated in the student's record. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Veterinary Pathology",
+        "subjectCode": "CPB",
+        "courseCode": "69100",
+        "instructor": [
+            "Mario F Sola"
+        ],
+        "description": "Discussions of selected current disease problems with emphasis on gross and microscopic tissue changes and pathogenesis. Required of all graduate students in veterinary pathology each semester in residence.",
+        "capacity": 0,
+        "credits": [
+            0,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Epidemiology",
+        "subjectCode": "CPB",
+        "courseCode": "69500",
+        "instructor": [
+            "Wendy Anne Beauvais"
+        ],
+        "description": "Discussion of recent research in epidemiology, emphasizing study design, analysis, and public health significance. Discussion topics will be selected from the following areas: clinical epidemiology, infectious disease epidemiology, chronic disease epidemiology, and environmental epidemiology. Required of graduate students with a principal field of study in epidemiology. Prerequisite: Course work in Statistics and Epidemiology.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Research Seminar",
+        "subjectCode": "CPB",
+        "courseCode": "69700",
+        "instructor": [
+            "Guangjun Zhang"
+        ],
+        "description": "Discussion of current concepts and research results in epidemiology, immunology, microbiology, parasitology, pathology, virology, host-parasite relationships, and other aspects of veterinary pathobiology. Each graduate student is expected to register each semester for CPB 69700 and to make one oral presentation per year. A grade of pass/not-pass and one credit will be awarded for the semester the presentation is given. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Veterinary Toxicology",
+        "subjectCode": "CPB",
+        "courseCode": "81900",
+        "instructor": [
+            "Stephen B Hooser"
+        ],
+        "description": "This course will provide an introduction to small and large animal toxicology. It will cover the most common toxicoses encountered in veterinary medicine with emphasis on recognizing clinical signs of toxicoses, discerning differential diagnoses for these cases, and assigning appropriate diagnostic tests.  Prerequisites: Completion of first year in the DVM program.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Use And Care Of Laboratory Animals",
+        "subjectCode": "CPB",
+        "courseCode": "84000",
+        "instructor": [
+            "Amanda K Darbyshire"
+        ],
+        "description": "Topics will include the history of animal use in research; ethical thought related to animal use in research; alternatives; government regulatory requirements; statistical considerations in designing animal studies; animal models; use of the National Agricultural Library Animal Welfare Information Center; biology, husbandry, techniques, and diseases of common laboratory animal species; hygiene and occupational health; biohazard control; perioperative care and aseptic surgical techniques; anesthesia; analgesia; and euthanasia.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Use And Care Of Laboratory Animals II",
+        "subjectCode": "CPB",
+        "courseCode": "84100",
+        "instructor": [
+            "Amanda K Darbyshire"
+        ],
+        "description": "Priority will be given to students that have completed CPT 84000. This course teaches skills useful for the role of a laboratory animal veterinarian. Course is project-based and includes hands-on techniques in laboratory rodents.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Principles Of Veterinary Immunology",
+        "subjectCode": "CPB",
+        "courseCode": "85300",
+        "instructor": [
+            "Harm Hogenesch"
+        ],
+        "description": "An overview of the fundamental concepts of immunology, with an emphasis on the immune system of domestic animals and comparative immunology. Focuses on the interactions between the host and microbial pathogens and on mechanisms that underlie hypersensitivity reactions, autoimmune diseases, and immune deficiencies. Discusses the principles of vaccination and serologic tests.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Epidemiology And Evidence-Based Veterinary Medicine",
+        "subjectCode": "CPB",
+        "courseCode": "85401",
+        "instructor": [
+            "Hsin-Yi Weng"
+        ],
+        "description": "The fundamentals of descriptive and analytical epidemiology will be developed as they relate to problems in veterinary and comparative medicine.  A primary goal of the course is to expose future health professionals to the information and thought processes that are essential for critically evaluating the medical literature and for making decisions regarding health care for individuals and populations.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Veterinary Systemic Pathology",
+        "subjectCode": "CPB",
+        "courseCode": "85700",
+        "instructor": [
+            "Sanjeev K Narayanan"
+        ],
+        "description": "Provides coverage of system specific pathologic terminology and characteristic pathologic responses of the various body systems to injury. This is followed by presentation of representative examples of diseases of various etiologies, including, but not limited to, infectious and noninfectious diseases.",
+        "capacity": 0,
+        "credits": [
+            5,
+            5
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Veterinary Virology",
+        "subjectCode": "CPB",
+        "courseCode": "86000",
+        "instructor": [
+            "Suresh K Mittal"
+        ],
+        "description": "Principles of medical virology and discussions of important viral diseases of animals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Veterinary Clinical Chemistry",
+        "subjectCode": "CPB",
+        "courseCode": "86100",
+        "instructor": [
+            "John A Christian"
+        ],
+        "description": "Laboratory techniques and interpretation of laboratory data as profiled by organ system are presented. Integration of data to explain pathophysiologic changes as an aid to diagnosis, prognosis and progression of disease is emphasized.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Veterinary Public Health And Zoonoses",
+        "subjectCode": "CPB",
+        "courseCode": "86900",
+        "instructor": [
+            "Wendy Anne Beauvais"
+        ],
+        "description": "A survey of fundamental topics on diseases that are caused by viral, bacterial, rickettsial, and parasitic agents and are known to be transmissible from animals to humans, as well as those diseases that are common to humans and animals. Topics emphasize the epidemiology and methods for prevention and control of these diseases in animal and human populations. Food safety and foodborne diseases, with particular emphasis on foods of animal origin, are discussed. Risk assessment of occupational and environmental health conditions to which veterinarians are likely to be exposed in training or the work place also is covered.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Diagnostic Veterinary Cytology",
+        "subjectCode": "CPB",
+        "courseCode": "87000",
+        "instructor": [
+            "Craig A Thompson"
+        ],
+        "description": "A combination of didactic and wet laboratory microscopic sessions are used to demonstrate applications of diagnostic cytology. Consists of weekly sessions with a brief lecture overview of the basic cytologic features of a particular organ system followed by microscopic review of collected cytology material from that particular organ system. The didactic and laboratory sessions are supplemented by Internet-based and digital-format archived images for student review.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    }
+]

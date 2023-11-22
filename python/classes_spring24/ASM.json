@@ -1,0 +1,185 @@
+[
+    {
+        "title": "Introduction To Agricultural Systems",
+        "subjectCode": "ASM",
+        "courseCode": "10400",
+        "instructor": [
+            "Shawn G Ehlers"
+        ],
+        "description": "Basic principles of selection and operation of agricultural production equipment, including farm tractors and machines and crop-processing equipment. Planning considerations for crop storage and animal production systems and devices for water conservation and erosion control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Computing Technology With Applications",
+        "subjectCode": "ASM",
+        "courseCode": "10500",
+        "instructor": [
+            "Dennis Rene Buckmaster"
+        ],
+        "description": "Computers will be used to solve problems (logistics, economic, agri-science) related to agricultural technology and businesses. Spreadsheets for problem solving and data analysis is the focus, with advanced features employed to improve functionality and capability of decision aids. Use of office software for written communication and visual aids will also be covered. Some applications of cloud platforms and specialty applications for communication and computations in team/group environments will be used. Interoperability and compatibility of files and platforms will be part of the experience.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Surveying",
+        "subjectCode": "ASM",
+        "courseCode": "21600",
+        "instructor": [
+            "Nathan S Mosier"
+        ],
+        "description": "Introduction to plane surveying, including instruction and practice in the use of surveying instruments. Basic overview of distance/angle measurement, leveling, direction, traversing, and mapping. Each weekly topic includes practical application and field exercises as applied to landscape architecture and forestry.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Materials Handling And Processing",
+        "subjectCode": "ASM",
+        "courseCode": "24500",
+        "instructor": [
+            "Shawn G Ehlers"
+        ],
+        "description": "Principles of materials handling and processing. Physical properties and characteristics of food, fiber, and feed materials as related to harvesting, handling, processing, and storage. Processing of agricultural materials including drying, preservation, size reduction (e.g. grinding, crushing, shredding), mixing and blending, refrigeration, extrusion, and pelleting. Conveying and transport systems with consideration of their effects on damage and quality. The course elements are tied together by a treatment of scheduling and coordination of biologically based systems, which involve production, handling, quality control, and processing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Facilities Planning And Management",
+        "subjectCode": "ASM",
+        "courseCode": "33300",
+        "instructor": [
+            "Stanley D Harlow"
+        ],
+        "description": "Principles of facility (system) planning and management involving buildings, equipment, and materials handling and flow. Student teams select a case firm (problem) with instructor approval. Principles learned week by week are applied to the development of an overall plan for the complex, over the course of the semester. Case examples can include firms handling supplies, seeds, grains, feeds, chemicals, wastes, and farm produce, as well as farming operations producing grain, forage, and/or livestock products. Students will learn to use AutoCAD to develop drawings, without prior computer drafting experience.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Power Units And Power Trains",
+        "subjectCode": "ASM",
+        "courseCode": "34500",
+        "instructor": [
+            "Robert M Stwalley"
+        ],
+        "description": "An introduction to power generation and transfer in mechanical and fluid power systems. Internal combustion engines, fuels, and cycles are introduced. Clutches, mechanical transmissions, automatic transmissions, hydrostatic transmissions, and final drives are discussed. Principles of hydraulics, fluids, cylinders, pumps, motors, valves, hoses, filters, reservoirs, and accumulators are studied.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Safety In Agriculture",
+        "subjectCode": "ASM",
+        "courseCode": "35000",
+        "instructor": [
+            "William E Field"
+        ],
+        "description": "An overview of the agricultural safety movement in the United States with consideration given to the specific human environmental and technological factors influencing farm-related accidents. Special emphasis is given to reduction of unnecessary risks in agricultural production. Course meets during weeks 1-8.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Electric Power And Controls",
+        "subjectCode": "ASM",
+        "courseCode": "42000",
+        "instructor": [
+            "Klein Ileleji"
+        ],
+        "description": "Fundamentals and application of electric power for agricultural facilities; safe wiring principles; operation and performance characteristics of electric motors; applications of control systems that include monitors, sensors, relays, and programmable logic controllers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Mthds Of Tching Ag Technology",
+        "subjectCode": "ASM",
+        "courseCode": "49100",
+        "instructor": [
+            "Halis Simsek",
+            "Shawn G Ehlers"
+        ],
+        "description": "Designed for specialized topic areas for which there is no specific course, but have enough student interest to justify formalized teaching of an undergraduate-level course. The course may be repeated by a student as long as the topic being taught is not repeated. The specific topic that is offered will be indicated on the student's record. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Managing Resources and Applications for Homeland Security",
+        "subjectCode": "ASM",
+        "courseCode": "51200",
+        "instructor": [
+            "James Eric Dietz"
+        ],
+        "description": "An interdisciplinary course providing examples and practice in applying and managing the resources, including technologies, used in the private and public sectors for homeland security programs. Course contents will include: terrorism; corporate security; biosecurity; health care preparedness; personal/community preparedness; risk transfer; and information security and privacy. Additional content includes discussion of local, state, and federal preparedness programs issues in the public/private sectors that are designed to ensure survival during a continuum of emergency events, and continued practice in using collaborative application of team building skills. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Grain Drying And Storage",
+        "subjectCode": "ASM",
+        "courseCode": "55000",
+        "instructor": [
+            "Rose Prabin Kingsly Ambrose"
+        ],
+        "description": "Crop drying and storage principles including equilibrium moisture, psychrometrics, and drying rates. Modern drying and conditioning techniques including dryeration, in-bin counterflow drying, and combination drying. Estimating fixed and variable drying costs, aeration of stored grain, and maintenance of grain quality.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Vis Tools & Applications",
+        "subjectCode": "ASM",
+        "courseCode": "59100",
+        "instructor": [
+            "Ankita Raturi",
+            "Upinder Kaur",
+            "Vetria L Byrd"
+        ],
+        "description": "Primarily designed for specialized topic areas in agricultural systems management for which there is no specific course, workshop, or individual study plan, but having enough student interest to justify the formalized teaching of a course. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

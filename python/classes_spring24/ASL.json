@@ -1,0 +1,78 @@
+[
+    {
+        "title": "American Sign Language III",
+        "subjectCode": "ASL",
+        "courseCode": "20100",
+        "instructor": [
+            "Sharon L Borkowski",
+            "Stacy Annette Steggs"
+        ],
+        "description": "A more advanced study of American Sign Language. Further development of receptive and expressive skills using more advanced material. Continued emphasis on cultural and historical aspects in relation to the evolution of the language and language usage.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "American Sign Language IV",
+        "subjectCode": "ASL",
+        "courseCode": "20200",
+        "instructor": [
+            "Robin A Shay"
+        ],
+        "description": "A continuation of ASL 20100. Includes some introduction to linguistic structure, especially classifiers, temporal sequencing and aspect, and conversational regulators.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "American Deaf Community: Language, Culture, And Society",
+        "subjectCode": "ASL",
+        "courseCode": "28000",
+        "instructor": [
+            "Sharon L Borkowski"
+        ],
+        "description": "The linguistic, cultural, and societal context of the deaf community in America. Both historical and contemporary aspects of deaf identity will be included, with an emphasis on the central role that ASL plays in the lives of deaf individuals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "American Sign Language Advanced-Level VI",
+        "subjectCode": "ASL",
+        "courseCode": "30200",
+        "instructor": [
+            "Stacy Annette Steggs"
+        ],
+        "description": "This course is a sequential course in the advanced study of American Sign Language (ASL) with emphasis on basic concepts of language based ASL. This is an application of language usage in ASL in which students will gain an advanced understanding and mastery of ASL grammar. Includes instruction in semantic and grammatical accuracy and appropriate discourse strategies in a variety of communication contexts. Students utilize advanced receptive and expressive skills.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Structure Of American Sign Language II: Syntax, Semantics And Language Use",
+        "subjectCode": "ASL",
+        "courseCode": "36200",
+        "instructor": [
+            "Robin A Shay"
+        ],
+        "description": "This course introduces students who already have prior knowledge of linguistics (e.g., phonetics, phonology, and morphology) to three areas of study in linguistics: Syntax, Semantics, and language use. Linguistic study of ASL, including the following: Syntax includes units on basic sentence types, lexical categories, word order, time and aspect, verbs, and the function of the spaces. Semantics includes the meanings of individual signs and sentences. Language in Use includes Black ASL, Variation and Historical Change. Bilingualism and language acquisition will be also covered. ASL Discourse has the ways that signed conversations among deaf people differ from speaking conversation of hearing people, why these differences exist, and why they are culturally important. Knowledge of ASL is required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

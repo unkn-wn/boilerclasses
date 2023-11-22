@@ -1,0 +1,123 @@
+[
+    {
+        "title": "Russian Level I",
+        "subjectCode": "RUSS",
+        "courseCode": "10100",
+        "instructor": [
+            "Nathan Allen Marks"
+        ],
+        "description": "A beginning course in standard Russian.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Russian Level III",
+        "subjectCode": "RUSS",
+        "courseCode": "20100",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "Readings from the works of nineteenth-century and contemporary Russian writers; practice in speaking and writing Russian.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Russian And Slavic Fairy Tales",
+        "subjectCode": "RUSS",
+        "courseCode": "29800",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "Studies of particular aspects of Russian (e.g. culture, civilization, linguistics, literature, film, etc.) by examining varied selection of works. Readings, discussion, and papers in English.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Russian Level V",
+        "subjectCode": "RUSS",
+        "courseCode": "30100",
+        "instructor": [
+            "Amina Gabrielov"
+        ],
+        "description": "Continued development of Russian speaking, listening, reading, and writing abilities, using material dealing primarily with everyday life and civilization in the Soviet Union from a variety of sources (e.g., newspapers, magazines, TV, recent literature, etc.). Conducted primarily in Russian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Russian And East European Cinema",
+        "subjectCode": "RUSS",
+        "courseCode": "33000",
+        "instructor": [
+            "Lyubov Mikhailovna Sylayeva"
+        ],
+        "description": "Viewing and analysis of significant Russian and East European films. Evolution of the Russian and East European cinema, its place in world cinema, and its relation to cultural, political, and social trends. Cinematic adaptation of literary and theatrical works. Knowledge of Russian or East European languages not required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Russian Literature In The Nineteenth Century",
+        "subjectCode": "RUSS",
+        "courseCode": "34100",
+        "instructor": [
+            "Olga V Lyanda-Geller"
+        ],
+        "description": "Selected Russian poetry, prose, and drama from the Kievan period to 1900 in historical and cultural context. Students will write critical essays on literary topics. Conducted largely in Russian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Russian Level VII",
+        "subjectCode": "RUSS",
+        "courseCode": "40100",
+        "instructor": [
+            "Olga V Lyanda-Geller"
+        ],
+        "description": "Advanced work on development of Russian speaking, listening, reading, and writing abilities, focusing on materials dealing primarily with culture and the arts in Russia and the Soviet Union. Conducted primarily in Russian.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Adv Russian Conversation",
+        "subjectCode": "RUSS",
+        "courseCode": "59600",
+        "instructor": [
+            "Robert Channon",
+            "Lyudmila Bell"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2022"
+    }
+]

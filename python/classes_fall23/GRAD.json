@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Peer To Peer Ldrshp& Mentoring",
+        "subjectCode": "GRAD",
+        "courseCode": "59000",
+        "instructor": [
+            "Linda S Lee",
+            "James L Mohler",
+            "Melanie Morgan"
+        ],
+        "description": "Hours and credits to be arranged. For the use of interdisciplinary programs and in other situations when appropriate departmental courses are not available or general Graduate School identification is desirable. To be used only with the consent of the dean of the Graduate School.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Grant Training Program II",
+        "subjectCode": "GRAD",
+        "courseCode": "61100",
+        "instructor": [
+            "Emily C Dykhuizen"
+        ],
+        "description": "This variable topic course is designed to be used by any department at WL needing to offer a training program associated with research grants such as those required by certain NIH, NSF or other grant agencies or programs. Instructor permission required. Prerequisite: GRAD 61000.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Responsible Conduct Of Research",
+        "subjectCode": "GRAD",
+        "courseCode": "61200",
+        "instructor": [
+            "James L Mohler",
+            "Sean M Courtney"
+        ],
+        "description": "Overview of values, professional standards, and regulations that define responsible conduct in research. Students learn the values and standards of responsible research through readings and lecture/discussion and practice application of these values and standards to research situations through class discussion of case studies from life sciences research. Students must be registered for M.S. or Ph.D. thesis research in their home department.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "CLS Seminar",
+        "subjectCode": "GRAD",
+        "courseCode": "68900",
+        "instructor": [
+            "Arun Prakash"
+        ],
+        "description": "Hours and credits to be arranged. For use in interdisciplinary seminars and in other cases where general Graduate School identification is desirable. To be used only with the consent of the dean of the Graduate School.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Fall 2023"
+    }
+]

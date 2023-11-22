@@ -1,0 +1,125 @@
+[
+    {
+        "title": "Introduction To Data Lifecycle Management",
+        "subjectCode": "ILS",
+        "courseCode": "10300",
+        "instructor": [
+            "Michael C Witt",
+            "Wei Zakharov"
+        ],
+        "description": "Introduces concepts of the management of data throughout its lifecycle. Understanding different types of data and their functions. Managing data in the context of a particular discipline or profession. Finding and evaluating data purposefully. Using data ethically and responsibly. Creating and sharing data for reuse, accountability, and enhancement. Making decisions and communicating using data, including data analysis and visualization. Protecting and archiving data. Typically offered Fall.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Information Strategies For Hospitality & Tourism Management",
+        "subjectCode": "ILS",
+        "courseCode": "17500",
+        "instructor": [
+            "Heather A Howard"
+        ],
+        "description": "This course will provide students with a framework of information search skills and problem-solving they can utilize in their area of study and in everyday life. It will also incorporate technology literacy components with active learning. Class sessions will consist of lecture, group discussion, demonstrations, and in-class activities and out-of-class activities. The course is intended for first-semester freshman students. Department permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Data Science And Society: Ethical Legal Social Issues",
+        "subjectCode": "ILS",
+        "courseCode": "23000",
+        "instructor": [
+            "Jerilyn Pia Tinio"
+        ],
+        "description": "This course provides an introduction to Ethical, Legal Social Issues (ELSI) in Data Science. Students will be introduced to interdisciplinary theoretical and practical frameworks that can aid in exploring the impact and role of Data Science in society. This is a writing intensive course. Students will work individually and on collaborative assignments.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Understanding Your Undergraduate Research Experience I",
+        "subjectCode": "ILS",
+        "courseCode": "28000",
+        "instructor": [
+            "James J Sadler"
+        ],
+        "description": "This course is for current Purdue undergraduate researchers to hone skills necessary for successfully reflecting on and completing the experience. During this course, students will utilize their research experience to apply skills such as managing time with a research project, communicating your research, utilizing Purdue Libraries' resources, and providing feedback to peer researchers. Students will deliver research pitches about their own project and provide critiques to others' pitches. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To GIS",
+        "subjectCode": "ILS",
+        "courseCode": "29500",
+        "instructor": [
+            "Ningning Nicole Kong"
+        ],
+        "description": "Study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Research Peer Mentorship",
+        "subjectCode": "ILS",
+        "courseCode": "49500",
+        "instructor": [
+            "James J Sadler",
+            "Jane F Yatcilla"
+        ],
+        "description": "Study of selected topics varying from semester to semester, from the practice of information and data sciences. Topics may include data management and organization, digital scholarship, data visualization, computer languages for data and information science, information literacy, archival literacy, and emerging trends in information and data science. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "GIS Research Methods",
+        "subjectCode": "ILS",
+        "courseCode": "59500",
+        "instructor": [
+            "Chao Cai",
+            "Melissa Anne Chomintra"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Digital Humanities Foundations",
+        "subjectCode": "ILS",
+        "courseCode": "63000",
+        "instructor": [
+            "Matthew N Hannah"
+        ],
+        "description": "This course introduces graduate students to the core theoretical and practical components of Digital Humanities. Students engage key theoretical texts in weekly seminars and practice central methodologies in weekly work sessions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

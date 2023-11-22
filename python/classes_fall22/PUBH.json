@@ -1,0 +1,288 @@
+[
+    {
+        "title": "Introduction To Public Health",
+        "subjectCode": "PUBH",
+        "courseCode": "10001",
+        "instructor": [
+            "Christine M Ladisch"
+        ],
+        "description": "This course serves as an introduction to the field of public health. Topics include identification of the principal determinants of health and how they affect individuals and populations, the role of government and public health professionals in health and healthcare, and critical and emerging issues in public health in the US and around the world.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Basic Public Health Studies",
+        "subjectCode": "PUBH",
+        "courseCode": "20500",
+        "instructor": [
+            "Kelley C Bailey"
+        ],
+        "description": "Examination of basic scientific concepts as applied to the problems and issues in selected areas of human health behavior with particular attention to their influence on population and individual health. Restricted to students enrolled in major degree programs for which this course is a requirement.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Contemporary Women's Health",
+        "subjectCode": "PUBH",
+        "courseCode": "22500",
+        "instructor": [
+            "Andrea DeMaria"
+        ],
+        "description": "Examines behavioral, psychological, and sociocultural aspects of women's experience in healthcare systems. Includes the influence of factors such as age, social class, and ethnicity on women's roles as recipients and providers of health care.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Global Health",
+        "subjectCode": "PUBH",
+        "courseCode": "24000",
+        "instructor": [
+            "Afsan R Bhadelia"
+        ],
+        "description": "This course introduces students to current challenges, debates, and efforts at solutions in global public health with a focus on low-and middle-income countries. It provides an interdisciplinary overview of topics that include measures of health and disease, health disparities, communicable and non-communicable diseases, women's health, maternal and child health, food systems and nutrition, health systems, and global cooperation. It also highlights the central role of data in achieving the global health agenda. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Internship & Career Preparation",
+        "subjectCode": "PUBH",
+        "courseCode": "29500",
+        "instructor": [
+            "James W Amell"
+        ],
+        "description": "This course provides students with professional competencies in identification and development of professional resources that aid in a greater understanding and preparation for careers in public health. Upon completion of the course, students will be prepared to seek an internship and apply concepts learned to their professional development experiences.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Health Education In Elementary Schools",
+        "subjectCode": "PUBH",
+        "courseCode": "30500",
+        "instructor": [
+            "Kelley C Bailey"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Health Behavior And Health Promotion",
+        "subjectCode": "PUBH",
+        "courseCode": "32000",
+        "instructor": [
+            "Monica Kasting"
+        ],
+        "description": "Introduces health behavior theory and practice in the context of health promotion and education. Examines individual, interpersonal, and community approaches to explaining and predicting health behavior and emphasizes their application to interventions in health promotion and education.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Human Diseases And Disorders",
+        "subjectCode": "PUBH",
+        "courseCode": "40000",
+        "instructor": [
+            "Beth Ann Walker"
+        ],
+        "description": "The major communicable and noncommunicable diseases and disorders that afflict modern man, with particular emphasis upon the etiology, epidemiology, and ecology of these diseases and disorders.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles Of Epidemiology",
+        "subjectCode": "PUBH",
+        "courseCode": "40500",
+        "instructor": [
+            "Jorge A Banda"
+        ],
+        "description": "The study of the distribution of diseases in human populations and factors that influence these distributions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Public Health",
+        "subjectCode": "PUBH",
+        "courseCode": "50000",
+        "instructor": [
+            "Randolph Duane Hubach"
+        ],
+        "description": "This Public Health course covers a variety of issues related to the profession of public health. The Introduction to Public Health provides the graduate student with an overview of the history, science, mission, practice and future of public health. The core public health principles and services, and the expected competencies of the professional public health practitioner, are discussed. Current issues in public health are also presented for discussion and analysis.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Foundations Of Global Health",
+        "subjectCode": "PUBH",
+        "courseCode": "51100",
+        "instructor": [
+            "Nilupa S Gunaratna"
+        ],
+        "description": "Global disparities in the health and well-being of diverse populations, across and within borders, has never been greater. Profound and rapid changes in demographics, from population growth to urbanization, along with unprecedented shifts in patterns of disease and risks, are coupled with game-changing advances in knowledge, technology, and innovation. This course will introduce students to current challenges and efforts at solutions in global health, with a focus on low- and middle-income countries. It will provide an interdisciplinary overview of topics that include measures of health and disease, communicable diseases such as HIV/AIDS and malaria, non-communicable diseases such as diabetes and cardiovascular disease, women's health, maternal and child health, food systems and nutrition, health systems, and health care delivery. In addition to lectures, the course will include interactive discussions of case studies and specific country examples, aimed at immersing students in the debates and challenges facing global health leaders and decision makers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Statistical Methods For Public Health Evaluation",
+        "subjectCode": "PUBH",
+        "courseCode": "52500",
+        "instructor": [
+            "Laura Schwab Reese"
+        ],
+        "description": "This course provides an overview of the statistical methods required to evaluate the effectiveness of public health intervention or prevention programs and policies. The course introduces a range of quantitative, qualitative, and mixed methods research designs and the application and tailoring of these designs to evaluations. In addition, we will focus on categorical data analysis methods, which are often necessary for evaluation projects. You will collaborate to conduct an evaluation, develop a report with your findings, and present your findings. The course is intended for graduate students in public health; however, it may be of interest to students in social work, nursing, education, criminal justice, psychology, and other related fields. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Child And Family Health Policy",
+        "subjectCode": "PUBH",
+        "courseCode": "54600",
+        "instructor": [
+            "Robert J Duncan"
+        ],
+        "description": "  The main goals of the course are to provide students with foundational knowledge related to research and policies that affect the health and well-being of children and families. Students will read and discuss policy-relevant research on current topics associated with child and family health. Students will read and discuss examples of researchers who have made an impact on child and family policies. Students will also write three papers that integrate research and policy perspectives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Public Health Program And Policy Evaluation",
+        "subjectCode": "PUBH",
+        "courseCode": "54700",
+        "instructor": [
+            "Melinda Marie Pankratz"
+        ],
+        "description": "This course provides an overview of the methods required to evaluate the effectiveness of public health intervention or prevention programs and policies. The course introduces a range of quantitative, qualitative, and mixed methods research designs, and the process for applying and tailoring these designs to program and policy evaluations. In addition, we will focus on the process of engaging communities and stakeholders in program evaluation efforts. The course is intended for graduate students in public health; however, it may be of interest to students in social work, nursing, education, criminal justice, psychology, and other related fields. Recommend enrollment after PUBH 60600; permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Healthcare Policy & Admin",
+        "subjectCode": "PUBH",
+        "courseCode": "59000",
+        "instructor": [
+            "Cody James Mullen",
+            "Jill Marie Inderstrodt"
+        ],
+        "description": "Various public health topics that may change from semester to semester.",
+        "capacity": 0,
+        "credits": [
+            0,
+            9
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Professional Development In Public Health Seminar",
+        "subjectCode": "PUBH",
+        "courseCode": "60000",
+        "instructor": [
+            "Michelle Marian Garrison"
+        ],
+        "description": "  A professional development course designed to the meet the needs of MPH students in the Department of Public Health. ",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To The Quantitative Methods Of Public Health",
+        "subjectCode": "PUBH",
+        "courseCode": "60100",
+        "instructor": [
+            "Robert J Duncan"
+        ],
+        "description": "Acquaints students with the basic concepts and methods of statistics, the applications, and their interpretation as used in public health. Students learn basic terminology and its meaning, how to calculate various statistical measures and indices, how to quantify health relationships, and how to compute and interpret inferential statistical techniques. Students will acquire the ability to utilize statistical software as a tool to facilitate the processing, editing, storing, displaying, analysis, and interpretation of health research-related data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Theoretical Foundations Of Health Behavior",
+        "subjectCode": "PUBH",
+        "courseCode": "60200",
+        "instructor": [
+            "Randolph Duane Hubach"
+        ],
+        "description": "Examines the theoretical foundations of health behavior. Emphasizes the development of a conceptual framework for understanding and facilitating behavior enhancement, elimination, and/or maintenance in health promotion and education. Focuses on current theories regarding health-related behaviors. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Graduate Seminar In Public Health",
+        "subjectCode": "PUBH",
+        "courseCode": "69400",
+        "instructor": [
+            "Christine M Ladisch"
+        ],
+        "description": "  Seminar course covering a broad range of current research topics in public health and related fields of study. Seminar presentations by representatives from academia, industry, government, other external institutions and organizations, and members of the Purdue University community. Intensive analysis of application of various research and statistical methodologies to the study of public health.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    }
+]

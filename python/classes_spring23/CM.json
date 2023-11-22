@@ -1,0 +1,215 @@
+[
+    {
+        "title": "Introduction To Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "10000",
+        "instructor": [
+            "Anthony E Sparkling"
+        ],
+        "description": "This course is a survey of the construction industry. Topics include the overall construction process, career opportunities in the construction industry, an introduction to construction materials as well as management and technology tools used in the industry. There will be an emphasis on construction specific vocabulary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Construction Management Fundamentals",
+        "subjectCode": "CM",
+        "courseCode": "15000",
+        "instructor": [
+            "Jason Lawrence Merchant"
+        ],
+        "description": "An introductory course dealing with construction materials and methods, contracts, and layout of basic commercial, residential, heavy/civil, and industrial projects. Students will acquire fundamental skills in quantity estimating, construction plan reading, project layout, and project documentation through hands-on laboratory experiences.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intermediate Pre-Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "20000",
+        "instructor": [
+            "Zeljko Marko Torbica"
+        ],
+        "description": "A project course covering intermediate level commercial, residential, heavy/civil, and industrial construction projects. Students will expand their understanding of construction company management, design, cost, project controls, and safety. In addition, students will explore the areas of concentration within the construction management program.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intermediate Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "25000",
+        "instructor": [
+            "James Robert Weida"
+        ],
+        "description": "A project course covering intermediate level commercial, residential, heavy/civil, and industrial construction projects. Students will expand their understanding of construction materials and methods, layout, documentation, site planning, site supervision, cost control, and MEP systems.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Pre-Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "30000",
+        "instructor": [
+            "James L Jenkins"
+        ],
+        "description": "A project course covering advanced level commercial, residential, heavy/civil, and industrial construction projects. Students will further develop their understanding of construction company management, design, cost, project controls, and safety. In addition, students will pursue their desired area of concentration within the construction management program.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Design And Construction I",
+        "subjectCode": "CM",
+        "courseCode": "33000",
+        "instructor": [
+            "Luciana De Cresce El Debs"
+        ],
+        "description": "A course which introduces students to projects and the design information of the built environment as communication tools representing space and proportion. Through a blend of lectures and studio work, students obtain working knowledge of the traditions, documents and standards utilized in the planning for a built structure. Students will also experience how design decisions and programing are influenced by a multitude of outside influences.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Design And Construction II",
+        "subjectCode": "CM",
+        "courseCode": "33100",
+        "instructor": [
+            "Bryan J Hubbard"
+        ],
+        "description": "A course where students exert criticism and evaluation of existing design through a blend of lectures and studio work. Students will be exposed to typical impediments to the design of the built environment as they demonstrate integrative decision making in creating an aesthetic and functional design program that meet the needs of society in a resource efficient and sustainable manner. Students will regularly critique the work of others and have their work critiqued as they seek to shape and implement informed design decisions.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Construction Management",
+        "subjectCode": "CM",
+        "courseCode": "35000",
+        "instructor": [
+            "Christopher S Allison"
+        ],
+        "description": "A project course covering advanced level commercial, residential, heavy/civil, and industrial construction projects. Students will further develop their understanding of construction materials and methods, layout, documentation, site planning, site supervision, cost control, and MEP systems.",
+        "capacity": 0,
+        "credits": [
+            9,
+            9
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Construction Work Experience I",
+        "subjectCode": "CM",
+        "courseCode": "39000",
+        "instructor": [
+            "Steven Glenn Habben"
+        ],
+        "description": "This course shall be taken when approximately half of a student's required 800 hours of work experience within the construction industry are completed. Students will be required to share their experiences with faculty and other construction management students. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Construction Capstone I",
+        "subjectCode": "CM",
+        "courseCode": "40000",
+        "instructor": [
+            "Bradley L Benhart"
+        ],
+        "description": "A project course covering specialized construction projects related to a student's area of concentration within the construction management program. Students will synthesize their previous knowledge of pre-construction management into a capstone project.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Construction Capstone II",
+        "subjectCode": "CM",
+        "courseCode": "45000",
+        "instructor": [
+            "Mark D Zimpfer"
+        ],
+        "description": "A project course covering specialized construction projects related to a student's area of concentration within the construction management program. Students will synthesize their previous knowledge of construction management into a capstone project.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Construction Work Experience II",
+        "subjectCode": "CM",
+        "courseCode": "49000",
+        "instructor": [
+            "Steven Glenn Habben"
+        ],
+        "description": "This course completes a student's required 800 hours of work experience within the construction industry. Students will be required to share their experiences with faculty and other construction management students. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Risk Management In Construction",
+        "subjectCode": "CM",
+        "courseCode": "55000",
+        "instructor": [
+            "Emad Elwakil"
+        ],
+        "description": "Analysis of the depth and breadth of risk in construction. Defining key terms and concepts used in various risk management arenas - legal statutes, precedent and case studies relevant to construction risk management, insurance, and surety bonding. Subjects include:  contracts, torts, insurance, surety, safety laws, quality, and risk management models. Analysis of case studies to utilize risk management tools and identify issues and possible approaches. Project risk control including management of foreseeable hazards as well as unforeseen conditions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fut-proof Infrastrct & Constr",
+        "subjectCode": "CM",
+        "courseCode": "58100",
+        "instructor": [
+            "Kyubyung Kang",
+            "Yunfeng Chen",
+            "Claudio Martani",
+            "Deniz Besiktepe"
+        ],
+        "description": "Advanced study of technical and professional topics. Emphasis is on new developments relating to technical, operational, and training aspects of industry and technology education.",
+        "capacity": 0,
+        "credits": [
+            0,
+            8
+        ],
+        "term": "Spring 2023"
+    }
+]

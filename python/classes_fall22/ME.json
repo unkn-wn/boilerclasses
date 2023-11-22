@@ -1,0 +1,810 @@
+[
+    {
+        "title": "PMEA Leadership Program",
+        "subjectCode": "ME",
+        "courseCode": "19800",
+        "instructor": [
+            "Holly L Englert"
+        ],
+        "description": "A weekly seminar that includes topics such as leadership, professional skills, teamwork, and the Mechanical Engineering culture.  Students will utilize these skills while representing Mechanical Engineering to current and prospective students, alumni, donors, and other visitors to the school.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Thermodynamics I",
+        "subjectCode": "ME",
+        "courseCode": "20000",
+        "instructor": [
+            "Jay P Gore",
+            "Kevin James Kircher",
+            "Rebecca Elaine Ciez",
+            "Sameer V Naik",
+            "Terrence R Meyer",
+            "Tian Li",
+            "Galen Ross Jackson",
+            "Richard O Buckius"
+        ],
+        "description": "First and second laws of thermodynamics, entropy, reversible and irreversible processes, properties of pure substances. Application to engineering problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Mechanical Engineering Design, Innovation And Entrepreneurship",
+        "subjectCode": "ME",
+        "courseCode": "26300",
+        "instructor": [
+            "Tahira Reid Smith",
+            "Morgan D Murphy"
+        ],
+        "description": "The product design process. Development of product design specifications using customer inputs, benchmarking, product/market research and patent review. Concept generation and evaluation using brainstorming, functional decomposition, modeling and decision matrices. Detailed product design including assembly, economic analysis, CAD, and bill of materials. Oral and written design reviews. Key skills developed include teamwork, communication, project planning, innovation, design, and entrepreneurship.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Basic Mechanics I",
+        "subjectCode": "ME",
+        "courseCode": "27000",
+        "instructor": [
+            "Yan Gu",
+            "Adrian Buganza Tepole",
+            "Satish C Boregowda",
+            "Morgan D Murphy",
+            "Fabio Semperlotti",
+            "Shirley J Dyke",
+            "Francesco Danzi",
+            "James D Jones"
+        ],
+        "description": "Vector operations, forces and couples. Free body diagrams, equilibrium of a particle and of rigid bodies. Distributed forces. Centers of gravity and centroids. Friction. Trusses, frames, and machines. Internal reactions resulting from axial, shear, torsional, and bending loading. Stress and strain analyses and elementary failure criteria.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Basic Mechanics II",
+        "subjectCode": "ME",
+        "courseCode": "27400",
+        "instructor": [
+            "Tianhong Han",
+            "Yangfan Liu"
+        ],
+        "description": "Review and extension of particle motion to include energy and momentum principles. Planar kinematics of rigid bodies. Kinetics for planar motion of rigid bodies, including equations of motion and principles of energy and momentum. Three-dimensional kinematics and kinetics of rigid bodies. Linear vibrations, with emphasis on single-degree-of-freedom systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Global Engineering Professional Seminar",
+        "subjectCode": "ME",
+        "courseCode": "29000",
+        "instructor": [
+            "Beth J Hess"
+        ],
+        "description": "Forum on contemporary issues in the global profession of mechanical engineering. Professionalism and ethics. Interactions with engineering faculty and with professionals outside the University. Quizzes on assigned readings in the areas of globalization, cultural difference and collaborating across cultural boundaries. Individually developed professional profiles describe technical interests and convey awareness of ethical responsibilities in global context.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "First Leadership Class",
+        "subjectCode": "ME",
+        "courseCode": "29700",
+        "instructor": [
+            "George T Chiu",
+            "Charles Gregory Jensen",
+            "Beth J Hess"
+        ],
+        "description": "Projects or special topics of contemporary importance can be studied under the Mechanical Engineering Projects course. Interested students should seek a faculty advisor by meeting with individual faculty members who work in their area of special interest. Students submit a summary report. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Thermodynamics II",
+        "subjectCode": "ME",
+        "courseCode": "30000",
+        "instructor": [
+            "Monique Suzanne Mcclain",
+            "Sameer V Naik"
+        ],
+        "description": "Properties of gas mixtures, air-vapor mixtures, applications. Thermodynamics of combustion processes, equilibrium. Energy conversion, power, and refrigeration systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fluid Mechanics",
+        "subjectCode": "ME",
+        "courseCode": "30800",
+        "instructor": [
+            "Lizhi Shang",
+            "Steven T Wereley",
+            "Eusebio Valero",
+            "Carl R Wassgren"
+        ],
+        "description": "Continuum description, velocity field, fluid statics, manometers, basic conservation laws for systems and control volumes, dimensional analysis. Bernoulli's equation along a streamline and with head losses. Flow over submerged bodies, boundary layers. Viscous flows in pipes, turbomachinery, system performance. One-dimensional gas dynamics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Heat And Mass Transfer",
+        "subjectCode": "ME",
+        "courseCode": "31500",
+        "instructor": [
+            "Navneet Goswami",
+            "Amy M Marconnet",
+            "Tiwei Wei",
+            "Thomas Edwin Beechem",
+            "Devahdhanush Vijayaraju Swathibanu"
+        ],
+        "description": "Fundamentals of heat transfer by conduction, convection, and radiation; mass transfer by convection. Relevance to engineering applications.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Mechanics Of Materials",
+        "subjectCode": "ME",
+        "courseCode": "32300",
+        "instructor": [
+            "Marcial Gonzalez",
+            "Charles M Krousgrill",
+            "Alex Chortos",
+            "Klod Kokini"
+        ],
+        "description": "Integrated approach to mechanics of materials emphasizing mechanics fundamentals as applied to machine design applications. Stress and strain in machine elements; mechanical properties of materials; extension, torsion, and bending of members; thermal stress; pressure vessels; static indeterminacy, stress transformation, Mohr's circle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Machine Design",
+        "subjectCode": "ME",
+        "courseCode": "35400",
+        "instructor": [
+            "Semih Akin",
+            "Beth J Hess"
+        ],
+        "description": "Design, analysis, and selection of machine components for fluctuating loading. Application of design fundamentals to mechanical components and integration of components to form systems. Open-ended design projects reinforce the design process.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles And Practices Of Manufacturing Processes",
+        "subjectCode": "ME",
+        "courseCode": "36300",
+        "instructor": [
+            "Yung C Shin",
+            "Benxin Wu"
+        ],
+        "description": "Manufacturing processes for engineering materials, both metallic and non-metallic. Fundamentals of manufacturing processes with a \"hands-on\" laboratory sequence. Analysis and design of processes for various engineering materials and their link to engineering design. Hands-on experiences through laboratory experiments and demonstrations. Not open to students with credit in IE 37000.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Measurement And Control Systems I",
+        "subjectCode": "ME",
+        "courseCode": "36500",
+        "instructor": [
+            "Euiwon Bae",
+            "Yongjie Zhuang",
+            "Todd Daniel Lillian",
+            "Martin Byung-Guk Jun"
+        ],
+        "description": "The fundamentals of dynamic system modeling are reviewed with special reference to measurement systems. Analytical and experimental techniques of general importance in systems engineering are presented, including sensor utilization in feedback control. Engineering measurement fundamentals, including digital and frequency domain techniques noise and error analysis are covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Measurement And Control Systems II",
+        "subjectCode": "ME",
+        "courseCode": "37500",
+        "instructor": [
+            "Gregory M Shaver",
+            "Laura Helen Blumenschein",
+            "Nina Mahmoudian"
+        ],
+        "description": "This course provides an introduction to modeling electrical, mechanical, fluid, and thermal systems containing elements such as sensors and actuators used in feedback control systems. Modeling techniques based on physical laws and principles are used to generate subsystem and system transfer functions. Closed-loop system analysis will include the use of proportional, integral, and derivative elements to control system response.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles Of Turbomachinery",
+        "subjectCode": "ME",
+        "courseCode": "43300",
+        "instructor": [
+            "Nicole L Key"
+        ],
+        "description": "Unified treatment of principles underlying fluid mechanic design of hydraulic pumps, turbines and gas compressors. Similarity and scaling laws. Cavitation. Analysis of radial and axial flow machines. Blade element performance. Radial equilibrium theory. Centrifugal pump design. Axial compressor design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computer-Aided Design And Prototyping",
+        "subjectCode": "ME",
+        "courseCode": "44400",
+        "instructor": [
+            "Min Liu"
+        ],
+        "description": "Introduction to advanced computer-aided design (CAD) for product design, modeling, and prototyping. Individual use and team-based environment to design and prototype a functional and marketable product. Projects include use of the advanced design tools to produce a working prototype that is manufacturable. Application to design, manufacturing, and analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Vehicle Design And Fabrication",
+        "subjectCode": "ME",
+        "courseCode": "45500",
+        "instructor": [
+            "Todd A Nelson"
+        ],
+        "description": "Open-ended project course to design and build competitive prototype vehicles. Integration of design concept formulation, engineering analysis and testing, and prototype fabrication. Product development activities in a hands-on setting. Design constraints imposed by manufacturing limitations, funding constraints and market competition. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Design",
+        "subjectCode": "ME",
+        "courseCode": "46300",
+        "instructor": [
+            "Charles Gregory Jensen"
+        ],
+        "description": "Application of the design process to the design of various engineering components and systems. Mathematical modeling in design is emphasized. Design problems from all areas of mechanical engineering are considered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Automatic Control Systems",
+        "subjectCode": "ME",
+        "courseCode": "47500",
+        "instructor": [
+            "Bin Yao"
+        ],
+        "description": "Controller design in frequency domain with introduction to digital systems and control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Finite Element Analysis",
+        "subjectCode": "ME",
+        "courseCode": "48900",
+        "instructor": [
+            "Thomas H Siegmund"
+        ],
+        "description": "<a href=\"javascript:history.go(-1)\" onmouseover=\"window.status='Return to Previous';  return true\" onfocus=\"window.status='Return to Previous';  return true\" onmouseout=\"window.status='';  return true\" onblur=\"window.status='';  return true\">Return to Previous</a>",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Additive Mfg:Fund, Equip &Appl",
+        "subjectCode": "ME",
+        "courseCode": "49601",
+        "instructor": [
+            "Ajay P Malshe",
+            "Charles Gregory Jensen"
+        ],
+        "description": "Experimental classes offered at the junior or senior level on a temporary basis to test the viability of offering the course on a permanent basis. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Advanced Thermodynamics",
+        "subjectCode": "ME",
+        "courseCode": "50000",
+        "instructor": [
+            "Steven F Son"
+        ],
+        "description": "The empirical, physical basis of the laws of thermodynamics. Availability/exergy concepts and applications. Properties and relations between properties in homogeneous and heterogeneous systems. The criteria of equilibrium. Application to a variety of systems and problems, including phase and reaction equilibrium. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Statistical Thermodynamics",
+        "subjectCode": "ME",
+        "courseCode": "50100",
+        "instructor": [
+            "Christopher S Goldenstein"
+        ],
+        "description": "The molecular interpretation of thermodynamic equilibrium. Development of the partition function. Introduction to quantum mechanics and molecular spectroscopy. The Maxwell-Boltzmann formulation of statistical mechanics and applications to ideal gases, solids, radiation, and laser diagnostics. The Gibbs formulation of statistical mechanics and application to real gases. Kinetic theory and applications to transport properties and chemical kinetics. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intermediate Heat Transfer",
+        "subjectCode": "ME",
+        "courseCode": "50500",
+        "instructor": [
+            "David Em Warsinger"
+        ],
+        "description": "Heat and mass transfer by diffusion in one-dimensional, two-dimensional, transient, periodic, and phase change systems. Convective heat transfer for external and internal flows. Similarity and integral solution methods. Heat, mass, and momentum analogies. Turbulence. Buoyancy-driven flows. Convection with phase change. Radiation exchange between surfaces and radiation transfer in absorbing-emitting media. Multimode heat transfer problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Two-Phase Flow And Heat Transfer",
+        "subjectCode": "ME",
+        "courseCode": "50600",
+        "instructor": [
+            "Issam Mudawar"
+        ],
+        "description": "Basic two-phase flow equations, homogeneous model, drift-flux model, flow regimes, pressure drop in two-phase flow. Nucleation and bubble dynamics, pool boiling, subcooled boiling, forced convection boiling, critical heat flux in pool boiling, critical heat flux in forced convection boiling, minimum heat flux, film boiling, post dryout heat transfer. Flow instabilities, choking in two-phase flow, film and dropwise condensation. Applications to heat exchangers. Special boiling and two-phase flow problems. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intermediate Fluid Mechanics",
+        "subjectCode": "ME",
+        "courseCode": "50900",
+        "instructor": [
+            "Aaron B Morris"
+        ],
+        "description": "Fluid properties. Basic laws for a control volume. Kinematics of fluid flow. Dynamics of frictionless incompressible flow and basic hydrodynamics. Equations of motion for viscous flow, viscous flow applications, boundary layer theory. Wall turbulence, lift and drag of immersed bodies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Heat Transfer In Electronic Systems",
+        "subjectCode": "ME",
+        "courseCode": "51100",
+        "instructor": [
+            "Justin A Weibel"
+        ],
+        "description": "This course covers both traditional and more innovative methods for heat extraction in electronic systems and the effectiveness and applicability of these methods over a wide range of scales. Special emphasis is given to industry-related applications with experts often attending and presenting material as part of class instruction.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Acoustics",
+        "subjectCode": "ME",
+        "courseCode": "51300",
+        "instructor": [
+            "J Stuart Bolton"
+        ],
+        "description": "The simple oscillator. Lumped acoustical elements. Electro-mechanical-acoustical analogies. Wave motion in strings and membranes. Introduction to linear acoustics through derivation of the wave equation and simple solutions. Plane and spherical waves. Acoustic intensity. Plane wave transmission through fluid layers and simple barriers. Sound absorption. Modeling of acoustical sources: monopoles, dipoles, quadrupoles. Mechanisms of sound generation and directionality. Sound propagation in one-dimensional systems (e.g., ducts and mufflers). Introduction to room acoustics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fundamentals Of Wind Energy",
+        "subjectCode": "ME",
+        "courseCode": "51400",
+        "instructor": [
+            "Luciano Castillo"
+        ],
+        "description": "Basic operating principles and analysis of performance characteristics of gas turbine engines for aircraft and vehicular propulsion and stationary power. Turbojet, turbofan, turboshaft cycle analysis. Analysis of flow through compressors, turbines, combustors, inlets, nozzles, and regenerators. Component machine and off-design performance. Inspection trip to industrial plan required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Analysis Of Thermal Systems",
+        "subjectCode": "ME",
+        "courseCode": "51800",
+        "instructor": [
+            "Davide Ziviani"
+        ],
+        "description": "Modeling and optimization of thermal systems with a focus on heat-pumping equipment, such as vapor compression, absorption, and some advanced heat-pumping cycles. Students combine the use of thermodynamics, heat transfer, fluid mechanics, and numerical methods to develop and apply mathematical models for the analysis and optimization of specific equipment. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Air Breathing Propulsion",
+        "subjectCode": "ME",
+        "courseCode": "53800",
+        "instructor": [
+            "Guillermo Paniagua Perez"
+        ],
+        "description": "(AAE 53800) Analysis of operating characteristics of turbojet, turbofan, turboshaft, afterburning, and ramjet propulsion systems. Analysis and design of inlet, diffuser, combustor, compressor, turbine, and nozzle. Component matching and off-design performance. Inlet distortion, nozzle-afterbody, and installation losses. Mission analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Design: A Decision-Based Perspective",
+        "subjectCode": "ME",
+        "courseCode": "54100",
+        "instructor": [
+            "Jitesh H Panchal"
+        ],
+        "description": "Multi-objective decision making under risk and uncertainty; Group decision making; Sequential decision making; Model-based and data-driven decision making; Heuristics and biases in design decision making. Applications to engineering design including estimation of customer preferences, simulation-based design, and sustainable design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Intellectual Property For Engineers",
+        "subjectCode": "ME",
+        "courseCode": "55400",
+        "instructor": [
+            "Dwadasi Sarma"
+        ],
+        "description": "Survey of the law of patents, trade secrets, trademarks, and copyrights, with special emphasis on the process of defining inventions broadly and diversely. Obtaining, registering, licensing, and litigation of intellectual property.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Mechanical Vibrations",
+        "subjectCode": "ME",
+        "courseCode": "56300",
+        "instructor": [
+            "James M Gibert"
+        ],
+        "description": "Review of systems with one degree for freedom. LaGrange's equations of motion for multiple degree of freedom systems. Introduction to matrix methods. Transfer functions for harmonic response, impulse response, and step response. Convolution integrals for response to arbitrary inputs. Principle frequencies and modes. Applications to critical speeds, measuring instruments, isolation, torsional systems. Introduction to nonlinear problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Machine Design",
+        "subjectCode": "ME",
+        "courseCode": "57000",
+        "instructor": [
+            "Farshid Sadeghi"
+        ],
+        "description": "Analysis of stresses and deflections due to complicated loading. Investigation of specific design problems through application of theory of elasticity, failure criteria, energy approach, and numerical methods. Individual design project.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Analysis And Design Of Robotic Manipulators",
+        "subjectCode": "ME",
+        "courseCode": "57200",
+        "instructor": [
+            "Raymond J Cipra"
+        ],
+        "description": "Introduction to the analysis and design of robotic manipulators. Topics include: kinematic configurations, forward and inverse position solution, velocity and acceleration, path planning, workspace analysis, force and torque solutions, rigid body dynamics, motors and actuators, robot design, sensors and controls, computer simulation, and graphical animation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Theory And Design Of Control Systems",
+        "subjectCode": "ME",
+        "courseCode": "57500",
+        "instructor": [
+            "Kartik B Ariyur"
+        ],
+        "description": "Covers the analysis and design of control systems from both a classical and modern viewpoint, with emphasis on design of controllers. Classical control design is reviewed, including both root locus and Bode domain design methodologies. The state space representation is introduced, along with notions of stability, controllability, and observability. State feedback controllers for pole placement and state observers are discussed with emphasis in their frequency domain implications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Nonlinear Engineering Systems",
+        "subjectCode": "ME",
+        "courseCode": "58000",
+        "instructor": [
+            "Anil Kumar Bajaj"
+        ],
+        "description": "Methods of analysis for nonlinear ordinary differential equations arising in engineering systems. Review of linear systems. Stability concepts. Phase plane methods. Perturbation and averaging methods of analysis. Self-excited and parametrically-excited systems. Relaxation oscillations. Systems with more than one degree of freedom.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Numerical Methods In Mechanical Engineering",
+        "subjectCode": "ME",
+        "courseCode": "58100",
+        "instructor": [
+            "Marisol Koslowski"
+        ],
+        "description": "The solution of problems arising in mechanical engineering using numerical methods. Topics include nonlinear algebraic equations, sets of linear algebraic equations, eigenvalue problems, interpolation, curve fitting, ordinary differential equations, and partial differential equations. Applications include fluid mechanics, gas dynamics, heat and mass transfer, thermodynamics, vibrations, automatic control systems, kinematics, and design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "System Identification",
+        "subjectCode": "ME",
+        "courseCode": "58400",
+        "instructor": [
+            "Kartik B Ariyur"
+        ],
+        "description": "Theory and application of System Identification methods. Connecting the world of mathematical models to experimental data - least squares methods and difference equation models. Background in probability and analysis: algebra of random variables, law of large numbers, central limit theorem. The ARMA family of models; mapping physics models to generalized ARMAX forms (linear and nonlinear); mapping the parameter estimation problem to the least squares problem (batch and recursive), and numerical solution techniques. Model (in)validation, optimal identification criteria, experiment design and data preprocessing considerations. Issues of signal-to-noise ratio, persistency of excitation, sampling frequency, data accuracy and data sizes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Microprocessors In Electromechanical Systems",
+        "subjectCode": "ME",
+        "courseCode": "58600",
+        "instructor": [
+            "Peter Heinrich Meckl"
+        ],
+        "description": "Architecture of microcomputers; operating systems, logic functions, logic circuit design; I/O structure and interfacing; assembly language, manual assembly; software and hardware interrupts; data acquisition, serial and parallel communications; the role of high-level languages. Laboratory experiments on applications to electrical, mechanical, and thermofluid systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Optics",
+        "subjectCode": "ME",
+        "courseCode": "58700",
+        "instructor": [
+            "Song Zhang"
+        ],
+        "description": "Fundamentals of geometrical and physical optics as related to problems in engineering design and research. Characteristics of imaging systems; properties of light sources; optical properties of materials. Diffraction, interference, polarization, and scattering phenomena as related to optical measurement techniques. Introduction to lasers and holography. (Laboratory work can be undertaken for additional credit by special arrangement.).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Mechatronics",
+        "subjectCode": "ME",
+        "courseCode": "58800",
+        "instructor": [
+            "George T Chiu"
+        ],
+        "description": "Electronic and interfacing techniques for design and control of electro-mechanical systems. Basic digital and analog design with applications to electro-mechanical interfacing via hands-on laboratory experience. Commonly used actuators and sensors and corresponding interfacing techniques. Realistic and integrated product development experience provided through a comprehensive final project where working prototypes are built to defined specifications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Robotics Seminar",
+        "subjectCode": "ME",
+        "courseCode": "59700",
+        "instructor": [
+            "Andres Arrieta Diaz",
+            "Richard M Voyles",
+            "Adrian Buganza Tepole",
+            "David J Cappelleri",
+            "Gintaras V Reklaitis",
+            "Kejie Zhao",
+            "Ming Qu"
+        ],
+        "description": "Projects or special topics of contemporary importance or of special interest that are outside the scope of the standard graduate curriculum can be studied under the Mechanical Engineering Projects course. Interested students should seek a faculty advisor by meeting with individual faculty members who work in their area of special interest and prepare a brief description of the work to be undertaken in cooperation with their advisor. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Radiation Heat Transfer",
+        "subjectCode": "ME",
+        "courseCode": "60600",
+        "instructor": [
+            "Liang Pan"
+        ],
+        "description": "Thermodynamics and physics of radiation and its interaction with interfaces and matter; radiation characteristics of surfaces and radiation properties of solids, liquids, and gases; analysis of radiation exchange between real and idealized surfaces; fundamentals of radiation transfer in absorbing, emitting, and scattering media; interaction of radiation with conduction and convection; remote temperature sensing and applications to selected problems involving combined energy transfer mechanisms. Offered in alternate years. Prerequisite: ME 31500.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Continuum Mechanics",
+        "subjectCode": "ME",
+        "courseCode": "61200",
+        "instructor": [
+            "Ganesh Subbarayan-Shastri"
+        ],
+        "description": "A unified and exact mathematical treatment of the mechanics of solids and fluids. Cartesian tensor algebra and calculus; stress tensor, principle stresses and invariants; material and spatial coordinates, deformation gradient, strain and stretch tensors; balance of mass, momentum, and energy; constitutive equations of elasticity, hyperelasticity, viscous fluids and viscoelasticity.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Computational Fluid Dynamics",
+        "subjectCode": "ME",
+        "courseCode": "61400",
+        "instructor": [
+            "Hector Gomez Diaz"
+        ],
+        "description": "Application of finite difference methods, finite element methods, and the method of characteristics for the numerical solution of fluid dynamics problems. Incompressible viscous flows: vorticity transport equation, stream function equation, and boundary conditions. Compressible flows: treatment of shocks, implicit and explicit artificial viscosity techniques, and boundary conditions. Computational grids. Prerequisite: ME 50900 or 58100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Structural Acoustics",
+        "subjectCode": "ME",
+        "courseCode": "64000",
+        "instructor": [
+            "J Stuart Bolton"
+        ],
+        "description": "Waves in fluids and structures, dispersion relations, sound radiation from structures, radiation efficiency, radiation from concentrated forces, effect of fluid loading on wave propagation, transmission of sound through barriers, effect of panel lining, enclosures, acoustically induced vibration of structures and numerical calculation of fluid-structure interaction. Offered in alternate years. Prerequisite: ME 51300, 56300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Nonlinear Feedback Controller Design",
+        "subjectCode": "ME",
+        "courseCode": "67700",
+        "instructor": [
+            "Bin Yao"
+        ],
+        "description": "Controller design and analysis of nonlinear feedback systems. Topics include the design of linear/nonlinear feedback controllers. Describing Function (DF) techniques for design, Popov and Generalized Circle Criterion for closed loop stability, functional analysis and Volterra series approaches, and introduction to existing nonlinear controller design tools. Offered in alternate years. Prerequisite: ME 67500. Typically offered Spring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Laser Diagnostics For Reacting Flows",
+        "subjectCode": "ME",
+        "courseCode": "68700",
+        "instructor": [
+            "Robert P Lucht"
+        ],
+        "description": "The principles of spectroscopic laser diagnostics including absorption, fluorescence, and Raman scattering techniques. Theory of the interaction of laser radiation with atomic and molecular resonances. Lasers and detectors for optical diagnostics. Offered in alternate years. Prerequisite: ME 50100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

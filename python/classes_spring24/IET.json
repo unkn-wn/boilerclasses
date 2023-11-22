@@ -1,0 +1,199 @@
+[
+    {
+        "title": "Introduction To Supply Chain Management Technology",
+        "subjectCode": "IET",
+        "courseCode": "21400",
+        "instructor": [
+            "Andrea F Barber-Dansby"
+        ],
+        "description": "This course is an introduction to supply chain management technology. Topics include supply chain functions including how to organize a supply chain, supply chain strategy, supply chain process mapping, and use of supply chain technologies, analysis, and performance measurements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Systems Thinking And Process Improvement",
+        "subjectCode": "IET",
+        "courseCode": "23500",
+        "instructor": [
+            "Lorri J Barnett"
+        ],
+        "description": "This course provides the foundation for technology systems processes and practices. The content covers the discussion of current systems issues, basic systems technology processes, and the role of systems engineering professionals in a global business environment. Topics include basic principles of systems thinking, the concepts of performance and cost measures, alternative design concepts, lean processes, and sustainable life-cycle management within an enterprise and across the supply chain. ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Technology Innovation And Integration: Bar Codes To Biometrics",
+        "subjectCode": "IET",
+        "courseCode": "31300",
+        "instructor": [
+            "Rushikumar Sanatkumar Pandya"
+        ],
+        "description": "This course provides the foundation for automatically capturing data in a system. The content covers an introduction to technology used in automatic identification and data capture systems, including: bar codes; radio frequency identification; smart cards, and biometrics. Topics also include an immersive semester project that examines the integration of these technologies, as well as advanced problem-solving.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Statistical Quality Control",
+        "subjectCode": "IET",
+        "courseCode": "31600",
+        "instructor": [
+            "Matthew P Stephens",
+            "Thomas Glenn Parker"
+        ],
+        "description": "This course introduces the application of statistical and probability tools to develop, implement, and maintain effective quality assurance in technology and service systems. A systems approach to product or service quality from inception to disposal is employed. Factors affecting variation in quality are studied. The concepts and implications of quality from a global business environment are examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Economic Analysis For Technology Systems",
+        "subjectCode": "IET",
+        "courseCode": "33400",
+        "instructor": [
+            "Mathias J Sutton",
+            "Ragu Athinarayanan"
+        ],
+        "description": "This course examines techniques of economic analysis for systems technologists, engineers, and leaders who evaluate and determine the financial attractiveness of multiple alternatives. Emphasizes economic feasibility and applying time value of money concepts to cost-volume-profit decisions. Topics include present worth, rate of return, benefit-cost, payback, breakeven analysis, depreciation, economic optimization, and decision-making under uncertainty.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Human Factors For Technology Systems",
+        "subjectCode": "IET",
+        "courseCode": "33520",
+        "instructor": [
+            "Gaurav Nanda"
+        ],
+        "description": "This course provides the foundation for examining the intersection of people, technology, policy, and work across technology systems. Topics include the evaluation, analysis, and design recommendations for improving the safety and efficiency of human-technology interactions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Warehouse And Inventory Management",
+        "subjectCode": "IET",
+        "courseCode": "34200",
+        "instructor": [
+            "Gaurav Nanda"
+        ],
+        "description": "A course designed to develop understanding of types of warehouses, methods of organizing the warehouse environment, and determining efficient inventory control procedures. Technology applications related to the management of warehouse and inventory stock-keeping units (SKU) are investigated. Storage of inventory, placement of inventory, picking, packing, shipping, and other internal logistics management topics will be explored.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Technical And Service Selling",
+        "subjectCode": "IET",
+        "courseCode": "34300",
+        "instructor": [
+            "James J Tanoos"
+        ],
+        "description": "A study of sales models and techniques for technical and service sales in business-to-business environments, including development of channel relationships, long-term sales agreements, customer relationship management efforts, total cost of ownership tools and complex sales presentations. Covers critical sales skills such as e-economy sales and marketing, lead management, building credibility, consultative selling, ethical negotiations, and sustainable product management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business To Business Sales Management",
+        "subjectCode": "IET",
+        "courseCode": "34350",
+        "instructor": [
+            "James J Tanoos"
+        ],
+        "description": "This course covers key topics in sales management while emphasizing customer relationship management, sales productivity, and the effects of technology on the sales function. Topics include analyzing multiple channel models; establishing sales plans; incentivizing and motivating the sales force; and evaluating, monitoring, and managing the effectiveness of the sales force.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Facilities Planning And Material Handling",
+        "subjectCode": "IET",
+        "courseCode": "43540",
+        "instructor": [
+            "Matthew P Stephens"
+        ],
+        "description": "This course takes a systematic approach to design of facilities and material handling systems for effective and lean production of goods and services. An array of qualitative and quantitative tools and techniques are introduced and utilized, emphasizing lean principles, waste reduction, and overall efficiency of operations. Flow analysis and optimization tools, including computer simulation, are introduced. Strong emphasis is placed on a comprehensive semester-long team project as an integral component of this course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Design Of Experiments",
+        "subjectCode": "IET",
+        "courseCode": "43630",
+        "instructor": [
+            "Matthew P Stephens"
+        ],
+        "description": "Introduction to statistical design of experiments. The course examines the difference between single, multivariate, and factorial experimental designs. Concepts of optimization and response surface methodologies are introduced. The course focuses on interpreting and communicating experimental results.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Lean Six Sigma",
+        "subjectCode": "IET",
+        "courseCode": "43640",
+        "instructor": [
+            "Tho Van Le"
+        ],
+        "description": "A study of the Lean Six Sigma quality and process improvement methodology, using the define, measure, analyze, improve, and control (DMAIC) process. The course addresses advanced topics in statistical quality; introduces quality management concepts as they pertain to the Lean Six Sigma methodology; and provides preparation for the Green Belt Certification exam.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Strategic Supply Chain Management",
+        "subjectCode": "IET",
+        "courseCode": "44500",
+        "instructor": [
+            "Kathryne A Newton"
+        ],
+        "description": "A course designed to build upon previous courses with subjects related to managing a distribution enterprise. Modules in sales management, financial analysis, strategic planning, logistics, purchasing, and the legalities of distributor and manufacturer relationships will be combined with case studies to provide students with practice in establishing policy and making decisions from the manager's point of view. Field trips may be required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

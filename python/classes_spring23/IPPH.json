@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Advanced Biopharmaceutics",
+        "subjectCode": "IPPH",
+        "courseCode": "58300",
+        "instructor": [
+            "Gregory Thomas Knipp"
+        ],
+        "description": "A comprehensive course dealing with the interaction of biological and physicochemical considerations relating to drug effectiveness and dosage form design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Pharmaceutical Solids",
+        "subjectCode": "IPPH",
+        "courseCode": "58700",
+        "instructor": [
+            "Eric J Munson"
+        ],
+        "description": "Provides students with the ability to identify and characterize polymorphs and hydrates and to understand their behavior in the presence of water. Both classical methods and new techniques for the study of pharmaceutical solids and their interaction with water are included. Scientific principles are blended with practical examples to provide a conceptual basis for understanding particular problems.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Principles Of Pharmacokinetics",
+        "subjectCode": "IPPH",
+        "courseCode": "59000",
+        "instructor": [
+            "Hyunyoung Jeong"
+        ],
+        "description": "Special topics in selected areas of industrial and physical pharmacy. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Pharmacokinetics And Biopharmaceutics",
+        "subjectCode": "IPPH",
+        "courseCode": "68000",
+        "instructor": [
+            "Hyunyoung Jeong"
+        ],
+        "description": "Pharmacokinetics (PK) is the study of the time course of the absorption, distribution, metabolism and excretion (ADME) of a drug, compound or new chemical entity (NCE) after its administration to the body. Biopharmaceutics examines the relationship between the physical/chemical nature of a drug, the dosage form and the route of administration on the rate and extent of systemic drug absorption. Knowledge of the pharmacokinetic and biopharmaceutics properties of an NCE are critical to its selection as a lead candidate in a drug discovery program, its use as a functional research tool, and its use as a therapeutic agent. This course will be an overview of the development of pharmacokinetic principles, including guidelines for conducting clinical studies, and equations required to characterize the disposition of drugs and their metabolite(s). Students will develop the ability to probe the mechanisms and physiological processes responsible for ADME. Pharmacodynamics, the relationship between drug concentration and effect, and the issues surrounding stereospecific PK will presented. Prerequisites: Admission to the IPPH graduate program and at least one course in pharmacology and one course in mammalian or human physiology. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intro To Pharm Sci Research",
+        "subjectCode": "IPPH",
+        "courseCode": "69000",
+        "instructor": [
+            "Danzhou Yang"
+        ],
+        "description": "Individual research topics selected from the areas of industrial pharmacy, physical pharmacy, or biopharmaceutics. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Seminar In Industrial And Physical Pharmacy",
+        "subjectCode": "IPPH",
+        "courseCode": "69600",
+        "instructor": [
+            "Sandro Matosevic"
+        ],
+        "description": "Discussion of recent research developments in physical pharmacy, industrial pharmacy, and biopharmaceutics related to the physicochemical properties, availability, effectiveness, and safety of drugs and drug products. Topics are presented by staff, students, and invited speakers.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Spring 2023"
+    }
+]

@@ -1,0 +1,49 @@
+[
+    {
+        "title": "Introduction To Robotics",
+        "subjectCode": "MFET",
+        "courseCode": "24800",
+        "instructor": [
+            "Miles A Creasy",
+            "Dominique Winston Sealy"
+        ],
+        "description": "This course introduces the fundamental concepts of robotics with emphasis on hands-on experience in programming and application of articulated industrial robots. Topics covered include introduction of robotics, robot classifications, robot programming, end-of-arm tooling, safety considerations, automation sensors, robot and system integration, and fundamentals of kinematics. Typically offered Fall Spring Summer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Manufacturing Integration I",
+        "subjectCode": "MFET",
+        "courseCode": "37400",
+        "instructor": [
+            "Grant P Richards",
+            "Rashmi Bahuguna Deodeshmukh"
+        ],
+        "description": "The fundamentals of data communications and local area networks are taught in order to show students how to integrate modern manufacturing systems. Emphasis is on the various levels of communications between shop floor computers, PLCs, robots, and automatic identification equipment. Database technology is used as an integration tool. This course prepares students for the MFET capstone course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Programming Robots With ROS",
+        "subjectCode": "MFET",
+        "courseCode": "44200",
+        "instructor": [
+            "Dongming Gan"
+        ],
+        "description": "Robot Operating Systems (ROS) will be used as a programming platform to explore the topics of computer vision, SLAM (Simultaneous Localization and Mapping), path planning, grasping, and social interaction in robotic systems, as well as programming large systems for physical interaction with the world. Self-contained implementation projects are core to the class. Student knowledge of a procedural programming language, familiarity with robotics, and a rudimentary understanding of matrices is assumed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

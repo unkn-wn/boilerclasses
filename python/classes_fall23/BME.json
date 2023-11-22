@@ -1,0 +1,234 @@
+[
+    {
+        "title": "Introduction To Biomechanical Analysis",
+        "subjectCode": "BME",
+        "courseCode": "21400",
+        "instructor": [
+            "Deva D Chan",
+            "Emilee A Madsen"
+        ],
+        "description": "The goal of this course is to provide a foundation in biomechanics (analysis of forces, moments, and stresses) that will allow students to quantify the loads in the skeleton as well as design surgical tools and total joint replacements. In addition to the topics on vectors, particle equilibrium, and rigid body mechanics one would expect in a classical mechanics course, biomedical engineers must also have a working knowledge of skeletal anatomy. Consequently, anatomical descriptions and anthropometric data will be incorporated throughout the course. As part of the implant design, students will also be introduced to more advanced topics in mechanics such as Hertz contact theory, shear-lag theory, and composite beam theory.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Bioelectricity",
+        "subjectCode": "BME",
+        "courseCode": "30100",
+        "instructor": [
+            "Krishna Jayant"
+        ],
+        "description": "Fundamentals of bioelectricity of the mammalian nervous system and other excitable tissues. Passive and active forms of electric signals in both the single cell and cell-cell communication, tissue and systematic bioelectricity, mathematical analysis including Nernst equation, Goldman equation, linear cable theory, and Hodgkin-Huxley Model of action potential generation and propagation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Biomedical Transport Fundamentals",
+        "subjectCode": "BME",
+        "courseCode": "30400",
+        "instructor": [
+            "Vitaliy L Rayz"
+        ],
+        "description": "Fundamental concepts and principles of momentum, heat, and mass transport phenomena in the context of biomedical applications. Integrated biological topics include transport of physiological fluids (e.g. blood), mass transport (e.g. oxygen and nutrients), forced convection (e.g. hemodialysis) and unsteady-state molecular diffusion (e.g. drug delivery mechanisms).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Mathematical Models And Methods In Physiology",
+        "subjectCode": "BME",
+        "courseCode": "35600",
+        "instructor": [
+            "Charles F Babbs"
+        ],
+        "description": "  This course uses real-world engineering problems to introduce advanced analytical tools and concepts relevant to biomedical engineering design. Each topic is briefly introduced, and students work in small teams to investigate physical mechanisms involving human anatomy and physiology using mathematical models and methods. Group work is done during scheduled class periods and other times by arrangement. Topics include brain concussions and protective helmets, origin of the electrocardiogram and bi-ventricular pacing, and deep brain stimulation for Parkinson's disease. Mathematical methods include coupled linear and nonlinear differential equations, finite element analysis, and simulated annealing. Creation of custom computer code is required. Students prepare extensive and detailed written technical reports. A midterm and a final examination encourage individual accountability and understanding.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Biomedical Imaging",
+        "subjectCode": "BME",
+        "courseCode": "36000",
+        "instructor": [
+            "Yunjie Tong"
+        ],
+        "description": "The main focus of this course is on basic principles and modes of major bioimaging modalities. This course covers image characterization, interactions of electromagnetic radiation with tissue, fundamental principles in imaging and detection, and modes of imaging modalities (e.g. reflection, transmission, absorption, and emission). Conventional bioimaging modalities will be used to teach the topics. This course is particularly aimed at students in science and engineering interested in gaining a conceptual understanding of several critical biological and biomedical imaging methods, including optical microscopy, ultrasound, X-ray imaging, computed tomography, nuclear medicine, magnetic resonance imaging, and mobile health. Overall, this course provides a conceptual framework for biomedical imaging in a reasonably concise and understandable format (with minimal mathematical approaches).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Mathematical & Computational Analysis Of Complex System Dynamics In Biology, Medicine, & Healthcare",
+        "subjectCode": "BME",
+        "courseCode": "40100",
+        "instructor": [
+            "Elsje Pienaar"
+        ],
+        "description": "An introduction to analysis of complex system dynamics that appear in biology, medicine, and healthcare. Key topics include nonlinear dynamical concepts associated with phase plane, bifurcation, stability diagram, oscillation, and chaotic systems along with concepts from discrete systems and stochastic processes. These topics are taught within the context of mathematical and computational models related to both non-communicable diseases (i.e. cancer) and communicable diseases (i.e. HIV/AIDS). Courses projects are drawn from recent literature.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Cardiovascular Mechanical Support And Devices",
+        "subjectCode": "BME",
+        "courseCode": "46000",
+        "instructor": [
+            "Craig J Goergen"
+        ],
+        "description": "Designed to expose students to state-of-the-art medical technologies being utilized in the treatment of patients with cardiovascular diseases, the course emphasizes the role of the biomedical engineer in the design, development and implementation of these technologies for therapeutic impact. Students completing this course will have an understanding of the role of biomedical engineers in clinical engineering and clinical research. The three components of the course, didactic presentations and discussions, laboratory dissections, and clinical shadowing are integrated throughout to teach concepts such as cardiovascular physiology, heart failure and vascular disease, treatments and treatment complications, and future directions. Clinical experts in cardiovascular diagnosis and treatment are frequent guest lecturers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Biomolecular Engineering",
+        "subjectCode": "BME",
+        "courseCode": "47000",
+        "instructor": [
+            "Leopold Noel Green"
+        ],
+        "description": "The course covers key chemical concepts one needs in order to modify existing biomolecules, link biomolecules with other (bio)molecules, link biomolecules with inorganic entities, create composite (bio)structures, modify specific properties of biomolecules, alter/enhance biomolecule functionality. Taken together, the rational application of these biological, chemical, and engineering tools can be used to; engineer new biomolecules, design sensors for molecular detection, create diagnostic tests, develop new imaging modalities, and design and test novel biomaterials, to name a few examples.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Health Care Data Science",
+        "subjectCode": "BME",
+        "courseCode": "49500",
+        "instructor": [
+            "Timothy Brock Beauclair",
+            "Nan King Kong",
+            "Craig J Goergen"
+        ],
+        "description": "Specialized topic areas for which there are no specific courses, workshops, or individual study plans, but having sufficient student interest to justify the formalized teaching of a course. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Multivariate Analyses In Biostatistics",
+        "subjectCode": "BME",
+        "courseCode": "50100",
+        "instructor": [
+            "Young L Kim"
+        ],
+        "description": "This course focuses on fundamental principles of multivariate statistical analyses in biostatistics, including multiple linear regression, multiple logistic regression, analysis of variance, and basic epidemiology. The fundamental theories are applied to analyze various biomedical applications ranging from laboratory data to large-scale epidemiological data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Clinical Medicine For Engineering Solutions",
+        "subjectCode": "BME",
+        "courseCode": "55600",
+        "instructor": [
+            "Charles F Babbs"
+        ],
+        "description": "This course introduces students to the physiology and medicine underlying major human diseases likely to become research targets in biomedical engineering and medical device development. It encourages students to upgrade research target selection to include projects that promise to improve patient care, with a major emphasis on pathophysiology and disease mechanisms. The information and intellectual approach offered will help students recognize needs for engineering solutions to current challenges in medicine. The course also previews the intellectual content of medical school, including rigor and level of detail, for engineering students considering designing medical solutions or translational engineering research as a career, emphasizing the key \"11-points\" necessary for practical understanding of any disease: definition of the condition, causes, functional abnormalities, structural abnormalities, early signs, history and physical findings, differential diagnosis, special studies (lab, imaging, etc.), treatment strategy, specific steps of treatment, and follow up, as well as current clinical needs for innovation and research opportunities for the future. To avoid possible redundancy with the Weldon School undergraduate curriculum, focal areas of the course include topics and body systems not covered in BME 25600, including infectious diseases, cardiopulmonary diseases, hematology-oncology, and gastrointestinal diseases.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Preclinical And Clinical Study Design",
+        "subjectCode": "BME",
+        "courseCode": "56100",
+        "instructor": [
+            "Aaron Edward Lottes"
+        ],
+        "description": "Medical devices are developed, manufactured, and distributed in a highly regulated environment. This course concerns the preclinical and clinical study design processes for obtaining FDA marketing approval for biomedical devices. Prior to marketing a medical device in the US, specific governmental approval is required dependent on the type of device and the risk associated. This course is part of a three-course series dealing with various aspect of regulatory science. Regulatory science considers the scientific and technical foundations that support the practical testing and regulations that ensure the safety and effectiveness of medical devices. This course covers the responsible conduct of clinical and preclinical research, including evaluation of device tissue interactions and how they may be studied with preclinical animal models to predict safety and performance in human clinical trials that are necessary to gain regulatory approval for marketing. In the section on ethics we will cover several topics related to responsible conduct of clinical and preclinical research, including informed consent, risk assessment and ethical decisions, IRB oversight and ethical study design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Research Fundamentals",
+        "subjectCode": "BME",
+        "courseCode": "59500",
+        "instructor": [
+            "Eugenio Culurciello",
+            "Maria Cristina Makin",
+            "Tae Yoon Kim",
+            "Fang Huang"
+        ],
+        "description": "This course is designed primarily for specialized topic areas for which there is no specific course, workshop, or individual study plan, but having enough student interest to justify the formalized teaching of a course. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Seminar In Biomedical Engineering",
+        "subjectCode": "BME",
+        "courseCode": "69000",
+        "instructor": [
+            "Young L Kim"
+        ],
+        "description": "Seminar course covering a broad range of current research topics spanning Biomedical Engineering. Seminar presentations by representatives from industry and faculty from Purdue University and other external institutions. Required of Biomedical Engineering graduate students at Purdue; M.S. and Ph.D. students must complete two and four semesters (respectively) prior to graduation.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Modl-Based Img & Signl Process",
+        "subjectCode": "BME",
+        "courseCode": "69500",
+        "instructor": [
+            "George R Wodicka",
+            "Charles A Bouman"
+        ],
+        "description": "This course is designed primarily for specialized topic areas for which there is no specific course, workshop, or individual study plan, but having enough student interest to justify the formalized teaching of an advanced course. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

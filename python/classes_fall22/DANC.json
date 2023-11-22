@@ -1,0 +1,140 @@
+[
+    {
+        "title": "Modern Dance Technique I",
+        "subjectCode": "DANC",
+        "courseCode": "10100",
+        "instructor": [
+            "Carol J Cunningham-Sigman",
+            "Holly A Jaycox"
+        ],
+        "description": "An introduction to the techniques and principles of modern dance.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Ballet I",
+        "subjectCode": "DANC",
+        "courseCode": "10200",
+        "instructor": [
+            "Petre G Iliev",
+            "Carol J Cunningham-Sigman"
+        ],
+        "description": "An introduction to the techniques and principles of classical ballet.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Jazz Dance I",
+        "subjectCode": "DANC",
+        "courseCode": "10300",
+        "instructor": [
+            "Petre G Iliev",
+            "Kathleen M Hickey"
+        ],
+        "description": "An introduction to the principles of jazz dance techniques: alignment, isolations, rhythmic patterns, and basic locomotion.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Modern Dance Technique II",
+        "subjectCode": "DANC",
+        "courseCode": "20100",
+        "instructor": [
+            "Kathleen M Hickey"
+        ],
+        "description": "A continuation and refinement of the modern dance techniques and principles addressed in DANC 10100.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Ballet II",
+        "subjectCode": "DANC",
+        "courseCode": "20200",
+        "instructor": [
+            "Petre G Iliev"
+        ],
+        "description": "A continuation of the principles and techniques of classical ballet addressed in DANC 10200.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Jazz Dance II",
+        "subjectCode": "DANC",
+        "courseCode": "20300",
+        "instructor": [
+            "Renee L Murray"
+        ],
+        "description": "A continuation and refinement of the jazz dance concepts and movement vocabulary addressed in DANC 10300.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Dance Improvisation",
+        "subjectCode": "DANC",
+        "courseCode": "26000",
+        "instructor": [
+            "Holly A Jaycox"
+        ],
+        "description": "In this course students explore a variety of techniques for creating movement. While physically researching concepts from a broad spectrum of improvisational artists, students expand their boundaries and definitions of dance, art and creativity. Important concepts include choice making, moving from internal motivations, and ensemble collaboration. All backgrounds in dance and movement are welcome, and will benefit from this course.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Modern Dance Techniques III",
+        "subjectCode": "DANC",
+        "courseCode": "30100",
+        "instructor": [
+            "Renee L Murray"
+        ],
+        "description": "A continuation and refinement of the modern dance techniques and principles addressed in DANC 20100. Emphasis placed on expressive qualities of movement.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Survey Of Concert Dance History",
+        "subjectCode": "DANC",
+        "courseCode": "37800",
+        "instructor": [
+            "Kathleen M Hickey"
+        ],
+        "description": "This course is a broad survey of concert dance history predominately in the 20th and 21st century in Western cultures. The direct relationship and influence of the culture, training, choreographic, and performative records of dance practices, to socio-political ideologies of gender, race, sexuality, and national identities will be the area of investigation. Students will read, watch, research and actively participate in discussion regarding important dance figures, movements, eras, and their social and cultural reverberations. Dance's relationship to other art practices throughout history will also be a subject of lecture and discussion.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    }
+]

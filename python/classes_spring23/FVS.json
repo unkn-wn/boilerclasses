@@ -1,0 +1,96 @@
+[
+    {
+        "title": "Foundations Of Cinema Production",
+        "subjectCode": "FVS",
+        "courseCode": "26100",
+        "instructor": [
+            "Jeremy Frederick Sklar"
+        ],
+        "description": "The course introduces students to the principles and practice of professional video production. Through lectures, viewing, discussions, and laboratory exercises, students will acquire the tools necessary to transform their concepts, or those of their clients, into successful video productions. Film students have priority.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "International Cinema",
+        "subjectCode": "FVS",
+        "courseCode": "33000",
+        "instructor": [
+            "Shaun F D Hughes"
+        ],
+        "description": "This course is designed to develop students seeing, reading, speaking, writing, and critical thinking skills and especially to improve visual competency, awareness for visual culture, and knowledge of selected international cinema. All films will be shown with English subtitles.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Sports Video Production Winter/Spring",
+        "subjectCode": "FVS",
+        "courseCode": "33202",
+        "instructor": [
+            "Hunter R Massingill"
+        ],
+        "description": "This experiential course furthers the students' understanding of live sports video production. Lecture combined with various production experiences increase the students' proficiency with professional technology and equipment as well as the art and storytelling of the craft. Potential Men's and Women's Winter/Spring sports include Swimming & Diving, Wrestling, Basketball, Baseball, Softball, Tennis, Golf, or Track & Field. Typically offered Spring.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Screenwriting",
+        "subjectCode": "FVS",
+        "courseCode": "33600",
+        "instructor": [
+            "Jeremy Frederick Sklar"
+        ],
+        "description": "Students will gain a working knowledge of basic narrative elements and how these elements work to form a story. Writing and re-writing a three-act outline and an original screenplay will give you an understanding of script language and process. (Film Video Studies majors have priority.)",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Directing The Narrative Short Film",
+        "subjectCode": "FVS",
+        "courseCode": "44200",
+        "instructor": [
+            "Jeremy Frederick Sklar"
+        ],
+        "description": "Students will gain knowledge of all phases of film production in the course of completing multiple short films. This class will emulate standard film industry practices and guidelines.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Spirit Of Ital Comedy",
+        "subjectCode": "FVS",
+        "courseCode": "49100",
+        "instructor": [
+            "Pedro Thiago Ramos Bassoe",
+            "Cory W Palm",
+            "Jeremy Frederick Sklar",
+            "Elena Coda",
+            "Ashley M Purpura"
+        ],
+        "description": "Special topics or projects under the direction of an instructor in a particular field of specialization.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2023"
+    }
+]

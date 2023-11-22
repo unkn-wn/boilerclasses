@@ -1,0 +1,395 @@
+[
+    {
+        "title": "Survey Of Acting",
+        "subjectCode": "THTR",
+        "courseCode": "13300",
+        "instructor": [
+            "Sonita Lillian Surratt"
+        ],
+        "description": "This is an introductory acting course for non-theatre majors. It is an exploration of the fundamentals of stage acting designed to enhance communication, creativity and collaboration. Class work includes acting exercises, theatre games and scene work. CTL:IFA 1301 Introduction To Acting",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Drafting",
+        "subjectCode": "THTR",
+        "courseCode": "15001",
+        "instructor": [
+            "Ellen Claire Compton McLean"
+        ],
+        "description": "An introduction to hand and computer-aided drafting techniques for theatre and live entertainment. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Scenery Construction Tools And Techniques",
+        "subjectCode": "THTR",
+        "courseCode": "15002",
+        "instructor": [
+            "Ellen Claire Compton McLean"
+        ],
+        "description": "An introduction to common tools, techniques, and practices in scenery production for theatre and live entertainment. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Rigging For Theatre",
+        "subjectCode": "THTR",
+        "courseCode": "15003",
+        "instructor": [
+            "Ellen Claire Compton McLean"
+        ],
+        "description": "An introduction to rigging techniques and equipment for theatre and live entertainment. Permission of Instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Scene Design And Technology",
+        "subjectCode": "THTR",
+        "courseCode": "16000",
+        "instructor": [
+            "Sydney Lane Hagen"
+        ],
+        "description": "This course is designed to introduce the students to the process and tools of scene design and technology.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Costume Design And Technology",
+        "subjectCode": "THTR",
+        "courseCode": "16100",
+        "instructor": [
+            "Carlee June Wuchterl"
+        ],
+        "description": "Introduction to analytical, artistic, and practical skills required when creating costumes for theatre. Beginning training in elements and principles of design, rendering and presentation skills. Elementary instruction in costume construction, including hand and machine sewing, costume crafts, and basic patterning.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Light Design And Technology",
+        "subjectCode": "THTR",
+        "courseCode": "16200",
+        "instructor": [
+            "Tatyanna Marie Rodriguez"
+        ],
+        "description": "A course that introduces the student to the basic equipment and design process of stage lighting design.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Theatre Organization And Management",
+        "subjectCode": "THTR",
+        "courseCode": "16400",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "A theoretical study of performing arts management and backstage operations from audition through performance. Techniques of scheduling, production management, stage management, technical direction, house management, safety issues, and emergency procedures.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Theatre Appreciation",
+        "subjectCode": "THTR",
+        "courseCode": "20100",
+        "instructor": [
+            "Sonita Lillian Surratt"
+        ],
+        "description": "Understanding and appreciation of the theatre's role in the modern world, dramatic structure and analysis, the actor, director, designer, and critic; attendance at current stage productions; class discussion of production elements. CTL:IFA 1302 Theatre Appreciation",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Voice For The Actor",
+        "subjectCode": "THTR",
+        "courseCode": "21300",
+        "instructor": [
+            "Margaret A Hinckley"
+        ],
+        "description": "Designed to heighten the actor's awareness of the vocal instrument. Elementary vocal techniques will be practiced to expand the student's vocal flexibility and range. Emphasis on freeing habitual vocal tensions and teaching the student the fundamentals of vocal health.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Acting I: Acting Technique",
+        "subjectCode": "THTR",
+        "courseCode": "23300",
+        "instructor": [
+            "Richard Stockton Rand",
+            "Sonita Lillian Surratt"
+        ],
+        "description": "Beginning training and exercises in the basic elements of acting, including vocal and physical preparation, sensory awareness, releasing the imagination and a basic understanding of action and objective. Staging exercises and terminology are emphasized. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Sound Studios",
+        "subjectCode": "THTR",
+        "courseCode": "26300",
+        "instructor": [
+            "Monte Harrison Taylor"
+        ],
+        "description": "An introduction to theories and techniques of audio production.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Animatronics",
+        "subjectCode": "THTR",
+        "courseCode": "29000",
+        "instructor": [
+            "Michael Christian Meyer"
+        ],
+        "description": "Topics will vary.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Acting III: Acting For The Camera",
+        "subjectCode": "THTR",
+        "courseCode": "33400",
+        "instructor": [
+            "Laquetta Lenay Carpenter"
+        ],
+        "description": "Continued development of acting technique, as it relates to challenges unique to acting on film, television and commercials. Students will develop an effective process for on-camera performance. Class exercises/presentations are recorded, viewed and critiqued by the students and the instructor.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Scenic Design",
+        "subjectCode": "THTR",
+        "courseCode": "36000",
+        "instructor": [
+            "Ryan Joseph Douglass"
+        ],
+        "description": "Project course in utilizing the principles of design as they can be formed into an environment for dramatic action. Emphasis on the interrelationship among all aspects of production and how the scenic element becomes a building block toward total picturization. Offered alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "History Of Theatre II",
+        "subjectCode": "THTR",
+        "courseCode": "38100",
+        "instructor": [
+            "Martin Andrew Swoverland"
+        ],
+        "description": "Theatre history from 18th to 21st century with special attention to significant plays and playwrights and the physical development of the theatre.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Patterning",
+        "subjectCode": "THTR",
+        "courseCode": "39000",
+        "instructor": [
+            "Paul Ryan Schneider",
+            "Megan Wiese Berg"
+        ],
+        "description": "An undergraduate level, individualized, and intensive study of any aspect of theatre required by the student's plan of study. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Professional Issues In Theatre",
+        "subjectCode": "THTR",
+        "courseCode": "53200",
+        "instructor": [
+            "Laquetta Lenay Carpenter"
+        ],
+        "description": "Training in the techniques of the prepared audition, cold readings, improvisational auditions, and interviews. A survey of various employment opportunities and the demands of the professional theatre, educational theatre, and professional training. Permission of instructor required. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Adv Arena Rigging",
+        "subjectCode": "THTR",
+        "courseCode": "55000",
+        "instructor": [
+            "Richard M Dionne"
+        ],
+        "description": "A theoretical and practical study of theatrical scenery planning, construction, and stage use. Topics will vary by semester and will include project management techniques, mechanical design, automation systems, show control systems, rigging, and safety issues. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Light Design",
+        "subjectCode": "THTR",
+        "courseCode": "56200",
+        "instructor": [
+            "Michael Jack Mcnamara"
+        ],
+        "description": "Advanced study of the principles of light design and their application to specific lighting problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Theatrical Rendering",
+        "subjectCode": "THTR",
+        "courseCode": "56400",
+        "instructor": [
+            "Ashley Meegan Bellet"
+        ],
+        "description": "Provides advanced training in rendering techniques used by theatrical designers. Students will study perspective drawing, figure drawing, painting, and explore different materials used by designers to communicate their artistic vision.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Dance Light Design",
+        "subjectCode": "THTR",
+        "courseCode": "56800",
+        "instructor": [
+            "Michael Jack Mcnamara",
+            "Ryan Joseph Douglass"
+        ],
+        "description": "A described tutorial in theatrical design or design research. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Special Problems In Audio Production",
+        "subjectCode": "THTR",
+        "courseCode": "56900",
+        "instructor": [
+            "Richard K Thomas"
+        ],
+        "description": "Advanced study and application of sound studio production techniques to different audio related disciplines. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Character Design",
+        "subjectCode": "THTR",
+        "courseCode": "59000",
+        "instructor": [
+            "Ashley Meegan Bellet"
+        ],
+        "description": "An individualized and intensive study of any aspect of theatre required by the student's plan of study. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Classical Text II",
+        "subjectCode": "THTR",
+        "courseCode": "61400",
+        "instructor": [
+            "William P Caise"
+        ],
+        "description": "Continuation of Classical Text I, with emphasis on studio scene work beginning with Shakespeare and progressing through the works of other major classical playwrights. Permission of instructor required. Prerequisite: THTR 61300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Interpretive Acting Techniques",
+        "subjectCode": "THTR",
+        "courseCode": "63300",
+        "instructor": [
+            "Kristine June Holtvedt"
+        ],
+        "description": "Advanced work in script and character analysis, character development, interpretation, interaction and relationship dynamics; rehearsal of complex scenes using material from various contemporary forms and theatrical genres. Prerequisite: THTR 53300. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

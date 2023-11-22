@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Women In Science Program",
+        "subjectCode": "SCI",
+        "courseCode": "19500",
+        "instructor": [
+            "Constance Kaspar"
+        ],
+        "description": "This is a special projects course that will be used for special circumstances with individual study or for experimental courses, pointed toward students who are first- or second-year students.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

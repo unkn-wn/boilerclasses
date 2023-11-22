@@ -1,0 +1,629 @@
+[
+    {
+        "title": "Learning In Context-An Introduction To The Learning Sciences",
+        "subjectCode": "EDPS",
+        "courseCode": "10101",
+        "instructor": [
+            "Toni K Rogat"
+        ],
+        "description": "This introductory course is designed to acquaint first year Learning Science students with the core concepts, principles, and research findings of the learning sciences as they apply to a wide range of formal and informal educational contexts. The course provides students with opportunities to interact with and learn about the scholarship of College of Education faculty who conduct research within the framework of the learning sciences. Students will learn about faculty projects that exemplify key features of the Learning Sciences such as attention to the complexity of learning environments, the study of social and cultural as well as individual dimensions of learning, and the cross-disciplinary nature of the field.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Academic And Career Planning",
+        "subjectCode": "EDPS",
+        "courseCode": "10500",
+        "instructor": [
+            "Ashlyn M Ruff",
+            "Erica A Lott",
+            "Lynette J Bleed",
+            "Cara R Wetzel",
+            "Keith B Gehres",
+            "Rachel Marie Kelly",
+            "Kara Elizabeth Green",
+            "Tricia L Harlow",
+            "Corrie Scott Wynkoop",
+            "David T Bowker",
+            "Karla K Cunningham",
+            "Katy Marie Panozzo",
+            "Amanda C Ward",
+            "Storie Preo Pedley",
+            "Michelle L Fulk",
+            "Mary Beth Lencke",
+            "Edward S Vana",
+            "Miranda Aileen Jack",
+            "Timothy D Riley",
+            "Katherine A Winton",
+            "Jennifer L Montes",
+            "Martha M Dorsey",
+            "Colleen Elizabeth Banter",
+            "Jessica N Chapman",
+            "Samantha Nicole La Mar"
+        ],
+        "description": "Builds understanding of career interests and personality characteristics related to academic and career decisions. Expands knowledge of Purdue academic programs and of the world of work. Introduces decision-making strategies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Learning And Regulation Strategies For College Success",
+        "subjectCode": "EDPS",
+        "courseCode": "17700",
+        "instructor": [
+            "Brenda K Downing"
+        ],
+        "description": "This course is designed to help students improve their college academic success by studying more efficiently and effectively, through strategic engagement, learning, and performance. We examine and apply evidence-based learning, motivation, and regulation strategies beneficial for college and lifelong learning. Educational psychology provides the theoretical framework for practical application of intentional and informed learning, cognition, motivation and behavior regulation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Special Populations Seminar: Focus On Students With Disabilities And Differentiation Approaches",
+        "subjectCode": "EDPS",
+        "courseCode": "20001",
+        "instructor": [
+            "Jasmine L Begeske"
+        ],
+        "description": "(EDCI 20001) This seminar is focused on special populations of learners for teacher education majors with an emphasis on exceptional students and approaches to curricular differentiation. Students will engage in mentoring activities and ongoing support in their development as a professional. The goal of the seminar is to connect theory to practice by engaging in an immersive field experience that connects to content and courses taken concurrently. The seminar provides an environment conducive to fostering rich relationships with schools and communities, pursuing common inquiry, thinking critically about theory, content and practice and advocating for equitable schooling. This seminar includes a field experience targeting schools and classrooms including exceptional students. This seminar is intended to be taken concurrently with EDPS 24800 and EDPS 26501.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Special Education Law, Policy, And Ethical Guidelines",
+        "subjectCode": "EDPS",
+        "courseCode": "21100",
+        "instructor": [
+            "Jennifer Elaine Smith"
+        ],
+        "description": "This course provides opportunities for analysis and practical application of special education law and policy through discourse and advocacy. It is designed to provide students with a foundational understanding of special education, including the historical context for special education and the laws, policies, and ethical guidelines that have driven current special education legislation. Special education professionals hold multiples roles: teacher, case manager, general education consultant, instructional aid supervisor, research, and administrator to name a few. Moreover, there are numerous responsibilities required to successfully work in each of these roles and in this course we focus on law, policy, and ethical guidelines where they are relevant to special education pre-service teachers and support personnel.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Learning And Motivation",
+        "subjectCode": "EDPS",
+        "courseCode": "23500",
+        "instructor": [
+            "Brenda K Downing",
+            "Helen Patrick"
+        ],
+        "description": "Introduction to concepts of learning and motivation in educational contexts (i.e., Educational Psychology).  Influence of development, culture, and individual differences on learning and motivation. Uses of assessment and technology in promoting learning and motivation. A field-based experiential component is included.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Inclusive Classroom",
+        "subjectCode": "EDPS",
+        "courseCode": "26501",
+        "instructor": [
+            "Scott E Opsahl"
+        ],
+        "description": "This course is designed to provide an overview of the characteristics of children (birth through age 21) with disabilities, causes of disability, assessment techniques, and instructional strategies. Emphasis is placed upon the development of an inclusive lesson plan based on student needs in the field experience classroom. Characteristics addressed include learning, behavioral, social-emotional, and communicative abilities and needs for students with mild and intense support needs. Issues related to cultural differences and family impact will also be addressed. A field-based component is included.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Student Leadership Development",
+        "subjectCode": "EDPS",
+        "courseCode": "30000",
+        "instructor": [
+            "Melissa D Gruver"
+        ],
+        "description": "Leadership in students is developed through lectures and experiential activities. Topic areas include leadership styles; campus organizational structures; program planning; social and intellectual activities; human relations and cultural differences; motivation; team building; public relations. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Peer Counseling Training",
+        "subjectCode": "EDPS",
+        "courseCode": "30100",
+        "instructor": [
+            "Miaya Elise Scott"
+        ],
+        "description": "Students are trained to help peers deal with their problems and concerns. Training modules are used to build knowledge and skills in the duties of peer helpers; student development, communication, goal setting, and use of community resources are stressed. (EDPS 30100 and 30100 are for Horizon students only.). Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Assessment And Transition (Data-Based Decision-Making)",
+        "subjectCode": "EDPS",
+        "courseCode": "30400",
+        "instructor": [
+            "Jennifer Elaine Smith"
+        ],
+        "description": "1.  Apply their understanding of specialized curricula to inform their programmatic and instructional decisions for individuals with exceptionalities across a variety of contexts and the continuum of placement options. (CEC 3.2)",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Systematic And Explicit Instruction",
+        "subjectCode": "EDPS",
+        "courseCode": "30900",
+        "instructor": [
+            "Juliana Aguilar"
+        ],
+        "description": "Students will learn evidence based instructional strategies for students with disabilities. The key components of systematic and explicit instruction will be explored. Students will learn how to use explicit instructional strategies to foster engagement and motivation. Methods for implementing systematic instruction across academic, functional, communication, social, and behavior goals will be addressed. Additionally, implementation in a variety of settings including 1:1, small group, and large group settings will be explored. Planning for generalization and maintenance of skills will also be addressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Collaborative Leadership: Interpersonal Skills",
+        "subjectCode": "EDPS",
+        "courseCode": "31500",
+        "instructor": [
+            "Marykate Toni Godinez",
+            "Katherine A Winton",
+            "Chad Allan Pulver",
+            "Muzi Li",
+            "Heming Li",
+            "Elizabeth C Casebeer",
+            "Katharine Alix May",
+            "Zachary Ray Doscher",
+            "Dallann Alexander Johnson",
+            "Farida Refaat Elhedk",
+            "Karabella Rose Hernandez",
+            "Naisargi Tirthesh Mehta",
+            "Diana Louise Mathis"
+        ],
+        "description": "The purpose of this course is to provide integrated study of listening as a collaborative leadership skill necessary for interpersonal and intrapersonal development. Focus is on the development of professional listening skills, and the understand of the role listening plays in collaborative leadership conflict resolution, interviewing, team building, and ethics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Collaborative Leadership: Cross-Cultural Settings",
+        "subjectCode": "EDPS",
+        "courseCode": "31600",
+        "instructor": [
+            "Jessica Renee Bowen",
+            "Chunyu Xu"
+        ],
+        "description": "In this course, students will explore the cultural nuances of leadership in the United States as well as around the world. This course will include impact of globalism as a context for leadership, conflict resolution in a global environment, and other important factors that impact culturally diverse or global teams.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Collaborative Leadership: Mentoring",
+        "subjectCode": "EDPS",
+        "courseCode": "31700",
+        "instructor": [
+            "Brenda Wen Shein"
+        ],
+        "description": "The purpose of this course is to provide a theoretical and experiential overview of the basic elements of mentoring as a key aspect of effective collaborative leadership. The learning experience is designed to promote development of the knowledge, skills, and dispositions required for competent mentorship. Emphasis on workplace and youth mentoring.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Classroom Assessment",
+        "subjectCode": "EDPS",
+        "courseCode": "32700",
+        "instructor": [
+            "Panayota Y Mantzicopoulos-James"
+        ],
+        "description": "Evaluating the impact of instruction on student performance is one of the most important skills for an educator. Effective teachers ask themselves, \"How do I know if students are truly learning? Are they meeting educational objectives in the content area?\" Using well-chosen assessment approaches, teachers can address these questions. In this course, students will acquire assessment literacy: the ability to gather accurate information about student achievement, and use that information to make instructional decisions that will improve learning. Course activities will focus on assessment tasks relevant to P- 12 classroom settings.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Positive Behavioral Supports",
+        "subjectCode": "EDPS",
+        "courseCode": "36201",
+        "instructor": [
+            "Eric Neil Shannon",
+            "Erica B Mcclure"
+        ],
+        "description": "This course provides an overview of the theory, principles, and application of applied behavior analysis within positive behavior interventions and support. The course focuses on pre-service teacher preparation in designing and implementing group and individual behavior supports. Emphasis is on universal supports, targeted interventions, and data-driven decision-making.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Creating And Managing Learning Environments",
+        "subjectCode": "EDPS",
+        "courseCode": "43000",
+        "instructor": [
+            "David A Sears"
+        ],
+        "description": "The purpose of this course is to enable you to develop a supportive, challenging, and growth-enhancing classroom community for students in elementary grades. Teachers need insightful understanding and strong skills to create a classroom community that enhances achievement, welcomes diversity, makes effective use of technology, and provides appropriate educational experiences for students with diverse needs, backgrounds, and developmental levels.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Secondary Creating And Managing Learning Environments",
+        "subjectCode": "EDPS",
+        "courseCode": "43010",
+        "instructor": [
+            "David A Sears"
+        ],
+        "description": "This course is designed to develop advanced pre-service teachers' skills in recognizing classroom processes and understanding how teachers' beliefs and practices affect secondary students' engagement, learning, and motivation. It focuses on Effective Teaching, what it is, what it looks like, and different ways to enact it in the classroom.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Student Teach Dual",
+        "subjectCode": "EDPS",
+        "courseCode": "46100",
+        "instructor": [
+            "Sungwoo Kang"
+        ],
+        "description": "Practicum experience in assessment and teaching of individuals with disabilities. Experience in design, delivery, implementation, and evaluation of instruction. No undergraduate students may be enrolled in any of these undergraduate courses until they have been admitted to teacher education. Admission to Teacher Education Program, passage of Gates A and B.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Strategies For Teaching Individuals With Mild And Moderate Disabilities (Middle And High School)",
+        "subjectCode": "EDPS",
+        "courseCode": "46200",
+        "instructor": [
+            "Jennifer Elaine Smith"
+        ],
+        "description": "This course is designed to prepare future special educators to plan and provide content area instruction in the core content areas to middle and high school students with mild and moderate disabilities. Course content will include information on assessment, instructional design, and development of individualized education programs, research-based practices for promoting academic and behavioral growth, and content area literacy and numeracy with an emphasis on intervention portability. This course has a required concurrent enrollment in EDPS 46100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Life Skill:Success Strat",
+        "subjectCode": "EDPS",
+        "courseCode": "49000",
+        "instructor": [
+            "Catherine Jean Wright-Eger"
+        ],
+        "description": "Primarily for teacher candidates requiring special, individualized experience in research or teaching. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            8
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Assistive Technology",
+        "subjectCode": "EDPS",
+        "courseCode": "49100",
+        "instructor": [
+            "David Max Jackson"
+        ],
+        "description": "Provides student with opportunity to strengthen preparation through study of selected educational topics and issues based upon individual needs and interests. One topic is considered in each enrollment.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Foundations Of Career Development And Assessment",
+        "subjectCode": "EDPS",
+        "courseCode": "50500",
+        "instructor": [
+            "Amanda Sommerfeld Case"
+        ],
+        "description": "Treats career development theories which emphasize aspects of the self in decision making, occupational classification systems, and educational and vocational information with applications to individual and group counseling.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Educational Psychology",
+        "subjectCode": "EDPS",
+        "courseCode": "53000",
+        "instructor": [
+            "Toni K Rogat"
+        ],
+        "description": "Theories of learning and development, research on instruction and learning, and principles of measurement applied to educational problems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Measurement And Instrument Design",
+        "subjectCode": "EDPS",
+        "courseCode": "53100",
+        "instructor": [
+            "Hua-Hua Chang"
+        ],
+        "description": "An application-oriented introduction to constructing educational and psychological tests and surveys. Class sessions include guided practice with the process of instrument development, from trait and test task domain definition, item writing and revision, and item analysis, to score interpretation and validation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Educational Research I: Methodology",
+        "subjectCode": "EDPS",
+        "courseCode": "53300",
+        "instructor": [
+            "Panayota Y Mantzicopoulos-James",
+            "Yingying Jiang",
+            "Helen Patrick"
+        ],
+        "description": "This course presents a sequence of journal articles and exercises that help introduce the foundational concepts of the course, including: research design, reliability and validity, various methodologies commonly used in educational research, and basic quantitative and qualitative data analyses. In addition, contrasting research conclusions are shown in the articles to help students learn why careful analysis of articles and their theoretical framing is critical to evaluating their conclusions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Practicum In Applied Behavior Analysis",
+        "subjectCode": "EDPS",
+        "courseCode": "55100",
+        "instructor": [
+            "Jennifer Mary Pollard",
+            "Juliana Aguilar"
+        ],
+        "description": "University-supervised fieldwork in applied behavior analysis. This practicum will facilitate development and fluency of essential professional and ethical skills necessary for the delivery of high-quality ABA services. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Basic Concepts Of Applied Behavior Analysis",
+        "subjectCode": "EDPS",
+        "courseCode": "55200",
+        "instructor": [
+            "Yves Jacques Phillipe Sallade"
+        ],
+        "description": "This course is the first in a sequence of courses for the Applied Behavior Analysis Certificate Program. This course, in combination with the other courses, will provide fundamental knowledge and experiences for understanding Applied Behavior Analysis principles, concepts, and techniques, including observational analysis, data-based instruction, and social validity to increase students' social and task related behavior. Students learn procedures to increase or decrease target behavior, to facilitate behavior maintenance and generalization, and to evaluate effectiveness of instruction. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Quantitative Data Analysis Methods In Education I",
+        "subjectCode": "EDPS",
+        "courseCode": "55600",
+        "instructor": [
+            "John A Gipson"
+        ],
+        "description": "This online course is designed to provide an overview of introductory quantitative data analysis methods in education. The course is specially designed to enhance students' quantitative reasoning and skills through discussions of issues in educational data and authentic data analysis experiences of a variety of education data. The topics to be covered in this course include data collection and description, sampling distributions, methods of quantitative data analysis often used in education research. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Counseling Theories And Techniques",
+        "subjectCode": "EDPS",
+        "courseCode": "60000",
+        "instructor": [
+            "Xiang Zhou"
+        ],
+        "description": "Examination of major counseling theories and counseling techniques, professional and ethical issues.  Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Applied Behavior Analysis",
+        "subjectCode": "EDPS",
+        "courseCode": "61200",
+        "instructor": [
+            "Juliana Aguilar"
+        ],
+        "description": "The purpose of this course is to expand knowledge and understanding of advanced applied behavior analytic theories and interventions. Specifically, this course will focus on interventions aimed at developing new skills as well as increasing and decreasing behaviors. Procedures for identifying and designing function based interventions will be addressed. Prerequisite: EDPS 36200 or 51500 and EDPS 58800.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Professional Issues, Ethics, And History Of Counseling Psychology",
+        "subjectCode": "EDPS",
+        "courseCode": "61700",
+        "instructor": [
+            "Eric D Deemer"
+        ],
+        "description": "Three primary areas in counseling psychology:  1) historical development within psychology; 2) American Psychological Association ethics, professional, and legal issues; and 3) the scientist-practitioner training model in counseling psychology identity. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intellectual & Neuropsychological Assessment",
+        "subjectCode": "EDPS",
+        "courseCode": "61801",
+        "instructor": [
+            "Eric D Deemer"
+        ],
+        "description": "This course is designed to expose students to the theory and practice of intellectual and neuropsychological assessment. Students will receive instruction on the theoretical, psychometric, and best practice foundations of these types of assessment in the context of a lecture component, which will be followed by laboratory time in which students will gain experience in administering and scoring relevant tests. Although the WAIS-IV and WISC-IV will be the primary foci of this course, other tests of achievement, cognitive ability, and neuropsychological functioning will be covered. Students will also (a) gain experience in preparing written reports of their interpretations of assessment results, (b) develop an understanding of the history and development of cognitive ability and neuropsychological tests, and (c) explore implications for intellectual and neuropsychological assessment with diverse populations. Permission of instructor required. Prerequisite: EDPS 53300, B-.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Off-Site Counseling Practicum And Supervision Theory",
+        "subjectCode": "EDPS",
+        "courseCode": "62400",
+        "instructor": [
+            "Xiang Zhou"
+        ],
+        "description": "Supervised use of personal and/or career counseling and assessment applied to complex and difficult client situations.  Critical analysis of counseling supervision theories.  Prerequisite: EDPS 61400.  Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Research Procedures In Education",
+        "subjectCode": "EDPS",
+        "courseCode": "63000",
+        "instructor": [
+            "Anne Traynor"
+        ],
+        "description": "Development of a philosophy of educational research and consideration of the methods for the selection and evaluation of techniques used in educational research. Techniques discussed are methods to control variables, sampling procedures, data collection procedures, statistical procedures, and research proposal development and writing.  Prerequisite: EDPS 53300, (PSY 60100 or EDPS 53300), STAT 50200.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Psychometric Theory And Application",
+        "subjectCode": "EDPS",
+        "courseCode": "63500",
+        "instructor": [
+            "Anne Traynor"
+        ],
+        "description": "Advanced classical test theory and application of psychometric methods to study technical properties of tests.  Prerequisite: (EDPS 53100 and STAT 50200), or (PSY 60100 or 51200) or consent of Instructor.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Critical Issues In Special Education",
+        "subjectCode": "EDPS",
+        "courseCode": "65000",
+        "instructor": [
+            "Yan Ping Xin"
+        ],
+        "description": "This course is designed for advanced graduate students in special education and related disciplines.  The goals of this course are: (a) to familiarize students with current topics and critical controversies in special education, (b) to help students gain skills in critical analyses of issues, and (c) to provide students with opportunities to develop skills that are linked to the professorate (e.g., researching, writing, and speaking about contemporary issues).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Seminar In Special Education",
+        "subjectCode": "EDPS",
+        "courseCode": "66400",
+        "instructor": [
+            "Jasmine L Begeske"
+        ],
+        "description": "A critical analysis of or special assignments related to research, practice, and selected problems in special education or in specific disability areas. One topic is considered in each enrollment.  For advanced graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Single Subject Research Design",
+        "subjectCode": "EDPS",
+        "courseCode": "68800",
+        "instructor": [
+            "Jennifer Marie Lamarca"
+        ],
+        "description": "Designed to introduce advanced level students to single subject research methodology in context of a science of human behavior, including design theory and application, measurement, experimental validity, applied behavior analysis, and data analysis procedures.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

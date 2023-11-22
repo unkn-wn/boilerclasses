@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Standard Arabic Level II",
+        "subjectCode": "ARAB",
+        "courseCode": "10200",
+        "instructor": [
+            "Lhousseine None Guerwane"
+        ],
+        "description": "Further study of Modern Standard Arabic. Continued presentation of the basic structures of Arabic grammar and expansion of vocabulary. Reading and writing will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Standard Arabic Level IV",
+        "subjectCode": "ARAB",
+        "courseCode": "20200",
+        "instructor": [
+            "Lhousseine None Guerwane"
+        ],
+        "description": "Increased mastery of the four language skills, with emphasis on reading and translation using materials from literary classical and modern Arabic. The course includes a study of some parts of the Koran.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "North African Literature And Culture",
+        "subjectCode": "ARAB",
+        "courseCode": "33400",
+        "instructor": [
+            "Ahmed Idrissi Alami"
+        ],
+        "description": "A view of the culture and society of the Maghreb (Morocco, Algeria, Tunisia, and Libya). Emphasis on issues of race, politics, religion, and gender through literature and other forms of artistic expression, including film and music. Conducted in English; no knowledge of Arabic required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

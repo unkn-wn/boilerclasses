@@ -1,0 +1,167 @@
+[
+    {
+        "title": "The Data Mine Seminar II",
+        "subjectCode": "TDM",
+        "courseCode": "10200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  The Data Mine is a supportive environment for students in any major from any background who want to learn some data science skills. Students will gain hands-on experience with computational tools for representing, extracting, manipulating, interpreting, transforming, and visualizing data, especially big data sets, and in effectively communicating insights about data. Topics include: the R environment, Python, visualizing data, UNIX, bash, regular expressions, SQL, XML and scraping data from the internet, as well as selected advanced topics, as time permits.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Corporate Partners II",
+        "subjectCode": "TDM",
+        "courseCode": "11200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  Students in The Data Mine Corporate Partners Learning Community will work in groups with Corporate Partner mentors on a variety of projects. They will analyze real data related to questions that the Corporate Partner proposes. Most projects will last for a full academic year (late August through late April), with multiple reports and presentations given more frequently. The mentor is expected to meet with the students weekly by Microsoft Teams, or (more rarely) in person. Students are expected to actively participate in these meetings and in all individual and group work. The goal of the course is to help students build impactful industry-related skills in data science, visualization, and data engineering. The Data Mine staff also has data scientists who can assist students with technical questions focused on the skills being built and the research conducted. Students can work on real-world industry facing issues that have a high value add for the corporate partner.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Data Mine Seminar IV",
+        "subjectCode": "TDM",
+        "courseCode": "20200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "The Data Mine is a supportive environment for students in any major from any background who want to learn some data science skills. Students will gain hands-on experience with computational tools for representing, extracting, manipulating, interpreting, transforming, and visualizing data, especially big data sets, and in effectively communicating insights about data. Topics include: the R environment, Python, visualizing data, UNIX, bash, regular expressions, SQL, XML and scraping data from the internet, as well as selected advanced topics, as time permits.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Corporate Partners IV",
+        "subjectCode": "TDM",
+        "courseCode": "21200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  Students in The Data Mine Corporate Partners Learning Community will work in groups with Corporate Partner mentors on a variety of projects. They will analyze real data related to questions that the Corporate Partner proposes. Most projects will last for a full academic year (late August through late April), with multiple reports and presentations given more frequently. The mentor is expected to meet with the students weekly by Microsoft Teams, or (more rarely) in person. Students are expected to actively participate in these meetings and in all individual and group work. The goal of the course is to help students build impactful industry-related skills in data science, visualization, and data engineering. The Data Mine staff also has data scientists who can assist students with technical questions focused on the skills being built and the research conducted. Students can work on real-world industry facing issues that have a high value add for the corporate partner.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Data Mine Seminar VI",
+        "subjectCode": "TDM",
+        "courseCode": "30200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  The Data Mine is a supportive environment for students in any major from any background who want to learn some data science skills. Students will gain hands-on experience with computational tools for representing, extracting, manipulating, interpreting, transforming, and visualizing data, especially big data sets, and in effectively communicating insights about data. Topics include: the R environment, Python, visualizing data, UNIX, bash, regular expressions, SQL, XML and scraping data from the internet, as well as selected advanced topics, as time permits.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Corporate Partners VI",
+        "subjectCode": "TDM",
+        "courseCode": "31200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  Students in The Data Mine Corporate Partners Learning Community will work in groups with Corporate Partner mentors on a variety of projects. They will analyze real data related to questions that the Corporate Partner proposes. Most projects will last for a full academic year (late August through late April), with multiple reports and presentations given more frequently. The mentor is expected to meet with the students weekly by Microsoft Teams, or (more rarely) in person. Students are expected to actively participate in these meetings and in all individual and group work. The goal of the course is to help students build impactful industry-related skills in data science, visualization, and data engineering. The Data Mine staff also has data scientists who can assist students with technical questions focused on the skills being built and the research conducted. Students can work on real-world industry facing issues that have a high value add for the corporate partner.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Data Mine Seminar VIII",
+        "subjectCode": "TDM",
+        "courseCode": "40200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  The Data Mine is a supportive environment for students in any major from any background who want to learn some data science skills. Students will gain hands-on experience with computational tools for representing, extracting, manipulating, interpreting, transforming, and visualizing data, especially big data sets, and in effectively communicating insights about data. Topics include: the R environment, Python, visualizing data, UNIX, bash, regular expressions, SQL, XML and scraping data from the internet, as well as selected advanced topics, as time permits.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Corporate Partners VIII",
+        "subjectCode": "TDM",
+        "courseCode": "41200",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  Students in The Data Mine Corporate Partners Learning Community will work in groups with Corporate Partner mentors on a variety of projects. They will analyze real data related to questions that the Corporate Partner proposes. Most projects will last for a full academic year (late August through late April), with multiple reports and presentations given more frequently. The mentor is expected to meet with the students weekly by Microsoft Teams, or (more rarely) in person. Students are expected to actively participate in these meetings and in all individual and group work. The goal of the course is to help students build impactful industry-related skills in data science, visualization, and data engineering. The Data Mine staff also has data scientists who can assist students with technical questions focused on the skills being built and the research conducted. Students can work on real-world industry facing issues that have a high value add for the corporate partner.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "CRP-Aerospace Corporation",
+        "subjectCode": "TDM",
+        "courseCode": "49000",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  The Data Mine is a supportive environment for students in any major from any background who want to learn some data science skills. Students will gain hands-on experience with computational tools for representing, extracting, manipulating, interpreting, transforming, and visualizing data, especially big data sets, and in effectively communicating insights about data. Topics include: the R environment, Python, visualizing data, UNIX, bash, regular expressions, SQL, XML and scraping data from the internet, as well as selected advanced topics, as time permits.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "The Data Mine Seminar",
+        "subjectCode": "TDM",
+        "courseCode": "50100",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  Intended for any student across campus desiring broad coverage of data science and analytics topics.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Corporate Partners",
+        "subjectCode": "TDM",
+        "courseCode": "51100",
+        "instructor": [
+            "Mark Daniel Ward"
+        ],
+        "description": "  Students in The Data Mine Corporate Partners Learning Community will work in groups with Corporate Partner mentors on a variety of projects. They will analyze real data related to questions that the Corporate Partner proposes. Most projects will last for a full academic year (late August through late April), with multiple reports and presentations given more frequently. The mentor is expected to meet with the students weekly by Microsoft Teams, or (more rarely) in person. Students are expected to actively participate in these meetings and in all individual and group work. The goal of the course is to help students build impactful industry-related skills in data science, visualization, and data engineering. The Data Mine staff also has data scientists who can assist students with technical questions focused on the skills being built and the research conducted. Students can work on real-world industry facing issues that have a high value add for the corporate partner.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

@@ -1,0 +1,198 @@
+[
+    {
+        "title": "Geometric Modeling Applications",
+        "subjectCode": "MFET",
+        "courseCode": "10301",
+        "instructor": [
+            "Travis J Fuerst"
+        ],
+        "description": "This course provides an introduction to the process of 3D geometric CAD modeling, and the construction techniques used in the creation of constraint-based solid and surface models used in engineering disciplines. Part modeling and assembly modeling are included, as well as manipulation of the geometric model to derive variant designs. Emphasis is on the use of the engineering design process as a problem-solving method to capture modeling behavior to enable the downstream use of 3D data in the overall product design process, and its re-use in the product lifecycle.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Product Data Management",
+        "subjectCode": "MFET",
+        "courseCode": "11301",
+        "instructor": [
+            "David L Ewing"
+        ],
+        "description": "This course provides an understanding of the types of data generated and used in the product lifecycle, the current tools and methodologies in the management of that data, and system analysis and implementation techniques for using PDM as the backbone supporting a company's product development and implementation activities. Interaction between various enterprise systems is discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Graphical Communication And Spatial Analysis",
+        "subjectCode": "MFET",
+        "courseCode": "16300",
+        "instructor": [
+            "Travis J Fuerst"
+        ],
+        "description": "An introductory course in computer graphics applications for mechanical- and aeronautical-related professions. Experiences focus on visualization, sketching, graphic standards, and problem-solving strategies for engineering design. The course will emphasize the proper use of parametric solid modeling for design intent.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Simulation And Visualization Applications",
+        "subjectCode": "MFET",
+        "courseCode": "21301",
+        "instructor": [
+            "Sai Ashish Kumar Karanam"
+        ],
+        "description": "This course provides an investigation of predictive and documentary capabilities of engineering simulation and visualization tools. The course is based on concepts derived from theoretical computer graphics and related industrial standards, as well as the use of the geometric model-based product definition.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Industrial Internet Of Things, Networks, And Systems I",
+        "subjectCode": "MFET",
+        "courseCode": "23000",
+        "instructor": [
+            "Grant P Richards"
+        ],
+        "description": "This course provides an introduction to Industrial Internet of Things (IIoT) devices, networks, and standards in the context of converged information technology (IT) and operations technology (OT) industrial automation systems. Course topics include an examination of IT and OT networks, hardware, architecture, protocols, standards, and security practices in the context of industrial applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Smart Manufacturing Cloud Computing Applications",
+        "subjectCode": "MFET",
+        "courseCode": "25000",
+        "instructor": [
+            "Huachao Mao"
+        ],
+        "description": "This course introduces concepts and principles of cloud computing and the virtualization of computing resources and services for smart manufacturing applications. The fundamental topics of cloud computing will be addressed, including virtually processing, storing, modeling and analyzing of data in the cloud environment. Fundamental concepts about cloud tools, applications, and services from a production and manufacturing perspective will be presented.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "The Business Of Managing Digital Product Data",
+        "subjectCode": "MFET",
+        "courseCode": "31301",
+        "instructor": [
+            "Travis J Fuerst"
+        ],
+        "description": "This course provides experience in the business-related aspects of PLM tools and methods. Topics include identifying specifications and roles for system users within an organization, creating database models for digital product information, workflows, virtual machine installation and configuration of PLM systems, budgeting, and benchmarking.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Automated Manufacturing Processes",
+        "subjectCode": "MFET",
+        "courseCode": "34400",
+        "instructor": [
+            "Dominique Winston Sealy",
+            "Milan Rakita"
+        ],
+        "description": "Shop floor components of computer-integrated manufacturing are explored. Emphasis is focused on current applications and programming practices of various computer-automated manufacturing processes and technologies. Topics include CAD/CAM integration, computer-assisted numerical control programming for 2-1/2 and 3-axis contouring, and CNC program verification.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Robot Kinematics",
+        "subjectCode": "MFET",
+        "courseCode": "34800",
+        "instructor": [
+            "Xiumin Diao"
+        ],
+        "description": "  This course introduces the fundamentals of robotics with an emphasis on solutions to the kinematics problems of serial robotic manipulators. It covers robot modeling and simulation, forward kinematics, inverse kinematics, analysis of robot motion and static forces, and trajectory planning. ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Machine Learning And Manufacturing Analytics",
+        "subjectCode": "MFET",
+        "courseCode": "36100",
+        "instructor": [
+            "Xiumin Diao"
+        ],
+        "description": "Machine learning (ML) algorithms are used to extract and analyze large amounts of manufacturing data. Fundamental ML analytic techniques and commonly used ML algorithms for manufacturing applications will be introduced. Students will create, train, and deploy ML models on a cloud platform to create enterprise-ready smart manufacturing artificial intelligence (AI) solutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Smart Manufacturing Autonomous Human Robot Systems",
+        "subjectCode": "MFET",
+        "courseCode": "44000",
+        "instructor": [
+            "Xingyu Li"
+        ],
+        "description": "This course explores robot cognition with application of intelligent human-robot systems in unstructured manufacturing environments. Topics include intelligent robotics, machine learning, machine vision, and human-robot interaction with particular emphasis on applications for smart manufacturing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Robotics and IoT Seminar",
+        "subjectCode": "MFET",
+        "courseCode": "44100",
+        "instructor": [
+            "Dongming Gan"
+        ],
+        "description": "  The Robotics Seminar is a series of lectures from eminent local, national and international researchers in the field of robotics and the internet of things (IoT) and related areas, such as computer vision, autonomy, cyber-physical systems, wearables, etc.",
+        "capacity": 0,
+        "credits": [
+            0,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Product Lifecycle Management",
+        "subjectCode": "MFET",
+        "courseCode": "51400",
+        "instructor": [
+            "Nathan W Hartman"
+        ],
+        "description": "A survey of the graphical knowledge base with business and industry applications that support the product lifecycle management process is presented. Graphical applications used in the development of a product from an initial concept through its disposal are covered. Current and past application topics are reviewed in both theoretical and technological aspects and are validated through applied research. Emphasis is placed on the interdisciplinary nature of product lifecycle management through industrial case studies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

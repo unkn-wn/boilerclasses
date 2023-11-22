@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Modern Hebrew II",
+        "subjectCode": "HEBR",
+        "courseCode": "10200",
+        "instructor": [
+            "Alon Kantor"
+        ],
+        "description": "Continuation and extension of the first semester. The course aims to develop fluency in reading, comprehension, and spoken language. Knowledge of grammar and vocabulary is expanded.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Biblical Hebrew Level II",
+        "subjectCode": "HEBR",
+        "courseCode": "12200",
+        "instructor": [
+            "Marianne Blickenstaff"
+        ],
+        "description": "The second semester of biblical Hebrew will continue the study of reading, vocabulary and grammar, based on selections from the Hebrew Bible.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Modern Hebrew Level IV",
+        "subjectCode": "HEBR",
+        "courseCode": "20200",
+        "instructor": [
+            "Alon Kantor"
+        ],
+        "description": "Extensive practice in reading, speaking, and writing Hebrew, based on a variety of subjects from daily life and literature. Continued study of grammar and reading in the modern language.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Israel And The Modern World: Cinema, Literature, History And Politics",
+        "subjectCode": "HEBR",
+        "courseCode": "38000",
+        "instructor": [
+            "Alon Kantor"
+        ],
+        "description": "Critical survey/exploration of major traits of Israeli culture through a variety of media: literature, film and music, in the larger context of Judaism, Zionism, as well as the creation of a new state and culture. Conducted in English; no knowledge of Hebrew is necessary.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]

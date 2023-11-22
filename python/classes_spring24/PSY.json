@@ -1,0 +1,647 @@
+[
+    {
+        "title": "Elementary Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "12000",
+        "instructor": [
+            "Colin Thomas William",
+            "George J Hollich"
+        ],
+        "description": "Introduction to the fundamental principles of psychology, covering particularly the topics of personality, intelligence, emotion, abnormal behavior, attention, perception, learning, memory, and thinking. As part of their learning experience, students participate in psychological experiments. CTL:ISH 1020 Introduction To Psychology",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Cognitive Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "20000",
+        "instructor": [
+            "Sebastien Helie"
+        ],
+        "description": "A survey of psychology as the science of mental life, covering theories and research in perception, reading, attention, consciousness, imagery, memory and its improvement, problem solving, creativity, decision-making, and artificial intelligence.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Statistics In Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "20100",
+        "instructor": [
+            "Melissa J Swisher",
+            "Darryl W Schneider",
+            "Corrinne C Lim-Kessler"
+        ],
+        "description": "An introduction to the development and application of statistical, quantitative, and measurement techniques pertinent to the psychological sciences. Fundamental concepts of numerical assignment, sampling theory, distribution functions, experimental design, inferential procedures, and statistical control. Should be taken at Purdue University, West Lafayette.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Research Methods In Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "20300",
+        "instructor": [
+            "Melissa J Swisher"
+        ],
+        "description": "The use of scientific method in psychology. Lecture covers principles of collecting and interpreting data, using examples of research from many areas of psychology. In the laboratory portion, the student uses many different techniques from various areas of psychology. Should be taken at Purdue University, West Lafayette.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Behavioral Neuroscience",
+        "subjectCode": "PSY",
+        "courseCode": "22200",
+        "instructor": [
+            "Corrinne C Lim-Kessler"
+        ],
+        "description": "An introduction to how the nervous system controls behavior. Topics include evolution and comparative psychobiology, the neuroscience of sensation and perception, the neuroscience of motivation, neuropsychology, and cognitive neuroscience.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Child Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "23500",
+        "instructor": [
+            "George J Hollich"
+        ],
+        "description": "Not open to students with credit in PSY 36000. General principles of children's behavior and development, from conception to adolescence, including sensory and motor development, and basic psychological processes such as learning, motivation, and socialization.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Social Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "24000",
+        "instructor": [
+            "Jill E Gulker",
+            "Nathan Norem Cheek"
+        ],
+        "description": "Not open to students with credit in SOC 34000. A broad survey in current knowledge about human social behavior. Topics covered include aggression, attraction and love, social influence, attitudes and attitude change, nonverbal communication, leadership, prejudice and discrimination, and application of social psychology to law, medicine, and other fields. CTL:ISH 1024 Social Psychology",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Industrial-Organizational Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "27200",
+        "instructor": [
+            "Xin Hou"
+        ],
+        "description": "Survey of psychological principles and research methods relevant to organizations and industry. Topics covered include research methodology, individual differences, personnel selection, performance measurement, training, motivation, job satisfaction, emotions, work stress, and leadership.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Understanding And Analyzing Experiments",
+        "subjectCode": "PSY",
+        "courseCode": "30600",
+        "instructor": [
+            "Christopher R Agnew"
+        ],
+        "description": "  This course helps to prepare students for independent research. Students (1) develop an understanding of group-based statistical analyses, such as t-tests and ANOVA; (2) formulate and present a research idea based on statistical tools covered in class; and (3) get experience using statistical software to analyze data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction Cognitive Neuroscience",
+        "subjectCode": "PSY",
+        "courseCode": "32400",
+        "instructor": [
+            "Hongmi Lee"
+        ],
+        "description": "(SLHS 30100) Introduction to the neural bases of complex human mental abilities. Emphasis on integrating research from cognitive science, brain-scanning techniques, and the lesion technique. Topics include perception, attention, memory, language, motor control, planning/decision-making and consciousness.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Stereotyping And Prejudice",
+        "subjectCode": "PSY",
+        "courseCode": "33500",
+        "instructor": [
+            "Erin Sparks Ward"
+        ],
+        "description": "This course examines the topics of stereotyping, prejudice, and discrimination from a social psychological perspective. Relying on empirical findings and relevant theoretical approaches, the course moves beyond lay opinions to explore the social psychological foundations and forms of stereotyping and prejudice, and to examine various strategies for reducing intergroup biases.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Psychology Of Personality",
+        "subjectCode": "PSY",
+        "courseCode": "34200",
+        "instructor": [
+            "Douglas B Samuel"
+        ],
+        "description": "This course integrates empirical studies (observational, correlational, experimental) with classical and current personality theories. Topics include the biological foundations of personality, self-esteem, extraversion, sex role orientation, authoritarianism, and personality disorders. Minimum competence is assumed in basic experimental design and correlations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Abnormal Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "35000",
+        "instructor": [
+            "Colin Thomas William",
+            "Christopher I Eckhardt"
+        ],
+        "description": "Various forms of mental disorders from the standpoint of their origin, treatment, prevention, social significance, and relation to problems of normal human adjustment. CTL:ISH 1023 Abnormal Psychology",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Neuropsychology",
+        "subjectCode": "PSY",
+        "courseCode": "35200",
+        "instructor": [
+            "Edward A Fox"
+        ],
+        "description": "This course is an examination of the effects of various types of brain damage on human behavior, the methods used to assess brain damage, and evaluation of research studies on human brain damage and behavior.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Close Relationships",
+        "subjectCode": "PSY",
+        "courseCode": "35400",
+        "instructor": [
+            "Jill E Gulker"
+        ],
+        "description": "This course introduces undergraduate college students to major topics in psychological research on intimate relationships. There are many types of close relationships. This primarily focuses on relationships that currently are, will be soon, or at one point were, romantic involvements. A goal is to educate students on current research findings concerning intimate relationships.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Attention And Cognitive Control",
+        "subjectCode": "PSY",
+        "courseCode": "37600",
+        "instructor": [
+            "Darryl W Schneider"
+        ],
+        "description": "This upper-level undergraduate course provides an overview of research and theory related to attention and cognitive control. The first half of the course focuses on selective attention to locations, objects, and features, as well as the role of attention in memory and skilled performance. The second half focuses on divided attention and cognitive control in multitasking situations, as well as aspects of adaptive, hierarchical, and inhibitory control. The goal of the course is to provide you with an understanding of major theoretical views, key experimental findings, and common research procedures related to attention and cognitive control.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Behavior Change Methods",
+        "subjectCode": "PSY",
+        "courseCode": "38000",
+        "instructor": [
+            "Melissa J Swisher"
+        ],
+        "description": "Application of behavioral learning principles to problems in living. Self-paced learning format covers design and evaluation of behavior modification programs, with practical and ethical issues. Relevant to work with children, adults, clinical patients, athletes, etc., in schools, institutions, and everyday situations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Judgement And Decision Making",
+        "subjectCode": "PSY",
+        "courseCode": "39200",
+        "instructor": [
+            "Stephen B Broomell",
+            "Bridgette L Kelleher",
+            "David L Kemmerer",
+            "Jill E Gulker",
+            "Sang Eun Woo",
+            "Kipling D Williams",
+            "James P Noll"
+        ],
+        "description": "Various topics that may change from semester to semester are presented by Psychological Sciences department faculty.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Psycholinguistics",
+        "subjectCode": "PSY",
+        "courseCode": "40300",
+        "instructor": [
+            "Natalya B Kaganovich"
+        ],
+        "description": "(PSY 40300) This course aims to introduce students to the current, research-based understanding of how different aspects of language (such as word perception, language acquisition, or speech production) are represented in the mind. In addition, it will introduce some of the research methods employed by language scientists for gaining insight into such a representation. This course also aims to help students learn how to critically evaluate research data used to support various theories about psychological and neural foundations of language knowledge.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Honors Research Seminar I",
+        "subjectCode": "PSY",
+        "courseCode": "40400",
+        "instructor": [
+            "Thomas S Redick"
+        ],
+        "description": "Part one of a research series aimed at providing a structured learning experience to help students develop the basic research skills needed in order to conduct psychological research. Students will be expected to develop a research plan to be completed in concert with PSY 40500. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Understanding Autism",
+        "subjectCode": "PSY",
+        "courseCode": "41800",
+        "instructor": [
+            "Brandon M Keehn"
+        ],
+        "description": "(HDFS 41800, SLHS 41800) This course will explore the etiology, neuroscience, diagnosis, and treatment of autism spectrum disorder (ASD). Approached from a multi-disciplinary perspective this course brings together gene, brain, and behavioral sciences with the aim of developing a better understanding of autism. The course will begin with an overview of ASD as a complex behavioral phenotype. This will include discussion of the history of ASD and the expansion of the diagnostic criteria associated with the disorder. This introduction will be followed by several classes in which we will examine some of the key domains of impairment in ASD: reciprocal social interaction, language and communication, and restricted and repetitive behaviors. We will also consider the deficits associated with, but not defining of ASD, and examine co-morbid conditions frequently present in individuals with ASD. We will then address the topics of brain architecture, neurochemistry, and genetics and gene expression, all of which we will attempt to relate back to the behavioral features of autism. We will end the course with a review of treatment practices and their efficacy and an examination of impact of ASD on the family and society.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Language Development",
+        "subjectCode": "PSY",
+        "courseCode": "42600",
+        "instructor": [
+            "Windi C Krok"
+        ],
+        "description": "(SLHS 30900) Specific nature, sequence, and pattern of oral language development from birth through adolescence. Nature of language acquisition and approaches to the study of children's language are presented. Linguistic and psychological explanations of the sequence of development are discussed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Hormones And Behavior",
+        "subjectCode": "PSY",
+        "courseCode": "42900",
+        "instructor": [
+            "Kimberly P Kinzig"
+        ],
+        "description": "Discussion of the mechanisms and effects of endocrine hormones and brain peptides on sexual differentiation, sexual behavior, learning, response to stress, maternal behavior, and weight regulation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Professional Issues And Trends In Social Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "50600",
+        "instructor": [
+            "Nathan Norem Cheek"
+        ],
+        "description": "This course is designed to help students acculturate to and acquire a broad knowledge of social psychological research. Topics to be covered include but are not limited to: how to apply for academic jobs, how to present your program of research, how to network at conferences, how to develop a website presence, how to approach potential collaborators, and how to structure your research questions in an appropriate manner for grant applications. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Current Readings In Social Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "50700",
+        "instructor": [
+            "Ximena B Arriaga"
+        ],
+        "description": "This course is designed to expose students to a variety of readings, discussions, and presentations. The seminar examines a diverse assortment of social psychological topics. Students benefit from exposure to current research and methods in the field. Students also benefit from becoming increasingly conversant regarding the latest empirical advances in the field. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Neural Systems",
+        "subjectCode": "PSY",
+        "courseCode": "51200",
+        "instructor": [
+            "Edward L Bartlett"
+        ],
+        "description": "(SLHS 50700, BIOL 56200)  Background in cell biology, psychobiology, physiology, or anatomy is recommended. Overview of the structure and function of neural systems including those involved with motor, somatosensory, visual, auditory, learning, memory, and higher cortical processes. Molecular and cellular aspects of neural function are integrated with discussion of relevant neuroanatomy. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Job Design",
+        "subjectCode": "PSY",
+        "courseCode": "55600",
+        "instructor": [
+            "Vincent G Duffy"
+        ],
+        "description": "(IE 55600) Task analysis, personnel selection and training, job and organizational design, and criteria development and use. Human factors related to job design in order to increase job satisfaction and productivity.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Human Factors In Engineering",
+        "subjectCode": "PSY",
+        "courseCode": "57700",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "(IE 57700) Survey of human factors in engineering, with particular reference to human functions in human-machine systems, and consideration of human abilities and limitations in relation to design of equipment and work environments. Primarily for engineers and other non-psychology majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Teaching Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "59100",
+        "instructor": [
+            "Christopher I Eckhardt",
+            "George J Hollich"
+        ],
+        "description": "Various topics that may change from semester to semester are presented by faculty in the Department of Psychological Sciences.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Genes, Brain And Behavior",
+        "subjectCode": "PSY",
+        "courseCode": "62101",
+        "instructor": [
+            "Edward A Fox"
+        ],
+        "description": "This course examines how genes regulate development and function of the brain to ultimately influence behavior. Genetics has come to be an important aspect of research in almost every field of Neuroscience and Psychology ranging from neural development to cognitive function and dysfunction. However, many students have not had the opportunity to explore this in their studies to date. Therefore, the goal of this course is to provide students with the background needed to understand and think critically about the genetic components of Neuroscience and behavioral research. Numerous questions will be explored mainly through discussion of research papers. Lectures by the professor will fill in background knowledge needed to understand the readings. The questions explored will include: What are chromosomes and genes? What do they do? How do they do it? How do genes control development of the brain? How are single genes manipulated in animals to study their effects on behavior? How can genes associated with normal or abnormal behavior be identified? What has been learned from gene-behavior studies in animals? in humans? What do these studies tell us about the nature-nurture controversy? In addition to exploring these more traditional aspects of behavioral genetics we will address the 3 most exciting recent developments. These include the use of transgenic primate models, selective remote control of specific neural circuits using optogenetics and chemogenetics, and epigenetics, which helps explain how environmental factors and behavior itself can change gene activity and how these changes may be transmitted from one generation to the next. Many behaviors could be used to explore the principles these questions address. The readings will be selected from papers that focus on learning & memory and mental illness. However, if students are interested in other behaviors, papers that involve those behaviors and serve our purposes can be substituted. Grading will be based mainly on informal presentations of papers and participation in discussions of these papers. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Bayesian Statistics For Psychological Sciences",
+        "subjectCode": "PSY",
+        "courseCode": "62601",
+        "instructor": [
+            "Gregory S Francis"
+        ],
+        "description": "The course will explain why you might want to use Bayesian methods instead of frequentist methods (such as t-tests, ANOVA, or regression). We discuss the basic properties and methods of Bayesian analysis and have many activities to show how Bayesian analyses are used. Prerequisites: PSY 60000 and PSY 60100. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Multiple Regression Analysis For The Behavioral Sciences",
+        "subjectCode": "PSY",
+        "courseCode": "63100",
+        "instructor": [
+            "Donald R Lynam"
+        ],
+        "description": "This \"data analytic\" course provides an examination of the conceptual underpinnings and advanced application of multiple regression analyses to psychological data. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pro Seminar Cognitive",
+        "subjectCode": "PSY",
+        "courseCode": "63300",
+        "instructor": [
+            "Yu-Chin Chiu"
+        ],
+        "description": "Critical analysis of current problems in experimental psychology. Emphasis upon reviewing literature, preparing and presenting papers. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Social Influence",
+        "subjectCode": "PSY",
+        "courseCode": "64200",
+        "instructor": [
+            "Kipling D Williams"
+        ],
+        "description": "Students are immersed into the exciting sub-field of social psychology: social influence through lively discussions and readings on the subject. Students will evaluate what is meant by social influence, what it includes, what it doesn't include, as well as current trends in social influence. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Close Relationships",
+        "subjectCode": "PSY",
+        "courseCode": "64400",
+        "instructor": [
+            "Christopher R Agnew"
+        ],
+        "description": "Acquaints participants with the major social psychological approaches to the study of close, interpersonal relationships, including evolutionary, attachment, and interdependence perspectives. Methodological and data analytic issues relevant to relationships research also are examined.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Clinical Assessment II",
+        "subjectCode": "PSY",
+        "courseCode": "66800",
+        "instructor": [
+            "Sarah Karalunas"
+        ],
+        "description": "Presentation of methods of clinical assessment including structured and unstructured personality tests, physiological recording, behavioral observation, and interview techniques. Emphasis is placed on laboratory practice in the administration and interpretation of personality tests and training in the basic clinical interview techniques. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Test/Assessment Prac",
+        "subjectCode": "PSY",
+        "courseCode": "67900",
+        "instructor": [
+            "Heather A Ciesielski",
+            "James P Noll"
+        ],
+        "description": "This is a practicum in clinical psychology, whereby students see individuals for therapy. These cases are supervised by faculty in clinical psychology. This is a requirement for the graduate program, and students must do both adult and child practicum. Students enrolled in this program must register for this course a minimum of four times. Prerequisite: Master's student standing and Psychology majors only. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Survey Of Organizational Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "68020",
+        "instructor": [
+            "Yk Hei Franki Kung"
+        ],
+        "description": "The main objective of this course is to introduce doctoral students in the Industrial and Organizational Psychology program (and related disciplines) to the major areas of research in the field of organizational psychology. Additionally, the course aims to provide students an opportunity to: (1) hone their analytic and information presentation skills, and (2) gain practice in developing research ideas. We will discuss classical and contemporary issues in light of both their theoretical and practical implications for the field. The course will include presentations and (synchronous and asynchronous) discussions of assigned readings. Permission of department required. Prerequisites: Any undergraduate Statistics course and any undergraduate Social Science Research Methods course.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Research Methods In Industrial-Organizational Psychology II",
+        "subjectCode": "PSY",
+        "courseCode": "68120",
+        "instructor": [
+            "Sien Chieh Tay"
+        ],
+        "description": "This course is the second part of a two-semester sequence that covers core research methods in the social sciences focusing on Industrial/Organizational psychology, Organizational Behavior, and allied fields of Social and Personality psychology. This course sequence is designed for doctoral students who intend to conduct quantitative empirical research publishable in scholarly journals. This course begins with the philosophy of science, developing and evaluating theory, reviewing and summarizing relevant research. Topics include the examination of research methods applicable to survey data, multilevel data, and longitudinal data. The course concludes with a discussion of 'methods' (strategies) for publishing in scholarly journals. Permission from department required. Prerequisites: PSY 68110, Research Methods in Industrial-Organizational Psychology I (or equivalent) and Basic Statistics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Research Methods In Social Psychology",
+        "subjectCode": "PSY",
+        "courseCode": "68800",
+        "instructor": [
+            "William G Graziano"
+        ],
+        "description": "This course provides a broad and rigorous, graduate-level overview of contemporary research methodology in social psychology and personality. The course follows a discussion seminar format. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pro-Sem Clinical Psy",
+        "subjectCode": "PSY",
+        "courseCode": "69200",
+        "instructor": [
+            "Yk Hei Franki Kung",
+            "Sydney Marie Trask",
+            "Donald R Lynam"
+        ],
+        "description": "Various topics which may change from semester to semester are presented by faculty in the Department of Psychological Sciences.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Neuroscience",
+        "subjectCode": "PSY",
+        "courseCode": "69600",
+        "instructor": [
+            "Susan E Swithers"
+        ],
+        "description": "The course is designed to expose graduate students to diverse areas of most up to-date research and hone their skills in understanding conceptual issues and tools used to study neuroscience. The students help host speakers and introduce speakers before their colloquium talk. The students will also formally present their own research to the area faculty and students once each year, at a level appropriate to their years in the program. Lastly, each student will write a \"journal club\" style paper on a recently published empirical study. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    }
+]

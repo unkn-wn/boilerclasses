@@ -1,0 +1,1856 @@
+[
+    {
+        "title": "Careers In Accounting & Finance",
+        "subjectCode": "MGMT",
+        "courseCode": "19700",
+        "instructor": [
+            "Troy D Janes"
+        ],
+        "description": "This course explores the various career opportunities available to accounting majors, as well as opportunities available to non-accounting majors who have a strong background in accounting. While most students believe public/private accounting are the only career options for accounting majors, we examine other avenues such as hedge funds, private equity and consulting, among others.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introductory Accounting",
+        "subjectCode": "MGMT",
+        "courseCode": "20000",
+        "instructor": [
+            "Diana Choi",
+            "Terra D Maienbrook"
+        ],
+        "description": "The objectives of the course are to help students: (1) understand what is in financial statements and what the statements say about a business, (2) identify the business activities that caused the amounts that appear in the statements, and (3) understand how, when, and at what amount the effects of manager and employee actions will appear in the statements. CTL:IPO 1801 Accounting I",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Accounting I",
+        "subjectCode": "MGMT",
+        "courseCode": "20100",
+        "instructor": [
+            "R Scott Sorensen"
+        ],
+        "description": "An introduction to management's internal use of accounting information--for decision making, production management, product costing, motivating and evaluating performance, and budgeting. CTL:IPO 1802 Accounting II",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business Accounting",
+        "subjectCode": "MGMT",
+        "courseCode": "21200",
+        "instructor": [
+            "Paula J Conroy"
+        ],
+        "description": "The two primary objectives are to teach the skills to produce financial information-to send the relevant signals to decision makers; and to teach the skills to interpret the financial report-to receive the signals. To meet these objectives the students will gain an understanding of the reasoning behind the processes used to record financial information and the manner in which it is reported to external decision makers; gain an understanding of the four basic statements; and an understanding of the importance of financial statement information in interpreting the performance of organizations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Making The Business Case",
+        "subjectCode": "MGMT",
+        "courseCode": "22000",
+        "instructor": [
+            "David Michael Randich"
+        ],
+        "description": "This course develops one's ability to address situations faced by managers. This involves collecting information, analyzing that information to determine what decision or action is required and then selling the recommended decision or action to the management team. Selling this is done using one's persuasive skills in both telling a story and illustrating that story.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Contemporary Problems In Personal Finance For Minorities",
+        "subjectCode": "MGMT",
+        "courseCode": "24200",
+        "instructor": [
+            "Darren L Henry"
+        ],
+        "description": "This course is designed to allow students to make informed decisions regarding their current and future financial position. Utilizing basic tools such as financial statements and budgets, the students can learn how to plan effectively for continuous financial stability. Students also are able to acquire a basic understanding of different saving instruments, investments, and retirement planning methods, as well as the benefits of purchasing real assets and accumulating wealth to allow stability. Students also have the opportunity to explore other interesting topics of personal finance through presentations and voluntary participation in class discussion. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Legal Foundations Of Business I",
+        "subjectCode": "MGMT",
+        "courseCode": "25400",
+        "instructor": [
+            "Clifford D Fisher",
+            "Cecelia Marie Harper",
+            "Miltina Ann Gavia"
+        ],
+        "description": "An examination and study, for management students, of the nature and place of law in our society, both national and international, the social and moral bases of law enactment, regulation of business, legal liability, enforcement procedures, and the legal environment for managers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Supply Chain Management",
+        "subjectCode": "MGMT",
+        "courseCode": "26100",
+        "instructor": [
+            "Amy B David"
+        ],
+        "description": "This course seeks to introduce general concepts in supply chain management, including procurement, supply planning, demand planning, and logistics. This course is designed around a corporate partnership to provide students with the opportunity to collaborate on solving a large-scale supply chain challenge. In the first five weeks of the semester, students will be introduced to basics of SCM through lectures, cases, and assignments. Beginning in the sixth week, students will form teams to work on a real-world case presented by the corporate partner, a complex problem broken down into six learning areas, each with a corresponding deliverable.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Programming For Business Applications",
+        "subjectCode": "MGMT",
+        "courseCode": "28800",
+        "instructor": [
+            "Shoaib Amjad Khan",
+            "Roy M Dejoie"
+        ],
+        "description": "This course will cover the fundamentals of business rules and logic in a business application development context. Students will acquire these skills using computer programming. A modern programming language will be used to learn and reinforce logical concepts, including abstraction, process flow, variable assignment, and control structures, as well as proper programming and application development practices, including documentation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Foundations Of Business Ethics",
+        "subjectCode": "MGMT",
+        "courseCode": "29000",
+        "instructor": [
+            "Cara C Putman"
+        ],
+        "description": "Arrange with instructor before enrolling. Investigation in a specific management field. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Integrated Business & Engineering Seminar III",
+        "subjectCode": "MGMT",
+        "courseCode": "29130",
+        "instructor": [
+            "Aryca Peay Woodson"
+        ],
+        "description": "The seminar courses to expose students to contemporary topics related to the design and management of modern organizations and enterprises. These seminars will leverage the expertise of faculty across Purdue, prominent alumni, and thought leaders in each (flexible, rotating) topic area. Seminar topics might include contemporary topics, for example, artificial intelligence, cybersecurity, climate resilience, and sustainable economic growth. Seminars will also focus on professional development of students along with discovery, development, and practice of skills required to enable a diverse team to address complex problems affecting a wide range of stakeholder through collaboration, communication, and application of a wide range of influencing strategies and techniques. Simulation, guest speakers, projects, field visits will be used as appropriate.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Women In Leadership",
+        "subjectCode": "MGMT",
+        "courseCode": "29450",
+        "instructor": [
+            "Cara C Putman"
+        ],
+        "description": " Ready to grow your confidence in leadership? In this one-credit course, we will explore how to develop and grow your talents, strengths and leadership while also making an impact at the school of business. We'll also explore what leadership looks like in different contexts, tools you need, and how to be a more inclusive leader.  ",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Career Readiness & Exploration",
+        "subjectCode": "MGMT",
+        "courseCode": "29500",
+        "instructor": [
+            "Kristin E Deckard Dawson"
+        ],
+        "description": "Start developing career readiness competencies through an engaging, hybrid course. Come prepared to create and modify your career necessities (resume, LinkedIn profile, elevator pitch, etc.), while growing in the competencies employers are looking for when hiring recent graduates! Following career necessities, you'll get a taste of what you might encounter in the workforce, and what steps you can take to explore other career options if you get into the workplace and find it's not a good fit. Jump-start your career through MGMT 29500!",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Financial Management",
+        "subjectCode": "MGMT",
+        "courseCode": "30400",
+        "instructor": [
+            "Phillip Guy Baeza"
+        ],
+        "description": "Introductory course providing a foundation in corporate finance and covering topics such as: discounted cash flow valuation, bond valuation, equity valuation, option valuation, factors influencing a firm's cost of capital, and international finance issues.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business Statistics",
+        "subjectCode": "MGMT",
+        "courseCode": "30500",
+        "instructor": [
+            "Marcelo Cruz de Souza",
+            "Xing Wang",
+            "Gary W Evans"
+        ],
+        "description": "Introduction to business statistics as related to facilitating managerial decision making. Topics include descriptive statistics, probability models, estimation, hypothesis testing, and regression analysis. Students use software to do their own analyses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Science",
+        "subjectCode": "MGMT",
+        "courseCode": "30600",
+        "instructor": [
+            "Alex Liheng Wang",
+            "Kanishka Sunick",
+            "Arthur A Alexander"
+        ],
+        "description": "Use of optimization, simulation, and decision theory models to support management decision making. Emphasis on modeling and interpreting results for managerial applications of linear and integer programming models, network problems, simulation models, and decision analysis. Computer applications are stressed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Financial Management",
+        "subjectCode": "MGMT",
+        "courseCode": "31000",
+        "instructor": [
+            "Woong Bae Kim",
+            "Alexander W Boquist",
+            "Peter Giles Hansen",
+            "Phillip Guy Baeza"
+        ],
+        "description": "Management of the financial affairs of the industrial enterprise. Working capital management, current asset management, capital budgeting, stock and bond valuation, and capital structure decisions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Principles Of Marketing",
+        "subjectCode": "MGMT",
+        "courseCode": "32300",
+        "instructor": [
+            "Laura A Downey"
+        ],
+        "description": "This course aims to provide students with a broad understanding of marketing concepts that are useful to managers in a variety of applications including the marketing of consumer products, marketing of services, business-to-business marketing, and the marketing challenges that arise in not-for-profit organizations. Marketing involves identifying customer needs, then satisfying those needs by offering the right product and/or service at an acceptable price, making it available to customers through appropriate distribution channels, and promoting it in ways that motivate purchase as much as possible. The course serves as a foundation for marketing knowledge in general. No credit for students in the School of Management, except economics majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Marketing Management",
+        "subjectCode": "MGMT",
+        "courseCode": "32400",
+        "instructor": [
+            "Rajan Mishra",
+            "Franco Berbeglia",
+            "Laura A Downey",
+            "Wooyong Jo"
+        ],
+        "description": "The objective of this course is to introduce students to the concepts, analyses, and activities that comprise marketing management, and to provide practice in analyzing and solving marketing problems. The course is also a foundation for advanced elective courses in marketing. Topics covered in the course include customer behavior, market segmentation, product positioning, market research, product management, pricing, promotion, sales force management and competitive analysis.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Strategic Business Writing",
+        "subjectCode": "MGMT",
+        "courseCode": "33500",
+        "instructor": [
+            "Kasie M Roberson",
+            "Aryca Peay Woodson"
+        ],
+        "description": "Strategic Business Writing is designed to help Krannert undergraduate students become more effective, strategic writers in a business setting. The course format involves class lectures/discussions, small group work and extensive written work. In this course, students learn how to: develop a writing style that is clear, concise and thorough; adapt writing to varying audience needs and levels, including using appropriate style and tone when communicating; develop Visual Aids that are effective and persuasive; write with greater ease and credibility; use Emotional Intelligence when writing; effectively listen to feedback on your writing and offer helpful feedback to others on their writing; write under a tight deadline; edit thoroughly and write various standard forms of Business Writing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intermediate Accounting I",
+        "subjectCode": "MGMT",
+        "courseCode": "35000",
+        "instructor": [
+            "Tyler David Atanasov"
+        ],
+        "description": "Financial reporting for interested external parties. Emphasis on asset valuation, income measurement, and preparation of financial statements, and on appreciation of discretion available to preparers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intermediate Accounting II",
+        "subjectCode": "MGMT",
+        "courseCode": "35100",
+        "instructor": [
+            "Hojun Seo"
+        ],
+        "description": "Continuation of Intermediate Accounting I. An examination of additional problems in financial reporting, including long-term assets, liabilities, owners' equity, income taxes, earnings per share, leases, and pensions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Strategic Management",
+        "subjectCode": "MGMT",
+        "courseCode": "35200",
+        "instructor": [
+            "Ralph Anthony Gibbs",
+            "Jiabei Hu",
+            "Koungjin Lim",
+            "Sandip Bisui"
+        ],
+        "description": "The course focuses on understanding competitive forces and how organizations strive to build sustainable competitive advantages through business- and corporate-level strategies. It integrates and builds upon previous training in functional areas and presents new analytical tools for developing an understanding of the strategic decisions that determine future directions and effectiveness of the organization.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Intermediate Accounting For Non-Accounting Majors",
+        "subjectCode": "MGMT",
+        "courseCode": "35300",
+        "instructor": [
+            "Gus Gaetano De Franco"
+        ],
+        "description": "The course is designed to meet the needs of students of predominantly finance students, as a firm grasp of key accounting concepts is critical to success in most finance professions. Throughout the course we will study measurement and reporting issues related to selected important financial statement items. The goal of this course is to educate students on major accounting topics that are likely to influence key financial decisions such as different inventory methods, different depreciation methods, lease recognition, pension accounting, among other topics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Consulting Tools And Skills",
+        "subjectCode": "MGMT",
+        "courseCode": "35500",
+        "instructor": [
+            "John Francis Burr"
+        ],
+        "description": "This novel course will provide an opportunity for motivated students to gain exposure to the skills and tools necessary to succeed in the consulting industry. There will be a chance to work in small teams to define client problems, collect and analyze data, develop solution proposals, and implement recommendations. Students will also be given an insider's look into the history of consulting, common types of consulting, and professional standards in this specialized area of management. Honing skills in project management, presentation delivery, storytelling, and stakeholder engagement will form the foundation of the tools used to solve client challenges.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Operations Management",
+        "subjectCode": "MGMT",
+        "courseCode": "36100",
+        "instructor": [
+            "Wei Liu",
+            "Pengyu Qian",
+            "Jianing Li",
+            "Jian Wu"
+        ],
+        "description": "Operations Management (OM) is an area of business concerned with the production of goods and services. It involves the responsibility of ensuring that business operations are efficient in terms of using as little resource as needed, and effective in terms of meeting customer requirements. The course covers five major OM topics: process analysis, process variability, quality management, inventory management, and supply chain management. The course aims to provide a working knowledge of the vocabulary of OM, to help students develop an ability to design, improve, and manage processes by answering the questions: What are the components of a process? How should various process parameters such as capacities, output, and work-in-process inventories be calculated? What are the major opportunities for improving a process? The students get familiar with key issues (cost, quality, delivery, and flexibility) and problems (e.g., variability) facing an operations manager. At the end of the course, the students analyze operational strengths and weaknesses of a local firm, suggest some improvements of its operations and present the results.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Real Estate Fundamentals",
+        "subjectCode": "MGMT",
+        "courseCode": "37000",
+        "instructor": [
+            "Aaron Douglas Hedlund",
+            "Lindsay Ellen Relihan"
+        ],
+        "description": "This course introduces the basic concepts, principles, and analytic methods applied in the field of real estate. The course covers topics including legal, financial, economic and marketing concepts related to real estate. The goal of the course is to expose students to the field of real estate and prepare them for more advanced real estate courses.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Real Estate Law",
+        "subjectCode": "MGMT",
+        "courseCode": "37500",
+        "instructor": [
+            "Cecelia Marie Harper"
+        ],
+        "description": "The course provides an overview of real estate law and its influence on various aspects of the real estate industry. The course examines the legal issues surrounding the nature of real property, types of ownership and possession, real estate contracts, escrow and title and insurance, zoning, financing, landlord and tenant, land use regulations, environments law and regulations, and agency ethics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Information Systems",
+        "subjectCode": "MGMT",
+        "courseCode": "38200",
+        "instructor": [
+            "Hossein Ghasemkhani",
+            "Yuan Yuan",
+            "Shai P Vardi",
+            "Roy M Dejoie"
+        ],
+        "description": "This case-oriented course is designed to familiarize students with existing and emerging technologies and their business applications. It also covers issues, problems, and opportunities that information systems (IS) executives and general managers face when managing IS resources in their organizations. Includes lectures, presentations, case analyses and discussions, and a World Wide Web project. Case discussions cover real situations and deal with the operational and strategic decisions that every IS manager has to make in managing and exploiting the available information technology.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Python For Business",
+        "subjectCode": "MGMT",
+        "courseCode": "38800",
+        "instructor": [
+            "Xiaoxiao Wang"
+        ],
+        "description": "This course will cover the business rules and logic in a business application development context. These skills will be acquired using computer programming; specifically employing Python. Solution development will reinforce logical concepts process flow, variable assignment, and control structures, as well as proper programming and application development practices.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Using R For Business Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "38900",
+        "instructor": [
+            "Weibin Mo"
+        ],
+        "description": " The main purpose of this course is to introduce and familiarize undergraduate students to RStudio and the R programming language as tools for business data analytics. Students will develop a small portfolio of projects that demonstrate fundamental knowledge of programming, exploratory data analysis, data visualization, and basic predictive modeling techniques using R. The emphasis of the course will be on hands-on applied projects in R in which students will be able to appreciate and visualize statistical and machine learning concepts tailored to real world business applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Strategic Thinking And Decision-Making",
+        "subjectCode": "MGMT",
+        "courseCode": "39100",
+        "instructor": [
+            "Douglas E Pruim"
+        ],
+        "description": "This course focuses on how to think strategically and make good business decisions. By the end of the class, you will be able to do the following: (1) Recognize biases in how people process information, conducting user tests and interviews to gain insights from prototypes to make business development decisions; (2) Engage in decision-making strategies to design/develop prototypes in a variety of media (digital and/or physical) for the appropriate level of fidelity necessary to communicate, understand, and test innovative ideas; (3) Select and use appropriate methods/tools/equipment to make decisions and design/prototype innovative ideas; (4) Pitch a viable solution for a validated problem to a variety of potential investors and/or stakeholders.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Executive Forum",
+        "subjectCode": "MGMT",
+        "courseCode": "40100",
+        "instructor": [
+            "Andrea M Hatch"
+        ],
+        "description": "A lecture-discussion course featuring executives from business firms and other organizations. Emphasis is placed on the actual practice of management in corporate America, on career selection and mobility, on styles of management, and on other topics not normally covered in undergraduate courses.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Six Sigma And Quality Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "40500",
+        "instructor": [
+            "Gary Mercado Velasco"
+        ],
+        "description": "The course is an undergraduate elective offered as part of the Center for Manufacturing Management Enterprises (CMME) quality initiatives. Provides an overview of various tools and methods for total quality management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Investment Management",
+        "subjectCode": "MGMT",
+        "courseCode": "41100",
+        "instructor": [
+            "Dejanir Henrique Silva",
+            "Ping Liu"
+        ],
+        "description": "Examination of investment alternatives relevant to the individual and/or family-unit investor. Operations of the markets in which securities are traded. Theory and application of security valuation, portfolio construction, capital markets, and performance evaluation. Particular attention given to fixed income securities, common stocks, options, investment companies, and other popular investment alternatives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Futures And Options",
+        "subjectCode": "MGMT",
+        "courseCode": "41150",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "The course covers basic features and pricing of derivative securities such as forwards, futures, and options.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fixed Income Securities",
+        "subjectCode": "MGMT",
+        "courseCode": "41250",
+        "instructor": [
+            "Lulu Zeng",
+            "Adem Atmaz"
+        ],
+        "description": "This course includes examination of fixed income securities institutions that invest, roles in institution, portfolios and math associated with assessing characteristics of fixed income securities.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Corporate Finance",
+        "subjectCode": "MGMT",
+        "courseCode": "41300",
+        "instructor": [
+            "Nathaniel Arthur Feige",
+            "Ha Diep Nguyen"
+        ],
+        "description": "The course provides the theoretical and problem-solving tools needed in entry-level financial analysis positions in a corporate, commercial lending, or investment banking setting. Topics include corporate valuation, cash flow forecasting, project evaluation, capital structure, dividend policy, capital acquisition, and mergers/acquisition.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Financial Data Analysis And Modeling",
+        "subjectCode": "MGMT",
+        "courseCode": "41310",
+        "instructor": [
+            "Lulu Zeng"
+        ],
+        "description": "In the business world today, finance professionals are going to be given opportunities to analyze and model data. The objective of MGMT 41310 is to give students opportunities to work with financial data sets to ask and answer real questions that businesses have. In this course, students will use several data analysis software packages including R. Additionally, the course will include extensive application of Excel tools for Financial Modeling.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Venture Capital And Entrepreneurial Finance",
+        "subjectCode": "MGMT",
+        "courseCode": "41350",
+        "instructor": [
+            "Fabricio R R D'Almeida"
+        ],
+        "description": "This course includes descriptions of markets for start-up businesses, venture capital financial structures, valuation of start-ups, role of venture capital in economic development and business growth strategies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "International Financial Management",
+        "subjectCode": "MGMT",
+        "courseCode": "41500",
+        "instructor": [
+            "Craig Brown",
+            "Mara Faccio"
+        ],
+        "description": "The course explores financial decision making in an international framework from the perspective of the management of a multinational corporation. Topics covered include the international financial markets, the measurement and management of exchange risk and political risk, and the financial aspects of the decision to set up cross-border operations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Marketing Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "42110",
+        "instructor": [
+            "Franco Berbeglia"
+        ],
+        "description": "This course covers essential decision models and strategic metrics that form the cornerstone of marketing analytics. Using the insight gained in the course, students can predict the outcome of marketing plans to boost return on marketing investment (ROMI). The course emphasizes hands-on learning so students can immediately apply the econometric tools and techniques on a variety of marketing applications. A number of relevant topics are discussed, such as market sizing, forecasting and positioning, promotion budget allocation, and profit maximization. The final piece of this course is guiding the students on how best to craft data-driven presentations to key stakeholders through the use of an experiential learning project provided by an external client.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "International Marketing",
+        "subjectCode": "MGMT",
+        "courseCode": "42210",
+        "instructor": [
+            "Chad Ruel Allred"
+        ],
+        "description": "Most U.S. businesses, large and small, are becoming deeply involved in international business. The trend is going to grow even stronger because of the influence of World Trade Organization and regional trade blocks. Under these circumstances, it is imperative that business managers possess the skill sets to adapt their marketing strategies to the needs of international markets. This course will cover the concepts and theories pertaining to international marketing. It is aimed to provide students with skills in formulating a marketing plan for foreign market entry and conducting business in a foreign country.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "New Product Development",
+        "subjectCode": "MGMT",
+        "courseCode": "42300",
+        "instructor": [
+            "William T Robinson"
+        ],
+        "description": "Provides an overview of the new product development process. Detailed insights are provided in the \"fuzzy front end\" of this process. Targeting positioning, and product decisions are also covered. The second half of the course completes the marketing mix and covers various market testing and product launch issues.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Digital Marketing Strategy",
+        "subjectCode": "MGMT",
+        "courseCode": "42710",
+        "instructor": [
+            "Jinsuh Lee"
+        ],
+        "description": "Digital marketing is where marketing meets the internet, wireless devices, and other digital media. The course covers a variety of topics including online advertising, search engine optimization, participation in social media, online listening and monitoring, and web & social media analytics. Through a combination of lecture, case studies, hands-on exercises, and course projects, students develop capabilities in designing, implementing, and evaluating digital marketing strategies. Students can also gain hand-on learning experience in the course by participating in an online marketing project. In the online marketing project, each student team is given $50 to promote a chosen business or organization via online or social media platform (including search engine advertising and online display advertising).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pricing Strategies",
+        "subjectCode": "MGMT",
+        "courseCode": "43800",
+        "instructor": [
+            "Federico Rossi"
+        ],
+        "description": "In the era of Big Data, where extensive information is available at the customer level, managers benefit from an increased ability to learn from their customers' behavior. In this scenario pricing becomes a crucial lever for increasing the relationship with the customer and maximizing profits and shareholder value. In this course, students will learn how to systematically approach pricing decisions, taking the perspective of the marketing manager. The course will use a combination of lectures, case discussions and in-class exercises to leverage micro-level transaction data for pricing decisions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Real Estate Investment & Development",
+        "subjectCode": "MGMT",
+        "courseCode": "43901",
+        "instructor": [
+            "Michael Donald Eriksen"
+        ],
+        "description": "The course will cover two main topics: real estate development and real state investment. For real estate development, we will discuss the process of the real estate development process, including the basics of the idea conception, feasibility, planning, financing, market analysis, contract negotiation, risk management, marketing, and asset management. For real estate investment, we will discuss the process and techniques of analyzing real property investment, and the effects of market conditions, government policies, and other factors on real estate investment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Real Estate Capital Markets & Securitization",
+        "subjectCode": "MGMT",
+        "courseCode": "43902",
+        "instructor": [
+            "Aaron Douglas Hedlund"
+        ],
+        "description": "The course covers debt and equity secondary markets linked to real estate assets. Main topics include features of commercial and residential mortgages, and mortgage calculation; analysis of agency and non-agency mortgage-backed securities and other instruments; history of mortgage secondary markets; commercial mortgage-based securities (CMBS), and Real Estate Investment Trusts (REITs). The advantages and drawbacks of the capital market products will be discussed and compared, and students develop a deep understanding of the alternatives that are available. The class consists of lectures, guest speakers, readings, class discussions, and case studies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Of Human Resources",
+        "subjectCode": "MGMT",
+        "courseCode": "44301",
+        "instructor": [
+            "Henry E Williams"
+        ],
+        "description": "Survey of theory and techniques used in human resource management within organizations. Emphasis is placed on legal concerns, human resource staffing and development, reward systems, and the role of unions in American society. Techniques studied include job analysis, the use of various recruitment and selection procedures, compensation, administration, and collective bargaining. No credit for students in the School of Management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Leadership In A Changing World",
+        "subjectCode": "MGMT",
+        "courseCode": "44362",
+        "instructor": [
+            "Katelyn Patricia Zipay"
+        ],
+        "description": "  This course is designed to help you become a more effective leader in a complex and rapidly changing world. Effective leadership developed over time through practice, feedback, and self-reflection is crucial for organizational success. While engaging in effective leadership practices can be rewarding, it is also a significant challenge for most people. This course aims to equip you with the knowledge and tools necessary to improve your leadership capabilities and confidence based on evidence-based practices and leadership theories. Through interactive sessions, we will explore various aspects of effective leadership, assess where you stand in your leadership development journey, and hone your leadership skills. By the end of the course, you should be able to recognize the importance of interpersonal relationship skills and abilities in effective leadership, discuss key leadership principles and practices in organizational settings with peers, colleagues, supervisors, and mentors, identify your own leadership strengths and areas for development, propose evidence-based solutions to real-world leadership problems, and develop a leadership philosophy based on your personal values and evidence-based strategies. ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Human Resources Management",
+        "subjectCode": "MGMT",
+        "courseCode": "44428",
+        "instructor": [
+            "Joel Munoz"
+        ],
+        "description": "Survey of the techniques and practices used in human resource management. Emphasis is on legal requirements, cost/benefit considerations, and strategic needs in managing human resources. Topics include recruitment, selection and placement, compensation, work design, and reactions to work. Specific techniques reviewed include assessment centers, incentive plans, structured interviewing, and autonomous work groups. Current issues and managerial decision making are emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Talent Management",
+        "subjectCode": "MGMT",
+        "courseCode": "44429",
+        "instructor": [
+            "Brian K Chupp"
+        ],
+        "description": "This course focuses on the employer-employee relationship at work, and how  managers work with employees to improve employee performance. Attention is given to the history of labor relations and performance management in work settings, with an emphasis, however, on contemporary approaches to managing the employer-employee relationship and the systems for managing employee performance.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Compensation: Total Rewards",
+        "subjectCode": "MGMT",
+        "courseCode": "44431",
+        "instructor": [
+            "Jonathan G Ying"
+        ],
+        "description": "This course examines the tangible and intangible aspects of compensation, through the lens of a total reward philosophy of an organization in order to attract, motivate, and retain their Human Capital. It also provides an overview of the considerations necessary to develop a compensation system that is internally and externally equitable and fiscally responsible, including the use of job evaluation and salary surveys.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Negotiation And Decision Making",
+        "subjectCode": "MGMT",
+        "courseCode": "44690",
+        "instructor": [
+            "Joel Munoz"
+        ],
+        "description": "The purpose of this course is to understand the theory and processes of negotiation so that you can negotiate successfully in organizational and management settings. This course covers a wide variety of negotiation problems faced by business people. In addition, models of effective and ineffective decision-making are introduced and students will have the opportunity to make decisions at both the individual and group levels.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Competitive Strategy",
+        "subjectCode": "MGMT",
+        "courseCode": "44710",
+        "instructor": [
+            "John Francis Burr"
+        ],
+        "description": "This course focuses on the dynamics between a firm and the marketplace including interaction with competition. Strategy implementation occurs over multiple periods and is highly dependent on choices and behavior of competition. The course material covers how these dynamics and expectations of competitor response will shape the decisions of managers. This is inclusive of signaling intent to competitors and mutual forbearance to avoid negative sum gain competition.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Technology Strategy",
+        "subjectCode": "MGMT",
+        "courseCode": "44810",
+        "instructor": [
+            "Luis Adrian Rios"
+        ],
+        "description": "  In today's business environment, success is driven by a firm's ability to create and capture value through innovation. This course seeks to develop tools for understanding how firms and industries evolve through new technology. This award-winning course uses an experiential team-based approach. Student teams pick a firm early in the semester and become experts in it by understanding how each framework we learn impacts its performance. The class is very interactive and there are various presentations throughout the semester. Ultimately students gain a deep understanding of the processes used by firms to develop new technologies, the choices they make regarding how to commercialize their knowledge, and the strategies they use to position and build a dominant competitive position.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Manufacturing Strategy And Process Innovation",
+        "subjectCode": "MGMT",
+        "courseCode": "45200",
+        "instructor": [
+            "Thomas H Brush"
+        ],
+        "description": "This course examines the management challenges posed by the growth in worldwide manufacturing capabilities, markets, and competition and by rapid advances in technology and the concomitant decline in product life cycles. The manufacturing function is considered within a broader context encompassing design, engineering, purchasing, marketing, and customer service in an effort to assess the degree to which existing management structures successfully meet the challenges arising from the changing manufacturing environment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Legal Background For Business I",
+        "subjectCode": "MGMT",
+        "courseCode": "45500",
+        "instructor": [
+            "Miltina Ann Gavia"
+        ],
+        "description": "The nature and place of law in our society, national and international, social and moral bases of law enactment, regulation of business, legal liability, and enforcement procedures. Special emphasis on torts, contracts, and agency. No credit to students in the School of Management.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Legal Foundations For Business II",
+        "subjectCode": "MGMT",
+        "courseCode": "45600",
+        "instructor": [
+            "Cecelia Marie Harper"
+        ],
+        "description": "A study of commercial law as prescribed by the Uniform Commercial Code, including the law of sales, documents of title, negotiable instruments, and the law relating to security interests. Additional material is presented covering the legal aspects of real estate transactions and personal property transfer.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "International Management",
+        "subjectCode": "MGMT",
+        "courseCode": "45900",
+        "instructor": [
+            "Wan Ting Chiu"
+        ],
+        "description": "This course focuses on the challenges top managers face in developing strategies and management policies in multinational corporations (MNCs). Major topics usually covered include foreign market entry strategies, motivations and organizational challenges of internationalization, analyzing global industries, managing MNC/host government relations, building competitive advantage in global industries, international alliances and acquisitions, structuring and controlling MNCs, risk management, and the country manager role.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Supply Chain Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "46300",
+        "instructor": [
+            "William Benjamin Haskell"
+        ],
+        "description": " This course focuses on rigorous quantitative decision-making in supply chain management. It covers optimization (linear, nonlinear, and integer), stochastics/probability, and simulation. The coursework is conducted through experiential learning activities based on real-world data, proficiency with analytics software, and operation research case studies. MGMT 30600 is highly recommended but not required. Basic Calculus, Statistics, and Excel literacy are required.  ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Logistics: Concepts And Models",
+        "subjectCode": "MGMT",
+        "courseCode": "46400",
+        "instructor": [
+            "Olga Rusyaeva Senicheva"
+        ],
+        "description": "  The course familiarizes students with main concepts and models of business logistics management. Through the course, students develop an ability to design, improve, and manage logistics operations such as Inventory, Transportation, Warehousing, and Logistics Network Design. Since logistics decisions often require certain trade-offs to be made, students develop necessary quantitative and qualitative analytical skills to improve their decision-making. At the end of the course, students should be able to analyze logistics strategy of a firm, identify problems and tradeoffs in different logistics functions, formulate the corresponding models, identify quantitative methods to solve it, obtain results and interpret them for small-size problems using standard spreadsheet software, communicate the results to a broader audience using business language, discuss issues and challenges in same-day delivery, humanitarian logistics, physical internet.  ",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Project Management",
+        "subjectCode": "MGMT",
+        "courseCode": "46600",
+        "instructor": [
+            "Olga Rusyaeva Senicheva"
+        ],
+        "description": "This course seeks to introduce different phases of managing projects from conception to termination with particular emphasis on quantitative tools for planning, scheduling, resource allocation, monitoring, and control. In addition, topics such as risk management, quality management and procurement management will be covered. Students will also gain a working knowledge of MSProject software.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Supply Chain Technology",
+        "subjectCode": "MGMT",
+        "courseCode": "46800",
+        "instructor": [
+            "Olga Rusyaeva Senicheva"
+        ],
+        "description": "The course will introduce the major SCM information systems and technologies utilized by industry leaders to integrate SCM operations and achieve coordination within and across various business functions. The students will learn how to manage SCM operations, including: sales & distribution, materials management, production planning and control, warehouse management, retail operations. The course will provide students the opportunity to study, analyze, and observe the information systems and technology tools. Topics include Enterprise Resource Planning Systems (ERP), Blockchain, Warehouse Management System (WMS), Transportation Management Systems (TMS), Internet of Things (IOT) in retail. The students will learn how to use the SAP software to execute SCM operations. The course will review the technology implementation process and how such projects should be organized and managed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Spreadsheet Modeling And Simulation",
+        "subjectCode": "MGMT",
+        "courseCode": "47200",
+        "instructor": [
+            "Thanh T Nguyen",
+            "Gary Mercado Velasco"
+        ],
+        "description": "This course covers up-to-date and practical spreadsheet modeling tools that can be applied to a wide variety of business problems from finance, marketing, and operations. The topical coverage consists of the following five modules: (1) Excel functions, skills and financial models; (2) deterministic and stochastic optimization techniques to determine the best managerial actions under internally-and/or externally-imposed constraints; (3) probability distribution fitting techniques to find the most likely description of the uncertainty in future business; (4) simulation modeling techniques to discover and analyze the risk and uncertainties in business environment and processes; (5) application of spreadsheet modeling and simulation techniques in forecasting asset dynamics( stock price) and pricing options and real investment opportunities. This course provides hands-on experience of computer application using Microsoft Excel and the spreadsheet add-ins @RISK, RISKOptimizer, SimQuick, etc.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data Mining",
+        "subjectCode": "MGMT",
+        "courseCode": "47300",
+        "instructor": [
+            "Zhiwei Zhu"
+        ],
+        "description": "Students follow a structured analytical process using popular industry tools (e.g., RStudio, Tableau, SQL) to identify, visualize, and summarize relationships within large data sets to support business problems. More focus is on descriptive analytics which includes business segmentation and clustering methods, but also introduces two predictive analytic methods, decision trees, and neural networks.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Predictive Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "47400",
+        "instructor": [
+            "Tongseok Lim"
+        ],
+        "description": "Students build and evaluate predictive models to support regression-type and classification-type business problems using popular industry tools (e.g., RStudio, SAS Enterprise Miner). Methods covered include multiple linear regression, ridge regression, lasso, CART, logistic regression, LDA/QDA, SVM, and ensemble methods such as random forests.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Machine Learning For Business",
+        "subjectCode": "MGMT",
+        "courseCode": "47500",
+        "instructor": [
+            "Yichen Zhang"
+        ],
+        "description": "This course concerns the latest techniques in machine learning, focusing on deep learning and reinforcement learning, with applications to computer vision, natural language understanding, speech recognition, news recommendation, and others. The course plans to cover Neural Nets, Backpropagation, Convolutional neural network, Recurrent Networks, Autoencoders and other architechtures in Deep Learning in the rst half. Next, the course plans to cover multi-armed bandits, Contextual bandits, Markov decision process, and Policy gradient methods in Reinforcement Learning.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Experiential Project In Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "47800",
+        "instructor": [
+            "Xing Wang",
+            "Yuan Yuan"
+        ],
+        "description": "Most degree programs offer students an opportunity to apply the knowledge learned from their studies in an applicable area via a thesis, a research project, or capstone. This course provides such an opportunity and is designed specifically for Business Analytics & Information Management undergraduate students that will pursue analytical-type careers (e.g. Data/OR Analyst, Data Scientist, Decision Scientist, Consultant, Developer, etc.). This course is designed to polish and integrate the knowledge, skills, and abilities you have developed from your coursework by successfully developing an analytics solution with an industry partner in a structured fashion. Thus, most of your time will be devoted to working with your project teammates to provide the answers and deliverables specified by the partner over the course of many two-week sprints. Every project team will be provided with a project description, data dictionary, and access to the dataset (or directions in where to find the necessary data), as well as an NDA to read, understand, sign, and return to your professor before you can gain access to the data. These are tasks that might be required of you to perform when you work on a new project or have a new client. However, due to our short module term window, I want you to focus on understand the problem and developing the solution following INFORMS Certified Analytics Professional (CAP) Framework.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Data Visualization",
+        "subjectCode": "MGMT",
+        "courseCode": "47900",
+        "instructor": [
+            "Zaiyan Wei"
+        ],
+        "description": "This course is an introduction to the techniques and algorithms for creating effective data visualization. Visualizations are graphical depictions of data that can improve comprehension, communication, and decision making. This course emphasizes application in business settings where visual representation methods that are covered in this course will improve our understanding of complex data and models. We focus in particular on pattern identification, difference and trends in data sets across categories, space, and time. In addition to participating in in-class discussions, students will have sufficient hands-on experience with the tools and techniques covered in this course. Students will be expected to complete several short programming and data analysis assignments. Students will also have an opportunity to work as groups on a final project. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Of Entrepreneurial Ventures",
+        "subjectCode": "MGMT",
+        "courseCode": "48400",
+        "instructor": [
+            "Matthew D Lynall"
+        ],
+        "description": "This course teaches skills required to become an entrepreneur, succeed in a start-up venture, work in venture capital, join a family business, or develop a franchise operation. Students will learn about how to identify and shape emerging market opportunities, innovate new business models, prepare and evaluate business plans, raise capital, build a skilled founding team, network for resources, and grow an initial market.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "The Science Of Working Well",
+        "subjectCode": "MGMT",
+        "courseCode": "49000",
+        "instructor": [
+            "Allison Stephanie Gabriel Rossetti"
+        ],
+        "description": "Investigation in a specific management field. Arrange with instructor before enrolling. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Consulting Practicum",
+        "subjectCode": "MGMT",
+        "courseCode": "49600",
+        "instructor": [
+            "Wan Ting Chiu"
+        ],
+        "description": "Management Consulting Practicum is an elective course consisting of consulting engagements with clients and projects from the Purdue Foundry and other sources. This course uses class time for students working in teams to receive timely guidance on applying a wide range of consulting skills and tools to supplement the client engagements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Accounting",
+        "subjectCode": "MGMT",
+        "courseCode": "50300",
+        "instructor": [
+            "Michael Kregar"
+        ],
+        "description": "Advanced course in financial accounting. A range of contemporary issues in financial reporting, such as business combinations, investments, consolidations, inflation, multinationals, and tax allocation are covered. Both technical proficiency and user applications are emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Tax Accounting",
+        "subjectCode": "MGMT",
+        "courseCode": "50400",
+        "instructor": [
+            "John T Eagan"
+        ],
+        "description": "Basic tax course designed to provide an understanding of the various federal taxes, including income, gift, estate, excise, federal insurance contribution, self-employment, and unemployment taxes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Accounting II",
+        "subjectCode": "MGMT",
+        "courseCode": "50500",
+        "instructor": [
+            "R Scott Sorensen"
+        ],
+        "description": "The focus of the course is managerial decision making and the economic role of information. Topics covered include decentralized financial performance evaluation, cost analysis, and financial planning and control systems.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Auditing",
+        "subjectCode": "MGMT",
+        "courseCode": "50600",
+        "instructor": [
+            "Paula J Conroy"
+        ],
+        "description": "A study of the concepts and procedures of auditing, which is the systematic process of objectively obtaining and evaluating evidence regarding assertions about economic actions and events. Primary emphasis is on audits conducted by independent certified public accountants, but topics covered apply to internal auditing as well.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Fixed Income Securities",
+        "subjectCode": "MGMT",
+        "courseCode": "51100",
+        "instructor": [
+            "Adem Atmaz"
+        ],
+        "description": "Introduction to fixed income securities. Discusses a variety of contracts-starting with pure discount bonds, coupon bonds, and callable bonds. Continues with options on bonds, caps, floors, and interest rate swaps. Introduces the theory of the term structure and present models for pricing fixed income securities. Topics include: spot and forward markets for debt instruments, simple models for interest rate risk management, duration, convexity, organized exchange-traded interest rate contracts, interest rate swaps, pricing relationships and the theory of the term structure, and single factor models for pricing interest rate claims.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Digital Marketing Applications",
+        "subjectCode": "MGMT",
+        "courseCode": "52710",
+        "instructor": [
+            "Qiang Liu"
+        ],
+        "description": "Companies today expect their marketing professionals to understand what it takes to develop, implement, and evaluate digital marketing strategies and campaigns. The best way for marketing professionals to gain such expertise is for them to actually build and execute specific digital marketing programs/campaigns using various digital and social media platforms for a real world client. This course offers students a unique hands-on learning opportunity with an online marketing project, each student team is given a budget up to $300 to promote a chosen business or non-profit organization via digital advertising platforms including Google AdWords, Bing Ads, Facebook Business, LinkedIn Sponsored Ads, and Twitter Ads. Students are given flexibility in selecting projects of interest. All students are also expected to pass Google Analytics certification and Google AdWords certification.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Employment & Diversity Law For Managers",
+        "subjectCode": "MGMT",
+        "courseCode": "53600",
+        "instructor": [
+            "Cara C Putman"
+        ],
+        "description": "Managers, regardless of your industry, will routinely face HR and employment issues that collide with the law. In this course, we will examine many laws and the practical ways you can stay on the right side of the law. Don't worry, you aren't in a law school class and I don't expect you to become employment attorneys. However, I will help you gain a working knowledge of employment laws including: The Civil Rights Act, ADA, ADEA, FMLA, FLSA, and a host of alphabet soup. We will also apply these laws from posting a job description to recruiting to hiring to employee reviews to terminating an employee. While I can't guarantee you will never be sued by a disgruntled current or former employee, I can help you put yourself and your company in the best possible position to defend that suit. And don't worry: we will look at lots of quick case studies (less than a page) to give you context you can easily remember.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Database Management Systems",
+        "subjectCode": "MGMT",
+        "courseCode": "54400",
+        "instructor": [
+            "Sung Joo Kim"
+        ],
+        "description": "Covers the theory and practice of database design and usage. Students will learn the importance of data modeling concepts and how to use these effectively and how to plan and design a database, including issues such as data security and control. The following course is recommended: MGMT 29000 Programming for Business Applications or CS 15900 or CS 17700 or CNIT 17500, all with a C- or higher.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Systems Development",
+        "subjectCode": "MGMT",
+        "courseCode": "54500",
+        "instructor": [
+            "Shiyang Sima"
+        ],
+        "description": "Focuses on information systems development theories, practices, and tools for rapid adaptation and management of leading-edge as well as emerging computing paradigms. The following courses are recommended: MGMT 38200, with a C- or higher; and MGMT 29000 Programming for Business Applications or CS 15900 or CS 17700 or CNIT 17500, all with a minimum grade of C-. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Managing Global Organizational Behavior And Human Resources",
+        "subjectCode": "MGMT",
+        "courseCode": "55400",
+        "instructor": [
+            "Ellen E Kossek"
+        ],
+        "description": "This course focuses on the opportunities and challenges of managing a global multicultural workforce and implementing global organizational people strategies. The overall goal of this class is to help you become a more effective professional and leader in a global world on and off the job by providing information, tools and multicultural opportunities to increase conceptual and practical understanding of how national cultures shape employment settings and its implications for your own behavior as a global business professional and leader who implements human capital and organizational strategies, policies, and practices in a cross-national context. This course will also increase knowledge of and ability to implement current global human capital, international HRM, and organizational strategies for MNES and domestically. To achieve these goals, student engagement in class sessions, and willingness to share perspectives and opinions, and application of course readings and materials, are critical to the success of this course. A range of participative learning methods are used to facilitate an active classroom environment, including learning log journaling, case analysis, experiential exercises, small group projects, break out discussions, company guest speakers, and self-assessments. The role of the instructor in this course is not always to provide \"the\" answer, but to create an environment where you can collectively explore, examine and experiment with students' own ideas and share ideas and perspectives on working and managing global firms.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Leading Management Of Diversity And Inclusion In Organizations",
+        "subjectCode": "MGMT",
+        "courseCode": "55500",
+        "instructor": [
+            "Ellen E Kossek"
+        ],
+        "description": "This course is designed to help students more effectively manage self, peers, teams, clients and firms in diverse organizational settings and lead change. People and leaders in organizations are constantly working with members of different backgrounds, social identities, and experiences, fostering increased attention to diversity and inclusion in an employment and organizational context. [1] For example, women represent over half of the labor for 57% (BLS, 2018) [2] but are severely under-represented at senior management levels and in high-paying technical and professional fields (Kossek & Buzzanell, 2018) [3]. Ethnic and racial minorities are also severely under-represented. The U.S. population is increasingly diverse as 40% of the population identifies as racial or ethnic minorities (U.S. Bureau of Census, 2019) including African-American (13.4%), Hispanic-American (18.3%), Asian-American (5.9%), American Indian or Alaska Native (1.3%), and European American (60%) as well as a growing number of individuals who identify with more than one race or ethnicity (U.S. Bureau of Census, 2019) [4]. Further, 26% of the population has some form of disability, and 16% are over the age of 65 (U.S. Bureau of Census, 2018). Many other minority groups can face workplace marginalization challenges such as veterans, minority religious group members (Muslims, Jews, Hinduism; Catholic; Latter-day Saints), immigrants, people with mental or intellectual disabilities, & LGBTQ persons (Stone, Lukaszewski, & Dulebohn, 2020)[5]. When leveraged effectively, these differences in social identity and values can help attract and retain talent, strengthen societal and community economic equality, support organizational and team effectiveness; but when overlooked, or mismanaged, these differences can increase turnover, conflict, stress, talent under-utilization, and harm career and work-life well-being, and productivity. The class focuses on management of gender and diversity for inclusion and equity from an individual employee, leader and team/organizational perspective in a workplace context. The goal of this class is to take a multi-level approach to help you learn how to lead the management of diversity and inclusion through a) improving your ability to work in diverse teams, as well as b) developing your ability to lead, develop, and implement strategies to foster cultural and structural change to support the management of gender and diversity toward enhanced organizational effectiveness. Men, as well as women, majority and minority individuals, will be able to leverage the skills taught in this course when making their own career decisions, as well as when managing, being managed by, or collaborating with others; or leading and changing organizations to support new ways of working. We integrate multiple levels and lenses to understand diversity and inclusion. From an individual leadership perspective, we tackle the question: \"Why does diversity matter in employing organizations and business, what is the state-of-the-art evidence-based knowledge, and what does it mean to me personally in my career and my leadership beliefs.\" Specifically, we focus on the business and social science processes - including attitudes toward in-groups and out-groups, stereotyping, identity, privilege, and power, intersectionality, discrimination, bias, equity influence opportunity, bystander awareness, and perspective taking - this affects how members of different social groups perceive and interact with one another. Since managing social identity increasingly involves managing work-life boundaries and work and non-work public and private selves, we will also learn about authenticity choices and social and public/professional identity boundary management. From an organizational and group perspective, we address the question: \"What are best practices for successful diversity management?\" We will focus on organizational and institutional structures and cultures and their relations to strategies for creating diversity through management practices; how to create an inclusive culture and positive climate for inclusion and talent management, and developing and retaining diverse talent and foster innovation and organizational effectiveness across multiple levels of intervention (individual, group, intergroup, organizational, and societal). We discuss how to conduct an organizational diagnosis of the current diversity climate and barriers and facilitators for creating a multicultural workplace and a flexible environment supportive of many identities, and how assumptions may vary across industry and cultural contexts.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Management Of Service Operations",
+        "subjectCode": "MGMT",
+        "courseCode": "56400",
+        "instructor": [
+            "Suresh Chand"
+        ],
+        "description": "Special characteristics of services require an interdisciplinary approach to analyzing operations. This course draws upon concepts from accounting, management science, and marketing. Differences and similarities between the service and manufacturing organizations are analyzed. Case studies of service organizations are used extensively. Prerequisite: MGMT 66000 (if Graduate student status) or else MGMT 36100 (if Undergraduate student status).",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Supply Chain Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "56800",
+        "instructor": [
+            "William Benjamin Haskell"
+        ],
+        "description": "Supply Chain Analytics focuses on data-driven and rigorous decision making in supply chain management. It is a complete problem solving and decision making process, and integrates a broad set of analytical methodologies that enables the creation of business value. Prerequisites: MGMT 66000 (or equivalent course) and MGMT 67000 (or equivalent course).",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Ethical And Sustainable Supply Chain Management",
+        "subjectCode": "MGMT",
+        "courseCode": "56900",
+        "instructor": [
+            "Gokce Esenduran"
+        ],
+        "description": "This course provides students with knowledge and skills for building and analyzing ethical and sustainable practices in supply chains, taking a holistic view of the interaction between businesses, the environment, and society.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Spreadsheet Modeling And Simulation",
+        "subjectCode": "MGMT",
+        "courseCode": "57000",
+        "instructor": [
+            "Yanjun Li"
+        ],
+        "description": "Covers up-to-date and practical spreadsheet modeling tools, which can be applied to a wide variety of business problems in finance, marketing, and operations. Consists of simulation modeling techniques to analyze risk and uncertainties in business environment, optimization techniques to determine the best managerial actions under internally- and/or externally-imposed constraints, and real-world examples and cases to demonstrate broad applications of spreadsheet modeling and simulations in manufacturing and service operations, supply chain systems, yield management, asset dynamics, option pricing, etc.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Optimization Modeling With Spreadsheets",
+        "subjectCode": "MGMT",
+        "courseCode": "57300",
+        "instructor": [
+            "Mohit Tawarmalani"
+        ],
+        "description": "The course emphasizes applications of optimization through cases and computer exercises. The applications are chosen to provide insights into business and economics. Areas covered include linear, network, integer, and nonlinear optimization. At the end of the course, the students should have the ability to model optimization problems work with software to solve optimization problems relate to optimization theory in a variety of application settings develop optimization insights into applications in marketing, finance, and operations and get some basic exposure to EXCEL automation. Prerequisites: Students are expected to have taken a basic MBA (core) course in business analytics (such as the masters core MGMT 67000).",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Information Technology Project Management",
+        "subjectCode": "MGMT",
+        "courseCode": "58500",
+        "instructor": [
+            "Hossein Ghasemkhani"
+        ],
+        "description": "The purpose of this class is to provide students with a basic understanding of the tasks and challenges facing IT and analytics project managers. Students learn about projects, roles and responsibilities of project managers. We start by discussing the skills and approaches commonly used in creating and monitoring project plans and braking complex projects down into manageable segments. We also discuss important areas defined in PMI's PMBOK, like scope, time, cost and quality management. Next we look at how IT projects have traditionally been managed, and move on to the study of agile methods. We go through some of the most important aspects of agile project management, such as user stories, agile teams an agile planning, execution and tracking. In learning these tools and techniques, we take a hands-on approach wherever possible and use project management software, exercises and case studies.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Consumer Behavior & Mktg",
+        "subjectCode": "MGMT",
+        "courseCode": "59000",
+        "instructor": [
+            "Shoaib Amjad Khan",
+            "Shai P Vardi",
+            "Ting Zhu",
+            "Weibin Mo",
+            "Yichen Zhang",
+            "Yang Wang",
+            "Steven R Dunlop"
+        ],
+        "description": "Credit Hours: 1.00 to 4.00 (West Lafayette, North Central) 2.00 to 4.00 (Calumet).  Supervised reading and reports in various subjects. Open only to a limited number of seniors and graduate students. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Launching Global Leaders",
+        "subjectCode": "MGMT",
+        "courseCode": "59100",
+        "instructor": [
+            "Brian K Chupp"
+        ],
+        "description": "Capitalizing on the unique personal and professional backgrounds of each student in our program, the Launching Global Leaders course provides a comprehensive and customizable leadership development curriculum. In this year long course, students will engage in a 360 assessment of strategically identified professional competencies critical to success in the contemporary workforce. Using these target areas as a guide, students will then customize their leadership development experience by selectively engaging in a variety of program offerings, including: interactive industry simulations, personal and team performance enhancement tools, professional coaching, interactive learning sessions with industry leaders, and workshops in developing intercultural competency, personal branding and career management.",
+        "capacity": 0,
+        "credits": [
+            0,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Contracts For Managers",
+        "subjectCode": "MGMT",
+        "courseCode": "59200",
+        "instructor": [
+            "Clifford D Fisher"
+        ],
+        "description": "Purpose of the course is to provide the student with an understanding of the contract legal environment as it pertains to profit and non-profit organizations and of the ethical considerations and social and political influences that affect such organizations. Students will examine a wide range of substantive rules of public law, which will provide a framework for a discussion of the ways in which managerial decision making affects and is affected by the legal environment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "International Financial Management",
+        "subjectCode": "MGMT",
+        "courseCode": "61500",
+        "instructor": [
+            "Craig Brown"
+        ],
+        "description": "Credit Hours: 2.00 to 4.00 (West Lafayette) 3.00 (Calumet).  Integrative course dealing with the management of firms doing business internationally. Emphasis on decision making. Will draw upon, and adapt, managerial decision models developed for domestic operations, as well as cover appropriate international institutional material. Particular focus on finance and strategic management. Prerequisites: ECON 51500.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Managerial Finance III",
+        "subjectCode": "MGMT",
+        "courseCode": "61901",
+        "instructor": [
+            "Ha Diep Nguyen"
+        ],
+        "description": "This is the third in a sequence of four PhD level finance courses that cover theoretical empirical research in managerial finance. Offered in alternate years. Prerequisite: MGMT 61802.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Managerial Finance IV",
+        "subjectCode": "MGMT",
+        "courseCode": "61902",
+        "instructor": [
+            "Mehmet Deniz Yavuz"
+        ],
+        "description": "This is the fourth in a sequence of four PhD level finance courses that cover theoretical and empirical research in managerial finance. Prerequisite: MGMT 61901.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Business Marketing",
+        "subjectCode": "MGMT",
+        "courseCode": "62300",
+        "instructor": [
+            "Laura A Downey"
+        ],
+        "description": "This course deals with the challenges of marketing to commercial enterprises, government organizations, and non-profit institutions. It covers topics including organizational buying behavior, launching and management of new high tech products, beta testing, customer relationship management, and the importance of manufacturing-marketing coordination. Prerequisite: MGMT 62000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Seminar In Marketing Models",
+        "subjectCode": "MGMT",
+        "courseCode": "62600",
+        "instructor": [
+            "Ting Zhu",
+            "Wooyong Jo"
+        ],
+        "description": "Treatment of theoretical marketing models. Study of marketing models in research setting. Prerequisite: MGMT 62000, 67200.",
+        "capacity": 0,
+        "credits": [
+            2,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Accounting Data Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "63350",
+        "instructor": [
+            "Troy D Janes"
+        ],
+        "description": "The skill set that accountants have needed to perform math and to keep order has evolved from pencil and paper, to calculators, and then to spreadsheets and accounting software. A new skill set that is becoming more important for nearly every aspect of business is that of big data analytics: managing large amounts of data in the database, analyzing them and finding actionable insights and visualizing the results. This course is designed to help accounting students develop an analytical mindset and prepare them to use data analytic programming languages and software like Python, SQL, and Tableau.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Communications For Accountants",
+        "subjectCode": "MGMT",
+        "courseCode": "63410",
+        "instructor": [
+            "Douglas E Pruim"
+        ],
+        "description": "Accountants spend much of their time designing and writing reports, memos, etc. and explaining those communications to others. They communicate regularly with external investors and creditors, regulators, clients and fellow professionals. This course is designed to help accounting students prepare for their professional careers by helping them develop their written and oral communication skills. The course begins with an overview of the writing process and then moves to document organization and design and how to write with conciseness and clarity. The last half of the course focuses on specific forms of written communication (e.g., letters, memos, reports, email, essays on professional exams) and oral presentations.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Accounting Consulting For Entrepreneurship",
+        "subjectCode": "MGMT",
+        "courseCode": "63550",
+        "instructor": [
+            "Michael Kregar"
+        ],
+        "description": "  This course is an experiential learning experience that is part of the Experiential Learning Initiative in the Krannert School of Management. The main goal of the course is to provide various accounting services to STEM start-up companies which are based on Purdue's innovations (www.purduefoundry.com) and to established companies in the bigger corporate world. At the same time, we also would like to give our students the opportunity to apply their acquired classroom knowledge and have them exposed to some real-world accounting problems that start-up or established companies typically experience. Our students are expected to provide various accounting support services that are related to financial accounting & reporting, managerial accounting, business planning, and/or tax issues. The format of the course is very open. The first four weeks will be spent in a classroom setting, with presentations on how to professionally manage a client relationship and how to successfully tackle projects in a challenging STEM start-up and/or established corporate environment. Each project will be completed by teams of 3-5 students, which will be formed at the beginning of the semester. After the initial classroom sessions, the project teams will be on their own, with faculty guidance, running the engagement. The teams will meet with the clients to determine their needs and expectations. The students will do the work and deliver the output including a final presentation to the client.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Accounting Ethics",
+        "subjectCode": "MGMT",
+        "courseCode": "63650",
+        "instructor": [
+            "Cara C Putman"
+        ],
+        "description": "This course is designed to introduce students to the foundational elements underlying ethics and ethical behavior, with an emphasis on ethical issues facing professional accountants. The course will provide students with a framework of ethical reasoning, professional values and attitudes for exercising professional skepticism, and other behavior that is in the best interest of the public and accounting profession. The course will also review the core values of integrity, objectivity, and independence as well as rules of professional conduct. This course uses real-world case studies and practical hands-on applications in order to enhance the student's ability to recognize ethical dilemmas and overcome them with sound ethical decision-making. Illinois Board of Examiners ethics course required to apply for taking the Uniform CPA Examination.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Taxation",
+        "subjectCode": "MGMT",
+        "courseCode": "63750",
+        "instructor": [
+            "John T Eagan"
+        ],
+        "description": "  This course is directed at students who wish to learn more about the taxation of business entities beyond the basic principles taught in MGMT 50400 Introductory Tax Accounting or an equivalent course. The course will cover broad topics such as tax law sources and tax research; the tax advantages and disadvantages of various business entities as well as how entrepreneurs may choose the optimal entity for tax purposes; taxable and nontaxable methods of mergers, acquisitions, and divestitures; fundamental concepts of consolidated tax returns for C Corporations; and the accounting for income taxes under ASC 740.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Pricing Strategies And Analysis",
+        "subjectCode": "MGMT",
+        "courseCode": "63800",
+        "instructor": [
+            "Federico Rossi"
+        ],
+        "description": "The course enables participants to formulate a systematic framework for approaching the problem of pricing a product, and more generally, a product line. The concepts and analytical methods necessary to develop such a framework are explored and incorporate marketing, competitive, and legal aspects. The course will use a combination of lectures, case discussions and exercises. Prerequisite: MGMT 62000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Public Company Reporting And Regulation",
+        "subjectCode": "MGMT",
+        "courseCode": "63850",
+        "instructor": [
+            "Paula J Conroy"
+        ],
+        "description": "  This course introduces students to the Securities and Exchange Commission's (SEC) rules and regulations as they apply to U.S. companies and their auditors. Requirements for frequently encountered annual reporting responsibilities (e.g., Forms 10-K, 10-Q, 8-K, proxy statements, etc.) and registration statements are explored and analyzed. Actual SEC filings provide real-world applications and interpretation of the SEC's rules. Rules imposed by the primary U.S.-based stock exchanges are introduced as is the history of the SEC and current trends affecting this rule-making body. Additionally, this course encompasses the enforcement power of the SEC and its implications to companies, their officers, and accountants.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Advanced Auditing And Audit Analytics",
+        "subjectCode": "MGMT",
+        "courseCode": "63900",
+        "instructor": [
+            "Troy D Janes"
+        ],
+        "description": "This course is designed to help students prepare for their professional careers by strengthening their understanding of the CPA's attest function and familiarizing them with current assurance issues. After finishing the course, students should understand the current state of the Enterprise Risk Management and tools for risk evaluation, be able to identify best practices related to external audit, be prepared to manage an audit group, understand the key aspects of being an audit consultant and be able to work with all levels of internal and external audit professionals. Throughout the course, students will have opportunities to improve their written and oral communication skills, particularly as they relate to communication in the audit setting. The course will also emphasize the impact of recent and current regulatory actions, including the Sarbanes-Oxley Act of 2002, on the audit profession. Prerequisite: MGMT 50600 with a minimum grade of C.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Financial Modeling",
+        "subjectCode": "MGMT",
+        "courseCode": "64000",
+        "instructor": [
+            "Lulu Zeng"
+        ],
+        "description": "This course provides an introduction to financial modeling using computer applications. The first part of the course covers how to use Microsoft Excel to analyze historical and pro forma financial statements, stock return data, linear regression analysis, Monte Carlo simulations, Pivot Tables and also covers many advanced functions within Excel. The second part of the course provides an introduction to using SAS to analyze financial data and more advanced regression techniques. Prerequisites: MGMT 61000 (Note: Students who have not taken MGMT 61000 may enroll with instructor permission).",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Financial Risk Management",
+        "subjectCode": "MGMT",
+        "courseCode": "64300",
+        "instructor": [
+            "Lulu Zeng"
+        ],
+        "description": "Provides a foundation for understanding ways in which financial institutions and industrial firms can optimally manage financial risks. Concentrates on various \"functional\" risk measurement problems related to interest rate risk, default risk, exchange rates, and commodity prices. Prerequisite: MGMT 61000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Financial Engineering",
+        "subjectCode": "MGMT",
+        "courseCode": "64700",
+        "instructor": [
+            "Adem Atmaz"
+        ],
+        "description": "The objective of this course is to provide students with the necessary skills to value and hedge a wide variety of derivatives contracts used in financial markets. The main tool of analysis of the course is stochastic calculus set in continuous-time. Some basic knowledge of stochastic processes would be helpful, but not essential: we will cover what we need in class. The course covers valuation of securities using modern martingale methods as well as the necessary parameter estimation and numerical methods such as Monte Carlo simulations. Applications will include derivatives such as options on stocks, bonds and currencies, as well as valuation of defaultable securities, and modeling the term structure of interest rates and risk management with Value-at-Risk. Prerequisites: MGMT 61400, or similar coursework with instructor permission.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Strategic Management I",
+        "subjectCode": "MGMT",
+        "courseCode": "65000",
+        "instructor": [
+            "Ralph Anthony Gibbs",
+            "Umit Ozmel Yavuz"
+        ],
+        "description": "Concepts and methods that integrate previous training in functional areas of management. The perspective is that of the general manager charged with directing the total enterprise. Emphasis is given to formulation and implementation of strategy. Prerequisite: MGMT 61000, 62000, Master's student standing and Management majors only.",
+        "capacity": 0,
+        "credits": [
+            2,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Industrial Relations I",
+        "subjectCode": "MGMT",
+        "courseCode": "65360",
+        "instructor": [
+            "James B Dworkin"
+        ],
+        "description": "An in-depth examination of human resource management in the context of union-management relations. Emphasis is on understanding how and why unions form, the legal context, and changing competitive environment for labor management relations. Covers the dynamics of the collective bargaining process, including the determinants of bargaining power, preparation of labor contract demands, and negotiation tactics. The course culminates with an extended mock negotiation exercise.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Negotiations In Organizations",
+        "subjectCode": "MGMT",
+        "courseCode": "65430",
+        "instructor": [
+            "Brian R Dineen"
+        ],
+        "description": "Decision making examines organizational context, stages, creativity, biases, and group processes. Negotiations examine strategies for preparing and conducting negotiations. The principal focus is on individual and interpersonal aspects of each. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Talent Management",
+        "subjectCode": "MGMT",
+        "courseCode": "65470",
+        "instructor": [
+            "Brian K Chupp"
+        ],
+        "description": "This course focuses on the employer-employee relationship and how managers work with employees to improve their performance. Attention if given to Talent, Talent Management, and Performance Management in the work settings, with an emphasis, however, on contemporary approaches to managing the employer-employee relationship and the systems for managing talent. Various definitions of Employee Engagement will be explored, along with how it is, measured, and why it is so important to your organization. Finally, various methods to engage employees in the organization will be studied.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Competitive Strategy",
+        "subjectCode": "MGMT",
+        "courseCode": "65500",
+        "instructor": [
+            "Wan Ting Chiu"
+        ],
+        "description": "Examines how firms obtain and sustain superior returns through the development and implementation of a competitive strategy at the business-unit level. Focus is on strategies that develop and exploit two sources of superior returns: unique value-creating resources (e.g., patents, brand equity, operational capabilities), and powerful positions in markets and supply chains. Participants are expected to be familiar with basic competitive strategy concepts and tools, such as \"five-forces analysis\", the value chain, and generic strategies. Presents a more analytical perspective of strategy, drawing from game theory. Prerequisites: MGMT 65000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Manufacturing Strategy And Process Innovation",
+        "subjectCode": "MGMT",
+        "courseCode": "65700",
+        "instructor": [
+            "Thomas H Brush"
+        ],
+        "description": "In recent years many firms have rediscovered manufacturing and operations as a potential source of strategic advantage. In general, these firms have sought to develop capabilities in operations which provide a sustainable advantage in the marketplace. In addition, successful firms have developed processes for understanding the cross-functional implications of product and process choices. In this course, we will seek to understand the circumstances under which particular operating capabilities are most beneficial and how such capabilities can be developed so that operations can be exploited for competitive advantage. Concurrent Prerequisite: MGMT 61000, 65000, 66000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Introduction To Operations Management",
+        "subjectCode": "MGMT",
+        "courseCode": "66000",
+        "instructor": [
+            "Pengyi Shi"
+        ],
+        "description": "Credit Hours: 2.00 to 4.00 (West Lafayette) 3.00 (Calumet, North Central).  As goods and services are produced and distributed, they move through a set of inter-related operations or processes in order to match supply with demand. The design of these operations for strategic advantage, investment in improving their efficiency and effectiveness, and controlling these operations to meet performance objectives is the domain of Operations Management. The primary objective of the course is to provide an overview of this important functional area of business. Prerequisite: MGMT 67000, 67100.",
+        "capacity": 0,
+        "credits": [
+            0,
+            0
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Supply Chain Management",
+        "subjectCode": "MGMT",
+        "courseCode": "66400",
+        "instructor": [
+            "Gokce Esenduran"
+        ],
+        "description": "Continues the examination of the linkage between a firm's product-market strategy and the role of the operations (i.e., production) function initiated in MGMT 660. Topics include material requirements planning, production activity control, and just-in-time systems.   Prerequisite: MGMT 66000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Developing A Global Business Strategy",
+        "subjectCode": "MGMT",
+        "courseCode": "68800",
+        "instructor": [
+            "Wan Ting Chiu"
+        ],
+        "description": "Provides an introduction regarding the business and strategy challenges faced by managers in our global economy, regardless of whether the firm is a small domestic company or a large multi-national. Major topics for the course include motivations and challenges of internationalization, international business fundamentals, foreign market entry strategies, organizing across countries, analyzing global industries, building competitive advantage in global industries, and the influence of culture and institutions. Prerequisite: MGMT 65000.",
+        "capacity": 0,
+        "credits": [
+            2,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "ELI Corporate Consulting",
+        "subjectCode": "MGMT",
+        "courseCode": "69000",
+        "instructor": [
+            "Craig Brown",
+            "Helge Jan Dirk Klapper",
+            "Mohammad Saifur Rahman",
+            "Phillip Guy Baeza",
+            "Sugato Chakravarty",
+            "Ha Diep Nguyen",
+            "Thomas H Brush",
+            "Alex Liheng Wang",
+            "Benjamin B Dunford",
+            "John Francis Burr",
+            "Allison Stephanie Gabriel Rossetti",
+            "Yu J Hu",
+            "Troy D Janes"
+        ],
+        "description": "Advanced investigation in a specific management field at the graduate level.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Marketing Workshop",
+        "subjectCode": "MGMT",
+        "courseCode": "69100",
+        "instructor": [
+            "Helge Jan Dirk Klapper",
+            "Zhan Pang",
+            "Wreetabrata Kar",
+            "Guofang Huang"
+        ],
+        "description": "Advanced investigation in a specific management field at the graduate level. For students in the master's programs in management who are registered in the master's program summer session. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            4
+        ],
+        "term": "Spring 2024"
+    }
+]

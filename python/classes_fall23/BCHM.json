@@ -1,0 +1,212 @@
+[
+    {
+        "title": "Introduction To Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "10000",
+        "instructor": [
+            "Clint C S Chapple"
+        ],
+        "description": "A survey of modern biochemistry using case studies that highlight general theories and unifying concepts. This course is open to all majors and does not require any college science courses as background or prerequisite.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Analytical Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "22100",
+        "instructor": [
+            "Humaira Gowher Khan"
+        ],
+        "description": "Discussion of qualitative and quantitative analysis of biological compounds including pH measurement and control, spectrophotometry, measurement of radioactivity; theoretical basis of various separation techniques, including chromatography and electrophoresis; application of these methods to separation and analysis of biological compounds. Laboratory sessions will provide practical experience in the use of these methods. This course is designed for biochemistry majors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Biochemistry",
+        "subjectCode": "BCHM",
+        "courseCode": "30700",
+        "instructor": [
+            "Orla M Hart"
+        ],
+        "description": "Students will have an understanding of the following content areas: structure/function of amino acids, carbohydrates, lipids and nucleic acids; protein structure, function and purification; basic enzymology; replication, transcription and translation; intermediary metabolism including glycolysis, the citric acid cycle, oxidative phosphorylation, photosynthesis. Students will also develop an appreciation for some of the contributions that have been made by biochemistry to society, including improvements to medicine, agriculture, and the economy.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Professional Development Seminar",
+        "subjectCode": "BCHM",
+        "courseCode": "39000",
+        "instructor": [
+            "Heidi Marie Fornes"
+        ],
+        "description": "The objective of this course is to help biochemistry students with professional development and career planning. Students will learn about career possibilities, interview skills, job search strategies, graduate and professional school applications, resume construction and industrial practices. Intended for juniors.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "R For Molecular Biosciences",
+        "subjectCode": "BCHM",
+        "courseCode": "42100",
+        "instructor": [
+            "Pete E Pascuzzi"
+        ],
+        "description": "Students will acquire, assess, clean, visualize and analyze biological data sets with R. Students will be able to describe the link between complex biological phenomena and the data captured through human observation or scientific instrumentation. Students will learn how to organize data sets to optimize clarity and analytic possibilities while minimizing errors with examples drawn from the literature or biological databases. R will be taught starting with small-scale data such as drug sensitivity assays moving to genome-scale analyses such as gene expression and pathway analysis later in the course. These skills will be taught in the light of increasing data literacy and enabling reproducible research through clear documentation of data and communication of analyses. Relevant concepts from biology and statistics will be reviewed.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Computational Genomics",
+        "subjectCode": "BCHM",
+        "courseCode": "42200",
+        "instructor": [
+            "Majid Kazemian"
+        ],
+        "description": "This course introduces students to modern genomics and computational tools that will be used for screening. Students will review the notion of gene, genomic, transcriptome, and epigenome, and show how next generation sequencing technologies are utilized to measure these with cell.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Metabolism",
+        "subjectCode": "BCHM",
+        "courseCode": "46200",
+        "instructor": [
+            "Sujith Puthiyaveetil"
+        ],
+        "description": "A lecture course to provide students with a broad and thorough understanding of core metabolic pathways and how they are resulted. Anabolic and catabolic processes of metabolic pathways will be studied at the biochemical, structural, genetic and molecular levels. Students will learn to appreciate how the various metabolic pathways are integrated and how the fundamental metabolic pathways relate to medicine, agriculture and human disease.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Undergraduate Seminar",
+        "subjectCode": "BCHM",
+        "courseCode": "49000",
+        "instructor": [
+            "Orla M Hart"
+        ],
+        "description": "Discussion of individual student's research projects. Preparation of posters and public seminars based upon research results. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "General Biochemistry I",
+        "subjectCode": "BCHM",
+        "courseCode": "56100",
+        "instructor": [
+            "James D Forney"
+        ],
+        "description": "This course provides upper-division undergraduate and graduate students with basic understanding of biochemical and structural properties of amino acids, nucleic acids, lipids, and carbohydrates. This course allows students to connect the relationship between structure and function of biomolecules. In addition, students learn to understand enzyme properties, enzyme mechanism of action, and enzyme regulation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Critical Thinking And Communication In Biochemistry I",
+        "subjectCode": "BCHM",
+        "courseCode": "60100",
+        "instructor": [
+            "Scott D Briggs"
+        ],
+        "description": "The objective of this course is to assist students in acquiring the skills needed to read critically, evaluate, and assimilate the primary scientific literature. This objective will be accomplished by instructor-guided discussions of the hypotheses, experimental data, conclusions, and scientific merit of assigned manuscript(s) taken from the fields of biochemistry and molecular biology. Topics for discussion initially will focus on the structure, organization, review process, and ethical issues related to scientific manuscripts. As the semester progresses, discussions will focus on the hypotheses being tested, quality of the data, and validity of the conclusions. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Critical Thinking And Communication In Biochemistry II",
+        "subjectCode": "BCHM",
+        "courseCode": "60200",
+        "instructor": [
+            "Ann L Kirchmaier"
+        ],
+        "description": "Builds on the skills developed in BCHM 601. Students will continue to enhance their analytical skills, and class discussions will be conducted at a more sophisticated level and will go into greater depth. Class discussions will focus more on the analysis and evaluation of current methodologies and hypotheses in the biochemical and molecular biological literature. Students will be evaluated primarily on their preparation and participation in each class discussion. Prerequisite: BCHM 60100. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Macromolecules",
+        "subjectCode": "BCHM",
+        "courseCode": "60501",
+        "instructor": [
+            "Barbara L Golden"
+        ],
+        "description": "This course will provide students with an understanding of the basic principles that underlie the secondary and tertiary structure of proteins and nucleic acids which contribute to their function. It will inform students of current efforts to engineer macromolecules with novel functions. Students will become familiar with methods used to determine the three-dimensional structures of macromolecules, and they will learn to critically evaluate the accuracy of structural models. Special topics in the current literature, including membrane proteins, drug design and ribozymes, will be covered. The class will typically include students from a variety of departments, graduate programs, and scientific backgrounds. The course will be taught primarily from various textbook and from the primary literature. A biochemistry course designated for majors is a prerequisite of the course. Lack of the prerequisite will require approval of the instructor. Permission of Department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Bioinformatic Analysis Of Genome Scale Data",
+        "subjectCode": "BCHM",
+        "courseCode": "61200",
+        "instructor": [
+            "Pete E Pascuzzi"
+        ],
+        "description": "This course provides a hands-on experience for life science researchers in the bioinformatic analysis of genome-scale data. The various disciplines in the life sciences are generating a wealth of experimental and annotation data. Today's graduate students need experience with modern tools that can help them to access, explore, analyze, interpret and manage the data that they generate in the lab. Students will use the R programming language and packages from Bioconductor, the R bioinformatics project, as their principal tools for this course. Students will develop workflows in R that bridge established algorithms for bioinformatics such as limma, edgeR or DESeq2, incorporating methods to import, QC, transform and visualize genome-scale datasets derived from next generation sequencing experiments. A critical aspect of bioinformatics that is often inadequate is workflow documentation. This course will use Rmarkdown to integrate computer code, data and results to manage complex bioinformatics projects. The class has lecture, lab and distance components. Lectures will focus on the theoretical and biological aspects of bioinformatics analysis using recent examples from the literature. In lab, students will work on programming exercises or projects using published datasets. Advanced students will also have the opportunity to work with their own data. Distance instruction will include R tutorials and videos that students can work through at their own pace (subject to completion deadlines). Particular emphasis will be placed on the theoretical and practical limitations of next generation sequencing data. No prior computer programming experience is required, but it is assumed that students have a firm grasp of the fundamental principles of molecular biology and how they relate to complex processes such as gene expression and genome organization. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Metabolic Plant Physiology",
+        "subjectCode": "BCHM",
+        "courseCode": "64000",
+        "instructor": [
+            "Natalia Doudareva"
+        ],
+        "description": "(AGRY 64000, BIOL 64000, BTNY 64000, HORT 64000)  Topics include photosynthesis, respiration, carbohydrate and lipid metabolism, and nitrogen, sulfur, and secondary metabolism. This course is the third in a series of core courses in the Purdue Plant Biology Program graduate curriculum. Prerequisite: BCHM 56100, BTNY 55300 or HORT 55300, Prerequisite: BIOL 55100 or HORT 55100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

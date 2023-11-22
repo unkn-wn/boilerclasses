@@ -1,0 +1,210 @@
+[
+    {
+        "title": "CEM: Leading The Way",
+        "subjectCode": "ENGR",
+        "courseCode": "10301",
+        "instructor": [
+            "Caitlin A Cotten",
+            "Edwin E Kpodzro",
+            "John A Howarter",
+            "Virginia L Gleghorn",
+            "Sean Brophy",
+            "Seungjin Kim",
+            "Jennifer N Strickland",
+            "Matthew A Swabey",
+            "Donna M Riley",
+            "Stephen P Beaudoin",
+            "Brandon M Fulk"
+        ],
+        "description": "Weekly small seminars led by faculty designed to introduce a specific topic, problem or discipline of engineering to First-Year Engineering students. Seminars are designed to help students explore a single area of engineering and/or assist in their decision of an engineering degree. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Honors Introduction To Innovation And The Physical Science Of Engineering Design I",
+        "subjectCode": "ENGR",
+        "courseCode": "16100",
+        "instructor": [
+            "Joseph Alan Lyon",
+            "Timothy M Whalen",
+            "Sean Brophy",
+            "Jacqueline C Linnes"
+        ],
+        "description": "This course introduces students to the engineering profession using physics-based, multidisciplinary, societally relevant content. Students develop engineering approaches to systems, generate and explore creative and innovative ideas, and use of computational methods to support design decisions. In particular, the students will develop the ability to model and investigate physical systems at the microscopic and macroscopic levels with a focus on vectors analysis, linear momentum, angular momentum, work-energy, and solid material interactions. Design challenges and projects will explore a wide range of natural phenomena experimentally and computationally (utilizing Matlab and Python) and engage students in innovative thinking across the engineering disciplines at Purdue. They will learn the basics of descriptive statistics, data analysis, sensitivity analysis, and decision making. Students experience the process of design and analysis in engineering including how to work effectively in teams. Students also develop skills in project management, engineering fundamentals, oral and graphical communication, logical thinking, and modern engineering tools. Typically offered Fall.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Minorities In Engineering Seminar",
+        "subjectCode": "ENGR",
+        "courseCode": "18000",
+        "instructor": [
+            "Heidi E Parker"
+        ],
+        "description": "Explores the challenges that minority engineering students have in making a smooth and informed transition to college from high school. The content and activities may be of particular interest to engineering students from underrepresented groups as they adjust to the University's environment. The course provides a setting for entering students to explore career opportunities in the various fields of engineering. Open to all entering engineering students.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Women In Engineering Seminar",
+        "subjectCode": "ENGR",
+        "courseCode": "19400",
+        "instructor": [
+            "Suzanne M Zurn-Birkhimer"
+        ],
+        "description": "An overview of the career opportunities for women in engineering. The content and activities of the course may be of particular interest to women. Speakers from a variety of engineering organizations discuss their career paths and share their strategies for success. Students also meet weekly in small groups led by engineering seniors for additional information, interaction, and support from their peers in engineering. Open to all entering engineering students.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Cooperative Education Seminar I",
+        "subjectCode": "ENGR",
+        "courseCode": "23099",
+        "instructor": [
+            "Michael J Reckowsky"
+        ],
+        "description": "(PSY 23099) This seminar course is optional for Co-Op students when they are on campus. In this course, students share their work experiences, receive feedback from the instructor and seminar participants, and continue their professional development. Prerequisite: Student must have completed at least one Co-Op work term. May be repeated once after the second work term. Can be taken for two credits subsequent to completing two back-to-back work terms. Instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Global Engineering Orientation",
+        "subjectCode": "ENGR",
+        "courseCode": "29701",
+        "instructor": [
+            "Gabriel Octavio Rios-Rojas"
+        ],
+        "description": "Forum in preparation of study and work abroad. Understanding of cultural differences and collaborating across cultural boundaries, professionalism and ethics in foreign work and academic environments, leadership and teamwork options in foreign environments. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Fndmtl Invtn Ther&Pract-Honors",
+        "subjectCode": "ENGR",
+        "courseCode": "30500",
+        "instructor": [
+            "Joseph V Sinfield"
+        ],
+        "description": "This course is designed to provide students with initial exposure to the fundamental patterns, mindsets, behaviors, attributes, tools, and methods employed in the innovative activity of individuals and organizations.  Emphasis is placed on understanding and effectively utilizing techniques to systematically drive innovation that are drawn from the fields of business, design, problem-solving, engineering, and the social sciences.  Lecture, in-class small group activities, and individual and team assignments are employed across an array of contemporary socio-technical challenges to provide students with the opportunity to apply conveyed theory and methods to rigorously structure problems, understand involved stakeholders, utilize innovation motifs and analogical reasoning to develop robust views of potential solutions spaces, tailor solution design to stakeholder context, consider the full suite of functional, social, and emotional dimensions that could influence solution prioritization, and document and systematically assess underlying solution assumptions to iterate toward a viable and sustainable forward looking plan that could achieve target outcomes. This course counts toward, serves as a required entry course for, the College of Engineering Minor in Innovation and Transformational Change. Typically offered Fall.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering In Global Context",
+        "subjectCode": "ENGR",
+        "courseCode": "31000",
+        "instructor": [
+            "Jennifer J DeBoer"
+        ],
+        "description": "This course provides students with opportunities to study how engineering is intertwined with larger economic, social, cultural, and technological dynamics in an era of intensified globalization. Its major goals are to help students understand and appreciate what engineering is, how engineers are trained, what engineers do, and how engineering and society interact. The course approaches these themes through discussion of: the relation and interaction of engineering, science, technology, and society; the historical origins and development of engineering as a profession; diversity issues in engineering and other STEM fields; engineering in cross-national/cultural contexts; and contemporary challenges related to globalization, ethics, and sustainability. In summary, the course is designed to help students understand what it means to identify as, and/or work with, engineers. Recitation sections and/or independent projects (at the instructor's discretion) provide further opportunities for students to expand their knowledge and improve their skills in relation to course themes.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Cooperative Education Seminar II",
+        "subjectCode": "ENGR",
+        "courseCode": "33099",
+        "instructor": [
+            "Michael J Reckowsky"
+        ],
+        "description": "This seminar is optional for Co-Op students when they are on-campus. In this course, students share their work experiences, receive feedback from the instructor and seminar participants, and continue their professional development. Prerequisite: Student must have completed at least two Co-Op work terms. May be repeated once after the fourth work term. Can be taken for two credits subsequent to completing two back-to-back work terms. Instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Instr,Mentorshp&Ldrshp-Honors",
+        "subjectCode": "ENGR",
+        "courseCode": "40400",
+        "instructor": [
+            "Makenzie Rae Campbell"
+        ],
+        "description": "Selected students enrolled in professional programs in the Schools of Engineering lead sections of ENGR 10400.  Common instruction on appropriate teaching methods, ENGR 10400 content, mentorship, and leadership.  Preparation of class outlines, development of teaching evaluation method, and formal reflection on performance and growth resulting from the teaching experience. Permission of instructor required. Typically offered Fall.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Engineering Ambassador Leadership Seminar",
+        "subjectCode": "ENGR",
+        "courseCode": "40600",
+        "instructor": [
+            "Nathan P Engelberth"
+        ],
+        "description": "Students will engage in a weekly seminar that includes topics such as leadership, professional skills, teamwork, and Purdue culture. Students will utilize these skills while representing Purdue College of Engineering to current and prospective students, alumni, donors, legislators, and other supporters of Purdue College of Engineering. Student must be selected as a College of Engineering Ambassador; be currently enrolled full-time in the College of Engineering; have completed no less than three academic semesters at Purdue; have a cumulative GPA of 2.8 or higher. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Cooperative Education Seminar III",
+        "subjectCode": "ENGR",
+        "courseCode": "43099",
+        "instructor": [
+            "Michael J Reckowsky"
+        ],
+        "description": "This seminar course is optional for Co-Op students when they are on-campus. In this course, students share their work experiences, receive feedback from the instructor and seminar participants, and continue their professional development. Prerequisite: Student must have completed at least three Co-Op work terms. Can be taken for two credits subsequent to completing two back-to-back work terms. Instructor permission required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": " Engr Mgmt Grad Prog Sem",
+        "subjectCode": "ENGR",
+        "courseCode": "50100",
+        "instructor": [
+            "Eric A Vandevoorde"
+        ],
+        "description": "Seminar focused on graduate-level development for Interdisciplinary Engineering (IDE) professional master's students in key professional skill areas including technical management, engineering industry awareness, networking, and methods for obtaining a professional position after graduation. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    }
+]

@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Therapeutic Case Studies",
+        "subjectCode": "CLPH",
+        "courseCode": "44800",
+        "instructor": [
+            "Steven A Scott"
+        ],
+        "description": "This course is intended to complement instruction of other courses in the second professional year of the Doctor of Pharmacy curriculum and to review many of the topics previously addressed in the Integrated Pharmacotherapy courses and Professional Program Laboratories. It is hoped that students who elect this course will enhance their development of a strong foundation of knowledge, clinical skills and abilities in order to meet the school's professional outcome abilities. Team-based problem-solving methodology will be utilized to discuss patient cases related to topics covered in the IP sequence.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Psychiatric Pharmacy Practice",
+        "subjectCode": "CLPH",
+        "courseCode": "44900",
+        "instructor": [
+            "Carol A Ott"
+        ],
+        "description": "This course that provides an overview of psychiatric pharmacy practice, introduction to stigma and diversity issues in mental illness, and disease state overviews in a lecture format. In one class period, the students are able to interact with 4th year pharmacy students and/or pharmacy residents who have worked or are working in the area of psychiatric pharmacy. Four of the class periods also provide live presentations and interactions with persons living with severe mental illness and mental health workers who work with them. Mental Health America of Tippecanoe County works with the instructor to schedule these live presentations. Students are assessed for attendance and participation and also for a reflection written about each class period.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Formulary Dossier Management",
+        "subjectCode": "CLPH",
+        "courseCode": "45000",
+        "instructor": [
+            "Amy Heck Sheehan"
+        ],
+        "description": "This course will focus on preparing students for competing in the annual Academy of Managed Care Pharmacy (AMCP) P&T Competition and is intended to give students a variety of experiences that will enhance their knowledge in analyzing complex therapeutic and pharmacoeconomic data, research and public presentation. The course offers an opportunity for students to engage in simulated formulary management by utilizing comparative studies and cost-effectiveness analysis to make real-life decisions on whether or not to add a drug to hospital or health plan formulary. Students will be paired into teams with each team consisting of 4 students. Each team will work independently to analyze the product dossier and prepare a monograph and presentation for the local and/or national competition. Course lectures will focus on information needed to accurately and adequately prepare students in completing the above noted tasks. Class participation is expected, and students will need to be able to engage in self-directed learning outside of class to complete the project in a timely manner. All students are welcome. This course is not intended to focus on students from a specific professional year.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Rare Disease Therapeutics",
+        "subjectCode": "CLPH",
+        "courseCode": "49000",
+        "instructor": [
+            "Amy Heck Sheehan"
+        ],
+        "description": "An honors course to be used to relate to, and supplement, an existing course. Subject matter and method of approach individually directed by instructor. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Seminar In Pharmacy",
+        "subjectCode": "CLPH",
+        "courseCode": "69600",
+        "instructor": [
+            "Alan J Zillich"
+        ],
+        "description": "Designed to provide the student with experience in the oral and written presentation of special topics of interest to clinical pharmacists and researchers. Discussion of current problems relating to the clinical practice of pharmacy.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    }
+]

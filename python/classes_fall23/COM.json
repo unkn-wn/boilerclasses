@@ -1,0 +1,839 @@
+[
+    {
+        "title": "Introduction To Communication Theory",
+        "subjectCode": "COM",
+        "courseCode": "10200",
+        "instructor": [
+            "Glenn G Sparks"
+        ],
+        "description": "Overview of approaches treating communication as an individual, functional activity and as a social, structuring activity. Covers definitions and models of communication, core processes (interpretations, sending, receiving), structures (language, nonverbal behavior), and key contexts (personal, organizational, public).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Fundamentals Of Speech Communication",
+        "subjectCode": "COM",
+        "courseCode": "11400",
+        "instructor": [
+            "Katherine Joanne Layman",
+            "Felicia D Roberts",
+            "Inusah Mohammed",
+            "Allison Rachel Schneider Frazier",
+            "Jennifer M Hall",
+            "Brigitte Sue Dietz",
+            "Joshua Kim",
+            "Maggie L Gerald",
+            "Cari Ann Boersma",
+            "Sean G Dufault",
+            "Clara Elisa Hortua Alvarado",
+            "Brittany D Ledman",
+            "Adeola Obafemi Mobolaji",
+            "Emily Ryen Jones",
+            "Hsuen-Chi Chiu",
+            "Ericka Kellene Gehres",
+            "Cassandra E Pendleton",
+            "Pamela Ofori Boateng",
+            "Jessica J Joya",
+            "Joseph A Strickler",
+            "Guadalupe E Acosta-Roberts",
+            "Gladys Mana Momade",
+            "Peggy A Johnson",
+            "Jessica N Ramsey",
+            "Elizabeth C Casebeer",
+            "Claire Elizabeth Eggerman",
+            "Hannah Norene Salazar",
+            "Joshua E Boyd",
+            "Samuel Andrew Woodland"
+        ],
+        "description": "A study of communication theories as applied to speech; practical communicative experiences ranging from interpersonal communication and small group process through problem identification and solution in discussion to informative and persuasive speaking in standard speaker-audience situations. NOTE: Concurrent registration is not permitted for ENGL 10600 and COM 11400. CTL:ICM 1103 Fundamentals Of Public Speaking",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Critical Perspectives On Communication",
+        "subjectCode": "COM",
+        "courseCode": "20400",
+        "instructor": [
+            "Joshua E Boyd"
+        ],
+        "description": "Introduction to critical thinking and writing about communication. Draws on humanistic and qualitative traditions to help students learn and apply critical approaches to understanding communication.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Addressing Public Issues",
+        "subjectCode": "COM",
+        "courseCode": "21000",
+        "instructor": [
+            "Pamela G Deutsch"
+        ],
+        "description": "Survey of argumentation and persuasion theories addressing contemporary public issues. Readings and discussions on cultural norms, audience reasoning, civic discourse, and constructing appeals addressing policies and practices. Preparation of appeals for public campaigns and social movements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Approaches To The Study Of Interpersonal Communication",
+        "subjectCode": "COM",
+        "courseCode": "21200",
+        "instructor": [
+            "Elizabeth Ann Labadorf",
+            "Ralph Webb",
+            "Joshua Johnson",
+            "Diana L Deyoe",
+            "John O Greene",
+            "Roy Nathaniel Bowling"
+        ],
+        "description": "A study of the basic characteristics of human communication and the theoretical and practical implications of these characteristics for various forms of oral communication. CTL:ICM 1101 Interpersonal Communication",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Science Writing And Presentation",
+        "subjectCode": "COM",
+        "courseCode": "21700",
+        "instructor": [
+            "Steven D Crain",
+            "Jon D Wright",
+            "Molly E Gilbert",
+            "Cari Ann Boersma",
+            "Alexus Destiny Rice Maschinot",
+            "Margaret J Smith",
+            "Brett A Creech",
+            "Julius Darnell Freeman",
+            "Harlene Janelle Barta",
+            "Hannah Delaney Bowlin",
+            "Breyden E Taylor",
+            "John Michael Seals",
+            "Traci Lynn Latoz",
+            "Blake Andrew Boyd",
+            "Jacob J Brejcha",
+            "Roy Nathaniel Bowling",
+            "Steven Charles Flowers",
+            "Kevin J O'Shea"
+        ],
+        "description": "Students learn to effectively communicate scientific and technical information both verbally and in writing to a variety of audiences.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communicating In The Global Workplace",
+        "subjectCode": "COM",
+        "courseCode": "22400",
+        "instructor": [
+            "Seungyoon Lee",
+            "Howard E Sypher"
+        ],
+        "description": "This introductory course explores communication issues that arise in the global workplace. The course develops an appreciation of the relationship among culture, communication, and ways of organizing and doing business.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Mass Communication And Society",
+        "subjectCode": "COM",
+        "courseCode": "25000",
+        "instructor": [
+            "Brett I Sherrick"
+        ],
+        "description": "A survey of the print, broadcast, and film media in their relationship and influence on society. Study topics include: mass communication theories, documentaries, commercialism, news media, media effects and control, feedback, educational broadcasting, and audience analysis. CTL:ICM 1102 Introduction To Mass Communication",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communication, Information, And Society",
+        "subjectCode": "COM",
+        "courseCode": "25100",
+        "instructor": [
+            "Courteney Leigh Smith"
+        ],
+        "description": "This course provides an introduction to information and communication technologies, including media and computer-related technologies. Basic information and technical literacy skills are developed, while discussing fundamental concepts of mediated communication in 21st century contexts.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Writing For Mass Media",
+        "subjectCode": "COM",
+        "courseCode": "25200",
+        "instructor": [
+            "Jane G Natt",
+            "Andrea L Mattingly"
+        ],
+        "description": "Labor intensive course teaches basics of newspaper writing, broadcast writing, news releases, and online journalism.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Public Relations",
+        "subjectCode": "COM",
+        "courseCode": "25300",
+        "instructor": [
+            "Diana G Zulli"
+        ],
+        "description": "An analysis of public relations theory and practice from their origins to the present. From a communication perspective, the course examines public relations environments, audiences, and message strategies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Advertising",
+        "subjectCode": "COM",
+        "courseCode": "25600",
+        "instructor": [
+            "Lindsay Perrault"
+        ],
+        "description": "An analysis of commercial persuasion from colonial times to the era of mass communication. The course examines the structure of advertising messages, how they are adapted to specific audiences, and the social settings in which they occur.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Public Relations Techniques",
+        "subjectCode": "COM",
+        "courseCode": "25700",
+        "instructor": [
+            "Lillian B Feder"
+        ],
+        "description": "This class introduces students to a range of public relations techniques, with a focus on writing. From press releases to new media, this class offers practice and feedback on how to use common public relations tools.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Digital Video Production",
+        "subjectCode": "COM",
+        "courseCode": "26100",
+        "instructor": [
+            "Elizabeth A Evans",
+            "Tonantzin Deaztlan"
+        ],
+        "description": "Basic production principles and practices. Emphasis on preplanning and conceptualizing skills in addition to practical production techniques. Required for admission to all television production courses. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Podcasting",
+        "subjectCode": "COM",
+        "courseCode": "27100",
+        "instructor": [
+            "Tonantzin Deaztlan"
+        ],
+        "description": "This directed study is designed as an introduction to podcasting. Students in the course will learn about the structure and development of podcasting campaigns, then create their own weekly recording. Recording begins in the third week of classes, giving students 14 opportunities to develop their program.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intercultural Communication",
+        "subjectCode": "COM",
+        "courseCode": "30300",
+        "instructor": [
+            "Gabrielle Alexandra Byrd",
+            "Alejandra Duran Trinidad"
+        ],
+        "description": "Study of the complex relationship between culture and communication in a variety of interpersonal, group, organizational, and computer-mediated settings. Application of theory and research to development of the knowledge, attitudes, and skills associated with intercultural communication competence.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Quantitative Methods For Communication Research",
+        "subjectCode": "COM",
+        "courseCode": "30400",
+        "instructor": [
+            "Ilwoo Ju"
+        ],
+        "description": "Introduction to the development and application of quantitative research methods pertinent to communication problems. Fundamental concepts of problem identification, reliability and validity of both measurement and research design, and statistical analyses of data.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Copy Editing",
+        "subjectCode": "COM",
+        "courseCode": "31100",
+        "instructor": [
+            "Jane G Natt"
+        ],
+        "description": "Study of, and practice in, copyreading and headline writing. Laboratory practice includes copy editing on video-display terminals.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Advanced Presentational Speaking",
+        "subjectCode": "COM",
+        "courseCode": "31400",
+        "instructor": [
+            "Barbara K Jones",
+            "Joshua Johnson",
+            "Jennifer M Hall",
+            "Diana L Deyoe",
+            "Cassidy Elizabeth Munoz"
+        ],
+        "description": "Development of a marked degree of skill in the composition and delivery of various types of speeches including presentations in corporate board rooms, orientation meetings, banquet halls, public forms. Special emphasis on speeches related to the student's major vocational area.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Speech Communication Of Technical Information",
+        "subjectCode": "COM",
+        "courseCode": "31500",
+        "instructor": [
+            "Barbara K Jones",
+            "Joshua Johnson",
+            "Jennifer M Hall",
+            "Diana L Deyoe",
+            "Cassidy Elizabeth Munoz"
+        ],
+        "description": "The organization and presentation of information of a practical technical nature. Emphasis is placed upon the study, preparation, and use of audiovisual materials in such presentations.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Principles Of Persuasion",
+        "subjectCode": "COM",
+        "courseCode": "31800",
+        "instructor": [
+            "Jennifer E Hoewe",
+            "Hwanseok Song"
+        ],
+        "description": "Persuasion and its effects, ranging from individual influences to societal impacts. Various perspectives and models of persuasion are examined, including classical and modern approaches. Both theoretical and pragmatic considerations are introduced.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Small Group Communication",
+        "subjectCode": "COM",
+        "courseCode": "32000",
+        "instructor": [
+            "James R Willis",
+            "Torsten O Reimer"
+        ],
+        "description": "A study of group thinking and problem-solving methods; participation in, and evaluation of, committee, and informal discussion groups. Focus on the roles, networks, and messages employed by small group communicators.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Organizational Communication",
+        "subjectCode": "COM",
+        "courseCode": "32400",
+        "instructor": [
+            "Subulola Ebunoluwa Jiboye",
+            "Rachel Marie Barton"
+        ],
+        "description": "An introduction to fundamental concepts and basic research related to communication behavior in organizational settings. Units cover message processing, leadership communication, communication climates, communication training, and communication audits. Students participate in an organizational simulation in some sections.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Interviewing: Principles And Practice",
+        "subjectCode": "COM",
+        "courseCode": "32500",
+        "instructor": [
+            "Traci Lynn Latoz",
+            "Bhakti Pankaj Chavda"
+        ],
+        "description": "Theory and practice of methods in selected interview settings: informational, employment, and persuasive. Emphasis on communication between two persons, questioning techniques, and the logical and psychological bases of interpersonal persuasion.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Theories Of Mass Communication",
+        "subjectCode": "COM",
+        "courseCode": "33000",
+        "instructor": [
+            "Glenn G Sparks"
+        ],
+        "description": "An examination of mass communication theories and theorists. Readings and discussion of McLuhan, Lippman, De Fleur, Lazarsfeld, Schramm, Stephenson, and other significant contributors.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Television Production",
+        "subjectCode": "COM",
+        "courseCode": "33200",
+        "instructor": [
+            "Caitlin M Natt"
+        ],
+        "description": "Basic principles of producing, writing, and directing for television. Treats program types and television criticism, and explores creative treatment of visual, artistic, and nonverbal elements of communication in television. Permission of department required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Producing Digital Advertising",
+        "subjectCode": "COM",
+        "courseCode": "33701",
+        "instructor": [
+            "Tonantzin Deaztlan"
+        ],
+        "description": "This course is designed as an advanced level production course. Through lectures, discussions, critiques, screenings, and various exercises, you will gain experience designing video advertisements. You will develop and refine critical viewing/listening abilities to effectively analyze video content for aesthetic elements and overall message. Additionally, you will apply production techniques pertaining to producing, directing, shooting and editing in the creation of projects for real clients. The coursework consists of three major video projects, and a series of assignments organized under the corporate role that would be performing those tasks.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Mass Communication Ethics",
+        "subjectCode": "COM",
+        "courseCode": "35100",
+        "instructor": [
+            "Susan Scott Harmeson"
+        ],
+        "description": "A survey of various ethical approaches applied to situations confronting contemporary mass communicators, including misrepresentation in newsgathering, protection of sources, suppression of information, reporting of terror and violence, pressure from management and advertisers, and reporter bias.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Problems In Public Relations",
+        "subjectCode": "COM",
+        "courseCode": "35300",
+        "instructor": [
+            "Charles Stephen Catalano",
+            "Ericka Kellene Gehres"
+        ],
+        "description": "Approaches to problems in public relations as they occur in industry, government, education, social agencies, and other institutions.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Multiplatform Journalism",
+        "subjectCode": "COM",
+        "courseCode": "36100",
+        "instructor": [
+            "Lindsay Perrault"
+        ],
+        "description": "  This course is an introduction to video journalism, including critical examination of various styles of video journalism from news websites to local TV news to national/international television news programs. Students will produce video stories using video cameras and audio equipment to record interviews and natural sound, learn professional lighting techniques, find stories, interview for video, write scripts, review video journalism ethics, and related content.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communication In  Relationships",
+        "subjectCode": "COM",
+        "courseCode": "37200",
+        "instructor": [
+            "Emily M Buehler"
+        ],
+        "description": "An examination of communication in personal relationships (including dating and marital relationships, friendships, and families) and professional relationships (including co-worker and supervisor-supervisee relationships and relationships in specific professions, such as doctor-patient and attorney-client).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Social Interaction Skills: Assessment And Development",
+        "subjectCode": "COM",
+        "courseCode": "37400",
+        "instructor": [
+            "John O Greene"
+        ],
+        "description": "An examination of several major communication skills and procedures for their development. Focus is on skill measurement, methods of enhancement, assessment of training programs, and personal skill development. Skills examined include those for conversing, managing conflict, providing support, and influencing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communication And Gender",
+        "subjectCode": "COM",
+        "courseCode": "37600",
+        "instructor": [
+            "Ralph Webb"
+        ],
+        "description": "Course is based on the assumption that studies of gender and communication are intertwined. Focus is on communication processes that create symbols of gender and how those processes recreate the meanings of gender in the lives of individuals and groups.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Introduction To Health Communication",
+        "subjectCode": "COM",
+        "courseCode": "37800",
+        "instructor": [
+            "Blake Andrew Boyd"
+        ],
+        "description": "This course will serve as an introduction to the many ways that communication shapes health and health practices. Course content includes: 1) current healthcare structure in the United States; 2) communication in the healthcare organization; 3) provider-patient communication; 4) patient-support provider communication; 5) models of health behavior change and campaigns; and 6) crisis communication and health.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "News Magazine Production",
+        "subjectCode": "COM",
+        "courseCode": "40800",
+        "instructor": [
+            "Elizabeth A Evans"
+        ],
+        "description": "Students plan, write and produce a weekly video news magazine to be aired on Boiler TV.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Video Journalism",
+        "subjectCode": "COM",
+        "courseCode": "40900",
+        "instructor": [
+            "Elizabeth A Evans"
+        ],
+        "description": "Students plan, write and produce a weekly news magazine to be aired on Boiler TV.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communication And Social Networks",
+        "subjectCode": "COM",
+        "courseCode": "41100",
+        "instructor": [
+            "Jeremy David Foote"
+        ],
+        "description": "This course explores the growing area of networks. The class focuses on understanding how social structure influences our everyday life by examining the ways individuals, groups, and entities are tied together. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Discussion Of Technical Problems",
+        "subjectCode": "COM",
+        "courseCode": "41500",
+        "instructor": [
+            "Pamela G Deutsch"
+        ],
+        "description": "Principles of speech communication related to interpersonal and group discussions on technical topics and problems; practice in using these modes in situations typically encountered by technologists.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Communication And Emerging Technologies",
+        "subjectCode": "COM",
+        "courseCode": "43500",
+        "instructor": [
+            "Howard E Sypher"
+        ],
+        "description": "Both historical and contemporary perspectives of the reciprocal influence of new and changing technologies and the processes and practices of communication. The impact of print, telegraph, telephone, radio, and television will be surveyed, along with cable systems, direct broadcast satellites, and videotext.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "American Political Communication",
+        "subjectCode": "COM",
+        "courseCode": "46400",
+        "instructor": [
+            "Jessica Renee Collier"
+        ],
+        "description": "This course examines the content, processes, and effects of communication within the American political system. Designed for students to experience the breadth of the field of political communication, the course emphasizes relevant theories and practical skills.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Socioling Af Am Engl",
+        "subjectCode": "COM",
+        "courseCode": "49100",
+        "instructor": [
+            "Felicia D Roberts"
+        ],
+        "description": "Intensive study of selected topics, varying from semester to semester, from the literature or practice of communication. Course content will be drawn from areas not dealt with in the regular curriculum and may include such topics as photojournalism, economic reporting, and campaign communication. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Risk Communication",
+        "subjectCode": "COM",
+        "courseCode": "49500",
+        "instructor": [
+            "Brett I Sherrick",
+            "Elizabeth A Evans",
+            "Charles Stephen Catalano",
+            "Chantel Nicole Haughton"
+        ],
+        "description": "In-depth study of a particular area of public relations and rhetorical advocacy. Students read, discuss, and write about contemporary applications of public relations, advertising and rhetoric. Possible offerings include Integrated Marketing Communication, Persuasion and Social Protest, Communication Campaigns.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Travel Writing",
+        "subjectCode": "COM",
+        "courseCode": "49502",
+        "instructor": [
+            "Jane G Natt"
+        ],
+        "description": "Travel writing is writing about places, persons, and things in other places - also writing about how to travel, when to travel, and advice on traveling - all with the reader in mind. It's about relaying your travel experiences to others so that they may emulate them or at the very least not make the same mistakes you did. And it's writing about things in your own back yard that are exotic to everyone else - a local farmer's market, historic site, restaurant, museum. In this class, you will explore the various ways travel writers can excite and assist readers.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Travel Writing",
+        "subjectCode": "COM",
+        "courseCode": "49700",
+        "instructor": [
+            "Elizabeth A Evans",
+            "Jane G Natt",
+            "Brett I Sherrick"
+        ],
+        "description": "Offers students the opportunity to explore in-depth, thorough readings, lectures and written assignments, a current topic or trend in Media, Technology and Society. Possible offerings include Media and Social Change, Online Communities, and Technology and International Communication.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Organizational Communication",
+        "subjectCode": "COM",
+        "courseCode": "57400",
+        "instructor": [
+            "Seungyoon Lee"
+        ],
+        "description": "Survey of the theoretical and empirical literature dealing with human communication behavior as it occurs within the context of complex organizations. Among topics covered are superior-subordinate communication, communication networks, message distortion, feedback processes, internal corporate mass media, managerial-communication climate, semantic and stylistic dimensions of messages, and communication in decision making.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Descriptive/Experimental Research In Communication",
+        "subjectCode": "COM",
+        "courseCode": "58200",
+        "instructor": [
+            "Torsten O Reimer"
+        ],
+        "description": "Introduction to the fundamental tools of quantitative research in communication, including data analysis, statistical design and methods, basic measurement concepts, and designs for descriptive and experimental research. Individual and/or group research projects are planned, conducted, and reported. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Foundations Of Human Communication Inquiry I",
+        "subjectCode": "COM",
+        "courseCode": "60000",
+        "instructor": [
+            "Hwanseok Song"
+        ],
+        "description": "Introduces doctoral students to major and emerging approaches to understanding human communication and provides them with the theoretical background and analytic skills needed to navigate the tensions among these approaches. Reviews the intellectual history of communication inquiry, overviews traditional and innovative questions about human communication, examines the ways in which these questions can be addressed from different perspectives, addresses some of the varied forms that knowledge about human communication can take, and explores how different research traditions go about making and warranting knowledge claims.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Integrated Strategic Com",
+        "subjectCode": "COM",
+        "courseCode": "61000",
+        "instructor": [
+            "Ilwoo Ju"
+        ],
+        "description": "Intensive study, varying from semester to semester, in public relations. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Personal Relationships & Tech",
+        "subjectCode": "COM",
+        "courseCode": "61200",
+        "instructor": [
+            "Emily M Buehler"
+        ],
+        "description": "Intensive study of selected topics, varying from semester to semester, from the theoretical and research literature of interpersonal communication. Topics may include communication models, information theory, systems theory, general semantics, sociolinguistics, etc., as they relate to the study of interpersonal communication. Prerequisite: COM 51200",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Media Effects Rsch",
+        "subjectCode": "COM",
+        "courseCode": "63200",
+        "instructor": [
+            "Jennifer E Hoewe"
+        ],
+        "description": "Intensive study of selected topics, varying from semester to semester, from the literature of mass communication. Topics may include institutional analysis, mass communication law, information diffusion, uses of mass communication, or other issues. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    },
+    {
+        "title": "Intro To Programming&Data Sci",
+        "subjectCode": "COM",
+        "courseCode": "67400",
+        "instructor": [
+            "Jeremy David Foote"
+        ],
+        "description": "Intensive study of selected topics, varying from semester to semester, from the theoretical and research literature of organizational (including business and industrial) communication; analysis of recurring communication problems in complex organizations; critique of research findings and methodologies.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2023"
+    }
+]

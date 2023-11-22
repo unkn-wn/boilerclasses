@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Design Thinking In Technology",
+        "subjectCode": "TECH",
+        "courseCode": "12000",
+        "instructor": [
+            "Randale J Glaze"
+        ],
+        "description": "Student will engage in critical analysis of real-world problems and global challenges. They will demonstrate the ability to recognize opportunity and to take initiative in developing solutions applying the principles of human centered design. Students will be able to communicate effectively and to work well on teams. Problems and solutions will be examined from societal, cultural, and ethical perspectives.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Designing Technology For People",
+        "subjectCode": "TECH",
+        "courseCode": "22000",
+        "instructor": [
+            "Sherylyn H Briller"
+        ],
+        "description": "Innovating in our complex world requires understanding people and the issues and challenges they face. This unique course brings together perspectives from technology and anthropology to address this by exploring ethnographic studies of people and technology interactions. Through this process, students will practice the problem scoping skills necessary to identify and define problems and begin to generate appropriate design solutions. In addition, students will learn how to observe and talk with people about technology and discuss a range of ways people use technology. Accordingly, the course will focus on human-centered design and how to empathize with people during the design process. This will allow students to learn how to identify opportunities for innovation that emerge when designers carefully observe and listen to humans using technology and/or experiencing problems with current technology. Note: This class engages the material in both the classroom and innovation labs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Technology And The Global Society",
+        "subjectCode": "TECH",
+        "courseCode": "33000",
+        "instructor": [
+            "Abrar Hammoud"
+        ],
+        "description": "  The intersection of technology, globalization, and society is at the core of this course. Students examine socio-cultural issues related to the development and use of technology across intercultural contexts, explore perspectives and principles behind global technology influences, and examine the complexities and ethical nuances of technology and innovation.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Prototyping Technology For People",
+        "subjectCode": "TECH",
+        "courseCode": "34000",
+        "instructor": [
+            "Douglas E Pruim"
+        ],
+        "description": "Innovating in our complex world requires us to think strategically and make the best decisions possible for both designing and business development. Accordingly, this unique course brings together perspectives from technology and business management to iteratively prototype innovative solutions to student-selected problems. This process will include creating prototypes in a variety of media, using the appropriate methods/tools, as well as exploring the processes and biases related to how people process information and make decisions. This type of work will help to guide the innovation process by gaining insights from testing prototypes and interacting with people to deepen one's understanding of customer needs, market segments, costs of goods, competitor operations, and market strategies. At the conclusion of the course, students will pitch a viable design solution and business model for a validated problem to a variety of potential investors and/or stakeholders. Note: This class engages the material in both the classroom and innovation labs. Students of all levels of experience will explore tools/programs related to computer aided design, 3D printing, app development, and digital prototyping.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Insd Res Prb Supv Per",
+        "subjectCode": "TECH",
+        "courseCode": "62100",
+        "instructor": [
+            "Nathan Mentzer"
+        ],
+        "description": "Current problems in Technology.",
+        "capacity": 0,
+        "credits": [
+            1,
+            3
+        ],
+        "term": "Spring 2024"
+    },
+    {
+        "title": "Analysis Of Research In Industry And Technology",
+        "subjectCode": "TECH",
+        "courseCode": "64600",
+        "instructor": [
+            "TBA"
+        ],
+        "description": "Analysis of research and evaluation of research reports. Emphasis on understanding the application of fundamental statistical methods in design and interpretation of research findings in industrial, technical, and human resource development environments. Prerequisite: Master's student standing.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2024"
+    }
+]

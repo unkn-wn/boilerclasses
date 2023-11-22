@@ -1,0 +1,273 @@
+[
+    {
+        "title": "Introduction To The Pharmaceutical Industry",
+        "subjectCode": "PHRM",
+        "courseCode": "44200",
+        "instructor": [
+            "Yijia Luo"
+        ],
+        "description": "While providing an overview of the pharmaceutical industry, this course focuses on the drug development process, including clinical research, regulatory affairs, pharmacovigilance and marketing. Pharmaceutical company executives serve as guest lecturers and discuss their individual areas of expertise.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Drug Discovery And Development I",
+        "subjectCode": "PHRM",
+        "courseCode": "46000",
+        "instructor": [
+            "Vincent Jo Davisson"
+        ],
+        "description": "Focuses on the strategies, current methods and technologies used in early stage pre-clinical research to discover, validate and select lead drug candidates.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Pharmaceutical Care In Oncology",
+        "subjectCode": "PHRM",
+        "courseCode": "46600",
+        "instructor": [
+            "Off Campus Instructor"
+        ],
+        "description": "This course aims to expand students' understanding of hematology and oncology topics. After completion, the student should be able to apply course concepts to actual patient cases. CLPH 49000 will be collaboratively taught by oncology pharmacists and residents from the greater Indianapolis area hospitals. Students will be exposed to relevant topics including current events, supportive care, bone marrow transplant, renal cell carcinoma, specialty pharmacy administration and leadership, oral chemotherapy, palliative care and career paths in oncology pharmacy.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Clinical Integration And Application",
+        "subjectCode": "PHRM",
+        "courseCode": "46800",
+        "instructor": [
+            "Monica L Miller"
+        ],
+        "description": "This is an elective class which gives participants more experience working up patient cases with multiple complications and an opportunity to make recommendations to a team. The material for each case will be derived from actual cases and topics will include continuity of care problems, typical problems/diseases seen in hospitalized patients, and a host of other chronic illnesses. During the 3-week class, students will have 1-1.5 hours to work on a patient case in class and address challenges faced in the clinical setting. The second half of class will be used for students to present their recommendations to a \"medicine team\" (made up of your classmates and teachers). Students will be responsible for creating a pharmacist problem list and making verbal drug therapy recommendations. The majority of the grade will come from in-class participation with other points coming from online quizzes, communication exercises, and follow-up answers from clinical questions.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Professional Communications",
+        "subjectCode": "PHRM",
+        "courseCode": "49000",
+        "instructor": [
+            "Cynthia P Koh-Knox Sharp",
+            "Matthew M Murawski"
+        ],
+        "description": "Subject matter and method of approach individually directed by instructor. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Pharmacy Skills And Patient Counseling",
+        "subjectCode": "PHRM",
+        "courseCode": "82200",
+        "instructor": [
+            "Ryan Sumner Ades"
+        ],
+        "description": "Pharmacy Skills and Patient Counseling is a two credit hour, required first professional year experiential course combining practical experience in the Purdue University Pharmacy with lecture. Students are monitored by faculty instructors, staff pharmacists and Advanced Pharmacy Practice Experience (APPE) students. Students must have a valid Social Security number the first week of class.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles Of Pathophysiology And Drug Action",
+        "subjectCode": "PHRM",
+        "courseCode": "82400",
+        "instructor": [
+            "Chiwook Park"
+        ],
+        "description": "This course introduces the basic principles of pathophysiology, pharmacodynamics, toxicology and medicinal chemistry necessary to understand the therapeutic use and adverse actions of drugs. The course will integrate and apply concepts of science courses, including organic chemistry, biochemistry, anatomy and physiology into an understanding of the basic fundamentals of disease processes, toxicology and drug actions. Thus, this course will provide students with the basic background necessary to understand and apply pharmacotherapeutics to the practice of pharmacy. Prerequisite: MCMP 20400, 20500, 20800, and BIOL 20300, 20400 or 30100, 30200. Departmental permission required.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Introduction To Patient Centered Care",
+        "subjectCode": "PHRM",
+        "courseCode": "82600",
+        "instructor": [
+            "Jasmine D Gonzalvo"
+        ],
+        "description": "The introductory course teaches students the key communication principles and skills necessary to deliver patient care and interact with other health care professionals. This includes performing basic physical assessments, evaluating patient comprehension, and improving personal communication skills.",
+        "capacity": 0,
+        "credits": [
+            4,
+            4
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Dosage Forms I",
+        "subjectCode": "PHRM",
+        "courseCode": "82800",
+        "instructor": [
+            "Stephen Robert Byrn"
+        ],
+        "description": "The purpose of Dosage Forms I is to provide a foundation in the basic concepts of pharmaceutics that are the foundation of drug delivery. The course begins by presenting the molecular basis for aqueous and lipid solubility of drugs, pharmacokinetic principles that are related to dosage forms, mechanisms by which excipients or manufacturing processes affect bioavailability, and chemical kinetics applied to the shelf-life of dosage forms. The pharmaceutics principles are then applied to successively more complex liquid dosage forms: solution, emulsion, and suspension. The excipients that are required to prepare the dosage forms: buffers, preservatives, emulsifiers, suspending agents, wetting agents, etc., and the method of preparing each dosage form in both a compounding and manufacturing setting are covered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Pharmaceutical Calculations",
+        "subjectCode": "PHRM",
+        "courseCode": "83400",
+        "instructor": [
+            "Jane E Krause"
+        ],
+        "description": "Mastery of pharmaceutical calculation skills is vital and PHRM 83400 prepares students to apply calculation problem solving skills to clinical practice. PHRM 83400 prepares students to perform pharmaceutical calculations necessary for prescription/drug order preparation, compounding dosage forms, and medication dosage calculations based on patient specific factors. Pharmacists must perform error-free pharmaceutical calculations. Correct calculations contribute as much to pharmaceutical care as the newest methods/guidelines for diagnosis, treatment, and prevention. The development of problem solving skills with pharmaceutical calculations is an important component of this course. In addition, practice and repetition of problems is necessary to develop confidence as well as accuracy. Appropriate documentation of work/set up and numerical answers (including units) is required. Approaches to minimize errors and maximize accuracy with pharmaceutical calculations are emphasized.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Biochemistry For Pharmaceutical Sciences II",
+        "subjectCode": "PHRM",
+        "courseCode": "83600",
+        "instructor": [
+            "Carol B Post"
+        ],
+        "description": "This course provides instruction in biochemistry that builds on basic knowledge by presenting content on advanced aspects of human biochemistry for students in pharmaceutical sciences. The content emphasizes the integration of biochemical knowledge and the application of biochemical understanding to medically relevant situations including disease etiology, medical diagnosis, disease research, drug discovery, drug and toxin mechanisms of action, and mechanism of drug metabolism.",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrated Pharmacotherapy II",
+        "subjectCode": "PHRM",
+        "courseCode": "84400",
+        "instructor": [
+            "Judy T Chen"
+        ],
+        "description": "This course will provide an integrated approach to instruct the students in physiology, pathophysiology, pharmacology, medicinal chemistry, and therapeutics relevant to diseases of the endocrine and cardiovascular systems. When applicable, special emphasis will be placed on presenting the interrelationships between deficits in endocrine function and cardiovascular disease. In addition, students will study and critique current therapeutic approaches and opinions in the application of replacement therapy with natural, synthetic, or recombinant hormone preparations.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Principles Of Drug Information And Literature Evaluation",
+        "subjectCode": "PHRM",
+        "courseCode": "84800",
+        "instructor": [
+            "Amy Heck Sheehan"
+        ],
+        "description": "This course is designed to provide students with the fundamental skills needed for the provision of drug information in pharmacy practice.  Emphasis is placed on the evaluation, interpretation, and practical implications of primary medical literature on the delivery of pharmaceutical care.  Four recently published clinical trials will be reviewed and discussed throughout the semester to illustrate contemporary issues in the interpretation of biomedical research.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Public Health Pharmacy",
+        "subjectCode": "PHRM",
+        "courseCode": "85200",
+        "instructor": [
+            "Gail D Newton"
+        ],
+        "description": "The course is designed to provide the pharmacy student with a comprehensive overview of key public health and wellness principles and related to self-care and nonprescription products as they impinge upon the ability of patients to assume active roles and function effectively on their own behalf in health promotion and disease prevention, detection, and treatment.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Integrated Pharmacotherapy IV",
+        "subjectCode": "PHRM",
+        "courseCode": "86400",
+        "instructor": [
+            "Alex N Isaacs"
+        ],
+        "description": "This course will develop knowledge and skills regarding the physiology, pathophysiology, medicinal chemistry, pharmacology, pharmacokinetics, pharmaceutics, and pharmacotherapeutics of oncology and hematologic malignancies, hepatic disorders, gastrointestinal disorders,  and women's and men's health. This knowledge will be utilized in subsequent integrated pharmacotherapy modules, skills labs and practice experience that follow.",
+        "capacity": 0,
+        "credits": [
+            6,
+            6
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Biotech/Advanced Parenteral Dosage Forms",
+        "subjectCode": "PHRM",
+        "courseCode": "86600",
+        "instructor": [
+            "Rodolfo Pinal"
+        ],
+        "description": "This course covers the different types of parenteral products derived from biotechnology. The lectures encompass the origin, chemical characteristics and therapeutic use of biopharmaceuticals. This course builds on the concepts and skills gained by the student from taking Dosage Forms II (PHRM 82900) and Professional Program Laboratory II (PHRM 82100).",
+        "capacity": 0,
+        "credits": [
+            2,
+            2
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Patient Safety And Informatics",
+        "subjectCode": "PHRM",
+        "courseCode": "86800",
+        "instructor": [
+            "Alissa Jara"
+        ],
+        "description": "This course provides core knowledge and skills needed by pharmacists to promote patient safety and use the tools of healthcare informatics; understand the landscape, epidemiology and culture of patient safety data privacy and security. Case studies will address disclosure of medication errors and reporting adverse events. Informatics tools such as computer order entry, electronic medical record systems, health information exchanges, and decision support will be explained. The use of informatics tools to promote patient safety will be emphasized.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Fall 2022"
+    },
+    {
+        "title": "Health Policy Applications",
+        "subjectCode": "PHRM",
+        "courseCode": "87000",
+        "instructor": [
+            "Daniel D Degnan"
+        ],
+        "description": "This course will explore policy issues that influence health care. The course will provide students opportunities to apply material from prior courses in Health Systems, Population Health Management, and Public Health as it relates to the impact of health policy. Students will gain an understanding of how policy development must address competing interests and goals, and how policy can influence the scope of pharmacist's professional roles. Timely materials on current policy, current policy debates, and professional advocacy will be discussed.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Fall 2022"
+    }
+]

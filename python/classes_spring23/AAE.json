@@ -1,0 +1,565 @@
+[
+    {
+        "title": "Aeromechanics I",
+        "subjectCode": "AAE",
+        "courseCode": "20300",
+        "instructor": [
+            "Hashim Hassan",
+            "Thomas Fletcher Cunningham"
+        ],
+        "description": "Fundamental concepts and principles of bodies in motion, with applications to aeronautical and astronautical problems. Subjects covered include rectilinear motion, curvilinear motion, rotation, and plane motion. The static equilibrium and quasistatic equilibrium situations are treated as a part of motion in which the acceleration is zero. Problems involving impact, separation, work, and energy are considered.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Aeromechanics II",
+        "subjectCode": "AAE",
+        "courseCode": "20400",
+        "instructor": [
+            "Hashim Hassan",
+            "Danilo De Camargo Branco",
+            "Dianyun Zhang"
+        ],
+        "description": "Loads on aircraft. Strain, stress, and equations of equilibrium. Description of aircraft structures and materials. Torsion of shafts. Fuselage and wing structures. Symmetrical bending and stiffness analysis of solid and stringer-panel box beams. Structural failures.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Aerospace Design",
+        "subjectCode": "AAE",
+        "courseCode": "25100",
+        "instructor": [
+            "Danilo De Camargo Branco",
+            "Thomas Fletcher Cunningham"
+        ],
+        "description": "The role of design in aerospace engineering. Introduction to aerodynamics, performance, propulsion, structures, stability and control, and weights. Layout and general arrangement of aerospace vehicles. Design concept generation and selection. Computational methods for design. Trade studies and graphical optimization. Conceptual design exercise involving aircraft, spacecraft, or both. Technical presentations and communication for aerospace engineering.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Signal Analysis For Aerospace Engineering",
+        "subjectCode": "AAE",
+        "courseCode": "30100",
+        "instructor": [
+            "Dengfeng Sun"
+        ],
+        "description": "Signal processing and spectral analysis for aerospace engineering. Fourier and fast Fourier transforms. Vibration analysis; estimation of natural frequencies, wing vibrations. Introduction to linear circuits, operational amplifiers and filtering. Noise suppression.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Fluid Mechanics",
+        "subjectCode": "AAE",
+        "courseCode": "33300",
+        "instructor": [
+            "Tom I-P Shih"
+        ],
+        "description": "Kinematics of fluids and conservation equations for mass, momentum, and energy. Viscous and inviscid incompressible flow. Lift and drag in subsonic flow. Introduction to compressibility and boundary layers. Potential flow.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Aerodynamics",
+        "subjectCode": "AAE",
+        "courseCode": "33400",
+        "instructor": [
+            "Jonathan Poggie"
+        ],
+        "description": "Incompressible airfoil and lifting line theory. Steady and unsteady, one-dimensional, linear and nonlinear flows. Normal shock waves. Steady, supersonic, two-dimensional linear and nonlinear flows. Oblique shock waves. Perturbation theory for wings and bodies. Design applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Thermal Sciences",
+        "subjectCode": "AAE",
+        "courseCode": "33800",
+        "instructor": [
+            "Haifeng Wang"
+        ],
+        "description": "A fundamental course covering a range of topics selected from the disciplines of engineering thermodynamics, fluid mechanics, heat transfer and combustion, with an emphasis on their application to propulsion. This is an entry level course to prepare students for advanced analysis of propulsion and energy systems. Upon completion of this course, students are expected to be able to apply fundamental principles to perform thermodynamic analysis for thermophysical problems involving fluid flow, heat transfer and combustion.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Aerospace Propulsion",
+        "subjectCode": "AAE",
+        "courseCode": "33900",
+        "instructor": [
+            "William E Anderson"
+        ],
+        "description": "Survey of air-breathing and rocket propulsion systems for AAE students not in the propulsion option. Thermodynamic cycles, analysis of air-breathing systems and components. Rocket Equation, rocket cycles, liquid and solid propellants, chemical equilibrium.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Dynamics And Vibrations",
+        "subjectCode": "AAE",
+        "courseCode": "34000",
+        "instructor": [
+            "James M Longuski",
+            "Keith Allen LeGrand"
+        ],
+        "description": "Kinematics and kinetics of particles and rigid bodies. Topics include a particle in orbit, systems of particles, vibrations, Euler's equations of motion, Eulerian angles, and aerospace vehicle dynamics.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Structural Analysis I",
+        "subjectCode": "AAE",
+        "courseCode": "35200",
+        "instructor": [
+            "James Francis Doyle"
+        ],
+        "description": "Properties of wing and fuselage sections. Beam-column moments. Torsion of thin-walled and skin-stringer multiple-cell sections. Nonsymmetrical bending of skin-stringer wing sections. Flexural shear in open and closed thin-walled and skin-stringer sections. Loads and stresses in the rib system. Cutouts and shear lag. Modified beam theory for wing and fuselage design. Deflection by energy method. Introduction to composite structures.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Control System Analysis",
+        "subjectCode": "AAE",
+        "courseCode": "36400",
+        "instructor": [
+            "James Michael Goppert",
+            "Inseok Hwang",
+            "Shaoshuai Mou"
+        ],
+        "description": "Modeling and analysis of dynamical systems with aerospace applications. Laplace transforms, transfer functions, block diagrams.  Transient and steady-state response of dynamical systems. Root Locus, Bode, Nyquist methods for control systems analysis. Introduction to controller design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Undergraduate Senior Seminar",
+        "subjectCode": "AAE",
+        "courseCode": "40000",
+        "instructor": [
+            "William A Crossley"
+        ],
+        "description": "A lecture-demonstration series emphasizing evaluation of career options, identification and development of professional skills. Example of career-related topics include choosing a job, and post graduate education in engineering or other disciplines. Examples of professional skills topics covered include interviewing, writing, and ethics. Assessment of student achievement of AAE program learning outcomes.",
+        "capacity": 0,
+        "credits": [
+            1,
+            1
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Zero-Gravity Flight Experiment",
+        "subjectCode": "AAE",
+        "courseCode": "41800",
+        "instructor": [
+            "Steven H Collicott"
+        ],
+        "description": "Team-based design-build-test engineering experience to maximize the benefits of student participation in the NASA Reduced Gravity Student Flight Opportunity Program (or similar). Gravity, orbits, and weightlessness.  Low-gravity capillary fluid physics, scaling laws, and components. Experiment design for multiple short zero gravity test times. Technical proposal writing, design for manufacturability, experiment fabrication, planning, testing, and execution.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Flight Dynamics And Control",
+        "subjectCode": "AAE",
+        "courseCode": "42100",
+        "instructor": [
+            "Ran Dai"
+        ],
+        "description": "Flight vehicle rigid-body equations of motion; linearization via small perturbation techniques. Trim analysis, static and dynamic stability, aerodynamic stability derivatives and control effectiveness. Vehicle transfer functions, stability augmentation, aircraft handling qualities. Introduction to flexible vehicle effects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Air-Breathing Propulsion",
+        "subjectCode": "AAE",
+        "courseCode": "43800",
+        "instructor": [
+            "Li Qiao"
+        ],
+        "description": "Basic operating principles and analysis of performance characteristics of propulsion systems for air-breathing aerospace vehicles. Ramjet, turbojet, turbofan and turboprop cycle analysis. Propeller analysis and design. Analysis of flow through inlets, combustors, nozzles, compressors, and turbines. Component matching. Not open to students with credit in ME 43800.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Spacecraft Design",
+        "subjectCode": "AAE",
+        "courseCode": "45000",
+        "instructor": [
+            "Carson D Slabaugh",
+            "Anthony G Cofer",
+            "Thomas Fletcher Cunningham",
+            "Alexey Shashurin"
+        ],
+        "description": "Senior students perform a team-based spacecraft design, requiring application of the education and skills developed in the aerospace curriculum. Components include analysis methods for preliminary design, development of an initial vehicle concept, and development of a complete numerical model of the mission, culminating in oral and written reports by the teams.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Aircraft Design",
+        "subjectCode": "AAE",
+        "courseCode": "45100",
+        "instructor": [
+            "Leifur Thor Leifsson"
+        ],
+        "description": "Senior students perform a team-based aircraft design, requiring application of the education and skills developed in the aerospace curriculum. Aircraft mission requirements include engine cycle selection and airframe/engine integration, performance, stability and control, structures, human factors, avionics, sensors, and manufacturing processes. The teams present oral and written reports on their designs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Orbital Analysis",
+        "subjectCode": "AAE",
+        "courseCode": "49000",
+        "instructor": [
+            "Anthony G Cofer",
+            "Kathleen Howell",
+            "Alexey Shashurin"
+        ],
+        "description": "Hours and credit to be arranged. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            0,
+            18
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Computational Aerodynamics",
+        "subjectCode": "AAE",
+        "courseCode": "51200",
+        "instructor": [
+            "Tom I-P Shih"
+        ],
+        "description": "Finite difference methods for solving fluid flow problems. Review of classification of partial differential equations, well-posed problems, and discrete approximation of partial differential equations. Matrix and von Neumann stability analysis. Consistency and convergence. Grid generation: elliptic, hyperbolic, and transfinite mesh generation methods. Methods for solving the unsteady Euler equations: finite-volume formulations, flux-split and flux-difference formulations, shock-capturing, formulation of boundary conditions, artificial viscosity models, and multi-grid acceleration.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Intermediate Aerodynamics",
+        "subjectCode": "AAE",
+        "courseCode": "51400",
+        "instructor": [
+            "Sally Pm Bane"
+        ],
+        "description": "Thin airfoil theory and panel methods. Three-dimensional elementary solutions, lifting-line and lifting-surface models. Slender wing and slender body theory. Normal/oblique shock waves. One- and multi-dimensional flows and conical flows. Method of characteristics. Introduction to transonic flow, hypersonic flow, and airfoil design.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Experimental Aerodynamics",
+        "subjectCode": "AAE",
+        "courseCode": "52000",
+        "instructor": [
+            "Joseph S Jewell"
+        ],
+        "description": "Theory and application of experimental techniques and instrumentation for aerodynamics and fluid mechanics. Computer data acquisition, wind tunnels, force balances, flow visualization, pressure probes, hot wire anemometry, laser Doppler velocimetry and turbulence measurements.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Propulsion Design, Build, Test",
+        "subjectCode": "AAE",
+        "courseCode": "53500",
+        "instructor": [
+            "Carson D Slabaugh"
+        ],
+        "description": "Intensive one-semester treatment of the aerospace propulsion component development process. Derivation of design requirements from mission objective to detailed components; the design process. Standard methods for thermostructural, life, performance, and combustion stability design analysis; combustor design. Experimental procedures; fabrication; test. Special topics according to student interest.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Rocket Propulsion",
+        "subjectCode": "AAE",
+        "courseCode": "53900",
+        "instructor": [
+            "Timothee L Pourpoint"
+        ],
+        "description": "Generalized internal compressible and incompressible flows. Thermochemistry and heat transfer in rocket applications. Advanced topics in solid rocket motor performance and internal ballistics. Liquid rocket engine cycle analysis and turbopump design. Combustion of liquid and solid propellants. Hybrid rockets and thermal-nuclear engines.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Dynamic Behavior of Materials",
+        "subjectCode": "AAE",
+        "courseCode": "54500",
+        "instructor": [
+            "Weinong W Chen"
+        ],
+        "description": "Materials' responses to high-rate loading are different from their quasi-static behavior. Applications of materials in structures subjected to impact loading from events such as bird strike require the understanding of dynamic material behavior. Such high-rate materials behavior is not available in standard materials handbooks or design manuals. This course introduces stress wave propagation in solids, which is the foundation to characterization and understanding of high-rate response of materials. Then, the theoretical background and working principles of high-rate experimental methods are presented to characterize the material response under high-rate loading conditions. Finally, rate-dependent material models are introduced to describe the dynamic material behavior and deformation mechanisms.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nondestructive Evaluation Of Structures And Materials",
+        "subjectCode": "AAE",
+        "courseCode": "55200",
+        "instructor": [
+            "Tyler N Tallman"
+        ],
+        "description": "Overview of methods employed for nondestructive evaluation of structures and materials taught in the context of damage tolerant structural analysis. Major inspection topics include: radiography, ultrasonics, eddy current, penetrant, magnetic, and visual/optical techniques. Other new emerging inspection techniques also are discussed. Offered in alternate years.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Mechanics Of Composite Materials",
+        "subjectCode": "AAE",
+        "courseCode": "55500",
+        "instructor": [
+            "Wenbin Yu"
+        ],
+        "description": "Current and potential applications of composite materials. Review of elasticity of anisotropic solids. Methods for determining mechanical properties of heterogeneous materials. Static and dynamic analyses of laminated composites. Fracture and fatigue of laminates. Reliability, testing, and design of composites.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "System-Of-Systems Modeling And Analysis",
+        "subjectCode": "AAE",
+        "courseCode": "56000",
+        "instructor": [
+            "Daniel A Delaurentis"
+        ],
+        "description": "Introduction to features of system-of-systems problems; problem definition tools; role of complexity; network topology analysis and agent-based simulation models; architecture analysis; metrics for multi-stakeholder problems; semester team projects allow students to exercise and critique such methods for analyzing system-of-systems problems. Some background in probability and statistics (e.g. random variables, probability density and distributions, sampling methods) is expected.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Introduction To Applied Stochastic Processes",
+        "subjectCode": "AAE",
+        "courseCode": "56700",
+        "instructor": [
+            "Arthur E Frazho"
+        ],
+        "description": "An introductory course in the concept of a discrete and continuous stochastic process based upon physical phenomena that originally gave rise to the specific stochastic models that are studies. Spectral analysis, response of time invariant systems to noise inputs. Estimation theory, Kalman and Winer filtering.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Applied Optimal Control And Estimation",
+        "subjectCode": "AAE",
+        "courseCode": "56800",
+        "instructor": [
+            "Inseok Hwang"
+        ],
+        "description": "This course introduces students to analysis and synthesis methods of optimal controllers and estimators for (stochastic) dynamical systems. The topics in this course include a review of probability and stochastic processes, classical estimation techniques, Pontryagin's maximum principle, dynamic programming. Linear Quadratic Regulator problems (LQR), Kalman filter, duality of LQR with Kalman filter, Linear Quadratic Gaussian (LQG), and a range of engineering applications.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Comput Combust & Propuls",
+        "subjectCode": "AAE",
+        "courseCode": "59000",
+        "instructor": [
+            "David Arnas Martinez",
+            "Shaoshuai Mou",
+            "Barrett S Caldwell",
+            "Kathleen Howell",
+            "James Michael Goppert",
+            "Leifur Thor Leifsson",
+            "Kenshiro Oguri",
+            "Vikas Tomar",
+            "Husheng Li",
+            "Haifeng Wang",
+            "R. Byron Pipes",
+            "Carolin E Frueh"
+        ],
+        "description": "Topics vary - projects in Aeronautical Engineering. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Viscous Flow Theory",
+        "subjectCode": "AAE",
+        "courseCode": "61300",
+        "instructor": [
+            "Steven P Schneider"
+        ],
+        "description": "Compressible, laminar boundary layer theory; Buseman and Crocco integrals; skin friction and heat transfer. Introduction to turbulent boundary layers and transition phenomena. Advanced boundary layer theory; the method of inner and outer expansions. Boundary layers with chemical reaction; applications to hypersonic flow and combustion. Prerequisite: AAE 51100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Turbulence And Turbulence Modeling",
+        "subjectCode": "AAE",
+        "courseCode": "62600",
+        "instructor": [
+            "Gregory A Blaisdell"
+        ],
+        "description": "Physical description of turbulence. Reynolds averaged equations. Scaling of basic turbulent flows. Homogeneous turbulence, spectra and two-point correlations. Hierarchy of turbulence models, including zero-, one-, and two-equation models, Reynolds stress models, large eddy simulations, and direct numerical simulations. Additional topics, such as compressibility effects on turbulence and probability density function methods, as time allows. Prerequisite: AAE 51100.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Elastic Wave Propagation",
+        "subjectCode": "AAE",
+        "courseCode": "64600",
+        "instructor": [
+            "James Francis Doyle"
+        ],
+        "description": "Elastic wave propagation in rods, beams, and plates. Wave motion in semi-infinite bodies; Rayleigh, Lamb and Love waves. Pochhammer-Chree theory for rods. General properties of dispersive waves and approximation techniques. Impact. Wave front and ray methods. Introduction to wave propagation in anelastic and nonhomogenous media, and to large amplitude and shock waves. Prerequisite: AAE 55300 or ME 56300.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Nonlinear Dynamics, Systems, And Control",
+        "subjectCode": "AAE",
+        "courseCode": "66600",
+        "instructor": [
+            "Martin Corless"
+        ],
+        "description": "Fundamental concepts and tools that are useful in the analysis of nonlinear systems and in the design of controllers and estimators for such systems. Results are illustrated by, and applied to, aerospace/mechanical systems. Prerequisite: AAE 56400.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Advanced Signals And Systems For Satellite Navigation",
+        "subjectCode": "AAE",
+        "courseCode": "67500",
+        "instructor": [
+            "James L Garrison"
+        ],
+        "description": "Fundamental theory of ranging signal design. Generation of pseudorandom noise. Methods for detecting, tracking, and estimating delay using ranging signals. Probability of detection, probability of false alarm, and tracking threshold derived from a stochastic signal model. Models for multiple access, quantization, clock and multipath errors. Examples drawn from present-day Global Navigation Satellite Systems (GNSS). Prerequisites: ECE 60000, AAE 56700, or equivalent (Random Variables and Stochastic Processes).",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Numerical Mthds High-Spd Flows",
+        "subjectCode": "AAE",
+        "courseCode": "69000",
+        "instructor": [
+            "Carlo Scalo"
+        ],
+        "description": "Topics vary. Permission of instructor required.",
+        "capacity": 0,
+        "credits": [
+            1,
+            6
+        ],
+        "term": "Spring 2023"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Address Global Challngs-Honors",
+        "subjectCode": "SYS",
+        "courseCode": "30000",
+        "instructor": [
+            "Tugba Karabiyik"
+        ],
+        "description": "The main goal of this course is to address grand challenges that are of global concern - such as environmental sustainability and energy use, natural and human disasters, and political and economic development - using the ideas and tools of complex adaptive systems. The course exploits the broad expertise of the four faculty members by treating these challenges from diverse disciplinary perspectives, from the biological and physical sciences, to the social sciences, to engineering. By way of a set of case studies, students will analyze the features of these challenges which make them complex, and seek to explain and find solutions to the problems that arise in each case. Their treatment of the cases will be informed by published research and computer simulation. Students will actively participate in discussions regarding these global challenges, and contribute to the progress of the class using oral and written presentations. The course will culminate with a final project completed by teams composed of students from different disciplines.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Systems Methods",
+        "subjectCode": "SYS",
+        "courseCode": "35000",
+        "instructor": [
+            "Tugba Karabiyik"
+        ],
+        "description": "Introduction to modeling tools and methods for understanding and designing systems. Topics include: defining the problem; defining and validating stakeholders' needs; system modeling and types of models; defining and modeling system behavior; defining and modeling functional, physical and allocated system architectures; and evaluating and modeling the tradeoffs between alternative system designs.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Systems Praxis",
+        "subjectCode": "SYS",
+        "courseCode": "40000",
+        "instructor": [
+            "Charles Robert Kenley"
+        ],
+        "description": "Engineers, social scientists, and managers frequently bring people and technology together to address complex problematic situations in an equitable way that benefits people and the environment. Multiple systems concepts and methods have been developed to address these situations, and typical courses in systems focus on a relatively small portion of the rich assortment of available approaches to addressing systems problems. This course introduces students to multiple systems concepts and methods via readings and class lecture. The students then apply these concepts and methods on team-based projects. The course will emphasize critical thinking about how the concepts and methods are applicable to the problematic situations of the projects and how well the project teams were able to perform the required activities.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    },
+    {
+        "title": "Practical Systems Thinking",
+        "subjectCode": "SYS",
+        "courseCode": "53000",
+        "instructor": [
+            "Charles Robert Kenley"
+        ],
+        "description": "Practical systems thinking is designed to give students a sense of how problem solving happens in the real world. This is accomplished through case examples and group projects.",
+        "capacity": 0,
+        "credits": [
+            3,
+            3
+        ],
+        "term": "Spring 2023"
+    }
+]
