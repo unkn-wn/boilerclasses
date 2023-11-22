@@ -11,6 +11,19 @@
 - [ ] Integrate boilergrades/exams?
 - [ ] Decide what to do with search?
 
+# commands
+example, for fall 2023:
+```
+python3 scrape.py -sem "Fall 2023"
+```
+
+then:
+
+```
+python3 harmonize.py
+```
+
+
 ---
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
