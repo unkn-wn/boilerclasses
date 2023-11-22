@@ -63,5 +63,9 @@ for subj in subjects:
       class_data["credits"][1] = max(instance["credits"][1], class_data["credits"][1])
     out[class_id] = class_data
 
-  outfile = open("out.json", "w")
-  json.dump(out, outfile, indent=4)
+out_final = []
+for x in out:
+  out_final.append(out[x])
+
+outfile = open("out.json", "w")
+json.dump(out_final, outfile, indent=4)

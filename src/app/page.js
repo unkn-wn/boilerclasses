@@ -23,11 +23,12 @@ const CourseCatalog = () => {
   const [capacity, setCapacity] = useState("");
   const [credits, setCredits] = useState(0);
   const [term, setTerm] = useState("");
-
+  
 
   // Filter courses based on search term
   let filteredCourses = [];
   if (searchTerm != "") {
+
     filteredCourses = classes.filter(course =>
       course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.subjectCode.toLowerCase().includes(searchTerm.toLowerCase())
