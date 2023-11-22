@@ -1,7 +1,9 @@
 
 # Todos
 
-- [ ] Get data from previous semesters
+- [x] Get data from previous semesters
+- [ ] Fix script to handle variable title courses (e.g. aae490/cs390 etc)
+- [ ] Scrape data from Spring 2022 and before
 - [ ] Get other metadata from classes (capacity, prerequisites, etc)
 - [ ] Improve Popup UI
 - [ ] Integrate RateMyProfessor
