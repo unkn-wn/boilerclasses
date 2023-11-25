@@ -2,14 +2,14 @@
 # Todos
 
 - [x] Get data from previous semesters
-- [ ] Fix script to handle variable title courses (e.g. aae490/cs390 etc)
-- [ ] Scrape data from Spring 2022 and before
+- [x] Fix script to handle variable title courses (e.g. aae490/cs390 etc)
+- [x] Scrape data from Spring 2022 and before
 - [ ] Get other metadata from classes (capacity, prerequisites, etc)
 - [ ] Improve Popup UI
 - [ ] Integrate RateMyProfessor
 - [ ] Integrate r/purdue
 - [ ] Integrate boilergrades/exams?
-- [ ] Decide what to do with search?
+- [x] Decide what to do with search?
 
 # commands
 example, for fall 2023:
