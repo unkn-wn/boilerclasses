@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react'
-import classes from './out.json'
+// import classes from './out.json'
 import { SchemaFieldTypes, createClient } from 'redis';
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
@@ -26,14 +26,14 @@ const CourseCatalog = () => {
   
 
   // Filter courses based on search term
-  let filteredCourses = [];
-  if (searchTerm != "") {
+  // let filteredCourses = [];
+  // if (searchTerm != "") {
 
-    filteredCourses = classes.filter(course =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.subjectCode.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }
+  //   filteredCourses = classes.filter(course =>
+  //     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //     course.subjectCode.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  // }
 
 
 
@@ -107,7 +107,7 @@ const CourseCatalog = () => {
         </div>
 
         <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-          {filteredCourses.map(course => (
+          {/* {filteredCourses.map(course => (
             <div key={course.id}
               onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
               className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
@@ -133,7 +133,7 @@ const CourseCatalog = () => {
               </a>
 
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </>
