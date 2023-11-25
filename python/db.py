@@ -11,9 +11,8 @@ REDIS_HOST = os.getenv('REDIS_HOST')
 REDIS_PORT = os.getenv('REDIS_PORT')
 REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
-r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, username="default", password=REDIS_PASSWORD)
 
-all_classes = []
+r = redis.Redis(host=str(REDIS_HOST), port=str(REDIS_PORT), username="default", password=str(REDIS_PASSWORD))
 
 count = 1
 path = "out.json"
