@@ -23,7 +23,23 @@ const CourseCatalog = () => {
   const [capacity, setCapacity] = useState("");
   const [credits, setCredits] = useState(0);
   const [term, setTerm] = useState("");
+  const [courses, setCourses] = useState([]);
   
+  
+  const search = async (event) => {
+    const q = event.target.value;
+    if (q.length > 2) {
+      const params = new URLSearchParams({ q });
+      fetch('/api?' + params)
+        .then((response) => response.json())
+        .then((data) => {
+          setCourses(data['courses']['documents']);
+        })
+    } else {
+      setCourses([]);
+    }
+  };
+
 
   // Filter courses based on search term
   // let filteredCourses = [];
@@ -100,40 +116,39 @@ const CourseCatalog = () => {
           <input
             type="text"
             placeholder="Search for courses..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={search}
             className="text-white font-semibold text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           />
         </div>
 
         <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-          {/* {filteredCourses.map(course => (
+          {courses.map(course => (
             <div key={course.id}
-              onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
+              // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
               className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
-              <h2 className="lg:text-xl md:text-lg font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
-              <p className="lg:text-sm text-small text-gray-700 font-medium my-1">{course.instructor.length > 1 ? "Instructors: " : "Instructor: "} 
+              <h2 className="lg:text-xl md:text-lg font-bold">{course.value.subjectCode} {course.value.courseCode}: {course.value.title}</h2>
+              {/* <p className="lg:text-sm text-small text-gray-700 font-medium my-1">{course.instructor.length > 1 ? "Instructors: " : "Instructor: "} 
                 <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`} 
                   target="_blank" rel="noopener noreferrer"
                   className='underline decoration-dotted'>
                   {course.instructor[0]}
                 </a>
-              </p>
+              </p> */}
               <p className="text-gray-600 mb-4 break-words grow"> 
-                <span className={inter.className}>{course.description.length > 200
-                ? `${course.description.substring(0, 200)}...`
-                : course.description}
+                <span className={inter.className}>{course.value.description.length > 200
+                ? `${course.value.description.substring(0, 200)}...`
+                : course.value.description}
                 </span>
               </p>
-              <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
+              {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className=''>
                 <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
-              </a>
+              </a> */}
 
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     </>
