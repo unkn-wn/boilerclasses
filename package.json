@@ -9,14 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "net": "^1.0.2",
-    "next": "14.0.2",
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@choc-ui/chakra-autocomplete": "^5.2.9",
+    "@emotion/react": "^11.11.1",
+    "chakra-multiselect": "^0.4.6",
+    "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "redis": "^4.6.10",
-    "redis-om": "^0.4.3",
-    "tls": "^0.0.1"
+    "react-select": "^5.8.0",
+    "redis": "^4.6.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

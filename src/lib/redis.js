@@ -10,6 +10,10 @@ async function connect() {
 
 export async function searchCourses(q) {
   await connect();
-  const res = await client.ft.search('idx:classes', `${q}*`, "LIMIT 0 10000");
-  return res;
+  try {
+    const res = await client.ft.search('idx:classes', `${q}*`, "LIMIT 0 10000");
+    return res;
+  } catch {
+    return {'documents': []};
+  }
 }
