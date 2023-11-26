@@ -17,7 +17,6 @@
 }
 
 body {
-  font-family: 'Colfax', sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -25,40 +24,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
-
-
-@font-face {
-  font-family: 'Colfax';
-  src: local('Colfax'), url(./fonts/Colfax-Regular.otf) format('opentype');
-}
-
-@font-face {
-    font-family: 'Colfax';
-    font-weight: 900;
-    src: local('Colfax'), url(./fonts/Colfax-Black.otf) format('opentype');
-}
-
-@font-face {
-  font-family: 'Colfax';
-  font-weight: 700;
-  src: local('Colfax'), url(./fonts/Colfax-Bold.otf) format('opentype');
-}
-
-@font-face {
-  font-family: 'Colfax';
-  font-weight: 500;
-  src: local('Colfax'), url(./fonts/Colfax-Medium.otf) format('opentype');
-}
-
-@font-face {
-  font-family: 'Colfax';
-  font-weight: 300;
-  src: local('Colfax'), url(./fonts/Colfax-Light.otf) format('opentype');
-}
-
-@font-face {
-  font-family: 'Colfax';
-  font-weight: 100;
-  src: local('Colfax'), url(./fonts/Colfax-Thin.otf) format('opentype');
 }

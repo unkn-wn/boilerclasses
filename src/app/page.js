@@ -4,10 +4,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react'
-// import classes from './out.json'
 import { SchemaFieldTypes, createClient } from 'redis';
-import { Inter } from 'next/font/google'
+import { Inter, Lovers_Quarrel, Poppins } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({ subsets: ['latin'], weight: ['500'] })
+import Card from './components/card';
 
 
 const CourseCatalog = () => {
@@ -28,30 +29,17 @@ const CourseCatalog = () => {
   
   const search = async (event) => {
     const q = event.target.value;
-    if (q.length > 2) {
+    if (q.length <= 1) {
+      setCourses([]);
+    } else {
       const params = new URLSearchParams({ q });
       fetch('/api?' + params)
         .then((response) => response.json())
         .then((data) => {
           setCourses(data['courses']['documents']);
         })
-    } else {
-      setCourses([]);
     }
   };
-
-
-  // Filter courses based on search term
-  // let filteredCourses = [];
-  // if (searchTerm != "") {
-
-  //   filteredCourses = classes.filter(course =>
-  //     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     course.subjectCode.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  // }
-
-
 
   const openPopUp = (title, scode, ccode, ins, desc, cap, cred, term) => {
     setOpen(!open);
@@ -107,9 +95,8 @@ const CourseCatalog = () => {
       </Transition>
 
 
-      <div id="parent" className="h-screen container mx-auto p-4 ">
-
-        <h1 className="text-2xl md:text-5xl font-bold mb-8">BoilerClasses</h1>
+      <div id="parent" className={`h-screen container mx-auto p-4 ${inter.className}`}>
+          <h1 className='text-2xl md:text-5xl font-semibold mt-4 mb-8 select-none'>BoilerClasses</h1>
 
         {/* Search Bar */}
         <div className="mb-8">
@@ -117,37 +104,25 @@ const CourseCatalog = () => {
             type="text"
             placeholder="Search for courses..."
             onChange={search}
-            className="text-white font-semibold text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+            className="text-white text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           />
         </div>
 
         <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
           {courses.map(course => (
-            <div key={course.id}
-              // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
-              className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition">
-              <h2 className="lg:text-xl md:text-lg font-bold">{course.value.subjectCode} {course.value.courseCode}: {course.value.title}</h2>
-              {/* <p className="lg:text-sm text-small text-gray-700 font-medium my-1">{course.instructor.length > 1 ? "Instructors: " : "Instructor: "} 
-                <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`} 
-                  target="_blank" rel="noopener noreferrer"
-                  className='underline decoration-dotted'>
-                  {course.instructor[0]}
-                </a>
-              </p> */}
-              <p className="text-gray-600 mb-4 break-words grow"> 
-                <span className={inter.className}>{course.value.description.length > 200
-                ? `${course.value.description.substring(0, 200)}...`
-                : course.value.description}
-                </span>
-              </p>
-              {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className=''>
-                <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
-              </a> */}
+            <Card key={course.id} course={course.value} />
+            // <div key={course.id}
+            //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
+            //   >
+              
+              
+            //   {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
+            //     target="_blank"
+            //     rel="noopener noreferrer"
+            //     className=''>
+            //     <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
+            //   </a> */}
 
-            </div>
           ))}
         </div>
       </div>
