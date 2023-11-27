@@ -1,3 +1,4 @@
+
 import { createClient } from 'redis';
 
 const client = createClient({ url: process.env.REDIS_URL });
@@ -8,10 +9,12 @@ async function connect() {
   }
 }
 
-export async function searchCourses(q) {
+export async function searchCourses(q, sub, term) {
   await connect();
   try {
-    const res = await client.ft.search('idx:classes', `${q}*`, "LIMIT 0 10000");
+    const res = await client.ft.search('idx:classes', `${q}${q.trim().length > 0 ? "*" : ""}${sub[0].length > 0 ? ` @subjectCode:{${sub.join("|")}}` : ""}${term[0].length > 0 ? ` @terms:{${term.join("|")}}` : ""}`, {
+      LIMIT: { size: 10000, from: 0 }
+    });
     return res;
   } catch {
     return {'documents': []};

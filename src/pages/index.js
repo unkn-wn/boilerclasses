@@ -27,20 +27,21 @@ import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOption
 const CourseCatalog = () => {
 
   const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [selectedSemesters, setSelectedSemesters] = useState([]);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), searchTerm]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), searchTerm]);
   
   const search = async (event) => {
-    if (searchTerm.length <= 1 && selectedSubjects.length == 0) {
+    if (searchTerm.length <= 1 && selectedSubjects.length == 0 && selectedSemesters.length == 0) {
       setCourses([]);
     } else {
       const subParam = selectedSubjects.map((x) => x.value)
-      console.log(selectedSubjects, searchTerm, subParam);
-      const params = new URLSearchParams({ q: searchTerm, sub: subParam});
+      const termParam = selectedSemesters.map((x) => x.value)
+      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam });
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -89,6 +90,9 @@ const CourseCatalog = () => {
               placeholder="Semester..."
               styles={semesterStyles}
               color="white"
+              onChange={(value) => {
+                setSelectedSemesters(value)
+              }}
             />
             <Popover placement='bottom-start'>
               <PopoverTrigger>
