@@ -1,4 +1,4 @@
-export const semesters = ["Spring 2024",  "Fall 2023",  "Spring 2023",  "Fall 2022",  "Spring 2022",  "Fall 2021",  "Spring 2021",  "Fall 2020",  "Spring 2020",  "Fall 2019",  "Spring 2019",  "Fall 2018",  "Spring 2018",  "Fall 2017",  "Spring 2017",  "Fall 2016",  "Spring 2016"]
+export const semesters = ["Spring 2024",  "Fall 2023",  "Spring 2023",  "Fall 2022",  "Spring 2022",  "Fall 2021",  "Spring 2021",  "Fall 2020",  "Spring 2020",  "Fall 2019"]
 export const subjects = ["AAE", "AAS", "ABE", "AD", "AFT", "AGEC", "AGR", "AGRY", "AMST", "ANSC", "ANTH", "ARAB", "ASAM", "ASEC", "ASL", "ASM", "ASTR", "AT", "BAND", "BCHM", "BIOL", "BME", "BMS", "BTNY", "CAND", "CDIS", "CE", "CEM", "CGT", "CHE", "CHM", "CHNS", "CLCS", "CLPH", "CM", "CMPL", "CNIT", "COM", "CPB", "CS", "CSR", "DANC", "EAPS", "ECE", "ECET", "ECON", "EDCI", "EDPS", "EDST", "EEE", "ENE", "ENGL", "ENGR", "ENGT", "ENTM", "ENTR", "EPCS", "FNR", "FR", "FS", "FVS", "GEP", "GER", "GRAD", "GREK", "GS", "GSLA", "HDFS", "HEBR", "HIST", "HK", "HONR", "HORT", "HSCI", "HSOP", "HTM", "IDE", "IDIS", "IE", "IET", "ILS", "IPPH", "IT", "ITAL", "JPNS", "JWST", "KOR", "LA", "LALS", "LATN", "LC", "LING", "MA", "MCMP", "ME", "MET", "MFET", "MGMT", "MSE", "MSL", "MUS", "NRES", "NS", "NUCL", "NUPH", "NUR", "NUTR", "OBHR", "OLS", "PES", "PHIL", "PHPR", "PHRM", "PHYS", "POL", "PSY", "PTGS", "PUBH", "REG", "REL", "RUSS", "SA", "SCI", "SCLA", "SFS", "SLHS", "SOC", "SPAN", "STAT", "SYS", "TDM", "TECH", "THTR", "TLI",  "VCS",  "VIP",  "VM", "WGSS"]
 export const semesterOptions = [
   {label: "Spring 2024", value: "Spring 2024"},
@@ -11,13 +11,13 @@ export const semesterOptions = [
   {label: "Fall 2020", value: "Fall 2020"},
   {label: "Spring 2020", value: "Spring 2020"},
   {label: "Fall 2019", value: "Fall 2019"},
-  {label: "Spring 2019", value: "Spring 2019"},
-  {label: "Fall 2018", value: "Fall 2018"},
-  {label: "Spring 2018", value: "Spring 2018"},
-  {label: "Fall 2017", value: "Fall 2017"},
-  {label: "Spring 2017", value: "Spring 2017"},
-  {label: "Fall 2016", value: "Fall 2016"},
-  {label: "Spring 2016", value: "Spring 2016"}
+  // {label: "Spring 2019", value: "Spring 2019"},
+  // {label: "Fall 2018", value: "Fall 2018"},
+  // {label: "Spring 2018", value: "Spring 2018"},
+  // {label: "Fall 2017", value: "Fall 2017"},
+  // {label: "Spring 2017", value: "Spring 2017"},
+  // {label: "Fall 2016", value: "Fall 2016"},
+  // {label: "Spring 2016", value: "Spring 2016"}
 ]
 
 export const subjectOptions = [
