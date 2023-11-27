@@ -22,7 +22,7 @@ import {
 } from '@chakra-ui/react'
 
 import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions } from '@/lib/utils';
-  
+
 
 const CourseCatalog = () => {
 
@@ -30,11 +30,11 @@ const CourseCatalog = () => {
   const [selectedSemesters, setSelectedSemesters] = useState([]);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  
+
   useEffect(() => {
     search();
   }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), searchTerm]);
-  
+
   const search = async (event) => {
     if (searchTerm.length <= 1 && selectedSubjects.length == 0 && selectedSemesters.length == 0) {
       setCourses([]);
@@ -68,8 +68,8 @@ const CourseCatalog = () => {
           />
         </div>
         <div className="flex flex-row mb-8 gap-5 items-center">
-          <p className='mr-4 text-white whitespace-nowrap'>Filter by </p>
-          <div className='flex flex-row w-full justify-evenly gap-5 items-center'>
+          <p className='mr-4 text-white whitespace-nowrap md:block hidden'>Filter by </p>
+          <div className='flex flex-row w-full justify-evenly gap-5 items-center md:flex-nowrap flex-wrap'>
             <Select
               isMulti
               options={subjectOptions}
@@ -101,21 +101,18 @@ const CourseCatalog = () => {
                   <ChevronDownIcon color='gray-800'/>
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '> 
+              <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
                 <PopoverFooter borderColor='gray.800' className='flex flex-row justify-between'>
                   <Button backgroundColor='black' textColor='white' _hover={{bg: "black"}} className='rounded-md text-white hover:bg-black' size='sm'>
                     Cancel
-                  </Button>  
+                  </Button>
                   <Button colorScheme='blue' size='sm'>
                     Save
-                  </Button>  
+                  </Button>
                 </PopoverFooter>
               </PopoverContent>
             </Popover>
           </div>
-          
-          
-            
         </div>
 
         <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
@@ -124,8 +121,8 @@ const CourseCatalog = () => {
             // <div key={course.id}
             //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
             //   >
-              
-              
+
+
             //   {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
             //     target="_blank"
             //     rel="noopener noreferrer"
