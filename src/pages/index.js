@@ -54,8 +54,10 @@ const CourseCatalog = () => {
   return (
     <>
       <div id="parent" className={`h-screen bg-black container mx-auto p-4 ${inter.className}`}>
-          <h1 className='text-2xl md:text-5xl font-semibold mt-4 mb-8 select-none text-white'>BoilerClasses</h1>
-
+          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
+            <img src='/favicon.ico' className='my-auto w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24' />
+            <h1 className='text-2xl md:text-5xl font-semibold my-auto select-none text-white'>BoilerClasses</h1>
+          </div>
         {/* Search Bar */}
         <div className="mb-6">
           <input

@@ -1,4 +1,6 @@
 import { semesters } from "../lib/utils"
+import React, { useState } from 'react';
+import reddit from './reddit-icon.png'
 
 import {
   Modal,
@@ -9,11 +11,13 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button
+  Button,
+  Image
 } from '@chakra-ui/react'
 
 const Card = ({ course }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [curInstructors, setCurInstructors] = useState([]);
 
   const instructors = new Set();
   const availableSemesters = [];
@@ -28,10 +32,26 @@ const Card = ({ course }) => {
   });
   const uniqueInstructors = [...instructors];
 
+  const changeInstructors = (sem) => {
+    setCurInstructors(course.instructor[sem]);
+    availableSemesters.forEach((otherSem) => {
+      if (otherSem !== sem) {
+        try {
+          document.getElementById(otherSem).classList.add("bg-sky-300");
+        } catch { }
+      }
+    });
+
+    try {
+      document.getElementById(sem).classList.remove("bg-sky-300");
+    } catch { }
+  }
+
   return (
     <>
       <div className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer"
-        onClick={onOpen}>
+        onClick={onOpen}
+        onClickCapture={() => changeInstructors(availableSemesters[0])}>
         <h2 className="lg:text-lg md:text-lg font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
         <p className="lg:text-sm text-sm text-gray-700 font-medium my-1">
           <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[0].split(" ")[0]} ${uniqueInstructors[0].split(" ")[uniqueInstructors[0].split(" ").length - 1]}`}
@@ -70,26 +90,40 @@ const Card = ({ course }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            {/* Instructors Display */}
             <p className="lg:text-sm text-sm text-gray-700 font-medium -mt-3 mb-2">
-              <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[0].split(" ")[0]} ${uniqueInstructors[0].split(" ")[uniqueInstructors[0].split(" ").length - 1]}`}
-                target="_blank" rel="noopener noreferrer"
-                className='underline decoration-dotted'>
-                {uniqueInstructors[0]}
-              </a>
-              {uniqueInstructors.length > 1 && ", "}
-              {uniqueInstructors.length > 1 &&
-                <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[1].split(" ")[0]} ${uniqueInstructors[1].split(" ")[uniqueInstructors[1].split(" ").length - 1]}`}
+              {curInstructors.map((prof, i) => (
+                <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                   target="_blank" rel="noopener noreferrer"
-                  className='underline decoration-dotted '>
-                  {uniqueInstructors[1]}
+                  className='underline decoration-dotted'
+                  key={i}>
+                  {prof}
+                  {i < curInstructors.length - 1 && ", "}
                 </a>
-              }
+              )
+              )}
             </p>
             <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
 
+            {/* Other Links Buttons */}
+            <div className="flex flex-row flex-wrap">
+              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}"`} target="_blank" rel="noopener noreferrer"
+                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-400 transition-all">
+                  <div className="flex flex-row gap-2">
+                    <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={ 4 } className="my-auto" />
+                    Reddit
+                  </div>
+              </a>
+            </div>
+
+            {/* Semester Tags */}
             <div className="flex flex-row flex-wrap">
               {availableSemesters.map((sem, i) => (
-                (i < 3) && <span className="text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border border-sky-500 bg-sky-300 whitespace-nowrap" key={i}>{sem}</span>
+                <button className={`text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border
+                                    ${i === 0 ? "" : "bg-sky-300 "} border-sky-500 whitespace-nowrap transition-all`}
+                  key={i}
+                  id={sem}
+                  onClick={() => changeInstructors(sem)}>{sem}</button>
               ))}
             </div>
           </ModalBody>
