@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js';
 import {  MultiSelectTheme } from 'chakra-multiselect'
+import Head from "next/head";
 
 const theme = extendTheme({
   components: {
@@ -13,6 +14,9 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
+      <Head>
+        <title>BoilerClasses</title>
+      </Head>
       <Component {...pageProps} />
     </ChakraProvider>
   )

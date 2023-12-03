@@ -1,6 +1,6 @@
 import { semesters } from "../lib/utils"
 import React, { useState } from 'react';
-import reddit from './reddit-icon.png'
+// import reddit from './reddit-icon.png'
 
 import {
   Modal,
