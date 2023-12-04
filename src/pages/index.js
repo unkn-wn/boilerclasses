@@ -21,13 +21,14 @@ import {
   FormHelperText
 } from '@chakra-ui/react'
 
-import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions } from '@/lib/utils';
+import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions } from '@/lib/utils';
 
 
 const CourseCatalog = () => {
 
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedSemesters, setSelectedSemesters] = useState([]);
+  const [selectedGenEds, setSelectedGenEds] = useState([]);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLanding, setDisplayLanding] = useState(true);
@@ -39,7 +40,7 @@ const CourseCatalog = () => {
 
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), searchTerm]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), searchTerm]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -52,12 +53,13 @@ const CourseCatalog = () => {
   }, [displayLanding]);
 
   const search = async (event) => {
-    if (searchTerm.length <= 1 && selectedSubjects.length == 0 && selectedSemesters.length == 0) {
+    if (searchTerm.length <= 1 && selectedSubjects.length == 0 && selectedSemesters.length == 0 && selectedGenEds.length == 0) {
       setCourses([]);
     } else {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
-      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam });
+      const genParam = selectedGenEds.map((x) => x.value)
+      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam, gen: genParam });
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -72,7 +74,7 @@ const CourseCatalog = () => {
       {!displayLanding ?
         <div id="parent" className={`h-screen bg-black container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/favicon.ico' onClick={ () => changeLanding("") } className='my-auto w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
+            <img src='/favicon.ico' onClick={ () => changeLanding("") } className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
             <h1 onClick={ () => changeLanding("") } className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           {/* Search Bar */}
@@ -113,6 +115,18 @@ const CourseCatalog = () => {
                 color="white"
                 onChange={(value) => {
                   setSelectedSemesters(value)
+                }}
+              />
+              <Select
+                isMulti
+                options={genedsOptions}
+                className="basic-multi-select w-full"
+                classNamePrefix="select"
+                placeholder="Gen Ed..."
+                styles={semesterStyles}
+                color="white"
+                onChange={(value) => {
+                  setSelectedGenEds(value)
                 }}
               />
               <Popover placement='bottom-start'>
@@ -157,6 +171,10 @@ const CourseCatalog = () => {
         :
         /* Landing Page */
         <div className="z-40 grid place-content-center mx-4 h-screen">
+          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
+            <img src='/favicon.ico' onClick={ () => changeLanding("") } className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
+            <h1 onClick={ () => changeLanding("") } className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+          </div>
           <input
             id="landingSearch"
             type="text"

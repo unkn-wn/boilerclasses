@@ -8,7 +8,8 @@ export default async function handler(req, res) {
     const q = req.query.q.trim();
     const subjects = req.query.sub;
     const terms = req.query.term;
-    const courses = await searchCourses(q, subjects.split(","), terms.split(","));
+    const gen = req.query.gen;
+    const courses = await searchCourses(q, subjects.split(","), terms.split(","), gen.split(","));
     res.status(200).json({ courses });
   }
 }

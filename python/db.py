@@ -3,8 +3,14 @@ import json
 import redis
 from redis.commands.json.path import Path
 from tqdm import tqdm
+from dotenv import load_dotenv
+load_dotenv()
 
-r = redis.Redis(port=6379)
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
+REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
+
+r = redis.Redis(host=str(REDIS_HOST), port=str(REDIS_PORT), username="default", password=str(REDIS_PASSWORD))
 
 count = 1
 path = "out.json"
