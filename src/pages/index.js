@@ -4,6 +4,7 @@ import React, { use, useState, useEffect } from 'react';
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 import Card from "../components/card"
+import Footer from "../components/footer"
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import Select from 'react-select';
 
@@ -78,10 +79,10 @@ const CourseCatalog = () => {
   return (
     <>
       {!displayLanding ?
-        <div id="parent" className={`h-screen bg-black container mx-auto p-4 ${inter.className}`}>
+        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/favicon.ico' onClick={ () => changeLanding("") } className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
-            <h1 onClick={ () => changeLanding("") } className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
+            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           {/* Search Bar */}
           <div className="mb-6">
@@ -186,13 +187,17 @@ const CourseCatalog = () => {
 
             ))}
           </div>
+          <div className='mt-auto'>
+            <Footer />
+          </div>
         </div>
+
         :
         /* Landing Page */
         <div className="z-40 grid place-content-center mx-4 h-screen">
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/favicon.ico' onClick={ () => changeLanding("") } className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
-            <h1 onClick={ () => changeLanding("") } className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
+            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           <input
             id="landingSearch"
