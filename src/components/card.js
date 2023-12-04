@@ -47,6 +47,18 @@ const Card = ({ course }) => {
     } catch { }
   }
 
+  const getSearchableProfString = () => {
+    //create ret string = ""
+    //for each prof in curInstructors, add to ret string with " OR "
+
+    let ret = " OR ";
+    curInstructors.forEach((prof) => {
+      ret += `"${prof}" OR `;
+    });
+    return ret.substring(0, ret.length - 4);
+  
+  }
+
   return (
     <>
       <div className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer"
@@ -107,7 +119,7 @@ const Card = ({ course }) => {
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
-              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}"`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-400 transition-all">
                   <div className="flex flex-row gap-2">
                     <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={ 4 } className="my-auto" />
