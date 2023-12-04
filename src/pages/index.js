@@ -18,7 +18,11 @@ import {
   PopoverFooter,
   FormControl,
   FormLabel,
-  FormHelperText
+  FormHelperText,
+  RangeSlider,
+  RangeSliderTrack,
+  RangeSliderFilledTrack,
+  RangeSliderThumb,
 } from '@chakra-ui/react'
 
 import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions } from '@/lib/utils';
@@ -29,6 +33,8 @@ const CourseCatalog = () => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedSemesters, setSelectedSemesters] = useState([]);
   const [selectedGenEds, setSelectedGenEds] = useState([]);
+  const [creditsMin, setCreditsMin] = useState(0);
+  const [creditsMax, setCreditsMax] = useState(18);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLanding, setDisplayLanding] = useState(true);
@@ -40,7 +46,7 @@ const CourseCatalog = () => {
 
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), searchTerm]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), searchTerm, creditsMin, creditsMax]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -59,7 +65,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam, gen: genParam });
+      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam, gen: genParam});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -129,7 +135,7 @@ const CourseCatalog = () => {
                   setSelectedGenEds(value)
                 }}
               />
-              <Popover placement='bottom-start'>
+              {/* <Popover placement='bottom-start'>
                 <PopoverTrigger>
                   <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
                     <span>Credits</span>
@@ -137,16 +143,29 @@ const CourseCatalog = () => {
                   </button>
                 </PopoverTrigger>
                 <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
-                  <PopoverFooter borderColor='gray.800' className='flex flex-row justify-between'>
-                    <Button backgroundColor='black' textColor='white' _hover={{ bg: "black" }} className='rounded-md text-white hover:bg-black' size='sm'>
-                      Cancel
-                    </Button>
-                    <Button colorScheme='blue' size='sm'>
-                      Save
-                    </Button>
-                  </PopoverFooter>
+                  <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
+                    <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}  
+                      onChangeEnd={(val) => {
+                        setCreditsMin(Math.round((val[0]*18/100)))
+                        setCreditsMax(Math.round((val[1]*18/100)))
+                      }}
+                      onChangeStart={(val) => {
+                        setCreditsMin(Math.round((val[0]*18/100)))
+                        setCreditsMax(Math.round((val[1]*18/100)))
+                      }}
+                    >
+                      <RangeSliderTrack>
+                        <RangeSliderFilledTrack />
+                      </RangeSliderTrack>
+                      <RangeSliderThumb index={0} />
+                      <RangeSliderThumb index={1} />
+                    </RangeSlider>
+                    <div className='text-white'>
+                      {creditsMin} - {creditsMax} Credits
+                    </div>
+                  </PopoverBody>
                 </PopoverContent>
-              </Popover>
+              </Popover> */}
             </div>
           </div>
 
