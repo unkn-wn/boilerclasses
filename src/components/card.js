@@ -148,7 +148,7 @@ const Card = ({ course }) => {
                   className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
                   <div className="flex flex-row gap-2">
                     <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
-                    BoilerExams
+                    Boilerexams
                   </div>
                 </a>
               }
