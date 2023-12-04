@@ -118,6 +118,7 @@ const Card = ({ course }) => {
 
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
+                <span className="text-black font-normal text-xs">RateMyProfessor: </span>
                 {curInstructors.map((prof, i) => (
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                     target="_blank" rel="noopener noreferrer"
