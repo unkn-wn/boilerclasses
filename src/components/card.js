@@ -1,6 +1,5 @@
 import { semesters } from "../lib/utils"
 import React, { useState } from 'react';
-// import reddit from './reddit-icon.png'
 
 import {
   Modal,
@@ -21,6 +20,7 @@ const Card = ({ course }) => {
 
   const instructors = new Set();
   const availableSemesters = [];
+  const boilerExamsCourses = ["MA15800", "MA16010", "MA16100", "MA16200", "MA26100", "MA26200", "MA26500", "MA26600", "MA30300", "CS15900", "CS17700", "CHM11500", "ECON25200", "PHYS17200"];
 
   semesters.forEach((sem) => {
     try {
@@ -53,10 +53,14 @@ const Card = ({ course }) => {
 
     let ret = " OR ";
     curInstructors.forEach((prof) => {
-      ret += `"${prof}" OR `;
+
+      const profSplit = prof.split(" ");
+      ret += `"${profSplit[0]} ${profSplit[profSplit.length - 1]}" OR `;
+
+
     });
     return ret.substring(0, ret.length - 4);
-  
+
   }
 
   return (
@@ -66,18 +70,20 @@ const Card = ({ course }) => {
         onClickCapture={() => changeInstructors(availableSemesters[0])}>
         <h2 className="lg:text-lg md:text-lg font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
         <p className="lg:text-sm text-sm text-gray-700 font-medium my-1">
-          <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[0].split(" ")[0]} ${uniqueInstructors[0].split(" ")[uniqueInstructors[0].split(" ").length - 1]}`}
+          {/* <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[0].split(" ")[0]} ${uniqueInstructors[0].split(" ")[uniqueInstructors[0].split(" ").length - 1]}`}
             target="_blank" rel="noopener noreferrer"
             className='underline decoration-dotted'>
             {uniqueInstructors[0]}
-          </a>
+          </a> */}
+          {uniqueInstructors[0]}
           {uniqueInstructors.length > 1 && ", "}
           {uniqueInstructors.length > 1 &&
-            <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[1].split(" ")[0]} ${uniqueInstructors[1].split(" ")[uniqueInstructors[1].split(" ").length - 1]}`}
-              target="_blank" rel="noopener noreferrer"
-              className='underline decoration-dotted '>
-              {uniqueInstructors[1]}
-            </a>
+            // <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[1].split(" ")[0]} ${uniqueInstructors[1].split(" ")[uniqueInstructors[1].split(" ").length - 1]}`}
+            //   target="_blank" rel="noopener noreferrer"
+            //   className='underline decoration-dotted '>
+            //   {uniqueInstructors[1]}
+            // </a>
+            uniqueInstructors[1]
           }
 
         </p>
@@ -96,36 +102,57 @@ const Card = ({ course }) => {
 
       <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside" isCentered>
         <ModalOverlay />
-        <ModalContent minH="75%" maxH="90%" maxW="90%">
+        <ModalContent minH="" maxH="90%" maxW="90%">
           <ModalHeader>
             <h2 className="lg:text-3xl md:text-3xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* Instructors Display */}
-            <p className="lg:text-sm text-sm text-gray-700 font-medium -mt-3 mb-2">
-              {curInstructors.map((prof, i) => (
-                <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className='underline decoration-dotted'
-                  key={i}>
-                  {prof}
-                  {i < curInstructors.length - 1 && ", "}
-                </a>
-              )
-              )}
-            </p>
+            <div className="flex flex-row gap-4 -mt-3 mb-2">
+              {/* Instructors Display */}
+              <p className="lg:text-sm text-sm text-gray-700 font-medium">
+                {curInstructors.map((prof, i) => (
+                  <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className='underline decoration-dotted'
+                    key={i}>
+                    {prof}
+                    {i < curInstructors.length - 1 && ", "}
+                  </a>
+                )
+                )}
+              </p>
+
+              <p className="-mt-1">|</p>
+
+              {/* Credits Display */}
+              <p className="text-sm text-gray-700 font-bold">
+                {course.credits[0] === course.credits[1]
+                  ? `${course.credits[0]} Credits`
+                  : `${course.credits[0]} - ${course.credits[1]} Credits`}
+              </p>
+            </div>
+
             <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-400 transition-all">
-                  <div className="flex flex-row gap-2">
-                    <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={ 4 } className="my-auto" />
-                    Reddit
-                  </div>
+                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
+                <div className="flex flex-row gap-2">
+                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
+                  Reddit
+                </div>
               </a>
+              {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
+                <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode}/topics`} target="_blank" rel="noopener noreferrer"
+                  className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
+                  <div className="flex flex-row gap-2">
+                    <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
+                    BoilerExams
+                  </div>
+                </a>
+              }
             </div>
 
             {/* Semester Tags */}
