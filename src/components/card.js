@@ -108,9 +108,16 @@ const Card = ({ course }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <div className="flex flex-row gap-4 -mt-3 mb-2">
+            <div className="flex flex-col gap-4 -mt-3 mb-2">
+              {/* Credits Display */}
+              <p className="text-sm text-gray-700 font-bold">
+                {course.credits[0] === course.credits[1]
+                  ? `${course.credits[0]} Credits`
+                  : `${course.credits[0]} - ${course.credits[1]} Credits`}
+              </p>
+
               {/* Instructors Display */}
-              <p className="lg:text-sm text-sm text-gray-700 font-medium">
+              <p className="lg:text-sm text-sm text-gray-700 -mt-3 font-medium">
                 {curInstructors.map((prof, i) => (
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                     target="_blank" rel="noopener noreferrer"
@@ -121,15 +128,6 @@ const Card = ({ course }) => {
                   </a>
                 )
                 )}
-              </p>
-
-              <p className="-mt-1">|</p>
-
-              {/* Credits Display */}
-              <p className="text-sm text-gray-700 font-bold">
-                {course.credits[0] === course.credits[1]
-                  ? `${course.credits[0]} Credits`
-                  : `${course.credits[0]} - ${course.credits[1]} Credits`}
               </p>
             </div>
 
