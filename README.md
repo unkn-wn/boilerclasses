@@ -1,63 +1,26 @@
 
-# Todos
 
-- [x] Get data from previous semesters
-- [x] Fix script to handle variable title courses (e.g. aae490/cs390 etc)
-- [x] Scrape data from Spring 2022 and before
-- [ ] Get other metadata from classes (capacity, prerequisites, etc)
-- [ ] Improve Popup UI
-- [ ] Integrate RateMyProfessor
-- [ ] Integrate r/purdue
-- [ ] Integrate boilergrades/exams?
-- [x] Decide what to do with search?
+# [BoilerClasses](https://www.boilerclasses.com/)
 
-# commands
-example, for fall 2023:
+
+
+# Setup
+You can clone this repository and spawn a Redis server (steps coming soon!) with the data in the `python/data` folder. Then, to view the webapp, you can run:
+```
+npm install
+npm run dev
+```
+There are some scripts in the `python` folder that you might find useful. You can scrape data from the catalog for a particular semester by:
 ```
 python3 scrape.py -sem "Fall 2023"
 ```
-
-then:
-
+The above command will generate a JSON with data from Fall 2023. If you have multiple JSONs, you can combine them into a single file via:
 ```
 python3 harmonize.py
 ```
 
+# Future Improvements
+We're trying to integrate as many features as possible, and we'll have open issues for the same. If you find a bug or have any feedback, let us through a [PR](https://github.com/unkn-wn/boilerclasses/pulls) or our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLScoE5E-G7dbr7-v9dY5S7UeIoojjMTjP_XstLz38GBpib5MPA/viewform). All contributions are very, very welcome!
 
----
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Acknowledgements
+Inspired by [classes.wtf](https://classes.wtf) and Purdue's slow course catalogs. We'd like to also thank our friends at [BoilerExams](https://boilerexams.com) and [BoilerGrades](https://boilergrades.com/).
