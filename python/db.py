@@ -21,6 +21,7 @@ for classData in tqdm(data):
   r.json().set(key, Path.root_path(), classData)
   count += 1
 
-
-
-
+'''
+index command:
+FT.CREATE idx:classes ON JSON PREFIX 1 "classes:" SCHEMA $.title AS title TEXT WEIGHT 2 $.description AS description TEXT $.subjectCode AS subjectCode TAG $.terms[*] AS terms TAG $.courseCode AS courseCode TEXT WEIGHT 3 $.instructor[*][*] as instructor TEXT NOSTEM $.subjectCode AS subjectCodeTerm TEXT $.credits[0] AS creditMin NUMERIC $.credits[1] as creditMax NUMERIC $.gened[*] AS gened TAG
+'''
