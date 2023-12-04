@@ -13,7 +13,7 @@ REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 r = redis.Redis(host=str(REDIS_HOST), port=str(REDIS_PORT), username="default", password=str(REDIS_PASSWORD))
 
 count = 1
-path = "out.json"
+path = "class_out.json"
 f = open(path)
 data = json.load(f)
 for classData in tqdm(data):

@@ -1,10 +1,10 @@
 import json
 
-path = "data/gened.json"
+path = "data/class_gened.json"
 f = open(path)
 data = json.load(f)
 
-out_path = "out.json"
+out_path = "class_out.json"
 f2 = open(out_path)
 out_data = json.load(f2)
 

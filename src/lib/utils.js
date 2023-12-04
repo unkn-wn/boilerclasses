@@ -1,12 +1,13 @@
 export const semesters = ["Spring 2024",  "Fall 2023",  "Spring 2023",  "Fall 2022",  "Spring 2022",  "Fall 2021",  "Spring 2021",  "Fall 2020",  "Spring 2020",  "Fall 2019"]
 export const subjects = ["AAE", "AAS", "ABE", "AD", "AFT", "AGEC", "AGR", "AGRY", "AMST", "ANSC", "ANTH", "ARAB", "ASAM", "ASEC", "ASL", "ASM", "ASTR", "AT", "BAND", "BCHM", "BIOL", "BME", "BMS", "BTNY", "CAND", "CDIS", "CE", "CEM", "CGT", "CHE", "CHM", "CHNS", "CLCS", "CLPH", "CM", "CMPL", "CNIT", "COM", "CPB", "CS", "CSR", "DANC", "EAPS", "ECE", "ECET", "ECON", "EDCI", "EDPS", "EDST", "EEE", "ENE", "ENGL", "ENGR", "ENGT", "ENTM", "ENTR", "EPCS", "FNR", "FR", "FS", "FVS", "GEP", "GER", "GRAD", "GREK", "GS", "GSLA", "HDFS", "HEBR", "HIST", "HK", "HONR", "HORT", "HSCI", "HSOP", "HTM", "IDE", "IDIS", "IE", "IET", "ILS", "IPPH", "IT", "ITAL", "JPNS", "JWST", "KOR", "LA", "LALS", "LATN", "LC", "LING", "MA", "MCMP", "ME", "MET", "MFET", "MGMT", "MSE", "MSL", "MUS", "NRES", "NS", "NUCL", "NUPH", "NUR", "NUTR", "OBHR", "OLS", "PES", "PHIL", "PHPR", "PHRM", "PHYS", "POL", "PSY", "PTGS", "PUBH", "REG", "REL", "RUSS", "SA", "SCI", "SCLA", "SFS", "SLHS", "SOC", "SPAN", "STAT", "SYS", "TDM", "TECH", "THTR", "TLI",  "VCS",  "VIP",  "VM", "WGSS"]
-export const geneds = ['Behavioral/Social Science', 'Civics Literacy', 'Humanities', 'JEDI', 'Oral Communication', 'Science', 'Science Technology and Society', 'Written Communication']
 export const genedsOptions = [
   {label: "Behavioral/Social Science", value: "BSS"},
   {label: "Civics Literacy", value: "Civics Literacy"},
   {label: "Humanities", value: "Humanities"},
   {label: "JEDI", value: "JEDI"},
   {label: "Oral Communications", value: "OC"},
+  {label: "Information Literacy", value: "IL"},
+  {label: "Quantitative Reasoning", value: "QR"},
   {label: "Science", value: "Science"},
   {label: "Science Technology and Society", value: "STS"},
   {label: "Written Communication", value: "WC"}
