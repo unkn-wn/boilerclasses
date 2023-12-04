@@ -23,4 +23,4 @@ python3 harmonize.py
 We're trying to integrate as many features as possible, and we'll have open issues for the same. If you find a bug or have any feedback, let us through a [PR](https://github.com/unkn-wn/boilerclasses/pulls) or our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLScoE5E-G7dbr7-v9dY5S7UeIoojjMTjP_XstLz38GBpib5MPA/viewform). All contributions are very, very welcome!
 
 # Acknowledgements
-Inspired by [classes.wtf](https://classes.wtf) and Purdue's slow course catalogs. We'd like to also thank our friends at [BoilerExams](https://boilerexams.com) and [BoilerGrades](https://boilergrades.com/).
+Inspired by [classes.wtf](https://classes.wtf) and Purdue's slow course catalogs. We'd like to also thank our friends at [Boilerexams](https://boilerexams.com) and [BoilerGrades](https://boilergrades.com/).
