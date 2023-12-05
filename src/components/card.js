@@ -16,11 +16,28 @@ import {
 
 const Card = ({ course }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [curInstructors, setCurInstructors] = useState([]);
+  // const [curInstructors, setCurInstructors] = useState([]);
+  // const [curGPA, setCurGPA] = useState([]);
+  const [sem, setSem] = useState(course.terms[0]);
 
   const instructors = new Set();
   const availableSemesters = [];
   const boilerExamsCourses = ["MA15800", "MA16010", "MA16100", "MA16200", "MA26100", "MA26200", "MA26500", "MA26600", "MA30300", "CS15900", "CS17700", "CHM11500", "ECON25200", "PHYS17200"];
+
+  const perc2color = function (perc) {
+    var r, g, b = 0;
+    if(perc < 50) {
+      r = 255;
+      g = Math.round(5.1 * perc);
+    }
+    else {
+      g = 255;
+      r = Math.round(510 - 5.10 * perc);
+    }
+    var h = r * 0x10000 + g * 0x100 + b * 0x1;
+    return '#' + ('000000' + h.toString(16)).slice(-6);
+  }
+  
 
   semesters.forEach((sem) => {
     try {
@@ -33,7 +50,10 @@ const Card = ({ course }) => {
   const uniqueInstructors = [...instructors];
 
   const changeInstructors = (sem) => {
-    setCurInstructors(course.instructor[sem]);
+    // setCurGPA((sem in course.gpa) ? course.gpa[sem] : []);
+    // console.log(curGPA);
+    // setCurInstructors(course.instructor[sem]);
+    setSem(sem);
     availableSemesters.forEach((otherSem) => {
       if (otherSem !== sem) {
         try {
@@ -52,7 +72,7 @@ const Card = ({ course }) => {
     //for each prof in curInstructors, add to ret string with " OR "
 
     let ret = " OR ";
-    curInstructors.forEach((prof) => {
+    course.instructor[sem].forEach((prof) => {
 
       const profSplit = prof.split(" ");
       ret += `"${profSplit[0]} ${profSplit[profSplit.length - 1]}" OR `;
@@ -62,6 +82,8 @@ const Card = ({ course }) => {
     return ret.substring(0, ret.length - 4);
 
   }
+  console.log(perc2color((3.20*100/4.0)))
+  console.log(perc2color((2.3*100/4.0)))
 
   return (
     <>
@@ -115,25 +137,38 @@ const Card = ({ course }) => {
                   ? `${course.credits[0]} Credits`
                   : `${course.credits[0]} - ${course.credits[1]} Credits`}
               </p>
+              {/* <p>{course.gpa[""]}</p> */}
 
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
                 <span className="text-black font-normal text-xs">RateMyProfessor: </span>
-                {curInstructors.map((prof, i) => (
+                {course.instructor[sem].map((prof, i) => (
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                     target="_blank" rel="noopener noreferrer"
                     className='underline decoration-dotted'
                     key={i}>
                     {prof}
-                    {i < curInstructors.length - 1 && ", "}
+                    {i < course.instructor[sem].length - 1 && ", "}
                   </a>
                 )
                 )}
               </p>
+
             </div>
+            {/* ${perc2color((prof[1]*100)/4.0)} */}
 
             <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
-
+            {(sem in course.gpa) &&
+              <p className="lg:text-sm text-sm mb-2 text-gray-800">
+                <span className="text-black font-normal text-xs mb-2">BoilerGrades Average GPAs: </span>
+                {course.gpa[sem].map((prof, i) => (
+                  <p>
+                    {prof[0]}: {prof[1]}
+                  </p>
+                ))}
+              </p>
+          }
+            
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
