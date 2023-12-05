@@ -194,15 +194,15 @@ const CourseCatalog = () => {
 
         :
         /* Landing Page */
-        <div className="z-40 grid place-content-center mx-4 h-screen">
-          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
-            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+        <div className="flex flex-col z-40 grid place-content-center mx-4 h-screen items-center">
+          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
+            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-28 lg:h-28 cursor-pointer' />
+            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           <input
             id="landingSearch"
             type="text"
-            placeholder="Search for courses..."
+            placeholder="I want to take a class about..."
             onChange={(e) => {
               changeLanding(e.target.value);
             }}
