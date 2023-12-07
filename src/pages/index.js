@@ -45,9 +45,18 @@ const CourseCatalog = () => {
     setSearchTerm(event);
   }
 
+  function addSpaceBetweenCharAndDigit(inputString) {
+    const regex = /([a-zA-Z])(\d)/g;
+    
+    const resultString = inputString.replace(regex, '$1 $2');
+
+    return resultString;
+}
+
+
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), searchTerm, creditsMin, creditsMax]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), addSpaceBetweenCharAndDigit(searchTerm), creditsMin, creditsMax]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -66,7 +75,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam, gen: genParam});
+      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm), sub: subParam, term: termParam, gen: genParam});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
