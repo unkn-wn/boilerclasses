@@ -14,6 +14,26 @@ import {
   Image
 } from '@chakra-ui/react'
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
 const Card = ({ course }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const [curInstructors, setCurInstructors] = useState([]);
@@ -24,9 +44,11 @@ const Card = ({ course }) => {
   const availableSemesters = [];
   const boilerExamsCourses = ["MA15800", "MA16010", "MA16100", "MA16200", "MA26100", "MA26200", "MA26500", "MA26600", "MA30300", "CS15900", "CS17700", "CHM11500", "ECON25200", "PHYS17200"];
 
+  const labels = ['A', 'A+', 'A-', 'B', 'B+', 'B-', 'C', 'C+', 'C-', 'D', 'D+', 'D-', 'F', 'AVG'];
+
   const perc2color = function (perc) {
     var r, g, b = 0;
-    if(perc < 50) {
+    if (perc < 50) {
       r = 255;
       g = Math.round(5.1 * perc);
     }
@@ -37,7 +59,7 @@ const Card = ({ course }) => {
     var h = r * 0x10000 + g * 0x100 + b * 0x1;
     return '#' + ('000000' + h.toString(16)).slice(-6);
   }
-  
+
 
   semesters.forEach((sem) => {
     try {
@@ -50,6 +72,40 @@ const Card = ({ course }) => {
   const uniqueInstructors = [...instructors];
 
   const changeInstructors = (sem) => {
+    let gpa = [];
+
+    console.log(course.gpa);
+
+    for (const key in course.gpa) {
+      for (let j = 0; j < course.gpa[key].length; j++) {
+        let data = { 'label': course.gpa[key][j][0] };
+
+        const index = gpa.findIndex(item => item.label === course.gpa[key][j][0]);
+
+        if (index !== -1) {
+          let temp = [...gpa[index].data];
+
+          for (let k = 0; k < temp.length; k++) {
+            temp[k] = (temp[k] + course.gpa[key][j][1][k]) / 2;
+          }
+
+          data['data'] = temp;
+          data['backgroundColor'] = 'rgba(53, 162, 235, 0.5)';
+
+          gpa[index] = data;
+        } else {
+          data['data'] = [...course.gpa[key][j][1]];
+
+          data['backgroundColor'] = 'rgba(53, 162, 235, 0.5)';
+
+          gpa.push(data);
+        }
+      }
+    }
+
+    console.log(gpa);
+
+
     // setCurGPA((sem in course.gpa) ? course.gpa[sem] : []);
     // console.log(curGPA);
     // setCurInstructors(course.instructor[sem]);
@@ -82,8 +138,8 @@ const Card = ({ course }) => {
     return ret.substring(0, ret.length - 4);
 
   }
-  console.log(perc2color((3.20*100/4.0)))
-  console.log(perc2color((2.3*100/4.0)))
+  console.log(perc2color((3.20 * 100 / 4.0)))
+  console.log(perc2color((2.3 * 100 / 4.0)))
 
   return (
     <>
@@ -168,7 +224,7 @@ const Card = ({ course }) => {
                 ))}
               </p>
             } */}
-            
+
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"

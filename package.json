@@ -16,8 +16,10 @@
     "@emotion/react": "^11.11.1",
     "@vercel/analytics": "^1.1.1",
     "chakra-multiselect": "^0.4.6",
+    "chart.js": "^4.4.1",
     "next": "14.0.3",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-select": "^5.8.0",
     "redis": "^4.6.11"
