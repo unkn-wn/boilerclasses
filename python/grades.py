@@ -37,9 +37,9 @@ for grade in grade_list:
   for i in range(len(full_data)):
     if full_data[i]["subjectCode"] == subjectCode and full_data[i]["courseCode"] == courseCode and title == full_data[i]["title"]:
       if args.sem in full_data[i]["gpa"]:
-        full_data[i]["gpa"][args.sem].append([grade["instructor"], grade["avg gpa"]])
+        full_data[i]["gpa"][args.sem].append([grade["instructor"], [grade["totalAplus"], grade["totalA"], grade["totalAminus"], grade["totalBplus"], grade["totalB"], grade["totalBminus"], grade["totalCplus"], grade["totalC"], grade["totalCminus"], grade["totalDplus"], grade["totalD"], grade["totalDminus"], grade["totalF"], grade["avg gpa"]]])
       else:
-        full_data[i]["gpa"][args.sem] = [[grade["instructor"], grade["avg gpa"]]]
+        full_data[i]["gpa"][args.sem] = [[grade["instructor"], [grade["totalAplus"], grade["totalA"], grade["totalAminus"], grade["totalBplus"], grade["totalB"], grade["totalBminus"], grade["totalCplus"], grade["totalC"], grade["totalCminus"], grade["totalDplus"], grade["totalD"], grade["totalDminus"], grade["totalF"], grade["avg gpa"]]]]
   
 outfile = open(f"class_out2.json", "w")
 json.dump(full_data, outfile, indent=4)

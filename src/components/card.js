@@ -158,7 +158,7 @@ const Card = ({ course }) => {
             {/* ${perc2color((prof[1]*100)/4.0)} */}
 
             <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
-            {(sem in course.gpa) &&
+            {/* {(sem in course.gpa) &&
               <p className="lg:text-sm text-sm mb-2 text-gray-800">
                 <span className="text-black font-normal text-xs mb-2">BoilerGrades Average GPAs: </span>
                 {course.gpa[sem].map((prof, i) => (
@@ -167,7 +167,7 @@ const Card = ({ course }) => {
                   </p>
                 ))}
               </p>
-          }
+            } */}
             
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
