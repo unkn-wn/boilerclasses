@@ -27,6 +27,8 @@ all_classes = []
 
 for file_name in os.listdir("data"):
   path = "data/"+ file_name
+  if "json" not in path:
+    continue
   f = open(path)
   data = json.load(f)
   semesters.append(data)

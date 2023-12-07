@@ -45,9 +45,18 @@ const CourseCatalog = () => {
     setSearchTerm(event);
   }
 
+  function addSpaceBetweenCharAndDigit(inputString) {
+    const regex = /([a-zA-Z])(\d)/g;
+    
+    const resultString = inputString.replace(regex, '$1 $2');
+
+    return resultString;
+}
+
+
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), searchTerm, creditsMin, creditsMax]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), addSpaceBetweenCharAndDigit(searchTerm), creditsMin, creditsMax]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -66,7 +75,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: searchTerm, sub: subParam, term: termParam, gen: genParam});
+      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm), sub: subParam, term: termParam, gen: genParam});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -194,15 +203,15 @@ const CourseCatalog = () => {
 
         :
         /* Landing Page */
-        <div className="z-40 grid place-content-center mx-4 h-screen">
-          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
-            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+        <div className="flex flex-col z-40 grid place-content-center mx-4 h-screen items-center">
+          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
+            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-28 lg:h-28 cursor-pointer' />
+            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           <input
             id="landingSearch"
             type="text"
-            placeholder="Search for courses..."
+            placeholder="I want to take a class about..."
             onChange={(e) => {
               changeLanding(e.target.value);
             }}
