@@ -309,9 +309,9 @@ const Card = ({ course }) => {
               </p>
             } */}
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col">
             {/* GPA Graph */}
-              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+              {/* {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
                 <div className="mt-2 mb-8 w-full h-96 md:h-96">
                   <Select
                     isMulti
@@ -366,11 +366,11 @@ const Card = ({ course }) => {
                     />
                   </div>
                 </div>
-              )}
+              )} */}
 
 
               {/* Other Links Buttons */}
-              <div className="flex flex-row flex-wrap mt-2">
+              <div className="flex flex-row flex-wrap">
                 <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                   className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
                   <div className="flex flex-row gap-2">
