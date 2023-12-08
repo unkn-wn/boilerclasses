@@ -204,8 +204,8 @@ const CourseCatalog = () => {
         :
         /* Landing Page */
         <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
-          <div className='flex flex-row justify-between my-2 gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
-            <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-12 h-12 ml-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
+          <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
+            <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 ml-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
             <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           <input
@@ -215,7 +215,7 @@ const CourseCatalog = () => {
             onChange={(e) => {
               changeLanding(e.target.value);
             }}
-            className="text-white text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+            className="text-white text-sm md:text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           />
         </div >
       }

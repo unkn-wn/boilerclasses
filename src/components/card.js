@@ -1,5 +1,6 @@
 import { semesters } from "../lib/utils"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 
 import {
   Modal,
@@ -34,12 +35,17 @@ ChartJS.register(
   Legend
 );
 
+import { instructorStyles } from '@/lib/utils';
+
+
 const Card = ({ course }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const [curInstructors, setCurInstructors] = useState([]);
   // const [curGPA, setCurGPA] = useState([]);
   const [sem, setSem] = useState(course.terms[0]);
   const [gpaGraph, setGpaGraph] = useState({});
+  const [defaultGPA, setDefaultGPA] = useState({});
+  const [selectableInstructors, setSelectableInstructors] = useState([]);
 
   const instructors = new Set();
   const availableSemesters = [];
@@ -75,7 +81,9 @@ const Card = ({ course }) => {
 
 
   /*
+   *
    * MAIN OPEN POPUP FUNCTION
+   *
    */
   const openPopup = () => {
 
@@ -107,10 +115,11 @@ const Card = ({ course }) => {
             return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
           });
 
+          const backgroundColor = perc2color(formattedData[0] * 100 / 4.0);
           gpa.push({
             label: instructor,
             data: formattedData,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            backgroundColor: backgroundColor,
             'count': 1
           });
         }
@@ -121,12 +130,33 @@ const Card = ({ course }) => {
       labels,
       datasets: gpa
     });
+    setDefaultGPA({
+      labels,
+      datasets: gpa
+    });
 
+
+    // Set selectable instructors
+
+    const selectableInstructors = [];
+    for (const semester in course.gpa) {
+      for (const entry of course.gpa[semester]) {
+        const instructor = entry[0];
+        if (!selectableInstructors.includes(instructor)) {
+          selectableInstructors.push(instructor);
+        }
+      }
+    }
+    setSelectableInstructors(selectableInstructors);
 
     // set instructors
     changeInstructors(availableSemesters[0]);
 
   };
+
+  useEffect(() => {
+    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
+  }, [selectableInstructors]);
 
   const changeInstructors = (sem) => {
 
@@ -137,13 +167,13 @@ const Card = ({ course }) => {
     availableSemesters.forEach((otherSem) => {
       if (otherSem !== sem) {
         try {
-          document.getElementById(otherSem).classList.add("bg-sky-300");
+          document.getElementById(otherSem).classList.remove("bg-sky-300");
         } catch { }
       }
     });
 
     try {
-      document.getElementById(sem).classList.remove("bg-sky-300");
+      document.getElementById(sem).classList.add("bg-sky-300");
     } catch { }
   }
 
@@ -164,6 +194,25 @@ const Card = ({ course }) => {
   }
   // console.log(perc2color((3.20 * 100 / 4.0)))
   // console.log(perc2color((2.3 * 100 / 4.0)))
+
+
+  // Refresh graph when instructors change
+  const refreshGraph = (instructors) => {
+    const gpa = defaultGPA.datasets;
+    if (!gpa || gpa.length === 0) return;
+
+    const newgpa = gpa.filter(inst => {
+      const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
+      return isIncluded;
+    });
+
+    setGpaGraph({
+      labels,
+      datasets: newgpa,
+    });
+  }
+
+
 
   return (
     <>
@@ -237,6 +286,17 @@ const Card = ({ course }) => {
             </div>
             {/* ${perc2color((prof[1]*100)/4.0)} */}
 
+            {/* Semester Tags */}
+            <div className="flex flex-row flex-wrap gap-1 mb-4">
+              {availableSemesters.map((sem, i) => (
+                <button className={`text-xs px-2 py-1 rounded-full border-solid border
+                                    ${i === 0 ? "bg-sky-300" : ""} border-sky-500 whitespace-nowrap transition-all`}
+                  key={i}
+                  id={sem}
+                  onClick={() => changeInstructors(sem)}>{sem}</button>
+              ))}
+            </div>
+
             <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
             {/* {(sem in course.gpa) &&
               <p className="lg:text-sm text-sm mb-2 text-gray-800">
@@ -249,39 +309,63 @@ const Card = ({ course }) => {
               </p>
             } */}
 
-            {Object.keys(gpaGraph).length !== 0 && (
-              <Bar options={{
-                responsive: true,
-                plugins: {
-                  legend: {
-                    position: 'top',
-                  },
-                  title: {
-                    display: true,
-                    text: 'Average Grades by Instructor',
-                  },
-                },
-                scales: {
-                  y: {
-                    title: {
-                      display: true,
-                      text: '% of Students'
-                    }
+
+            {/* GPA Graph */}
+            {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+              <div className="my-8 w-full h-72 md:h-96 lg:w-3/5">
+                <Select
+                  isMulti
+                  options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                  className="basic-multi-select w-full"
+                  classNamePrefix="select"
+                  placeholder="Semester..."
+                  defaultValue={
+                    selectableInstructors.length > 0
+                      ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
+                      : null
                   }
-                }
-              }} data={gpaGraph}
-              // {
-              //   {
-              //     labels,
-              //     datasets: [{
-              //       label: 'test1',
-              //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-              //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
-              //     }]
-              //   }
-              // }
-              />
+                  styles={instructorStyles}
+                  color="white"
+                  onChange={(value) => {
+                    refreshGraph(value)
+                  }}
+                />
+                <Bar
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        position: 'top',
+                      },
+                      title: {
+                        display: true,
+                        text: 'Average Grades by Instructor',
+                      },
+                    },
+                    scales: {
+                      y: {
+                        title: {
+                          display: true,
+                          text: '% of Students'
+                        }
+                      }
+                    }
+                  }} data={gpaGraph}
+                // {
+                //   {
+                //     labels,
+                //     datasets: [{
+                //       label: 'test1',
+                //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                //     }]
+                //   }
+                // }
+                />
+              </div>
             )}
+
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
@@ -303,16 +387,7 @@ const Card = ({ course }) => {
               }
             </div>
 
-            {/* Semester Tags */}
-            <div className="flex flex-row flex-wrap">
-              {availableSemesters.map((sem, i) => (
-                <button className={`text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border
-                                    ${i === 0 ? "" : "bg-sky-300 "} border-sky-500 whitespace-nowrap transition-all`}
-                  key={i}
-                  id={sem}
-                  onClick={() => changeInstructors(sem)}>{sem}</button>
-              ))}
-            </div>
+
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>

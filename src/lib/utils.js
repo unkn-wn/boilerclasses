@@ -224,7 +224,7 @@ export const subjectStyles = {
       zIndex: 100,
       color: 'white'
   }),
-  
+
   multiValue: (styles, { data }) => {
     return {
       ...styles,
@@ -258,7 +258,7 @@ export const subjectStyles = {
   }),
 
   }
-  
+
 
 export const semesterStyles = {
   control: (base, state) => ({
@@ -311,7 +311,7 @@ export const semesterStyles = {
       zIndex: 100,
       color: 'white'
   }),
-  
+
   multiValue: (styles, { data }) => {
     return {
       ...styles,
@@ -345,6 +345,94 @@ export const semesterStyles = {
   }),
 
   }
-  
+
+
+
+  export const instructorStyles = {
+    control: (base, state) => ({
+      ...base,
+      borderRadius: "12px",
+      background: "#ffffff",
+      borderColor: '#1f2937',
+      paddingLeft: "4px",
+      color: 'black',
+      ':hover': {
+        borderColor: '#1f2937'
+      },
+      ':focus': {
+        outline: "none"
+      }
+    }),
+    menuList: styles => ({
+        ...styles,
+        borderColor: '#1f2937',
+        background: '#ffffff'
+    }),
+    option: (styles, { isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isDisabled
+          ? undefined
+          : isSelected
+          ? "#9333ea"
+          : isFocused
+          ? "#d8b4fe"
+          : undefined,
+        color: isDisabled
+          ? '#ccc'
+          : isFocused
+          ? "#9333ea"
+          : "black",
+        cursor: isDisabled ? 'not-allowed' : 'default',
+
+        ':active': {
+          ...styles[':active'],
+          backgroundColor: !isDisabled
+            ? isSelected
+              ? "#9333ea"
+              : "#d8b4fe"
+            : undefined,
+        }
+    }},
+    menu: base => ({
+        ...base,
+        zIndex: 100,
+        color: 'black'
+    }),
+
+    multiValue: (styles, { data }) => {
+      return {
+        ...styles,
+        backgroundColor: "#d8b4fe",
+      };
+    },
+    multiValueLabel: (styles, { data }) => ({
+      ...styles,
+      color: "#9333ea",
+    }),
+    multiValueRemove: (styles, { data }) => ({
+      ...styles,
+      color: "#9333ea",
+      ':hover': {
+        backgroundColor: "#9333ea",
+        color: 'black',
+      },
+    }),
+
+    input: (styles, { data }) => ({
+      ...styles,
+      color: "black",
+    }),
+    indicatorSeparator: (styles, { data }) => ({
+      ...styles,
+      backgroundColor: "#1f2937",
+    }),
+    indicatorContainer: (styles, { data }) => ({
+      ...styles,
+      color: "#ffffff",
+    }),
+
+    }
+
 
 
