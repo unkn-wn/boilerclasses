@@ -1,6 +1,6 @@
 import json
 
-path = "data/class_gened.json"
+path = "data/gened/class_gened.json"
 f = open(path)
 data = json.load(f)
 
@@ -16,8 +16,8 @@ for tag in data:
   for c in data[tag]:
     sub, code = c.split(" ")
     for i in range(len(out_data)):
-      if out_data[i]["subjectCode"] == sub and out_data[i]["courseCode"] == code:
+      if out_data[i]["subjectCode"] == sub and out_data[i]["courseCode"] == code and tag not in out_data[i]["gened"]:
         out_data[i]["gened"].append(tag)
   
-outfile = open(f"out2.json", "w")
+outfile = open(f"class_out2.json", "w")
 json.dump(out_data, outfile, indent=4)

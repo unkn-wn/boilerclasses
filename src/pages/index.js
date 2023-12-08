@@ -75,7 +75,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm), sub: subParam, term: termParam, gen: genParam});
+      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -145,7 +145,7 @@ const CourseCatalog = () => {
                   setSelectedGenEds(value)
                 }}
               />
-              {/* <Popover placement='bottom-start'>
+              <Popover placement='bottom-start'>
                 <PopoverTrigger>
                   <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
                     <span>Credits</span>
@@ -175,7 +175,7 @@ const CourseCatalog = () => {
                     </div>
                   </PopoverBody>
                 </PopoverContent>
-              </Popover> */}
+              </Popover>
             </div>
           </div>
 
