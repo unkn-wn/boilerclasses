@@ -228,7 +228,7 @@ const Card = ({ course }) => {
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
-              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
                 <div className="flex flex-row gap-2">
                   <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
@@ -236,7 +236,7 @@ const Card = ({ course }) => {
                 </div>
               </a>
               {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
-                <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode}/topics`} target="_blank" rel="noopener noreferrer"
+                <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
                   className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
                   <div className="flex flex-row gap-2">
                     <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
