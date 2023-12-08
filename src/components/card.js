@@ -39,12 +39,13 @@ const Card = ({ course }) => {
   // const [curInstructors, setCurInstructors] = useState([]);
   // const [curGPA, setCurGPA] = useState([]);
   const [sem, setSem] = useState(course.terms[0]);
+  const [gpaGraph, setGpaGraph] = useState({});
 
   const instructors = new Set();
   const availableSemesters = [];
   const boilerExamsCourses = ["MA15800", "MA16010", "MA16100", "MA16200", "MA26100", "MA26200", "MA26500", "MA26600", "MA30300", "CS15900", "CS17700", "CHM11500", "ECON25200", "PHYS17200"];
 
-  const labels = ['A', 'A+', 'A-', 'B', 'B+', 'B-', 'C', 'C+', 'C-', 'D', 'D+', 'D-', 'F', 'AVG'];
+  const labels = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 
   const perc2color = function (perc) {
     var r, g, b = 0;
@@ -71,8 +72,15 @@ const Card = ({ course }) => {
   });
   const uniqueInstructors = [...instructors];
 
-  const changeInstructors = (sem) => {
-    let gpa = [];
+
+
+  /*
+   * MAIN OPEN POPUP FUNCTION
+   */
+  const openPopup = () => {
+
+    // Set graph:
+    const gpa = [];
 
     for (const semester in course.gpa) {
       for (const entry of course.gpa[semester]) {
@@ -99,13 +107,28 @@ const Card = ({ course }) => {
             return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
           });
 
-          gpa.push({ 'label': instructor, 'data': formattedData, 'count': 1 });
+          gpa.push({
+            label: instructor,
+            data: formattedData,
+            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            'count': 1
+          });
         }
       }
     }
 
-    console.log(gpa);
+    setGpaGraph({
+      labels,
+      datasets: gpa
+    });
 
+
+    // set instructors
+    changeInstructors(availableSemesters[0]);
+
+  };
+
+  const changeInstructors = (sem) => {
 
     // setCurGPA((sem in course.gpa) ? course.gpa[sem] : []);
     // console.log(curGPA);
@@ -139,14 +162,14 @@ const Card = ({ course }) => {
     return ret.substring(0, ret.length - 4);
 
   }
-  console.log(perc2color((3.20 * 100 / 4.0)))
-  console.log(perc2color((2.3 * 100 / 4.0)))
+  // console.log(perc2color((3.20 * 100 / 4.0)))
+  // console.log(perc2color((2.3 * 100 / 4.0)))
 
   return (
     <>
       <div className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer"
         onClick={onOpen}
-        onClickCapture={() => changeInstructors(availableSemesters[0])}>
+        onClickCapture={() => openPopup()}>
         <h2 className="lg:text-lg md:text-lg font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
         <p className="lg:text-sm text-sm text-gray-700 font-medium my-1">
           {/* <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[0].split(" ")[0]} ${uniqueInstructors[0].split(" ")[uniqueInstructors[0].split(" ").length - 1]}`}
@@ -225,6 +248,40 @@ const Card = ({ course }) => {
                 ))}
               </p>
             } */}
+
+            {Object.keys(gpaGraph).length !== 0 && (
+              <Bar options={{
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Average Grades by Instructor',
+                  },
+                },
+                scales: {
+                  y: {
+                    title: {
+                      display: true,
+                      text: '% of Students'
+                    }
+                  }
+                }
+              }} data={gpaGraph}
+              // {
+              //   {
+              //     labels,
+              //     datasets: [{
+              //       label: 'test1',
+              //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+              //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
+              //     }]
+              //   }
+              // }
+              />
+            )}
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap">
