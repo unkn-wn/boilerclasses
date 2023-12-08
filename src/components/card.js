@@ -74,31 +74,32 @@ const Card = ({ course }) => {
   const changeInstructors = (sem) => {
     let gpa = [];
 
-    console.log(course.gpa);
+    for (const semester in course.gpa) {
+      for (const entry of course.gpa[semester]) {
+        const instructor = entry[0];
+        const data = entry[1].slice(0, -1).map(Number);
 
-    for (const key in course.gpa) {
-      for (let j = 0; j < course.gpa[key].length; j++) {
-        let data = { 'label': course.gpa[key][j][0] };
+        const existingIndex = gpa.findIndex(item => item.label === instructor);
 
-        const index = gpa.findIndex(item => item.label === course.gpa[key][j][0]);
+        if (existingIndex !== -1) {
+          // Label already exists, update existing data and count
+          let existingData = gpa[existingIndex].data;
+          let count = gpa[existingIndex].count;
 
-        if (index !== -1) {
-          let temp = [...gpa[index].data];
-
-          for (let k = 0; k < temp.length; k++) {
-            temp[k] = (temp[k] + course.gpa[key][j][1][k]) / 2;
+          for (let k = 0; k < existingData.length; k++) {
+            existingData[k] = ((existingData[k] * count + data[k]) / (count + 1)).toFixed(2);
           }
 
-          data['data'] = temp;
-          data['backgroundColor'] = 'rgba(53, 162, 235, 0.5)';
-
-          gpa[index] = data;
+          // Increment the count
+          gpa[existingIndex].count++;
         } else {
-          data['data'] = [...course.gpa[key][j][1]];
+          // Label not found, add new entry with count 1
+          const formattedData = data.map(value => {
+            const roundedValue = value.toFixed(4);
+            return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
+          });
 
-          data['backgroundColor'] = 'rgba(53, 162, 235, 0.5)';
-
-          gpa.push(data);
+          gpa.push({ 'label': instructor, 'data': formattedData, 'count': 1 });
         }
       }
     }
