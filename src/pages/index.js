@@ -47,7 +47,7 @@ const CourseCatalog = () => {
 
   function addSpaceBetweenCharAndDigit(inputString) {
     const regex = /([a-zA-Z])(\d)/g;
-    
+
     const resultString = inputString.replace(regex, '$1 $2');
 
     return resultString;
@@ -75,7 +75,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm), sub: subParam, term: termParam, gen: genParam});
+      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -145,7 +145,7 @@ const CourseCatalog = () => {
                   setSelectedGenEds(value)
                 }}
               />
-              {/* <Popover placement='bottom-start'>
+              <Popover placement='bottom-start'>
                 <PopoverTrigger>
                   <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
                     <span>Credits</span>
@@ -154,7 +154,7 @@ const CourseCatalog = () => {
                 </PopoverTrigger>
                 <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
                   <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
-                    <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}  
+                    <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}
                       onChangeEnd={(val) => {
                         setCreditsMin(Math.round((val[0]*18/100)))
                         setCreditsMax(Math.round((val[1]*18/100)))
@@ -175,7 +175,7 @@ const CourseCatalog = () => {
                     </div>
                   </PopoverBody>
                 </PopoverContent>
-              </Popover> */}
+              </Popover>
             </div>
           </div>
 
@@ -203,10 +203,10 @@ const CourseCatalog = () => {
 
         :
         /* Landing Page */
-        <div className="flex flex-col z-40 grid place-content-center mx-4 h-screen items-center">
-          <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
-            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-28 lg:h-28 cursor-pointer' />
-            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+        <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
+          <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
+            <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 ml-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
+            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           <input
             id="landingSearch"
@@ -215,7 +215,7 @@ const CourseCatalog = () => {
             onChange={(e) => {
               changeLanding(e.target.value);
             }}
-            className="text-white text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+            className="text-white text-sm md:text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           />
         </div >
       }
