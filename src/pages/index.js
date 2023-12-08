@@ -79,6 +79,17 @@ const CourseCatalog = () => {
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
+          //TEMPORAY FIX FOR DESCRIPTIONS
+          //for every item, console log description
+          data['courses']['documents'].map((item) => {
+            //console.log(item.value.description)
+            //If description begins with <a href= then set it to No Description Available
+            if (item.value.description.startsWith("<a href=")) {
+              item.value.description = "No Description Available"
+            }
+          })
+          //END TEMPORARY FIX
+
           setCourses(data['courses']['documents']);
         })
     }
