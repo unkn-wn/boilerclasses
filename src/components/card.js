@@ -1,4 +1,4 @@
-import { semesters } from "../lib/utils"
+import { semesters, graphColors } from "../lib/utils"
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
@@ -89,7 +89,7 @@ const Card = ({ course }) => {
 
     // Set graph:
     const gpa = [];
-
+    let curr = 0;
     for (const semester in course.gpa) {
       for (const entry of course.gpa[semester]) {
         const instructor = entry[0];
@@ -115,11 +115,11 @@ const Card = ({ course }) => {
             return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
           });
 
-          const backgroundColor = perc2color(formattedData[0] * 100 / 4.0);
+          // const backgroundColor = perc2color(formattedData[0] * 100 / 4.0);
           gpa.push({
             label: instructor,
             data: formattedData,
-            backgroundColor: backgroundColor,
+            backgroundColor: graphColors[(curr++) % graphColors.length],
             'count': 1
           });
         }
@@ -309,82 +309,85 @@ const Card = ({ course }) => {
               </p>
             } */}
 
-
+            <div className="flex flex-col gap-4">
             {/* GPA Graph */}
-            {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-              <div className="my-8 w-full h-72 md:h-96 lg:w-3/5">
-                <Select
-                  isMulti
-                  options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
-                  className="basic-multi-select w-full"
-                  classNamePrefix="select"
-                  placeholder="Semester..."
-                  defaultValue={
-                    selectableInstructors.length > 0
-                      ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                      : null
-                  }
-                  styles={instructorStyles}
-                  color="white"
-                  onChange={(value) => {
-                    refreshGraph(value)
-                  }}
-                />
-                <Bar
-                  options={{
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                      legend: {
-                        position: 'top',
-                      },
-                      title: {
-                        display: true,
-                        text: 'Average Grades by Instructor',
-                      },
-                    },
-                    scales: {
-                      y: {
-                        title: {
-                          display: true,
-                          text: '% of Students'
-                        }
-                      }
+              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+                <div className="mt-2 mb-8 w-full h-96 md:h-96">
+                  <Select
+                    isMulti
+                    options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                    className="basic-multi-select w-full no-wrap"
+                    classNamePrefix="select"
+                    placeholder="Instructor..."
+                    defaultValue={
+                      selectableInstructors.length > 0
+                        ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
+                        : null
                     }
-                  }} data={gpaGraph}
-                // {
-                //   {
-                //     labels,
-                //     datasets: [{
-                //       label: 'test1',
-                //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-                //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
-                //     }]
-                //   }
-                // }
-                />
-              </div>
-            )}
-
-
-            {/* Other Links Buttons */}
-            <div className="flex flex-row flex-wrap">
-              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
-                <div className="flex flex-row gap-2">
-                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
-                  Reddit
+                    styles={instructorStyles}
+                    color="white"
+                    onChange={(value) => {
+                      refreshGraph(value)
+                    }}
+                  />
+                  <div className="h-full w-full lg:w-1/2">
+                    <Bar
+                      options={{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: {
+                            position: 'top',
+                          },
+                          title: {
+                            display: true,
+                            text: 'Average Grades by Instructor',
+                          },
+                        },
+                        scales: {
+                          y: {
+                            title: {
+                              display: true,
+                              text: '% of Students'
+                            }
+                          }
+                        }
+                      }} data={gpaGraph}
+                    // {
+                    //   {
+                    //     labels,
+                    //     datasets: [{
+                    //       label: 'test1',
+                    //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                    //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                    //     }]
+                    //   }
+                    // }
+                    />
+                  </div>
                 </div>
-              </a>
-              {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
-                <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
-                  className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
+              )}
+
+
+              {/* Other Links Buttons */}
+              <div className="flex flex-row flex-wrap mt-2">
+                <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
+                  className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
                   <div className="flex flex-row gap-2">
-                    <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
-                    Boilerexams
+                    <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
+                    Reddit
                   </div>
                 </a>
-              }
+                {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
+                  <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
+                    className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
+                    <div className="flex flex-row gap-2">
+                      <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
+                      Boilerexams
+                    </div>
+                  </a>
+                }
+              </div>
             </div>
 
 

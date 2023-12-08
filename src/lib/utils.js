@@ -348,91 +348,95 @@ export const semesterStyles = {
 
 
 
-  export const instructorStyles = {
-    control: (base, state) => ({
-      ...base,
-      borderRadius: "12px",
-      background: "#ffffff",
-      borderColor: '#1f2937',
-      paddingLeft: "4px",
-      color: 'black',
-      ':hover': {
-        borderColor: '#1f2937'
-      },
-      ':focus': {
-        outline: "none"
-      }
-    }),
-    menuList: styles => ({
-        ...styles,
-        borderColor: '#1f2937',
-        background: '#ffffff'
-    }),
-    option: (styles, { isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-        backgroundColor: isDisabled
-          ? undefined
-          : isSelected
-          ? "#9333ea"
-          : isFocused
-          ? "#d8b4fe"
-          : undefined,
-        color: isDisabled
-          ? '#ccc'
-          : isFocused
-          ? "#9333ea"
-          : "black",
-        cursor: isDisabled ? 'not-allowed' : 'default',
-
-        ':active': {
-          ...styles[':active'],
-          backgroundColor: !isDisabled
-            ? isSelected
-              ? "#9333ea"
-              : "#d8b4fe"
-            : undefined,
-        }
-    }},
-    menu: base => ({
-        ...base,
-        zIndex: 100,
-        color: 'black'
-    }),
-
-    multiValue: (styles, { data }) => {
-      return {
-        ...styles,
-        backgroundColor: "#d8b4fe",
-      };
+export const instructorStyles = {
+  control: (base, state) => ({
+    ...base,
+    borderRadius: "12px",
+    background: "#ffffff",
+    borderColor: '#cccccc',
+    paddingLeft: "4px",
+    color: 'black',
+    ':hover': {
+      borderColor: '#cccccc'
     },
-    multiValueLabel: (styles, { data }) => ({
-      ...styles,
-      color: "#9333ea",
-    }),
-    multiValueRemove: (styles, { data }) => ({
-      ...styles,
-      color: "#9333ea",
-      ':hover': {
-        backgroundColor: "#9333ea",
-        color: 'black',
-      },
-    }),
-
-    input: (styles, { data }) => ({
-      ...styles,
-      color: "black",
-    }),
-    indicatorSeparator: (styles, { data }) => ({
-      ...styles,
-      backgroundColor: "#1f2937",
-    }),
-    indicatorContainer: (styles, { data }) => ({
-      ...styles,
-      color: "#ffffff",
-    }),
-
+    ':focus': {
+      outline: "none"
     }
+  }),
+  menuList: styles => ({
+      ...styles,
+      borderColor: '#cccccc',
+      background: '#ffffff'
+  }),
+  option: (styles, { isDisabled, isFocused, isSelected }) => {
+    return {
+      ...styles,
+      backgroundColor: isDisabled
+        ? undefined
+        : isSelected
+        ? "#9333ea"
+        : isFocused
+        ? "#d8b4fe"
+        : undefined,
+      color: isDisabled
+        ? '#ccc'
+        : isFocused
+        ? "#9333ea"
+        : "black",
+      cursor: isDisabled ? 'not-allowed' : 'default',
+
+      ':active': {
+        ...styles[':active'],
+        backgroundColor: !isDisabled
+          ? isSelected
+            ? "#9333ea"
+            : "#d8b4fe"
+          : undefined,
+      }
+  }},
+  menu: base => ({
+      ...base,
+      zIndex: 100,
+      color: 'black'
+  }),
+
+  multiValue: (styles, { data }) => {
+    return {
+      ...styles,
+      backgroundColor: "#d8b4fe"   
+    };
+  },
+  multiValueLabel: (styles, { data }) => ({
+    ...styles,
+    color: "#9333ea",
+  }),
+  multiValueRemove: (styles, { data }) => ({
+    ...styles,
+    color: "#9333ea",
+    ':hover': {
+      backgroundColor: "#9333ea",
+      color: 'black',
+    },
+  }),
+
+  input: (styles, { data }) => ({
+    ...styles,
+    color: "black",
+  }),
+  indicatorSeparator: (styles, { data }) => ({
+    ...styles,
+    backgroundColor: "#cccccc",
+  }),
+  indicatorContainer: (styles, { data }) => ({
+    ...styles,
+    color: "#ffffff",
+  }),
+
+}
 
 
+export const graphColors = [
+    "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6",  "#00FA9A",  "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD", 
+  ];
+    
 
