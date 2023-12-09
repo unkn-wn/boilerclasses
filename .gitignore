@@ -36,6 +36,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-python/.env
+server/.env
 
-class*.json
+server/**/*.json
