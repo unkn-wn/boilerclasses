@@ -24,14 +24,23 @@ structure for data:
 }
 '''
 
+parser = argparse.ArgumentParser(description='in/out files')
+parser.add_argument("-folder", default="data/", dest="folder", help="which folder for original class data: format is 'classes_<year>' ")
+parser.add_argument("-grades", default="data/grades/", dest="gradefolder", help="which folder for the grade data")
+parser.add_argument("-gened", default="data/gened/class_gened.json", dest="genedfile", help="gened JSON file")
+parser.add_argument("-outfile", default="class_out.json", dest="outfile", help="where to write result JSON")
+
+args = parser.parse_args()
+
 
 # combining scraped JSONs into one file
 out = {}
 semesters = []
 all_classes = []
 
-for file_name in os.listdir("data"):
-  path = "data/"+ file_name
+# TODO: solidify matching thing 
+for file_name in os.listdir(args.folder):
+  path = args.folder + file_name
   if "json" not in path:
     continue
   f = open(path)
@@ -79,13 +88,13 @@ for i in range(len(course_data)):
 # adding grade information
 
 print("adding grades....")
-for file_name in tqdm(os.listdir("data/grades")):
+for file_name in tqdm(os.listdir(args.gradefolder)):
   currSubjectCode = ""
   currCourseCode = ""
   currTitle = ""
   currSemester = ""
 
-  grade_file = open("data/grades/" + file_name)
+  grade_file = open(args.gradefolder + file_name)
   grade_data = json.load(grade_file)
 
   for grade in grade_data:
@@ -127,7 +136,7 @@ for i in range(len(course_data)):
   course_data[i]["gpa"] = gpa_data
 
 # adding geneds
-gened_file = open("data/gened/class_gened.json")
+gened_file = open(args.genedfile)
 gened_data = json.load(gened_file)
 
 print("adding geneds.....")
@@ -139,5 +148,7 @@ for tag in tqdm(gened_data):
       if course_data[i]["subjectCode"] == sub and course_data[i]["courseCode"] == code and tag not in course_data[i]["gened"]:
         course_data[i]["gened"].append(tag)
 
-outfile = open("class_out_new.json", "w")
+print(f"writing to {args.outfile}...")
+outfile = open(args.outfile, "w")
 json.dump(course_data, outfile, indent=4)
+print("done!")

@@ -3,22 +3,27 @@ import json
 import redis
 from redis.commands.json.path import Path
 from tqdm import tqdm
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+import argparse
+# load_dotenv()
 
-REDIS_HOST = os.getenv('REDIS_HOST')
-REDIS_PORT = os.getenv('REDIS_PORT')
-REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
+# REDIS_HOST = os.getenv('REDIS_HOST')
+# REDIS_PORT = os.getenv('REDIS_PORT')
+# REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
-r = redis.Redis(host=str(REDIS_HOST), port=str(REDIS_PORT), username="default", password=str(REDIS_PASSWORD))
+r = redis.Redis(host='localhost', port=6379)
+parser = argparse.ArgumentParser(description='data files')
+parser.add_argument("-data", default="class_out.json", dest="infile", help="which file to get data from")
+
+args = parser.parse_args()
 
 count = 1
-path = "class_out.json"
-f = open(path)
+f = open(args.infile)
 data = json.load(f)
 for classData in tqdm(data):
   key = "classes:" + str(count)
   classData["courseCode"] = str(classData["courseCode"])
+  print(classData)
   r.json().set(key, Path.root_path(), classData)
   count += 1
 
