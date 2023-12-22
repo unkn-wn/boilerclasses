@@ -39,6 +39,8 @@ import { instructorStyles } from '@/lib/utils';
 
 
 const Card = ({ course }) => {
+  console.log("hello",course);
+  console.log(course.terms[0]);
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const [curInstructors, setCurInstructors] = useState([]);
   // const [curGPA, setCurGPA] = useState([]);
@@ -163,6 +165,7 @@ const Card = ({ course }) => {
     // setCurGPA((sem in course.gpa) ? course.gpa[sem] : []);
     // console.log(curGPA);
     // setCurInstructors(course.instructor[sem]);
+    console.log("changing semesters!!!!")
     setSem(sem);
     availableSemesters.forEach((otherSem) => {
       if (otherSem !== sem) {
@@ -271,6 +274,10 @@ const Card = ({ course }) => {
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
                 <span className="text-black font-normal text-xs">RateMyProfessor: </span>
+                {console.log(sem)}
+                {console.log(course)}
+                {console.log(course.instructor)}
+                {console.log(course.instructor["Fall 2023"])}
                 {course.instructor[sem].map((prof, i) => (
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                     target="_blank" rel="noopener noreferrer"
