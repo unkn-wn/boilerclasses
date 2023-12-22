@@ -27,8 +27,8 @@ structure for data:
 parser = argparse.ArgumentParser(description='in/out files')
 parser.add_argument("-folder", default="data/", dest="folder", help="which folder for original class data: format is 'classes_<year>' ")
 parser.add_argument("-grades", default="data/grades/", dest="gradefolder", help="which folder for the grade data")
-parser.add_argument("-gened", default="data/gened/class_gened.json", dest="genedfile", help="gened JSON file")
-parser.add_argument("-outfile", default="class_out.json", dest="outfile", help="where to write result JSON")
+parser.add_argument("-gened", default="data/gened/classes_gened.json", dest="genedfile", help="gened JSON file")
+parser.add_argument("-outfile", default="classes_out.json", dest="outfile", help="where to write result JSON")
 
 args = parser.parse_args()
 

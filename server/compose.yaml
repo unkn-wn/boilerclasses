@@ -1,0 +1,13 @@
+services:
+   redis: 
+     image: redis/redis-stack-server:latest
+     ports:
+       - '6379:7501'
+   web:
+      build: .
+      ports:
+          - "7500:7500"
+      volumes:
+          - .
+      depends_on:
+          - redis-stack-server
