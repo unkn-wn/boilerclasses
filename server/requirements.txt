@@ -3,3 +3,4 @@ argparse
 tqdm
 redis
 flask
+flask-cors

@@ -12,9 +12,7 @@ import argparse
 # REDIS_PORT = os.getenv('REDIS_PORT')
 # REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
-subprocess.run(["redis-server", "--loadmodule", "/opt/redis-stack/lib/redisearch.so", "--loadmodule", "/opt/redis-stack/lib/rejson.so", "--port", "7501", "--save", ""])
-
-r = redis.Redis(host='localhost', port=7501)
+r = redis.Redis(host='redis', port=6379)
 parser = argparse.ArgumentParser(description='data files')
 parser.add_argument("-data", default="classes_out.json", dest="infile", help="which file to get data from")
 

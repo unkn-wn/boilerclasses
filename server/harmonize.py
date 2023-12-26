@@ -89,6 +89,8 @@ for i in range(len(course_data)):
 
 print("adding grades....")
 for file_name in tqdm(os.listdir(args.gradefolder)):
+  if "json" not in file_name:
+    continue
   currSubjectCode = ""
   currCourseCode = ""
   currTitle = ""

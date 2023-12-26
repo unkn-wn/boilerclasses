@@ -77,7 +77,7 @@ const CourseCatalog = () => {
       const genParam = selectedGenEds.map((x) => x.value)
       const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm.trim()), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
 
-      fetch('http://127.0.0.1:5000/query?' + params)
+      fetch('http://127.0.0.1:8000/query?' + params)
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
