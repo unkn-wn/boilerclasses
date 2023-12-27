@@ -78,11 +78,10 @@ const CourseCatalog = () => {
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
       const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
-
+      console.log(params)
       fetch('http://127.0.0.1:8000/query?' + params)
         .then((response) => response.json())
         .then((data) => {
-          console.log('m back')
           //TEMPORAY FIX FOR DESCRIPTIONS
           //for every item, console log description
           data.map((item) => {
