@@ -45,18 +45,20 @@ const CourseCatalog = () => {
     setSearchTerm(event);
   }
 
-  function addSpaceBetweenCharAndDigit(inputString) {
-    const regex = /([a-zA-Z])(\d)/g;
-
-    const resultString = inputString.replace(regex, '$1 $2');
-
-    return resultString;
-}
-
+  function transform(query) {
+    query = query.trim()
+    query = query.replaceAll(/[-;+]/g, " "); 
+    query = query.replaceAll(/[~!#%$^&*()\[\]\{\}:'<>,@=|?.`"“”]/g, "");
+    query = query.replaceAll(/[–—…«»‘’]/g, " "); 
+    query = query.replaceAll(/([a-zA-Z])(\d)/g, '$1 $2');
+    query = query.trim()
+    return query;
+  }
+  
 
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), addSpaceBetweenCharAndDigit(searchTerm), creditsMin, creditsMax]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -75,12 +77,12 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: addSpaceBetweenCharAndDigit(searchTerm.trim()), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
+      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
 
       fetch('http://127.0.0.1:8000/query?' + params)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
+          console.log('m back')
           //TEMPORAY FIX FOR DESCRIPTIONS
           //for every item, console log description
           data.map((item) => {

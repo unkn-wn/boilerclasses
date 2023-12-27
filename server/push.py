@@ -12,7 +12,7 @@ import argparse
 # REDIS_PORT = os.getenv('REDIS_PORT')
 # REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
-r = redis.Redis(host='redis', port=6379)
+r = redis.Redis(host='localhost', port=6379)
 parser = argparse.ArgumentParser(description='data files')
 parser.add_argument("-data", default="classes_out.json", dest="infile", help="which file to get data from")
 
