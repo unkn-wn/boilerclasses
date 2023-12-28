@@ -18,6 +18,10 @@ COPY --from=redis-stack /opt/redis-stack/lib/redisearch.so /opt/redis-stack/lib/
 COPY --from=redis-stack /opt/redis-stack/lib/rejson.so /opt/redis-stack/lib/rejson.so
 WORKDIR /home
 RUN npm ci
+RUN npm run build
 WORKDIR /home/server
+
+RUN python3 download.py
+RUN python3 harmonize.py
 
 CMD ["/bin/sh", "script.sh"]
