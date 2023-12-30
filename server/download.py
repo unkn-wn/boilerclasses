@@ -16,6 +16,18 @@ args = parser.parse_args()
 if not os.path.exists('data'):
   os.mkdir("data")
 
+# clearing existing JSON files
+for foldername, subfolders, filenames in os.walk('data'):
+  for filename in filenames:
+
+    file_path = os.path.join(foldername, filename)
+    if "json" in file_path:
+      os.remove(file_path)
+
+for filename in os.listdir(os.getcwd()):
+  if "json" in filename:
+    os.remove(filename)
+
 # download gened
 if not os.path.exists('data/gened'):
   os.mkdir("data/gened")
