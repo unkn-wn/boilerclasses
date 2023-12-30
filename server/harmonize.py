@@ -66,10 +66,13 @@ for class_id in tqdm(all_classes):
         instances.append(class_sem)
         class_data["terms"].append(class_sem["term"])
         class_data["instructor"][class_sem["term"]] = class_sem["instructor"]
+        if "<a href=" not in class_sem["description"]:
+          class_data["description"] = class_sem["description"]
   class_data["title"] = instances[0]["title"]
   class_data["subjectCode"] = s
   class_data["courseCode"] = c
-  class_data["description"] = instances[0]["description"]
+  if "description" not in class_data:
+    class_data["description"] = instances[0]["description"]
   class_data["credits"] = instances[0]["credits"]
   for instance in instances:
     class_data["credits"][0] = min(instance["credits"][0], class_data["credits"][0])

@@ -103,7 +103,7 @@ const CourseCatalog = () => {
       {!displayLanding ?
         <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/favicon.ico' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-2 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer' />
+            <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-12 h-12 mr-4 md:w-20 md:h-20 cursor-pointer' />
             <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           {/* Search Bar */}
