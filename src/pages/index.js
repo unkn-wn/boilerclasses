@@ -78,22 +78,21 @@ const CourseCatalog = () => {
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
       const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
-      console.log(params)
-      fetch('http://127.0.0.1:8000/query?' + params)
+      fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
           //TEMPORAY FIX FOR DESCRIPTIONS
           //for every item, console log description
-          data.map((item) => {
+          data['courses']['documents'].map((item) => {
             //console.log(item.value.description)
             //If description begins with <a href= then set it to No Description Available
-            if (item.data.description.startsWith("<a href=")) {
-              item.data.description = "No Description Available"
+            if (item.value.description.startsWith("<a href=")) {
+              item.value.description = "No Description Available"
             }
           })
           //END TEMPORARY FIX
 
-          setCourses(data);
+          setCourses(data['courses']['documents']);
         })
     }
   };
@@ -195,7 +194,7 @@ const CourseCatalog = () => {
 
           <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
             {courses.map(course => (
-              <Card key={course.id} course={course.data} />
+              <Card key={course.id} course={course.value} />
               // <div key={course.id}
               //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
               //   >
