@@ -1,7 +1,7 @@
 
 import { createClient } from 'redis';
 
-const client = createClient({ url: process.env.REDIS_URL });
+const client = createClient();
 
 async function connect() {
   if (!client.isOpen) {

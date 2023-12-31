@@ -1,8 +1,5 @@
 import { searchCourses } from "../../lib/redis"
 
-// example query: FT.SEARCH idx:classes @title:"Computer Architecture"
-// searchParam structure: q, subjectCode 
-
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     const q = req.query.q.trim();

@@ -88,52 +88,52 @@ const Card = ({ course }) => {
   const openPopup = () => {
 
     // Set graph:
-    const gpa = [];
-    let curr = 0;
-    for (const semester in course.gpa) {
-      for (const entry of course.gpa[semester]) {
-        const instructor = entry[0];
-        const data = entry[1].slice(0, -1).map(Number);
+    // const gpa = [];
+    // let curr = 0;
+    // for (const semester in course.gpa) {
+    //   for (const entry of course.gpa[semester]) {
+    //     const instructor = entry[0];
+    //     const data = entry[1].slice(0, -1).map(Number);
 
-        const existingIndex = gpa.findIndex(item => item.label === instructor);
+    //     const existingIndex = gpa.findIndex(item => item.label === instructor);
 
-        if (existingIndex !== -1) {
-          // Label already exists, update existing data and count
-          let existingData = gpa[existingIndex].data;
-          let count = gpa[existingIndex].count;
+    //     if (existingIndex !== -1) {
+    //       // Label already exists, update existing data and count
+    //       let existingData = gpa[existingIndex].data;
+    //       let count = gpa[existingIndex].count;
 
-          for (let k = 0; k < existingData.length; k++) {
-            existingData[k] = ((existingData[k] * count + data[k]) / (count + 1)).toFixed(2);
-          }
+    //       for (let k = 0; k < existingData.length; k++) {
+    //         existingData[k] = ((existingData[k] * count + data[k]) / (count + 1)).toFixed(2);
+    //       }
 
-          // Increment the count
-          gpa[existingIndex].count++;
-        } else {
-          // Label not found, add new entry with count 1
-          const formattedData = data.map(value => {
-            const roundedValue = value.toFixed(4);
-            return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
-          });
+    //       // Increment the count
+    //       gpa[existingIndex].count++;
+    //     } else {
+    //       // Label not found, add new entry with count 1
+    //       const formattedData = data.map(value => {
+    //         const roundedValue = value.toFixed(4);
+    //         return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
+    //       });
 
-          // const backgroundColor = perc2color(formattedData[0] * 100 / 4.0);
-          gpa.push({
-            label: instructor,
-            data: formattedData,
-            backgroundColor: graphColors[(curr++) % graphColors.length],
-            'count': 1
-          });
-        }
-      }
-    }
+    //       // const backgroundColor = perc2color(formattedData[0] * 100 / 4.0);
+    //       gpa.push({
+    //         label: instructor,
+    //         data: formattedData,
+    //         backgroundColor: graphColors[(curr++) % graphColors.length],
+    //         'count': 1
+    //       });
+    //     }
+    //   }
+    // }
 
-    setGpaGraph({
-      labels,
-      datasets: gpa
-    });
-    setDefaultGPA({
-      labels,
-      datasets: gpa
-    });
+    // setGpaGraph({
+    //   labels,
+    //   datasets: gpa
+    // });
+    // setDefaultGPA({
+    //   labels,
+    //   datasets: gpa
+    // });
 
 
     // Set selectable instructors
@@ -154,9 +154,9 @@ const Card = ({ course }) => {
 
   };
 
-  useEffect(() => {
-    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
-  }, [selectableInstructors]);
+  // useEffect(() => {
+  //   refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
+  // }, [selectableInstructors]);
 
   const changeInstructors = (sem) => {
 
@@ -271,6 +271,7 @@ const Card = ({ course }) => {
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
                 <span className="text-black font-normal text-xs">RateMyProfessor: </span>
+
                 {course.instructor[sem].map((prof, i) => (
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                     target="_blank" rel="noopener noreferrer"
