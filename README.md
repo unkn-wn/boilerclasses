@@ -45,7 +45,16 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    ```
    npm run dev
    ```
-   Now, you can make changes within the Next.js app and have them reflect in real-time at `localhost:3000`!
+   Now, you can make changes within the Next.js app and have them reflect in real-time at `localhost:3000`.
+
+   PS: if you look at the Dockerfile, you can see that these exact commands are run!
+
+# Data Collection
+There are four scripts in the `server` directory that aid with data collection:
+1. `scrape.py` scrapes a particular semester's data from Purdue's catalog. Generates a singular JSON file for a semester.
+3. `download.py` either downloads the data from our [S3 bucket](https://s3.amazonaws.com/boilerclasses), or runs `scrape.py` for every semester. The default is downloading because it's faster.
+4. `harmonize.py` combines all the JSON files downloaded and makes one JSON containing all the data required.
+5. `push.py` pushes the data from the resultant JSON from `harmonize.py` to the Redis instance.
 
 
 # Future Improvements
