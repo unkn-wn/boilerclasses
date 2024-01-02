@@ -13,9 +13,10 @@ const Footer = () => {
                         <Image src="https://icones.pro/wp-content/uploads/2021/06/icone-github-grise.png" alt="" boxSize={4} />
                         BoilerClasses
                     </a>
+                    {/* <p>&nbsp;(last deployed 1/2/24)</p> */}
                 </div>
                 is an unofficial catalogue for Purdue courses made by Purdue students. <br />
-                We'd love to hear your <a href="https://forms.gle/jtpLPbXm4X4RFoNh6" target="_black" rel="noopener noreferrer" className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</a>! 
+                We'd love to hear your <a href="https://forms.gle/jtpLPbXm4X4RFoNh6" target="_black" rel="noopener noreferrer" className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</a>!
                 Inspired by <a href='https://classes.wtf/' target='_blank' rel='noopener noreferrer' className='underline decoration-dashed decoration-1 underline-offset-2'>classes.wtf</a><br />
             </p>
         </div>

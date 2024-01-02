@@ -41,7 +41,7 @@ import { instructorStyles } from '@/lib/utils';
 const Card = ({ course }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const [curInstructors, setCurInstructors] = useState([]);
-  // const [curGPA, setCurGPA] = useState([]);
+  const [curGPA, setCurGPA] = useState({});
   const [sem, setSem] = useState(course.terms[0]);
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
@@ -88,11 +88,13 @@ const Card = ({ course }) => {
   const openPopup = () => {
 
     // Set graph
-    const gpa = [];
+    const grades = [];
+    const gpa = {};
     let curr = 0;
     for (const instructor in course.gpa) {
 
-      gpa.push({
+      gpa[instructor] = course.gpa[instructor][13];
+      grades.push({
         label: instructor,
         data: course.gpa[instructor],
         backgroundColor: graphColors[(curr++) % graphColors.length]
@@ -102,12 +104,13 @@ const Card = ({ course }) => {
 
     setGpaGraph({
       labels,
-      datasets: gpa
+      datasets: grades
     });
     setDefaultGPA({
       labels,
-      datasets: gpa
+      datasets: grades
     });
+    setCurGPA(gpa);
 
 
     // Set selectable instructors
@@ -273,21 +276,22 @@ const Card = ({ course }) => {
             </div>
 
             <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
-            {/* {(sem in course.gpa) &&
+            {/* {(curGPA) && (
               <p className="lg:text-sm text-sm mb-2 text-gray-800">
                 <span className="text-black font-normal text-xs mb-2">BoilerGrades Average GPAs: </span>
-                {course.gpa[sem].map((prof, i) => (
-                  <p>
-                    {prof[0]}: {prof[1]}
+                {Object.entries(curGPA).map(([instructor, GPA], i) => (
+                  <p key={i}>
+                    {instructor}: {GPA}
                   </p>
                 ))}
               </p>
-            } */}
+            )} */}
+
 
             <div className="flex flex-col">
-            {/* GPA Graph */}
+              {/* GPA Graph */}
               {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-                <div className="mt-2 mb-8 w-full h-96 md:h-96">
+                <div className="mt-2 mb-8 w-full h-full">
                   <Select
                     isMulti
                     options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
@@ -305,7 +309,7 @@ const Card = ({ course }) => {
                       refreshGraph(value)
                     }}
                   />
-                  <div className="h-full w-full lg:w-1/2">
+                  <div className="h-96 w-full lg:w-1/2">
                     <Bar
                       options={{
                         responsive: true,
