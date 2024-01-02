@@ -87,64 +87,35 @@ const Card = ({ course }) => {
    */
   const openPopup = () => {
 
-    // Set graph:
-    // const gpa = [];
-    // let curr = 0;
-    // for (const semester in course.gpa) {
-    //   for (const entry of course.gpa[semester]) {
-    //     const instructor = entry[0];
-    //     const data = entry[1].slice(0, -1).map(Number);
+    // Set graph
+    const gpa = [];
+    let curr = 0;
+    for (const instructor in course.gpa) {
 
-    //     const existingIndex = gpa.findIndex(item => item.label === instructor);
+      gpa.push({
+        label: instructor,
+        data: course.gpa[instructor],
+        backgroundColor: graphColors[(curr++) % graphColors.length]
+      });
 
-    //     if (existingIndex !== -1) {
-    //       // Label already exists, update existing data and count
-    //       let existingData = gpa[existingIndex].data;
-    //       let count = gpa[existingIndex].count;
+    }
 
-    //       for (let k = 0; k < existingData.length; k++) {
-    //         existingData[k] = ((existingData[k] * count + data[k]) / (count + 1)).toFixed(2);
-    //       }
-
-    //       // Increment the count
-    //       gpa[existingIndex].count++;
-    //     } else {
-    //       // Label not found, add new entry with count 1
-    //       const formattedData = data.map(value => {
-    //         const roundedValue = value.toFixed(4);
-    //         return parseFloat(roundedValue) === value ? value.toFixed(0) : roundedValue;
-    //       });
-
-    //       // const backgroundColor = perc2color(formattedData[0] * 100 / 4.0);
-    //       gpa.push({
-    //         label: instructor,
-    //         data: formattedData,
-    //         backgroundColor: graphColors[(curr++) % graphColors.length],
-    //         'count': 1
-    //       });
-    //     }
-    //   }
-    // }
-
-    // setGpaGraph({
-    //   labels,
-    //   datasets: gpa
-    // });
-    // setDefaultGPA({
-    //   labels,
-    //   datasets: gpa
-    // });
+    setGpaGraph({
+      labels,
+      datasets: gpa
+    });
+    setDefaultGPA({
+      labels,
+      datasets: gpa
+    });
 
 
     // Set selectable instructors
 
     const selectableInstructors = [];
-    for (const semester in course.gpa) {
-      for (const entry of course.gpa[semester]) {
-        const instructor = entry[0];
-        if (!selectableInstructors.includes(instructor)) {
-          selectableInstructors.push(instructor);
-        }
+    for (const instructor in course.gpa) {
+      if (!selectableInstructors.includes(instructor)) {
+        selectableInstructors.push(instructor);
       }
     }
     setSelectableInstructors(selectableInstructors);
@@ -154,9 +125,12 @@ const Card = ({ course }) => {
 
   };
 
-  // useEffect(() => {
-  //   refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
-  // }, [selectableInstructors]);
+
+  // This is used to set default instructor on the multiselect
+  useEffect(() => {
+    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
+  }, [selectableInstructors]);
+
 
   const changeInstructors = (sem) => {
 
@@ -312,7 +286,7 @@ const Card = ({ course }) => {
 
             <div className="flex flex-col">
             {/* GPA Graph */}
-              {/* {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
                 <div className="mt-2 mb-8 w-full h-96 md:h-96">
                   <Select
                     isMulti
@@ -367,7 +341,7 @@ const Card = ({ course }) => {
                     />
                   </div>
                 </div>
-              )} */}
+              )}
 
 
               {/* Other Links Buttons */}
