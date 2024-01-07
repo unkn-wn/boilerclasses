@@ -53,19 +53,19 @@ const Card = ({ course }) => {
 
   const labels = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 
-  const perc2color = function (perc) {
-    var r, g, b = 0;
-    if (perc < 50) {
-      r = 255;
-      g = Math.round(5.1 * perc);
-    }
-    else {
-      g = 255;
-      r = Math.round(510 - 5.10 * perc);
-    }
-    var h = r * 0x10000 + g * 0x100 + b * 0x1;
-    return '#' + ('000000' + h.toString(16)).slice(-6);
-  }
+  // const perc2color = function (perc) {
+  //   var r, g, b = 0;
+  //   if (perc < 50) {
+  //     r = 255;
+  //     g = Math.round(5.1 * perc);
+  //   }
+  //   else {
+  //     g = 255;
+  //     r = Math.round(510 - 5.10 * perc);
+  //   }
+  //   var h = r * 0x10000 + g * 0x100 + b * 0x1;
+  //   return '#' + ('000000' + h.toString(16)).slice(-6);
+  // }
 
 
   semesters.forEach((sem) => {
@@ -299,7 +299,7 @@ const Card = ({ course }) => {
                 ))}
               </div>
             }
-            
+
 
 
             <div className="flex flex-col">

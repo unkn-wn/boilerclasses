@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js';
-import {  MultiSelectTheme } from 'chakra-multiselect'
+import { MultiSelectTheme } from 'chakra-multiselect'
 import { Analytics } from '@vercel/analytics/react';
 import Head from "next/head";
 
@@ -18,8 +18,8 @@ export default function App({ Component, pageProps }) {
       <Analytics />
       <Head>
         <title>BoilerClasses</title>
-        <script 
-          async 
+        <script
+          async
           src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
         />
         <script
