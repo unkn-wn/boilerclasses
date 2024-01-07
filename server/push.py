@@ -25,20 +25,18 @@ f = open(args.infile)
 data = json.load(f)
 for classData in tqdm(data):
   key = "classes:" + str(count)
-  classData["courseCode"] = str(classData["courseCode"])
   r.json().set(key, Path.root_path(), classData)
   count += 1
 
 # create index
 r.execute_command("FT.CREATE", "idx:classes", "ON", "JSON", "PREFIX", "1", 
               "classes:", "SCHEMA", 
-              "$.title", "AS", "title", "TEXT", "WEIGHT", "2", 
+              "$.fullTitle", "AS", "fullTitle", "TEXT", "WEIGHT", "3", "NOSTEM",
               "$.description", "AS", "description", "TEXT", 
               "$.subjectCode", "AS", "subjectCode", "TAG", 
               "$.terms[*]", "AS", "terms", "TAG", 
-              "$.courseCode", "AS", "courseCode", "TEXT", "WEIGHT", "3", "NOSTEM", 
-              "$.instructor[*][*]", "as", "instructor", "TEXT", "NOSTEM", 
-              "$.subjectCode", "AS", "subjectCodeTerm", "TEXT", 
+              "$.courseCode", "AS", "courseCode", "NUMERIC",
+              "$.instructor[*][*]", "AS", "instructor", "TEXT", "NOSTEM", 
               "$.credits[0]", "AS", "creditMin", "NUMERIC", 
               "$.credits[1]", "as", "creditMax", "NUMERIC", 
               "$.gened[*]", "AS", "gened", "TAG")

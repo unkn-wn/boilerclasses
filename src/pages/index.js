@@ -12,18 +12,13 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
-  PopoverCloseButton,
-  Button,
-  PopoverFooter,
-  FormControl,
-  FormLabel,
-  FormHelperText,
+  Stack,
   RangeSlider,
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
+  Checkbox
 } from '@chakra-ui/react'
 
 import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions } from '@/lib/utils';
@@ -36,6 +31,8 @@ const CourseCatalog = () => {
   const [selectedGenEds, setSelectedGenEds] = useState([]);
   const [creditsMin, setCreditsMin] = useState(0);
   const [creditsMax, setCreditsMax] = useState(18);
+  const [levelMin, setLevelMin] = useState(100);
+  const [levelMax, setLevelMax] = useState(900);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLanding, setDisplayLanding] = useState(true);
@@ -58,7 +55,7 @@ const CourseCatalog = () => {
 
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, levelMin, levelMax]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -77,7 +74,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax});
+      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, lmin: levelMin, lmax: levelMax});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -185,6 +182,37 @@ const CourseCatalog = () => {
                     </RangeSlider>
                     <div className='text-white'>
                       {creditsMin} - {creditsMax} Credits
+                    </div>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+              <Popover placement='bottom-start'>
+                <PopoverTrigger>
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                    <span>Level</span>
+                    <ChevronDownIcon color='gray-800' />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
+                  <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
+                  <RangeSlider aria-label={['min', 'max']} defaultValue={[100, 900]} step={100} min={100} max={900}
+                    onChangeEnd={(val) => {
+                      setLevelMin(val[0])
+                      setLevelMax(val[1])
+                    }}
+                    onChangeStart={(val) => {
+                      setLevelMin(val[0])
+                      setLevelMax(val[1])
+                    }}
+                    >
+                      <RangeSliderTrack>
+                        <RangeSliderFilledTrack />
+                      </RangeSliderTrack>
+                      <RangeSliderThumb index={0} />
+                      <RangeSliderThumb index={1} />
+                    </RangeSlider>
+                    <div className='text-white'>
+                      Course levels: [{levelMin}, {levelMax}]
                     </div>
                   </PopoverBody>
                 </PopoverContent>

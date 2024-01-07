@@ -286,6 +286,20 @@ const Card = ({ course }) => {
                 ))}
               </p>
             )} */}
+            { course.gened.length > 0 &&
+              <div className="flex flex-row flex-wrap gap-1 mb-4">
+                <span className={`text-md whitespace-nowrap transition-all`}>
+                  Satisfies general education requirements for:
+                </span>
+                {course.gened.map((gened, i) => (
+                  <span className={`text-md font-semibold whitespace-nowrap transition-all`}
+                    key={i}>
+                      {gened}{i != course.gened.length - 1 && ", "}
+                  </span>
+                ))}
+              </div>
+            }
+            
 
 
             <div className="flex flex-col">
