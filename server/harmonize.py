@@ -153,6 +153,18 @@ for tag in tqdm(gened_data):
       if course_data[i]["subjectCode"] == sub and course_data[i]["courseCode"] == code and tag not in course_data[i]["gened"]:
         course_data[i]["gened"].append(tag)
 
+invalid_indices = []
+for i in range(len(course_data)):
+  course_data[i]["fullTitle"] = " ".join([course_data[i]["subjectCode"], course_data[i]["courseCode"], course_data[i]["title"]])
+  # THTR T1200 seems to be an issue here, can just remove (it is outdated)
+  try:
+    course_data[i]["courseCode"] = int(course_data[i]["courseCode"])
+  except:
+    invalid_indices.append(i)
+
+for idx in invalid_indices:
+  course_data.pop(idx)
+
 print(f"writing to {args.outfile}...")
 outfile = open(args.outfile, "w")
 json.dump(course_data, outfile, indent=4)

@@ -9,10 +9,10 @@ async function connect() {
   }
 }
 
-export async function searchCourses(q, sub, term, gen, cmin, cmax) {
+export async function searchCourses(q, sub, term, gen, cmin, cmax, lmin, lmax) {
   await connect();
   try {
-    const res = await client.ft.search('idx:classes', `${q}${q.trim().length > 0 ? "*" : ""}${sub[0].length > 0 ? ` @subjectCode:{${sub.join("|")}}` : ""}${term[0].length > 0 ? ` @terms:{${term.join("|")}}` : ""}${gen[0].length > 0 ? gen.map((g) => ` @gened:{${g}}`) : ""} (@creditMin:[${cmin}, ${cmax}] | @creditMax:[${cmin}, ${cmax}])`, {
+    const res = await client.ft.search('idx:classes', `${q}${q.trim().length > 0 ? "*" : ""}${sub[0].length > 0 ? ` @subjectCode:{${sub.join("|")}}` : ""}${term[0].length > 0 ? ` @terms:{${term.join("|")}}` : ""}${gen[0].length > 0 ? gen.map((g) => ` @gened:{${g}}`) : ""} (@creditMin:[${cmin}, ${cmax}] | @creditMax:[${cmin}, ${cmax}]) @courseCode:[${lmin*100}, ${lmax*100}]`, {
       LIMIT: { size: 100, from: 0 }
     });
     return res;
