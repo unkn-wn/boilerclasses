@@ -31,7 +31,7 @@ for classData in tqdm(data):
 # create index
 r.execute_command("FT.CREATE", "idx:classes", "ON", "JSON", "PREFIX", "1", 
               "classes:", "SCHEMA", 
-              "$.fullTitle", "AS", "fullTitle", "TEXT", "WEIGHT", "3", "NOSTEM",
+              "$.fullTitle", "AS", "fullTitle", "TEXT", "WEIGHT", "50", 
               "$.description", "AS", "description", "TEXT", 
               "$.subjectCode", "AS", "subjectCode", "TAG", 
               "$.terms[*]", "AS", "terms", "TAG", 
