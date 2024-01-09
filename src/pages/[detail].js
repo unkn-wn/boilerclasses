@@ -1,6 +1,7 @@
 import { semesters } from "../lib/utils"
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Select from 'react-select';
 
 import {
   Image
@@ -27,6 +28,9 @@ ChartJS.register(
 );
 
 import { instructorStyles } from '@/lib/utils';
+import { graphColors } from '@/lib/utils';
+import { boilerExamsCourses } from '@/lib/utils';
+import { labels } from '@/lib/utils';
 
 
 const CardDetails = () => {
@@ -43,13 +47,8 @@ const CardDetails = () => {
   const [selectableInstructors, setSelectableInstructors] = useState([]);
 
 
-
-
   const instructors = new Set();
   const availableSemesters = [];
-  const boilerExamsCourses = ["MA15800", "MA16010", "MA16100", "MA16200", "MA26100", "MA26200", "MA26500", "MA26600", "MA30300", "CS15900", "CS17700", "CHM11500", "ECON25200", "PHYS17200"];
-
-  const labels = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 
 
   semesters.forEach((sem) => {
@@ -60,63 +59,6 @@ const CardDetails = () => {
       }
     } catch { }
   });
-  const uniqueInstructors = [...instructors];
-
-
-  /*
-   *
-   * MAIN OPEN POPUP FUNCTION
-   *
-   */
-  const openPopup = () => {
-
-    // Set graph
-    const grades = [];
-    const gpa = {};
-    let curr = 0;
-    for (const instructor in course.gpa) {
-
-      gpa[instructor] = course.gpa[instructor][13];
-      grades.push({
-        label: instructor,
-        data: course.gpa[instructor],
-        backgroundColor: graphColors[(curr++) % graphColors.length]
-      });
-
-    }
-
-    setGpaGraph({
-      labels,
-      datasets: grades
-    });
-    setDefaultGPA({
-      labels,
-      datasets: grades
-    });
-    setCurGPA(gpa);
-
-
-    // Set selectable instructors
-
-    const selectableInstructors = [];
-    for (const instructor in course.gpa) {
-      if (!selectableInstructors.includes(instructor)) {
-        selectableInstructors.push(instructor);
-      }
-    }
-    setSelectableInstructors(selectableInstructors);
-
-    // set instructors
-    changeInstructors(availableSemesters[0]);
-
-  };
-
-
-  // This is used to set default instructor on the multiselect
-  // useEffect(() => {
-  //   refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
-  // }, [selectableInstructors]);
-
 
   const changeInstructors = (sem) => {
 
@@ -136,6 +78,57 @@ const CardDetails = () => {
       document.getElementById(sem).classList.add("bg-sky-300");
     } catch { }
   }
+
+  useEffect(() => {
+    if (course) {
+      // Set graph
+      const grades = [];
+      const gpa = {};
+      let curr = 0;
+      for (const instructor in course.gpa) {
+
+        gpa[instructor] = course.gpa[instructor][13];
+        grades.push({
+          label: instructor,
+          data: course.gpa[instructor],
+          backgroundColor: graphColors[(curr++) % graphColors.length]
+        });
+
+      }
+
+      setGpaGraph({
+        labels,
+        datasets: grades
+      });
+      setDefaultGPA({
+        labels,
+        datasets: grades
+      });
+      setCurGPA(gpa);
+
+
+      // Set selectable instructors
+
+      const instrs = [];
+      for (const instructor in course.gpa) {
+        if (!instrs.includes(instructor)) {
+          instrs.push(instructor);
+        }
+      }
+      setSelectableInstructors(instrs);
+
+      // set instructors
+      changeInstructors(availableSemesters[0]);
+
+    }
+  }, []);
+
+
+  // This is used to set default instructor on the multiselect
+  useEffect(() => {
+    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
+  }, []);
+
 
   const getSearchableProfString = () => {
     //create ret string = ""
@@ -173,7 +166,7 @@ const CardDetails = () => {
   };
 
   return (
-    <div className="bg-white static h-screen p-5">
+    <div className="bg-white overflow-auto h-screen p-5">
       <h2 className="lg:text-3xl md:text-3xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
       <br />
       <div className="flex flex-col gap-4 -mt-3 mb-2">
@@ -202,7 +195,6 @@ const CardDetails = () => {
         </p>
 
       </div>
-      {/* ${perc2color((prof[1]*100)/4.0)} */}
 
       {/* Semester Tags */}
       <div className="flex flex-row flex-wrap gap-1 mb-4">
