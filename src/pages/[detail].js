@@ -127,7 +127,7 @@ const CardDetails = () => {
   // This is used to set default instructor on the multiselect
   useEffect(() => {
     refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
-  }, []);
+  }, [selectableInstructors]);
 
 
   const getSearchableProfString = () => {
@@ -167,48 +167,93 @@ const CardDetails = () => {
 
   return (
     <div className="bg-white overflow-auto h-screen p-5">
-      <h2 className="lg:text-3xl md:text-3xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
-      <br />
-      <div className="flex flex-col gap-4 -mt-3 mb-2">
-        {/* Credits Display */}
-        <p className="text-sm text-gray-700 font-bold">
-          {course.credits[0] === course.credits[1]
-            ? `${course.credits[0]} Credits`
-            : `${course.credits[0]} - ${course.credits[1]} Credits`}
-        </p>
-        {/* <p>{course.gpa[""]}</p> */}
+      <div className="flex md:flex-row flex-col md:gap-4">
 
-        {/* Instructors Display */}
-        <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
-          <span className="text-black font-normal text-xs">RateMyProfessor: </span>
+        {/* Left half of panel */}
+        <div className="flex flex-col w-full md:w-1/2">
+          <h2 className="lg:text-3xl md:text-3xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
+          <br />
+          <div className="flex flex-col gap-4 -mt-3 mb-2">
+            <div className="flex flex-row flex-wrap gap-3">
 
-          {course.instructor[sem].map((prof, i) => (
-            <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-              target="_blank" rel="noopener noreferrer"
-              className='underline decoration-dotted'
-              key={i}>
-              {prof}
-              {i < course.instructor[sem].length - 1 && ", "}
+              {/* Credits Display */}
+              <p className="text-sm text-gray-700 font-bold">
+                {course.credits[0] === course.credits[1]
+                  ? `${course.credits[0]} Credits`
+                  : `${course.credits[0]} - ${course.credits[1]} Credits`}
+              </p>
+
+
+              {/* GenEds Display */}
+              {course.gened.length > 0 &&
+                <>
+                  <span className="h-100 w-0.5 bg-black rounded"></span>
+
+                  <div className="flex flex-row flex-wrap gap-1">
+                    {course.gened.map((gened, i) => (
+                      <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-300 border-sky-500 whitespace-nowrap transition-all`}
+                        key={i}>
+                        {gened}{i != course.gened.length - 1 && ", "}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              }
+            </div>
+            {/* <p>{course.gpa[""]}</p> */}
+
+            {/* Instructors Display */}
+            <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
+              <span className="text-black font-normal text-xs">RateMyProfessor: </span>
+
+              {course.instructor[sem].map((prof, i) => (
+                <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className='underline decoration-dotted'
+                  key={i}>
+                  {prof}
+                  {i < course.instructor[sem].length - 1 && ", "}
+                </a>
+              )
+              )}
+            </p>
+
+          </div>
+
+          {/* Semester Tags */}
+          {/* <div className="flex flex-row flex-wrap gap-1 mb-4">
+            {availableSemesters.map((sem, i) => (
+              <button className={`text-xs px-2 py-1 rounded-full border-solid border
+                                        ${i === 0 ? "bg-sky-300" : ""} border-sky-500 whitespace-nowrap transition-all`}
+                key={i}
+                id={sem}
+                onClick={() => changeInstructors(sem)}>{sem}</button>
+            ))}
+          </div> */}
+
+
+          {/* Other Links Buttons */}
+          <div className="flex flex-row flex-wrap">
+            <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
+              className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
+              <div className="flex flex-row gap-2">
+                <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
+                Reddit
+              </div>
             </a>
-          )
-          )}
-        </p>
+            {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
+              <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
+                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
+                <div className="flex flex-row gap-2">
+                  <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
+                  Boilerexams
+                </div>
+              </a>
+            }
+          </div>
 
-      </div>
-
-      {/* Semester Tags */}
-      <div className="flex flex-row flex-wrap gap-1 mb-4">
-        {availableSemesters.map((sem, i) => (
-          <button className={`text-xs px-2 py-1 rounded-full border-solid border
-                                    ${i === 0 ? "bg-sky-300" : ""} border-sky-500 whitespace-nowrap transition-all`}
-            key={i}
-            id={sem}
-            onClick={() => changeInstructors(sem)}>{sem}</button>
-        ))}
-      </div>
-
-      <p className="text-md text-gray-800 mb-4 break-words grow">{course.description}</p>
-      {/* {(curGPA) && (
+          <p className="text-md text-gray-800 mt-4 mb-4 break-words grow">{course.description}</p>
+          {/* {(curGPA) && (
               <p className="lg:text-sm text-sm mb-2 text-gray-800">
                 <span className="text-black font-normal text-xs mb-2">BoilerGrades Average GPAs: </span>
                 {Object.entries(curGPA).map(([instructor, GPA], i) => (
@@ -218,102 +263,72 @@ const CardDetails = () => {
                 ))}
               </p>
             )} */}
-      {course.gened.length > 0 &&
-        <div className="flex flex-row flex-wrap gap-1 mb-4">
-          <span className={`text-md whitespace-nowrap transition-all`}>
-            Satisfies general education requirements for:
-          </span>
-          {course.gened.map((gened, i) => (
-            <span className={`text-md font-semibold whitespace-nowrap transition-all`}
-              key={i}>
-              {gened}{i != course.gened.length - 1 && ", "}
-            </span>
-          ))}
         </div>
-      }
 
 
-
-      <div className="flex flex-col">
-        {/* GPA Graph */}
-        {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-          <div className="mt-2 mb-8 w-full h-full">
-            <Select
-              isMulti
-              options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
-              className="basic-multi-select w-full no-wrap"
-              classNamePrefix="select"
-              placeholder="Instructor..."
-              defaultValue={
-                selectableInstructors.length > 0
-                  ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                  : null
-              }
-              styles={instructorStyles}
-              color="white"
-              onChange={(value) => {
-                refreshGraph(value)
-              }}
-            />
-            <div className="h-96 w-full lg:w-1/2">
-              <Bar
-                options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: {
-                      position: 'top',
-                    },
-                    title: {
-                      display: true,
-                      text: 'Average Grades by Instructor',
-                    },
-                  },
-                  scales: {
-                    y: {
+        {/* Right half of panel */}
+        <div className="flex flex-col w-full md:w-1/2">
+          {/* GPA Graph */}
+          {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+            <div className="mt-2 mb-8 w-full h-full">
+              <div className="h-96 w-full mb-4">
+                <Bar
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        position: 'top',
+                      },
                       title: {
                         display: true,
-                        text: '% of Students'
+                        text: 'Average Grades by Instructor',
+                      },
+                    },
+                    scales: {
+                      y: {
+                        title: {
+                          display: true,
+                          text: '% of Students'
+                        }
                       }
                     }
-                  }
-                }} data={gpaGraph}
-              // {
-              //   {
-              //     labels,
-              //     datasets: [{
-              //       label: 'test1',
-              //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-              //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
-              //     }]
-              //   }
-              // }
+                  }} data={gpaGraph}
+                // {
+                //   {
+                //     labels,
+                //     datasets: [{
+                //       label: 'test1',
+                //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                //     }]
+                //   }
+                // }
+                />
+              </div>
+              <Select
+                isMulti
+                options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                className="basic-multi-select w-full no-wrap"
+                classNamePrefix="select"
+                placeholder="Instructor..."
+                defaultValue={
+                  selectableInstructors.length > 0
+                    ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
+                    : null
+                }
+                styles={instructorStyles}
+                color="white"
+                onChange={(value) => {
+                  refreshGraph(value)
+                }}
               />
             </div>
-          </div>
-        )}
-
-
-        {/* Other Links Buttons */}
-        <div className="flex flex-row flex-wrap">
-          <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
-            className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
-            <div className="flex flex-row gap-2">
-              <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
-              Reddit
-            </div>
-          </a>
-          {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
-            <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
-              className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
-              <div className="flex flex-row gap-2">
-                <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
-                Boilerexams
-              </div>
-            </a>
-          }
+          )}
         </div>
       </div>
+
+
     </div>
   );
 
