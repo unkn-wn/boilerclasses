@@ -354,12 +354,12 @@ export const instructorStyles = {
   control: (base, state) => ({
     ...base,
     borderRadius: "12px",
-    background: "#ffffff",
-    borderColor: '#cccccc',
+    background: "#1f2937",
+    borderColor: '#34455d',
     paddingLeft: "4px",
-    color: 'black',
+    color: 'white',
     ':hover': {
-      borderColor: '#cccccc'
+      borderColor: '#496183'
     },
     ':focus': {
       outline: "none"
@@ -367,8 +367,8 @@ export const instructorStyles = {
   }),
   menuList: styles => ({
     ...styles,
-    borderColor: '#cccccc',
-    background: '#ffffff'
+    borderColor: '#1f2937',
+    background: '#151f2a'
   }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
@@ -376,23 +376,23 @@ export const instructorStyles = {
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-          ? "#9333ea"
+          ? "#fff"
           : isFocused
-            ? "#d8b4fe"
+            ? "#34455d"
             : undefined,
       color: isDisabled
         ? '#ccc'
         : isFocused
-          ? "#9333ea"
-          : "black",
+          ? "#fff"
+          : "white",
       cursor: isDisabled ? 'not-allowed' : 'default',
 
       ':active': {
         ...styles[':active'],
         backgroundColor: !isDisabled
           ? isSelected
-            ? "#9333ea"
-            : "#d8b4fe"
+            ? "#fff"
+            : "#34455d"
           : undefined,
       }
     }
@@ -400,39 +400,39 @@ export const instructorStyles = {
   menu: base => ({
     ...base,
     zIndex: 100,
-    color: 'black'
+    color: 'white'
   }),
 
   multiValue: (styles, { data }) => {
     return {
       ...styles,
-      backgroundColor: "#d8b4fe"
+      backgroundColor: "#34455d"
     };
   },
   multiValueLabel: (styles, { data }) => ({
     ...styles,
-    color: "#9333ea",
+    color: "#fff",
   }),
   multiValueRemove: (styles, { data }) => ({
     ...styles,
-    color: "#9333ea",
+    color: "#fff",
     ':hover': {
-      backgroundColor: "#9333ea",
-      color: 'black',
+      backgroundColor: "#496183",
+      color: 'white',
     },
   }),
 
   input: (styles, { data }) => ({
     ...styles,
-    color: "black",
+    color: "white",
   }),
   indicatorSeparator: (styles, { data }) => ({
     ...styles,
-    backgroundColor: "#cccccc",
+    backgroundColor: "#1f2937",
   }),
   indicatorContainer: (styles, { data }) => ({
     ...styles,
-    color: "#ffffff",
+    color: "#1f2937",
   }),
 
 }

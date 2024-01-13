@@ -1,11 +1,16 @@
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 import { semesters } from "../lib/utils"
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 
+import { Image } from '@chakra-ui/react'
+
 import {
-  Image
-} from '@chakra-ui/react'
+  CircularProgressbar, buildStyles
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import {
   Chart as ChartJS,
@@ -31,15 +36,15 @@ import { instructorStyles } from '@/lib/utils';
 import { graphColors } from '@/lib/utils';
 import { boilerExamsCourses } from '@/lib/utils';
 import { labels } from '@/lib/utils';
+import Footer from '@/components/footer';
 
 
 const CardDetails = () => {
   const router = useRouter();
   if (!router.query.course) return;
   const course = JSON.parse(decodeURIComponent(router.query.course));
-  console.log(course);
 
-  // const [curInstructors, setCurInstructors] = useState([]);
+  const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
   const [sem, setSem] = useState(course.terms[0]);
   const [gpaGraph, setGpaGraph] = useState({});
@@ -62,20 +67,17 @@ const CardDetails = () => {
 
   const changeInstructors = (sem) => {
 
-    // setCurGPA((sem in course.gpa) ? course.gpa[sem] : []);
-    // console.log(curGPA);
-    // setCurInstructors(course.instructor[sem]);
     setSem(sem);
     availableSemesters.forEach((otherSem) => {
       if (otherSem !== sem) {
         try {
-          document.getElementById(otherSem).classList.remove("bg-sky-300");
+          document.getElementById(otherSem).classList.remove("bg-sky-600");
         } catch { }
       }
     });
 
     try {
-      document.getElementById(sem).classList.add("bg-sky-300");
+      document.getElementById(sem).classList.add("bg-sky-600");
     } catch { }
   }
 
@@ -87,11 +89,13 @@ const CardDetails = () => {
       let curr = 0;
       for (const instructor in course.gpa) {
 
-        gpa[instructor] = course.gpa[instructor][13];
+        const color = graphColors[(curr++) % graphColors.length];
+
+        gpa[instructor] = [course.gpa[instructor][13], color];
         grades.push({
           label: instructor,
           data: course.gpa[instructor],
-          backgroundColor: graphColors[(curr++) % graphColors.length]
+          backgroundColor: color
         });
 
       }
@@ -127,6 +131,7 @@ const CardDetails = () => {
   // This is used to set default instructor on the multiselect
   useEffect(() => {
     refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
+    setFirstInstructor(selectableInstructors[0]);
   }, [selectableInstructors]);
 
 
@@ -145,14 +150,21 @@ const CardDetails = () => {
     return ret.substring(0, ret.length - 4);
 
   }
-  // console.log(perc2color((3.20 * 100 / 4.0)))
-  // console.log(perc2color((2.3 * 100 / 4.0)))
 
 
   // Refresh graph when instructors change
   const refreshGraph = (instructors) => {
     const gpa = defaultGPA.datasets;
     if (!gpa || gpa.length === 0) return;
+
+    setFirstInstructor(" ");
+    try {
+      setFirstInstructor(instructors[0].label);
+    } catch {
+      setFirstInstructor("");
+    }
+    console.log(firstInstructor);
+
 
     const newgpa = gpa.filter(inst => {
       const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
@@ -165,8 +177,29 @@ const CardDetails = () => {
     });
   };
 
+
+  // Function to replace gened codes with actual names
+  const genedCodeToName = (code) => {
+    const genedsOptions = [
+      { label: "Behavioral/Social Science", value: "BSS" },
+      { label: "Civics Literacy", value: "Civics Literacy" },
+      { label: "Humanities", value: "Humanities" },
+      { label: "JEDI", value: "JEDI" },
+      { label: "Oral Communications", value: "OC" },
+      { label: "Information Literacy", value: "IL" },
+      { label: "Quantitative Reasoning", value: "QR" },
+      { label: "Science", value: "Science" },
+      { label: "Science Technology and Society", value: "STS" },
+      { label: "Written Communication", value: "WC" }
+    ]
+
+    const gened = genedsOptions.filter(gened => gened.value === code);
+    return gened[0].label;
+  }
+
+
   return (
-    <div className="bg-white overflow-auto h-screen p-5">
+    <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 ${inter.className} text-white`}>
       <div className="flex md:flex-row flex-col md:gap-4">
 
         {/* Left half of panel */}
@@ -177,7 +210,7 @@ const CardDetails = () => {
             <div className="flex flex-row flex-wrap gap-3">
 
               {/* Credits Display */}
-              <p className="text-sm text-gray-700 font-bold">
+              <p className="text-sm text-gray-400 font-bold mt-0.5">
                 {course.credits[0] === course.credits[1]
                   ? `${course.credits[0]} Credits`
                   : `${course.credits[0]} - ${course.credits[1]} Credits`}
@@ -187,13 +220,13 @@ const CardDetails = () => {
               {/* GenEds Display */}
               {course.gened.length > 0 &&
                 <>
-                  <span className="h-100 w-0.5 bg-black rounded"></span>
+                  <span className="h-100 w-0.5 bg-gray-400 rounded"></span>
 
                   <div className="flex flex-row flex-wrap gap-1">
                     {course.gened.map((gened, i) => (
-                      <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-300 border-sky-500 whitespace-nowrap transition-all`}
+                      <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}
                         key={i}>
-                        {gened}{i != course.gened.length - 1 && ", "}
+                        {genedCodeToName(gened)}{i != course.gened.length - 1 && ", "}
                       </span>
                     ))}
                   </div>
@@ -204,7 +237,7 @@ const CardDetails = () => {
 
             {/* Instructors Display */}
             <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
-              <span className="text-black font-normal text-xs">RateMyProfessor: </span>
+              <span className="text-gray-400 font-normal text-xs">RateMyProfessor: </span>
 
               {course.instructor[sem].map((prof, i) => (
                 <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
@@ -221,15 +254,15 @@ const CardDetails = () => {
           </div>
 
           {/* Semester Tags */}
-          {/* <div className="flex flex-row flex-wrap gap-1 mb-4">
+          <div className="flex flex-row flex-wrap gap-1 mb-4">
             {availableSemesters.map((sem, i) => (
               <button className={`text-xs px-2 py-1 rounded-full border-solid border
-                                        ${i === 0 ? "bg-sky-300" : ""} border-sky-500 whitespace-nowrap transition-all`}
+                                        ${i === 0 ? "bg-sky-600" : ""} border-sky-800 whitespace-nowrap transition-all`}
                 key={i}
                 id={sem}
                 onClick={() => changeInstructors(sem)}>{sem}</button>
             ))}
-          </div> */}
+          </div>
 
 
           {/* Other Links Buttons */}
@@ -252,7 +285,7 @@ const CardDetails = () => {
             }
           </div>
 
-          <p className="text-md text-gray-800 mt-4 mb-4 break-words grow">{course.description}</p>
+          <p className="text-md text-gray-200 mt-4 mb-4 break-words grow">{course.description}</p>
           {/* {(curGPA) && (
               <p className="lg:text-sm text-sm mb-2 text-gray-800">
                 <span className="text-black font-normal text-xs mb-2">BoilerGrades Average GPAs: </span>
@@ -268,9 +301,34 @@ const CardDetails = () => {
 
         {/* Right half of panel */}
         <div className="flex flex-col w-full md:w-1/2">
+
+          {/* Stat Cards */}
+          <div className="grid grid-flow-col lg:gap-8 md:gap-4 gap-2">
+            <div className="h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
+              <div className='md:w-1/2 m-auto'>
+                <CircularProgressbar
+                  value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
+                  maxValue={4}
+                  text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
+                  styles={buildStyles({
+                    pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                    textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                    trailColor: '#000',
+                  })}
+                />
+              </div>
+            </div>
+            <div className="h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
+              <div className='md:w-1/2 m-auto'>
+                <CircularProgressbar value={3.0} maxValue={4} text={`GPA: ${3.0}`} />
+              </div>
+            </div>
+          </div>
+
+
           {/* GPA Graph */}
           {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-            <div className="mt-2 mb-8 w-full h-full">
+            <div className="lg:mt-8 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
               <div className="h-96 w-full mb-4">
                 <Bar
                   options={{
@@ -283,13 +341,23 @@ const CardDetails = () => {
                       title: {
                         display: true,
                         text: 'Average Grades by Instructor',
+                        color: "white"
                       },
                     },
                     scales: {
                       y: {
                         title: {
                           display: true,
-                          text: '% of Students'
+                          text: '% of Students',
+                          color: "gray"
+                        },
+                        grid: {
+                          color: "gray"
+                        }
+                      },
+                      x: {
+                        grid: {
+                          color: "gray"
                         }
                       }
                     }
@@ -312,6 +380,7 @@ const CardDetails = () => {
                 className="basic-multi-select w-full no-wrap"
                 classNamePrefix="select"
                 placeholder="Instructor..."
+                menuPlacement='top'
                 defaultValue={
                   selectableInstructors.length > 0
                     ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
@@ -328,7 +397,9 @@ const CardDetails = () => {
         </div>
       </div>
 
-
+      <div className='mt-auto'>
+        <Footer />
+      </div>
     </div>
   );
 

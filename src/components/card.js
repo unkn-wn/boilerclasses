@@ -22,9 +22,9 @@ const Card = ({ course }) => {
     <>
       <Link target="_blank"
         href={`/detail?course=${encodeURIComponent(JSON.stringify(course))}`}
-        rel="noopener noreferrer">
+        rel="noopener noreferrer"
+        className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer">
 
-        <div className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer">
           <h2 className="lg:text-lg md:text-lg font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
           <p className="lg:text-sm text-sm text-gray-700 font-medium my-1">
             {/* <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${uniqueInstructors[0].split(" ")[0]} ${uniqueInstructors[0].split(" ")[uniqueInstructors[0].split(" ").length - 1]}`}
@@ -55,7 +55,6 @@ const Card = ({ course }) => {
               (i < 3) && <span className="text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border border-sky-500 bg-sky-300 whitespace-nowrap" key={i}>{sem}</span>
             ))}
           </div>
-        </div>
       </Link >
     </>
   )
