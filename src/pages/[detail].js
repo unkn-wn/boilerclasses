@@ -4,6 +4,8 @@ import { semesters } from "../lib/utils"
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import ratings from '@mtucourses/rate-my-professors';
+
 
 import { Image } from '@chakra-ui/react'
 
@@ -46,6 +48,7 @@ const CardDetails = () => {
 
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
+  const [curRMP, setCurRMP] = useState({});
   const [sem, setSem] = useState(course.terms[0]);
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
@@ -81,6 +84,8 @@ const CardDetails = () => {
     } catch { }
   }
 
+
+  // Set graph and instructors
   useEffect(() => {
     if (course) {
       // Set graph
@@ -125,6 +130,22 @@ const CardDetails = () => {
       changeInstructors(availableSemesters[0]);
 
     }
+  }, []);
+
+
+  // Another UseEffect to asynchronously get RMP ratings
+  useEffect(() => {
+    if (course) {
+      const rmp = {};
+      for (const instructor in course.gpa) {
+        getRMPRating(instructor).then((rating) => {
+          rmp[instructor] = rating;
+          setCurRMP(rmp);
+        });
+      }
+
+    }
+
   }, []);
 
 
@@ -194,6 +215,40 @@ const CardDetails = () => {
 
     const gened = genedsOptions.filter(gened => gened.value === code);
     return gened[0].label;
+  }
+
+
+  // Get RateMyProfessor ratings for instructor
+  async function getRMPRating(instructor) {
+    if (!instructor) return;
+
+    // Instructor in format "Last, First Middle", convert to "First Last"
+    let instructorSplit = [];
+    try {
+      instructorSplit = instructor.split(", ");
+      instructorSplit.push(instructorSplit[1].split(" ")[0]);
+    } catch {
+      return;
+    }
+
+    const name = instructorSplit[2] + " " + instructorSplit[0];
+
+    const schools = await ratings.searchSchool("Purdue University");
+    const profs = [];
+
+    for (const school of schools) {
+      if (school.city === "West Lafayette") {
+        const prof = await ratings.searchTeacher(name, school.id);
+        if (!(prof === undefined || prof.length == 0)) {
+          profs.push(...prof);
+        }
+      }
+    }
+
+    if (profs.length === 0) return 0;
+    const RMPrating = await ratings.getTeacher(profs[0].id);
+    return RMPrating.avgRating;
+
   }
 
 
@@ -285,16 +340,7 @@ const CardDetails = () => {
           </div>
 
           <p className="text-md text-gray-200 mt-4 mb-4 break-words grow">{course.description}</p>
-          {/* {(curGPA) && (
-              <p className="lg:text-sm text-sm mb-2 text-gray-800">
-                <span className="text-black font-normal text-xs mb-2">BoilerGrades Average GPAs: </span>
-                {Object.entries(curGPA).map(([instructor, GPA], i) => (
-                  <p key={i}>
-                    {instructor}: {GPA}
-                  </p>
-                ))}
-              </p>
-            )} */}
+
         </div>
 
 
@@ -307,7 +353,7 @@ const CardDetails = () => {
               <p className='text-sm text-gray-400 mb-1'>Avg GPA</p>
               <div className='md:w-1/2 m-auto'>
                 <CircularProgressbar
-                  value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
+                  value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
                   maxValue={4}
                   text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
                   styles={buildStyles({
@@ -319,8 +365,18 @@ const CardDetails = () => {
               </div>
             </div>
             <div className="h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
+              <p className='text-sm text-gray-400 mb-1'>RMP Rating</p>
               <div className='md:w-1/2 m-auto'>
-                <CircularProgressbar value={3.0} maxValue={4} text={`GPA: ${3.0}`} />
+                <CircularProgressbar
+                  value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
+                  maxValue={5}
+                  text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
+                  styles={buildStyles({
+                    pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                    textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                    trailColor: '#000',
+                  })}
+                />
               </div>
             </div>
           </div>
