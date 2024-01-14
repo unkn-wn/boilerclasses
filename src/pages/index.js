@@ -18,7 +18,9 @@ import {
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
-  Checkbox
+  Checkbox,
+  Grid,
+  Button
 } from '@chakra-ui/react'
 
 import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions } from '@/lib/utils';
@@ -33,6 +35,8 @@ const CourseCatalog = () => {
   const [creditsMax, setCreditsMax] = useState(18);
   const [levelMin, setLevelMin] = useState(100);
   const [levelMax, setLevelMax] = useState(900);
+  const [levels, setLevels] = useState([100, 200, 300, 400, 500, 600, 700, 800, 900]);
+  const [scheds, setScheds] = useState(["Lecture", "Distance Learning"]);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLanding, setDisplayLanding] = useState(true);
@@ -55,7 +59,7 @@ const CourseCatalog = () => {
 
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, levelMin, levelMax]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, levelMin, levelMax, JSON.stringify(levels), JSON.stringify(scheds)]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -67,6 +71,7 @@ const CourseCatalog = () => {
     input.focus();
   }, [displayLanding]);
 
+
   const search = async (event) => {
     if (searchTerm.length <= 1 && selectedSubjects.length == 0 && selectedSemesters.length == 0 && selectedGenEds.length == 0) {
       setCourses([]);
@@ -74,7 +79,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, lmin: levelMin, lmax: levelMax});
+      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, levels: levels, sched: scheds});
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -117,7 +122,7 @@ const CourseCatalog = () => {
             />
           </div>
           <div className="flex flex-row mb-8 gap-5 items-center">
-            <p className='mr-4 text-white whitespace-nowrap md:block hidden'>Filter by </p>
+            <p className='text-white whitespace-nowrap md:block hidden'>Filter by </p>
             <div className='flex flex-row w-full justify-evenly gap-5 items-center md:flex-nowrap flex-wrap'>
               <Select
                 isMulti
@@ -193,28 +198,36 @@ const CourseCatalog = () => {
                     <ChevronDownIcon color='gray-800' />
                   </button>
                 </PopoverTrigger>
-                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
-                  <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
-                  <RangeSlider aria-label={['min', 'max']} defaultValue={[100, 900]} step={100} min={100} max={900}
-                    onChangeEnd={(val) => {
-                      setLevelMin(val[0])
-                      setLevelMax(val[1])
-                    }}
-                    onChangeStart={(val) => {
-                      setLevelMin(val[0])
-                      setLevelMax(val[1])
-                    }}
-                    >
-                      <RangeSliderTrack>
-                        <RangeSliderFilledTrack />
-                      </RangeSliderTrack>
-                      <RangeSliderThumb index={0} />
-                      <RangeSliderThumb index={1} />
-                    </RangeSlider>
-                    <div className='text-white'>
-                      Course levels: [{levelMin}, {levelMax}]
-                    </div>
-                  </PopoverBody>
+                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
+                  <Grid templateColumns='repeat(3, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
+                    <Checkbox size='md' isChecked={levels.includes(100)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 100]) : setLevels(levels.filter(x => x !== 100))}>100</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(200)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 200]) : setLevels(levels.filter(x => x !== 200))}>200</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(300)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 300]) : setLevels(levels.filter(x => x !== 300))}>300</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(400)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 400]) : setLevels(levels.filter(x => x !== 400))}>400</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(500)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 500]) : setLevels(levels.filter(x => x !== 500))}>500</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(600)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 600]) : setLevels(levels.filter(x => x !== 600))}>600</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(700)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 700]) : setLevels(levels.filter(x => x !== 700))}>700</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(800)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 800]) : setLevels(levels.filter(x => x !== 800))}>800</Checkbox>
+                    <Checkbox size='md' isChecked={levels.includes(900)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 900]) : setLevels(levels.filter(x => x !== 900))}>900</Checkbox>
+                  </Grid>
+                  <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
+                    <Button size='sm' className='w-full' onClick={() => setLevels([100, 200, 300, 400, 500, 600, 700, 800, 900])}>Reset</Button>
+                    <Button size='sm' className='w-full' onClick={() => setLevels([])}>Clear</Button>
+                  </div>
+                </PopoverContent>
+              </Popover>
+              <Popover placement='bottom-start'>
+                <PopoverTrigger>
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                    <span>Schedule</span>
+                    <ChevronDownIcon color='gray-800' />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
+                  <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3} paddingBottom={3}>
+                    <Checkbox size='md' isChecked={scheds.includes("Lecture")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Lecture"]) : setScheds(scheds.filter(x => x !== "Lecture"))}>Lecture</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Distance Learning")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Distance Learning"]) : setScheds(scheds.filter(x => x !== "Distance Learning"))}>Distance Learning</Checkbox>
+                  </Grid>
                 </PopoverContent>
               </Popover>
             </div>
