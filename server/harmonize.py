@@ -108,6 +108,7 @@ for file_name in tqdm(os.listdir(args.gradefolder)):
 
   grade_file = open(args.gradefolder + file_name)
   grade_data = json.load(grade_file)
+  # count = 0
   for grade in grade_data:
     if grade["subject"] != "":
       currSubjectCode = grade["subject"]
@@ -123,13 +124,17 @@ for file_name in tqdm(os.listdir(args.gradefolder)):
     
     if grade["avg gpa"] == "NaN" or "-Honors" in grade["title"]:
       continue
+    # found = False
     for i in range(len(course_data)):
-      if int(grade["CRN"]) in course_data[i]["crn"]:
+      if int(grade["CRN"]) in course_data[i]["crn"] and currSubjectCode == course_data[i]["subjectCode"] and currCourseCode == course_data[i]["courseCode"]:
+        found = True
         if currSemester in course_data[i]["gpa"]:
           course_data[i]["gpa"][currSemester].append([grade["instructor"], [grade["totalAplus"], grade["totalA"], grade["totalAminus"], grade["totalBplus"], grade["totalB"], grade["totalBminus"], grade["totalCplus"], grade["totalC"], grade["totalCminus"], grade["totalDplus"], grade["totalD"], grade["totalDminus"], grade["totalF"], float(grade["avg gpa"])]])
         else:
           course_data[i]["gpa"][currSemester] = [[grade["instructor"], [grade["totalAplus"], grade["totalA"], grade["totalAminus"], grade["totalBplus"], grade["totalB"], grade["totalBminus"], grade["totalCplus"], grade["totalC"], grade["totalCminus"], grade["totalDplus"], grade["totalD"], grade["totalDminus"], grade["totalF"], float(grade["avg gpa"])]]]
-
+    # if found:
+    #   count += 1
+  # print(count, len(grade_data))
 print("syncing grades....")
 for i in range(len(course_data)):
   gpa_data = {}
