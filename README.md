@@ -47,6 +47,7 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    ```
 6. Now, navigate back to the root directory and run:
    ```
+   npm install
    npm run dev
    ```
    Now, you can make changes within the Next.js app and have them reflect in real-time at `localhost:3000`.

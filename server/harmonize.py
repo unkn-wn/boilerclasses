@@ -60,10 +60,14 @@ for class_id in tqdm(all_classes):
   class_data = {}
   class_data["terms"] = []
   class_data["instructor"] = {}
+  class_data["crn"] = []
+  class_data["sched"] = []
   for semester in semesters:
     for class_sem in semester:
       if class_sem["subjectCode"] == s and class_sem["courseCode"] == c and class_sem["title"] == t:
         instances.append(class_sem)
+        class_data["crn"].extend(class_sem["crn"])
+        class_data["sched"].extend(class_sem["sched"])
         class_data["terms"].append(class_sem["term"])
         class_data["instructor"][class_sem["term"]] = class_sem["instructor"]
         if "<a href=" not in class_sem["description"]:
@@ -71,6 +75,8 @@ for class_id in tqdm(all_classes):
   class_data["title"] = instances[0]["title"]
   class_data["subjectCode"] = s
   class_data["courseCode"] = c
+  class_data["crn"] = list(set(class_data["crn"]))
+  class_data["sched"] = list(set(class_data["sched"]))
   if "description" not in class_data:
     class_data["description"] = instances[0]["description"]
   class_data["credits"] = instances[0]["credits"]
@@ -90,6 +96,7 @@ for i in range(len(course_data)):
 
 # adding grade information
 
+
 print("adding grades....")
 for file_name in tqdm(os.listdir(args.gradefolder)):
   if "json" not in file_name:
@@ -101,7 +108,7 @@ for file_name in tqdm(os.listdir(args.gradefolder)):
 
   grade_file = open(args.gradefolder + file_name)
   grade_data = json.load(grade_file)
-
+  # count = 0
   for grade in grade_data:
     if grade["subject"] != "":
       currSubjectCode = grade["subject"]
@@ -117,13 +124,17 @@ for file_name in tqdm(os.listdir(args.gradefolder)):
     
     if grade["avg gpa"] == "NaN" or "-Honors" in grade["title"]:
       continue
+    # found = False
     for i in range(len(course_data)):
-      if course_data[i]["subjectCode"] == currSubjectCode and course_data[i]["courseCode"] == currCourseCode and currTitle == course_data[i]["title"]:
+      if int(grade["CRN"]) in course_data[i]["crn"] and currSubjectCode == course_data[i]["subjectCode"] and currCourseCode == course_data[i]["courseCode"]:
+        found = True
         if currSemester in course_data[i]["gpa"]:
           course_data[i]["gpa"][currSemester].append([grade["instructor"], [grade["totalAplus"], grade["totalA"], grade["totalAminus"], grade["totalBplus"], grade["totalB"], grade["totalBminus"], grade["totalCplus"], grade["totalC"], grade["totalCminus"], grade["totalDplus"], grade["totalD"], grade["totalDminus"], grade["totalF"], float(grade["avg gpa"])]])
         else:
           course_data[i]["gpa"][currSemester] = [[grade["instructor"], [grade["totalAplus"], grade["totalA"], grade["totalAminus"], grade["totalBplus"], grade["totalB"], grade["totalBminus"], grade["totalCplus"], grade["totalC"], grade["totalCminus"], grade["totalDplus"], grade["totalD"], grade["totalDminus"], grade["totalF"], float(grade["avg gpa"])]]]
-
+    # if found:
+    #   count += 1
+  # print(count, len(grade_data))
 print("syncing grades....")
 for i in range(len(course_data)):
   gpa_data = {}

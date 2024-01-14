@@ -39,4 +39,5 @@ r.execute_command("FT.CREATE", "idx:classes", "ON", "JSON", "PREFIX", "1",
               "$.instructor[*][*]", "AS", "instructor", "TEXT", "NOSTEM", 
               "$.credits[0]", "AS", "creditMin", "NUMERIC", 
               "$.credits[1]", "as", "creditMax", "NUMERIC", 
-              "$.gened[*]", "AS", "gened", "TAG")
+              "$.gened[*]", "AS", "gened", "TAG",
+              "$.sched[*]", "AS", "sched", "TAG")
