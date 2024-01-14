@@ -163,7 +163,6 @@ const CardDetails = () => {
     } catch {
       setFirstInstructor("");
     }
-    console.log(firstInstructor);
 
 
     const newgpa = gpa.filter(inst => {
@@ -304,7 +303,8 @@ const CardDetails = () => {
 
           {/* Stat Cards */}
           <div className="grid grid-flow-col lg:gap-8 md:gap-4 gap-2">
-            <div className="h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
+            <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
+              <p className='text-sm text-gray-400 mb-1'>Avg GPA</p>
               <div className='md:w-1/2 m-auto'>
                 <CircularProgressbar
                   value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
@@ -337,6 +337,9 @@ const CardDetails = () => {
                     plugins: {
                       legend: {
                         position: 'top',
+                        labels: {
+                          color: "white"
+                        }
                       },
                       title: {
                         display: true,
@@ -349,7 +352,7 @@ const CardDetails = () => {
                         title: {
                           display: true,
                           text: '% of Students',
-                          color: "gray"
+                          color: "white"
                         },
                         grid: {
                           color: "gray"
