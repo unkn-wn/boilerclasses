@@ -36,12 +36,16 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    ```
    redis-server --daemonize yes
    ```
-   The `daemonize` argument will make it run in the background.
-4. Once you have that, you can push all the data from the JSON file generated in step 2 to the Redis instance. To do this, run:
+   The `daemonize` argument will make it run in the background. Alternatively, if you have docker but don't want to install redis-server, you can run:
+   ```
+   docker run --name boilerclasses-redis -i --rm -p 6379:6379 redis/redis-stack-server:latest redis-stack-server --save
+   ```
+   Functionally, both of the above commands are equivalent. 
+5. Once you have that, you can push all the data from the JSON file generated in step 2 to the Redis instance. To do this, run:
    ```
    python3 push.py
    ```
-5. Now, navigate back to the root directory and run:
+6. Now, navigate back to the root directory and run:
    ```
    npm run dev
    ```
