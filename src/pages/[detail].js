@@ -347,6 +347,32 @@ const CardDetails = () => {
         {/* Right half of panel */}
         <div className="flex flex-col w-full md:w-1/2">
 
+
+          {/* Instructor Select */}
+          {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
+            <div className="lg:mb-6 md:mb-4 mb-2">
+              <Select
+                isMulti
+                options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                className="basic-multi-select w-full no-wrap"
+                classNamePrefix="select"
+                placeholder="Instructor..."
+                menuPlacement='bottom'
+                defaultValue={
+                  selectableInstructors.length > 0
+                    ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
+                    : null
+                }
+                styles={instructorStyles}
+                color="white"
+                onChange={(value) => {
+                  refreshGraph(value)
+                }}
+              />
+            </div>
+          }
+
+
           {/* Stat Cards */}
           <div className="grid grid-flow-col lg:gap-8 md:gap-4 gap-2">
             <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
@@ -384,8 +410,8 @@ const CardDetails = () => {
 
           {/* GPA Graph */}
           {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-            <div className="lg:mt-8 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
-              <div className="h-96 w-full mb-4">
+            <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
+              <div className="h-auto w-full mb-4">
                 <Bar
                   options={{
                     responsive: true,
@@ -433,24 +459,7 @@ const CardDetails = () => {
                 // }
                 />
               </div>
-              <Select
-                isMulti
-                options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
-                className="basic-multi-select w-full no-wrap"
-                classNamePrefix="select"
-                placeholder="Instructor..."
-                menuPlacement='top'
-                defaultValue={
-                  selectableInstructors.length > 0
-                    ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                    : null
-                }
-                styles={instructorStyles}
-                color="white"
-                onChange={(value) => {
-                  refreshGraph(value)
-                }}
-              />
+
             </div>
           )}
         </div>
