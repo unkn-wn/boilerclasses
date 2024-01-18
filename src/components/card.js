@@ -18,10 +18,11 @@ const Card = ({ course }) => {
   });
   const uniqueInstructors = [...instructors];
 
+  
   return (
     <>
       <Link target="_blank"
-        href={`/detail?course=${encodeURIComponent(JSON.stringify(course))}`}
+        href={`/detail/${course.detailId}`}
         rel="noopener noreferrer"
         className="flex flex-col bg-slate-200 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer">
 
