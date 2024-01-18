@@ -32,6 +32,7 @@ for classData in tqdm(data):
 r.execute_command("FT.CREATE", "idx:classes", "ON", "JSON", "PREFIX", "1", 
               "classes:", "SCHEMA", 
               "$.fullTitle", "AS", "fullTitle", "TEXT", "WEIGHT", "50", 
+              "$.detailId", "AS", "detailId", "TAG", 
               "$.description", "AS", "description", "TEXT", 
               "$.subjectCode", "AS", "subjectCode", "TAG", 
               "$.terms[*]", "AS", "terms", "TAG", 
