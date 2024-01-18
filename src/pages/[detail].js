@@ -410,8 +410,8 @@ const CardDetails = () => {
 
           {/* GPA Graph */}
           {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-            <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
-              <div className="h-auto w-full mb-4">
+            <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-96 bg-gray-800 mx-auto p-4 rounded-xl">
+              <div className="h-full w-full mb-4">
                 <Bar
                   options={{
                     responsive: true,
@@ -460,6 +460,12 @@ const CardDetails = () => {
                 />
               </div>
 
+            </div>
+          )}
+
+          {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
+            <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
+              <p className='text-center'>No data!</p>
             </div>
           )}
         </div>
