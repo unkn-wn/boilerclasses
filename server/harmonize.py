@@ -2,6 +2,7 @@ import json
 import os
 import argparse
 from tqdm import tqdm
+import re
 
 """
 structure for data:
@@ -73,7 +74,7 @@ for file_name in os.listdir(args.folder):
             + " "
             + class_data["courseCode"]
             + ": "
-            + class_data["title"]
+            + ''.join(e for e in class_data["title"] if e.isalnum())
         )
 
 all_classes = list(set(all_classes))
@@ -94,7 +95,7 @@ for class_id in tqdm(all_classes):
             if (
                 class_sem["subjectCode"] == s
                 and class_sem["courseCode"] == c
-                and class_sem["title"] == t
+                and ''.join(e for e in class_sem["title"] if e.isalnum()) == t
             ):
                 instances.append(class_sem)
                 class_data["crn"].extend(class_sem["crn"])
@@ -251,7 +252,7 @@ for tag in tqdm(gened_data):
                 and tag not in course_data[i]["gened"]
             ):
                 course_data[i]["gened"].append(tag)
-
+test = []
 invalid_indices = []
 for i in range(len(course_data)):
     course_data[i]["fullTitle"] = " ".join(
@@ -261,6 +262,8 @@ for i in range(len(course_data)):
             course_data[i]["title"],
         ]
     )
+    course_data[i]["detailId"] = re.sub("[^a-zA-Z0-9]", "", course_data[i]["fullTitle"])
+    test.append(course_data[i]["detailId"])
     # THTR T1200 seems to be an issue here, can just remove (it is outdated)
     try:
         course_data[i]["courseCode"] = int(course_data[i]["courseCode"])
@@ -275,3 +278,16 @@ outfile = open(args.outfile, "w")
 json.dump(course_data, outfile, indent=4)
 outfile.close()
 print("done!")
+
+
+freq = {}
+for item in test:
+    if (item in freq):
+        freq[item] += 1
+    else:
+        freq[item] = 1
+
+for x in freq:
+    if freq[x] > 1:
+        print(x)
+print(len(test), len(course_data))
