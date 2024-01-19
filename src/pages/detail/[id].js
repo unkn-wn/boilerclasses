@@ -281,15 +281,15 @@ const CardDetails = () => {
       <Head>
         <title>{course.subjectCode} {course.courseCode}: {course.title} | BoilerClasses</title>
       </Head>
-      <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 ${inter.className} text-white`}>
+      <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
-          <div className="flex flex-col w-full md:w-1/2">
-            <h2 className="lg:text-3xl md:text-3xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</h2>
+          <div className="flex flex-col w-full md:mr-3">
+            <p className="lg:text-3xl md:text-3xl text-xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</p>
             <br />
             <div className="flex flex-col gap-4 -mt-3 mb-2">
-              <div className="flex flex-row flex-wrap gap-3">
+              <div className="flex flex-row flex-wrap gap-3 mb-1">
 
                 {/* Credits Display */}
                 <p className="text-sm text-gray-400 font-bold mt-0.5">
@@ -319,7 +319,7 @@ const CardDetails = () => {
 
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
-                <span className="text-gray-400 font-normal text-xs">RateMyProfessor: </span>
+                <span className="text-gray-400 font-normal text-xs">RateMyProfessors: </span>
 
                 {course.instructor[sem].map((prof, i) => (
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
@@ -336,7 +336,7 @@ const CardDetails = () => {
             </div>
 
             {/* Semester Tags */}
-            <div className="flex flex-row flex-wrap gap-1 mb-4">
+            <div className="flex flex-row flex-wrap gap-1 mb-1">
               {availableSemesters.map((sem, i) => (
                 <button className={`text-xs px-2 py-1 rounded-full border-solid border
                                           ${i === 0 ? "bg-sky-600" : ""} border-sky-800 whitespace-nowrap transition-all`}
@@ -367,13 +367,13 @@ const CardDetails = () => {
               }
             </div>
 
-            <p className="text-md text-gray-200 mt-4 mb-4 break-words grow">{course.description}</p>
+            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-4 break-words grow">{course.description}</p>
 
           </div>
 
 
           {/* Right half of panel */}
-          <div className="flex flex-col w-full md:w-1/2">
+          {defaultGPA.datasets.length > 0 && <div className="flex flex-col w-full ">
 
 
             {/* Instructor Select */}
@@ -438,8 +438,8 @@ const CardDetails = () => {
 
             {/* GPA Graph */}
             {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
-                <div className="h-auto w-full mb-4">
+              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-96 bg-gray-800 mx-auto p-4 rounded-xl">
+                <div className="h-full w-full mb-4">
                   <Bar
                     options={{
                       responsive: true,
@@ -490,7 +490,13 @@ const CardDetails = () => {
 
               </div>
             )}
-          </div>
+
+            {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
+              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
+                <p className='text-center'>No data!</p>
+              </div>
+            )}
+          </div>}
         </div>
 
         <div className='mt-auto'>
@@ -499,6 +505,7 @@ const CardDetails = () => {
       </div>
     </>
   );
+
 
 };
 
