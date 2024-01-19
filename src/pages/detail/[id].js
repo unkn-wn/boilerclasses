@@ -8,7 +8,6 @@ import ErrorPage from 'next/error'
 import Select from 'react-select';
 import ratings from '@mtucourses/rate-my-professors';
 
-
 import { Image, cookieStorageManager } from '@chakra-ui/react'
 
 import {
@@ -251,21 +250,28 @@ const CardDetails = () => {
     const name = instructorSplit[2] + " " + instructorSplit[0];
 
     try {
-      const schools = await ratings.searchSchool("Purdue University");
+      const params = new URLSearchParams({ q: "Purdue University" });
+      const responseSchools = await fetch("/api/ratings/searchSchool?" + params);
+      const schools = await responseSchools.json();
+
       const profs = [];
 
-      for (const school of schools) {
+      for (const school of schools["schools"]) {
         if (school.city === "West Lafayette") {
-          const prof = await ratings.searchTeacher(name, school.id);
-          if (!(prof === undefined || prof.length == 0)) {
-            profs.push(...prof);
+          const paramsTeacher = new URLSearchParams({ name: name, id: school.id });
+          const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
+          const prof = await responseProf.json()
+          if (!(prof["prof"] === undefined || prof["prof"].length == 0)) {
+            profs.push(...prof["prof"]);
           }
         }
       }
 
       if (profs.length === 0) return 0;
-      const RMPrating = await ratings.getTeacher(profs[0].id);
-      return RMPrating.avgRating;
+      const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
+      const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
+      const RMPrating = await responseRMP.json();
+      return RMPrating["RMPrating"].avgRating;
     } catch {
       return;
     }
