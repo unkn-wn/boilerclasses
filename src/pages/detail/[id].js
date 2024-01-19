@@ -52,7 +52,7 @@ const CardDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if(!router.isReady) return;
+    if (!router.isReady) return;
 
     const params = new URLSearchParams({ detailId: router.query.id });
     fetch('/api/get?' + params)
@@ -112,18 +112,20 @@ const CardDetails = () => {
     changeInstructors(availableSemesters[0]);
 
   }, [course])
-  
+
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
     if (!course) return;
     const rmp = {};
     for (const instructor in course.gpa) {
       getRMPRating(instructor).then((rating) => {
-        rmp[instructor] = rating;
-        setCurRMP(rmp);
+        setCurRMP((prevRMP) => {
+          return { ...prevRMP, [instructor]: rating };
+        });
       });
+
     }
-  }, [course])
+  }, [course]);
 
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
@@ -248,21 +250,26 @@ const CardDetails = () => {
 
     const name = instructorSplit[2] + " " + instructorSplit[0];
 
-    const schools = await ratings.searchSchool("Purdue University");
-    const profs = [];
+    try {
+      const schools = await ratings.searchSchool("Purdue University");
+      const profs = [];
 
-    for (const school of schools) {
-      if (school.city === "West Lafayette") {
-        const prof = await ratings.searchTeacher(name, school.id);
-        if (!(prof === undefined || prof.length == 0)) {
-          profs.push(...prof);
+      for (const school of schools) {
+        if (school.city === "West Lafayette") {
+          const prof = await ratings.searchTeacher(name, school.id);
+          if (!(prof === undefined || prof.length == 0)) {
+            profs.push(...prof);
+          }
         }
       }
+
+      if (profs.length === 0) return 0;
+      const RMPrating = await ratings.getTeacher(profs[0].id);
+      return RMPrating.avgRating;
+    } catch {
+      return;
     }
 
-    if (profs.length === 0) return 0;
-    const RMPrating = await ratings.getTeacher(profs[0].id);
-    return RMPrating.avgRating;
 
   }
 
@@ -273,7 +280,7 @@ const CardDetails = () => {
   }
 
   if (!loading && JSON.stringify(course) == '{}') {
-    return <ErrorPage statusCode={404}/>
+    return <ErrorPage statusCode={404} />
   }
 
   return (
@@ -316,7 +323,7 @@ const CardDetails = () => {
                     {genedCodeToName(gened)}
                   </span>
                 ))}
-                
+
               </div>
               {/* <p>{course.gpa[""]}</p> */}
 
@@ -425,9 +432,9 @@ const CardDetails = () => {
                 <p className='text-sm text-gray-400 mb-1'>RMP Rating</p>
                 <div className='md:w-1/2 m-auto'>
                   <CircularProgressbar
-                    value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
+                    value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
                     maxValue={5}
-                    text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
+                    text={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
                     styles={buildStyles({
                       pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
                       textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
