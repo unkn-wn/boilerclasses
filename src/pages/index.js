@@ -48,14 +48,14 @@ const CourseCatalog = () => {
 
   function transform(query) {
     query = query.trim()
-    query = query.replaceAll(/[-;+]/g, " "); 
+    query = query.replaceAll(/[-;+]/g, " ");
     query = query.replaceAll(/[~!#%$^&*()\[\]\{\}:'<>,@=|?.`"“”]/g, "");
-    query = query.replaceAll(/[–—…«»‘’]/g, " "); 
+    query = query.replaceAll(/[–—…«»‘’]/g, " ");
     query = query.replaceAll(/([a-zA-Z])(\d)/g, '$1 $2');
     query = query.trim()
     return query;
   }
-  
+
 
   useEffect(() => {
     search();

@@ -2,8 +2,7 @@ import '@/styles/globals.css'
 
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js';
-import {  MultiSelectTheme } from 'chakra-multiselect'
-import { Analytics } from '@vercel/analytics/react';
+import { MultiSelectTheme } from 'chakra-multiselect'
 import Head from "next/head";
 
 const theme = extendTheme({
@@ -15,11 +14,10 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Analytics />
       <Head>
         <title>BoilerClasses</title>
-        <script 
-          async 
+        <script
+          async
           src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
         />
         <script

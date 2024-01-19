@@ -21,3 +21,16 @@ export async function searchCourses(q, sub, term, gen, cmin, cmax, levels, sched
     return {'documents': []};
   }
 }
+
+
+export async function getCourse(detailId) {
+  await connect();
+  try {
+    const res = await client.ft.search('idx:classes', `@detailId:{${detailId}}`, {
+      LIMIT: { size: 1, from: 0 }
+    });
+    return res;
+  } catch {
+    return {'documents': []};
+  }
+}
