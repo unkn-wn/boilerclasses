@@ -289,31 +289,34 @@ const CardDetails = () => {
             <p className="lg:text-3xl md:text-3xl text-xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</p>
             <br />
             <div className="flex flex-col gap-4 -mt-3 mb-2">
-              <div className="flex flex-row flex-wrap gap-3 mb-1">
+              <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
 
                 {/* Credits Display */}
-                <p className="text-sm text-gray-400 font-bold mt-0.5">
+                <p className="text-sm text-gray-400 font-bold">
                   {course.credits[0] === course.credits[1]
                     ? `${course.credits[0]} Credits`
                     : `${course.credits[0]} - ${course.credits[1]} Credits`}
                 </p>
 
+                {/* Separator Display */}
+                {(course.gened.length > 0 || course.sched.length > 0) && <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
 
-                {/* GenEds Display */}
-                {course.gened.length > 0 &&
-                  <>
-                    <span className="h-100 w-0.5 bg-gray-400 rounded"></span>
+                {/* Schedule Type Display */}
+                {course.sched.map((s, i) => (
+                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap transition-all`}
+                    key={i}>
+                    {s}
+                  </span>
+                ))}
 
-                    <div className="flex flex-row flex-wrap gap-1">
-                      {course.gened.map((gened, i) => (
-                        <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}
-                          key={i}>
-                          {genedCodeToName(gened)}{i != course.gened.length - 1 && ", "}
-                        </span>
-                      ))}
-                    </div>
-                  </>
-                }
+                {/* Gened Type Display */}
+                {course.gened.map((gened, i) => (
+                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}
+                    key={i}>
+                    {genedCodeToName(gened)}
+                  </span>
+                ))}
+                
               </div>
               {/* <p>{course.gpa[""]}</p> */}
 

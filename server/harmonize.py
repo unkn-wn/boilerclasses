@@ -58,8 +58,9 @@ args = parser.parse_args()
 out = {}
 semesters = []
 all_classes = []
+# TODO: change for semester
+latest_sem = "Spring 2024"
 
-# TODO: solidify matching thing
 for file_name in os.listdir(args.folder):
     path = args.folder + file_name
     if "json" not in path:
@@ -99,7 +100,11 @@ for class_id in tqdm(all_classes):
             ):
                 instances.append(class_sem)
                 class_data["crn"].extend(class_sem["crn"])
-                class_data["sched"].extend(class_sem["sched"])
+                if "Distance Learning" in class_sem["sched"]:
+                    if class_sem["term"] == latest_sem:
+                        class_data["sched"].extend(class_sem["sched"])
+                else:
+                    class_data["sched"].extend(class_sem["sched"])
                 class_data["terms"].append(class_sem["term"])
                 class_data["instructor"][class_sem["term"]] = class_sem["instructor"]
                 if "<a href=" not in class_sem["description"]:

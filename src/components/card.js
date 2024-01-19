@@ -51,7 +51,11 @@ const Card = ({ course }) => {
               : course.description}
             </span>
           </p>
+          
           <div className="flex flex-row flex-wrap">
+            {course.sched.includes("Distance Learning") && <p className="text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border border-purple-500 bg-purple-300 whitespace-nowrap">
+              Distance Learning
+            </p>}
             {availableSemesters.map((sem, i) => (
               (i < 3) && <span className="text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border border-sky-500 bg-sky-300 whitespace-nowrap" key={i}>{sem}</span>
             ))}
