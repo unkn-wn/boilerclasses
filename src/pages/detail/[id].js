@@ -418,9 +418,9 @@ const CardDetails = () => {
 
 
             {/* Stat Cards */}
-            <div className="grid grid-flow-col lg:gap-8 md:gap-4 gap-2">
-              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
-                <p className='text-sm text-gray-400 mb-1'>Avg GPA</p>
+            <div className="flex flex-row lg:gap-8 md:gap-4 gap-2">
+              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl gap-2">
+                <p className='text-sm text-gray-400 mb-1'>Average GPA</p>
                 <div className='md:w-1/2 m-auto'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
@@ -434,8 +434,9 @@ const CardDetails = () => {
                   />
                 </div>
               </div>
-              <div className="h-full w-full bg-gray-800 mx-auto p-4 rounded-xl">
-                <p className='text-sm text-gray-400 mb-1'>RMP Rating</p>
+              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl gap-2">
+                <p className='md:hidden text-sm text-gray-400 mb-1'>RateMyProf Rating</p>
+                <p className='hidden md:block text-sm text-gray-400 mb-1'>RateMyProfessors Rating</p>
                 <div className='md:w-1/2 m-auto'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
