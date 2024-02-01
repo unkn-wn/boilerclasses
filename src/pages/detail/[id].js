@@ -293,6 +293,9 @@ const CardDetails = () => {
     <>
       <Head>
         <title>{course.subjectCode} {course.courseCode}: {course.title} | BoilerClasses</title>
+        <meta name="title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
+        <meta name="description" content={`${course.description}`} />
+        <meta name="keywords" content={`${course.subjectCode}, ${course.courseCode}, ${course.subjectCode} ${course.courseCode}, ${course.title}, ${course.description.split(' ')}, ${availableSemesters.join(", ")}, Course, Purdue`} />
       </Head>
       <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
