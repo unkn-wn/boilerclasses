@@ -7,6 +7,7 @@ import Card from "../components/card"
 import Footer from "../components/footer"
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import Select from 'react-select';
+import Head from "next/head";
 
 import {
   Popover,
@@ -102,6 +103,11 @@ const CourseCatalog = () => {
 
   return (
     <>
+      <Head>
+        <meta name="title" content="BoilerClasses" />
+        <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. The all-in-one access provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
+        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler, Classes, BoilerCourses, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boiler Classes, Boilermakers" />
+      </Head>
       {!displayLanding ?
         <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>

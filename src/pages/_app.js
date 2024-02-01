@@ -31,8 +31,6 @@ export default function App({ Component, pageProps }) {
             });`
           }}
         />
-        <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. The all-in-one access provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
-        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler, Classes, BoilerCourses" />
       </Head>
       <Component {...pageProps} />
     </ChakraProvider>
