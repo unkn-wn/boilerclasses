@@ -41,7 +41,7 @@ import { boilerExamsCourses } from '@/lib/utils';
 import { labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
-
+import Calendar from './calendar';
 
 
 
@@ -518,6 +518,9 @@ const CardDetails = () => {
             )}
           </div>}
         </div>
+
+        {/* Calendar View for Lecture Times */}
+        <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} />
 
         <div className='mt-auto'>
           <Footer />
