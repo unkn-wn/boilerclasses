@@ -17,11 +17,13 @@ const Calendar = (props) => {
 
     const { subjectCode, courseCode } = props;
 
-    const [monday, setMonday] = useState([]);
-    const [tuesday, setTuesday] = useState([]);
-    const [wednesday, setWednesday] = useState([]);
-    const [thursday, setThursday] = useState([]);
-    const [friday, setFriday] = useState([]);
+    const [lectures, setLectures] = useState({
+        Monday: [],
+        Tuesday: [],
+        Wednesday: [],
+        Thursday: [],
+        Friday: []
+    });
 
 
     function convertTo12HourFormat(time) {
@@ -40,13 +42,21 @@ const Calendar = (props) => {
     // Get purdue.io data for course sections and lecture times
     const getCourseData = async (subjectCode, courseCode) => {
 
+        const updatedLectures = {
+            Monday: [],
+            Tuesday: [],
+            Wednesday: [],
+            Thursday: [],
+            Friday: []
+        };
+
         try {
             const semester = "202420";
             const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "'";
             const response = await fetch(url);
             let data = await response.json();
 
-            setMonday([]);
+            setLectures(updatedLectures);
 
             data =  data.value[0];
 
@@ -78,33 +88,33 @@ const Calendar = (props) => {
                         }
 
                         if (days.includes("Monday")) {
-                            setMonday(prev => [...prev, obj].sort((a, b) => {
+                            updatedLectures.Monday = [...updatedLectures.Monday, obj].sort((a, b) => {
                                 return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            }));
+                            });
                         }
 
                         if (days.includes("Tuesday")) {
-                            setTuesday(prev => [...prev, obj].sort((a, b) => {
+                            updatedLectures.Tuesday = [...updatedLectures.Tuesday, obj].sort((a, b) => {
                                 return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            }));
+                            });
                         }
 
                         if (days.includes("Wednesday")) {
-                            setWednesday(prev => [...prev, obj].sort((a, b) => {
+                            updatedLectures.Wednesday = [...updatedLectures.Wednesday, obj].sort((a, b) => {
                                 return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            }));
+                            });
                         }
 
                         if (days.includes("Thursday")) {
-                            setThursday(prev => [...prev, obj].sort((a, b) => {
+                            updatedLectures.Thursday = [...updatedLectures.Thursday, obj].sort((a, b) => {
                                 return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            }));
+                            });
                         }
 
                         if (days.includes("Friday")) {
-                            setFriday(prev => [...prev, obj].sort((a, b) => {
+                            updatedLectures.Friday = [...updatedLectures.Friday, obj].sort((a, b) => {
                                 return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            }));
+                            });
                         }
 
 
@@ -115,6 +125,8 @@ const Calendar = (props) => {
         } catch {
             return;
         }
+
+        setLectures(updatedLectures);
     }
 
     useEffect(() => {
@@ -129,7 +141,7 @@ const Calendar = (props) => {
                 <div className='border-r-2 pr-4 border-gray-500'>
                     <p className='relative text-right text-gray-500'>M</p>
                     <div className="flex flex-col gap-1">
-                        {monday.map((lecture, i) => {
+                        {lectures.Monday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
                             )
@@ -139,7 +151,7 @@ const Calendar = (props) => {
                 <div className='border-r-2 pr-4 border-gray-500 ml-4'>
                     <p className='relative text-right text-gray-500'>T</p>
                     <div className="flex flex-col gap-1">
-                        {tuesday.map((lecture, i) => {
+                        {lectures.Tuesday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
                             )
@@ -149,7 +161,7 @@ const Calendar = (props) => {
                 <div className='border-r-2 pr-4 border-gray-500 ml-4'>
                     <p className='relative text-right text-gray-500'>W</p>
                     <div className="flex flex-col gap-1">
-                        {wednesday.map((lecture, i) => {
+                        {lectures.Wednesday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
                             )
@@ -159,7 +171,7 @@ const Calendar = (props) => {
                 <div className='border-r-2 pr-4 border-gray-500 ml-4'>
                     <p className='relative text-right text-gray-500'>T</p>
                     <div className="flex flex-col gap-1">
-                        {thursday.map((lecture, i) => {
+                        {lectures.Thursday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
                             )
@@ -169,7 +181,7 @@ const Calendar = (props) => {
                 <div className='ml-4'>
                     <p className='relative text-right text-gray-500'>F</p>
                     <div className="flex flex-col gap-1">
-                        {friday.map((lecture, i) => {
+                        {lectures.Friday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
                             )
