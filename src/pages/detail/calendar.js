@@ -15,7 +15,7 @@ import {
 
 const Calendar = (props) => {
 
-    const { subjectCode, courseCode } = props;
+    const { subjectCode, courseCode, title } = props;
 
     const [lectures, setLectures] = useState({
         Monday: [],
@@ -40,7 +40,7 @@ const Calendar = (props) => {
 
 
     // Get purdue.io data for course sections and lecture times
-    const getCourseData = async (subjectCode, courseCode) => {
+    const getCourseData = async (subjectCode, courseCode, title) => {
 
         const updatedLectures = {
             Monday: [],
@@ -52,7 +52,7 @@ const Calendar = (props) => {
 
         try {
             const semester = "202420";
-            const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "'";
+            const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
             const response = await fetch(url);
             let data = await response.json();
 
@@ -130,17 +130,17 @@ const Calendar = (props) => {
     }
 
     useEffect(() => {
-        getCourseData(subjectCode, courseCode);
+        getCourseData(subjectCode, courseCode, title);
     }, []);
 
 
     return (
         <>
             {/* Calendar View for Lecture Times */}
-            <div className='grid grid-cols-5 w-full rounded-xl bg-gray-800 p-4'>
-                <div className='border-r-2 pr-4 border-gray-500'>
+            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-gray-800 p-2 md:p-4'>
+                <div className='md:border-r-2 md:pr-4 border-gray-500'>
                     <p className='relative text-right text-gray-500'>M</p>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                         {lectures.Monday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
@@ -148,9 +148,9 @@ const Calendar = (props) => {
                         })}
                     </div>
                 </div>
-                <div className='border-r-2 pr-4 border-gray-500 ml-4'>
+                <div className='border-t-2 mt-4 md:border-t-0 md:mt-0 md:border-r-2 md:pr-4 border-gray-500 md:ml-4'>
                     <p className='relative text-right text-gray-500'>T</p>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                         {lectures.Tuesday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
@@ -158,9 +158,9 @@ const Calendar = (props) => {
                         })}
                     </div>
                 </div>
-                <div className='border-r-2 pr-4 border-gray-500 ml-4'>
+                <div className='border-t-2 mt-4 md:border-t-0 md:mt-0 md:border-r-2 md:pr-4 border-gray-500 md:ml-4'>
                     <p className='relative text-right text-gray-500'>W</p>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                         {lectures.Wednesday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
@@ -168,9 +168,9 @@ const Calendar = (props) => {
                         })}
                     </div>
                 </div>
-                <div className='border-r-2 pr-4 border-gray-500 ml-4'>
+                <div className='border-t-2 mt-4 md:border-t-0 md:mt-0 md:border-r-2 md:pr-4 border-gray-500 md:ml-4'>
                     <p className='relative text-right text-gray-500'>T</p>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                         {lectures.Thursday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />
@@ -178,9 +178,9 @@ const Calendar = (props) => {
                         })}
                     </div>
                 </div>
-                <div className='ml-4'>
+                <div className='border-t-2 mt-4 md:border-t-0 md:mt-0 md:ml-4 border-gray-500'>
                     <p className='relative text-right text-gray-500'>F</p>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                         {lectures.Friday.map((lecture, i) => {
                             return (
                                 <LectureTimeDisplay lecture={lecture} key={i} />

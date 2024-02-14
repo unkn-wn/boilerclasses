@@ -520,7 +520,7 @@ const CardDetails = () => {
         </div>
 
         {/* Calendar View for Lecture Times */}
-        <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} />
+        <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />
 
         <div className='mt-auto'>
           <Footer />
