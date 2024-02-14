@@ -106,7 +106,7 @@ const CourseCatalog = () => {
       <Head>
         <meta name="title" content="BoilerClasses" />
         <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. The all-in-one access provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
-        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler, Classes, BoilerCourses, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boiler Classes, Boilermakers" />
+        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
       </Head>
       {!displayLanding ?
         <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
