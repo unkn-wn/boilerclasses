@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import ErrorPage from 'next/error'
 
 import Select from 'react-select';
-import ratings from '@mtucourses/rate-my-professors';
 
 import { Image, cookieStorageManager } from '@chakra-ui/react'
 
@@ -15,25 +14,7 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 import { instructorStyles } from '@/lib/utils';
 import { graphColors } from '@/lib/utils';
@@ -42,7 +23,7 @@ import { labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
 import Calendar from './calendar';
-
+import Graph from './graph';
 
 
 const CardDetails = () => {
@@ -115,7 +96,6 @@ const CardDetails = () => {
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
     if (!course) return;
-    const rmp = {};
     for (const instructor in course.gpa) {
       getRMPRating(instructor).then((rating) => {
         setCurRMP((prevRMP) => {
@@ -458,57 +438,7 @@ const CardDetails = () => {
 
             {/* GPA Graph */}
             {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-96 bg-gray-800 mx-auto p-4 rounded-xl">
-                <div className="h-full w-full mb-4">
-                  <Bar
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          position: 'top',
-                          labels: {
-                            color: "white"
-                          }
-                        },
-                        title: {
-                          display: true,
-                          text: 'Average Grades by Instructor',
-                          color: "white"
-                        },
-                      },
-                      scales: {
-                        y: {
-                          title: {
-                            display: true,
-                            text: '% of Students',
-                            color: "white"
-                          },
-                          grid: {
-                            color: "gray"
-                          }
-                        },
-                        x: {
-                          grid: {
-                            color: "gray"
-                          }
-                        }
-                      }
-                    }} data={gpaGraph}
-                  // {
-                  //   {
-                  //     labels,
-                  //     datasets: [{
-                  //       label: 'test1',
-                  //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-                  //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
-                  //     }]
-                  //   }
-                  // }
-                  />
-                </div>
-
-              </div>
+              <Graph data={gpaGraph} />
             )}
 
             {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
