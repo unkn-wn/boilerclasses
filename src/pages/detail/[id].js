@@ -189,6 +189,39 @@ const CardDetails = () => {
   - if the avg gpa exists in semester, show it
   - if its not, just show average?
 
+  what gpa looks like:
+{
+   "Brinton, Christopher G.":{
+      "Fall 2021":[
+         8.3,
+         ...
+         2.84
+      ]
+   },
+   "Qiu, Qiang":{
+      "Fall 2021":[
+         2.7,
+         57.3,
+         ...
+         0.75,
+         3.45
+      ],
+      "Fall 2022":[
+         9,
+         22.5,
+         ...,
+         3.4,
+         3.02
+      ],
+      "Spring 2022":[
+         9.9,
+         1.3,
+         ...
+         4.6,
+         3.01
+      ]
+   }
+
   */
   const refreshGraph = (instructors, semester) => {
     const gpa = defaultGPA.datasets;
