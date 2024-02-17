@@ -42,6 +42,7 @@ def group(s):
 
 	# print(''.join(grps))
 	grps = [s.strip() for s in grps]
+	grps = [s for s in grps if len(s) > 0]
 	return grps
 
 def build_tree(clauses):
@@ -76,7 +77,7 @@ def build_tree(clauses):
 	# print(cur)
 	return cur
 
-def prereqs(s):
+def prereqs(s, link=""):
 	grps = group(s)
 	class_codes = ["AAE","AAS","ABE","AD","AFT","AGEC","AGR","AGRY","AMST","ANSC","ANTH","ARAB","ASAM","ASEC","ASL","ASM","ASTR","AT","BAND","BCHM","BIOL","BME","BMS","BTNY","CAND","CDIS","CE","CEM","CGT","CHE","CHM","CHNS","CLCS","CLPH","CM","CMPL","CNIT","COM","CPB","CS","CSR","DANC","EAPS","ECE","ECET","ECON","EDCI","EDPS","EDST","EEE","ENE","ENGL","ENGR","ENGT","ENTM","ENTR","EPCS","FNR","FR","FS","FVS","GEP","GER","GRAD","GREK","GS","GSLA","HDFS","HEBR","HIST","HK","HONR","HORT","HSCI","HSOP","HTM","IDE","IDIS","IE","IET","ILS","IPPH","IT","ITAL","JPNS","JWST","KOR","LA","LALS","LATN","LC","LING","MA","MCMP","ME","MET","MFET","MGMT","MSE","MSL","MUS","NRES","NS","NUCL","NUPH","NUR","NUTR","OBHR","OLS","PES","PHIL","PHPR","PHRM","PHYS","POL","PSY","PTGS","PUBH","REG","REL","RUSS","SA","SCI","SCLA","SFS","SLHS","SOC","SPAN","STAT","SYS","TDM","TECH","THTR","TLI", "VCS", "VIP", "VM", "WGSS"]
 
@@ -84,10 +85,15 @@ def prereqs(s):
 
 	clauses = []
 	for course in grps:
-		department = re.findall(grammar, course)
-		if len(department) == 0:
+		if course in ["(", ")", "and", "or"]:
 			clauses.append(course)
 			continue
+		department = re.findall(grammar, course)
+		if len(department) == 0:
+			print(course, "NOT FOUND")
+			print("BROKEN:", link)
+			print()
+			return
 		num = re.findall("[0-9]{5}", course)
 		assert(len(department) == 1)
 		assert(len(num) == 1)
