@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import ErrorPage from 'next/error'
 
 import Select from 'react-select';
-import ratings from '@mtucourses/rate-my-professors';
 
 import { Image, cookieStorageManager } from '@chakra-ui/react'
 
@@ -15,25 +14,7 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 import { instructorStyles } from '@/lib/utils';
 import { graphColors } from '@/lib/utils';
@@ -42,7 +23,7 @@ import { labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
 import Calendar from './calendar';
-
+import Graph from './graph';
 
 
 const CardDetails = () => {
@@ -77,12 +58,16 @@ const CardDetails = () => {
 
       const color = graphColors[(curr++) % graphColors.length];
 
-      gpa[instructor] = [course.gpa[instructor][13], color];
-      grades.push({
-        label: instructor,
-        data: course.gpa[instructor],
-        backgroundColor: color
-      });
+      const tmp = {}
+      for (const sem in course.gpa[instructor]) {
+        tmp[sem] = [course.gpa[instructor][sem][13], color];
+        gpa[instructor] = tmp;
+        grades.push({
+          label: instructor + "__" + semNameCodeConvert(sem),
+          data: course.gpa[instructor][sem],
+          backgroundColor: color
+        });
+      }
 
     }
 
@@ -115,7 +100,6 @@ const CardDetails = () => {
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
     if (!course) return;
-    const rmp = {};
     for (const instructor in course.gpa) {
       getRMPRating(instructor).then((rating) => {
         setCurRMP((prevRMP) => {
@@ -167,7 +151,7 @@ const CardDetails = () => {
 
   // This is used to set default instructor on the multiselect
   useEffect(() => {
-    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
+    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })), sem);
     setFirstInstructor(selectableInstructors[0]);
   }, [selectableInstructors]);
 
@@ -190,7 +174,23 @@ const CardDetails = () => {
 
 
   // Refresh graph when instructors change
-  const refreshGraph = (instructors) => {
+  /*
+
+  THIS IMPLEMENTATION DOES NOT WORK for multiple selected profs
+
+  i cannot get the closest sem for multiple profs, so this only works for 1
+  it is still very very slow, probably something is looping too much
+
+  alternative solution:
+  - have dropdown for semesters, default on avg
+  - ignore if the prof is not in the semester, just dont show it if it isnt
+
+  - with avg gpa, default to show avg for prof
+  - if the avg gpa exists in semester, show it
+  - if its not, just show average?
+
+  */
+  const refreshGraph = (instructors, semester) => {
     const gpa = defaultGPA.datasets;
     if (!gpa || gpa.length === 0) return;
 
@@ -201,16 +201,48 @@ const CardDetails = () => {
       setFirstInstructor("");
     }
 
+    const [targetTerm, targetYear] = semNameCodeConvert(semester).split("_").map(Number);
 
-    const newgpa = gpa.filter(inst => {
-      const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
-      return isIncluded;
+    // Initialize variables for closest semester
+    let closestSemester = null;
+    let closestDifference = Infinity;
+
+    // Filter GPA data for selected instructors
+    const selectedInstructors = gpa.filter(inst => {
+      const instructorLabel = inst.label.trim().split("__")[0];
+      return instructors.some(instructor => instructor.label.trim() === instructorLabel);
     });
 
-    setGpaGraph({
-      labels,
-      datasets: newgpa,
+    // Find closest semester
+    selectedInstructors.forEach(inst => {
+      const [instructorTerm, instructorYear] = inst.label.trim().split("__")[1].split("_").map(Number);
+      const yearDifference = Math.abs(targetYear - instructorYear);
+      const termDifference = Math.abs(targetTerm - instructorTerm);
+      const totalDifference = yearDifference * 2 + termDifference;
+
+      if (totalDifference < closestDifference) {
+        closestDifference = totalDifference;
+        closestSemester = inst;
+      }
     });
+
+    try {
+      // Filter GPA data for the closest semester
+      const filteredGpa = gpa.filter(inst => inst.label === closestSemester.label);
+      setFirstInstructor(closestSemester.label.split("__")[0]); // Set the first instructor
+
+      // Update the graph with filtered GPA data
+      setGpaGraph({
+        labels,
+        datasets: filteredGpa,
+      });
+    } catch {
+      // If there's an error, reset the graph
+      setGpaGraph({
+        labels,
+        datasets: [],
+      });
+    }
   };
 
 
@@ -231,6 +263,20 @@ const CardDetails = () => {
 
     const gened = genedsOptions.filter(gened => gened.value === code);
     return gened[0].label;
+  }
+
+
+  // Function to replace semester name with code and vice versa
+  const semNameCodeConvert = (name) => {
+    try {
+      name = name.split(" ");
+    } catch {
+      name = name.split("_");
+    }
+    if (name[0] === "Fall") return "01_" + name[1];
+    if (name[0] === "Spring") return "02_" + name[1];
+    if (name[0] === "01") return "Fall " + name[1];
+    if (name[0] === "02") return "Spring " + name[1];
   }
 
 
@@ -413,7 +459,7 @@ const CardDetails = () => {
                   styles={instructorStyles}
                   color="white"
                   onChange={(value) => {
-                    refreshGraph(value)
+                    refreshGraph(value, sem)
                   }}
                 />
               </div>
@@ -426,12 +472,12 @@ const CardDetails = () => {
                 <p className='text-sm text-gray-400 mb-1'>Average GPA</p>
                 <div className='md:w-1/2 m-auto'>
                   <CircularProgressbar
-                    value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
+                    value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][sem] === "undefined" ? 0 : curGPA[firstInstructor][sem][0]}
                     maxValue={4}
-                    text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
+                    text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][sem] === "undefined" ? "" : curGPA[firstInstructor][sem][0]}
                     styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]] === "undefined" ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
+                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]] === "undefined" ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
                       trailColor: '#000',
                     })}
                   />
@@ -446,8 +492,8 @@ const CardDetails = () => {
                     maxValue={5}
                     text={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
                     styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                      pathColor: `${typeof firstInstructor === "undefined" || !firstInstructor ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
+                      textColor: `${typeof firstInstructor === "undefined" || !firstInstructor ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
                       trailColor: '#000',
                     })}
                   />
@@ -458,57 +504,7 @@ const CardDetails = () => {
 
             {/* GPA Graph */}
             {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-96 bg-gray-800 mx-auto p-4 rounded-xl">
-                <div className="h-full w-full mb-4">
-                  <Bar
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          position: 'top',
-                          labels: {
-                            color: "white"
-                          }
-                        },
-                        title: {
-                          display: true,
-                          text: 'Average Grades by Instructor',
-                          color: "white"
-                        },
-                      },
-                      scales: {
-                        y: {
-                          title: {
-                            display: true,
-                            text: '% of Students',
-                            color: "white"
-                          },
-                          grid: {
-                            color: "gray"
-                          }
-                        },
-                        x: {
-                          grid: {
-                            color: "gray"
-                          }
-                        }
-                      }
-                    }} data={gpaGraph}
-                  // {
-                  //   {
-                  //     labels,
-                  //     datasets: [{
-                  //       label: 'test1',
-                  //       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-                  //       backgroundColor: 'rgba(53, 162, 235, 0.5)',
-                  //     }]
-                  //   }
-                  // }
-                  />
-                </div>
-
-              </div>
+              <Graph data={gpaGraph} />
             )}
 
             {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (

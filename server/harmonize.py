@@ -221,23 +221,27 @@ print("syncing grades....")
 for i in range(len(course_data)):
     gpa_data = {}
     gpa_data_count = {}
-    for semester in course_data[i]["gpa"]:
-        for entry in course_data[i]["gpa"][semester]:
+    for semester, data in course_data[i]["gpa"].items():
+        for entry in data:
             instructor = entry[0]
             if instructor in gpa_data:
-                for k in range(len(gpa_data[instructor])):
-                    gpa_data[instructor][k] = round(
-                        (
-                            gpa_data[instructor][k] * gpa_data_count[instructor]
-                            + entry[1][k]
+                if semester in gpa_data[instructor]:
+                    for k in range(len(gpa_data[instructor][semester])):
+                        gpa_data[instructor][semester][k] = round(
+                            (
+                                gpa_data[instructor][semester][k] * gpa_data_count[instructor][semester]
+                                + entry[1][k]
+                            )
+                            / (gpa_data_count[instructor][semester] + 1),
+                            2,
                         )
-                        / (gpa_data_count[instructor] + 1),
-                        2,
-                    )
-                gpa_data_count[instructor] += 1
+                else:
+                    gpa_data[instructor][semester] = entry[1]
+                    gpa_data_count[instructor][semester] = 1
             else:
-                gpa_data[instructor] = entry[1]
-                gpa_data_count[instructor] = 1
+                gpa_data[instructor] = {semester: entry[1]}
+                gpa_data_count[instructor] = {semester: 1}
+
     course_data[i]["gpa"] = gpa_data
 
 # adding geneds
