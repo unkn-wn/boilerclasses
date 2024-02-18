@@ -1,4 +1,5 @@
 import re
+import json
 
 class Course(object):
 	def __init__(self, dep, num, concurrent):
@@ -90,11 +91,17 @@ def prereqs(s, link=""):
 			continue
 		department = re.findall(grammar, course)
 		if len(department) == 0:
-			print(course, "NOT FOUND")
-			print("BROKEN:", link)
+			print(course, "NOT FOUND of class", link)
+			print("BROKEN:", s)
 			print()
 			return
-		num = re.findall("[0-9]{5}", course)
+		num = re.findall("[A-z0-9][0-9][0-9][0-9][0-9]", course)
+		if len(num) == 0:
+			print(course, "NOT FOUND of class", link)
+			print("BROKEN:", s)
+			print()
+			return
+
 		assert(len(department) == 1)
 		assert(len(num) == 1)
 
@@ -106,10 +113,26 @@ def prereqs(s, link=""):
 	# print(clauses)
 	return build_tree(clauses)
 
-s = """Undergraduate level MA 16100 Minimum Grade of C [may be taken concurrently] or Undergraduate level MA 16300 Minimum Grade of C [may be taken concurrently] or Undergraduate level MA 16500 Minimum Grade of C [may be taken concurrently] or Undergraduate level MATH 16500 Minimum Grade of C [may be taken concurrently] or Undergraduate level MA 16700 Minimum Grade of C [may be taken concurrently] or (Undergraduate level MA 22100 Minimum Grade of C and (Undergraduate level MA 22200 Minimum Grade of C or Undergraduate level MA 16021 Minimum Grade of C) ) or (Undergraduate level MA 22300 Minimum Grade of C and Undergraduate level MA 22400 Minimum Grade of C) or (Undergraduate level MA 16010 Minimum Grade of C and Undergraduate level MA 16020 Minimum Grade of C)"""
+# s = " (Undergraduate level PHYS 17200 Minimum Grade of D- or (Undergraduate level PHYS 16200 Minimum Grade of D- and Undergraduate level PHYS 16300 Minimum Grade of D-) or Undergraduate level ENGR 16200 Minimum Grade of D-) and (Undergraduate level MA 26100 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MATH 26100 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 26300 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 17200 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 18200 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 27101 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 17400 Minimum Grade of D- [may be taken concurrently])"
 
-print(prereqs(s))
+# print(prereqs(s))
 
-s = "(Undergraduate level CS 25100 Minimum Grade of C or Undergraduate level CS 25300 Minimum Grade of C or Undergraduate level ECE 36800 Minimum Grade of C or Undergraduate level EE 36800 Minimum Grade of C or Undergraduate level ECE 36900 Minimum Grade of C or Undergraduate level EE 36900 Minimum Grade of C) and (Undergraduate level MA 26100 Minimum Grade of C or Undergraduate level MA 17200 Minimum Grade of C or Undergraduate level MA 17400 Minimum Grade of C or Undergraduate level MA 26100 Minimum Grade of C or Undergraduate level MA 18200 Minimum Grade of C or Undergraduate level MA 27101 Minimum Grade of C or Undergraduate level MA 26300 Minimum Grade of C or Undergraduate level MA 27100 Minimum Grade of C)"
+# s = "(Undergraduate level ENGR 13200 Minimum Grade of C- or Undergraduate level ENGR 14200 Minimum Grade of C- or Undergraduate level ENGR 16200 Minimum Grade of C- or Undergraduate level ENGR 13000 Minimum Grade of C- or Undergraduate level EPCS 12100 Minimum Grade of C- or Undergraduate level VIP 17912 Minimum Grade of C-) and (Undergraduate level CGT 16300 Minimum Grade of C- [may be taken concurrently] or Undergraduate level MFET 16300 Minimum Grade of C- [may be taken concurrently]) and (Undergraduate level CS 15900 Minimum Grade of C- [may be taken concurrently] or Undergraduate level CS 17700 Minimum Grade of C- [may be taken concurrently] or Undergraduate level CS 18000 Minimum Grade of C- [may be taken concurrently])"
 
-print(prereqs(s))
+# print(prereqs(s))
+
+# s = " (Undergraduate level AAE 20400 Minimum Grade of D- [may be taken concurrently] or Undergraduate level NUCL 27300 Minimum Grade of D- [may be taken concurrently] or Undergraduate level ME 32300 Minimum Grade of D- [may be taken concurrently] or Undergraduate level CE 27300 Minimum Grade of D- [may be taken concurrently])"
+
+# print(prereqs(s))
+
+# s = "Undergraduate level AAE 33300 Minimum Grade of D- and Undergraduate level AAE 33301 Minimum Grade of D- and Undergraduate level ME 20000 Minimum Grade of D-"
+
+# print(prereqs(s))
+
+if __name__ == "__main__":
+	file = open("./data/scraped.json").readline()
+
+	data = json.loads(file)
+
+	for course in data:
+		prereqs(data[course], course)
