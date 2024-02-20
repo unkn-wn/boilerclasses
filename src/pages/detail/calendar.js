@@ -16,7 +16,6 @@ import {
 const Calendar = (props) => {
 
     const { subjectCode, courseCode, title } = props;
-
     const [lectures, setLectures] = useState({
         Monday: [],
         Tuesday: [],
@@ -132,6 +131,10 @@ const Calendar = (props) => {
     useEffect(() => {
         getCourseData(subjectCode, courseCode, title);
     }, []);
+
+    if (Object.values(lectures).every(lecture => lecture.length === 0)) {
+        return <></>
+    }
 
 
     return (

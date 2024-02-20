@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import { semesters } from "../../lib/utils"
+import { semesters, subjects } from "../../lib/utils"
 const inter = Inter({ subsets: ['latin'] })
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -30,6 +30,42 @@ const CardDetails = () => {
   const router = useRouter();
   const [course, setCourse] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const parsePrereqs = (prereq) => {
+    
+    if (prereq.split(' ').length == 2) {
+      const detailId = prereq.split(' ')[0]
+      const concurrent = prereq.split(' ')[1]
+      const subjectCodeMatch = detailId.match(/[A-Z]+/);
+      if (!subjectCodeMatch) {
+        return null;
+      }
+      const subjectCode = subjectCodeMatch[0];
+      
+      const subject = subjects.find((s) => s == subjectCode);
+      const courseNumberMatch = detailId.match(/\d+/);
+      if (!courseNumberMatch) {
+        return null;
+      }
+      const courseNumber = courseNumberMatch[0];
+      return (
+        <span className=''>
+          <a href={`/detail/${detailId}`}
+            target="_blank" rel="noopener noreferrer"
+            className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
+            {subjectCode}  {courseNumber}
+          </a>
+          {concurrent == "True" ? " [may be taken concurrently]" : ""}
+        </span>
+      )
+    } else if (prereq.split(' ').length == 3) {
+      const concurrent = prereq.split(' ')[1]
+      return `${prereq.split(' ')[0]} ${prereq.split(' ')[1]}${concurrent == "True" ? " [may be taken concurrently]" : ""}`
+    } else {
+      return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
+    }
+    
+  }
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -281,10 +317,10 @@ const CardDetails = () => {
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
-          <div className="flex flex-col w-full md:mr-3">
+          <div className="flex flex-col w-full md:mr-3 justify-start h-full">
             <p className="lg:text-3xl md:text-3xl text-xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</p>
             <br />
-            <div className="flex flex-col gap-4 -mt-3 mb-2">
+            <div className="flex flex-col gap-4 -mt-3 mb-1">
               <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
 
                 {/* Credits Display */}
@@ -305,9 +341,14 @@ const CardDetails = () => {
                   </span>
                 ))}
 
+                {/* Latest Semester Display */}
+                <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}>
+                  {sem}
+                </span>
+
                 {/* Gened Type Display */}
                 {course.gened.map((gened, i) => (
-                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}
+                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                     key={i}>
                     {genedCodeToName(gened)}
                   </span>
@@ -318,24 +359,26 @@ const CardDetails = () => {
 
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
-                <span className="text-gray-400 font-normal text-xs">RateMyProfessors: </span>
+                <span className="text-gray-400 font-bold text-xs">RateMyProfessors: </span>
 
                 {course.instructor[sem].map((prof, i) => (
+                  <>
                   <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                     target="_blank" rel="noopener noreferrer"
-                    className='underline decoration-dotted'
+                    className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
                     key={i}>
                     {prof}
-                    {i < course.instructor[sem].length - 1 && ", "}
                   </a>
+                  {i < course.instructor[sem].length - 1 && ", "}
+                  </>
                 )
                 )}
               </p>
-
             </div>
 
+              
             {/* Semester Tags */}
-            <div className="flex flex-row flex-wrap gap-1 mb-1">
+            {/* <div className="flex flex-row flex-wrap gap-1 mb-1">
               {availableSemesters.map((sem, i) => (
                 <button className={`text-xs px-2 py-1 rounded-full border-solid border
                                           ${i === 0 ? "bg-sky-600" : ""} border-sky-800 whitespace-nowrap transition-all`}
@@ -344,20 +387,27 @@ const CardDetails = () => {
                   onClick={() => changeInstructors(sem)}>{sem}</button>
               ))}
             </div>
-
-
+             */}
+            
             {/* Other Links Buttons */}
-            <div className="flex flex-row flex-wrap">
+            <div className="flex flex-row flex-wrap my-2">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
+                className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
+              <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202420&subj_code_in=${course.subjectCode}&crse_numb_in=${course.courseCode}`} target="_blank" rel="noopener noreferrer"
+                className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
+                <div className="flex flex-row gap-2">
+                  <Image src="/purdue-icon.png" alt="" boxSize={4} className="my-auto" />
+                  Catalog
+                </div>
+              </a>
               {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
                 <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
-                  className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
+                  className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
                     <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
                     Boilerexams
@@ -365,8 +415,17 @@ const CardDetails = () => {
                 </a>
               }
             </div>
+            
+            
+            {/* Description */}
+            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
+            
+            {(course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="text-base text-gray-400 mb-4 font-medium">
+              <span className="text-gray-400 text-base">Prerequisites: </span>
+              {course.prereqs.map((prereq) =>  parsePrereqs(prereq))}
+            </p>}
 
-            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-4 break-words grow">{course.description}</p>
+            
 
           </div>
 
@@ -450,7 +509,7 @@ const CardDetails = () => {
         </div>
 
         {/* Calendar View for Lecture Times */}
-        <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />
+        { <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />}
 
         <div className='mt-auto'>
           <Footer />

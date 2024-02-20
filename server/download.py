@@ -43,6 +43,14 @@ for sem in grade_semesters:
   filename = wget.download(url, out="data/grades/")
 print("finished downloading grade data...")
 
+# download prereq data
+if not os.path.exists('data/prereqs'):
+  os.mkdir("data/prereqs")
+url = link + "data/prereqs/classes_prereqs.json"
+filename = wget.download(url, out="data/prereqs/")
+print("finished downloading prereq data...")
+
+
 # download/scrape class data
 if args.scrape:
   for sem in semesters:

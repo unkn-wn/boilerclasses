@@ -22,6 +22,7 @@ structure for data:
     prof1: [A+, A, A-, .. F, average],
     prof2: [A+, A, A-, .. F, average]
   }
+  prereqs: [..]
 }
 """
 
@@ -44,6 +45,13 @@ parser.add_argument(
     dest="genedfile",
     help="gened JSON file",
 )
+parser.add_argument(
+    "-prereqs",
+    default="data/prereqs/classes_prereqs.json",
+    dest="prereqsfile",
+    help="prereqs JSON file",
+)
+
 parser.add_argument(
     "-outfile",
     default="classes_out.json",
@@ -257,6 +265,20 @@ for tag in tqdm(gened_data):
                 and tag not in course_data[i]["gened"]
             ):
                 course_data[i]["gened"].append(tag)
+
+# adding prereqs
+prereqs_file = open(args.prereqsfile)
+prereqs_data = json.load(prereqs_file)
+prereqs_file.close()
+
+print("adding prereqs.....")
+for class_data in tqdm(prereqs_data):
+    sub, code = class_data.split()
+    for i in range(len(course_data)):
+        if (course_data[i]["subjectCode"] == sub and course_data[i]["courseCode"] == code):
+            course_data[i]["prereqs"] = prereqs_data[class_data]
+
+
 test = []
 invalid_indices = []
 for i in range(len(course_data)):
