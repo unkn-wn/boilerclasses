@@ -7,7 +7,7 @@ class Course(object):
 		self.course_num = num
 		self.concurrent = concurrent
 	def __repr__(self) -> str:
-		return "( " + self.department + " " + str(self.course_num) + " " + str(self.concurrent) + " )"
+		return self.department + " " + str(self.course_num) + " " + str(self.concurrent)
 
 def group(s):
 	grps = []
@@ -91,16 +91,16 @@ def prereqs(s, link=""):
 			continue
 		department = re.findall(grammar, course)
 		if len(department) == 0:
-			print(course, "NOT FOUND of class", link)
-			print("BROKEN:", s)
-			print()
-			return
+			# print(course, "NOT FOUND of class", link)
+			# print("BROKEN:", s)
+			# print()
+			return (None, course)
 		num = re.findall("[A-z0-9][0-9][0-9][0-9][0-9]", course)
 		if len(num) == 0:
-			print(course, "NOT FOUND of class", link)
-			print("BROKEN:", s)
-			print()
-			return
+			# print(course, "NOT FOUND of class", link)
+			# print("BROKEN:", s)
+			# print()
+			return (None, course)
 
 		assert(len(department) == 1)
 		assert(len(num) == 1)
@@ -109,9 +109,10 @@ def prereqs(s, link=""):
 		# print(course, department, num, concurrent)
 
 		c = Course(department[0], num[0], concurrent)
-		clauses.append(c)
+		clauses.append(str(c))
 	# print(clauses)
-	return build_tree(clauses)
+	# return build_tree(clauses)
+	return (clauses, -1)
 
 # s = " (Undergraduate level PHYS 17200 Minimum Grade of D- or (Undergraduate level PHYS 16200 Minimum Grade of D- and Undergraduate level PHYS 16300 Minimum Grade of D-) or Undergraduate level ENGR 16200 Minimum Grade of D-) and (Undergraduate level MA 26100 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MATH 26100 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 26300 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 17200 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 18200 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 27101 Minimum Grade of D- [may be taken concurrently] or Undergraduate level MA 17400 Minimum Grade of D- [may be taken concurrently])"
 
@@ -134,5 +135,21 @@ if __name__ == "__main__":
 
 	data = json.loads(file)
 
+	info = {}
+
+	err = open("./data/broken.txt", "w")
+
 	for course in data:
-		prereqs(data[course], course)
+		s, ecode = prereqs(data[course], course)
+		# s == None --> error finding course prereq
+		if s == None:
+			err.write(course + " broken by '" + ecode + "'\n")
+		else:
+			info[course] = s
+
+	json_data = json.dumps(info, indent=4)
+
+	f = open("./data/prereqs.json", "w")
+	f.write(json_data)
+
+	f.close()

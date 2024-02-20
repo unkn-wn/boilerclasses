@@ -1,0 +1,8 @@
+AAE 66800 broken by '3.000 Credit hours'
+AAE 67500 broken by '3.000 Credit hours'
+ABE 20500 broken by 'Undergraduate level ENFY 12600 Minimum Grade of C-'
+AD 20200 broken by 'Undergraduate level EDUC F1000 Minimum Grade of C- [may be taken concurrently]'
+AD 30500 broken by '0.000 OR     3.000 Credit hours'
+AGEC 33300 broken by 'Undergraduate level BUS A2010 Minimum Grade of D-'
+AGEC 41100 broken by 'Undergraduate level BUS A2010 Minimum Grade of D-'
+AGEC 63100 broken by '3.000 Credit hours'
