@@ -420,8 +420,8 @@ const CardDetails = () => {
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
             
-            {(course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="text-base text-gray-400 mb-4 font-medium">
-              <span className="text-gray-400 text-base">Prerequisites: </span>
+            {(course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
+              <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
               {course.prereqs.map((prereq) =>  parsePrereqs(prereq))}
             </p>}
 
