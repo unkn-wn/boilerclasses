@@ -8,7 +8,7 @@ import {
 	Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-
+import { labels } from '@/lib/utils';
 
 ChartJS.register(
 	CategoryScale,

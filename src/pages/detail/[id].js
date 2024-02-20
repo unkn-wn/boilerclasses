@@ -22,8 +22,8 @@ import { boilerExamsCourses } from '@/lib/utils';
 import { labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
-import Calendar from './calendar';
-import Graph from './graph';
+import Calendar from '../../components/calendar';
+import Graph from '../../components/graph';
 
 
 const CardDetails = () => {
