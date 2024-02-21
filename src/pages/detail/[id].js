@@ -16,10 +16,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 
 
-import { instructorStyles } from '@/lib/utils';
-import { graphColors } from '@/lib/utils';
-import { boilerExamsCourses } from '@/lib/utils';
-import { labels } from '@/lib/utils';
+import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
 import Calendar from '../../components/calendar';
@@ -31,8 +28,8 @@ const CardDetails = () => {
   const [course, setCourse] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const parsePrereqs = (prereq) => {
-    
+  const parsePrereqs = (prereq, i) => {
+
     if (prereq.split(' ').length == 2) {
       const detailId = prereq.split(' ')[0]
       const concurrent = prereq.split(' ')[1]
@@ -41,7 +38,7 @@ const CardDetails = () => {
         return null;
       }
       const subjectCode = subjectCodeMatch[0];
-      
+
       const subject = subjects.find((s) => s == subjectCode);
       const courseNumberMatch = detailId.match(/\d+/);
       if (!courseNumberMatch) {
@@ -49,7 +46,7 @@ const CardDetails = () => {
       }
       const courseNumber = courseNumberMatch[0];
       return (
-        <span className=''>
+        <span className='' key={i}>
           <a href={`/detail/${detailId}`}
             target="_blank" rel="noopener noreferrer"
             className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
@@ -64,7 +61,7 @@ const CardDetails = () => {
     } else {
       return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
     }
-    
+
   }
 
   useEffect(() => {
@@ -318,8 +315,13 @@ const CardDetails = () => {
 
           {/* Left half of panel */}
           <div className="flex flex-col w-full md:mr-3 justify-start h-full">
-            <p className="lg:text-3xl md:text-3xl text-xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</p>
-            <br />
+            <div className='flex flex-row gap-1'>
+              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 h-fit hover:-translate-x-0.5 transition'>
+                <Image src="/left.svg" alt="" boxSize={7}/>
+              </a>
+              <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
+            </div>
+
             <div className="flex flex-col gap-4 -mt-3 mb-1">
               <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
 
@@ -376,7 +378,7 @@ const CardDetails = () => {
               </p>
             </div>
 
-              
+
             {/* Semester Tags */}
             {/* <div className="flex flex-row flex-wrap gap-1 mb-1">
               {availableSemesters.map((sem, i) => (
@@ -388,7 +390,7 @@ const CardDetails = () => {
               ))}
             </div>
              */}
-            
+
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap my-2">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
@@ -415,17 +417,17 @@ const CardDetails = () => {
                 </a>
               }
             </div>
-            
-            
+
+
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
-            
+
             {(course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
               <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
-              {course.prereqs.map((prereq) =>  parsePrereqs(prereq))}
+              {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
             </p>}
 
-            
+
 
           </div>
 

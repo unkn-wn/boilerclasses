@@ -18,7 +18,7 @@ const Card = ({ course }) => {
   });
   const uniqueInstructors = [...instructors];
 
-  
+
   return (
     <>
       <Link target="_blank"
@@ -51,7 +51,7 @@ const Card = ({ course }) => {
               : course.description}
             </span>
           </p>
-          
+
           <div className="flex flex-row flex-wrap">
             {course.sched.includes("Distance Learning") && <p className="text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border border-purple-500 bg-purple-300 whitespace-nowrap">
               Distance Learning
