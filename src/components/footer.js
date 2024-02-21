@@ -15,7 +15,7 @@ const Footer = () => {
                     </a>
                     {/* <p>&nbsp;(last deployed 1/2/24)</p> */}
                 </span>
-                is an unofficial catalogue for Purdue courses made by Purdue students. <br />
+                is an unofficial catalog for Purdue courses made by Purdue students. <br />
                 We'd love to hear your <a href="https://forms.gle/jtpLPbXm4X4RFoNh6" target="_black" rel="noopener noreferrer" className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</a>!
                 {/* Inspired by <a href='https://classes.wtf/' target='_blank' rel='noopener noreferrer' className='underline decoration-dashed decoration-1 underline-offset-2'>classes.wtf</a><br /> */}
             </p>
