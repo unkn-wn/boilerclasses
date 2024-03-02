@@ -326,6 +326,14 @@ const CardDetails = () => {
   return (
     <>
       <Head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-48L6TGYD2L');`}
+        </script>
         <title>{course.subjectCode} {course.courseCode}: {course.title} | BoilerClasses</title>
         <meta name="title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
         <meta name="description" content={`${course.description}`} />

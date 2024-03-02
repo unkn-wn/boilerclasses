@@ -1,7 +1,9 @@
 # [BoilerClasses](https://www.boilerclasses.com/)
 
 
-https://github.com/unkn-wn/boilerclasses/assets/37767310/e7158449-630b-4ed6-a7e4-1bb716d31fa9
+
+https://github.com/unkn-wn/boilerclasses/assets/43097991/6c5121e0-797f-48ab-ace8-6ce5a05859e2
+
 
 
 # Structure
