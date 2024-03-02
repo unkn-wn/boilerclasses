@@ -338,6 +338,10 @@ const CardDetails = () => {
         <meta name="title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
         <meta name="description" content={`${course.description}`} />
         <meta name="keywords" content={`${course.subjectCode}, ${course.courseCode}, ${course.subjectCode} ${course.courseCode}, ${course.title}, ${course.description.split(' ')}, ${availableSemesters.join(", ")}, Course, Purdue`} />
+        <meta name='og:locality' content='West Lafayette' />
+        <meta name='og:region' content='IN' />
+        <meta name='og:postal-code' content='47906' />
+        <meta name='og:postal-code' content='47907' />
       </Head>
       <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
