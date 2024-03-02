@@ -7,7 +7,8 @@ import ErrorPage from 'next/error'
 
 import Select from 'react-select';
 
-import { Image, cookieStorageManager } from '@chakra-ui/react'
+import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
+import { FaHome } from "react-icons/fa";
 
 import {
   CircularProgressbar, buildStyles
@@ -316,8 +317,8 @@ const CardDetails = () => {
           {/* Left half of panel */}
           <div className="flex flex-col w-full md:mr-3 justify-start h-full">
             <div className='flex flex-row gap-1'>
-              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 h-fit hover:-translate-x-0.5 transition'>
-                <Image src="/left.svg" alt="" boxSize={7}/>
+              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'>
+                <Icon as={FaHome} alt="" boxSize={6}/>
               </a>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
             </div>
