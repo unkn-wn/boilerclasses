@@ -7,7 +7,8 @@ import ErrorPage from 'next/error'
 
 import Select from 'react-select';
 
-import { Image, cookieStorageManager } from '@chakra-ui/react'
+import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
+import { FaHome } from "react-icons/fa";
 
 import {
   CircularProgressbar, buildStyles
@@ -83,6 +84,12 @@ const CardDetails = () => {
 
   useEffect(() => {
     if (!course) return;
+    // set descriptions to none if it's html
+
+    if (course.description && course.description.startsWith("<a href=")) {
+      setCourse({ ...course, description: "No Description Available" });
+    }
+
     // set graph
     const grades = [];
     const gpa = {};
@@ -302,6 +309,20 @@ const CardDetails = () => {
     return <ErrorPage statusCode={404} />
   }
 
+  const renderPrereqs = () => {
+    try {
+      return (
+        (course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
+          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
+          {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
+        </p>
+      );
+    } catch (error) {
+      console.log(course.prereqs);
+      return <></>;
+    }
+  }
+
   return (
     <>
       <Head>
@@ -324,8 +345,8 @@ const CardDetails = () => {
           {/* Left half of panel */}
           <div className="flex flex-col w-full md:mr-3 justify-start h-full">
             <div className='flex flex-row gap-1'>
-              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 h-fit hover:-translate-x-0.5 transition'>
-                <Image src="/left.svg" alt="" boxSize={7}/>
+              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'>
+                <Icon as={FaHome} alt="" boxSize={6} />
               </a>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
             </div>
@@ -373,13 +394,13 @@ const CardDetails = () => {
 
                 {course.instructor[sem].map((prof, i) => (
                   <>
-                  <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
-                    key={i}>
-                    {prof}
-                  </a>
-                  {i < course.instructor[sem].length - 1 && ", "}
+                    <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
+                      target="_blank" rel="noopener noreferrer"
+                      className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
+                      key={i}>
+                      {prof}
+                    </a>
+                    {i < course.instructor[sem].length - 1 && ", "}
                   </>
                 )
                 )}
@@ -430,10 +451,8 @@ const CardDetails = () => {
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
 
-            {(course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
-              <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
-              {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
-            </p>}
+            {/* Prerequisites */}
+            {renderPrereqs()}
 
 
 
@@ -519,7 +538,7 @@ const CardDetails = () => {
         </div>
 
         {/* Calendar View for Lecture Times */}
-        { <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />}
+        {<Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />}
 
         <div className='mt-auto'>
           <Footer />

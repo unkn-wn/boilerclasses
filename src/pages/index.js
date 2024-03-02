@@ -104,6 +104,7 @@ const CourseCatalog = () => {
   return (
     <>
       <Head>
+        <title>BoilerClasses - Purdue University's Unofficial Course Catalog</title>
         {/* <!-- Google tag (gtag.js) --> */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
         <script>
@@ -115,11 +116,7 @@ const CourseCatalog = () => {
         </script>
         <meta name="title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
         <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
-        <meta name="keywords" content="Purdue, Purdue Univesity, West Lafayette, Indiana, Chicago, Lafayette, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
-        <meta name='og:locality' content='West Lafayette' />
-        <meta name='og:region' content='IN' />
-        <meta name='og:postal-code' content='47906' />
-        <meta name='og:postal-code' content='47907' />
+        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
       </Head>
       {!displayLanding ?
         <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
