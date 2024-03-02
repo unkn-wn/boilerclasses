@@ -84,6 +84,12 @@ const CardDetails = () => {
 
   useEffect(() => {
     if (!course) return;
+    // set descriptions to none if it's html
+
+    if (course.description && course.description.startsWith("<a href=")) {
+      setCourse({ ...course, description: "No Description Available" });
+    }
+
     // set graph
     const grades = [];
     const gpa = {};
