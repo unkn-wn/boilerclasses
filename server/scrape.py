@@ -13,12 +13,13 @@ from tqdm import tqdm
 
 
 parser = argparse.ArgumentParser(description='which semester')
-parser.add_argument("-sem", default="Spring 2024", dest="sem", help="which semester (default: Spring 2024)")
+parser.add_argument("-sem", default="Fall 2024", dest="sem", help="which semester (default: Fall 2024)")
 
 args = parser.parse_args()
 
 
 options = Options()
+options.add_argument("--headless")
 options.add_experimental_option("detach", True)
 
 link = "https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched"
