@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 import Card from "../components/card"
 import Footer from "../components/footer"
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, WarningTwoIcon } from '@chakra-ui/icons'
 import Select from 'react-select';
 import Head from "next/head";
 
@@ -43,8 +43,10 @@ const CourseCatalog = () => {
   const [displayLanding, setDisplayLanding] = useState(true);
 
   function changeLanding(event) {
-    setDisplayLanding(!displayLanding);
-    setSearchTerm(event);
+    if (event.length >= 2) {
+      setDisplayLanding(!displayLanding);
+      setSearchTerm(event);
+    }
   }
 
   function transform(query) {
@@ -252,9 +254,9 @@ const CourseCatalog = () => {
               </Popover>
             </div>
           </div>
-
+          {courses.length > 0 ?
           <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-            {courses.map(course => (
+            {courses.length > 0 && courses.map(course => (
               <Card key={course.id} course={course.value} />
               // <div key={course.id}
               //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
@@ -270,6 +272,12 @@ const CourseCatalog = () => {
 
             ))}
           </div>
+          :
+          <div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
+              <WarningTwoIcon boxSize={16} color='#DAAA00'/>
+              <div className='text-white'>No results found!</div>
+          </div>
+          }
           <div className='mt-auto'>
             <Footer />
           </div>
