@@ -254,7 +254,7 @@ const CourseCatalog = () => {
               </Popover>
             </div>
           </div>
-          {courses.length > 0 ?
+          {courses.length > 0 || searchTerm.length < 2 ?
           <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
             {courses.length > 0 && courses.map(course => (
               <Card key={course.id} course={course.value} />
