@@ -67,7 +67,7 @@ out = {}
 semesters = []
 all_classes = []
 # TODO: change for semester
-latest_sem = "Spring 2024"
+latest_sem = "Fall 2024"
 
 for file_name in os.listdir(args.folder):
     path = args.folder + file_name
