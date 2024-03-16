@@ -24,7 +24,7 @@ import {
   Button
 } from '@chakra-ui/react'
 
-import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions } from '@/lib/utils';
+import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions, instructorStyles } from '@/lib/utils';
 
 
 const CourseCatalog = () => {
@@ -125,7 +125,7 @@ const CourseCatalog = () => {
         <meta name='og:postal-code' content='47907' />
       </Head>
       {!displayLanding ?
-        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
+        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
             <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16 cursor-pointer' />
             <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto ml-2 select-none text-white cursor-pointer'>BoilerClasses</h1>
@@ -140,7 +140,7 @@ const CourseCatalog = () => {
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}
-              className="text-white text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="text-white text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
           </div>
           <div className="flex flex-row mb-8 gap-5 items-center">
@@ -152,7 +152,7 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Subject..."
-                styles={subjectStyles}
+                styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
                   setSelectedSubjects(value)
@@ -164,7 +164,7 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Semester..."
-                styles={semesterStyles}
+                styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
                   setSelectedSemesters(value)
@@ -176,7 +176,7 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Gen Ed..."
-                styles={semesterStyles}
+                styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
                   setSelectedGenEds(value)
@@ -184,7 +184,7 @@ const CourseCatalog = () => {
               />
               <Popover placement='bottom-start'>
                 <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
                     <span>Credits</span>
                     <ChevronDownIcon color='gray-800' />
                   </button>
@@ -215,7 +215,7 @@ const CourseCatalog = () => {
               </Popover>
               <Popover placement='bottom-start'>
                 <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
                     <span>Level</span>
                     <ChevronDownIcon color='gray-800' />
                   </button>
@@ -240,7 +240,7 @@ const CourseCatalog = () => {
               </Popover>
               <Popover placement='bottom-start'>
                 <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
                     <span>Schedule</span>
                     <ChevronDownIcon color='gray-800' />
                   </button>

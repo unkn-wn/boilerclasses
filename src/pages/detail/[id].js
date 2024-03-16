@@ -22,6 +22,7 @@ import Footer from '@/components/footer';
 import Head from 'next/head';
 import Calendar from '../../components/calendar';
 import Graph from '../../components/graph';
+import InfoModal from '@/components/infoModal';
 
 
 const CardDetails = () => {
@@ -153,6 +154,8 @@ const CardDetails = () => {
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
   const [selectableInstructors, setSelectableInstructors] = useState([]);
+
+  const [infoModal, setInfoModal] = useState(false);
 
 
   const instructors = new Set();
@@ -326,7 +329,7 @@ const CardDetails = () => {
   return (
     <>
       <Head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
         <script>
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -343,7 +346,8 @@ const CardDetails = () => {
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
       </Head>
-      <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <InfoModal isOpen={infoModal} onClose={setInfoModal} />
+      <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
@@ -467,36 +471,55 @@ const CardDetails = () => {
           {defaultGPA.datasets.length > 0 && <div className="flex flex-col w-full ">
 
 
-            {/* Instructor Select */}
-            {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
-              <div className="lg:mb-6 md:mb-4 mb-2">
+            <div className='flex flex-row md:gap-4 gap-2'>
+              {/* Semester Select */}
+              {/* <div className="md:mb-4 mb-2 grow-0">
                 <Select
                   isMulti
-                  options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                  options={{}}
                   className="basic-multi-select w-full no-wrap"
                   classNamePrefix="select"
                   placeholder="Instructor..."
                   menuPlacement='bottom'
-                  defaultValue={
-                    selectableInstructors.length > 0
-                      ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                      : null
-                  }
+                  defaultValue={{}}
                   styles={instructorStyles}
                   color="white"
-                  onChange={(value) => {
-                    refreshGraph(value)
-                  }}
+                  onChange={{}}
                 />
-              </div>
-            }
+              </div> */}
+
+
+              {/* Instructor Select */}
+              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
+                <div className="md:mb-4 mb-2 grow">
+                  <Select
+                    isMulti
+                    options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                    className="basic-multi-select w-full no-wrap"
+                    classNamePrefix="select"
+                    placeholder="Instructor..."
+                    menuPlacement='bottom'
+                    defaultValue={
+                      selectableInstructors.length > 0
+                        ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
+                        : null
+                    }
+                    styles={instructorStyles}
+                    color="white"
+                    onChange={(value) => {
+                      refreshGraph(value)
+                    }}
+                  />
+                </div>
+              }
+
+            </div>
 
 
             {/* Stat Cards */}
-            <div className="flex flex-row lg:gap-8 md:gap-4 gap-2">
-              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl gap-2">
-                <p className='text-sm text-gray-400 mb-1'>Average GPA</p>
-                <div className='md:w-1/2 m-auto'>
+            <div className="flex flex-row md:gap-4 gap-2 hover:scale-[1.01] transition-all" onClick={() => setInfoModal(true)}>
+              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
                     maxValue={4}
@@ -504,15 +527,14 @@ const CardDetails = () => {
                     styles={buildStyles({
                       pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
                       textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      trailColor: '#000',
+                      trailColor: '#0a0a0a',
                     })}
                   />
                 </div>
+                <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
-              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl gap-2">
-                <p className='md:hidden text-sm text-gray-400 mb-1'>RateMyProf Rating</p>
-                <p className='hidden md:block text-sm text-gray-400 mb-1'>RateMyProfessors Rating</p>
-                <div className='md:w-1/2 m-auto'>
+              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
                     maxValue={5}
@@ -520,10 +542,12 @@ const CardDetails = () => {
                     styles={buildStyles({
                       pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
                       textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      trailColor: '#000',
+                      trailColor: '#0a0a0a',
                     })}
                   />
                 </div>
+                <p className='md:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
+                <p className='hidden md:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
               </div>
             </div>
 

@@ -8,7 +8,6 @@ import {
 	Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { labels } from '@/lib/utils';
 
 ChartJS.register(
 	CategoryScale,
@@ -24,7 +23,7 @@ const Graph = (props) => {
 
 	return (
 		<>
-			<div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-96 bg-gray-800 mx-auto p-4 rounded-xl">
+			<div className="md:mt-4 mt-2 mb-4 w-full h-96 bg-zinc-900 mx-auto p-4 rounded-xl">
 				<div className="h-full w-full mb-4">
 					<Bar
 						options={{

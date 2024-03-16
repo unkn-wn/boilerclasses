@@ -119,7 +119,7 @@ const Calendar = (props) => {
     return (
         <>
             {/* Calendar View for Lecture Times */}
-            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-gray-800 p-2 md:p-4'>
+            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
                 <div className='md:border-r-2 md:pr-4 border-gray-500'>
                     <p className='relative text-right text-gray-500'>M</p>
                     <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
@@ -181,7 +181,7 @@ const LectureTimeDisplay = (props) => {
     return (
         <Popover placement="auto" trigger="hover">
             <PopoverTrigger>
-                <span className="w-full bg-gray-700 py-1 px-2 rounded-md hover:scale-105 transition-all">{lecture.type + " - " + lecture.startTime}</span>
+                <span className="w-full bg-zinc-700 py-1 px-2 rounded-md hover:scale-105 transition-all">{lecture.type + " - " + lecture.startTime}</span>
             </PopoverTrigger>
             <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" width='fit-content'>
                 <PopoverArrow />
