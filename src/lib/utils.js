@@ -197,11 +197,11 @@ export const subjectStyles = {
     ...base,
     borderRadius: "12px",
     background: "#000000",
-    borderColor: '#1f2937',
+    borderColor: '#18181b',
     paddingLeft: "4px",
     color: 'white',
     ':hover': {
-      borderColor: '#1f2937'
+      borderColor: '#18181b'
     },
     ':focus': {
       outline: "none"
@@ -209,7 +209,7 @@ export const subjectStyles = {
   }),
   menuList: styles => ({
     ...styles,
-    borderColor: '#1f2937',
+    borderColor: '#18181b',
     background: '#000000'
   }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
@@ -270,7 +270,7 @@ export const subjectStyles = {
   }),
   indicatorSeparator: (styles, { data }) => ({
     ...styles,
-    backgroundColor: "#1f2937",
+    backgroundColor: "#18181b",
   }),
   indicatorContainer: (styles, { data }) => ({
     ...styles,
@@ -285,11 +285,11 @@ export const semesterStyles = {
     ...base,
     borderRadius: "12px",
     background: "#000000",
-    borderColor: '#1f2937',
+    borderColor: '#18181b',
     paddingLeft: "4px",
     color: 'white',
     ':hover': {
-      borderColor: '#1f2937'
+      borderColor: '#18181b'
     },
     ':focus': {
       outline: "none"
@@ -297,7 +297,7 @@ export const semesterStyles = {
   }),
   menuList: styles => ({
     ...styles,
-    borderColor: '#1f2937',
+    borderColor: '#18181b',
     background: '#000000'
   }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
@@ -358,7 +358,7 @@ export const semesterStyles = {
   }),
   indicatorSeparator: (styles, { data }) => ({
     ...styles,
-    backgroundColor: "#1f2937",
+    backgroundColor: "#18181b",
   }),
   indicatorContainer: (styles, { data }) => ({
     ...styles,
@@ -373,12 +373,12 @@ export const instructorStyles = {
   control: (base, state) => ({
     ...base,
     borderRadius: "12px",
-    background: "#1f2937",
-    borderColor: '#34455d',
+    background: "#18181b",
+    borderColor: '#18181b',
     paddingLeft: "4px",
     color: 'white',
     ':hover': {
-      borderColor: '#496183'
+      borderColor: '#393941'
     },
     ':focus': {
       outline: "none"
@@ -386,8 +386,8 @@ export const instructorStyles = {
   }),
   menuList: styles => ({
     ...styles,
-    borderColor: '#1f2937',
-    background: '#151f2a'
+    borderColor: '#18181b',
+    background: '#0a0a0a'
   }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
@@ -397,7 +397,7 @@ export const instructorStyles = {
         : isSelected
           ? "#fff"
           : isFocused
-            ? "#34455d"
+            ? "#18181b"
             : undefined,
       color: isDisabled
         ? '#ccc'
@@ -411,7 +411,7 @@ export const instructorStyles = {
         backgroundColor: !isDisabled
           ? isSelected
             ? "#fff"
-            : "#34455d"
+            : "#18181b"
           : undefined,
       }
     }
@@ -425,7 +425,7 @@ export const instructorStyles = {
   multiValue: (styles, { data }) => {
     return {
       ...styles,
-      backgroundColor: "#34455d"
+      backgroundColor: "#393941"
     };
   },
   multiValueLabel: (styles, { data }) => ({
@@ -436,7 +436,7 @@ export const instructorStyles = {
     ...styles,
     color: "#fff",
     ':hover': {
-      backgroundColor: "#496183",
+      backgroundColor: "#393941",
       color: 'white',
     },
   }),
@@ -447,11 +447,11 @@ export const instructorStyles = {
   }),
   indicatorSeparator: (styles, { data }) => ({
     ...styles,
-    backgroundColor: "#1f2937",
+    backgroundColor: "#18181b",
   }),
   indicatorContainer: (styles, { data }) => ({
     ...styles,
-    color: "#1f2937",
+    color: "#18181b",
   }),
 
 }
