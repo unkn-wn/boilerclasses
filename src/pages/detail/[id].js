@@ -342,6 +342,36 @@ const CardDetails = () => {
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
+
+        <meta property="og:url" content="https://boilerclasses.com/" />
+        <meta property="og:type" content="website" />
+        <meta name="og:title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
+        <meta name="og:description" content={`${course.description}`}/>
+        <meta property="og:image" content={
+            "https://boilerclasses.com/api/og?" + 
+              'sub=' + encodeURIComponent(course.subjectCode) + 
+              '&course=' + encodeURIComponent(course.courseCode) +
+              '&title=' + encodeURIComponent(course.title) + 
+              '&credits=' + encodeURIComponent(course.credits[1]) + 
+              '&prof=' + encodeURIComponent(course.instructor[sem][0]) + 
+              '&sem=' + encodeURIComponent(sem)
+            } />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="boilerclasses.com" />
+        <meta property="twitter:url" content="https://boilerclasses.com/" />
+        <meta name="twitter:title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
+        <meta name="twitter:description" content={`${course.description}`}/>
+        <meta property="twitter:image" content={
+            "https://boilerclasses.com/api/og?" + 
+              'sub=' + encodeURIComponent(course.subjectCode) + 
+              '&course=' + encodeURIComponent(course.courseCode) +
+              '&title=' + encodeURIComponent(course.title) + 
+              '&credits=' + encodeURIComponent(course.credits[1]) + 
+              '&prof=' + encodeURIComponent(course.instructor[sem][0]) + 
+              '&sem=' + encodeURIComponent(sem)
+            } />
+
       </Head>
       <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
