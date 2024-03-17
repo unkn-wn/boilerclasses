@@ -304,60 +304,6 @@ const CardDetails = ({courseData, semData}) => {
 
   }
 
-  // if (loading) {
-  //   return (
-  //     <>
-  //       <Head>
-  //         <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
-  //         <script>
-  //           {`window.dataLayer = window.dataLayer || [];
-  //           function gtag(){dataLayer.push(arguments);}
-  //           gtag('js', new Date());
-
-  //           gtag('config', 'G-48L6TGYD2L');`}
-  //         </script>
-  //         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-  //         <meta name="description" content={`${courseData.description}`} />
-  //         <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
-  //         <meta name='og:locality' content='West Lafayette' />
-  //         <meta name='og:region' content='IN' />
-  //         <meta name='og:postal-code' content='47906' />
-  //         <meta name='og:postal-code' content='47907' />
-
-  //         <meta property="og:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
-  //         <meta property="og:type" content="website" />
-  //         <meta name="og:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-  //         <meta name="og:description" content={`${courseData.description}`}/>
-  //         <meta property="og:image" content={
-  //             "https://boilerclasses.com/api/og?" + 
-  //               'sub=' + encodeURIComponent(courseData.subjectCode) + 
-  //               '&course=' + encodeURIComponent(courseData.courseCode) +
-  //               '&title=' + encodeURIComponent(courseData.title) + 
-  //               '&credits=' + encodeURIComponent(courseData.credits[1]) + 
-  //               '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
-  //               '&sem=' + encodeURIComponent(semData)
-  //             } />
-
-  //         <meta name="twitter:card" content="summary_large_image" />
-  //         <meta property="twitter:domain" content="boilerclasses.com" />
-  //         <meta property="twitter:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
-  //         <meta name="twitter:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-  //         <meta name="twitter:description" content={`${courseData.description}`}/>
-  //         <meta property="twitter:image" content={
-  //             "https://boilerclasses.com/api/og?" + 
-  //             'sub=' + encodeURIComponent(courseData.subjectCode) + 
-  //             '&course=' + encodeURIComponent(courseData.courseCode) +
-  //             '&title=' + encodeURIComponent(courseData.title) + 
-  //             '&credits=' + encodeURIComponent(courseData.credits[1]) + 
-  //             '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
-  //             '&sem=' + encodeURIComponent(semData)
-  //           } />
-
-  //       </Head>
-  //     </>
-  //   )
-  // }
-
   if (JSON.stringify(course) == '{}') {
     return <ErrorPage statusCode={404} />
   }
@@ -406,7 +352,7 @@ const CardDetails = ({courseData, semData}) => {
               '&course=' + encodeURIComponent(courseData.courseCode) +
               '&title=' + encodeURIComponent(courseData.title) + 
               '&credits=' + encodeURIComponent(courseData.credits[1]) + 
-              '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
+              '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) + 
               '&sem=' + encodeURIComponent(semData)
             } />
 
@@ -421,7 +367,7 @@ const CardDetails = ({courseData, semData}) => {
             '&course=' + encodeURIComponent(courseData.courseCode) +
             '&title=' + encodeURIComponent(courseData.title) + 
             '&credits=' + encodeURIComponent(courseData.credits[1]) + 
-            '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
+            '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) + 
             '&sem=' + encodeURIComponent(semData)
           } />
 
@@ -670,10 +616,18 @@ export async function getServerSideProps(context) {
       return {}
     }
   });
+  const availableSemesters = [];
+  semesters.forEach((sem) => {
+    try {
+      if (course.terms.includes(sem)) {
+        availableSemesters.push(sem);
+      }
+    } catch { }
+  });
   return {
     props: {
       courseData: course,
-      semData: course.terms ? course.terms[0] : ""
+      semData: availableSemesters.length > 0 ? availableSemesters[0] : ""
     },
   }
 }
