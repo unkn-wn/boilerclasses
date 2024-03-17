@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 import Card from "../components/card"
 import Footer from "../components/footer"
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, WarningTwoIcon } from '@chakra-ui/icons'
 import Select from 'react-select';
 import Head from "next/head";
 
@@ -24,7 +24,7 @@ import {
   Button
 } from '@chakra-ui/react'
 
-import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions } from '@/lib/utils';
+import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions, instructorStyles } from '@/lib/utils';
 
 
 const CourseCatalog = () => {
@@ -43,8 +43,10 @@ const CourseCatalog = () => {
   const [displayLanding, setDisplayLanding] = useState(true);
 
   function changeLanding(event) {
-    setDisplayLanding(!displayLanding);
-    setSearchTerm(event);
+    if (event.length >= 2) {
+      setDisplayLanding(!displayLanding);
+      setSearchTerm(event);
+    }
   }
 
   function transform(query) {
@@ -104,12 +106,40 @@ const CourseCatalog = () => {
   return (
     <>
       <Head>
-        <meta name="title" content="BoilerClasses - Purdue University's Unoffcial Course Catalogue" />
+        <title>BoilerClasses - Purdue University's Unofficial Course Catalog</title>
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-48L6TGYD2L');`}
+        </script>
+        <meta name="title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
         <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
+        <meta name='og:locality' content='West Lafayette' />
+        <meta name='og:region' content='IN' />
+        <meta name='og:postal-code' content='47906' />
+        <meta name='og:postal-code' content='47907' />
+        
+        <meta property="og:url" content="https://boilerclasses.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
+        <meta property="og:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
+        <meta property="og:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="boilerclasses.com" />
+        <meta property="twitter:url" content="https://boilerclasses.com/" />
+        <meta name="twitter:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
+        <meta name="twitter:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform."/>
+        <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
+
       </Head>
       {!displayLanding ?
-        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-4 ${inter.className}`}>
+        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
             <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16 cursor-pointer' />
             <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto ml-2 select-none text-white cursor-pointer'>BoilerClasses</h1>
@@ -124,7 +154,7 @@ const CourseCatalog = () => {
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}
-              className="text-white text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="text-white text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
           </div>
           <div className="flex flex-row mb-8 gap-5 items-center">
@@ -136,7 +166,7 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Subject..."
-                styles={subjectStyles}
+                styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
                   setSelectedSubjects(value)
@@ -148,7 +178,7 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Semester..."
-                styles={semesterStyles}
+                styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
                   setSelectedSemesters(value)
@@ -160,7 +190,7 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Gen Ed..."
-                styles={semesterStyles}
+                styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
                   setSelectedGenEds(value)
@@ -168,7 +198,7 @@ const CourseCatalog = () => {
               />
               <Popover placement='bottom-start'>
                 <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
                     <span>Credits</span>
                     <ChevronDownIcon color='gray-800' />
                   </button>
@@ -199,7 +229,7 @@ const CourseCatalog = () => {
               </Popover>
               <Popover placement='bottom-start'>
                 <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
                     <span>Level</span>
                     <ChevronDownIcon color='gray-800' />
                   </button>
@@ -224,7 +254,7 @@ const CourseCatalog = () => {
               </Popover>
               <Popover placement='bottom-start'>
                 <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-black items-center border border-gray-800 text-white rounded-xl hover:bg-black' >
+                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
                     <span>Schedule</span>
                     <ChevronDownIcon color='gray-800' />
                   </button>
@@ -238,9 +268,9 @@ const CourseCatalog = () => {
               </Popover>
             </div>
           </div>
-
+          {courses.length > 0 || searchTerm.length < 2 ?
           <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-            {courses.map(course => (
+            {courses.length > 0 && courses.map(course => (
               <Card key={course.id} course={course.value} />
               // <div key={course.id}
               //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
@@ -256,6 +286,12 @@ const CourseCatalog = () => {
 
             ))}
           </div>
+          :
+          <div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
+              <WarningTwoIcon boxSize={16} color='#DAAA00'/>
+              <div className='text-white'>No results found!</div>
+          </div>
+          }
           <div className='mt-auto'>
             <Footer />
           </div>

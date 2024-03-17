@@ -10,13 +10,12 @@ import {
     PopoverArrow,
     PopoverCloseButton,
     PopoverAnchor,
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
 
 const Calendar = (props) => {
 
     const { subjectCode, courseCode, title } = props;
-
     const [lectures, setLectures] = useState({
         Monday: [],
         Tuesday: [],
@@ -50,80 +49,59 @@ const Calendar = (props) => {
             Friday: []
         };
 
+        let data;
+
         try {
             const semester = "202420";
             const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
             const response = await fetch(url);
-            let data = await response.json();
+            data = await response.json();
 
             setLectures(updatedLectures);
 
-            data =  data.value[0];
+            data = data.value[0];
 
-            for (const cls of data.Classes) {
-                for (const section of cls.Sections) {
-                    const startDate = section.StartDate;
-                    const endDate = section.EndDate;
-                    const type = section.Type;
+        } catch (e) {
+            return;
+        }
 
-                    for (const meeting of section.Meetings) {
-                        const days = meeting.DaysOfWeek;
-                        const startTime = convertTo12HourFormat(meeting.StartTime);
+        if (!data) {
+            return;
+        }
+
+        for (const cls of data.Classes) {
+            for (const section of cls.Sections) {
+                for (const meeting of section.Meetings) {
+                    try {
+                        const { DaysOfWeek, StartDate, EndDate, Type } = meeting;
+                        const startTimeRaw = meeting.StartTime;
+                        const startTime = convertTo12HourFormat(startTimeRaw);
                         const duration = meeting.Duration.split("PT")[1];
+                        const instructors = meeting.Instructors.map(instr => instr.Name);
 
-                        let instructors = [];
-                        for (const instr of meeting.Instructors) {
-                            instructors.push(instr.Name);
-                        }
+                        const lecture = {
+                            startDate: StartDate,
+                            endDate: EndDate,
+                            type: Type,
+                            startTime,
+                            startTimeRaw,
+                            duration,
+                            instructors
+                        };
 
-                        const obj = {
-                            "startDate": startDate,
-                            "endDate": endDate,
-                            "type": type,
-                            "startTime": startTime,
-                            "startTimeRaw": meeting.StartTime,
-                            "duration": duration,
-                            "days": days,
-                            "instructors": instructors
-                        }
-
-                        if (days.includes("Monday")) {
-                            updatedLectures.Monday = [...updatedLectures.Monday, obj].sort((a, b) => {
-                                return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            });
-                        }
-
-                        if (days.includes("Tuesday")) {
-                            updatedLectures.Tuesday = [...updatedLectures.Tuesday, obj].sort((a, b) => {
-                                return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            });
-                        }
-
-                        if (days.includes("Wednesday")) {
-                            updatedLectures.Wednesday = [...updatedLectures.Wednesday, obj].sort((a, b) => {
-                                return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            });
-                        }
-
-                        if (days.includes("Thursday")) {
-                            updatedLectures.Thursday = [...updatedLectures.Thursday, obj].sort((a, b) => {
-                                return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            });
-                        }
-
-                        if (days.includes("Friday")) {
-                            updatedLectures.Friday = [...updatedLectures.Friday, obj].sort((a, b) => {
-                                return new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw);
-                            });
-                        }
-
-
+                        DaysOfWeek.split(",").forEach(day => {
+                            updatedLectures[day.trim()].push(lecture);
+                        });
+                    } catch (e) {
+                        continue;
                     }
+
                 }
             }
+        }
 
-        } catch {
-            return;
+        for (const day in updatedLectures) {
+            updatedLectures[day].sort((a, b) => new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw));
         }
 
         setLectures(updatedLectures);
@@ -133,11 +111,15 @@ const Calendar = (props) => {
         getCourseData(subjectCode, courseCode, title);
     }, []);
 
+    if (Object.values(lectures).every(lecture => lecture.length === 0)) {
+        return <></>
+    }
+
 
     return (
         <>
             {/* Calendar View for Lecture Times */}
-            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-gray-800 p-2 md:p-4'>
+            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
                 <div className='md:border-r-2 md:pr-4 border-gray-500'>
                     <p className='relative text-right text-gray-500'>M</p>
                     <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
@@ -199,7 +181,7 @@ const LectureTimeDisplay = (props) => {
     return (
         <Popover placement="auto" trigger="hover">
             <PopoverTrigger>
-                <span className="w-full bg-gray-700 py-1 px-2 rounded-md hover:scale-105 transition-all">{lecture.type + " - " + lecture.startTime}</span>
+                <span className="w-full bg-zinc-700 py-1 px-2 rounded-md hover:scale-105 transition-all">{lecture.type + " - " + lecture.startTime}</span>
             </PopoverTrigger>
             <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" width='fit-content'>
                 <PopoverArrow />

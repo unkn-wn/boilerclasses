@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import { semesters } from "../../lib/utils"
+import { semesters, subjects } from "../../lib/utils"
 const inter = Inter({ subsets: ['latin'] })
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,8 @@ import ErrorPage from 'next/error'
 
 import Select from 'react-select';
 
-import { Image, cookieStorageManager } from '@chakra-ui/react'
+import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
+import { FaHome } from "react-icons/fa";
 
 import {
   CircularProgressbar, buildStyles
@@ -16,40 +17,80 @@ import "react-circular-progressbar/dist/styles.css";
 
 
 
-import { instructorStyles } from '@/lib/utils';
-import { graphColors } from '@/lib/utils';
-import { boilerExamsCourses } from '@/lib/utils';
-import { labels } from '@/lib/utils';
+import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
-import Calendar from './calendar';
-import Graph from './graph';
+import Calendar from '../../components/calendar';
+import Graph from '../../components/graph';
+import InfoModal from '@/components/infoModal';
 
 
-const CardDetails = () => {
+const CardDetails = ({courseData, semData}) => {
   const router = useRouter();
-  const [course, setCourse] = useState({});
+  const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!router.isReady) return;
+  const parsePrereqs = (prereq, i) => {
 
-    const params = new URLSearchParams({ detailId: router.query.id });
-    fetch('/api/get?' + params)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data["course"]["documents"].length > 0) {
-          setCourse(data["course"]["documents"][0].value);
-          setSem(data["course"]["documents"][0].value.terms[0]);
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      })
-  }, [router.isReady])
+    if (prereq.split(' ').length == 2) {
+      const detailId = prereq.split(' ')[0]
+      const concurrent = prereq.split(' ')[1]
+      const subjectCodeMatch = detailId.match(/[A-Z]+/);
+      if (!subjectCodeMatch) {
+        return null;
+      }
+      const subjectCode = subjectCodeMatch[0];
+
+      const subject = subjects.find((s) => s == subjectCode);
+      const courseNumberMatch = detailId.match(/\d+/);
+      if (!courseNumberMatch) {
+        return null;
+      }
+      const courseNumber = courseNumberMatch[0];
+      return (
+        <span className='' key={i}>
+          <a href={`/detail/${detailId}`}
+            target="_blank" rel="noopener noreferrer"
+            className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
+            {subjectCode}  {courseNumber}
+          </a>
+          {concurrent == "True" ? " [may be taken concurrently]" : ""}
+        </span>
+      )
+    } else if (prereq.split(' ').length == 3) {
+      const concurrent = prereq.split(' ')[1]
+      return `${prereq.split(' ')[0]} ${prereq.split(' ')[1]}${concurrent == "True" ? " [may be taken concurrently]" : ""}`
+    } else {
+      return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
+    }
+
+  }
+
+  // useEffect(() => {
+  //   if (!router.isReady) return;
+
+  //   const params = new URLSearchParams({ detailId: router.query.id });
+  //   fetch('/api/get?' + params)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data["course"]["documents"].length > 0) {
+  //         setCourse(data["course"]["documents"][0].value);
+  //         setSem(data["course"]["documents"][0].value.terms[0]);
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(false);
+  //       }
+  //     })
+  // }, [router.isReady])
 
   useEffect(() => {
     if (!course) return;
+    // set descriptions to none if it's html
+
+    if (course.description && course.description.startsWith("<a href=")) {
+      setCourse({ ...course, description: "No Description Available" });
+    }
+
     // set graph
     const grades = [];
     const gpa = {};
@@ -95,7 +136,9 @@ const CardDetails = () => {
     // set instructors
     changeInstructors(availableSemesters[0]);
 
-  }, [course])
+    setLoading(false);
+
+  }, [router.isReady])
 
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
@@ -108,15 +151,17 @@ const CardDetails = () => {
       });
 
     }
-  }, [course]);
+  }, [router.isReady]);
 
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
-  const [sem, setSem] = useState("");
+  const [sem, setSem] = useState(semData);
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
   const [selectableInstructors, setSelectableInstructors] = useState([]);
+
+  const [infoModal, setInfoModal] = useState(false);
 
 
   const instructors = new Set();
@@ -358,32 +403,88 @@ const CardDetails = () => {
 
   }
 
-  if (loading) {
-    return (
-      <></>
-    )
+  if (JSON.stringify(course) == '{}') {
+    return <ErrorPage statusCode={404} />
   }
 
-  if (!loading && JSON.stringify(course) == '{}') {
-    return <ErrorPage statusCode={404} />
+  const renderPrereqs = () => {
+    try {
+      return (
+        (course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
+          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
+          {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
+        </p>
+      );
+    } catch (error) {
+      console.log(course.prereqs);
+      return <></>;
+    }
   }
 
   return (
     <>
       <Head>
-        <title>{course.subjectCode} {course.courseCode}: {course.title} | BoilerClasses</title>
-        <meta name="title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
-        <meta name="description" content={`${course.description}`} />
-        <meta name="keywords" content={`${course.subjectCode}, ${course.courseCode}, ${course.subjectCode} ${course.courseCode}, ${course.title}, ${course.description.split(' ')}, ${availableSemesters.join(", ")}, Course, Purdue`} />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-48L6TGYD2L');`}
+        </script>
+        <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
+        <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="description" content={`${courseData.description}`} />
+        <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
+        <meta name='og:locality' content='West Lafayette' />
+        <meta name='og:region' content='IN' />
+        <meta name='og:postal-code' content='47906' />
+        <meta name='og:postal-code' content='47907' />
+
+        <meta property="og:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+        <meta property="og:type" content="website" />
+        <meta name="og:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="og:description" content={`${courseData.description}`}/>
+        <meta property="og:image" content={
+            "https://boilerclasses.com/api/og?" +
+              'sub=' + encodeURIComponent(courseData.subjectCode) +
+              '&course=' + encodeURIComponent(courseData.courseCode) +
+              '&title=' + encodeURIComponent(courseData.title) +
+              '&credits=' + encodeURIComponent(courseData.credits[1]) +
+              '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
+              '&sem=' + encodeURIComponent(semData)
+            } />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="boilerclasses.com" />
+        <meta property="twitter:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+        <meta name="twitter:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="twitter:description" content={`${courseData.description}`}/>
+        <meta property="twitter:image" content={
+            "https://boilerclasses.com/api/og?" +
+            'sub=' + encodeURIComponent(courseData.subjectCode) +
+            '&course=' + encodeURIComponent(courseData.courseCode) +
+            '&title=' + encodeURIComponent(courseData.title) +
+            '&credits=' + encodeURIComponent(courseData.credits[1]) +
+            '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
+            '&sem=' + encodeURIComponent(semData)
+          } />
+
       </Head>
-      <div className={`flex flex-col h-screen min-h-screen bg-black container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <InfoModal isOpen={infoModal} onClose={setInfoModal} />
+      <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
-          <div className="flex flex-col w-full md:mr-3">
-            <p className="lg:text-3xl md:text-3xl text-xl font-bold">{course.subjectCode} {course.courseCode}: {course.title}</p>
-            <br />
-            <div className="flex flex-col gap-4 -mt-3 mb-2">
+          <div className="flex flex-col w-full md:mr-3 justify-start h-full">
+            <div className='flex flex-row gap-1'>
+              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'>
+                <Icon as={FaHome} alt="" boxSize={6} />
+              </a>
+              <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
+            </div>
+
+            <div className="flex flex-col gap-4 -mt-3 mb-1">
               <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
 
                 {/* Credits Display */}
@@ -404,9 +505,14 @@ const CardDetails = () => {
                   </span>
                 ))}
 
+                {/* Latest Semester Display */}
+                <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}>
+                  {sem}
+                </span>
+
                 {/* Gened Type Display */}
                 {course.gened.map((gened, i) => (
-                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}
+                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                     key={i}>
                     {genedCodeToName(gened)}
                   </span>
@@ -417,24 +523,26 @@ const CardDetails = () => {
 
               {/* Instructors Display */}
               <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
-                <span className="text-gray-400 font-normal text-xs">RateMyProfessors: </span>
+                <span className="text-gray-400 font-bold text-xs">RateMyProfessors: </span>
 
                 {course.instructor[sem].map((prof, i) => (
-                  <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className='underline decoration-dotted'
-                    key={i}>
-                    {prof}
+                  <>
+                    <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
+                      target="_blank" rel="noopener noreferrer"
+                      className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
+                      key={i}>
+                      {prof}
+                    </a>
                     {i < course.instructor[sem].length - 1 && ", "}
-                  </a>
+                  </>
                 )
                 )}
               </p>
-
             </div>
 
+
             {/* Semester Tags */}
-            <div className="flex flex-row flex-wrap gap-1 mb-1">
+            {/* <div className="flex flex-row flex-wrap gap-1 mb-1">
               {availableSemesters.map((sem, i) => (
                 <button className={`text-xs px-2 py-1 rounded-full border-solid border
                                           ${i === 0 ? "bg-sky-600" : ""} border-sky-800 whitespace-nowrap transition-all`}
@@ -443,20 +551,27 @@ const CardDetails = () => {
                   onClick={() => changeInstructors(sem)}>{sem}</button>
               ))}
             </div>
-
+             */}
 
             {/* Other Links Buttons */}
-            <div className="flex flex-row flex-wrap">
+            <div className="flex flex-row flex-wrap my-2">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all">
+                className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
+              <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202420&subj_code_in=${course.subjectCode}&crse_numb_in=${course.courseCode}`} target="_blank" rel="noopener noreferrer"
+                className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
+                <div className="flex flex-row gap-2">
+                  <Image src="/purdue-icon.png" alt="" boxSize={4} className="my-auto" />
+                  Catalog
+                </div>
+              </a>
               {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
                 <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
-                  className="text-sm text-white px-5 py-2 mx-1 my-3 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all">
+                  className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
                     <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
                     Boilerexams
@@ -465,72 +580,99 @@ const CardDetails = () => {
               }
             </div>
 
-            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-4 break-words grow">{course.description}</p>
+
+            {/* Description */}
+            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
+
+            {/* Prerequisites */}
+            {renderPrereqs()}
+
+
 
           </div>
 
 
           {/* Right half of panel */}
-          {defaultGPA.datasets.length > 0 && <div className="flex flex-col w-full ">
+          {defaultGPA.datasets && <div className="flex flex-col w-full ">
 
 
-            {/* Instructor Select */}
-            {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
-              <div className="lg:mb-6 md:mb-4 mb-2">
+            <div className='flex flex-row md:gap-4 gap-2'>
+              {/* Semester Select */}
+              {/* <div className="md:mb-4 mb-2 grow-0">
                 <Select
                   isMulti
-                  options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                  options={{}}
                   className="basic-multi-select w-full no-wrap"
                   classNamePrefix="select"
                   placeholder="Instructor..."
                   menuPlacement='bottom'
-                  defaultValue={
-                    selectableInstructors.length > 0
-                      ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                      : null
-                  }
+                  defaultValue={{}}
                   styles={instructorStyles}
                   color="white"
-                  onChange={(value) => {
-                    refreshGraph(value, sem)
-                  }}
+                  onChange={{}}
                 />
-              </div>
-            }
+              </div> */}
+
+
+              {/* Instructor Select */}
+              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
+                <div className="md:mb-4 mb-2 grow">
+                  <Select
+                    isMulti
+                    options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                    className="basic-multi-select w-full no-wrap"
+                    classNamePrefix="select"
+                    placeholder="Instructor..."
+                    menuPlacement='bottom'
+                    defaultValue={
+                      selectableInstructors.length > 0
+                        ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
+                        : null
+                    }
+                    styles={instructorStyles}
+                    color="white"
+                    onChange={(value) => {
+                      refreshGraph(value)
+                    }}
+                  />
+                </div>
+              }
+
+            </div>
 
 
             {/* Stat Cards */}
-            <div className="flex flex-row lg:gap-8 md:gap-4 gap-2">
-              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl gap-2">
-                <p className='text-sm text-gray-400 mb-1'>Average GPA</p>
-                <div className='md:w-1/2 m-auto'>
+            <div className="flex flex-row md:gap-4 gap-2 hover:scale-[1.01] transition-all" onClick={() => setInfoModal(true)}>
+              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][sem] === "undefined" ? 0 : curGPA[firstInstructor][sem][0]}
                     maxValue={4}
                     text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][sem] === "undefined" ? "" : curGPA[firstInstructor][sem][0]}
                     styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]] === "undefined" ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" || typeof curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]] === "undefined" ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
-                      trailColor: '#000',
+                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                      trailColor: '#0a0a0a',
                     })}
                   />
                 </div>
+                <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
-              <div className="flex flex-col h-full w-full bg-gray-800 mx-auto p-4 rounded-xl gap-2">
-                <p className='md:hidden text-sm text-gray-400 mb-1'>RateMyProf Rating</p>
-                <p className='hidden md:block text-sm text-gray-400 mb-1'>RateMyProfessors Rating</p>
-                <div className='md:w-1/2 m-auto'>
+              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
                     maxValue={5}
                     text={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
                     styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || !firstInstructor ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || !firstInstructor ? "" : curGPA[firstInstructor][Object.keys(curGPA[firstInstructor])[0]][1]}`,
-                      trailColor: '#000',
+                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
+                      trailColor: '#0a0a0a',
                     })}
                   />
                 </div>
+                <p className='md:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
+                <p className='hidden md:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
               </div>
             </div>
 
@@ -549,7 +691,7 @@ const CardDetails = () => {
         </div>
 
         {/* Calendar View for Lecture Times */}
-        <Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />
+        {<Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />}
 
         <div className='mt-auto'>
           <Footer />
@@ -560,5 +702,33 @@ const CardDetails = () => {
 
 
 };
+
+
+export async function getServerSideProps(context) {
+
+  const params = new URLSearchParams({ detailId: context.params.id });
+  const data = await fetch(`https://www.boilerclasses.com/api/get?${params}`);
+  const course = await data.json().then((res) => {
+    if (res["course"]["documents"].length > 0) {
+      return res["course"]["documents"][0].value
+    } else {
+      return {}
+    }
+  });
+  const availableSemesters = [];
+  semesters.forEach((sem) => {
+    try {
+      if (course.terms.includes(sem)) {
+        availableSemesters.push(sem);
+      }
+    } catch { }
+  });
+  return {
+    props: {
+      courseData: course,
+      semData: availableSemesters.length > 0 ? availableSemesters[0] : ""
+    },
+  }
+}
 
 export default CardDetails;

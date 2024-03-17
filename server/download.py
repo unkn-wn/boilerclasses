@@ -4,7 +4,7 @@ import wget
 import os
 
 print("into download.py")
-semesters = ["Spring 2024",  "Fall 2023",  "Spring 2023",  "Fall 2022",  "Spring 2022",  "Fall 2021",  "Spring 2021",  "Fall 2020",  "Spring 2020",  "Fall 2019"]
+semesters = ["Fall 2024", "Spring 2024",  "Fall 2023",  "Spring 2023",  "Fall 2022",  "Spring 2022",  "Fall 2021",  "Spring 2021",  "Fall 2020",  "Spring 2020",  "Fall 2019"]
 grade_semesters = ["f21", "s22", "f22", "s23"]
 
 parser = argparse.ArgumentParser(description="scrape or download before running harmonize")
@@ -42,6 +42,14 @@ for sem in grade_semesters:
   url = link + f"data/grades/classes_{sem}.json"
   filename = wget.download(url, out="data/grades/")
 print("finished downloading grade data...")
+
+# download prereq data
+if not os.path.exists('data/prereqs'):
+  os.mkdir("data/prereqs")
+url = link + "data/prereqs/classes_prereqs.json"
+filename = wget.download(url, out="data/prereqs/")
+print("finished downloading prereq data...")
+
 
 # download/scrape class data
 if args.scrape:
