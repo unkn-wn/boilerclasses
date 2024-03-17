@@ -42,15 +42,15 @@ export default async function handler(req) {
     (
       <div tw="w-full h-full flex flex-col justify-center items-stretch items-center bg-black">
         <img src={`data:image/png;base64,${base64Image}`} height={200} width={200}/>
-        <div tw="bg-black text-white flex flex-col p-16 items-center">
-          <div tw="flex text-5xl mb-4" style={{ fontWeight: 500 }}>
+        <div tw="bg-black text-white flex flex-col px-16 pb-16 pt-8 items-center">
+          <div tw="flex text-5xl w-full mb-4 align-center text-center" style={{ fontWeight: 500 }}>
             {sub} {course}: {title}
           </div>
           {prof == "TBA"
-          ?  <div tw="flex text-xl" style={{ fontWeight: 400 }}>
+          ?  <div tw="flex text-2xl" style={{ fontWeight: 400 }}>
               {sem} | {credits} Credits
             </div>
-          : <div tw="flex text-xl" style={{ fontWeight: 400 }}>
+          : <div tw="flex text-2xl" style={{ fontWeight: 400 }}>
               {sem} | {credits} Credits | {prof}
             </div>
           }
