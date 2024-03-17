@@ -25,9 +25,9 @@ import Graph from '../../components/graph';
 import InfoModal from '@/components/infoModal';
 
 
-const CardDetails = () => {
+const CardDetails = ({courseData, semData}) => {
   const router = useRouter();
-  const [course, setCourse] = useState({});
+  const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
 
   const parsePrereqs = (prereq, i) => {
@@ -66,22 +66,22 @@ const CardDetails = () => {
 
   }
 
-  useEffect(() => {
-    if (!router.isReady) return;
+  // useEffect(() => {
+  //   if (!router.isReady) return;
 
-    const params = new URLSearchParams({ detailId: router.query.id });
-    fetch('/api/get?' + params)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data["course"]["documents"].length > 0) {
-          setCourse(data["course"]["documents"][0].value);
-          setSem(data["course"]["documents"][0].value.terms[0]);
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      })
-  }, [router.isReady])
+  //   const params = new URLSearchParams({ detailId: router.query.id });
+  //   fetch('/api/get?' + params)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data["course"]["documents"].length > 0) {
+  //         setCourse(data["course"]["documents"][0].value);
+  //         setSem(data["course"]["documents"][0].value.terms[0]);
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(false);
+  //       }
+  //     })
+  // }, [router.isReady])
 
   useEffect(() => {
     if (!course) return;
@@ -132,7 +132,9 @@ const CardDetails = () => {
     // set instructors
     changeInstructors(availableSemesters[0]);
 
-  }, [course])
+    setLoading(false);
+
+  }, [router.isReady])
 
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
@@ -145,12 +147,12 @@ const CardDetails = () => {
       });
 
     }
-  }, [course]);
+  }, [router.isReady]);
 
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
-  const [sem, setSem] = useState("");
+  const [sem, setSem] = useState(semData);
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
   const [selectableInstructors, setSelectableInstructors] = useState([]);
@@ -302,13 +304,61 @@ const CardDetails = () => {
 
   }
 
-  if (loading) {
-    return (
-      <></>
-    )
-  }
+  // if (loading) {
+  //   return (
+  //     <>
+  //       <Head>
+  //         <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
+  //         <script>
+  //           {`window.dataLayer = window.dataLayer || [];
+  //           function gtag(){dataLayer.push(arguments);}
+  //           gtag('js', new Date());
 
-  if (!loading && JSON.stringify(course) == '{}') {
+  //           gtag('config', 'G-48L6TGYD2L');`}
+  //         </script>
+  //         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+  //         <meta name="description" content={`${courseData.description}`} />
+  //         <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
+  //         <meta name='og:locality' content='West Lafayette' />
+  //         <meta name='og:region' content='IN' />
+  //         <meta name='og:postal-code' content='47906' />
+  //         <meta name='og:postal-code' content='47907' />
+
+  //         <meta property="og:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+  //         <meta property="og:type" content="website" />
+  //         <meta name="og:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+  //         <meta name="og:description" content={`${courseData.description}`}/>
+  //         <meta property="og:image" content={
+  //             "https://boilerclasses.com/api/og?" + 
+  //               'sub=' + encodeURIComponent(courseData.subjectCode) + 
+  //               '&course=' + encodeURIComponent(courseData.courseCode) +
+  //               '&title=' + encodeURIComponent(courseData.title) + 
+  //               '&credits=' + encodeURIComponent(courseData.credits[1]) + 
+  //               '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
+  //               '&sem=' + encodeURIComponent(semData)
+  //             } />
+
+  //         <meta name="twitter:card" content="summary_large_image" />
+  //         <meta property="twitter:domain" content="boilerclasses.com" />
+  //         <meta property="twitter:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+  //         <meta name="twitter:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+  //         <meta name="twitter:description" content={`${courseData.description}`}/>
+  //         <meta property="twitter:image" content={
+  //             "https://boilerclasses.com/api/og?" + 
+  //             'sub=' + encodeURIComponent(courseData.subjectCode) + 
+  //             '&course=' + encodeURIComponent(courseData.courseCode) +
+  //             '&title=' + encodeURIComponent(courseData.title) + 
+  //             '&credits=' + encodeURIComponent(courseData.credits[1]) + 
+  //             '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
+  //             '&sem=' + encodeURIComponent(semData)
+  //           } />
+
+  //       </Head>
+  //     </>
+  //   )
+  // }
+
+  if (JSON.stringify(course) == '{}') {
     return <ErrorPage statusCode={404} />
   }
 
@@ -337,43 +387,43 @@ const CardDetails = () => {
 
           gtag('config', 'G-48L6TGYD2L');`}
         </script>
-        <title>{course.subjectCode} {course.courseCode}: {course.title} | BoilerClasses</title>
-        <meta name="title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
-        <meta name="description" content={`${course.description}`} />
-        <meta name="keywords" content={`${course.subjectCode}, ${course.courseCode}, ${course.subjectCode} ${course.courseCode}, ${course.title}, ${course.description.split(' ')}, ${availableSemesters.join(", ")}, Course, Purdue`} />
+        <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
+        <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="description" content={`${courseData.description}`} />
+        <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
 
-        <meta property="og:url" content="https://boilerclasses.com/" />
+        <meta property="og:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
         <meta property="og:type" content="website" />
-        <meta name="og:title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
-        <meta name="og:description" content={`${course.description}`}/>
+        <meta name="og:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="og:description" content={`${courseData.description}`}/>
         <meta property="og:image" content={
             "https://boilerclasses.com/api/og?" + 
-              'sub=' + encodeURIComponent(course.subjectCode) + 
-              '&course=' + encodeURIComponent(course.courseCode) +
-              '&title=' + encodeURIComponent(course.title) + 
-              '&credits=' + encodeURIComponent(course.credits[1]) + 
-              '&prof=' + encodeURIComponent(course.instructor[sem][0]) + 
-              '&sem=' + encodeURIComponent(sem)
+              'sub=' + encodeURIComponent(courseData.subjectCode) + 
+              '&course=' + encodeURIComponent(courseData.courseCode) +
+              '&title=' + encodeURIComponent(courseData.title) + 
+              '&credits=' + encodeURIComponent(courseData.credits[1]) + 
+              '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
+              '&sem=' + encodeURIComponent(semData)
             } />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="boilerclasses.com" />
-        <meta property="twitter:url" content="https://boilerclasses.com/" />
-        <meta name="twitter:title" content={`${course.subjectCode} ${course.courseCode}: ${course.title} | BoilerClasses`} />
-        <meta name="twitter:description" content={`${course.description}`}/>
+        <meta property="twitter:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+        <meta name="twitter:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="twitter:description" content={`${courseData.description}`}/>
         <meta property="twitter:image" content={
             "https://boilerclasses.com/api/og?" + 
-              'sub=' + encodeURIComponent(course.subjectCode) + 
-              '&course=' + encodeURIComponent(course.courseCode) +
-              '&title=' + encodeURIComponent(course.title) + 
-              '&credits=' + encodeURIComponent(course.credits[1]) + 
-              '&prof=' + encodeURIComponent(course.instructor[sem][0]) + 
-              '&sem=' + encodeURIComponent(sem)
-            } />
+            'sub=' + encodeURIComponent(courseData.subjectCode) + 
+            '&course=' + encodeURIComponent(courseData.courseCode) +
+            '&title=' + encodeURIComponent(courseData.title) + 
+            '&credits=' + encodeURIComponent(courseData.credits[1]) + 
+            '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) + 
+            '&sem=' + encodeURIComponent(semData)
+          } />
 
       </Head>
       <InfoModal isOpen={infoModal} onClose={setInfoModal} />
@@ -498,7 +548,7 @@ const CardDetails = () => {
 
 
           {/* Right half of panel */}
-          {defaultGPA.datasets.length > 0 && <div className="flex flex-col w-full ">
+          {defaultGPA.datasets && <div className="flex flex-col w-full ">
 
 
             <div className='flex flex-row md:gap-4 gap-2'>
@@ -607,5 +657,25 @@ const CardDetails = () => {
 
 
 };
+
+
+export async function getServerSideProps(context) {
+
+  const params = new URLSearchParams({ detailId: context.params.id });
+  const data = await fetch(`https://www.boilerclasses.com/api/get?${params}`);
+  const course = await data.json().then((res) => {
+    if (res["course"]["documents"].length > 0) {
+      return res["course"]["documents"][0].value
+    } else {
+      return {}
+    }
+  });
+  return {
+    props: {
+      courseData: course,
+      semData: course.terms ? course.terms[0] : ""
+    },
+  }
+}
 
 export default CardDetails;
