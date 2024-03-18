@@ -38,7 +38,7 @@ const Card = ({ course }) => {
               uniqueInstructors[1]
             }
           </p>
-          
+
           <p className="text-sm text-gray-600 mb-4 break-words grow">
             <span>{course.description.length > 300
               ? `${course.description.substring(0, 300)}...`

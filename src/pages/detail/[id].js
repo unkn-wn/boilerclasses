@@ -8,7 +8,7 @@ import ErrorPage from 'next/error'
 import Select from 'react-select';
 
 import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaInfo } from "react-icons/fa";
 
 import {
   CircularProgressbar, buildStyles
@@ -20,12 +20,14 @@ import "react-circular-progressbar/dist/styles.css";
 import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
+import Script from 'next/script';
 import Calendar from '../../components/calendar';
 import Graph from '../../components/graph';
+import GpaModal from '@/components/gpaModal';
 import InfoModal from '@/components/infoModal';
 
 
-const CardDetails = ({courseData, semData}) => {
+const CardDetails = ({ courseData, semData }) => {
   const router = useRouter();
   const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
@@ -83,6 +85,33 @@ const CardDetails = ({courseData, semData}) => {
   //     })
   // }, [router.isReady])
 
+
+  // function to get color based on gpa:
+
+  const getColor = (gpa) => {
+		if (gpa === 0) {
+			return "#18181b";
+		}
+
+		// calculate the color based on gpa as a percentage of 4.0
+		const perc = gpa / 4.0;
+		const perc2 = perc * perc * 1.3;
+		const color1 = [43, 191, 199];
+		const color2 = [38, 19, 43];
+
+		const w1 = perc2;
+		const w2 = 1 - perc2;
+
+		const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
+		const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
+		const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
+
+		const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+		// console.log(hex);
+		return hex;
+	};
+
+
   useEffect(() => {
     if (!course) return;
     // set descriptions to none if it's html
@@ -99,10 +128,25 @@ const CardDetails = ({courseData, semData}) => {
 
       const color = graphColors[(curr++) % graphColors.length];
 
-      gpa[instructor] = [course.gpa[instructor][13], color];
+      let avg_gpa = 0;
+      let avg_grade_dist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let count = 0;
+      for (const sem in course.gpa[instructor]) {
+        avg_gpa += course.gpa[instructor][sem][13];
+        for (let i = 0; i < 13; i++) {
+          avg_grade_dist[i] += course.gpa[instructor][sem][i];
+        }
+        count++;
+      }
+
+      for (let i = 0; i < 13; i++) {
+        avg_grade_dist[i] = Math.round(avg_grade_dist[i] / count * 100) / 100;
+      }
+
+      gpa[instructor] = [Math.round(avg_gpa / count * 100) / 100, color];
       grades.push({
         label: instructor,
-        data: course.gpa[instructor],
+        data: avg_grade_dist,
         backgroundColor: color
       });
 
@@ -132,6 +176,35 @@ const CardDetails = ({courseData, semData}) => {
     // set instructors
     changeInstructors(availableSemesters[0]);
 
+
+    /////////////////////////////////////////////////////
+    // set the distributed gpas for each prof and sem
+
+    const distr_gpa = {};
+		const sems = [];
+		for (const instructor in course.gpa) {
+			distr_gpa[instructor] = {};
+			for (const semester in course.gpa[instructor]) {
+				if (!sems.includes(semester)) {
+					sems.push(semester);
+				}
+			}
+		}
+
+		// all sems should be present in gpa, if it doesnt exist, set it to 0
+		for (const instructor in course.gpa) {
+			for (const semester of sems) {
+				if (!course.gpa[instructor][semester]) {
+					distr_gpa[instructor][semester] = { gpa: 0, color: getColor(0) };
+				} else {
+					distr_gpa[instructor][semester] = { gpa: course.gpa[instructor][semester][13], color: getColor(course.gpa[instructor][semester][13]) };
+				}
+			}
+		}
+
+		setDistrGpa(distr_gpa);
+
+
     setLoading(false);
 
   }, [router.isReady])
@@ -157,7 +230,9 @@ const CardDetails = ({courseData, semData}) => {
   const [defaultGPA, setDefaultGPA] = useState({});
   const [selectableInstructors, setSelectableInstructors] = useState([]);
 
+  const [gpaModal, setGpaModal] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
+  const [distr_gpa, setDistrGpa] = useState({});
 
 
   const instructors = new Set();
@@ -325,14 +400,14 @@ const CardDetails = ({courseData, semData}) => {
   return (
     <>
       <Head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
-        <script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></Script>
+        <Script>
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-48L6TGYD2L');`}
-        </script>
+        </Script>
         <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
         <meta name="description" content={`${courseData.description}`} />
@@ -345,33 +420,34 @@ const CardDetails = ({courseData, semData}) => {
         <meta property="og:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
         <meta property="og:type" content="website" />
         <meta name="og:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-        <meta name="og:description" content={`${courseData.description}`}/>
+        <meta name="og:description" content={`${courseData.description}`} />
         <meta property="og:image" content={
-            "https://boilerclasses.com/api/og?" + 
-              'sub=' + encodeURIComponent(courseData.subjectCode) + 
-              '&course=' + encodeURIComponent(courseData.courseCode) +
-              '&title=' + encodeURIComponent(courseData.title) + 
-              '&credits=' + encodeURIComponent(courseData.credits[1]) + 
-              '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) + 
-              '&sem=' + encodeURIComponent(semData)
-            } />
+          "https://boilerclasses.com/api/og?" +
+          'sub=' + encodeURIComponent(courseData.subjectCode) +
+          '&course=' + encodeURIComponent(courseData.courseCode) +
+          '&title=' + encodeURIComponent(courseData.title) +
+          '&credits=' + encodeURIComponent(courseData.credits[1]) +
+          '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
+          '&sem=' + encodeURIComponent(semData)
+        } />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="boilerclasses.com" />
         <meta property="twitter:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
         <meta name="twitter:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-        <meta name="twitter:description" content={`${courseData.description}`}/>
+        <meta name="twitter:description" content={`${courseData.description}`} />
         <meta property="twitter:image" content={
-            "https://boilerclasses.com/api/og?" + 
-            'sub=' + encodeURIComponent(courseData.subjectCode) + 
-            '&course=' + encodeURIComponent(courseData.courseCode) +
-            '&title=' + encodeURIComponent(courseData.title) + 
-            '&credits=' + encodeURIComponent(courseData.credits[1]) + 
-            '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) + 
-            '&sem=' + encodeURIComponent(semData)
-          } />
+          "https://boilerclasses.com/api/og?" +
+          'sub=' + encodeURIComponent(courseData.subjectCode) +
+          '&course=' + encodeURIComponent(courseData.courseCode) +
+          '&title=' + encodeURIComponent(courseData.title) +
+          '&credits=' + encodeURIComponent(courseData.credits[1]) +
+          '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
+          '&sem=' + encodeURIComponent(semData)
+        } />
 
       </Head>
+      <GpaModal isOpen={gpaModal} onClose={setGpaModal} grades={distr_gpa} />
       <InfoModal isOpen={infoModal} onClose={setInfoModal} />
       <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
@@ -496,28 +572,13 @@ const CardDetails = ({courseData, semData}) => {
           {/* Right half of panel */}
           {defaultGPA.datasets && <div className="flex flex-col w-full ">
 
-
-            <div className='flex flex-row md:gap-4 gap-2'>
-              {/* Semester Select */}
-              {/* <div className="md:mb-4 mb-2 grow-0">
-                <Select
-                  isMulti
-                  options={{}}
-                  className="basic-multi-select w-full no-wrap"
-                  classNamePrefix="select"
-                  placeholder="Instructor..."
-                  menuPlacement='bottom'
-                  defaultValue={{}}
-                  styles={instructorStyles}
-                  color="white"
-                  onChange={{}}
-                />
-              </div> */}
-
-
+            <div className='flex flex-row gap-2 md:mb-4 mb-2'>
+              <a className='p-2 rounded-lg bg-zinc-800 my-auto hover:scale-110 transition-all' onClick={() => setInfoModal(true)}>
+                <FaInfo size={16} color='white' />
+              </a>
               {/* Instructor Select */}
               {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
-                <div className="md:mb-4 mb-2 grow">
+                <div className="grow">
                   <Select
                     isMulti
                     options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
@@ -538,12 +599,11 @@ const CardDetails = ({courseData, semData}) => {
                   />
                 </div>
               }
-
             </div>
 
 
             {/* Stat Cards */}
-            <div className="flex flex-row md:gap-4 gap-2 hover:scale-[1.01] transition-all" onClick={() => setInfoModal(true)}>
+            <div className="flex flex-row md:gap-4 gap-2 hover:scale-[1.01] transition-all" onClick={() => setGpaModal(true)}>
               <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
@@ -572,8 +632,8 @@ const CardDetails = ({courseData, semData}) => {
                     })}
                   />
                 </div>
-                <p className='md:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
-                <p className='hidden md:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
+                <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
+                <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
               </div>
             </div>
 
@@ -608,7 +668,8 @@ const CardDetails = ({courseData, semData}) => {
 export async function getServerSideProps(context) {
 
   const params = new URLSearchParams({ detailId: context.params.id });
-  const data = await fetch(`https://www.boilerclasses.com/api/get?${params}`);
+  // https://www.boilerclasses.com
+  const data = await fetch(`http://localhost:3000/api/get?${params}`);
   const course = await data.json().then((res) => {
     if (res["course"]["documents"].length > 0) {
       return res["course"]["documents"][0].value

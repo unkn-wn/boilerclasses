@@ -8,6 +8,7 @@ import Footer from "../components/footer"
 import { ChevronDownIcon, WarningTwoIcon } from '@chakra-ui/icons'
 import Select from 'react-select';
 import Head from "next/head";
+import Script from 'next/script';
 
 import {
   Popover,
@@ -108,14 +109,14 @@ const CourseCatalog = () => {
       <Head>
         <title>BoilerClasses - Purdue University's Unofficial Course Catalog</title>
         {/* <!-- Google tag (gtag.js) --> */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></script>
-        <script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L"></Script>
+        <Script>
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-48L6TGYD2L');`}
-        </script>
+        </Script>
         <meta name="title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
         <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
@@ -123,7 +124,7 @@ const CourseCatalog = () => {
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
-        
+
         <meta property="og:url" content="https://boilerclasses.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
@@ -203,7 +204,7 @@ const CourseCatalog = () => {
                     <ChevronDownIcon color='gray-800' />
                   </button>
                 </PopoverTrigger>
-                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
+                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-zinc-900 border-gray-800 '>
                   <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
                     <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}
                       onChangeEnd={(val) => {
@@ -311,7 +312,7 @@ const CourseCatalog = () => {
             onChange={(e) => {
               changeLanding(e.target.value);
             }}
-            className="text-white text-sm md:text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+            className="text-white text-sm md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           />
         </div >
       }

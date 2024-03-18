@@ -4,6 +4,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js';
 import { MultiSelectTheme } from 'chakra-multiselect'
 import Head from "next/head";
+import Script from 'next/script';
 
 const theme = extendTheme({
   components: {
@@ -16,11 +17,11 @@ export default function App({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <Head>
         <title>BoilerClasses</title>
-        <script
+        <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
         />
-        <script
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
