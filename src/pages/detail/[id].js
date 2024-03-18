@@ -87,7 +87,6 @@ const CardDetails = ({ courseData, semData }) => {
 
 
   // function to get color based on gpa:
-
   const getColor = (gpa) => {
 		if (gpa === 0) {
 			return "#18181b";
@@ -95,7 +94,7 @@ const CardDetails = ({ courseData, semData }) => {
 
 		// calculate the color based on gpa as a percentage of 4.0
 		const perc = gpa / 4.0;
-		const perc2 = perc * perc * 1.3;
+		const perc2 = perc * perc * 1;
 		const color1 = [43, 191, 199];
 		const color2 = [38, 19, 43];
 
@@ -110,6 +109,7 @@ const CardDetails = ({ courseData, semData }) => {
 		// console.log(hex);
 		return hex;
 	};
+
 
 
   useEffect(() => {
@@ -614,8 +614,8 @@ const CardDetails = ({ courseData, semData }) => {
 
 
             {/* Stat Cards */}
-            <div className="flex flex-row md:gap-4 gap-2 cursor-pointer	hover:scale-[1.01] transition-all" onClick={() => setGpaModal(true)}>
-              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+            <div className="flex flex-row md:gap-4 gap-2">
+              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all" onClick={() => setGpaModal(true)}>
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
@@ -630,7 +630,9 @@ const CardDetails = ({ courseData, semData }) => {
                 </div>
                 <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
-              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+              <a className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all"
+                  href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor.split(", ")[1].split(" ")[0]} ${firstInstructor.split(", ")[0]}`}
+                  target="_blank" rel="noopener noreferrer">
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
@@ -645,7 +647,7 @@ const CardDetails = ({ courseData, semData }) => {
                 </div>
                 <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
                 <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
-              </div>
+              </a>
             </div>
 
 

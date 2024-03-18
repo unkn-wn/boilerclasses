@@ -31,7 +31,7 @@ const GpaModal = ({ isOpen, onClose, grades }) => {
 
 
 	useEffect(() => {
-		console.log(grades);
+		// console.log(grades);
 		setGpa(grades);
 	}, [grades]);
 
