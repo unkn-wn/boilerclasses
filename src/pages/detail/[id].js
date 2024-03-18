@@ -630,7 +630,9 @@ const CardDetails = ({ courseData, semData }) => {
                 </div>
                 <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
-              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+              <a className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all"
+                  href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor.split(", ")[1].split(" ")[0]} ${firstInstructor.split(", ")[0]}`}
+                  target="_blank" rel="noopener noreferrer">
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
@@ -645,7 +647,7 @@ const CardDetails = ({ courseData, semData }) => {
                 </div>
                 <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
                 <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
-              </div>
+              </a>
             </div>
 
 
