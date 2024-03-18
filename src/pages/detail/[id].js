@@ -614,8 +614,8 @@ const CardDetails = ({ courseData, semData }) => {
 
 
             {/* Stat Cards */}
-            <div className="flex flex-row md:gap-4 gap-2 cursor-pointer	hover:scale-[1.01] transition-all" onClick={() => setGpaModal(true)}>
-              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+            <div className="flex flex-row md:gap-4 gap-2">
+              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all" onClick={() => setGpaModal(true)}>
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
