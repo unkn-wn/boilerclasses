@@ -33,7 +33,7 @@ const InfoModal = ({ isOpen, onClose }) => {
 				<ModalOverlay
 					backdropFilter='blur(5px)'
 				/>
-				<ModalContent maxW={{ base: "40%" }} maxH={"80%"}>
+				<ModalContent maxW={{ base: "80%", md: "40%" }} maxH={"80%"}>
 					<ModalHeader />
 					<ModalBody>
 
