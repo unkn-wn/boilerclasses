@@ -345,6 +345,17 @@ const CardDetails = ({ courseData, semData }) => {
   }
 
 
+  // Function to get link for RMP on the dial graph
+  function getFormattedName(instructor) {
+    if (!instructor) return ''; // Check if instructor is provided
+    const nameParts = instructor.split(", ");
+    if (nameParts.length < 2) return ''; // Check if split operation succeeded
+    const firstName = nameParts[1].split(" ")[0];
+    const lastName = nameParts[0];
+    return `${firstName} ${lastName}`;
+}
+
+
   // Get RateMyProfessor ratings for instructor
   async function getRMPRating(instructor) {
     if (!instructor) return;
@@ -631,7 +642,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
               <a className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all"
-                  href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor.split(", ")[1].split(" ")[0]} ${firstInstructor.split(", ")[0]}`}
+                  href={`https://www.ratemyprofessors.com/search/professors/783?q=${getFormattedName(firstInstructor)}`}
                   target="_blank" rel="noopener noreferrer">
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
