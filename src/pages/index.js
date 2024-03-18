@@ -204,7 +204,7 @@ const CourseCatalog = () => {
                     <ChevronDownIcon color='gray-800' />
                   </button>
                 </PopoverTrigger>
-                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800 '>
+                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-zinc-900 border-gray-800 '>
                   <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
                     <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}
                       onChangeEnd={(val) => {
@@ -312,7 +312,7 @@ const CourseCatalog = () => {
             onChange={(e) => {
               changeLanding(e.target.value);
             }}
-            className="text-white text-sm md:text-xl bg-black w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+            className="text-white text-sm md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           />
         </div >
       }

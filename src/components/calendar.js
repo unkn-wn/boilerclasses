@@ -103,6 +103,7 @@ const Calendar = (props) => {
         for (const day in updatedLectures) {
             updatedLectures[day].sort((a, b) => new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw));
         }
+        console.log(updatedLectures);
 
         setLectures(updatedLectures);
     }
