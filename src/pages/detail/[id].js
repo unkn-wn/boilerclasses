@@ -191,9 +191,21 @@ const CardDetails = ({ courseData, semData }) => {
 			}
 		}
 
+    const sorted_sems = sems.sort((a, b) => {
+      const a_split = a.split(" ");
+      const b_split = b.split(" ");
+      if (a_split[1] !== b_split[1]) {
+        return a_split[1] - b_split[1];
+      }
+
+      const seasons = ["Spring", "Summer", "Fall"];
+      return seasons.indexOf(a_split[0]) - seasons.indexOf(b_split[0]);
+    });
+    console.log(sorted_sems);
+
 		// all sems should be present in gpa, if it doesnt exist, set it to 0
 		for (const instructor in course.gpa) {
-			for (const semester of sems) {
+			for (const semester of sorted_sems) {
 				if (!course.gpa[instructor][semester]) {
 					distr_gpa[instructor][semester] = { gpa: 0, color: getColor(0) };
 				} else {
