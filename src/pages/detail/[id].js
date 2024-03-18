@@ -201,7 +201,6 @@ const CardDetails = ({ courseData, semData }) => {
       const seasons = ["Spring", "Summer", "Fall"];
       return seasons.indexOf(a_split[0]) - seasons.indexOf(b_split[0]);
     });
-    console.log(sorted_sems);
 
 		// all sems should be present in gpa, if it doesnt exist, set it to 0
 		for (const instructor in course.gpa) {
@@ -585,7 +584,7 @@ const CardDetails = ({ courseData, semData }) => {
           {defaultGPA.datasets && <div className="flex flex-col w-full ">
 
             <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-              <a className='p-2 rounded-lg bg-zinc-800 my-auto hover:scale-110 transition-all' onClick={() => setInfoModal(true)}>
+              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-110 transition-all' onClick={() => setInfoModal(true)}>
                 <FaInfo size={16} color='white' />
               </a>
               {/* Instructor Select */}
@@ -615,7 +614,7 @@ const CardDetails = ({ courseData, semData }) => {
 
 
             {/* Stat Cards */}
-            <div className="flex flex-row md:gap-4 gap-2 hover:scale-[1.01] transition-all" onClick={() => setGpaModal(true)}>
+            <div className="flex flex-row md:gap-4 gap-2 cursor-pointer	hover:scale-[1.01] transition-all" onClick={() => setGpaModal(true)}>
               <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
