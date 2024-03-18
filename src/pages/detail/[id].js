@@ -87,7 +87,6 @@ const CardDetails = ({ courseData, semData }) => {
 
 
   // function to get color based on gpa:
-
   const getColor = (gpa) => {
 		if (gpa === 0) {
 			return "#18181b";
@@ -95,7 +94,7 @@ const CardDetails = ({ courseData, semData }) => {
 
 		// calculate the color based on gpa as a percentage of 4.0
 		const perc = gpa / 4.0;
-		const perc2 = perc * perc * 1.3;
+		const perc2 = perc * perc * 1;
 		const color1 = [43, 191, 199];
 		const color2 = [38, 19, 43];
 
@@ -110,6 +109,7 @@ const CardDetails = ({ courseData, semData }) => {
 		// console.log(hex);
 		return hex;
 	};
+
 
 
   useEffect(() => {
