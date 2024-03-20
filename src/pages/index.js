@@ -190,7 +190,6 @@ const CourseCatalog = () => {
                 styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
-                  console.log(value);
                   setSelectedSemesters(value)
                 }}
               />
