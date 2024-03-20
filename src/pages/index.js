@@ -31,7 +31,7 @@ import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOption
 const CourseCatalog = () => {
 
   const [selectedSubjects, setSelectedSubjects] = useState([]);
-  const [selectedSemesters, setSelectedSemesters] = useState([]);
+  const [selectedSemesters, setSelectedSemesters] = useState([{ label: "Fall 2024", value: "Fall 2024" }]);
   const [selectedGenEds, setSelectedGenEds] = useState([]);
   const [creditsMin, setCreditsMin] = useState(0);
   const [creditsMax, setCreditsMax] = useState(18);
@@ -186,9 +186,11 @@ const CourseCatalog = () => {
                 className="basic-multi-select w-full"
                 classNamePrefix="select"
                 placeholder="Semester..."
+                defaultValue={semesterOptions[0]}
                 styles={instructorStyles}
                 color="white"
                 onChange={(value) => {
+                  console.log(value);
                   setSelectedSemesters(value)
                 }}
               />
