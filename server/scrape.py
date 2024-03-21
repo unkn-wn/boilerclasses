@@ -27,7 +27,8 @@ link = "https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched"
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
-class_codes = ['AAE', 'AAS', 'ABE', 'AD', 'AFT', 'AGEC', 'AGR', 'AGRY', 'AIS', 'AMST', 'ANSC', 'ANTH', 'ARAB', 'ARCH', 'ASAM', 'ASEC', 'ASL', 'ASM', 'AST', 'ASTR', 'AT', 'BAND', 'BCHM', 'BIOL', 'BME', 'BMS', 'BTNY', 'BUS', 'CAND', 'CDIS', 'CE', 'CEM', 'CGT', 'CHE', 'CHM', 'CHNS', 'CIT', 'CLCS', 'CLPH', 'CM', 'CMGT', 'CMPL', 'CNIT', 'COM', 'CPB', 'CS', 'CSCI', 'CSR', 'DANC', 'EAPS', 'ECE', 'ECET', 'ECON', 'EDCI', 'EDPS', 'EDST', 'EEE', 'ENE', 'ENGL', 'ENGR', 'ENGT', 'ENTM', 'ENTR', 'EPCS', 'FLM', 'FMGT', 'FNR', 'FR', 'FS', 'FVS', 'GEP', 'GER', 'GRAD', 'GREK', 'GS', 'GSLA', 'HDFS', 'HEBR', 'HER', 'HETM', 'HIST', 'HK', 'HONR', 'HORT', 'HSCI', 'HSOP', 'HTM', 'IDE', 'IDIS', 'IE', 'IET', 'ILS', 'IMPH', 'INFO', 'INT', 'IPPH', 'IT', 'ITAL', 'JPNS', 'JWST', 'KOR', 'LA', 'LALS', 'LATN', 'LC', 'LING', 'MA', 'MCMP', 'ME', 'MET', 'MFET', 'MGMT', 'MSE', 'MSL', 'MSPE', 'MUS', 'NRES', 'NS', 'NUCL', 'NUPH', 'NUR', 'NUTR', 'OBHR', 'OLS', 'PES', 'PHIL', 'PHPR', 'PHRM', 'PHSC', 'PHYS', 'POL', 'PSY', 'PTGS', 'PUBH', 'REG', 'REL', 'RUSS', 'SA', 'SCI', 'SCLA', 'SFS', 'SLHS', 'SOC', 'SPAN', 'STAT', 'SYS', 'TCM', 'TDM', 'TECH', 'TESM', 'THTR', 'TLI', 'VCS', 'VIP', 'VM', 'WGSS']
+class_codes = ['AAE', 'AAS', 'ABE', 'AD', 'AFT', 'AGEC', 'AGR', 'AGRY', 'AMST', 'ANSC', 'ANTH', 'ARAB', 'ASAM', 'ASEC', 'ASL', 'ASM', 'ASTR', 'AT', 'BAND', 'BCHM', 'BIOL', 'BME', 'BMS', 'BTNY', 'CAND', 'CDIS', 'CE', 'CEM', 'CGT', 'CHE', 'CHM', 'CHNS', 'CLCS', 'CLPH', 'CM', 'CMPL', 'CNIT', 'COM', 'CPB', 'CS', 'CSR', 'DANC', 'EAPS', 'ECE', 'ECET', 'ECON', 'EDCI', 'EDPS', 'EDST', 'EEE', 'ENE', 'ENGL', 'ENGR', 'ENGT', 'ENTM', 'ENTR', 'EPCS', 'FLM', 'FNR', 'FR', 'FS', 'FVS', 'GER', 'GRAD', 'GREK', 'GS', 'GSLA', 'HDFS', 'HEBR', 'HIST', 'HK', 'HONR', 'HORT', 'HSCI', 'HSOP', 'HTM', 'IDE', 'IDIS', 'IE', 'IET', 'ILS', 'IMPH', 'IPPH', 'IT', 'ITAL', 'JPNS', 'JWST', 'KOR', 'LA', 'LALS', 'LATN', 'LC', 'LING', 'MA', 'MCMP', 'ME', 'MET', 'MFET', 'MGMT', 'MSE', 'MSL', 'MUS', 'NRES', 'NS', 'NUCL', 'NUPH', 'NUR', 'NUTR', 'OBHR', 'OLS', 'PES', 'PHIL', 'PHPR', 'PHRM', 'PHSC', 'PHYS', 'POL', 'PSY', 'PTGS', 'PUBH', 'REL', 'RUSS', 'SA', 'SCI', 'SCLA', 'SFS', 'SLHS', 'SOC', 'SPAN', 'STAT', 'SYS', 'TDM', 'TECH', 'THTR', 'TLI', 'VCS', 'VIP', 'VM', 'WGSS']
+none_found = []
 
 jsonData = []
 for code in class_codes:
@@ -53,12 +54,18 @@ for code in class_codes:
     code_dropdown.select_by_value(code)
   except:
     print("no classes found")
+    none_found.append(code)
     continue
   type_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_schd']")
   type_dropdown = ui.Select(type_dropdown)
   type_dropdown.deselect_all()
   type_dropdown.select_by_value("LEC")
   type_dropdown.select_by_value("DIS")
+  
+  campus_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_camp']")
+  campus_dropdown = ui.Select(campus_dropdown)
+  campus_dropdown.deselect_all()
+  campus_dropdown.select_by_value("PWL")
 
   class_search_element = driver.find_element(By.XPATH, xpath_expression)
   class_search_element.click()
