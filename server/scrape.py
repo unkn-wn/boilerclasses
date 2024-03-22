@@ -113,15 +113,18 @@ for code in class_codes:
     curr_td = curr_table.find_elements(By.TAG_NAME, "td")[-1]
     # possible improvement: add prof email 
     sched_type = curr_table.find_elements(By.TAG_NAME, "td")[-2].text
-    instructor_name = curr_td.text.split("(")[0].strip()
+    instructors = curr_td.text.split(",")
+    for j in range(len(instructors)):
+      instructors[j] = instructors[j].split("(")[0].strip()
+    # instructor_name = curr_td.text.split("(")[0].strip()
 
     if classfullId in doneIds:
-      doneIds[classfullId]["instructor"].append(instructor_name)
+      doneIds[classfullId]["instructor"].extend(instructors)
       doneIds[classfullId]["crn"].append(curr_crn)
       doneIds[classfullId]["sched"].append(sched_type)
       continue
     else:
-      classStruct["instructor"] = [instructor_name]
+      classStruct["instructor"] = instructors
       classStruct["crn"] = [curr_crn]
       classStruct["sched"] = [sched_type]
       viewCatalog = tds[i].find_elements(By.TAG_NAME, "a")[0]
