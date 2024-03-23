@@ -11,6 +11,21 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 from tqdm import tqdm
 
+def format_instructors(by_sched):
+  special_sched = ["Laboratory", "Laboratory Preparation", "Recitation", "Practice Study Observation"]
+  count = 0
+  for sched in special_sched:
+    if sched in by_sched:
+      count += 1
+
+  if len(by_sched) == count:
+    return by_sched
+  
+  for sched in special_sched:
+    if sched in by_sched:
+      del by_sched[sched]
+  
+  return by_sched
 
 parser = argparse.ArgumentParser(description='which semester')
 parser.add_argument("-sem", default="Fall 2024", dest="sem", help="which semester (default: Fall 2024)")
@@ -121,12 +136,16 @@ for code in class_codes:
     # instructor_name = curr_td.text.split("(")[0].strip()
 
     if classfullId in doneIds:
-      doneIds[classfullId]["instructor"].extend(instructors)
+      if sched_type in doneIds[classfullId]["instructor"]:
+        doneIds[classfullId]["instructor"][sched_type].extend(instructors)
+      else:
+        doneIds[classfullId]["instructor"][sched_type] = instructors
       doneIds[classfullId]["crn"].append(curr_crn)
       doneIds[classfullId]["sched"].append(sched_type)
       continue
     else:
-      classStruct["instructor"] = instructors
+      classStruct["instructor"] = {}
+      classStruct["instructor"][sched_type] = instructors
       classStruct["crn"] = [curr_crn]
       classStruct["sched"] = [sched_type]
       viewCatalog = tds[i].find_elements(By.TAG_NAME, "a")[0]
@@ -136,12 +155,16 @@ for code in class_codes:
       doneIds[classfullId] = classStruct
 
   for courseId in doneIds:
-    doneIds[courseId]["instructor"] = set(doneIds[courseId]["instructor"])
+    # final processing for instructor
+    doneIds[courseId]["instructor"] = format_instructors(doneIds[courseId]["instructor"])
+    all_instructors = []
+    for x in doneIds[courseId]["instructor"]:
+      all_instructors.extend(doneIds[courseId]["instructor"][x])
+    doneIds[courseId]["instructor"] = set(all_instructors)
     doneIds[courseId]["sched"] = list(set(doneIds[courseId]["sched"]))
     if "TBA" in doneIds[courseId]["instructor"] and len(doneIds[courseId]["instructor"]) > 1:
       doneIds[courseId]["instructor"].remove("TBA")
     doneIds[courseId]["instructor"] = list(doneIds[courseId]["instructor"])
-    
 
   for courseId in tqdm(catalogEntries):
     driver.get(catalogEntries[courseId])
