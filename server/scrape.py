@@ -56,11 +56,13 @@ for code in class_codes:
     print("no classes found")
     none_found.append(code)
     continue
-  type_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_schd']")
-  type_dropdown = ui.Select(type_dropdown)
-  type_dropdown.deselect_all()
-  type_dropdown.select_by_value("LEC")
-  type_dropdown.select_by_value("DIS")
+  # type_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_schd']")
+  # type_dropdown = ui.Select(type_dropdown)
+  # type_dropdown.deselect_all()
+  # type_dropdown.select_by_value("LEC")
+  # type_dropdown.select_by_value("DIS")
+  # type_dropdown.select_by_value("SD")
+  # type_dropdown.select_by_value("IND")
   
   campus_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_camp']")
   campus_dropdown = ui.Select(campus_dropdown)

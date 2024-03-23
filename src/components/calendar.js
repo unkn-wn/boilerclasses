@@ -52,8 +52,9 @@ const Calendar = (props) => {
         let data;
 
         try {
-            const semester = "202420";
+            const semester = "202510";
             const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
+            // console.log(url);
             const response = await fetch(url);
             data = await response.json();
 
@@ -119,7 +120,7 @@ const Calendar = (props) => {
 
     return (
         <>
-            <div className="mb-2 ml-2 text-sm text-gray-500">Spring 2024 Schedule: </div>
+            <div className="mb-2 ml-2 text-sm text-gray-500">Fall 2024 Schedule: </div>
             {/* Calendar View for Lecture Times */}
             <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
                 <div className='md:border-r-2 md:pr-4 border-gray-500'>
