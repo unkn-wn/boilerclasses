@@ -38,7 +38,18 @@ const CourseCatalog = () => {
   const [levelMin, setLevelMin] = useState(100);
   const [levelMax, setLevelMax] = useState(900);
   const [levels, setLevels] = useState([100, 200, 300, 400, 500, 600, 700, 800, 900]);
-  const [scheds, setScheds] = useState(["Lecture", "Distance Learning"]);
+  const [scheds, setScheds] = useState(["Clinic",
+    "Distance Learning",
+    "Experiential",
+    "Individual Study",
+    "Laboratory",
+    "Laboratory Preparation",
+    "Lecture",
+    "Practice Study Observation",
+    "Presentation",
+    "Recitation",
+    "Research",
+    "Studio"]);
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLanding, setDisplayLanding] = useState(true);
@@ -83,7 +94,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, levels: levels, sched: scheds});
+      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, levels: levels, sched: scheds });
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -142,7 +153,7 @@ const CourseCatalog = () => {
         <meta property="twitter:domain" content="boilerclasses.com" />
         <meta property="twitter:url" content="https://boilerclasses.com/" />
         <meta name="twitter:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
-        <meta name="twitter:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform."/>
+        <meta name="twitter:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
         <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
 
       </Head>
@@ -216,12 +227,12 @@ const CourseCatalog = () => {
                   <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
                     <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}
                       onChangeEnd={(val) => {
-                        setCreditsMin(Math.round((val[0]*18/100)))
-                        setCreditsMax(Math.round((val[1]*18/100)))
+                        setCreditsMin(Math.round((val[0] * 18 / 100)))
+                        setCreditsMax(Math.round((val[1] * 18 / 100)))
                       }}
                       onChangeStart={(val) => {
-                        setCreditsMin(Math.round((val[0]*18/100)))
-                        setCreditsMax(Math.round((val[1]*18/100)))
+                        setCreditsMin(Math.round((val[0] * 18 / 100)))
+                        setCreditsMax(Math.round((val[1] * 18 / 100)))
                       }}
                     >
                       <RangeSliderTrack>
@@ -269,37 +280,51 @@ const CourseCatalog = () => {
                   </button>
                 </PopoverTrigger>
                 <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
-                  <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3} paddingBottom={3}>
+                  <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
                     <Checkbox size='md' isChecked={scheds.includes("Lecture")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Lecture"]) : setScheds(scheds.filter(x => x !== "Lecture"))}>Lecture</Checkbox>
                     <Checkbox size='md' isChecked={scheds.includes("Distance Learning")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Distance Learning"]) : setScheds(scheds.filter(x => x !== "Distance Learning"))}>Distance Learning</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Studio")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Studio"]) : setScheds(scheds.filter(x => x !== "Studio"))}>Studio</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Individual Study")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Individual Study"]) : setScheds(scheds.filter(x => x !== "Individual Study"))}>Individual Study</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Clinic")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Clinic"]) : setScheds(scheds.filter(x => x !== "Clinic"))}>Clinic</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Experiential")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Experiential"]) : setScheds(scheds.filter(x => x !== "Experiential"))}>Experiential</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Research")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Research"]) : setScheds(scheds.filter(x => x !== "Research"))}>Research</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Recitation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Recitation"]) : setScheds(scheds.filter(x => x !== "Recitation"))}>Recitation</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Practice Study Observation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Practice Study Observation"]) : setScheds(scheds.filter(x => x !== "Practice Study Observation"))}>Practice Study Observation</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Laboratory")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Laboratory"]) : setScheds(scheds.filter(x => x !== "Laboratory"))}>Laboratory</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Laboratory Preparation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Laboratory Preparation"]) : setScheds(scheds.filter(x => x !== "Laboratory Preparation"))}>Laboratory Preparation</Checkbox>
+                    <Checkbox size='md' isChecked={scheds.includes("Presentation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Presentation"]) : setScheds(scheds.filter(x => x !== "Presentation"))}>Presentation</Checkbox>
                   </Grid>
+                  <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
+                    <Button size='sm' className='w-full' onClick={() => setScheds(["Clinic", "Distance Learning", "Experiential", "Individual Study", "Laboratory", "Laboratory Preparation", "Lecture", "Practice Study Observation", "Presentation", "Recitation", "Research","Studio"])}>Reset</Button>
+                    <Button size='sm' className='w-full' onClick={() => setScheds([])}>Clear</Button>
+                  </div>
                 </PopoverContent>
               </Popover>
             </div>
           </div>
           {courses.length > 0 || searchTerm.length < 2 ?
-          <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-            {courses.length > 0 && courses.map(course => (
-              <Card key={course.id} course={course.value} />
-              // <div key={course.id}
-              //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
-              //   >
+            <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
+              {courses.length > 0 && courses.map(course => (
+                <Card key={course.id} course={course.value} />
+                // <div key={course.id}
+                //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
+                //   >
 
 
-              //   {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
-              //     target="_blank"
-              //     rel="noopener noreferrer"
-              //     className=''>
-              //     <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
-              //   </a> */}
+                //   {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
+                //     target="_blank"
+                //     rel="noopener noreferrer"
+                //     className=''>
+                //     <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
+                //   </a> */}
 
-            ))}
-          </div>
-          :
-          <div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
-              <WarningTwoIcon boxSize={16} color='#DAAA00'/>
+              ))}
+            </div>
+            :
+            <div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
+              <WarningTwoIcon boxSize={16} color='#DAAA00' />
               <div className='text-white'>No results found!</div>
-          </div>
+            </div>
           }
           <div className='mt-auto'>
             <Footer />
