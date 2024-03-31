@@ -62,7 +62,7 @@ const GpaModal = ({ isOpen, onClose, grades }) => {
 								{Object.keys(gpa).map((instructor, index) => (
 									<div key={index} className='flex flex-col mt-5'>
 										<h2 className='text-white font-bold text-xl'>{instructor}</h2>
-										<div className='grid grid-flow-col justify-stretch'>
+										<div className='grid grid-flow-col auto-cols-fr justify-stretch'>
 											{Object.keys(gpa[instructor]).map((semester, index) => (
 												// console.log(`bg-[${gpa[instructor][semester].color}]`),
 												<div key={index} className='flex flex-col mt-2'>
