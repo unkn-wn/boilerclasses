@@ -136,7 +136,7 @@ const CourseCatalog = () => {
           }}
         />
         <meta name="title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
-        <meta name="description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
+        <meta name="description" content="BoilerClasses (Boiler Classes) is a more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />

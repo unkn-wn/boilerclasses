@@ -95,28 +95,6 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 		}
 
 
-		/////////////////////////////////////////////////////
-		// get the profs per sem
-
-		const instr_sems = course.instructor;
-
-		const formattedSems = {};
-		for (const semester in instr_sems) {
-			formattedSems[semester] = instr_sems[semester].map(name => {
-				const splitName = name.split(' ');
-				const lastName = splitName.pop();
-				const firstName = splitName.shift();
-				const middleName = splitName.join(' ');
-				if (middleName.length === 1) {
-					splitName[0] = middleName + '.';
-				}
-				return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-			});
-		}
-
-		console.log(formattedSems);
-		console.log(grades);
-
 		setGpa(grades);
 	}, [course]);
 
@@ -131,7 +109,8 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 					<ModalHeader />
 					<ModalBody className=' overflow-y-auto'>
 						<div className='flex flex-col'>
-							<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
+							<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
+							<h3 className='text-white text-sm'>To view instructors ordered by semester, click on the "View All Instructors" button under the title!</h3>
 							<div className='mt-2'>
 								{/*sems.length > 0 && (
 									<div className='grid grid-flow-col justify-stretch'>

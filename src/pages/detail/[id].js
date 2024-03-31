@@ -20,11 +20,11 @@ import "react-circular-progressbar/dist/styles.css";
 import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
-import Script from 'next/script';
 import Calendar from '../../components/calendar';
 import Graph from '../../components/graph';
 import GpaModal from '@/components/gpaModal';
 import InfoModal from '@/components/infoModal';
+import FullInstructorModal from '@/components/fullInstructorModal';
 
 
 const CardDetails = ({ courseData, semData }) => {
@@ -177,6 +177,7 @@ const CardDetails = ({ courseData, semData }) => {
   const [selectableInstructors, setSelectableInstructors] = useState([]);
 
   const [gpaModal, setGpaModal] = useState(false);
+  const [fullInstructorModal, setFullInstructorModal] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
 
 
@@ -411,6 +412,7 @@ const CardDetails = ({ courseData, semData }) => {
 
       </Head>
       <GpaModal isOpen={gpaModal} onClose={setGpaModal} course={course} />
+      <FullInstructorModal isOpen={fullInstructorModal} onClose={setFullInstructorModal} course={course} />
       <InfoModal isOpen={infoModal} onClose={setInfoModal} />
       <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
@@ -463,7 +465,7 @@ const CardDetails = ({ courseData, semData }) => {
 
               {/* Instructors Display */}
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
-                <div onClick={() => setGpaModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:scale-105 transition-all cursor-pointer">View All Instructors</div>
+                <div onClick={() => setFullInstructorModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:scale-105 transition-all cursor-pointer">View All Instructors</div>
 
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
