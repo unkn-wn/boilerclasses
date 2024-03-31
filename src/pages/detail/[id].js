@@ -20,11 +20,11 @@ import "react-circular-progressbar/dist/styles.css";
 import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Head from 'next/head';
-import Script from 'next/script';
 import Calendar from '../../components/calendar';
 import Graph from '../../components/graph';
 import GpaModal from '@/components/gpaModal';
 import InfoModal from '@/components/infoModal';
+import FullInstructorModal from '@/components/fullInstructorModal';
 
 
 const CardDetails = ({ courseData, semData }) => {
@@ -84,32 +84,6 @@ const CardDetails = ({ courseData, semData }) => {
   //       }
   //     })
   // }, [router.isReady])
-
-
-  // function to get color based on gpa:
-  const getColor = (gpa) => {
-		if (gpa === 0) {
-			return "#18181b";
-		}
-
-		// calculate the color based on gpa as a percentage of 4.0
-		const perc = gpa / 4.0;
-		const perc2 = perc * perc * 1;
-		const color1 = [43, 191, 199];
-		const color2 = [38, 19, 43];
-
-		const w1 = perc2;
-		const w2 = 1 - perc2;
-
-		const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-		const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-		const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
-
-		const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-		// console.log(hex);
-		return hex;
-	};
-
 
 
   useEffect(() => {
@@ -177,45 +151,6 @@ const CardDetails = ({ courseData, semData }) => {
     changeInstructors(availableSemesters[0]);
 
 
-    /////////////////////////////////////////////////////
-    // set the distributed gpas for each prof and sem
-
-    const distr_gpa = {};
-		const sems = [];
-		for (const instructor in course.gpa) {
-			distr_gpa[instructor] = {};
-			for (const semester in course.gpa[instructor]) {
-				if (!sems.includes(semester)) {
-					sems.push(semester);
-				}
-			}
-		}
-
-    const sorted_sems = sems.sort((a, b) => {
-      const a_split = a.split(" ");
-      const b_split = b.split(" ");
-      if (a_split[1] !== b_split[1]) {
-        return a_split[1] - b_split[1];
-      }
-
-      const seasons = ["Spring", "Summer", "Fall"];
-      return seasons.indexOf(a_split[0]) - seasons.indexOf(b_split[0]);
-    });
-
-		// all sems should be present in gpa, if it doesnt exist, set it to 0
-		for (const instructor in course.gpa) {
-			for (const semester of sorted_sems) {
-				if (!course.gpa[instructor][semester]) {
-					distr_gpa[instructor][semester] = { gpa: 0, color: getColor(0) };
-				} else {
-					distr_gpa[instructor][semester] = { gpa: course.gpa[instructor][semester][13], color: getColor(course.gpa[instructor][semester][13]) };
-				}
-			}
-		}
-
-		setDistrGpa(distr_gpa);
-
-
     setLoading(false);
 
   }, [router.isReady])
@@ -242,8 +177,8 @@ const CardDetails = ({ courseData, semData }) => {
   const [selectableInstructors, setSelectableInstructors] = useState([]);
 
   const [gpaModal, setGpaModal] = useState(false);
+  const [fullInstructorModal, setFullInstructorModal] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
-  const [distr_gpa, setDistrGpa] = useState({});
 
 
   const instructors = new Set();
@@ -353,7 +288,7 @@ const CardDetails = ({ courseData, semData }) => {
     const firstName = nameParts[1].split(" ")[0];
     const lastName = nameParts[0];
     return `${firstName} ${lastName}`;
-}
+  }
 
 
   // Get RateMyProfessor ratings for instructor
@@ -476,7 +411,8 @@ const CardDetails = ({ courseData, semData }) => {
         } />
 
       </Head>
-      <GpaModal isOpen={gpaModal} onClose={setGpaModal} grades={distr_gpa} />
+      <GpaModal isOpen={gpaModal} onClose={setGpaModal} course={course} />
+      <FullInstructorModal isOpen={fullInstructorModal} onClose={setFullInstructorModal} course={course} />
       <InfoModal isOpen={infoModal} onClose={setInfoModal} />
       <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
@@ -528,22 +464,25 @@ const CardDetails = ({ courseData, semData }) => {
               {/* <p>{course.gpa[""]}</p> */}
 
               {/* Instructors Display */}
-              <p className="lg:text-sm text-sm text-blue-600 -mt-3 font-medium">
-                <span className="text-gray-400 font-bold text-xs">RateMyProfessors: </span>
+              <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
+                <div onClick={() => setFullInstructorModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:scale-105 transition-all cursor-pointer">View All Instructors</div>
 
-                {course.instructor[sem].map((prof, i) => (
-                  <>
-                    <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                      target="_blank" rel="noopener noreferrer"
-                      className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
-                      key={i}>
-                      {prof}
-                    </a>
-                    {i < course.instructor[sem].length - 1 && ", "}
-                  </>
-                )
-                )}
-              </p>
+                <div className='mt-1'>
+                  <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
+
+                  {course.instructor[sem].map((prof, i) => (
+                    <>
+                      <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
+                        target="_blank" rel="noopener noreferrer"
+                        className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
+                        key={i}>
+                        {prof}
+                      </a>
+                      {i < course.instructor[sem].length - 1 && ", "}
+                    </>
+                  ))}
+                </div>
+              </div>
             </div>
 
 
@@ -602,7 +541,7 @@ const CardDetails = ({ courseData, semData }) => {
           {defaultGPA.datasets && <div className="flex flex-col w-full ">
 
             <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-110 transition-all' onClick={() => setInfoModal(true)}>
+              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-125 transition-all' onClick={() => setInfoModal(true)}>
                 <FaInfo size={16} color='white' />
               </a>
               {/* Instructor Select */}
@@ -649,8 +588,8 @@ const CardDetails = ({ courseData, semData }) => {
                 <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
               <a className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all"
-                  href={`https://www.ratemyprofessors.com/search/professors/783?q=${getFormattedName(firstInstructor)}`}
-                  target="_blank" rel="noopener noreferrer">
+                href={`https://www.ratemyprofessors.com/search/professors/783?q=${getFormattedName(firstInstructor)}`}
+                target="_blank" rel="noopener noreferrer">
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}

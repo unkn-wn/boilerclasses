@@ -10,6 +10,7 @@ import {
     PopoverArrow,
     PopoverCloseButton,
     PopoverAnchor,
+    Spinner,
 } from '@chakra-ui/react'
 
 
@@ -23,6 +24,7 @@ const Calendar = (props) => {
         Thursday: [],
         Friday: []
     });
+    const [wait, setWait] = useState(true);
 
 
     function convertTo12HourFormat(time) {
@@ -56,6 +58,7 @@ const Calendar = (props) => {
             const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
             // console.log(url);
             const response = await fetch(url);
+            setWait(false);
             data = await response.json();
 
             setLectures(updatedLectures);
@@ -63,10 +66,12 @@ const Calendar = (props) => {
             data = data.value[0];
 
         } catch (e) {
+            setWait(false);
             return;
         }
 
         if (!data) {
+            setWait(false);
             return;
         }
 
@@ -102,7 +107,13 @@ const Calendar = (props) => {
         }
 
         for (const day in updatedLectures) {
-            updatedLectures[day].sort((a, b) => new Date('1970/01/01 ' + a.startTimeRaw) - new Date('1970/01/01 ' + b.startTimeRaw));
+            updatedLectures[day].sort((a, b) => {
+                const aTime = a.startTimeRaw.split(':');
+                const bTime = b.startTimeRaw.split(':');
+                const aDate = new Date(1970, 0, 1, aTime[0], aTime[1], 0);
+                const bDate = new Date(1970, 0, 1, bTime[0], bTime[1], 0);
+                return aDate - bDate;
+            });
         }
         // console.log(updatedLectures);
 
@@ -114,7 +125,14 @@ const Calendar = (props) => {
     }, []);
 
     if (Object.values(lectures).every(lecture => lecture.length === 0)) {
-        return <></>
+        return (
+            <>
+                <div className="mb-2 ml-2 text-sm text-gray-500">Fall 2024 Schedule: </div>
+                <div className='grid justify-center w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
+                    {wait ? <Spinner /> : <p className="text-gray-500">Schedule not available!</p>}
+                </div>
+            </>
+        )
     }
 
 
