@@ -56,6 +56,7 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 	// Helper function to format instructor name
 	function formatInstructorName(name) {
+		if (name === "TBA") return 'TBA';
 		const splitName = name.split(' ');
 		const lastName = splitName.pop();
 		const firstName = splitName.shift();
