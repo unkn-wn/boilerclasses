@@ -37,9 +37,9 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 		// calculate the color based on gpa as a percentage of 4.0
 		const perc = gpa / 4.0;
-		const perc2 = perc * perc * 1;
-		const color1 = [43, 191, 199];
-		const color2 = [38, 19, 43];
+		const perc2 = perc * perc * 0.9;
+		const color1 = [221, 170, 51]; // higher gpa color
+		const color2 = [79, 0, 56]; // lower gpa color
 
 		const w1 = perc2;
 		const w2 = 1 - perc2;
@@ -83,7 +83,7 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 			for (const instructor of course.instructor[semester]) {
 				const formattedInstructor = formatInstructorName(instructor);
 				consolidatedData[semester][formattedInstructor] = {
-					gpa: "No Data",
+					gpa: "No GPA",
 					color: getColor(0)
 				};
 			}
@@ -95,7 +95,7 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 				if (consolidatedData[semester] && consolidatedData[semester][instructor]) {
 					const gpa = course.gpa[instructor][semester][13];
 					consolidatedData[semester][instructor] = {
-						gpa: gpa || "No Data",
+						gpa: gpa || "No GPA",
 						color: getColor(gpa || 0)
 					};
 				}
@@ -138,13 +138,13 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 						<div className='flex flex-col'>
 							<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
 							<h3 className='text-white text-sm'>
-								To view all semester GPAs sorted by professor, click on the "Average GPA" circle graph!{"\n"}
-								This graphic displays all the professors along with their GPA for each semester.
+								To view all semester GPAs sorted by professor, click on the "Average GPA" circle graph!<br />
+								This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!
 							</h3>
 							<div className='mt-2'>
 								{Object.keys(gpa).map((semester, index) => (
 									<div key={index} className='flex flex-col mt-5'>
-										<h2 className='text-white font-bold text-xl'>{semester}</h2>
+										<h2 className='text-white font-bold text-xl border-b border-yellow-500'>{semester}</h2>
 										<div className='flex flex-col justify-stretch'>
 											{Object.keys(gpa[semester]).map((instructor, index) => (
 												<div key={index} className='flex flex-row mt-2 items-center justify-between'>

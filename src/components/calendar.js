@@ -66,10 +66,12 @@ const Calendar = (props) => {
             data = data.value[0];
 
         } catch (e) {
+            setWait(false);
             return;
         }
 
         if (!data) {
+            setWait(false);
             return;
         }
 

@@ -37,9 +37,9 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 
 		// calculate the color based on gpa as a percentage of 4.0
 		const perc = gpa / 4.0;
-		const perc2 = perc * perc * 1;
-		const color1 = [43, 191, 199];
-		const color2 = [38, 19, 43];
+		const perc2 = perc * perc * 0.9;
+		const color1 = [221, 170, 51]; // higher gpa color
+		const color2 = [79, 0, 56]; // lower gpa color
 
 		const w1 = perc2;
 		const w2 = 1 - perc2;
@@ -110,7 +110,10 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 					<ModalBody className=' overflow-y-auto'>
 						<div className='flex flex-col'>
 							<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
-							<h3 className='text-white text-sm'>To view instructors ordered by semester, click on the "View All Instructors" button under the title!</h3>
+							<h3 className='text-white text-sm'>
+								To view instructors ordered by semester, click on the "View All Instructors" button under the title!<br />
+								This graphic displays all the professors along with their GPA for each semester. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!
+							</h3>
 							<div className='mt-2'>
 								{/*sems.length > 0 && (
 									<div className='grid grid-flow-col justify-stretch'>

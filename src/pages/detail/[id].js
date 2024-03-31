@@ -541,7 +541,7 @@ const CardDetails = ({ courseData, semData }) => {
           {defaultGPA.datasets && <div className="flex flex-col w-full ">
 
             <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-110 transition-all' onClick={() => setInfoModal(true)}>
+              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-125 transition-all' onClick={() => setInfoModal(true)}>
                 <FaInfo size={16} color='white' />
               </a>
               {/* Instructor Select */}
