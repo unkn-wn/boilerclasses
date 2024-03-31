@@ -148,9 +148,9 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 										<div className='flex flex-col justify-stretch'>
 											{Object.keys(gpa[semester]).map((instructor, index) => (
 												<div key={index} className='flex flex-row mt-2 items-center justify-between'>
-													<h3 className='text-white font-semibold text-md mr-4'>{instructor}</h3>
+													<h3 className='text-white font-semibold text-md mr-2'>{instructor}</h3>
 													<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
-													<div className='grid w-20 h-12 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
+													<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
 														<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
 													</div>
 												</div>
