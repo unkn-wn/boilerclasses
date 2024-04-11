@@ -68,23 +68,6 @@ const CardDetails = ({ courseData, semData }) => {
 
   }
 
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-
-  //   const params = new URLSearchParams({ detailId: router.query.id });
-  //   fetch('/api/get?' + params)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data["course"]["documents"].length > 0) {
-  //         setCourse(data["course"]["documents"][0].value);
-  //         setSem(data["course"]["documents"][0].value.terms[0]);
-  //         setLoading(false);
-  //       } else {
-  //         setLoading(false);
-  //       }
-  //     })
-  // }, [router.isReady])
-
 
   useEffect(() => {
     if (!course) return;
