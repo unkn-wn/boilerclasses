@@ -70,9 +70,9 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 	useEffect(() => {
 		if (!course) return;
-		//@unkn-wn @knightron0 delete this comment after review:
-		//Is there a reason why we do the following check?
-		//if (Object.keys(course.gpa).length === 0) return;
+		// @unkn-wn @knightron0 delete this comment after review:
+		// Is there a reason why we do the following check?
+		// if (Object.keys(course.gpa).length === 0) return;
 		// console.log(JSON.stringify(course, null, 2));
 
 		/////////////////////////////////////////////////////
