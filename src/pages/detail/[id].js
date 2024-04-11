@@ -71,8 +71,9 @@ const CardDetails = ({ courseData, semData }) => {
 
   useEffect(() => {
     if (!course) return;
-    // set descriptions to none if it's html
+    console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
 
+    // set descriptions to none if it's html
     if (course.description && course.description.startsWith("<a href=")) {
       setCourse({ ...course, description: "No Description Available" });
     }
