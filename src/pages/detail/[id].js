@@ -192,14 +192,26 @@ const CardDetails = ({ courseData, semData }) => {
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
     if (!course) return;
-    for (const instructor in course.gpa) {
+    const allProfs = [];
+    for (const semester in course.instructor) {
+      for (const instructor of course.instructor[semester]) {
+        const formattedInstructor = formatInstructorName(instructor);
+        if (!allProfs.includes(formattedInstructor)) {
+          allProfs.push(formattedInstructor);
+        }
+      }
+    }
+
+    for (const instructor of allProfs) {
       getRMPRating(instructor).then((rating) => {
         setCurRMP((prevRMP) => {
           return { ...prevRMP, [instructor]: rating };
         });
       });
-
     }
+
+
+
   }, [router.isReady]);
 
   const [firstInstructor, setFirstInstructor] = useState("");
