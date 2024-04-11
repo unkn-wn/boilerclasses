@@ -69,7 +69,6 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 
 	useEffect(() => {
-		console.log("Course: ", course)
 		if (!course) return;
 		//@unkn-wn @knightron0 delete this comment after review:
 		//Is there a reason why we do the following check?
@@ -88,7 +87,6 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 				const formattedInstructor = formatInstructorName(instructor);
 				let gpa = "No GPA";
 				let color = getColor(0);
-				console.log(formattedInstructor, semester, course.gpa[formattedInstructor])
 				if (course.gpa[formattedInstructor] && course.gpa[formattedInstructor][semester]) {
 					gpa = course.gpa[formattedInstructor][semester][13] || "No GPA";
 					color = getColor(course.gpa[formattedInstructor][semester][13] || 0);

@@ -68,6 +68,19 @@ const CardDetails = ({ courseData, semData }) => {
 
   }
 
+  // Helper function to format instructor name
+	function formatInstructorName(name) {
+		if (name === "TBA") return 'TBA';
+		const splitName = name.split(' ');
+		const lastName = splitName.pop();
+		const firstName = splitName.shift();
+		const middleName = splitName.join(' ');
+		if (middleName.length >= 1) {
+			splitName[0] = middleName[0] + '.';
+		}
+		return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
+	}
+
 
   useEffect(() => {
     if (!course) return;
@@ -122,14 +135,27 @@ const CardDetails = ({ courseData, semData }) => {
 
 
     // Set selectable instructors
-
-    const instrs = [];
-    for (const instructor in course.gpa) {
-      if (!instrs.includes(instructor)) {
-        instrs.push(instructor);
-      }
+    
+    // const instrs = [];
+    // for (const instructor in course.gpa) {
+    //   if (!instrs.includes(instructor)) {
+    //     instrs.push(instructor);
+    //   }
+    // }
+    // console.log("instructors: " + instrs)
+    // setSelectableInstructors(instrs);
+    
+   //Trying another way to do the above
+   const instrs = []
+   for (const semester in course.instructor) {
+    for (const instructor of course.instructor[semester]) {
+      const formattedInstructor = formatInstructorName(instructor);
+      if (!instrs.includes(formattedInstructor)) {
+        instrs.push(formattedInstructor);
     }
-    setSelectableInstructors(instrs);
+   }
+  }
+  setSelectableInstructors(instrs);
 
     // set instructors
     changeInstructors(availableSemesters[0]);
