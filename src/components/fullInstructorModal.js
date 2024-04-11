@@ -61,8 +61,8 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 		const lastName = splitName.pop();
 		const firstName = splitName.shift();
 		const middleName = splitName.join(' ');
-		if (middleName.length === 1) {
-			splitName[0] = middleName + '.';
+		if (middleName.length >= 1) {
+			splitName[0] = middleName[0] + '.';
 		}
 		return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
 	}
@@ -70,7 +70,9 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 	useEffect(() => {
 		if (!course) return;
-		if (Object.keys(course.gpa).length === 0) return;
+		// @unkn-wn @knightron0 delete this comment after review:
+		// Is there a reason why we do the following check?
+		// if (Object.keys(course.gpa).length === 0) return;
 		// console.log(JSON.stringify(course, null, 2));
 
 		/////////////////////////////////////////////////////
@@ -78,31 +80,23 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 		const consolidatedData = {};
 
-		// Populate consolidatedData with all semesters and professors
+		// Populate consolidatedData with all semesters and professors and gpas
 		for (const semester in course.instructor) {
 			consolidatedData[semester] = {};
 			for (const instructor of course.instructor[semester]) {
 				const formattedInstructor = formatInstructorName(instructor);
+				let gpa = "No GPA";
+				let color = getColor(0);
+				if (course.gpa[formattedInstructor] && course.gpa[formattedInstructor][semester]) {
+					gpa = course.gpa[formattedInstructor][semester][13] || "No GPA";
+					color = getColor(course.gpa[formattedInstructor][semester][13] || 0);
+				}
 				consolidatedData[semester][formattedInstructor] = {
-					gpa: "No GPA",
-					color: getColor(0)
+					gpa: gpa,
+					color: color
 				};
 			}
 		}
-
-		// Update consolidatedData with available grades data
-		for (const instructor in course.gpa) {
-			for (const semester in course.gpa[instructor]) {
-				if (consolidatedData[semester] && consolidatedData[semester][instructor]) {
-					const gpa = course.gpa[instructor][semester][13];
-					consolidatedData[semester][instructor] = {
-						gpa: gpa || "No GPA",
-						color: getColor(gpa || 0)
-					};
-				}
-			}
-		}
-
 
 		// SORTING BY SEMESTERS
 		const sortedSemesters = Object.keys(consolidatedData).sort((a, b) => {
@@ -140,7 +134,8 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 							<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
 							<h3 className='text-white text-sm'>
 								To view all semester GPAs sorted by professor, click on the "Average GPA" circle graph!<br />
-								This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!
+								This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
+								GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
 							</h3>
 							<div className='mt-2'>
 								{Object.keys(gpa).map((semester, index) => (
