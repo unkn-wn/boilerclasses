@@ -41,7 +41,10 @@ const InfoModal = ({ isOpen, onClose }) => {
 								The <span className='font-bold text-yellow-500'>first instructor selected</span> represents the Average GPA and RateMyProfessors Rating on the circle graphs! To view a different average GPA or RateMyProfessor (RMP) rating, click the instructor dropdown and select a different instructor, and remove the previous instructor.
 								<br />
 								<br />
-								To view <span className='font-bold text-yellow-500'>all instructor GPAs</span>, click on the "Average GPA circle graph". It will display the breakdown of each professor's GPA per semester. 0 means that the professor has not taught that semester.
+								Sometimes, the GPA data or RMP rating my not be available for a specific instructor, and may be blank.
+								<br />
+								<br />
+								To view <span className='font-bold text-yellow-500'>all instructor GPAs</span>, click on the "Average GPA" circle graph. It will display the breakdown of each professor's GPA per semester. 0 means that the professor has not taught that semester.
 							</p>
 
 					</ModalBody>

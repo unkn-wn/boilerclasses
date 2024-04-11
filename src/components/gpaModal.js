@@ -112,7 +112,8 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 							<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
 							<h3 className='text-white text-sm'>
 								To view instructors ordered by semester, click on the "View All Instructors" button under the title!<br />
-								This graphic displays all the professors along with their GPA for each semester. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!
+								This graphic displays all the professors along with their GPA for each semester. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
+								GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
 							</h3>
 							<div className='mt-2'>
 								{/*sems.length > 0 && (

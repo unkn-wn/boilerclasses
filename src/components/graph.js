@@ -33,7 +33,7 @@ const Graph = (props) => {
 								legend: {
 									position: 'top',
 									labels: {
-										color: "white"
+										color: "white",
 									}
 								},
 								title: {

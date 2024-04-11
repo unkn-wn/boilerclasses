@@ -69,17 +69,17 @@ const CardDetails = ({ courseData, semData }) => {
   }
 
   // Helper function to format instructor name
-	function formatInstructorName(name) {
-		if (name === "TBA") return 'TBA';
-		const splitName = name.split(' ');
-		const lastName = splitName.pop();
-		const firstName = splitName.shift();
-		const middleName = splitName.join(' ');
-		if (middleName.length >= 1) {
-			splitName[0] = middleName[0] + '.';
-		}
-		return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-	}
+  function formatInstructorName(name) {
+    if (name === "TBA") return 'TBA';
+    const splitName = name.split(' ');
+    const lastName = splitName.pop();
+    const firstName = splitName.shift();
+    const middleName = splitName.join(' ');
+    if (middleName.length >= 1) {
+      splitName[0] = middleName[0] + '.';
+    }
+    return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
+  }
 
 
   useEffect(() => {
@@ -91,18 +91,39 @@ const CardDetails = ({ courseData, semData }) => {
       setCourse({ ...course, description: "No Description Available" });
     }
 
+    // set all profs
+    const allProfs = [];
+    for (const semester in course.instructor) {
+      for (const instructor of course.instructor[semester]) {
+        const formattedInstructor = formatInstructorName(instructor);
+        if (!allProfs.includes(formattedInstructor)) {
+          allProfs.push(formattedInstructor);
+        }
+      }
+    }
+
     // set graph
     const grades = [];
     const gpa = {};
     let curr = 0;
-    for (const instructor in course.gpa) {
-
-      const color = graphColors[(curr++) % graphColors.length];
+    for (const instructor of allProfs) {
 
       let avg_gpa = 0;
       let avg_grade_dist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+      if (!course.gpa[instructor]) { // if no data for instructor, set to 0
+        gpa[instructor] = [0, "#ffffff"];
+        grades.push({
+          label: instructor,
+          data: avg_grade_dist,
+          backgroundColor: "#ffffff"
+        });
+        continue;
+      }
+
+      const color = graphColors[(curr++) % graphColors.length];
       let count = 0;
-      for (const sem in course.gpa[instructor]) {
+      for (const sem in course.gpa[instructor]) { // for each semester, calculate avg gpa and grade distribution
         avg_gpa += course.gpa[instructor][sem][13];
         for (let i = 0; i < 13; i++) {
           avg_grade_dist[i] += course.gpa[instructor][sem][i];
@@ -135,7 +156,6 @@ const CardDetails = ({ courseData, semData }) => {
 
 
     // Set selectable instructors
-    
     // const instrs = [];
     // for (const instructor in course.gpa) {
     //   if (!instrs.includes(instructor)) {
@@ -143,23 +163,27 @@ const CardDetails = ({ courseData, semData }) => {
     //   }
     // }
     // console.log("instructors: " + instrs)
-    // setSelectableInstructors(instrs);
-    
-   //Trying another way to do the above
-   const instrs = []
-   for (const semester in course.instructor) {
-    for (const instructor of course.instructor[semester]) {
-      const formattedInstructor = formatInstructorName(instructor);
-      if (!instrs.includes(formattedInstructor)) {
-        instrs.push(formattedInstructor);
+    setSelectableInstructors(allProfs);
+
+    // set current semester
+    setSem(availableSemesters[0]);
+
+
+    // set default first instructor on the multiselect
+    let found = false;
+    for (const ins of allProfs) {
+      if (gpa[ins] && gpa[ins][0] !== 0) {
+        refreshGraph({ value: ins, label: ins });
+        setFirstInstructor(ins);
+        found = true;
+        break;
+      }
     }
-   }
-  }
-  setSelectableInstructors(instrs);
 
-    // set instructors
-    changeInstructors(availableSemesters[0]);
-
+    if (!found) {
+      refreshGraph({ value: allProfs[0], label: allProfs[0]});
+      setFirstInstructor(allProfs[0]);
+    }
 
     setLoading(false);
 
@@ -204,28 +228,22 @@ const CardDetails = ({ courseData, semData }) => {
     } catch { }
   });
 
-  const changeInstructors = (sem) => {
+  // Function for changing instructors on semester select (old feature)
+  // const changeInstructors = (sem) => {
 
-    setSem(sem);
-    availableSemesters.forEach((otherSem) => {
-      if (otherSem !== sem) {
-        try {
-          document.getElementById(otherSem).classList.remove("bg-sky-600");
-        } catch { }
-      }
-    });
+  //   setSem(sem);
+  //   availableSemesters.forEach((otherSem) => {
+  //     if (otherSem !== sem) {
+  //       try {
+  //         document.getElementById(otherSem).classList.remove("bg-sky-600");
+  //       } catch { }
+  //     }
+  //   });
 
-    try {
-      document.getElementById(sem).classList.add("bg-sky-600");
-    } catch { }
-  }
-
-
-  // This is used to set default instructor on the multiselect
-  useEffect(() => {
-    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
-    setFirstInstructor(selectableInstructors[0]);
-  }, [selectableInstructors]);
+  //   try {
+  //     document.getElementById(sem).classList.add("bg-sky-600");
+  //   } catch { }
+  // }
 
 
   const getSearchableProfString = () => {
@@ -248,7 +266,7 @@ const CardDetails = ({ courseData, semData }) => {
   // Refresh graph when instructors change
   const refreshGraph = (instructors) => {
     const gpa = defaultGPA.datasets;
-    if (!gpa || gpa.length === 0) return;
+    if (!gpa || gpa.length === 0 || !instructors ) return;
 
     setFirstInstructor(" ");
     try {
@@ -256,7 +274,6 @@ const CardDetails = ({ courseData, semData }) => {
     } catch {
       setFirstInstructor("");
     }
-
 
     const newgpa = gpa.filter(inst => {
       const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
@@ -268,6 +285,12 @@ const CardDetails = ({ courseData, semData }) => {
       datasets: newgpa,
     });
   };
+
+  // To refresh graph when everythings loaded
+  useEffect(() => {
+    if (!course) return;
+    refreshGraph([{ value: firstInstructor, label: firstInstructor }]);
+  }, [defaultGPA.datasets]);
 
 
   // Function to replace gened codes with actual names
@@ -359,7 +382,7 @@ const CardDetails = ({ courseData, semData }) => {
         </p>
       );
     } catch (error) {
-      console.log(course.prereqs);
+      console.error(course.prereqs);
       return <></>;
     }
   }
@@ -548,7 +571,7 @@ const CardDetails = ({ courseData, semData }) => {
 
 
           {/* Right half of panel */}
-          {defaultGPA.datasets && <div className="flex flex-col w-full ">
+          {defaultGPA.datasets && <div className="flex flex-col w-full">
 
             <div className='flex flex-row gap-2 md:mb-4 mb-2'>
               <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-125 transition-all' onClick={() => setInfoModal(true)}>
@@ -565,9 +588,7 @@ const CardDetails = ({ courseData, semData }) => {
                     placeholder="Instructor..."
                     menuPlacement='bottom'
                     defaultValue={
-                      selectableInstructors.length > 0
-                        ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                        : null
+                      [{ value: firstInstructor, label: firstInstructor }]
                     }
                     styles={instructorStyles}
                     color="white"
@@ -582,7 +603,17 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Stat Cards */}
             <div className="flex flex-row md:gap-4 gap-2">
-              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all" onClick={() => setGpaModal(true)}>
+              <div className="relative flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all" onClick={() => setGpaModal(true)}>
+
+                {/* For when there is no GPA data for firstInstructor */}
+                {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
+                  <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
+                    <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
+                    <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> for all data!</p>
+                  </div>
+                }
+
+
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
