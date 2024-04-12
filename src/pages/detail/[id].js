@@ -143,11 +143,13 @@ const CardDetails = ({ courseData, semData }) => {
       });
 
     }
-
+    
     setGpaGraph({
       labels,
-      datasets: grades
+      //datasets: grades
+      datasets: []
     });
+    
     setDefaultGPA({
       labels,
       datasets: grades
