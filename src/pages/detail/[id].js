@@ -457,6 +457,8 @@ const CardDetails = ({ courseData, semData }) => {
           '&sem=' + encodeURIComponent(semData)
         } />
 
+        <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+        
       </Head>
       <GpaModal isOpen={gpaModal} onClose={setGpaModal} course={course} />
       <FullInstructorModal isOpen={fullInstructorModal} onClose={setFullInstructorModal} course={course} />

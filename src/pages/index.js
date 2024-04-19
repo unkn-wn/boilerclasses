@@ -155,6 +155,8 @@ const CourseCatalog = () => {
         <meta name="twitter:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
         <meta name="twitter:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
         <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
+        
+        <link rel="canonical" href="https://boilerclasses.com/" />
 
       </Head>
       {!displayLanding ?
