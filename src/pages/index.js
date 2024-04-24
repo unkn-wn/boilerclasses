@@ -118,7 +118,7 @@ const CourseCatalog = () => {
   return (
     <>
       <Head>
-        <title>BoilerClasses - Purdue University's Unofficial Course Catalog</title>
+        <title>BoilerClasses - Purdue Course Catalog</title>
         {/* <!-- Google tag (gtag.js) --> */}
         <script
           async
@@ -135,8 +135,8 @@ const CourseCatalog = () => {
             });`
           }}
         />
-        <meta name="title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
-        <meta name="description" content="BoilerClasses (Boiler Classes) is a more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
+        <meta name="title" content="BoilerClasses - Purdue Course Catalog" />
+        <meta name="description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
@@ -145,15 +145,15 @@ const CourseCatalog = () => {
 
         <meta property="og:url" content="https://boilerclasses.com/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
-        <meta property="og:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
+        <meta property="og:title" content="BoilerClasses - Purdue Course Catalog" />
+        <meta property="og:description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta property="og:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="boilerclasses.com" />
         <meta property="twitter:url" content="https://boilerclasses.com/" />
-        <meta name="twitter:title" content="BoilerClasses - Purdue University's Unofficial Course Catalog" />
-        <meta name="twitter:description" content="A more user-friendly course catalog for Purdue students with blazing-fast search. From 8000+ classes offered, find more engaging geneds, discover classes more aligned with your interests, and delve into specialized offerings. BoilerClasses is an all-in-one access that provides related links for each course, including RateMyProfessor reviews, in one centralized platform." />
+        <meta name="twitter:title" content="BoilerClasses - Purdue Course Catalog" />
+        <meta name="twitter:description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
 
       </Head>

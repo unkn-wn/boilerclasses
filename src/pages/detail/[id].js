@@ -143,13 +143,13 @@ const CardDetails = ({ courseData, semData }) => {
       });
 
     }
-    
+
     setGpaGraph({
       labels,
       //datasets: grades
       datasets: []
     });
-    
+
     setDefaultGPA({
       labels,
       datasets: grades
@@ -289,15 +289,19 @@ const CardDetails = ({ courseData, semData }) => {
       setFirstInstructor("");
     }
 
-    const newgpa = gpa.filter(inst => {
-      const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
-      return isIncluded;
-    });
+    try {
+      const newgpa = gpa.filter(inst => {
+        const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
+        return isIncluded;
+      });
 
-    setGpaGraph({
-      labels,
-      datasets: newgpa,
-    });
+      setGpaGraph({
+        labels,
+        datasets: newgpa,
+      });
+    } catch {
+      console.error("Error filtering instructors");
+    }
   };
 
   // To refresh graph when everythings loaded
@@ -421,8 +425,8 @@ const CardDetails = ({ courseData, semData }) => {
         />
         <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-        <meta name="description" content={`${courseData.description}`} />
-        <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
+        <meta name="description" content={`Course ${courseData.subjectCode} ${courseData.courseCode} Purdue: ${courseData.description}`} />
+        <meta name="keywords" content={`Purdue, Course, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
@@ -575,6 +579,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
+            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {course.courseCode} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
             {renderPrereqs()}
