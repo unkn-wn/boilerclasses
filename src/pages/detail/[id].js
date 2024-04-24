@@ -276,7 +276,6 @@ const CardDetails = ({ courseData, semData }) => {
 
   }
 
-
   // Refresh graph when instructors change
   const refreshGraph = (instructors) => {
     const gpa = defaultGPA.datasets;
@@ -284,7 +283,7 @@ const CardDetails = ({ courseData, semData }) => {
 
     setFirstInstructor(" ");
     try {
-      setFirstInstructor(instructors[0].label);
+      setFirstInstructor(instructors[instructors.length - 1].label);
     } catch {
       setFirstInstructor("");
     }

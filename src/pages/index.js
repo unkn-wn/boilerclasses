@@ -324,7 +324,9 @@ const CourseCatalog = () => {
             <div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
               <WarningTwoIcon boxSize={16} color='#DAAA00' />
               <div className='text-white'>No results found!</div>
+              <div className='text-white -translate-y-3'>Try changing the filters</div>
             </div>
+            
           }
           <div className='mt-auto'>
             <Footer />
