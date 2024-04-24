@@ -143,13 +143,13 @@ const CardDetails = ({ courseData, semData }) => {
       });
 
     }
-    
+
     setGpaGraph({
       labels,
       //datasets: grades
       datasets: []
     });
-    
+
     setDefaultGPA({
       labels,
       datasets: grades
@@ -288,15 +288,19 @@ const CardDetails = ({ courseData, semData }) => {
       setFirstInstructor("");
     }
 
-    const newgpa = gpa.filter(inst => {
-      const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
-      return isIncluded;
-    });
+    try {
+      const newgpa = gpa.filter(inst => {
+        const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
+        return isIncluded;
+      });
 
-    setGpaGraph({
-      labels,
-      datasets: newgpa,
-    });
+      setGpaGraph({
+        labels,
+        datasets: newgpa,
+      });
+    } catch {
+      console.error("Error filtering instructors");
+    }
   };
 
   // To refresh graph when everythings loaded
@@ -420,8 +424,8 @@ const CardDetails = ({ courseData, semData }) => {
         />
         <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-        <meta name="description" content={`${courseData.description}`} />
-        <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
+        <meta name="description" content={`Course ${courseData.subjectCode} ${courseData.courseCode} Purdue: ${courseData.description}`} />
+        <meta name="keywords" content={`Purdue, Course, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
@@ -551,14 +555,14 @@ const CardDetails = ({ courseData, semData }) => {
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
+                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="Reddit" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
               <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202510&subj_code_in=${course.subjectCode}&crse_numb_in=${course.courseCode}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="/purdue-icon.png" alt="" boxSize={4} className="my-auto" />
+                  <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
                   Catalog
                 </div>
               </a>
@@ -566,7 +570,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
                   className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
-                    <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
+                    <Image src="/boilerexams-icon.png" alt="Boilerexams" boxSize={4} className="my-auto filter" />
                     Boilerexams
                   </div>
                 </a>
@@ -576,6 +580,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
+            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {course.courseCode} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
             {renderPrereqs()}
