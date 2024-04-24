@@ -553,14 +553,14 @@ const CardDetails = ({ courseData, semData }) => {
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
+                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="Reddit" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
               <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202510&subj_code_in=${course.subjectCode}&crse_numb_in=${course.courseCode}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="/purdue-icon.png" alt="" boxSize={4} className="my-auto" />
+                  <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
                   Catalog
                 </div>
               </a>
@@ -568,7 +568,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
                   className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
-                    <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
+                    <Image src="/boilerexams-icon.png" alt="Boilerexams" boxSize={4} className="my-auto filter" />
                     Boilerexams
                   </div>
                 </a>
