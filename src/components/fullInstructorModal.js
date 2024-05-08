@@ -54,20 +54,6 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 	};
 
 
-	// Helper function to format instructor name
-	function formatInstructorName(name) {
-		if (name === "TBA") return 'TBA';
-		const splitName = name.split(' ');
-		const lastName = splitName.pop();
-		const firstName = splitName.shift();
-		const middleName = splitName.join(' ');
-		if (middleName.length >= 1) {
-			splitName[0] = middleName[0] + '.';
-		}
-		return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-	}
-
-
 	useEffect(() => {
 		if (!course) return;
 		// @unkn-wn @knightron0 delete this comment after review:
@@ -84,14 +70,13 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 		for (const semester in course.instructor) {
 			consolidatedData[semester] = {};
 			for (const instructor of course.instructor[semester]) {
-				const formattedInstructor = formatInstructorName(instructor);
 				let gpa = "No GPA";
 				let color = getColor(0);
-				if (course.gpa[formattedInstructor] && course.gpa[formattedInstructor][semester]) {
-					gpa = course.gpa[formattedInstructor][semester][13] || "No GPA";
-					color = getColor(course.gpa[formattedInstructor][semester][13] || 0);
+				if (course.gpa[instructor] && course.gpa[instructor][semester]) {
+					gpa = course.gpa[instructor][semester][13] || "No GPA";
+					color = getColor(course.gpa[instructor][semester][13] || 0);
 				}
-				consolidatedData[semester][formattedInstructor] = {
+				consolidatedData[semester][instructor] = {
 					gpa: gpa,
 					color: color
 				};

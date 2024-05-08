@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import { semesters, subjects } from "../../lib/utils"
 const inter = Inter({ subsets: ['latin'] })
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ErrorPage from 'next/error'
 
 import Select from 'react-select';
@@ -68,23 +68,31 @@ const CardDetails = ({ courseData, semData }) => {
 
   }
 
-  // Helper function to format instructor name
-  function formatInstructorName(name) {
-    if (name === "TBA") return 'TBA';
-    const splitName = name.split(' ');
-    const lastName = splitName.pop();
-    const firstName = splitName.shift();
-    const middleName = splitName.join(' ');
-    if (middleName.length >= 1) {
-      splitName[0] = middleName[0] + '.';
-    }
-    return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-  }
+  // Helper function to format instructor name to "Middle middle Last, First"
+  // or Last, First M. for some reason cause our data isnt fucking consolidated @Sarthak
+  // function formatInstructorName(name) {
+  //   if (name === "TBA") return 'TBA';
+  //   const splitName = name.split(' ');
+
+  //   if (splitName.length > 3) {
+  //     const firstName = splitName[0];
+  //     const rest = splitName.slice(1).join(' ');
+  //     return `${rest}, ${firstName}`;
+  //   } else {
+  //     const lastName = splitName.pop();
+  //     const firstName = splitName.shift();
+  //     const middleName = splitName.join(' ');
+  //     if (middleName.length >= 1) {
+  //       splitName[0] = middleName[0] + '.';
+  //     }
+  //     return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
+  //   }
+  // }
 
 
   useEffect(() => {
     if (!course) return;
-    console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
+    // console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
 
     // set descriptions to none if it's html
     if (course.description && course.description.startsWith("<a href=")) {
@@ -95,9 +103,8 @@ const CardDetails = ({ courseData, semData }) => {
     const allProfs = [];
     for (const semester in course.instructor) {
       for (const instructor of course.instructor[semester]) {
-        const formattedInstructor = formatInstructorName(instructor);
-        if (!allProfs.includes(formattedInstructor)) {
-          allProfs.push(formattedInstructor);
+        if (!allProfs.includes(instructor)) {
+          allProfs.push(instructor);
         }
       }
     }
@@ -183,7 +190,7 @@ const CardDetails = ({ courseData, semData }) => {
     }
 
     if (!found) {
-      refreshGraph({ value: allProfs[0], label: allProfs[0]});
+      refreshGraph({ value: allProfs[0], label: allProfs[0] });
       setFirstInstructor(allProfs[0]);
     }
 
@@ -191,34 +198,48 @@ const CardDetails = ({ courseData, semData }) => {
 
   }, [router.isReady])
 
+
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
     if (!course) return;
+
     const allProfs = [];
     for (const semester in course.instructor) {
       for (const instructor of course.instructor[semester]) {
-        const formattedInstructor = formatInstructorName(instructor);
-        if (!allProfs.includes(formattedInstructor)) {
-          allProfs.push(formattedInstructor);
+        if (!allProfs.includes(instructor)) {
+          allProfs.push(instructor);
         }
       }
     }
 
-    for (const instructor of allProfs) {
-      getRMPRating(instructor).then((rating) => {
+    async function loadRatingsForProfessors(allProfs) {
+      try {
+        if (isLoadingRatings.current) {
+          return;
+        }
+
+        isLoadingRatings.current = true;
+
+        const ratings = await getAllRMPRatings(allProfs);
         setCurRMP((prevRMP) => {
-          return { ...prevRMP, [instructor]: rating };
+          return { ...prevRMP, ...ratings };
         });
-      });
+      } catch (error) {
+        console.error("Error loading ratings:", error);
+      } finally {
+        isLoadingRatings.current = false;
+      }
     }
 
+    loadRatingsForProfessors(allProfs);
+  }, [course]);
 
-
-  }, [router.isReady]);
 
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
+  const isLoadingRatings = useRef(false);
+
   const [sem, setSem] = useState(semData);
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
@@ -279,7 +300,7 @@ const CardDetails = ({ courseData, semData }) => {
   // Refresh graph when instructors change
   const refreshGraph = (instructors) => {
     const gpa = defaultGPA.datasets;
-    if (!gpa || gpa.length === 0 || !instructors ) return;
+    if (!gpa || gpa.length === 0 || !instructors) return;
 
     setFirstInstructor(" ");
     try {
@@ -331,60 +352,83 @@ const CardDetails = ({ courseData, semData }) => {
 
 
   // Function to get link for RMP on the dial graph
-  function getFormattedName(instructor) {
-    if (!instructor) return ''; // Check if instructor is provided
-    const nameParts = instructor.split(", ");
-    if (nameParts.length < 2) return ''; // Check if split operation succeeded
-    const firstName = nameParts[1].split(" ")[0];
-    const lastName = nameParts[0];
-    return `${firstName} ${lastName}`;
+  // function formatInstructorNameRMP(instructor) {
+  //   if (!instructor) return ''; // Check if instructor is provided
+  //   const nameParts = instructor.split(", ");
+  //   if (nameParts.length < 2) return ''; // Check if split operation succeeded
+  //   const firstName = nameParts[1].split(" ")[0];
+  //   const splitName = nameParts[0].split(" ");
+  //   const lastName = splitName[splitName.length - 1];
+
+  //   // splits from "Middle middle Last, First" to "First Last"
+  //   return `${firstName} ${lastName}`;
+  // }
+
+
+  // Batched RMP ratings fetch for allProfs
+  async function getAllRMPRatings(allProfs) {
+    if (!Array.isArray(allProfs) || allProfs.length === 0) return {};
+
+    const batchSize = 10; // Number of requests to send in each batch
+    const batches = []; // Array to hold batches of professors
+    const ratings = {}; // Object to store ratings
+
+    // Split allProfs into batches
+    for (let i = 0; i < allProfs.length; i += batchSize) {
+      batches.push(allProfs.slice(i, i + batchSize));
+    }
+
+    // Process batches in parallel
+    await Promise.all(
+      batches.map(async (batch) => {
+        const ratingsBatch = await Promise.all(batch.map((instructor) => getRMPRating(instructor)));
+        batch.forEach((instructor, index) => {
+          ratings[instructor] = ratingsBatch[index];
+        });
+      })
+    );
+
+    return ratings;
   }
 
 
   // Get RateMyProfessor ratings for instructor
   async function getRMPRating(instructor) {
-    if (!instructor) return;
-
-    // Instructor in format "Last, First Middle", convert to "First Last"
-    let instructorSplit = [];
-    try {
-      instructorSplit = instructor.split(", ");
-      instructorSplit.push(instructorSplit[1].split(" ")[0]);
-    } catch {
-      return;
-    }
-
-    const name = instructorSplit[2] + " " + instructorSplit[0];
+    if (!instructor) return 0;
 
     try {
-      const params = new URLSearchParams({ q: "Purdue University" });
-      const responseSchools = await fetch("/api/ratings/searchSchool?" + params);
-      const schools = await responseSchools.json();
+      // TO SEARCH FOR "PURDUE UNIVERSITY"
+      // const params = new URLSearchParams({ q: "Purdue University" });
+      // const responseSchools = await fetch("/api/ratings/searchSchool?" + params);
+      // const schools = await responseSchools.json();
+      // const purdues = schools.schools.filter(school => school.city === "West Lafayette");
 
-      const profs = [];
+      let rating = 0;
 
-      for (const school of schools["schools"]) {
-        if (school.city === "West Lafayette") {
-          const paramsTeacher = new URLSearchParams({ name: name, id: school.id });
-          const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
-          const prof = await responseProf.json()
-          if (!(prof["prof"] === undefined || prof["prof"].length == 0)) {
-            profs.push(...prof["prof"]);
-          }
+      // for all Purdue University schools in West Lafayette, search prof
+      const schools = ["U2Nob29sLTc4Mw==", "U2Nob29sLTE3NTk5"]; // purdue IDs for West Lafayette
+      for (const school of schools) {
+        const paramsTeacher = new URLSearchParams({ name: instructor, id: school });
+        const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
+        const prof = await responseProf.json();
+        const profs = prof.prof.filter(Boolean);
+
+        if (profs.length > 0) {
+          const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
+          const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
+          const RMPrating = await responseRMP.json();
+          rating = RMPrating.RMPrating.avgRating;
+          break;
         }
       }
 
-      if (profs.length === 0) return 0;
-      const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
-      const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
-      const RMPrating = await responseRMP.json();
-      return RMPrating["RMPrating"].avgRating;
-    } catch {
-      return;
+      return rating;
+    } catch (error) {
+      console.error(error);
+      return 0;
     }
-
-
   }
+
 
   if (JSON.stringify(course) == '{}') {
     return <ErrorPage statusCode={404} />
@@ -461,7 +505,7 @@ const CardDetails = ({ courseData, semData }) => {
         } />
 
         <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
-        
+
       </Head>
       <GpaModal isOpen={gpaModal} onClose={setGpaModal} course={course} />
       <FullInstructorModal isOpen={fullInstructorModal} onClose={setFullInstructorModal} course={course} />
@@ -648,9 +692,18 @@ const CardDetails = ({ courseData, semData }) => {
                 </div>
                 <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
               </div>
-              <a className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all"
-                href={`https://www.ratemyprofessors.com/search/professors/783?q=${getFormattedName(firstInstructor)}`}
+              <a className="relative flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
+                href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`}
                 target="_blank" rel="noopener noreferrer">
+
+                {/* For when there is no RMP data for firstInstructor */}
+                {firstInstructor && (!curRMP[firstInstructor] || curRMP[firstInstructor] === 0) &&
+                  <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
+                    <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {firstInstructor}</p>
+                    <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
+                  </div>
+                }
+
                 <div className='md:w-1/2 m-auto mt-1'>
                   <CircularProgressbar
                     value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
