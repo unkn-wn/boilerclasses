@@ -1,12 +1,16 @@
 import React from 'react';
+import { ArrowUpIcon } from '@chakra-ui/icons'
 
 import {
-    Image
+    Image,
+    Button
 } from '@chakra-ui/react'
 
+
 const Footer = () => {
+    const handleGoToTop = ()=> window.scrollTo({top:"0px",behavior:"smooth"})
     return (
-        <div className='grid justify-center py-5'>
+        <div className='grid justify-center py-5 relative'>
             <h1 className='text-gray-400 text-sm text-center break-words'>
                 <span className='flex items-center justify-center'>
                     <a href='https://github.com/unkn-wn/boilerclasses' target="_black" rel="noopener noreferrer" className='text-gray-400 flex items-center gap-1 underline decoration-dashed decoration-1 underline-offset-2'>
@@ -19,6 +23,9 @@ const Footer = () => {
                 based in <strong>West Lafayette, Indiana</strong>. We'd love to hear your <a href="https://forms.gle/jtpLPbXm4X4RFoNh6" target="_black" rel="noopener noreferrer" className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</a>!
                 {/* Inspired by <a href='https://classes.wtf/' target='_blank' rel='noopener noreferrer' className='underline decoration-dashed decoration-1 underline-offset-2'>classes.wtf</a><br /> */}
             </h1>
+            <Button position="absolute" right="0" top="-10px" borderRadius="50%" width={[8,12]} height={[10,12]} onClick={handleGoToTop}>
+                <ArrowUpIcon fontSize={[18,24]}/>
+            </Button>
         </div>
     );
 };
