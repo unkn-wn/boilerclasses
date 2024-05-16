@@ -155,7 +155,7 @@ const CourseCatalog = () => {
         <meta name="twitter:title" content="BoilerClasses - Purdue Course Catalog" />
         <meta name="twitter:description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/documents/a3f504c0-3442-4320-8fc3-f850a5bd1582.png?token=oOcg3vK9F6YcqVmHSegc9vJczzLuo4Oq-yrDM01kKtQ&height=776&width=1200&expires=33246633286" />
-        
+
         <link rel="canonical" href="https://boilerclasses.com/" />
 
       </Head>
@@ -297,7 +297,7 @@ const CourseCatalog = () => {
                     <Checkbox size='md' isChecked={scheds.includes("Presentation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Presentation"]) : setScheds(scheds.filter(x => x !== "Presentation"))}>Presentation</Checkbox>
                   </Grid>
                   <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
-                    <Button size='sm' className='w-full' onClick={() => setScheds(["Clinic", "Distance Learning", "Experiential", "Individual Study", "Laboratory", "Laboratory Preparation", "Lecture", "Practice Study Observation", "Presentation", "Recitation", "Research","Studio"])}>Reset</Button>
+                    <Button size='sm' className='w-full' onClick={() => setScheds(["Clinic", "Distance Learning", "Experiential", "Individual Study", "Laboratory", "Laboratory Preparation", "Lecture", "Practice Study Observation", "Presentation", "Recitation", "Research", "Studio"])}>Reset</Button>
                     <Button size='sm' className='w-full' onClick={() => setScheds([])}>Clear</Button>
                   </div>
                 </PopoverContent>
@@ -328,7 +328,7 @@ const CourseCatalog = () => {
               <div className='text-white'>No results found!</div>
               <div className='text-white -translate-y-3'>Try changing the filters</div>
             </div>
-            
+
           }
           <div className='mt-auto'>
             <Footer />
@@ -336,22 +336,29 @@ const CourseCatalog = () => {
         </div>
 
         :
+
         /* Landing Page */
-        <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
-          <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
-            <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
-            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+        <div>
+          <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
+            <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
+              <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
+              <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+            </div>
+            <input
+              id="landingSearch"
+              type="text"
+              placeholder="I want to take a class about..."
+              onChange={(e) => {
+                changeLanding(e.target.value);
+              }}
+              className="text-white text-sm md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+            />
+
+          </div >
+          <div className='absolute bottom-0 w-full'>
+            <Footer hideButton={true} />
           </div>
-          <input
-            id="landingSearch"
-            type="text"
-            placeholder="I want to take a class about..."
-            onChange={(e) => {
-              changeLanding(e.target.value);
-            }}
-            className="text-white text-sm md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
-          />
-        </div >
+        </div>
       }
     </>
   );
