@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 import Card from "../components/card"
 import Footer from "../components/footer"
-import { ChevronDownIcon, WarningTwoIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, WarningTwoIcon, ArrowUpIcon } from '@chakra-ui/icons'
 import Select from 'react-select';
 import Head from "next/head";
 import Script from 'next/script';
@@ -114,6 +114,24 @@ const CourseCatalog = () => {
     }
   };
 
+  useEffect(() => {
+    try {
+      if (typeof document !== 'undefined') {
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const onScroll = () => {
+          if (scrollToTopBtn) {
+            if (window.scrollY > 400) {
+              scrollToTopBtn.style.display = "block";
+            } else {
+              scrollToTopBtn.style.display = "none";
+            }
+          }
+        };
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+      }
+    } catch (e) { }
+  }, []);
 
   return (
     <>
@@ -159,6 +177,11 @@ const CourseCatalog = () => {
         <link rel="canonical" href="https://boilerclasses.com/" />
 
       </Head>
+      <div id="scrollToTopBtn" className='hidden'>
+        <button className='fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:-translate-y-0.5 transition' onClick={() => window.scrollTo({ top: "0px", behavior: "smooth" })}>
+          <ArrowUpIcon fontSize={[18, 24]} color={'white'} />
+        </button>
+      </div>
       {!displayLanding ?
         <div id="parent" className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
@@ -356,7 +379,7 @@ const CourseCatalog = () => {
 
           </div >
           <div className='absolute bottom-0 w-full'>
-            <Footer hideButton={true} />
+            <Footer />
           </div>
         </div>
       }
