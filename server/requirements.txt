@@ -4,3 +4,5 @@ tqdm
 redis
 flask
 flask-cors
+praw
+python-dotenv
