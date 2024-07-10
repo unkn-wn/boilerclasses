@@ -25,6 +25,7 @@ import Graph from '../../components/graph';
 import GpaModal from '@/components/gpaModal';
 import InfoModal from '@/components/infoModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
+import Script from 'next/script';
 
 
 const CardDetails = ({ courseData, semData }) => {
@@ -450,22 +451,22 @@ const CardDetails = ({ courseData, semData }) => {
 
   return (
     <>
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-48L6TGYD2L', {
+            page_path: window.location.pathname,
+          });`
+        }}
+      />
       <Head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-48L6TGYD2L', {
-              page_path: window.location.pathname,
-            });`
-          }}
-        />
         <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
         <meta name="description" content={`Course ${courseData.subjectCode} ${courseData.courseCode} Purdue: ${courseData.description}`} />
@@ -567,7 +568,7 @@ const CardDetails = ({ courseData, semData }) => {
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
 
                   {course.instructor[sem].map((prof, i) => (
-                    <>
+                    <span key={i}>
                       <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                         target="_blank" rel="noopener noreferrer"
                         className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
@@ -575,7 +576,7 @@ const CardDetails = ({ courseData, semData }) => {
                         {prof}
                       </a>
                       {i < course.instructor[sem].length - 1 && ", "}
-                    </>
+                    </span>
                   ))}
                 </div>
               </div>

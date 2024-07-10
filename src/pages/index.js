@@ -135,24 +135,25 @@ const CourseCatalog = () => {
 
   return (
     <>
-      <Head>
-        <title>BoilerClasses - Purdue Course Catalog</title>
-        {/* <!-- Google tag (gtag.js) --> */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      {/* <!-- Google tag (gtag.js) --> */}
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-48L6TGYD2L', {
               page_path: window.location.pathname,
-            });`
-          }}
-        />
+            });
+          `
+        }}
+      />
+      <Head>
+        <title>BoilerClasses - Purdue Course Catalog</title>
         <meta name="title" content="BoilerClasses - Purdue Course Catalog" />
         <meta name="description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
