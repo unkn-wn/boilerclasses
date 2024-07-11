@@ -431,10 +431,7 @@ const CardDetails = ({ courseData, semData }) => {
   }
 
 
-  if (JSON.stringify(course) == '{}') {
-    return <ErrorPage statusCode={404} />
-  }
-
+  // Function to render prerequisites into page
   const renderPrereqs = () => {
     try {
       return (
@@ -447,6 +444,13 @@ const CardDetails = ({ courseData, semData }) => {
       console.error(course.prereqs);
       return <></>;
     }
+  }
+
+
+  ///////////////////////////////////////  RENDER  /////////////////////////////////////////
+
+  if (JSON.stringify(course) == '{}') {
+    return <ErrorPage statusCode={404} />
   }
 
   return (

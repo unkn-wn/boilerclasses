@@ -202,7 +202,7 @@ const LectureTimeDisplay = (props) => {
     return (
         <Popover placement="auto" trigger="hover">
             <PopoverTrigger>
-                <span className="w-full bg-zinc-700 py-1 px-2 rounded-md hover:scale-105 transition-all">{lecture.type + " - " + lecture.startTime}</span>
+                <span className="w-full bg-zinc-700 py-1 px-2 rounded-md hover:bg-zinc-600 transition-all">{lecture.type + " - " + lecture.startTime}</span>
             </PopoverTrigger>
             <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" width='fit-content'>
                 <PopoverArrow />
