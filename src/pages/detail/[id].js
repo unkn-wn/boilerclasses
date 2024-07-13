@@ -7,7 +7,7 @@ import ErrorPage from 'next/error'
 
 import Select from 'react-select';
 
-import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
+import { Image, Icon } from '@chakra-ui/react'
 import { FaHome, FaInfo } from "react-icons/fa";
 
 import {
@@ -25,6 +25,7 @@ import Graph from '../../components/graph';
 import GpaModal from '@/components/gpaModal';
 import InfoModal from '@/components/infoModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
+import Prereqs from '@/components/prereqs';
 import Script from 'next/script';
 
 
@@ -32,63 +33,6 @@ const CardDetails = ({ courseData, semData }) => {
   const router = useRouter();
   const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
-
-  const parsePrereqs = (prereq, i) => {
-
-    if (prereq.split(' ').length == 2) {
-      const detailId = prereq.split(' ')[0]
-      const concurrent = prereq.split(' ')[1]
-      const subjectCodeMatch = detailId.match(/[A-Z]+/);
-      if (!subjectCodeMatch) {
-        return null;
-      }
-      const subjectCode = subjectCodeMatch[0];
-
-      const subject = subjects.find((s) => s == subjectCode);
-      const courseNumberMatch = detailId.match(/\d+/);
-      if (!courseNumberMatch) {
-        return null;
-      }
-      const courseNumber = courseNumberMatch[0];
-      return (
-        <span className='' key={i}>
-          <a href={`/detail/${detailId}`}
-            target="_blank" rel="noopener noreferrer"
-            className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
-            {subjectCode}  {courseNumber}
-          </a>
-          {concurrent == "True" ? " [may be taken concurrently]" : ""}
-        </span>
-      )
-    } else if (prereq.split(' ').length == 3) {
-      const concurrent = prereq.split(' ')[1]
-      return `${prereq.split(' ')[0]} ${prereq.split(' ')[1]}${concurrent == "True" ? " [may be taken concurrently]" : ""}`
-    } else {
-      return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
-    }
-
-  }
-
-  // Helper function to format instructor name to "Middle middle Last, First"
-  // or Last, First M. for some reason cause our data isnt fucking consolidated @Sarthak
-  // function formatInstructorName(name) {
-  //   if (name === "TBA") return 'TBA';
-  //   const splitName = name.split(' ');
-
-  //   if (splitName.length > 3) {
-  //     const firstName = splitName[0];
-  //     const rest = splitName.slice(1).join(' ');
-  //     return `${rest}, ${firstName}`;
-  //   } else {
-  //     const lastName = splitName.pop();
-  //     const firstName = splitName.shift();
-  //     const middleName = splitName.join(' ');
-  //     if (middleName.length >= 1) {
-  //       splitName[0] = middleName[0] + '.';
-  //     }
-  //     return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-  //   }
-  // }
 
 
   useEffect(() => {
@@ -431,22 +375,6 @@ const CardDetails = ({ courseData, semData }) => {
   }
 
 
-  // Function to render prerequisites into page
-  const renderPrereqs = () => {
-    try {
-      return (
-        (course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
-          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
-          {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
-        </p>
-      );
-    } catch (error) {
-      console.error(course.prereqs);
-      return <></>;
-    }
-  }
-
-
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
   if (JSON.stringify(course) == '{}') {
@@ -632,7 +560,7 @@ const CardDetails = ({ courseData, semData }) => {
             <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {course.courseCode} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
-            {renderPrereqs()}
+            <Prereqs course={course} router={router} />
 
 
 
