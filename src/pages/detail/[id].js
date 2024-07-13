@@ -1,31 +1,50 @@
-import { Inter } from 'next/font/google'
-import { semesters, subjects } from "../../lib/utils"
-const inter = Inter({ subsets: ['latin'] })
-import { useRouter } from 'next/router';
-import { useEffect, useState, useRef } from 'react';
-import ErrorPage from 'next/error'
+/*
+ * Details page for a specific course - includes course description, instructors, GPA, RMP ratings,
+ * prerequisites, and a calendar view of lecture times.
+ */
 
+
+// ----- Next.js imports -----
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
+
+import Head from 'next/head';
+import Script from 'next/script';
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error'
+// ---------------------
+
+
+// ----- React imports -----
+import { useEffect, useState, useRef } from 'react';
+
+
+// ----- Misc imports -----
 import Select from 'react-select';
 
-import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
+import { Image, Icon, Spinner } from '@chakra-ui/react'
 import { FaHome, FaInfo } from "react-icons/fa";
 
 import {
   CircularProgressbar, buildStyles
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+// ------------------
 
 
-
+// ----- Component imports -----
 import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
+import { semesters, subjects } from "@/lib/utils"
+
 import Footer from '@/components/footer';
-import Head from 'next/head';
-import Calendar from '../../components/calendar';
-import Graph from '../../components/graph';
+import Calendar from '@/components/calendar';
+import Graph from '@/components/graph';
 import GpaModal from '@/components/gpaModal';
 import InfoModal from '@/components/infoModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
-import Script from 'next/script';
+import Prereqs from '@/components/prereqs';
+import { loadRatingsForProfs } from '@/components/RMP';
+// ------------------------
 
 
 const CardDetails = ({ courseData, semData }) => {
@@ -33,64 +52,7 @@ const CardDetails = ({ courseData, semData }) => {
   const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
 
-  const parsePrereqs = (prereq, i) => {
-
-    if (prereq.split(' ').length == 2) {
-      const detailId = prereq.split(' ')[0]
-      const concurrent = prereq.split(' ')[1]
-      const subjectCodeMatch = detailId.match(/[A-Z]+/);
-      if (!subjectCodeMatch) {
-        return null;
-      }
-      const subjectCode = subjectCodeMatch[0];
-
-      const subject = subjects.find((s) => s == subjectCode);
-      const courseNumberMatch = detailId.match(/\d+/);
-      if (!courseNumberMatch) {
-        return null;
-      }
-      const courseNumber = courseNumberMatch[0];
-      return (
-        <span className='' key={i}>
-          <a href={`/detail/${detailId}`}
-            target="_blank" rel="noopener noreferrer"
-            className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
-            {subjectCode}  {courseNumber}
-          </a>
-          {concurrent == "True" ? " [may be taken concurrently]" : ""}
-        </span>
-      )
-    } else if (prereq.split(' ').length == 3) {
-      const concurrent = prereq.split(' ')[1]
-      return `${prereq.split(' ')[0]} ${prereq.split(' ')[1]}${concurrent == "True" ? " [may be taken concurrently]" : ""}`
-    } else {
-      return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
-    }
-
-  }
-
-  // Helper function to format instructor name to "Middle middle Last, First"
-  // or Last, First M. for some reason cause our data isnt fucking consolidated @Sarthak
-  // function formatInstructorName(name) {
-  //   if (name === "TBA") return 'TBA';
-  //   const splitName = name.split(' ');
-
-  //   if (splitName.length > 3) {
-  //     const firstName = splitName[0];
-  //     const rest = splitName.slice(1).join(' ');
-  //     return `${rest}, ${firstName}`;
-  //   } else {
-  //     const lastName = splitName.pop();
-  //     const firstName = splitName.shift();
-  //     const middleName = splitName.join(' ');
-  //     if (middleName.length >= 1) {
-  //       splitName[0] = middleName[0] + '.';
-  //     }
-  //     return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-  //   }
-  // }
-
-
+  // UseEffect that loads on first render
   useEffect(() => {
     if (!course) return;
     // console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
@@ -100,7 +62,7 @@ const CardDetails = ({ courseData, semData }) => {
       setCourse({ ...course, description: "No Description Available" });
     }
 
-    // set all profs
+    // Set allProfs variable with all course instructors
     const allProfs = [];
     for (const semester in course.instructor) {
       for (const instructor of course.instructor[semester]) {
@@ -110,10 +72,11 @@ const CardDetails = ({ courseData, semData }) => {
       }
     }
 
-    // set graph
     const grades = [];
     const gpa = {};
     let curr = 0;
+
+    // for each instructor, calculate avg gpa and grade distribution
     for (const instructor of allProfs) {
 
       let avg_gpa = 0;
@@ -152,6 +115,7 @@ const CardDetails = ({ courseData, semData }) => {
 
     }
 
+    // Sets the gpaGraph state for the graph component
     setGpaGraph({
       labels,
       //datasets: grades
@@ -166,20 +130,13 @@ const CardDetails = ({ courseData, semData }) => {
 
 
     // Set selectable instructors
-    // const instrs = [];
-    // for (const instructor in course.gpa) {
-    //   if (!instrs.includes(instructor)) {
-    //     instrs.push(instructor);
-    //   }
-    // }
-    // console.log("instructors: " + instrs)
     setSelectableInstructors(allProfs);
 
     // set current semester
     setSem(availableSemesters[0]);
 
 
-    // set default first instructor on the multiselect
+    // set default first instructor on the multiselect to the first instructor with data
     let found = false;
     for (const ins of allProfs) {
       if (gpa[ins] && gpa[ins][0] !== 0) {
@@ -190,6 +147,7 @@ const CardDetails = ({ courseData, semData }) => {
       }
     }
 
+    // if no instructor has data, set firstInstructor to first instructor in allProfs
     if (!found) {
       refreshGraph({ value: allProfs[0], label: allProfs[0] });
       setFirstInstructor(allProfs[0]);
@@ -202,44 +160,16 @@ const CardDetails = ({ courseData, semData }) => {
 
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
-    if (!course) return;
-
-    const allProfs = [];
-    for (const semester in course.instructor) {
-      for (const instructor of course.instructor[semester]) {
-        if (!allProfs.includes(instructor)) {
-          allProfs.push(instructor);
-        }
-      }
-    }
-
-    async function loadRatingsForProfessors(allProfs) {
-      try {
-        if (isLoadingRatings.current) {
-          return;
-        }
-
-        isLoadingRatings.current = true;
-
-        const ratings = await getAllRMPRatings(allProfs);
-        setCurRMP((prevRMP) => {
-          return { ...prevRMP, ...ratings };
-        });
-      } catch (error) {
-        console.error("Error loading ratings:", error);
-      } finally {
-        isLoadingRatings.current = false;
-      }
-    }
-
-    loadRatingsForProfessors(allProfs);
+    loadRatingsForProfs(course).then((ratings) => {
+      setCurRMP(ratings);
+    });
   }, [course]);
 
 
+  // ------------------ STATES ------------------ //
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
-  const isLoadingRatings = useRef(false);
 
   const [sem, setSem] = useState(semData);
   const [gpaGraph, setGpaGraph] = useState({});
@@ -264,24 +194,8 @@ const CardDetails = ({ courseData, semData }) => {
     } catch { }
   });
 
-  // Function for changing instructors on semester select (old feature)
-  // const changeInstructors = (sem) => {
 
-  //   setSem(sem);
-  //   availableSemesters.forEach((otherSem) => {
-  //     if (otherSem !== sem) {
-  //       try {
-  //         document.getElementById(otherSem).classList.remove("bg-sky-600");
-  //       } catch { }
-  //     }
-  //   });
-
-  //   try {
-  //     document.getElementById(sem).classList.add("bg-sky-600");
-  //   } catch { }
-  // }
-
-
+  // Function to get searchable prof string for Reddit search
   const getSearchableProfString = () => {
     //create ret string = ""
     //for each prof in curInstructors, add to ret string with " OR "
@@ -352,105 +266,18 @@ const CardDetails = ({ courseData, semData }) => {
   }
 
 
-  // Function to get link for RMP on the dial graph
-  // function formatInstructorNameRMP(instructor) {
-  //   if (!instructor) return ''; // Check if instructor is provided
-  //   const nameParts = instructor.split(", ");
-  //   if (nameParts.length < 2) return ''; // Check if split operation succeeded
-  //   const firstName = nameParts[1].split(" ")[0];
-  //   const splitName = nameParts[0].split(" ");
-  //   const lastName = splitName[splitName.length - 1];
-
-  //   // splits from "Middle middle Last, First" to "First Last"
-  //   return `${firstName} ${lastName}`;
-  // }
-
-
-  // Batched RMP ratings fetch for allProfs
-  async function getAllRMPRatings(allProfs) {
-    if (!Array.isArray(allProfs) || allProfs.length === 0) return {};
-
-    const batchSize = 10; // Number of requests to send in each batch
-    const batches = []; // Array to hold batches of professors
-    const ratings = {}; // Object to store ratings
-
-    // Split allProfs into batches
-    for (let i = 0; i < allProfs.length; i += batchSize) {
-      batches.push(allProfs.slice(i, i + batchSize));
-    }
-
-    // Process batches in parallel
-    await Promise.all(
-      batches.map(async (batch) => {
-        const ratingsBatch = await Promise.all(batch.map((instructor) => getRMPRating(instructor)));
-        batch.forEach((instructor, index) => {
-          ratings[instructor] = ratingsBatch[index];
-        });
-      })
-    );
-
-    return ratings;
-  }
-
-
-  // Get RateMyProfessor ratings for instructor
-  async function getRMPRating(instructor) {
-    if (!instructor) return 0;
-
-    try {
-      // TO SEARCH FOR "PURDUE UNIVERSITY"
-      // const params = new URLSearchParams({ q: "Purdue University" });
-      // const responseSchools = await fetch("/api/ratings/searchSchool?" + params);
-      // const schools = await responseSchools.json();
-      // const purdues = schools.schools.filter(school => school.city === "West Lafayette");
-
-      let rating = 0;
-
-      // for all Purdue University schools in West Lafayette, search prof
-      const schools = ["U2Nob29sLTc4Mw==", "U2Nob29sLTE3NTk5"]; // purdue IDs for West Lafayette
-      for (const school of schools) {
-        const paramsTeacher = new URLSearchParams({ name: instructor, id: school });
-        const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
-        const prof = await responseProf.json();
-        const profs = prof.prof.filter(Boolean);
-
-        if (profs.length > 0) {
-          const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
-          const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
-          const RMPrating = await responseRMP.json();
-          rating = RMPrating.RMPrating.avgRating;
-          break;
-        }
-      }
-
-      return rating;
-    } catch (error) {
-      console.error(error);
-      return 0;
-    }
-  }
-
-
-  // Function to render prerequisites into page
-  const renderPrereqs = () => {
-    try {
-      return (
-        (course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
-          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
-          {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
-        </p>
-      );
-    } catch (error) {
-      console.error(course.prereqs);
-      return <></>;
-    }
-  }
-
-
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
   if (JSON.stringify(course) == '{}') {
     return <ErrorPage statusCode={404} />
+  }
+
+  if (loading) {
+    return (
+      <div className='h-screen w-screen flex items-center justify-center'>
+        <Spinner size="lg" color="white" />
+      </div>
+    )
   }
 
   return (
@@ -587,18 +414,6 @@ const CardDetails = ({ courseData, semData }) => {
             </div>
 
 
-            {/* Semester Tags */}
-            {/* <div className="flex flex-row flex-wrap gap-1 mb-1">
-              {availableSemesters.map((sem, i) => (
-                <button className={`text-xs px-2 py-1 rounded-full border-solid border
-                                          ${i === 0 ? "bg-sky-600" : ""} border-sky-800 whitespace-nowrap transition-all`}
-                  key={i}
-                  id={sem}
-                  onClick={() => changeInstructors(sem)}>{sem}</button>
-              ))}
-            </div>
-             */}
-
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap my-2">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
@@ -632,7 +447,7 @@ const CardDetails = ({ courseData, semData }) => {
             <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {course.courseCode} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
-            {renderPrereqs()}
+            <Prereqs course={course} router={router} />
 
 
 
@@ -754,6 +569,8 @@ const CardDetails = ({ courseData, semData }) => {
 };
 
 
+
+// @Sarthak made this, some api call to get course data
 export async function getServerSideProps(context) {
 
   const params = new URLSearchParams({ detailId: context.params.id });
