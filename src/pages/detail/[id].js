@@ -3,7 +3,8 @@
  * prerequisites, and a calendar view of lecture times.
  */
 
-// Next.js imports -----
+
+// ----- Next.js imports -----
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,10 +14,12 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error'
 // ---------------------
 
-// React imports
+
+// ----- React imports -----
 import { useEffect, useState, useRef } from 'react';
 
-// Misc imports -----
+
+// ----- Misc imports -----
 import Select from 'react-select';
 
 import { Image, Icon, Spinner } from '@chakra-ui/react'
@@ -28,7 +31,8 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 // ------------------
 
-// Component imports -----
+
+// ----- Component imports -----
 import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
 import { semesters, subjects } from "@/lib/utils"
 
@@ -48,7 +52,7 @@ const CardDetails = ({ courseData, semData }) => {
   const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
 
-
+  // UseEffect that loads on first render
   useEffect(() => {
     if (!course) return;
     // console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
@@ -58,7 +62,7 @@ const CardDetails = ({ courseData, semData }) => {
       setCourse({ ...course, description: "No Description Available" });
     }
 
-    // set all profs
+    // Set allProfs variable with all course instructors
     const allProfs = [];
     for (const semester in course.instructor) {
       for (const instructor of course.instructor[semester]) {
@@ -68,10 +72,11 @@ const CardDetails = ({ courseData, semData }) => {
       }
     }
 
-    // set graph
     const grades = [];
     const gpa = {};
     let curr = 0;
+
+    // for each instructor, calculate avg gpa and grade distribution
     for (const instructor of allProfs) {
 
       let avg_gpa = 0;
@@ -110,6 +115,7 @@ const CardDetails = ({ courseData, semData }) => {
 
     }
 
+    // Sets the gpaGraph state for the graph component
     setGpaGraph({
       labels,
       //datasets: grades
@@ -130,7 +136,7 @@ const CardDetails = ({ courseData, semData }) => {
     setSem(availableSemesters[0]);
 
 
-    // set default first instructor on the multiselect
+    // set default first instructor on the multiselect to the first instructor with data
     let found = false;
     for (const ins of allProfs) {
       if (gpa[ins] && gpa[ins][0] !== 0) {
@@ -141,6 +147,7 @@ const CardDetails = ({ courseData, semData }) => {
       }
     }
 
+    // if no instructor has data, set firstInstructor to first instructor in allProfs
     if (!found) {
       refreshGraph({ value: allProfs[0], label: allProfs[0] });
       setFirstInstructor(allProfs[0]);
