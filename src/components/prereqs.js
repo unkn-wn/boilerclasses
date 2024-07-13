@@ -1,6 +1,6 @@
 /*
-  This component is responsible for rendering the prerequisites of a course.
-*/
+ * This component is responsible for rendering the prerequisites of a course.
+ */
 
 // import { useEffect, useState } from "react";
 import { subjects } from "../lib/utils";
