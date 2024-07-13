@@ -155,7 +155,7 @@ const CourseCatalog = () => {
       <Head>
         <title>BoilerClasses - Purdue Course Catalog</title>
         <meta name="title" content="BoilerClasses - Purdue Course Catalog" />
-        <meta name="description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
+        <meta name="description" content="BoilerClasses (Boiler Classes) - Purdue's course catalog with over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
