@@ -1,6 +1,6 @@
 // CourseCatalog.js
 
-import React, { use, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 import Card from "../components/card"
@@ -15,7 +15,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverBody,
-  Stack,
   RangeSlider,
   RangeSliderTrack,
   RangeSliderFilledTrack,
@@ -54,6 +53,7 @@ const CourseCatalog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLanding, setDisplayLanding] = useState(true);
 
+  // Function to change from initial page to search result page
   function changeLanding(event) {
     if (event.length >= 2) {
       setDisplayLanding(!displayLanding);
@@ -71,7 +71,7 @@ const CourseCatalog = () => {
     return query;
   }
 
-
+  // On a filter change, rerun the search
   useEffect(() => {
     search();
   }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, levelMin, levelMax, JSON.stringify(levels), JSON.stringify(scheds)]);
@@ -87,6 +87,7 @@ const CourseCatalog = () => {
   }, [displayLanding]);
 
 
+  // Search function, set courses to the result of the search
   const search = async (event) => {
     if (searchTerm.length <= 1 && selectedSubjects.length == 0 && selectedSemesters.length == 0 && selectedGenEds.length == 0) {
       setCourses([]);
@@ -114,6 +115,8 @@ const CourseCatalog = () => {
     }
   };
 
+
+  // scroll to top listener
   useEffect(() => {
     try {
       if (typeof document !== 'undefined') {
@@ -133,28 +136,31 @@ const CourseCatalog = () => {
     } catch (e) { }
   }, []);
 
+
+
   return (
     <>
-      <Head>
-        <title>BoilerClasses - Purdue Course Catalog</title>
-        {/* <!-- Google tag (gtag.js) --> */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      {/* <!-- Google tag (gtag.js) --> */}
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-48L6TGYD2L', {
               page_path: window.location.pathname,
-            });`
-          }}
-        />
+            });
+          `
+        }}
+      />
+      <Head>
+        <title>BoilerClasses - Purdue Course Catalog</title>
         <meta name="title" content="BoilerClasses - Purdue Course Catalog" />
-        <meta name="description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
+        <meta name="description" content="BoilerClasses (Boiler Classes) - Purdue's course catalog with over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
