@@ -52,7 +52,7 @@ for submission in subreddit.stream.submissions(skip_existing=True):
                 detailId = course_info['courses']['documents'][0]['value']['detailId']
                 course_url = f"https://www.boilerclasses.com/detail/{detailId}"
 
-                reply_text += f"**{course_mentioned.upper()}**: {course_url}\n\n"
+                reply_text += f"[{course_mentioned.upper()}]({course_url})\n\n"
 
                 print(f"Title: {submission.title}, Course mentioned: {course_mentioned}, URL: {course_url}")
             except Exception as e:
