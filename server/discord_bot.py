@@ -17,7 +17,7 @@ client = discord.Client()
 # }
 async def send_msg(content):
     await client.wait_until_ready()
-    channel = client.get_channel(1265834194089545758)
+    channel = client.get_channel(os.getenv("DISCORD_CHANNEL_ID"))
 
     message = f"# {content['submission_title']}\n> {content['reddit_url']}\n\nFound these courses:\n"
 
@@ -28,7 +28,7 @@ async def send_msg(content):
 
 async def send_single_msg(message):
     await client.wait_until_ready()
-    channel = client.get_channel(1265834194089545758)
+    channel = client.get_channel(os.getenv("DISCORD_CHANNEL_ID"))
     await channel.send(message)
 
 
