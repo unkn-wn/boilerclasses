@@ -21,7 +21,7 @@ reddit = praw.Reddit(
     user_agent=os.getenv("USER_AGENT"),
 )
 
-subreddit = reddit.subreddit("personaltestingserver")
+subreddit = reddit.subreddit("purdue")
 
 # Regex pattern to find courses in the title
 course_pattern = re.compile(r"\b[A-Za-z]{2,4}\s?\d{2,5}\b", re.IGNORECASE)
