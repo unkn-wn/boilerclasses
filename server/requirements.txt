@@ -1,9 +1,3 @@
-wget
-argparse
-tqdm
-redis
-flask
-flask-cors
 praw
 python-dotenv
 discord.py-self
