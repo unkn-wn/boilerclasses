@@ -2,10 +2,17 @@ import praw
 import re
 import os
 import requests
+import threading, signal
+import asyncio
+from discord_bot import send_msg, send_single_msg, start_bot, client
+
 from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 
+latest_sem = "Fall 2024"
+
+# Reddit API
 reddit = praw.Reddit(
     client_id=os.getenv("CLIENT_ID"),
     client_secret=os.getenv("CLIENT_SECRET"),
@@ -14,12 +21,17 @@ reddit = praw.Reddit(
     user_agent=os.getenv("USER_AGENT"),
 )
 
+subreddit = reddit.subreddit("personaltestingserver")
+
+# Regex pattern to find courses in the title
 course_pattern = re.compile(r"\b[A-Za-z]{2,4}\s?\d{2,5}\b", re.IGNORECASE)
 
-latest_sem = "Fall 2024"
+# Discord bot
+signal.signal(signal.SIGINT, signal.SIG_DFL)
+threading.Thread(target=start_bot).start()
 
-subreddit = reddit.subreddit("testingground4bot")
 
+print("Listening...")
 for submission in subreddit.stream.submissions(skip_existing=True):
     matches = course_pattern.findall(submission.title)
 
@@ -27,9 +39,12 @@ for submission in subreddit.stream.submissions(skip_existing=True):
     matches = list(dict.fromkeys(matches))
 
     if matches:
-        print("\n\n--------\n\n")
+        print("\n\n--------\n" + submission.title + "\n")
+
         reply_text = "### Mentioned courses: \n"
-        found = False
+
+        found = False  # flag to check if any courses were found
+        all_courses = []  # list of all courses mentioned
 
         for course_mentioned in matches:
             try:
@@ -57,22 +72,33 @@ for submission in subreddit.stream.submissions(skip_existing=True):
                     continue
 
                 # check if the search result was accurate
+                course_mentioned = course_mentioned.upper()
                 result_course = course_info["courses"]["documents"][0]["value"]
-                result_course_code = result_course["subjectCode"] + " " + str(result_course["courseCode"])
-                if course_mentioned.upper() != result_course_code:
-                    print(f"Course result was bad: {course_mentioned} != {result_course_code}")
+                result_course_code = (
+                    result_course["subjectCode"]
+                    + " "
+                    + str(result_course["courseCode"])
+                )
+                if course_mentioned != result_course_code:
+                    print(
+                        f"Course result was bad: {course_mentioned} != {result_course_code}"
+                    )
                     continue
 
+                # get course URL
                 detailId = result_course["detailId"]
-                course_url = f"https://www.boilerclasses.com/detail/{detailId}"
+                course_url = f"https://www.boilerclasses.com/detail/{detailId}?utm_campaign=reddit_bot"
 
-                reply_text += f"[{course_mentioned.upper()}]({course_url})\n\n"
+                # add course to list of all courses
+                reply_text += f"[{course_mentioned}]({course_url})\n\n"
+                all_courses.append({"name": course_mentioned, "url": course_url})
                 found = True
 
-                print(f"Found: {course_mentioned.upper()} - {course_url}\n\n")
+                print(f"Found: {course_mentioned} - {course_url}\n\n")
             except Exception as e:
                 found = False
                 print(f"Error: {e}")
+                asyncio.run_coroutine_threadsafe(send_single_msg("something went wrong - " + e), client.loop)
 
         reply_text += (
             "\n^I ^am ^a ^bot. ^Please ^contact ^this ^account ^for ^any ^issues."
@@ -82,3 +108,11 @@ for submission in subreddit.stream.submissions(skip_existing=True):
             submission.reply(reply_text)
             print(f"Reply: {reply_text}")
 
+            # send message to Discord bot
+            message = {
+                "submission_title": submission.title,
+                "courses_mentioned": all_courses,
+                "reddit_url": f"https://www.reddit.com{submission.permalink}",
+            }
+
+            asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)

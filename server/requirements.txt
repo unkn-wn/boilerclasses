@@ -6,3 +6,4 @@ flask
 flask-cors
 praw
 python-dotenv
+discord.py-self

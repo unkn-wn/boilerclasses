@@ -39,3 +39,5 @@ next-env.d.ts
 server/.env
 
 server/**/*.json
+
+__pycache__/
