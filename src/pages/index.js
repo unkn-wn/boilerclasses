@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], display: "swap" })
 import Card from "../components/card"
 import Footer from "../components/footer"
 import { ChevronDownIcon, WarningTwoIcon, ArrowUpIcon } from '@chakra-ui/icons'

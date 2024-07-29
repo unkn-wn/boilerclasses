@@ -1,0 +1,12 @@
+{
+	"type": "module",
+	"name": "scraper",
+	"private": true,
+	"dependencies": {
+		"@types/node": "^20.14.12",
+		"cheerio": "^1.0.0-rc.12",
+		"tsx": "^4.16.2",
+		"undici": "^6.19.4",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+	}
+}

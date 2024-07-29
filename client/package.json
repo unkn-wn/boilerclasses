@@ -1,0 +1,29 @@
+{
+  "name": "boilerclasses",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.11.2",
+    "@mantine/hooks": "^7.11.2",
+    "@vercel/analytics": "^1.1.1",
+    "@vercel/og": "^0.6.2",
+    "base64-arraybuffer": "^1.0.2",
+    "chakra-multiselect": "^0.4.6",
+    "chart.js": "^4.4.1",
+    "next": "^14.2.5",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.0.0",
+    "typescript": "5.5.4"
+  }
+}

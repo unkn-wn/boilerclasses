@@ -1,0 +1,17 @@
+@layer base, app;
+
+@layer app {
+	a {
+		text-decoration: dashed;
+		text-decoration-line: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
+		color: var(--mantine-color-dark-3);
+	}
+
+	a:hover {
+		color: var(--mantine-color-dark-0);
+		background: rgba(255,255,255,0.05);
+		transition: background 0.3s ease-in-out;
+	}
+}

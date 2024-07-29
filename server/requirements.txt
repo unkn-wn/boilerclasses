@@ -1,6 +1,0 @@
-wget
-argparse
-tqdm
-redis
-flask
-flask-cors

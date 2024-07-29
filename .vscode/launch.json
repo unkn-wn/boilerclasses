@@ -1,0 +1,21 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+      "name": "tsx",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/scripts/fetch.ts",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx"],
+      "args": "-t fall2024 -p ../../proxies.json -o ../data/courses.json",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/server/scripts",
+			"internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+          "<node_internals>/**",
+          "${workspaceFolder}/node_modules/**",
+      ]
+		}
+	]
+}
