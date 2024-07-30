@@ -95,16 +95,17 @@ suspend fun main(args: Array<String>) = coroutineScope {
             data class Info(
                 val terms: Map<String, Term>,
                 val subjects: List<Subject>,
-                val attributes: List<Attribute>
+                val attributes: List<Attribute>,
+                val scheduleTypes: List<String>
             )
 
             post("/info") {
                 courses.courses().let {
-                    ctx.resp(Info(it.terms, it.subjects, it.attributes))
+                    ctx.resp(Info(it.terms, it.subjects, it.attributes, it.scheduleTypes))
                 }
             }
 
-            post("/allCourses") {
+            post("/all") {
                 ctx.resp(courses.courses().courses.map {
                     buildJsonObject {
                         put("id", it.strId())

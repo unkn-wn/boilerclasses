@@ -1,18 +1,19 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { Grade, grades } from "../../shared/types"
+import { Grade, grades, Term, termPre } from "../../shared/types"
 import * as XLSX from 'xlsx';
 
 export type Grades = {
 	subject: string,
 	course: string,
+	term: Term,
 	instructor: string,
-	grades: Partial<Record<Grade, number>>|null
+	grades: Partial<Record<Grade, number>>
 };
 
 let excel: XLSX.WorkBook|null=null;
 let lastUrl: string|null = null;
 
-export async function getGrades(url: string, term?: string): Promise<Grades[]> {
+export async function getGrades(url: string): Promise<Grades[]> {
 	if (excel==null || url!=lastUrl) {
 		console.log("downloading grades...");
 		excel = XLSX.read(await (await fetch(url)).arrayBuffer());
@@ -72,38 +73,43 @@ export async function getGrades(url: string, term?: string): Promise<Grades[]> {
 					.filter(([k,v]) => typeof v == "string"))
 			};
 
-			if (term===undefined || o["Academic Period"]==term || o["Academic Period Desc"]==term) {
-				let grades: null|Partial<Record<Grade,number>> =
-					Object.fromEntries(gradeHeader.map(([x,i]) => {
-						if (row[i]=="" || row[i]==undefined) return [x,0];
-						if (typeof row[i] != "number") throw "grade not a number";
-						return [x,row[i]];
-					})) as Partial<Record<Grade,number>>;
+			let term=o["Academic Period Desc"]==undefined ? o["Academic Period"] : o["Academic Period Desc"];
+			if (term===undefined) throw "term not found";
+			const parts = term.split(" ");
+			const termTy = parts[0].toLowerCase();
+			if (!termPre.includes(termTy) || parts.length!=2) throw "invalid term";
 
-				let tot=0;
-				for (const v of Object.values(grades)) tot+=v;
-				if (tot==0) {
-					grades=null;
-				} else {
-					tot/=100;
-					for (const k of Object.keys(grades))
-						grades[k as Grade]!/=tot;
-				}
+			let grades: null|Partial<Record<Grade,number>> =
+				Object.fromEntries(gradeHeader.map(([x,i]) => {
+					if (row[i]=="" || row[i]==undefined) return [x,0];
+					if (typeof row[i] != "number") throw "grade not a number";
+					return [x,row[i]];
+				})) as Partial<Record<Grade,number>>;
 
-				let subject:string, course:string;
-				if (o["Course Number"]!==undefined) {
-					subject=o["Subject"], course=o["Course Number"];
-				} else {
-					const split = o["Course"].length-5;
-					subject=o["Course"].slice(0,split);
-					course=o["Course"].slice(split);
-				}
-
-				out.push({
-					subject, course, grades,
-					instructor: o["Instructor"]
-				});
+			let tot=0;
+			for (const v of Object.values(grades)) tot+=v;
+			if (tot==0) {
+				continue; //no grades reported, apparently. discard
+			} else {
+				tot/=100;
+				for (const k of Object.keys(grades))
+					grades[k as Grade]!/=tot;
 			}
+
+			let subject:string, course:string;
+			if (o["Course Number"]!==undefined) {
+				subject=o["Subject"], course=o["Course Number"];
+			} else {
+				const split = o["Course"].length-5;
+				subject=o["Course"].slice(0,split);
+				course=o["Course"].slice(split);
+			}
+
+			out.push({
+				subject, course, grades,
+				term: `${termTy}${parts[1]}` as Term,
+				instructor: o["Instructor"]
+			});
 		}
 	}
 

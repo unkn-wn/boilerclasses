@@ -17,10 +17,10 @@ object CourseData {
     )
 
     @Serializable
-    data class Instructor(
-        val name: String,
-        val grade: Map<String, Double>? = null,
-        val gpa: Double? = null
+    data class InstructorGrade(
+        val grade: Map<String, Double>,
+        val gpa: Double?, val gpaSections: Int,
+        val numSections: Int
     )
 
     @Serializable
@@ -199,7 +199,7 @@ object CourseData {
         val name: String,
         val subject: String,
         val course: Int,
-        val instructor: Map<String, List<Instructor>>,
+        val instructor: Map<String, Map<String, InstructorGrade>>,
         val sections: Map<String, List<Section>>,
         val lastUpdated: String,
         val description: String,
@@ -227,6 +227,7 @@ object CourseData {
         val rmp: Map<String, RMPInfo>,
         val terms: Map<String, Term>,
         val subjects: List<Subject>,
-        val attributes: List<Attribute>
+        val attributes: List<Attribute>,
+        val scheduleTypes: List<String>
     )
 }

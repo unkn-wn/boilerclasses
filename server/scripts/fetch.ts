@@ -1,12 +1,12 @@
 import { abort, exit } from "node:process";
 import { isDeepStrictEqual, parseArgs } from 'node:util';
-import { Day, PreReqs, Restriction, termPre, validDays,Section,Course,PreReq,levels, Level, Grade, grades, CourseLikePreReq, Seats, normalizeName, gradeGPA, compareName, RMPInfo, Data  } from "../../shared/types";
+import { Day, PreReqs, Restriction, termPre, validDays,Section,Course,PreReq,levels, Level, Grade, grades, CourseLikePreReq, Seats, normalizeName, gradeGPA, RMPInfo, Data, Term, InstructorGrade, toInstructorGrade, mergeGrades  } from "../../shared/types";
 import assert from "node:assert";
 import * as cheerio from "cheerio";
 import { Cheerio } from "cheerio";
 import { readFile, writeFile, appendFile } from "node:fs/promises";
 import { ProxyAgent } from "undici";
-import { getGrades } from "./grades";
+import { getGrades, Grades } from "./grades";
 
 const userAgent = "boilerclasses scraper (node.js)";
 
@@ -281,7 +281,7 @@ if (values.term==undefined) {
 
 const data: Data = values.input==undefined ? {
 	courses: [], rmp: {}, terms: {},
-	subjects: [], attributes: []
+	subjects: [], attributes: [], scheduleTypes: []
 } as Data : JSON.parse(await readFile(values.input, "utf-8"));
 
 let dispatchers: (ProxyAgent|undefined)[] = [undefined];
@@ -309,6 +309,7 @@ for (const ty of termPre) {
 }
 
 assert(termTy!==undefined && termYear!==undefined, "invalid term");
+const t = `${termTy}${termYear}` as Term;
 
 const dispatcherWait = 1000, dispatcherErrorWait = 30_000;
 
@@ -440,10 +441,13 @@ const courseAttributes = courseSearch("select[name=\"sel_attr\"] > option").toAr
 		id: x.attribs.value, name: courseSearch(x).text().trim()
 	})).filter(x => x.id!="%");
 
+const scheduleTypes = courseSearch("select[name=\"sel_schd\"] > option").toArray()
+	.filter(x => x.attribs.value!="%").map(x => courseSearch(x).text().trim());
+
 //subject -> course code
 type CourseInfo = {
 	name: string, sections: Section[],
-	grades: Map<string, Partial<Record<Grade,number>>[]>,
+	grades: Map<string, Grades[]>,
 	prevCourse: Course|null
 };
 
@@ -533,7 +537,7 @@ await logArray(subjects, async sub => {
 			if (dateRange[1]==null || end>dateRange[1]) dateRange[1]=end;
 
 			for (const d of o.Days.split("")) {
-				assert(validDays.has(d as Day), `invalid day ${d}`);
+				assert(validDays.includes(d as Day), `invalid day ${d}`);
 				times.push({day: d as Day, time: o.Time});
 			}
 
@@ -583,7 +587,7 @@ await logArray(subjects, async sub => {
 		});
 	}
 
-	console.log(`finished with ${sub}`);
+	console.log(`finished with ${sub.abbr}`);
 }, sub => sub.name);
 
 for (const c of data.courses) {
@@ -601,7 +605,8 @@ for (const g of await getGrades(values.grades!)) {
 	g.instructor = normalizeName(g.instructor);
 	const gr = courseNames.get(g.subject)?.get(Number(g.course))?.grades;
 	if (gr==undefined) continue;
-	gr.set(g.instructor, [...(gr.get(g.instructor) ?? []), g.grades]);
+	const i = normalizeName(g.instructor);
+	gr.set(i, [...(gr.get(i) ?? []), g]);
 }
 
 console.log(`retrieving professor ratings`);
@@ -658,7 +663,7 @@ await logArray(allInstructors.keys().toArray(), async (k) => {
 
 	const nname = normalizeName(k);
 	const candidate = (res.data.newSearch.teachers.edges as any[]).map(x => x.node).find(x => 
-		compareName(normalizeName(`${x.firstName} ${x.lastName}`), nname)
+		normalizeName(`${x.firstName} ${x.lastName}`)==nname
 	);
 	
 	if (candidate===undefined) return;
@@ -920,50 +925,40 @@ const courses = await logArray(courseArr, async ([subject,course]): Promise<Cour
 	}
 
 	const info = courseNames.get(subject)!.get(course)!;
-	const instructorSet = new Set(info.sections.flatMap((sec) => sec.instructors.map(x => x.name)));
-	const instructorGrades = instructorSet.keys().map(i => {
+	const instructorSet = new Set([
+		...info.sections.flatMap(x => x.instructors).map(x => x.name),
+		...(info.prevCourse?.instructor==undefined ? [] : Object.keys(info.prevCourse.instructor))
+	]);
+
+	const instructorOut: Course["instructor"] = {};
+
+	for (const i of instructorSet.keys()) {
 		const g = info.grades.get(normalizeName(i));
 
-		if (g==undefined) return {name: i, grade: null, gpa: null};
-		let gpa = 0;
-		let out: Partial<Record<Grade, number>> = {};
+		if (g==undefined) continue;
 
-		for (const x of g) {
-			let cgpa=0, gpaTot=0;
-			for (const [k,v] of Object.entries(x) as [Grade,number][]) {
-				if (out[k]==undefined) out[k]=v;
-				else out[k]+=v;
+		const termGs = new Map<Term, Grades[]>();
 
-				if (gradeGPA[k]!==undefined) {
-					cgpa += gradeGPA[k]*v;
-					gpaTot += v;
-				}
-			}
+		for (const x of g)
+			termGs.set(x.term, [...(termGs.get(x.term) ?? []), x]);
 
-			gpa += cgpa/gpaTot;
-		}
-
-		//averaged over sections
-		//without CRN / section id we can't weigh by # students
-		gpa/=g.length;
-		for (const k in out) out[k as Grade]!/=g.length;
-
-		return { name: i, grade: out, gpa }
-	}).toArray();
+		for (const [t, gs] of termGs.entries())
+			instructorOut[i] = {
+				...instructorOut[i],
+				[t]: mergeGrades(gs.map((x):InstructorGrade => toInstructorGrade(x.grades)))
+			};
+	}
 
 	const newCourse: Omit<Course,"lastUpdated"> = {
 		name: info.name,
 		subject, course,
-		instructor: {
-			...info.prevCourse?.instructor,
-			[`${termTy}${termYear}`]: instructorGrades
-		},
+		instructor: instructorOut,
 		description: bits[0].txt,
 		restrictions,
 		credits,
 		sections: {
 			...info.prevCourse?.sections,
-			[`${termTy}${termYear}`]: info.sections
+			[t]: info.sections as Course["sections"]["fall0"]
 		},
 		prereqs: reqs,
 		attributes
@@ -982,12 +977,12 @@ const d: Data = {
 	courses: courses.filter(x => x.status=="fulfilled").map(x => x.value),
 	terms: {
 		...data.terms,
-		[`${termTy}${termYear}`]: {
+		[t]: {
 			id: termId, name: termFormatted,
 			lastUpdated: (new Date()).toISOString()
-		}
+		} as Data["terms"]["fall0"]
 	},
-	subjects, attributes: courseAttributes
+	subjects, attributes: courseAttributes, scheduleTypes
 };
 
 await writeFile(values.output, JSON.stringify(d));

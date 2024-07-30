@@ -1,52 +1,55 @@
 "use client"
 
-import React from "react";
+import React, { act, useContext, useEffect, useState } from "react";
 import icon from "../public/icon.png"
-import { Center, Container, createTheme, Flex, Image, MantineProvider, Stack, TextInput, Title } from "@mantine/core";
 import { Footer } from "@/components/footer";
 
-import "@mantine/core/styles.layer.css";
-import "./style.css"
+import { Button, Loading, LogoText } from "@/components/util";
+import { NextUIProvider } from "@nextui-org/system";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
+import {ServerInfo, ServerResponse} from "../../shared/types"
+import { decodeQueryToSearchState, Search, SearchState } from "./search";
+import Image from "next/image";
 
-const theme = createTheme({
-	colors: {
-		dark: ["#f8f9fa", "#f1f3f5", "#e9ecef", "#dee2e6",
-			"#ced4da", "#adb5bd", "#868e96", "#181a1c", "#101112", "#000000"]
-	},
-	fontFamily: 'var(--inter), sans-serif',
-	headings: { fontFamily: 'var(--chivo), sans-serif' },
-});
+import { useSearchParams } from "next/navigation";
+import { AppWrapper, useAPI } from "@/components/wrapper";
 
-type SearchState = {
-	query: string,
-	creditMin?: number, creditMax?: number
-	attributes: string[],
-	minCourse?: number, maxCourse?: number,
-	subjects: string[],
-	scheduleType: string[]
+const Landing = ({setSearch}: {setSearch: (s: string) => void}) =>
+	<><div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
+		<div className='flex flex-col items-center my-2 gap-6 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
+			<Image src={icon} alt="logo" onClick={() => setSearch("")} className='my-auto max-h-52 cursor-pointer w-auto' />
+			<LogoText onClick={() => setSearch("")} />
+		</div>
+		<input
+			id="landingSearch"
+			type="text" autoFocus
+			placeholder="I want to take a class about..."
+			onChange={(e) => setSearch(e.target.value) }
+			className="text-white text-lg md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+		/>
+
+	</div >
+
+	<div className='absolute bottom-0 w-full'>
+		<Footer />
+	</div></>;
+
+function App() {
+	const [initSearch, setInitSearch] = useState<Partial<SearchState>|null>(null);
+	const params = useSearchParams();
+	const info = useAPI<ServerInfo>("info");
+
+	useEffect(() => {
+		if (initSearch==null && params.size>0)
+			setInitSearch(decodeQueryToSearchState(params))
+	}, [params]);
+
+	return initSearch ?
+		(info==null ? <div className="w-full h-screen"><Loading/></div>
+			: <Search init={initSearch} info={info.res} />)
+		: <Landing setSearch={(s) => setInitSearch({query: s})} />;
 }
 
-//construction in progress
-
-export default async function App({searchParams}: {searchParams: Record<string,string>}) {
-  return (
-    <MantineProvider theme={theme} forceColorScheme="dark" >
-			<Container>
-				<Stack gap="md" justify="space-between" h="100vh" py={50} align="center" >
-					<Stack gap="md" justify="end" flex={0.7} >
-						<Center><Image src={icon.src} maw={300} alt="icon" ></Image></Center>
-						<Center><Title order={1} size={70} >BoilerClasses</Title></Center>
-						<TextInput
-							styles={{input: {borderBottom: "1px solid white", fontSize: "1.3rem",
-								padding: "0 10px"}}}
-							variant="unstyled"
-							size="md"
-							placeholder="Course name or keywords"
-						/>
-					</Stack>
-					<Footer/>
-				</Stack>
-			</Container>
-    </MantineProvider>
-  )
+export default function Main() {
+	return <AppWrapper><App/></AppWrapper>;
 }

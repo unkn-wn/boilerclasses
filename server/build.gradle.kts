@@ -32,7 +32,7 @@ dependencies {
     implementation("org.apache.lucene:lucene-analysis-common:9.11.1")
     implementation("org.apache.lucene:lucene-queryparser:9.11.1")
     implementation("org.apache.lucene:lucene-queries:9.11.1")
-    implementation("org.apache.lucene:lucene-suggest:9.11.1")
+//    implementation("org.apache.lucene:lucene-suggest:9.11.1")
 
 //    implementation("io.ktor:ktor-client-core:2.3.9")
 //    implementation("io.ktor:ktor-client-cio:2.3.9")
