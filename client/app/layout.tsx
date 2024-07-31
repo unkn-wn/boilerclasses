@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children, }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${chivo.variable} font-body dark bg-neutral-950 text-white`} >
+    <html lang="en" className={`${inter.variable} ${chivo.variable} dark font-body bg-neutral-950 text-white`} >
       <head>
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />

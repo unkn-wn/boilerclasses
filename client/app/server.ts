@@ -3,7 +3,7 @@
 //utilities for server...
 
 import { notFound } from "next/navigation";
-import { Course, ServerInfo, ServerResponse } from "../../shared/types";
+import { Course, CourseId, ServerInfo, ServerResponse } from "../../shared/types";
 
 //a much worse api wrapper for server
 export const api = <T,>(endpoint: string, data?: any): Promise<T> =>
@@ -18,5 +18,5 @@ export const api = <T,>(endpoint: string, data?: any): Promise<T> =>
 			return res.result;
 		});
 
-export const courseById = (id: string): Promise<Course> => api("course", id)
+export const courseById = (id: string): Promise<CourseId> => api("course", id)
 export const getInfo = (): Promise<ServerInfo> => api("info")

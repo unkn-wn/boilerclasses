@@ -6,11 +6,12 @@ import { useAPI } from "./wrapper";
 import { CircularProgress, CircularProgressProps } from "@nextui-org/progress";
 import { ClassNameValue, twMerge } from "tailwind-merge";
 import { useContext } from "react";
-import { CourseContext } from "./clientutil";
+import { AppTooltip, CourseContext } from "./clientutil";
 import { SectionLink } from "./sectionlink";
 
 const CircProg = ({c,...props}: CircularProgressProps&{c: string}) => <CircularProgress
 	classNames={{
+		base: "mx-auto",
 		svg: "w-24 h-24",
 		indicator: `stroke-${c}`,
 		track: `stroke-${c}/10`,
@@ -21,7 +22,7 @@ const CircProg = ({c,...props}: CircularProgressProps&{c: string}) => <CircularP
 />;
 
 function ProfMeters({x, course}: {x: Instructor, course: Course}) {
-	const rmp = useAPI<[RMPInfo], [string]>("rmp", [x.name]);
+	const rmp = useAPI<[RMPInfo], [string]>("rmp", {data: [x.name]});
 	const g = course.instructor[x.name]!=undefined
 		? mergeGrades(Object.values(course.instructor[x.name])) : null;
 
@@ -29,7 +30,7 @@ function ProfMeters({x, course}: {x: Instructor, course: Course}) {
 		let inner;
 		if (v==null) {
 			inner = <>
-				<div className="relative" >
+				<div className="relative w-full" >
 					<div className='absolute right-0 left-0 top-0 bottom-0 p-2 backdrop-blur-sm text-center z-10'>
 						<p className='text-zinc-200 text-md font-bold text-center mt-2'>No data for {x.name}</p>
 					</div>
@@ -71,27 +72,24 @@ export function ProfLink({x, label, className}: {x: Instructor, label?: string, 
 		s.instructors.includes(x))!=undefined).map(([k,v]) => k as Term);
 	const secs = cc.course.sections[cc.term].filter(v => v.instructors.includes(x));
 
-	return <Popover placement="bottom" showArrow >
-		<PopoverTrigger>
-			<div className={twMerge("inline-block", className)} >
-				<Anchor className={className} >{label ?? x.name}</Anchor>
-			</div>
-		</PopoverTrigger>
-		<PopoverContent className='bg-zinc-900 border-gray-800 p-2' >
-			<h2 className="text-2xl font-display font-extrabold" >{x.name}</h2>
-			{x.primary && <p className="text-sm text-gray-400 font-bold">Primary instructor</p>}
+	return <AppTooltip content={<div className="pt-3 flex flex-col items-center" >
+		<h2 className="text-2xl font-display font-extrabold" >{x.name}</h2>
+		{x.primary && <p className="text-sm text-gray-400 font-bold">Primary instructor</p>}
 
-			<ProfMeters x={x} course={cc.course} />
+		<ProfMeters x={x} course={cc.course} />
 
-			<div className="w-full flex-row flex items-center p-3 gap-3" >
-				<p>Sections: {secs.map(s => <SectionLink section={s} >
-						<Anchor>{s.section}</Anchor>
-					</SectionLink>)}.</p>
-				<div className="flex flex-row flex-wrap">
-					{ts.map(t => <Chip className="border-cyan-400 bg-sky-800 cursor-pointer"
-						onClick={()=>cc.selTerm(t)} >{formatTerm(t)}</Chip>)}
-				</div>
+		<div className="w-full flex-row flex items-center p-3 gap-3" >
+			<p>Sections: {secs.map(s => <SectionLink section={s} >
+					<Anchor>{s.section}</Anchor>
+				</SectionLink>)}.</p>
+			<div className="flex flex-row flex-wrap">
+				{ts.map(t => <Chip className="border-cyan-400 bg-sky-800 cursor-pointer"
+					onClick={()=>cc.selTerm(t)} >{formatTerm(t)}</Chip>)}
 			</div>
-		</PopoverContent>
-	</Popover>;
+		</div>
+	</div>} >
+		<div className={twMerge("inline-block", className)} >
+			<Anchor className={className} >{label ?? x.name}</Anchor>
+		</div>
+	</AppTooltip>;
 }

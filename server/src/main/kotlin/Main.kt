@@ -121,7 +121,12 @@ suspend fun main(args: Array<String>) = coroutineScope {
 
             post("/course") {
                 ctx.json<String>().let {
-                    ctx.resp(courses.courseById(it))
+                    ctx.resp(courses.courseById(it).let {
+                        buildJsonObject {
+                            put("id", it.strId())
+                            put("course", Json.encodeToJsonElement(it))
+                        }
+                    })
                 }
             }
 

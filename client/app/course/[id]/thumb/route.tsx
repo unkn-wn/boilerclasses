@@ -7,7 +7,7 @@ import { readFile } from "fs/promises"
 export const runtime = "edge";
  
 export async function GET(request: Request, {params: {id}}: {params: {id: string}}) {
-  const course = await courseById(id), info=await getInfo();
+  const course = (await courseById(id)).course, info=await getInfo();
   const terms = sectionsByTerm(course).map(x => x[0]);
 
   const interSemiBold = await fetch(new URL('../../../../public/Inter-SemiBold.ttf', import.meta.url))

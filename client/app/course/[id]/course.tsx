@@ -4,9 +4,9 @@ import { IconArrowLeft } from "@tabler/icons-react"
 import { Course, creditStr, emptyInstructorGrade, formatTerm, Instructor, InstructorGrade, InstructorGrades, instructorsForTerm, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx } from "../../../../shared/types";
 import attributeToGenEd from "../../attributeToGenEd.json"
 import { useRouter } from "next/navigation";
-import { abbr, Anchor, Button, CatalogLinkButton, firstLast, gpaColor, LinkButton, Loading, selectProps } from "@/components/util";
+import { abbr, Anchor, Button, CatalogLinkButton, Chip, firstLast, gpaColor, LinkButton, Loading, selectProps } from "@/components/util";
 import { Footer } from "@/components/footer";
-import { AppWrapper, useAPI } from "@/components/wrapper";
+import { AppCtx, AppWrapper, useAPI } from "@/components/wrapper";
 import { InsHTMLAttributes, useContext, useEffect, useMemo, useState } from "react";
 import { encodeToQuery, SearchState } from "@/app/search";
 import Link from "next/link";
@@ -24,14 +24,15 @@ import { ProfLink } from "@/components/proflink";
 import Graph from "@/components/graph";
 import { InstructorList } from "@/components/instructorlist";
 import { CourseContext } from "@/components/clientutil";
-import { Calendar } from "@/components/calendar";
+import { Calendar, calendarDays } from "@/components/calendar";
+import { Prereqs } from "@/components/prereqs";
 
 function InstructorGradeView({xs,type}: {xs: Instructor[], type:"rmp"|"gpa"}) {
 	const cc=useContext(CourseContext);
 
 	let res: (RMPInfo|null)[]|null=null;
 	if (type=="rmp") {
-		const o=useAPI<(RMPInfo|null)[],string[]>("rmp", xs.map(x=>x.name));
+		const o=useAPI<(RMPInfo|null)[],string[]>("rmp", {data: xs.map(x=>x.name)});
 		if (o==null) return <Loading/>
 
 		res=o.res;
@@ -49,7 +50,7 @@ function InstructorGradeView({xs,type}: {xs: Instructor[], type:"rmp"|"gpa"}) {
 	});
 
 	const els = out.toSorted((a,b)=>(b[1]??-1) - (a[1]??-1)).map(([i,x])=>{
-		const lhs = <ProfLink x={i} className="my-auto font-semibold text-nowrap text-white"
+		const lhs = <ProfLink x={i} className="font-semibold text-nowrap text-white"
 			label={abbr(i.name, 25)} />;
 
 		if (x==null) {
@@ -81,7 +82,7 @@ function InstructorGradeView({xs,type}: {xs: Instructor[], type:"rmp"|"gpa"}) {
 		</React.Fragment>;
 	});
 
-	return <div className="grid gap-2 grid-cols-[4fr_10fr_1fr]" >
+	return <div className="grid gap-2 grid-cols-[4fr_10fr_1fr] items-center" >
 		{els}
 	</div>;
 }
@@ -172,22 +173,28 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 	}, [instructors, instructorSearch]);
 
 	const [section, setSection] = useState<Section|null>(null);
+	const app = useContext(AppCtx);
+
+	const days = calendarDays(course, term);
+	const smallCalendar = days.length<=3;
 
 	return <CourseContext.Provider value={{
-		course, term, section, info, selTerm:(term) => {
+		course, term, section, info, selTerm(term) {
 			if (term in course.sections) setTerm(term);
+			else app.open({type: "error", name: "Term not available",
+				msg: "We don't have data for this semester"})
 		}, selSection:setSection
 	}} ><div className={`flex flex-col h-screen min-h-screen container mx-auto p-5 mt-5 gap-5`}>
-		<div className="flex md:flex-row flex-col md:gap-4">
+		<div className="flex md:flex-row flex-col md:gap-4 items-stretch" >
 
 			{/* Left half of panel */}
 			<div className="flex flex-col md:mr-3 justify-start h-full basis-5/12 flex-shrink-0">
 				<div className='flex flex-row gap-1 align-middle'>
-					<Link className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'
-						href={lastSearch==null ? "/" : `/?${encodeToQuery(lastSearch).toString()}`}>
+					<Anchor className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'
+						onClick={app.back} >
 
 						<IconArrowLeft size={30} />
-					</Link>
+					</Anchor>
 					<p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6 font-display">{course.subject} {course.course}: {course.name}</p>
 				</div>
 
@@ -200,20 +207,18 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 						</p>
 
 						{/* Separator Display */}
-						{(geneds.length > 0 || scheduleTypes.length > 0) && <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
+						{(geneds.length > 0 || scheduleTypes.length > 0) &&
+							<span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
 
 						{/* Schedule Type Display */}
 						{scheduleTypes.map((s, i) => (
-							<span className={`text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap transition-all`}
-								key={i}>
-								{s}
-							</span>
+							<Chip className="bg-purple-600 border-purple-800" key={s}> {s} </Chip>
 						))}
 
 						{/* Latest Semester Display */}
-						<span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}>
+						<Chip className="bg-sky-600 border-sky-800" >
 							{formatTerm(term)}
-						</span>
+						</Chip>
 
 						{/* Gened Type Display */}
 						{geneds.map((gened, i) => (
@@ -222,7 +227,6 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 								{gened}
 							</span>
 						))}
-
 					</div>
 					{/* <p>{course.gpa[""]}</p> */}
 
@@ -273,41 +277,51 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 				<h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subject} {course.course} from Purdue University - West Lafayette.</h1>
 
 				{/* Prerequisites */}
-				{/* <Prereqs course={course} router={router} /> */}
-			</div>
-			<div className="flex flex-col flex-grow" >
-				<Tabs aria-label="Display" size="lg" variant="light" classNames={{
-					tab: "px-4 py-1.5 border text-white rounded-xl border-zinc-900 hover:border-zinc-700 data-[selected=true]:border-blue-500 outline-none",
-					cursor: "dark:bg-zinc-900",
-					tabContent: "text-gray-300 hover:text-gray-50 group-data-[selected=true]:text-gray-50"
-				}} >
-					<Tab key="gpa" title="GPA" >
-						{wrapProfStats("GPA by professor", <InstructorGradeView xs={searchInstructors} type="gpa" />)}
-					</Tab>
-					<Tab key="gpaSemester" title="GPA Breakdown" >
-						{wrapProfStats("GPA by semester", <InstructorSemGPA xs={searchInstructors} all={instructors} />)}
-					</Tab>
-					<Tab key="rmp" title="Rating" >
-						{wrapProfStats("RateMyProfessor ratings", <InstructorGradeView xs={searchInstructors} type="rmp" />)}
-					</Tab>
-					<Tab key="grades" title="Grade distribution" >
-						<p className="mb-2" >Select instructors:</p>
-						<Select isMulti options={instructors}
-							value={selectedInstructors} getOptionLabel={x => x.name} getOptionValue={x=>x.name}
-							onChange={(x: MultiValue<Instructor>)=>setSelInstructors(x as Instructor[])}
-							isOptionDisabled={(x: Instructor) =>
-								course.instructor[x.name]==undefined
-							}
-							{...selectProps}
-						/>
+				{course.prereqs=="failed" ? <p className="text-sm text-red-700" >Failed to get prerequisites. Please use the catalog.</p>
+					: (course.prereqs!="none" && <>
+						<h2 className="text-2xl font-display font-extrabold mb-8" >Prerequisites</h2>
+						<div className="max-h-[30rem] overflow-y-scroll" >
+							<Prereqs prereqs={course.prereqs} />
+						</div></>)}
 
-						<Graph grades={graphGrades} />
-					</Tab>
-				</Tabs>
+			</div>
+			<div className="flex flex-col flex-grow max-w-full gap-4" >
+				<div className="flex flex-col" >
+					<Tabs aria-label="Display" size="lg" variant="light" classNames={{
+						tab: "px-4 py-1.5 border text-white rounded-xl border-zinc-900 hover:border-zinc-700 data-[selected=true]:border-blue-500 outline-none",
+						cursor: "dark:bg-zinc-900",
+						tabContent: "text-gray-300 hover:text-gray-50 group-data-[selected=true]:text-gray-50"
+					}} >
+						<Tab key="gpa" title="GPA" >
+							{wrapProfStats("GPA by professor", <InstructorGradeView xs={searchInstructors} type="gpa" />)}
+						</Tab>
+						<Tab key="gpaSemester" title="GPA Breakdown" >
+							{wrapProfStats("GPA by semester", <InstructorSemGPA xs={searchInstructors} all={instructors} />)}
+						</Tab>
+						<Tab key="rmp" title="Rating" >
+							{wrapProfStats("RateMyProfessor ratings", <InstructorGradeView xs={searchInstructors} type="rmp" />)}
+						</Tab>
+						<Tab key="grades" title="Grade distribution" >
+							<p className="mb-2" >Select instructors:</p>
+							<Select isMulti options={instructors}
+								value={selectedInstructors} getOptionLabel={x => x.name} getOptionValue={x=>x.name}
+								onChange={(x: MultiValue<Instructor>)=>setSelInstructors(x as Instructor[])}
+								isOptionDisabled={(x: Instructor) =>
+									course.instructor[x.name]==undefined
+								}
+								{...selectProps}
+							/>
+
+							<Graph grades={graphGrades} />
+						</Tab>
+					</Tabs>
+				</div>
+
+				{smallCalendar && <Calendar />}
 			</div>
 		</div>
 
-		<Calendar />
+		{!smallCalendar && <Calendar />}
 
 		<div className='mt-auto'>
 			<Footer />

@@ -19,7 +19,10 @@ export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>&Partial<Li
 	);
 	if (href!=undefined)
 		return <Link href={href} rel="noopener noreferrer" className={classN} {...props} >{props.children}</Link>;
-	else return <a className={classN} href="javascript:void(0)" {...props} >{props.children}</a>
+	else return <a className={classN} href="#" {...props} onClick={(ev) => {
+		ev.preventDefault();
+		props.onClick?.(ev);
+	}} >{props.children}</a>
 }
 
 export const LogoText = ({className, ...props}: HTMLAttributes<HTMLHRElement>) => 
@@ -39,7 +42,7 @@ export const LinkButton = ({className, icon, ...props}: React.AnchorHTMLAttribut
 		{props.children}
 	</a>
 
-export const Loading = (props: SpinnerProps) => <div className="h-full w-full flex item-center justify-center" >
+export const Loading = (props: SpinnerProps) => <div className="h-full w-full flex item-center justify-center py-16 px-20" >
 	<Spinner color="white" size="lg" {...props} ></Spinner>
 </div>
 

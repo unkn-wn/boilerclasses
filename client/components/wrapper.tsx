@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { act, useContext, useEffect, useState } from "react";
 import { ServerResponse } from "../../shared/types";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { NextUIProvider } from "@nextui-org/system";
 import { Button } from "./util";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export type AppModal = {
 	type: "error", name: string, msg: string, retry?: () => void
@@ -10,7 +11,12 @@ export type AppModal = {
 	type: "other", name?: string, onClose?: () => void, modal: React.ReactNode
 };
 
-export type AppCtx = { open: (m: AppModal) => void, tooltipCount: number, incTooltipCount: ()=>void };
+export type AppCtx = {
+	open: (m: AppModal) => void,
+	tooltipCount: number, incTooltipCount: ()=>void,
+	back: ()=>void //last url that was served through wrapper
+};
+
 export const AppCtx = React.createContext<AppCtx>("context not initialized" as any)
 
 export function usePromise<R>(f: (rerun: () => void) => Promise<R>, deps: any[]): R|null {
@@ -25,19 +31,26 @@ export function usePromise<R>(f: (rerun: () => void) => Promise<R>, deps: any[])
 	return ret;
 }
 
-export function useAPI<R,T extends any=null>(endpoint: string, data?: T, method="POST") {
+export function useAPI<R,T extends any=null>(endpoint: string, {data, method, handleErr}: {
+	data?: T, method?: string, handleErr?: (e: ServerResponse<R>&{status:"error"}) => R|undefined
+}={}) {
 	const c = useContext(AppCtx);
 
-	const body = JSON.stringify(data);
+	const body = JSON.stringify(data); //hehe, cursed
 	return usePromise(async (rerun) => {
 		try {
 			const start = performance.now()
 			const resp = await (await fetch(`/api/${endpoint}`, {
-				method, body: data==undefined ? undefined : body
+				method: method ?? "POST", body: data==undefined ? undefined : body
 			})).json() as ServerResponse<R>;
 			const dur = performance.now()-start;
 
 			if (resp.status=="error") {
+				const recover = handleErr?.(resp);
+				if (recover!==undefined) return {
+					res: recover, msTaken: dur, endpoint, req: data
+				};
+
 				let name = "Unknown error";
 				switch (resp.error) {
 					case "badRequest": name = "Bad Request"; break;
@@ -67,49 +80,94 @@ export function useAPI<R,T extends any=null>(endpoint: string, data?: T, method=
 }
 
 export function AppWrapper({children}: {children: React.ReactNode}) {
+	//😒
 	const [activeModals, setActiveModals] = useState<AppModal[]>([]);
-	const [modalVisible, setModalVisible] = useState<boolean>(false);
+	const [modalVisible, setModalVisible] = useState<Record<"error"|"other", boolean>>({
+		error: false, other: false
+	});
+	const activeNormals = activeModals.filter(x=>x.type=="other");
+	const activeErrors = activeModals.filter(x=>x.type=="error");
+	const setVis = (x: "error"|"other", y: boolean) =>
+		setModalVisible({...modalVisible, [x]:y});
 
 	let m = <></>;
-	if (activeModals.length>0) {
-		const x = activeModals[activeModals.length-1];
-		const retry = x.type=="error" && x.retry!=undefined ? x.retry : null;
-		m = <Modal isOpen={modalVisible} onOpenChange={(isOpen) => {
+	if (activeNormals.length>0) {
+		const x = activeNormals[activeNormals.length-1];
+		m = <Modal isOpen={modalVisible["other"]} onOpenChange={(isOpen) => {
 			if (isOpen) return;
-			if (x.type=="other") x.onClose?.();
-			if (activeModals.length>1)
-				setActiveModals(activeModals.toSpliced(activeModals.length-1,1));
-			else setModalVisible(false);
-		}} className={x.type=="error" ? "bg-red-900" : ""} backdrop="blur"
-			placement={x.type=="error" ? "bottom-center" : "center"} >
+			x.onClose?.();
+			if (activeNormals.length>1)
+				setActiveModals(activeModals.filter(y=>y!=x));
+			else setVis("other", false);
+		}} backdrop="blur" placement="center" >
 			<ModalContent>
 				{(close) => (
 					<>
 						{x.name && <ModalHeader className="font-display font-extrabold text-2xl" >{x.name}</ModalHeader>}
-						<ModalBody>
-							{x.type=="error" ? <p>{x.msg}</p> : x.modal}
-						</ModalBody>
-						<ModalFooter>
-							{retry ?
-								<Button onClick={() => {close(); retry();}} >Retry</Button>
-								: <Button onClick={close} >Close</Button>
-							}
+						<ModalBody> {x.modal} </ModalBody>
+						<ModalFooter className="py-2" >
+							<Button onClick={close} >Close</Button>
+							{activeModals.length>1 && <Button onClick={() => {
+								setVis("other", false);
+							}} className="bg-red-800" >Close all</Button>}
 						</ModalFooter>
 					</>
 				)}
 			</ModalContent>
 		</Modal>
 	}
+	
+	if (activeErrors.length>0) {
+		const x = activeErrors[activeErrors.length-1];
+		const retry = x.retry!=undefined ? x.retry : null;
+		m = <>{m}<Modal isOpen={modalVisible["error"]} onOpenChange={(isOpen) => {
+			if (isOpen) return;
+			if (activeErrors.length>1) setActiveModals(activeModals.filter(y=>y!=x));
+			else setVis("error", false);
+		}} className="bg-red-900" backdrop="blur"
+			placement="bottom-center" >
+			<ModalContent>
+				{(close) => (
+					<>
+						{x.name && <ModalHeader className="font-display font-extrabold text-2xl" >{x.name}</ModalHeader>}
+						<ModalBody> <p>{x.msg}</p> </ModalBody>
+						<ModalFooter className="py-2" >
+							{retry ?  <Button onClick={() => {close(); retry();}} >Retry</Button>
+								: <Button onClick={close} >Close</Button>
+							}
+						</ModalFooter>
+					</>
+				)}
+			</ModalContent>
+		</Modal></>;
+	}
 
 	const [count, setCount] = useState(0);
 
+	const pathname = usePathname();
+	const params = useSearchParams();
+	const router = useRouter();
+
+	const [nback, setNBack] = useState<number>(-1);
+
+	useEffect(() => setNBack(nback+1), [pathname, params]);
+
   return (<NextUIProvider>
 		<AppCtx.Provider value={{open: (m) => {
-			if (!modalVisible) {
-				setActiveModals([m]);
-				setModalVisible(true);
+			if (!modalVisible[m.type]) {
+				setActiveModals([...activeModals.filter(x=>x.type!=m.type), m]);
+				setVis(m.type, true);
 			} else setActiveModals([...activeModals, m]);
-		}, tooltipCount: count, incTooltipCount: () => setCount(x=>x+1) }}>
+		}, tooltipCount: count, incTooltipCount: () => setCount(x=>x+1),
+			back() {
+				if (nback>0) {
+					router.back();
+					setNBack(nback-2);
+				} else {
+					router.push("/");
+				}
+			}}}>
+
 			{m}
 			{children}
 		</AppCtx.Provider>

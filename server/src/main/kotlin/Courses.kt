@@ -10,27 +10,27 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.apache.lucene.analysis.Analyzer
-import org.apache.lucene.analysis.CharacterUtils
-import org.apache.lucene.analysis.LowerCaseFilter
-import org.apache.lucene.analysis.Tokenizer
+import org.apache.lucene.analysis.*
 import org.apache.lucene.analysis.core.DecimalDigitFilter
 import org.apache.lucene.analysis.core.LetterTokenizer
 import org.apache.lucene.analysis.core.WhitespaceTokenizer
 import org.apache.lucene.analysis.en.EnglishAnalyzer
+import org.apache.lucene.analysis.en.EnglishPossessiveFilter
+import org.apache.lucene.analysis.en.PorterStemFilter
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper
+import org.apache.lucene.analysis.miscellaneous.SetKeywordMarkerFilter
 import org.apache.lucene.analysis.ngram.EdgeNGramTokenFilter
 import org.apache.lucene.analysis.standard.StandardAnalyzer
+import org.apache.lucene.analysis.standard.StandardTokenizer
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute
-import org.apache.lucene.codecs.PostingsFormat
-import org.apache.lucene.codecs.lucene99.Lucene99Codec
 import org.apache.lucene.document.*
 import org.apache.lucene.index.DirectoryReader
 import org.apache.lucene.index.IndexWriter
 import org.apache.lucene.index.IndexWriterConfig
 import org.apache.lucene.index.Term
-import org.apache.lucene.queryparser.classic.MultiFieldQueryParser
+import org.apache.lucene.queryparser.flexible.standard.parser.ParseException
+import org.apache.lucene.queryparser.simple.SimpleQueryParser
 import org.apache.lucene.search.*
 import org.apache.lucene.store.ByteBuffersDirectory
 import org.apache.lucene.util.BytesRef
@@ -210,18 +210,16 @@ class Courses(val env: Environment, val log: Logger) {
     private val weights = mapOf(
         //uh idk lemme just type some random numbers
         "subject" to 100,
-        "course" to 80,
+        "course" to 150,
         "subjectName" to 150,
-        "title" to 70,
-        "desc" to 50,
+        "title" to 130,
+        "desc" to 15,
         "instructor" to 20,
         "prereq" to 10,
         "term" to 100,
     ).mapValues { it.value.toFloat()/10.0f }
 
-    fun makeQueryParser(analyzer: Analyzer) = MultiFieldQueryParser(
-        weights.keys.toTypedArray(), analyzer, weights
-    )
+    fun makeQueryParser(analyzer: Analyzer) = SimpleQueryParser(analyzer, weights)
 
     suspend fun loadCourses() {
         try {
@@ -344,7 +342,7 @@ class Courses(val env: Environment, val log: Logger) {
         if (trimQuery.isEmpty())
             return courses.courses.subList(req.page*numResults, (req.page+1)*numResults).map {
                 SearchResult(0.0f,it.strId(),it)
-            }.let { SearchOutput(null, it, courses.courses.size,
+            }.let { SearchOutput(it, courses.courses.size,
                 (courses.courses.size+numResults-1)/numResults) }
 
 //        val suggestion = searcher.suggest(PrefixCompletionQuery(crapAnalyzer(), Term(
@@ -355,14 +353,17 @@ class Courses(val env: Environment, val log: Logger) {
         val analyzer = queryFieldAnalyzer()
 
         val bq = BooleanQuery.Builder()
-        if (trimQuery.isNotEmpty())
-            bq.add(makeQueryParser(analyzer).parse(trimQuery), BooleanClause.Occur.SHOULD)
+        if (trimQuery.isNotEmpty()) makeQueryParser(analyzer).let { qp->
+            bq.add(qp.parse(trimQuery), BooleanClause.Occur.SHOULD)
+        }
+
         for ((k,v) in weights) {
             if (v<5) continue
 
             val term = analyzer.normalize(k,trimQuery)
-            bq.add(BoostQuery(FuzzyQuery(Term(k, term)), v*3f), BooleanClause.Occur.SHOULD)
+            bq.add(BoostQuery(FuzzyQuery(Term(k, term)), v), BooleanClause.Occur.SHOULD)
             bq.add(BoostQuery(PhraseQuery(k, term), v*2), BooleanClause.Occur.SHOULD)
+            bq.add(BoostQuery(PrefixQuery(Term(k, term)), v*3f), BooleanClause.Occur.SHOULD)
         }
 
         if (req.minCourse!=null || req.maxCourse!=null)
@@ -395,6 +396,9 @@ class Courses(val env: Environment, val log: Logger) {
         val manager = TopScoreDocCollectorManager(
             if (cnt>maxResults) 0 else cnt, 500)
         val res = searcher.search(q, manager)
+        res.scoreDocs.firstOrNull()?.let {
+            println(searcher.explain(q, it.doc).toString())
+        }
 
         val intHits = res.totalHits.value.toInt()
         return SearchOutput(res.scoreDocs.takeLast(numResults).map {

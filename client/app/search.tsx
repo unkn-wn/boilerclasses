@@ -1,7 +1,7 @@
 import { Button, ButtonPopover, Loading, LogoText, selectProps } from "@/components/util";
 import icon from "../public/icon.png"
 import Image from "next/image";
-import { IconArrowUp, IconChevronUp, IconFilterFilled, IconMoodLookDown } from "@tabler/icons-react";
+import { IconArrowUp, IconChevronUp, IconFilterFilled, IconInfoCircle, IconMoodLookDown } from "@tabler/icons-react";
 import { act, useEffect, useMemo, useState } from "react";
 import Select, { ClassNamesConfig, MultiValue } from 'react-select';
 import { formatTerm, ServerInfo, ServerSearch, Term, termIdx } from "../../shared/types";
@@ -11,7 +11,7 @@ import attributeToGenEd from "./attributeToGenEd.json"
 import { twMerge } from "tailwind-merge";
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
 import { useAPI } from "@/components/wrapper";
-import Card from "@/components/card";
+import { Card } from "@/components/card";
 import {Collapse} from 'react-collapse';
 import { Pagination } from "@nextui-org/pagination";
 
@@ -20,7 +20,7 @@ export type SearchState = {
 	minCredits?: number, maxCredits?: number
 	attributes: string[],
 	minCourse?: number, maxCourse?: number,
-	subjects: string[], terms: string[],
+	subjects: string[], terms: Term[],
 	scheduleType: string[],
 	page: number
 };
@@ -88,7 +88,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 		}
 	};
 
-	const api = useAPI<ServerSearch,SearchState>("/search", searchState, "POST");
+	const api = useAPI<ServerSearch,SearchState>("search", {data: searchState, method: "POST"});
 
 	let activeFilters=[];
 	if (searchState.minCourse!=undefined || searchState.maxCourse!=undefined) activeFilters.push("level");
@@ -148,6 +148,10 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 								label: v, value: k
 							})))}
 						/>
+						{searchState.attributes.length>0 && <p className="flex flex-row my-2 gap-2 p-3 bg-red-900 rounded-md" >
+							<IconInfoCircle/>
+							Not all geneds may appear since they are based on catalog attributes which seem to be incomplete. Consider consulting your college's site for an accurate list.
+						</p>}
 					</div>
 				</Collapse>
 				
@@ -238,7 +242,9 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 			? <Loading/> : (api.res.results.length>0 ? //:)
 				<>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-						{api.res.results.map(x => <Card {...x} {...info} saveSearch={searchState} />)}
+						{api.res.results.map(x => <Card
+							termFilter={searchState.terms.length==0 ? undefined : searchState.terms}
+							{...x} {...info} saveSearch={searchState} />)}
 					</div>
 					<div className="w-full flex flex-col items-center" >
 						<Pagination total={api.res.npage} initialPage={api.req!.page+1} onChange={

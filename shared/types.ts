@@ -252,11 +252,12 @@ export function formatTerm(t: Term) {
   return `${x[0].toUpperCase()}${x.slice(1)} ${t.slice(x.length)}`;
 }
 
-export function latestTerm(course: Course): Term {
+export function latestTerm(course: Course, restrict?: Term[]): Term {
   let latest=null, idx=-1;
   for (const k in course.sections) {
     const v = termIdx(k as Term);
-    if (v>idx) idx=v, latest=k as Term;
+    if (v>idx && (restrict===undefined || restrict.includes(k as Term)))
+      idx=v, latest=k as Term;
   }
 
   if (latest==null) throw "no terms!";
