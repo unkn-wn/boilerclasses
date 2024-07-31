@@ -40,19 +40,13 @@ dependencies {
 //    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.9")
 
 //    implementation("org.zeromq:jeromq:0.6.0")
-    implementation("org.xerial:sqlite-jdbc:3.46.0.0")
+    implementation("org.xerial:sqlite-jdbc:3.46.0.1")
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(22)
 }
 
 application {
-    mainClass="com.purduecpu.MainKt"
-}
-
-tasks.processResources {
-    from("../dist") {
-        into("client")
-    }
+    mainClass="com.boilerclasses.MainKt"
 }

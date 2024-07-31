@@ -29,6 +29,9 @@ export type PreReq = (
   type: "gpa",
   minimum: number
 } | {
+  type: "credits",
+  minimum: number
+} | {
   type: "studentAttribute",
   attr: string
 };
@@ -202,7 +205,7 @@ export type ServerInfo = Pick<Data, "attributes"|"terms"|"subjects"|"scheduleTyp
 export type CourseId = {course: Course, id: string};
 export type ServerSearch = {
   results: ({score: number}&CourseId)[],
-  numHits: number, npage: number
+  numHits: number, npage: number, ms: number
 };
 
 //pls don't store anything using this
@@ -239,7 +242,7 @@ export function instructorsForTerm(course: Course, term: Term) {
 }
 
 export function instructorStr(course: Course) {
-  const t = latestTerm(course);
+  const t = latestTerm(course)!;
   const arr = [...new Set(course.sections[t].flatMap(x=>x.instructors)
     .filter(x=>x.primary).map(x=>x.name))];
   const [instructors, extra] = [arr.slice(0,2), arr.length<=2 ? null : arr.length-2];
@@ -252,7 +255,7 @@ export function formatTerm(t: Term) {
   return `${x[0].toUpperCase()}${x.slice(1)} ${t.slice(x.length)}`;
 }
 
-export function latestTerm(course: Course, restrict?: Term[]): Term {
+export function latestTerm(course: Course, restrict?: Term[]): Term|null {
   let latest=null, idx=-1;
   for (const k in course.sections) {
     const v = termIdx(k as Term);
@@ -260,6 +263,5 @@ export function latestTerm(course: Course, restrict?: Term[]): Term {
       idx=v, latest=k as Term;
   }
 
-  if (latest==null) throw "no terms!";
   return latest;
 }

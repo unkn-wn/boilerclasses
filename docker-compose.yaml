@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    secrets:
+      - proxies
+    env_file: ./server.env
+    volumes:
+      - type: bind
+        source: ${DATA_SOURCE}
+        target: /server/data
+  frontend:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+      args:
+        - SERVER_URL=http://api:8080 # nextjs uses at build time...
+    ports:
+      - 127.0.0.1:8000:3000
+    env_file: ./client.env
+secrets:
+  proxies:
+    file: ${PROXIES_PATH}

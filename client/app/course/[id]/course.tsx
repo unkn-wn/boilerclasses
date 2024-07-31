@@ -1,24 +1,19 @@
 "use client"
 
-import { IconArrowLeft } from "@tabler/icons-react"
-import { Course, creditStr, emptyInstructorGrade, formatTerm, Instructor, InstructorGrade, InstructorGrades, instructorsForTerm, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx } from "../../../../shared/types";
-import attributeToGenEd from "../../attributeToGenEd.json"
-import { useRouter } from "next/navigation";
-import { abbr, Anchor, Button, CatalogLinkButton, Chip, firstLast, gpaColor, LinkButton, Loading, selectProps } from "@/components/util";
+import { IconArrowLeft } from "@tabler/icons-react";
+import { Course, CourseId, creditStr, emptyInstructorGrade, formatTerm, Instructor, InstructorGrade, InstructorGrades, instructorsForTerm, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx } from "../../../../shared/types";
+import attributeToGenEd from "../../attributeToGenEd.json";
+import { abbr, Anchor, CatalogLinkButton, Chip, firstLast, gpaColor, LinkButton, Loading, selectProps } from "@/components/util";
 import { Footer } from "@/components/footer";
 import { AppCtx, AppWrapper, useAPI } from "@/components/wrapper";
-import { InsHTMLAttributes, useContext, useEffect, useMemo, useState } from "react";
-import { encodeToQuery, SearchState } from "@/app/search";
-import Link from "next/link";
+import { useContext, useMemo, useState } from "react";
 import boilerexamsCourses from "../../boilerexamsCourses.json";
-import boilerexams from "../../../public/boilerexams-icon.png"
-import purdue from "../../../public/purdue-icon.png"
-import reddit from "../../../public/reddit-icon.png"
+import boilerexams from "../../../public/boilerexams-icon.png";
+import reddit from "../../../public/reddit-icon.png";
 import Image from "next/image";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { Progress } from "@nextui-org/progress";
-import { ClassNameValue } from "tailwind-merge";
 import React from "react";
 import { ProfLink } from "@/components/proflink";
 import Graph from "@/components/graph";
@@ -26,6 +21,7 @@ import { InstructorList } from "@/components/instructorlist";
 import { CourseContext } from "@/components/clientutil";
 import { Calendar, calendarDays } from "@/components/calendar";
 import { Prereqs } from "@/components/prereqs";
+import { Restrictions } from "@/components/restrictions";
 
 function InstructorGradeView({xs,type}: {xs: Instructor[], type:"rmp"|"gpa"}) {
 	const cc=useContext(CourseContext);
@@ -127,12 +123,13 @@ function InstructorSemGPA({xs, all}: {xs: Instructor[], all: Instructor[]}) {
 	</div>;
 }
 
-function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
+function CourseDetail({course, id, info}: {course: Course, id:string, info: ServerInfo}) {
 	const scheduleTypes = [...new Set(Object.values(course.sections).flat().map(x => x.scheduleType))];
 	const geneds = course.attributes.map(x => attributeToGenEd[x as keyof typeof attributeToGenEd])
 		.filter(x=>x!=undefined);
 
-	const [term, setTerm] = useState<Term>(latestTerm(course));
+	const latest = latestTerm(course)!;
+	const [term, setTerm] = useState<Term>(latest);
 
 	const instructors = instructorsForTerm(course, term) ?? [];
 
@@ -144,16 +141,6 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 			[x,course.instructor[x.name]==undefined ? emptyInstructorGrade
 				: mergeGrades(Object.values(course.instructor[x.name]))]
 		), [selectedInstructors, term, course]);
-
-	//shitty data transfer method
-	const [lastSearch, setLastSearch] = useState<SearchState|null>(null);
-	useEffect(() => {
-		const x = window.localStorage.getItem("lastSearch");
-		if (x!=null) {
-			setLastSearch(JSON.parse(x));
-			window.localStorage.removeItem("lastSearch");
-		}
-	});
 
 	const wrapProfStats = (title: React.ReactNode, inner: React.ReactNode) => (<>
 		<h2 className="text-2xl font-display font-extrabold mb-5" >{title}</h2>
@@ -178,24 +165,27 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 	const days = calendarDays(course, term);
 	const smallCalendar = days.length<=3;
 
+	const catalog=`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=${info.terms[term]!.id}&subj_code_in=${course.subject}&crse_numb_in=${course.course}`;
+
 	return <CourseContext.Provider value={{
-		course, term, section, info, selTerm(term) {
+		course, id, term, section, info, selTerm(term) {
 			if (term in course.sections) setTerm(term);
 			else app.open({type: "error", name: "Term not available",
 				msg: "We don't have data for this semester"})
 		}, selSection:setSection
 	}} ><div className={`flex flex-col h-screen min-h-screen container mx-auto p-5 mt-5 gap-5`}>
-		<div className="flex md:flex-row flex-col md:gap-4 items-stretch" >
+		<div className="flex md:flex-row flex-col gap-4 items-stretch relative" >
 
 			{/* Left half of panel */}
-			<div className="flex flex-col md:mr-3 justify-start h-full basis-5/12 flex-shrink-0">
+			<div className="flex flex-col md:mr-3 justify-start h-full basis-5/12 md:flex-shrink-0">
 				<div className='flex flex-row gap-1 align-middle'>
-					<Anchor className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'
+					<Anchor
+						className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition md:absolute md:-left-10'
 						onClick={app.back} >
 
 						<IconArrowLeft size={30} />
 					</Anchor>
-					<p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6 font-display">{course.subject} {course.course}: {course.name}</p>
+					<p className="md:text-3xl text-2xl font-bold mb-6 font-display">{course.subject} {course.course}: {course.name}</p>
 				</div>
 
 				<div className="flex flex-col gap-4 -mt-3 mb-1">
@@ -243,6 +233,11 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 						</span>
 					</div>
 
+					{term!=latest && <div className="border border-zinc-700 bg-zinc-900 p-2 rounded-md" >
+						<h2 className="font-bold font-display text-lg" >Note:</h2>
+						<p>Most course data, except for sections and instructors, is from {formatTerm(latest)}. Fall back to the catalog for exact data from an older term.</p>
+					</div>}
+
 					<InstructorList/>
 				</div>
 
@@ -257,9 +252,7 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 						Reddit
 					</LinkButton>
 
-					<CatalogLinkButton href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=${
-						info.terms[term]!.id
-					}&subj_code_in=${course.subject}&crse_numb_in=${course.course}`} />
+					<CatalogLinkButton href={catalog} />
 
 					{boilerexamsCourses.includes(`${course.subject}${course.course}`) &&
 						<LinkButton href={`https://www.boilerexams.com/courses/${course.subject}${course.course.toString()}/topics`}
@@ -277,13 +270,14 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 				<h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subject} {course.course} from Purdue University - West Lafayette.</h1>
 
 				{/* Prerequisites */}
-				{course.prereqs=="failed" ? <p className="text-sm text-red-700" >Failed to get prerequisites. Please use the catalog.</p>
+				{course.prereqs=="failed" ? <p className="text-sm text-red-700 my-3" >Failed to parse prerequisites. Please use the <Anchor href={catalog} >catalog</Anchor>.</p>
 					: (course.prereqs!="none" && <>
-						<h2 className="text-2xl font-display font-extrabold mb-8" >Prerequisites</h2>
-						<div className="max-h-[30rem] overflow-y-scroll" >
+						<h2 className="text-2xl font-display font-extrabold mb-4" >Prerequisites</h2>
+						<div className="max-h-[30rem] overflow-y-scroll mb-4" >
 							<Prereqs prereqs={course.prereqs} />
 						</div></>)}
 
+				<Restrictions restrictions={course.restrictions} />
 			</div>
 			<div className="flex flex-col flex-grow max-w-full gap-4" >
 				<div className="flex flex-col" >
@@ -329,6 +323,6 @@ function CourseDetail({course, info}: {course: Course, info: ServerInfo}) {
 	</div></CourseContext.Provider>;
 }
 
-export function CourseDetailApp({course,info}: {course: Course,info: ServerInfo}) {
-	return <AppWrapper><CourseDetail course={course} info={info} /></AppWrapper>
+export function CourseDetailApp(props: CourseId&{info: ServerInfo}) {
+	return <AppWrapper><CourseDetail {...props} /></AppWrapper>
 }

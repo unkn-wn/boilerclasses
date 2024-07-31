@@ -3,12 +3,14 @@
 //utilities for server...
 
 import { notFound } from "next/navigation";
-import { Course, CourseId, ServerInfo, ServerResponse } from "../../shared/types";
+import { CourseId, ServerInfo, ServerResponse } from "../../shared/types";
 
 //a much worse api wrapper for server
 export const api = <T,>(endpoint: string, data?: any): Promise<T> =>
 	fetch(`${process.env.SERVER}/${endpoint}`, {
-		method: "POST", body: data==undefined ? undefined : JSON.stringify(data)
+		method: "POST",
+		body: data==undefined ? undefined : JSON.stringify(data),
+		cache: "no-store"
 	}).then((res) => res.json() as Promise<ServerResponse<T>>)
 		.then((res) => {
 			if (res.status=="error") {

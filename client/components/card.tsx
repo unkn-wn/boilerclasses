@@ -1,24 +1,22 @@
-import React, { useContext, useMemo } from 'react';
-import Link from 'next/link'
-import { Course, CourseId, creditStr, formatTerm, instructorStr, latestTerm, ServerInfo, Term } from "../../shared/types";
+import { useContext, useMemo } from 'react';
+import { CourseId, creditStr, formatTerm, latestTerm, ServerInfo, Term } from "../../shared/types";
 import { abbr, Anchor, Chip, Loading } from "./util";
-import { SearchState } from "@/app/search";
 import { InstructorList } from "./instructorlist";
-import { AppTooltip, CourseContext } from "./clientutil";
+import { AppLink, AppTooltip, CourseContext } from "./clientutil";
 import { useAPI } from "./wrapper";
 import { TooltipPlacement } from "@nextui-org/tooltip";
 
 //ideally maybe have term inherited from search semester filter.............?????
-export function Card({ course, id, saveSearch, frameless, termFilter, ...info }: CourseId&ServerInfo&{saveSearch?: SearchState, frameless?: boolean, termFilter?: Term[]}) {
+export function Card({ course, id, frameless, termFilter, ...info }: CourseId&ServerInfo&{frameless?: boolean, termFilter?: Term[]}) {
   const hasDistance = useMemo(() =>
     Object.values(course.sections).flat()
   .find(s => s.scheduleType=="Distance Learning")!=undefined, [course]);
 
-  const term = latestTerm(course, termFilter);
+  const term = latestTerm(course, termFilter) ?? latestTerm(course)!;
 
   const body = <CourseContext.Provider value={{
       course: course, info, 
-      term, section: null,
+      term, section: null, id,
       selSection: ()=>{},
       selTerm: ()=>{}
     }}>
@@ -51,38 +49,44 @@ export function Card({ course, id, saveSearch, frameless, termFilter, ...info }:
     </div>
   );
   else return (
-    <Link href={`/course/${id}`}
-      onClick={() => {
-        if (saveSearch) {
-          window.localStorage.setItem("lastSearch", JSON.stringify(saveSearch));
-        }
-      }}
+    <AppLink href={`/course/${id}`}
       className="flex flex-col bg-zinc-800 gap-1 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer">
         <h2 className="text-xl font-display font-bold">{course.subject} {course.course}: {course.name}</h2>
         {body}
-    </Link>
+    </AppLink>
   );
 };
 
-export function CourseLink({subject,num,placement}: {subject: string, num: number,placement?:TooltipPlacement}) {
+export function CourseLink({placement,...props}:
+  ({type:"fetch",subject: string, num: number}|{type:"ctx"})&{placement?:TooltipPlacement}) {
   const cc = useContext(CourseContext);
 
-  while (num<1e4) num*=10;
-  const course = useAPI<CourseId|null, string>("course", {
-    data: `${subject}${num}`, handleErr(e) {
-      if (e.error=="notFound") return null;
-    }
-  });
+  let cid: "notFound"|CourseId|null=null;
+  let subject:string, num:number;
+  if (props.type=="fetch") {
+    while (props.num<1e4) props.num*=10;
+    const res = useAPI<CourseId|"notFound", string>("course", {
+      data: `${props.subject}${props.num}`, handleErr(e) {
+        if (e.error=="notFound") return "notFound";
+      }
+    });
+    
+    subject=props.subject, num=props.num;
+    if (res!=null) cid=res.res;
+  } else {
+    cid=cc;
+    subject=cid.course.subject,num=cid.course.course;
+  }
 
   return <AppTooltip placement={placement} content={
-    <div className="pt-4" >{course==null ? <Loading />
-      : (course.res==null ? <div>
+    <div className="pt-4" >{cid==null ? <Loading />
+      : (cid=="notFound" ? <div>
         <h2 className="text-2xl font-display font-extrabold" >Course not found</h2>
         <p>Maybe it's been erased from the structure of the universe, or it just isn't on our servers...</p>
       </div>
-        : <Card frameless {...course.res} {...cc.info} />)
+        : <Card frameless {...cid} {...cc.info} />)
     }</div>
   } >
-    <Anchor className={course!=null && course.res==null ? "no-underline" : "text-white"} >{subject} {num}</Anchor>
+    <Anchor className={cid!=null && cid=="notFound" ? "no-underline" : "text-white"} >{subject} {num}</Anchor>
   </AppTooltip>
 }

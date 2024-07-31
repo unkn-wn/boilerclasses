@@ -1,9 +1,9 @@
-import React from "react"
-import { Chivo, Inter } from 'next/font/google'
-import { GoogleTagManager } from '@next/third-parties/google'
+import React from "react";
+import { Chivo, Inter } from 'next/font/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { Metadata } from "next";
-import banner from "../public/banner.png"
-import "./style.css"
+import banner from "../public/banner.png";
+import "./style.css";
 
 const chivo = Chivo({ subsets: ['latin'], display: 'swap', variable: "--chivo" });
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: "--inter" });
@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'], display: 'swap', variable: "--inter" }
 const desc = "BoilerClasses (Boiler Classes) - Purdue's course catalog with over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more.";
 const title="BoilerClasses - Purdue Course Catalog";
 const url = process.env.NEXT_PUBLIC_ROOT_URL!;
+const domain = new URL(url).host;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -41,10 +42,11 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
 
-        <meta property="twitter:domain" content="boilerclasses.com" />
+        <meta property="twitter:domain" content={domain} />
         <meta property="twitter:url" content={url} />
 
-        <link rel="canonical" href="https://boilerclasses.com/" />
+        <link rel="canonical" href={url} />
+
         {process.env.NEXT_PUBLIC_GTM_ID!==undefined &&
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />}
       </head>

@@ -9,7 +9,7 @@ export async function generateMetadata(
 	const {course, id} = await courseById(params.id);
 
 	const title = `${course.subject}${course.course}: ${course.name} at Purdue`;
-	// const short = `${course.subject}${course.course}`;
+
   return {
     title: title,
 		description: course.description,
@@ -27,7 +27,7 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: {params: {id: string}}) {
-	const course = (await courseById(params.id)).course;
+	const course = await courseById(params.id);
 	const info = await getInfo();
-	return <CourseDetailApp course={course} info={info} />;
+	return <CourseDetailApp {...course} info={info} />;
 }

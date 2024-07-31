@@ -1,24 +1,23 @@
 import { Spinner, SpinnerProps } from "@nextui-org/spinner";
-import Link, { LinkProps } from "next/link";
 import React from "react";
 import { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import { ClassNameValue, twMerge } from "tailwind-merge";
 import { Footer } from "./footer";
-import { SearchState } from "@/app/search";
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover";
-import { IconChevronDown } from "@tabler/icons-react"
+import { IconChevronDown } from "@tabler/icons-react";
 import { ClassNamesConfig } from "react-select";
-import { Course, Section, Term } from "../../shared/types";
-import Image from "next/image"
-import purdue from "../public/purdue-icon.png"
+import Image from "next/image";
+import purdue from "../public/purdue-icon.png";
+import { LinkProps } from "next/link";
+import { AppLink } from "./clientutil";
 
 export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>&Partial<LinkProps>> = ({className,href,...props}) => {
 	const classN = twMerge(
-	`text-gray-300 inline-flex items-center gap-1 underline decoration-dashed decoration-1
+	`text-gray-300 inline-flex align-middle items-center gap-1 underline decoration-dashed decoration-1
 		underline-offset-2 transition-all hover:text-gray-50 hover:bg-cyan-100/5 cursor-pointer`,className
 	);
 	if (href!=undefined)
-		return <Link href={href} rel="noopener noreferrer" className={classN} {...props} >{props.children}</Link>;
+		return <AppLink href={href} rel="noopener noreferrer" className={classN} {...props} >{props.children}</AppLink>;
 	else return <a className={classN} href="#" {...props} onClick={(ev) => {
 		ev.preventDefault();
 		props.onClick?.(ev);
@@ -36,9 +35,9 @@ export const Button = ({className, icon, ...props}: HTMLAttributes<HTMLButtonEle
 	</button>
 
 export const LinkButton = ({className, icon, ...props}: React.AnchorHTMLAttributes<HTMLAnchorElement>&{icon?: React.ReactNode}) =>
-	<a className={twMerge('flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700 active:border-blue-500',className)} rel="noopener noreferrer" {...props} >
+	<a className={twMerge('flex flex-row gap-4 px-3 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700 active:border-blue-500 text-sm',className)} rel="noopener noreferrer" {...props} >
 		{icon &&
-			<span className="inline-block h-6 w-auto" >{icon}</span> }
+			<span className="inline-block h-4 w-auto" >{icon}</span> }
 		{props.children}
 	</a>
 
@@ -53,7 +52,7 @@ export const Chip = ({className, ...props}: HTMLAttributes<HTMLSpanElement>) =>
 export const StatusPage = ({children, title}: {children: React.ReactNode, title: string}) =>
 	<>
 		<div className="flex h-screen flex-col justify-between items-center py-20 px-5" >
-			<Link href="/" ><LogoText/></Link>
+			<AppLink href="/" ><LogoText/></AppLink>
 			<div className="flex flex-col lg:w-96" >
 				<h1 className="font-display font-extrabold text-4xl mb-4" >{title}</h1>
 				<div className="flex flex-col gap-4">

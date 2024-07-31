@@ -5,8 +5,10 @@ import { Course, Section, ServerInfo, Term } from "../../shared/types";
 import { Tooltip, TooltipPlacement } from "@nextui-org/tooltip";
 import { twMerge } from "tailwind-merge";
 import { AppCtx } from "./wrapper";
+import Link, { LinkProps } from "next/link";
 
 export type CourseContextType = {
+	id: string,
 	course: Course,
 	info: ServerInfo,
 	term: Term,
@@ -34,7 +36,7 @@ export function useMediaQuery(q: MediaQueryList|string, init: boolean=true) {
 let mdMq=null;
 try { mdMq = window.matchMedia("(min-width: 768px)"); } catch (e) {}
 export const useMd = () => {
-	if (mdMq==null) throw "uninitialized media query";
+	if (mdMq==null) return false;
 	return useMediaQuery(mdMq);
 };
 
@@ -72,11 +74,17 @@ export function AppTooltip({content, children, placement, className, onChange, .
 					onChange?.(false);
 				}});
 			} else {
-				setReallyOpen(app.tooltipCount+1);
+				const tm = setTimeout(() => {
+					setReallyOpen(app.tooltipCount+1);
+				}, 200);
 
 				const cb = ()=>setOpen(false);
 				document.addEventListener("click",cb);
-				return ()=>document.removeEventListener("click",cb);
+
+				return ()=>{
+					document.removeEventListener("click",cb);
+					clearTimeout(tm);
+				};
 			}
 		} else {
 			if (!ctx) onChange?.(false);
@@ -100,4 +108,16 @@ export function AppTooltip({content, children, placement, className, onChange, .
 			{children}
 		</div>
 	</Tooltip>;
+}
+
+export function AppLink(props: LinkProps&HTMLAttributes<HTMLAnchorElement>) {
+	const app = useContext(AppCtx);
+	return <Link {...props} onClick={(ev) => {
+		props.onClick?.(ev);
+		if (new URL("/course/ARAB10100StandardArabicLevelI", window.location.href).href
+			!=new URL(window.location.href).href)
+			app.forward();
+	}} >
+		{props.children}
+	</Link>
 }

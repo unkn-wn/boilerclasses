@@ -1,10 +1,10 @@
 import { abort, exit } from "node:process";
 import { isDeepStrictEqual, parseArgs } from 'node:util';
-import { Day, PreReqs, Restriction, termPre, validDays,Section,Course,PreReq,levels, Level, Grade, grades, CourseLikePreReq, Seats, normalizeName, gradeGPA, RMPInfo, Data, Term, InstructorGrade, toInstructorGrade, mergeGrades  } from "../../shared/types";
+import { Day, PreReqs, Restriction, termPre, validDays,Section,Course,PreReq,levels, Level, Grade, grades, CourseLikePreReq, Seats, normalizeName, gradeGPA, RMPInfo, Data, Term, InstructorGrade, toInstructorGrade, mergeGrades, termIdx  } from "../../shared/types";
 import assert from "node:assert";
 import * as cheerio from "cheerio";
 import { Cheerio } from "cheerio";
-import { readFile, writeFile, appendFile } from "node:fs/promises";
+import { readFile, writeFile, appendFile, copyFile } from "node:fs/promises";
 import { ProxyAgent } from "undici";
 import { getGrades, Grades } from "./grades";
 
@@ -68,7 +68,7 @@ function parseExpr<T,Op extends string,>(s: string, {operators,precedence,left,r
 			}
 
 			if (nxt=="right") {
-				while (true) {
+				while (stack.length>1) { //ignore unmatched right parens..., should throw
 					const b = stack.pop()!;
 					if (b.type=="op")
 						cv=cv==null ? b.a : {type: "op", op: b.op, a: b.a, b: cv};
@@ -78,17 +78,17 @@ function parseExpr<T,Op extends string,>(s: string, {operators,precedence,left,r
 				const b = stack.pop()!;
 				if (b.type!="op") {
 					if (stack.length==0) return [cv,s];
-					throw "unexpected token";
+					//should throw if unmatched left paren
+					// throw "unexpected token";
+				} else {
+					cv=cv==null ? b.a : {type: "op", op: b.op, a: b.a, b: cv};
 				}
-				cv=cv==null ? b.a : {type: "op", op: b.op, a: b.a, b: cv};
 			} else {
 				if (cv!==null)
 					stack.push({type: "op", op: operators[nxt], a: cv, prec: precedence[nxt]});
 				break;
 			}
 		}
-
-		if (stack.length==0) throw "unexpected right paren";
 	}
 };
 
@@ -174,9 +174,10 @@ function parseCourseTest(s: string): [CourseLikePreReq, string]|null {
 
 function parseGenReq(s: string): [PreReqExpr|null,string] {
 	const ruleRe = /^Rule: (.+):.+\n\s*(\))?(?:and|or)*\s*([\s\S]*?)End of rule \1\.?/;
-	const studentAttrRe = /Student Attribute:\s+(\w+)/
+	const studentAttrRe = /^Student Attribute:\s+(\w+)/
 	const gpaRe = /^([\d\.]+) gpa\./
-	const rangeRe = /^(\w+)\s+(\d+)(?:\s+to\s+(\d+))?/
+	const creditsRe = /^Required Credits:\s+([\d\.]+)/
+	const rangeRe = /^(\w+)?\s+(\d+)(?:\s+to\s+(\d+))?/
 
 	const m = (re: RegExp): RegExpMatchArray|null => {
 		const match=s.match(re);
@@ -219,12 +220,16 @@ function parseGenReq(s: string): [PreReqExpr|null,string] {
 			throw "gpa expects all courses or one course/test selector";
 		}
 	} else if (match=m(rangeRe)) {
-		ret = {type: "leaf", leaf: {
+		if (match[1]==undefined) ret=null; //range of wat?! c.f. spring 2024 econ 499...
+		else ret = {type: "leaf", leaf: {
 			type: "range", what: match[1],
 			min: Number.parseInt(match[2]),
 			max: Number.parseInt(match[3])
 		}};
+	} else if (match=m(creditsRe)) {
+		ret={type: "leaf", leaf: {type: "credits", minimum: Number.parseInt(match[1])}};
 	} else {
+		// expected to error on e.g. spring 2024 com 565, which is literally just "may not be taken concurrently" D:
 		throw "expected general requirement";
 	}
 
@@ -262,7 +267,9 @@ const {values, positionals} = parseArgs({
 	options: {
 		term: { type: "string", short: "t" },
 		output: { type: "string", short: "o" },
+		backup: { type: "string", short: "b" },
 		input: { type: "string", short: "i" },
+		subject: { type: "string", short: "s" },
 		allRMP: { type: "boolean", short: "a", default: false }, //update RMP info for all professors, even those who don't appear in term's catalog
 		schoolName: { type: "string", default: "Purdue University - West Lafayette" },
 		proxies: { type: "string", short: "p" },
@@ -283,6 +290,9 @@ const data: Data = values.input==undefined ? {
 	courses: [], rmp: {}, terms: {},
 	subjects: [], attributes: [], scheduleTypes: []
 } as Data : JSON.parse(await readFile(values.input, "utf-8"));
+
+if (values.input!=undefined && values.backup!=undefined)
+	await copyFile(values.input, values.backup);
 
 let dispatchers: (ProxyAgent|undefined)[] = [undefined];
 let waiters: (()=>void)[] = [];
@@ -309,7 +319,7 @@ for (const ty of termPre) {
 }
 
 assert(termTy!==undefined && termYear!==undefined, "invalid term");
-const t = `${termTy}${termYear}` as Term;
+const t = `${termTy}${termYear}` as Term, idx=termIdx(t);
 
 const dispatcherWait = 1000, dispatcherErrorWait = 30_000;
 
@@ -420,8 +430,9 @@ const terms = await getHTML("https://selfservice.mypurdue.purdue.edu/prod/bwcksc
 const termList = terms("select[name=\"p_term\"]").children()
 	.toArray().map(e => [terms(e).text().trim(), e.attribs.value]);
 const termFormatted = `${termTy[0].toUpperCase()}${termTy.slice(1)} ${termYear}`;
-const termId = termList.find(([k,v]) => k==termFormatted)?.at(1);
-assert(termId!==undefined, "term not found");
+const termId = termList.find(([k,v]) => k.startsWith(termFormatted))?.at(1);
+
+if (termId==undefined) throw "term not found";
 
 console.log("fetching subjects");
 const courseSearch = await postHTML("https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_cat_term_date", [
@@ -429,7 +440,7 @@ const courseSearch = await postHTML("https://selfservice.mypurdue.purdue.edu/pro
 	["cat_term_in", termId]
 ]);
 
-const subjects = courseSearch("select[name=\"sel_subj\"] > option").toArray()
+let subjects = courseSearch("select[name=\"sel_subj\"] > option").toArray()
 	.map(x => ({
 		abbr: x.attribs.value,
 		name: courseSearch(x).text().trim().trimIfStarts(`${x.attribs.value}-`)
@@ -443,6 +454,12 @@ const courseAttributes = courseSearch("select[name=\"sel_attr\"] > option").toAr
 
 const scheduleTypes = courseSearch("select[name=\"sel_schd\"] > option").toArray()
 	.filter(x => x.attribs.value!="%").map(x => courseSearch(x).text().trim());
+
+const subjectArg=values.subject;
+if (subjectArg!=undefined) {
+	subjects=subjects.filter(x=>x.abbr.toLowerCase()==subjectArg.toLowerCase());
+	if (subjects.length==0) throw `subject ${subjectArg} not found`;
+}
 
 //subject -> course code
 type CourseInfo = {
@@ -600,7 +617,7 @@ for (const c of data.courses) {
 
 console.log(`retrieving grades (from boilergrades or ${values.grades})`);
 
-for (const g of await getGrades(values.grades!)) {
+if (values.subject==undefined) for (const g of await getGrades(values.grades!)) {
 	if (g.grades==null) continue;
 	g.instructor = normalizeName(g.instructor);
 	const gr = courseNames.get(g.subject)?.get(Number(g.course))?.grades;
@@ -635,7 +652,7 @@ if (schoolCandidates.length==0) {
 const schoolID = schoolCandidates[0].node.id;
 console.log(`using school ${schoolCandidates[0].node.name}`)
 
-if (values.allRMP===true) {
+if (values.allRMP===true) { //just checkin :^)
 	for (const k of Object.keys(data.rmp))
 		allInstructors.add(k);
 }
@@ -912,23 +929,28 @@ const courses = await logArray(courseArr, async ([subject,course]): Promise<Cour
 		}
 	};
 
-	//prereqs are disabled if general requirements exists
-	//i havent seen a case where prereqs isn't filled with garbage when gen reqs exists
-	if (genReqStrs.length==0) {
-		for (const [prereq, concurrent] of preReqStrs) {
-			addReqs(prereq, () => parsePreReqs(prereq, concurrent));
-		}
-	}
-
-	for (const genreq of genReqStrs) {
-		addReqs(genreq, () => parseGenReqs(genreq)[0]);
-	}
-
 	const info = courseNames.get(subject)!.get(course)!;
 	const instructorSet = new Set([
 		...info.sections.flatMap(x => x.instructors).map(x => x.name),
 		...(info.prevCourse?.instructor==undefined ? [] : Object.keys(info.prevCourse.instructor))
 	]);
+
+	const isNewer = info.prevCourse==null
+		|| Object.keys(info.prevCourse.sections).find(x=>termIdx(x as Term)>idx)==undefined;
+
+	//prereqs are disabled if general requirements exists
+	//i havent seen a case where prereqs isn't filled with garbage when gen reqs exists
+	if (isNewer) {
+		if (genReqStrs.length==0) {
+			for (const [prereq, concurrent] of preReqStrs) {
+				addReqs(prereq, () => parsePreReqs(prereq, concurrent));
+			}
+		}
+
+		for (const genreq of genReqStrs) {
+			addReqs(genreq, () => parseGenReqs(genreq)[0]);
+		}
+	}
 
 	const instructorOut: Course["instructor"] = {};
 
@@ -948,33 +970,44 @@ const courses = await logArray(courseArr, async ([subject,course]): Promise<Cour
 				[t]: mergeGrades(gs.map((x):InstructorGrade => toInstructorGrade(x.grades)))
 			};
 	}
+	
+	const mergeCourses = (old: Course|null, newCourse: Course): Course => {
+		if (old!=null
+			&& isDeepStrictEqual({...newCourse, lastUpdated: undefined}, {...old, lastUpdated: undefined}))
+			return {
+				...newCourse,
+				lastUpdated: new Date(Math.min(Date.parse(old.lastUpdated),
+					Date.parse(newCourse.lastUpdated))).toISOString()
+			};
 
-	const newCourse: Omit<Course,"lastUpdated"> = {
-		name: info.name,
-		subject, course,
-		instructor: instructorOut,
-		description: bits[0].txt,
-		restrictions,
-		credits,
-		sections: {
-			...info.prevCourse?.sections,
-			[t]: info.sections as Course["sections"]["fall0"]
-		},
-		prereqs: reqs,
-		attributes
+		return {
+			...newCourse,
+			instructor: instructorOut,
+			sections: { ...old?.sections, ...newCourse.sections }
+		};
 	};
 
-	if (info.prevCourse!=null
-		&& isDeepStrictEqual(newCourse, {...info.prevCourse, lastUpdated: undefined}))
-		return info.prevCourse;
-	else return {...newCourse, lastUpdated: (new Date()).toISOString()};
+	const toMerge: Course = {
+		name: info.name, subject, course,
+		instructor: instructorOut,
+		description: bits[0].txt,
+		restrictions, credits,
+		sections: { [t]: info.sections as Course["sections"]["fall0"] },
+		prereqs: reqs, attributes,
+		lastUpdated: new Date().toISOString()
+	}; 
+
+	return isNewer ? mergeCourses(info.prevCourse, toMerge) : mergeCourses(toMerge, info.prevCourse!);
 }, ([course, sub]) => `${sub} ${course}`);
 
 console.log(`done (${courses.reduce((y,x) => (x.status=="fulfilled" ? 1 : 0)+y,0)}/${courses.length} successful)`);
 
 const d: Data = {
 	...data,
-	courses: courses.filter(x => x.status=="fulfilled").map(x => x.value),
+	courses: [
+		...data.courses.filter(x => courseNames.get(x.subject)?.get(x.course)===undefined),
+		...courses.filter(x => x.status=="fulfilled").map(x => x.value)
+	],
 	terms: {
 		...data.terms,
 		[t]: {
@@ -982,7 +1015,11 @@ const d: Data = {
 			lastUpdated: (new Date()).toISOString()
 		} as Data["terms"]["fall0"]
 	},
-	subjects, attributes: courseAttributes, scheduleTypes
+	subjects: [...new Map([...subjects, ...data.subjects].map(x=>[x.abbr,x])).values()],
+	attributes: [...new Map([...courseAttributes, ...data.attributes].map(x=>[x.id,x])).values()],
+	scheduleTypes: [...new Set([...scheduleTypes, ...data.scheduleTypes])]
 };
 
-await writeFile(values.output, JSON.stringify(d));
+if (values.subject==undefined)
+	await writeFile(values.output, JSON.stringify(d));
+else console.log("exiting w/o saving since subject is restricted");

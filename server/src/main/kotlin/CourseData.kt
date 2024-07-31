@@ -110,6 +110,9 @@ object CourseData {
         @SerialName("gpa")
         data class Gpa(val minimum: Double) : PreReq()
         @Serializable
+        @SerialName("credits")
+        data class Credits(val minimum: Int) : PreReq()
+        @Serializable
         @SerialName("studentAttribute")
         data class StudentAttribute(val attr: String): PreReq()
     }

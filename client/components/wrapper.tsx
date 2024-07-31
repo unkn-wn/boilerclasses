@@ -1,9 +1,11 @@
-import React, { act, useContext, useEffect, useState } from "react";
+"use client"
+
+import React, { useContext, useEffect, useState } from "react";
 import { ServerResponse } from "../../shared/types";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { NextUIProvider } from "@nextui-org/system";
 import { Button } from "./util";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export type AppModal = {
 	type: "error", name: string, msg: string, retry?: () => void
@@ -14,7 +16,7 @@ export type AppModal = {
 export type AppCtx = {
 	open: (m: AppModal) => void,
 	tooltipCount: number, incTooltipCount: ()=>void,
-	back: ()=>void //last url that was served through wrapper
+	forward: ()=>void, back: ()=>void
 };
 
 export const AppCtx = React.createContext<AppCtx>("context not initialized" as any)
@@ -39,16 +41,14 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 	const body = JSON.stringify(data); //hehe, cursed
 	return usePromise(async (rerun) => {
 		try {
-			const start = performance.now()
 			const resp = await (await fetch(`/api/${endpoint}`, {
 				method: method ?? "POST", body: data==undefined ? undefined : body
 			})).json() as ServerResponse<R>;
-			const dur = performance.now()-start;
 
 			if (resp.status=="error") {
 				const recover = handleErr?.(resp);
 				if (recover!==undefined) return {
-					res: recover, msTaken: dur, endpoint, req: data
+					res: recover, endpoint, req: data
 				};
 
 				let name = "Unknown error";
@@ -64,7 +64,7 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 				console.error(resp);
 				c.open({type: "error", name, msg: resp.msg ?? "Error performing API request.", retry: rerun })
 			} else {
-				return {res: resp.result, msTaken: dur, endpoint, req: data};
+				return {res: resp.result, endpoint, req: data};
 			}
 		} catch(e) {
 			console.error(`Fetching ${endpoint}: ${e}`);
@@ -144,29 +144,35 @@ export function AppWrapper({children}: {children: React.ReactNode}) {
 
 	const [count, setCount] = useState(0);
 
-	const pathname = usePathname();
-	const params = useSearchParams();
+	const [backUrls, setBackUrls] = useState<string[]>([]);
 	const router = useRouter();
 
-	const [nback, setNBack] = useState<number>(-1);
-
-	useEffect(() => setNBack(nback+1), [pathname, params]);
+	useEffect(() => {
+		const it = window.localStorage.getItem("backUrl");
+		if (it!=null) {
+			setBackUrls(JSON.parse(it));
+			window.localStorage.removeItem("backUrl");
+		}
+	});
 
   return (<NextUIProvider>
 		<AppCtx.Provider value={{open: (m) => {
-			if (!modalVisible[m.type]) {
-				setActiveModals([...activeModals.filter(x=>x.type!=m.type), m]);
-				setVis(m.type, true);
-			} else setActiveModals([...activeModals, m]);
-		}, tooltipCount: count, incTooltipCount: () => setCount(x=>x+1),
-			back() {
-				if (nback>0) {
-					router.back();
-					setNBack(nback-2);
-				} else {
-					router.push("/");
-				}
-			}}}>
+				if (!modalVisible[m.type]) {
+					setActiveModals([...activeModals.filter(x=>x.type!=m.type), m]);
+					setVis(m.type, true);
+				} else setActiveModals([...activeModals, m]);
+			}, tooltipCount: count,
+				incTooltipCount: () => setCount(x=>x+1),
+				forward() {
+					window.localStorage.setItem("backUrl", JSON.stringify([...backUrls, window.location.href]));
+				}, back() {
+					if (backUrls.length==0) router.push("/");
+					else {
+						window.localStorage.setItem("backUrl", JSON.stringify(backUrls.slice(0,-1)));
+						router.push(backUrls[backUrls.length-1]);
+					}
+				},
+			}}>
 
 			{m}
 			{children}

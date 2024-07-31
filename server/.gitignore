@@ -44,5 +44,5 @@ bin/
 db.sqlite
 application.conf
 
-data/courses.json
 proxies.json
+data/**

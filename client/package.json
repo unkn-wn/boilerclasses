@@ -22,9 +22,6 @@
     "@nextui-org/theme": "^2.2.9",
     "@nextui-org/tooltip": "^2.0.39",
     "@tabler/icons-react": "^3.11.0",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/og": "^0.6.2",
-    "base64-arraybuffer": "^1.0.2",
     "chart.js": "^4.4.1",
     "framer-motion": "^11.3.19",
     "next": "^14.2.5",
@@ -33,6 +30,7 @@
     "react-collapse": "^5.1.1",
     "react-dom": "^18",
     "react-select": "^5.8.0",
+    "sharp": "^0.33.4",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
@@ -42,6 +40,6 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
-    "typescript": "5.5.4"
+    "typescript": "5.6.0-beta"
   }
 }

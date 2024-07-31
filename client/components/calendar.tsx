@@ -23,9 +23,13 @@ export function Calendar({days}: {days?: Day[]}) {
 	const sortedDays = (days ?? calendarDays(cc.course, cc.term))
 		.map(x=>validDays.indexOf(x))
 		.sort().map(x=>validDays[x]);
-
+ 
 	return <div className='flex flex-col md:flex-row flex-nowrap gap-2 rounded-xl bg-zinc-900 p-2 md:p-4'>
-		{sortedDays.map(d => {
+		{sortedDays.length==0 ?
+			<h2 className="font-display font-bold text-xl mx-auto" >
+				Empty course schedule
+			</h2>
+		: sortedDays.map(d => {
 			const inD = secs.flatMap(x=>x.times.filter(y=>y.day==d && y.time!="TBA")
 				.map((t):[number, string, string, Section]=> {
 					const r = t.time.split(" - ");
@@ -33,7 +37,7 @@ export function Calendar({days}: {days?: Day[]}) {
 					return [minutesInDay(r[0]), r[0], r[1], x];
 				})).sort((a,b) => a[0]-b[0]);
 
-			return <div className='last:border-r-0 md:border-r-2 border-gray-500 flex-1 pr-2'>
+			return <div key={d} className='last:border-r-0 md:border-r-2 border-gray-500 flex-1 pr-2'>
 					<p className='relative text-right text-gray-500'>{d}</p>
 					<div className="overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
 						{ inD.map(([_,start,end,sec]) =>

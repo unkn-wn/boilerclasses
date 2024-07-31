@@ -33,10 +33,14 @@ import org.apache.lucene.queryparser.flexible.standard.parser.ParseException
 import org.apache.lucene.queryparser.simple.SimpleQueryParser
 import org.apache.lucene.search.*
 import org.apache.lucene.store.ByteBuffersDirectory
+import org.apache.lucene.store.MMapDirectory
 import org.apache.lucene.util.BytesRef
 import org.slf4j.Logger
 import java.io.File
+import java.time.Duration
+import java.time.Instant
 import java.util.concurrent.TimeUnit
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.time.Duration.Companion.minutes
 
@@ -64,7 +68,7 @@ class Courses(val env: Environment, val log: Logger) {
         val terms: List<String> = emptyList(),
         val page: Int=0
     ) {
-        fun isEmpty() = equals(SearchReq(""))
+        fun isEmpty() = copy(query=query.trim(), page=0) == SearchReq("")
     }
 
     @Serializable
@@ -78,12 +82,15 @@ class Courses(val env: Environment, val log: Logger) {
     data class SearchOutput(
 //        val completion: CourseData.Course?,
         val results: List<SearchResult>,
-        val numHits: Int, val npage: Int
+        val numHits: Int, val npage: Int,
+        val ms: Double
     )
 
-    val scrapeInterval = env.getProperty("scrapeInterval")!!.toInt().minutes
+    val scrapeInterval = env.getProperty("scrapeInterval")?.toInt()?.minutes
     val scrapeArgs = env.getProperty("scrapeArgs") ?: ""
     private val coursesFile = File("./data/courses.json")
+    private val indexFile = File("./data/index")
+    private val indexSwapFile = File("./data/index-tmp")
 
     val mut = Mutex()
     private var courses: CourseData.Data? = null
@@ -190,7 +197,7 @@ class Courses(val env: Environment, val log: Logger) {
         }
     }
 
-    private var idx: ByteBuffersDirectory? = null
+    private var idx: MMapDirectory? = null
     private var dirReader: DirectoryReader? = null
     private var searcher: IndexSearcher? = null
 
@@ -226,7 +233,9 @@ class Courses(val env: Environment, val log: Logger) {
             log.info("loading courses")
             val c = Json.decodeFromStream<CourseData.Data>(coursesFile.inputStream())
 
-            val newIdx = ByteBuffersDirectory()
+            if (indexSwapFile.exists()) indexSwapFile.deleteRecursively()
+
+            val newIdx = MMapDirectory(indexSwapFile.toPath())
             val cfg = IndexWriterConfig(fieldAnalyzer)
 //            cfg.setCodec(object: Lucene99Codec() {
 //                override fun getPostingsFormatForField(field: String?): PostingsFormat {
@@ -318,17 +327,23 @@ class Courses(val env: Environment, val log: Logger) {
             writer.close()
 
             log.info("finished indexing")
+            newIdx?.close()
             mut.withLock {
                 courses = c
                 dirReader?.close()
                 idx?.close()
 
-                idx=newIdx
+                indexFile.deleteRecursively()
+                indexSwapFile.copyRecursively(indexFile, overwrite = true)
+
+                idx=MMapDirectory(indexFile.toPath())
                 dirReader=DirectoryReader.open(idx)
                 searcher=IndexSearcher(dirReader)
             }
         } catch (e: Throwable) {
-            log.error("error parsing course data:", e)
+            log.error("error parsing/indexing course data:", e)
+        } finally {
+            indexSwapFile.deleteRecursively()
         }
     }
 
@@ -338,13 +353,16 @@ class Courses(val env: Environment, val log: Logger) {
             searcher!! to courses!!
         }
 
-        val trimQuery = req.query.trim()
-        if (trimQuery.isEmpty())
-            return courses.courses.subList(req.page*numResults, (req.page+1)*numResults).map {
+        if (req.page<0) throw APIErrTy.BadRequest.err("page is negative");
+
+        if (req.isEmpty())
+            return courses.courses.subList(req.page*numResults, min(courses.courses.size, (req.page+1)*numResults)).map {
                 SearchResult(0.0f,it.strId(),it)
             }.let { SearchOutput(it, courses.courses.size,
-                (courses.courses.size+numResults-1)/numResults) }
+                (courses.courses.size+numResults-1)/numResults, 0.0) }
 
+        val startTime = Instant.now()
+        val trimQuery = req.query.trim()
 //        val suggestion = searcher.suggest(PrefixCompletionQuery(crapAnalyzer(), Term(
 //            "suggest", trimQuery
 //        )), 1, true)
@@ -392,18 +410,20 @@ class Courses(val env: Environment, val log: Logger) {
         }
 
         val q = bq.build()
-        val cnt = (req.page+1)*numResults
-        val manager = TopScoreDocCollectorManager(
-            if (cnt>maxResults) 0 else cnt, 500)
+        val cnt = min(maxResults, (req.page+1)*numResults)
+        val manager = TopScoreDocCollectorManager(cnt, 500)
         val res = searcher.search(q, manager)
-        res.scoreDocs.firstOrNull()?.let {
-            println(searcher.explain(q, it.doc).toString())
-        }
+//        res.scoreDocs.firstOrNull()?.let {
+//            println(searcher.explain(q, it.doc).toString())
+//        }
 
         val intHits = res.totalHits.value.toInt()
-        return SearchOutput(res.scoreDocs.takeLast(numResults).map {
-            courses.courses[it.doc].let {c-> SearchResult(it.score, c.strId(), c) }
-        }, intHits, min(intHits+numResults-1, maxResults)/numResults) //num pages may change as numhits increases...
+        //num pages may change as numhits increases...
+        return SearchOutput(res.scoreDocs.takeLast((res.scoreDocs.size-1)%numResults +1)
+            .map {
+                courses.courses[it.doc].let {c-> SearchResult(it.score, c.strId(), c) }
+            }, intHits, max(1,min(intHits+numResults-1, maxResults)/numResults),
+            Duration.between(startTime, Instant.now()).toNanos().toDouble()/1e6)
     }
 
     suspend fun courses() = mut.withLock {
@@ -422,7 +442,7 @@ class Courses(val env: Environment, val log: Logger) {
     suspend fun runScraper() {
         if (coursesFile.exists()) loadCourses()
 
-        while (true) {
+        while (scrapeInterval!=null) {
             if (courses!=null) delay(scrapeInterval)
 
             log.info("starting scrape")

@@ -3,6 +3,7 @@ import { CourseLikePreReq, PreReq, PreReqs } from "../../shared/types";
 import { CourseLink } from "./card";
 import { AppTooltip, useMd } from "./clientutil";
 import { Anchor } from "./util";
+import React from "react";
 
 function PrereqCourseLikeLink({prereq}: {prereq: CourseLikePreReq}) {
 	let txt,extra=null,kind;
@@ -12,7 +13,7 @@ function PrereqCourseLikeLink({prereq}: {prereq: CourseLikePreReq}) {
 			txt=`${prereq.subject} ${prereq.course}`;
 			kind="this course";
 			const num = Number.parseInt(prereq.course);
-			if (isFinite(num)) extra=<CourseLink subject={prereq.subject} num={num} />
+			if (isFinite(num)) extra=<CourseLink type="fetch" subject={prereq.subject} num={num} />
 			break;
 		case "courseRange": txt=`${prereq.subject} ${prereq.course}-${prereq.courseTo}`; kind="courses in this range"; break;
 		case "subject": txt=`${prereq.subject}`; kind="this subject"; break;
@@ -30,10 +31,10 @@ function PrereqCourseLikeLink({prereq}: {prereq: CourseLikePreReq}) {
 		prereq.minGPA!=null && <><span className="font-extrabold font-display" >{prereq.minGPA.toFixed(1)}</span> GPA</>,
 		prereq.minCredits!=null && <><span className="font-extrabold font-display" >{prereq.minCredits}</span> credits in {kind}</>,
 		<span className="font-extrabold" >{prereq.concurrent ? "Can be taken concurrently"
-			: "Can't be taken concurrently"}</span>].map(x => {
+			: "Can't be taken concurrently"}</span>].map((x,i) => {
 
-			if (x==false) return <></>;
-			return <div className="flex flex-row gap-1 items-center" >
+			if (x==false) return <React.Fragment key={i} />
+			return <div key={i} className="flex flex-row gap-1 items-center" >
 				<IconCaretRightFilled/> {x}
 			</div>
 		})}
@@ -52,7 +53,10 @@ function Prereq({prereq}: {prereq: PreReq}) {
 			Student attribute {prereq.attr}
 		</span>;
 		case "gpa": return <span>
-			Minimum GPA: <span className="font-extrabold font-display" >{prereq.minimum.toFixed(1)}</span>
+			GPA of <span className="font-extrabold font-display" >{prereq.minimum.toFixed(1)}</span> or higher
+		</span>;
+		case "credits": return <span>
+			At least <span className="font-extrabold font-display" >{prereq.minimum}</span> credits
 		</span>;
 		case "test": return <span>
 			Score of <span className="font-extrabold font-display" >{prereq.minScore}</span> or higher on the {prereq.test}
@@ -73,7 +77,7 @@ export function Prereqs({prereqs, isChild}: {prereqs: PreReqs, isChild?: boolean
 
 	return <div className={`flex flex-col relative border ${prereqs.type=="and" ? "border-amber-500 bg-amber-800" : "border-sky-300 bg-sky-900"} py-4 pl-3 mt-4 rounded-l-xl ${
 			isChild ? "border-r-0" : "rounded-r-xl" }`} >
-		<div className={`absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 py-1 px-4 rounded-t-md ${prereqs.type=="and" ? "bg-amber-800" : "bg-sky-900"}`} >
+		<div className={`absolute left-10 top-0 transform -translate-y-1/2 py-1 px-4 rounded-t-md ${prereqs.type=="and" ? "bg-amber-800" : "bg-sky-900"}`} >
 		<div className={`absolute top-0 bottom-1/2 left-0 right-0 border-t border-l border-r rounded-t-md ${prereqs.type=="and" ? "border-amber-500" : "border-sky-300"}`} ></div>
 				<span>{prereqs.type=="and" ? "All of" : "One of"}</span>
 		</div>

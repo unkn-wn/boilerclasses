@@ -1,8 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { courseById, getInfo } from "../../../server"
-import Image from "next/image"
-import { creditStr, formatTerm, instructorStr, sectionsByTerm, Term, termIdx } from "../../../../../shared/types"
-import { readFile } from "fs/promises"
+import { creditStr, formatTerm, instructorStr, sectionsByTerm } from "../../../../../shared/types"
  
 export const runtime = "edge";
  

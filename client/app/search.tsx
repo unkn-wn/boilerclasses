@@ -1,18 +1,18 @@
 import { Button, ButtonPopover, Loading, LogoText, selectProps } from "@/components/util";
-import icon from "../public/icon.png"
+import icon from "../public/icon.png";
 import Image from "next/image";
 import { IconArrowUp, IconChevronUp, IconFilterFilled, IconInfoCircle, IconMoodLookDown } from "@tabler/icons-react";
-import { act, useEffect, useMemo, useState } from "react";
-import Select, { ClassNamesConfig, MultiValue } from 'react-select';
+import { useEffect, useMemo, useState } from "react";
+import Select from 'react-select';
 import { formatTerm, ServerInfo, ServerSearch, Term, termIdx } from "../../shared/types";
 import { Footer } from "@/components/footer";
 import { Slider } from "@nextui-org/slider";
-import attributeToGenEd from "./attributeToGenEd.json"
+import attributeToGenEd from "./attributeToGenEd.json";
 import { twMerge } from "tailwind-merge";
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
 import { useAPI } from "@/components/wrapper";
 import { Card } from "@/components/card";
-import {Collapse} from 'react-collapse';
+import { Collapse } from 'react-collapse';
 import { Pagination } from "@nextui-org/pagination";
 
 export type SearchState = {
@@ -29,13 +29,11 @@ const defaultSearchState: SearchState = {
 	query: "", attributes: [], subjects: [], scheduleType: [], terms: [], page: 0
 };
 
-const spec: Record<keyof SearchState, "array"|"number"|"string"> =
-	Object.fromEntries(Object.entries(defaultSearchState).map(([k,v]) => {
-		if (typeof v=="object") return [k,"array"];
-		else if (typeof v == "number") return [k,"number"];
-		else if (typeof v == "string") return [k,"string"];
-		else throw "unsupported";
-	})) as any;
+const spec: Record<keyof SearchState, "array"|"number"|"string"> = {
+	query: "string", minCredits: "number", maxCredits: "number",
+	attributes: "array", minCourse: "number", maxCourse: "number",
+	subjects: "array", terms: "array", scheduleType: "array", page: "number"
+};
 
 export function encodeToQuery(x: any) {
 	const u = new URLSearchParams();
@@ -89,6 +87,11 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 	};
 
 	const api = useAPI<ServerSearch,SearchState>("search", {data: searchState, method: "POST"});
+
+	const cond = api!=null && api.res.npage<=searchState.page;
+	useEffect(() => {
+		if (cond) setSearchState({...searchState, page: api.res.npage-1});
+	}, [cond]);
 
 	let activeFilters=[];
 	if (searchState.minCourse!=undefined || searchState.maxCourse!=undefined) activeFilters.push("level");
@@ -216,20 +219,20 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 										className="flex-1 bg-zinc-800"  >None</Button>
 								</div>
 								{info.scheduleTypes.map(x =>
-									<Checkbox value={x} checked={searchState.scheduleType.includes(x)} >{x}</Checkbox>)}
+									<Checkbox value={x} key={x} checked={searchState.scheduleType.includes(x)} >{x}</Checkbox>)}
 							</CheckboxGroup>
 						</ButtonPopover>
 					</div> : <Button icon={<IconFilterFilled/>} onClick={() => setFiltersCollapsed(false)} className="w-full md:w-auto" >
 						{activeFilters.length>0 ? `Filtering by ${activeFilters.join(", ")}` : "Filters"}
 					</Button>}
 					{api!=null && <p>
-						{api.res.numHits} results in {api.msTaken.toFixed(2)} ms (page {api.req!.page+1} of {api.res.npage})
+						{api.res.numHits} results in {api.res.ms.toFixed(2)} ms (page {api.req!.page+1} of {api.res.npage})
 					</p>}
 				</div>
 
 				<Collapse isOpened={!filtersCollapsed} >
-					<div className="flex flex-col w-full items-center" onClick={()=>setFiltersCollapsed(true)} >
-						<button className="flex flex-col items-center cursor-pointer hover:-translate-y-1 transition" >
+					<div className="flex flex-col w-full items-center" >
+						<button onClick={()=>setFiltersCollapsed(true)} className="flex flex-col items-center cursor-pointer hover:-translate-y-1 transition" >
 							<IconChevronUp/>
 							Hide filters
 						</button>
@@ -242,9 +245,9 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 			? <Loading/> : (api.res.results.length>0 ? //:)
 				<>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-						{api.res.results.map(x => <Card
+						{api.res.results.map(x => <Card key={x.id}
 							termFilter={searchState.terms.length==0 ? undefined : searchState.terms}
-							{...x} {...info} saveSearch={searchState} />)}
+							{...x} {...info} />)}
 					</div>
 					<div className="w-full flex flex-col items-center" >
 						<Pagination total={api.res.npage} initialPage={api.req!.page+1} onChange={
