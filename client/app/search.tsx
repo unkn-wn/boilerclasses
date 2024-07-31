@@ -64,7 +64,7 @@ export function decodeQueryToSearchState(query: URLSearchParams) {
 	return x;
 }
 
-export function Search({init, info}: {init: Partial<SearchState>, info: ServerInfo}) {
+export function Search({init, info, autoFocus, clearSearch}: {init: Partial<SearchState>, info: ServerInfo, autoFocus?:boolean, clearSearch: ()=>void}) {
 	const [searchState, setSearchState] = useState<SearchState>({...defaultSearchState, ...init});
 
 	useEffect(() => {
@@ -73,7 +73,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 
 	const sortedTerms = useMemo(()=>
 		Object.keys(info.terms).map(k=>({k: k as Term, idx: termIdx(k as Term)}))
-			.sort((a,b) => a.idx-b.idx), []);
+			.sort((a,b) => b.idx-a.idx), []);
 
 	const selectControlProps = (k: "attributes"|"subjects"|"terms", options: {value: string, label: string}[]) => {
 		const obj = Object.fromEntries(options.map(x => [x.value,x.label]));
@@ -103,7 +103,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 
 	const [filtersCollapsed, setFiltersCollapsed] = useState(true);
 
-	return <div id="parent" className={"flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-4"}>
+	return <div id="parent" className={"flex flex-col h-[70dvh] bg-neutral-950 container mx-auto p-4"}>
 		<div id="scrollToTopBtn" className='hidden'>
 			<button className='fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:-tranzinc-y-0.5 transition'
 				onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
@@ -111,15 +111,15 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 			</button>
 		</div>
 
-		<div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-			<Image src={icon} alt="icon" className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16 cursor-pointer' />
+		<div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8 cursor-pointer' onClick={clearSearch} >
+			<Image src={icon} alt="icon" className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16' />
 			<LogoText className="text-2xl md:text-5xl" />
 		</div>
 
 		{/* Search Bar */}
 		<div className="mb-3">
 			<input
-				autoFocus id="search" type="text"
+				autoFocus={autoFocus} id="search" type="text"
 				placeholder="Search for courses..."
 				value={searchState.query}
 				onChange={(e) => setSearchState({...searchState, query: e.target.value})}
@@ -165,7 +165,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 								? `${searchState.minCredits} - ${searchState.maxCredits}` : `${searchState.minCredits}+`)
 								: (searchState.maxCredits!=undefined ? `up to ${searchState.maxCredits}` : undefined)
 						} >
-							<Slider label="Range of credit hours"
+							<Slider label="Credit range"
 								step={1} minValue={1} maxValue={18}
 								showSteps showTooltip defaultValue={
 									[searchState.minCredits ?? 1, searchState.maxCredits ?? 18]
@@ -178,7 +178,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 									const [a,b] = x as [number,number];
 									return `${a} - ${b} credits`;
 								}}
-								className="min-w-96"
+								className="min-w-56"
 							/>
 						</ButtonPopover>
 						<ButtonPopover title="Level" desc={
@@ -186,7 +186,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 								? `${searchState.minCourse} - ${searchState.maxCourse}` : `${searchState.minCourse}+`)
 								: (searchState.maxCourse!=undefined ? `up to ${searchState.maxCourse}` : undefined)
 						} >
-							<Slider label="Course number range"
+							<Slider label="Course range"
 								step={100} minValue={100} maxValue={900}
 								showSteps showTooltip defaultValue={
 									[searchState.minCourse ?? 100, searchState.maxCourse ?? 900]
@@ -199,7 +199,7 @@ export function Search({init, info}: {init: Partial<SearchState>, info: ServerIn
 									const [a,b] = x as [number,number];
 									return `${a} - ${b}`;
 								}}
-								className="min-w-96"
+								className="min-w-56"
 							/>
 						</ButtonPopover>
 						<ButtonPopover title="Schedule" desc={

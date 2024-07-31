@@ -38,6 +38,8 @@ bin/
 ### Mac OS ###
 .DS_Store
 
+tmp/
+
 .kotlin
 
 .env

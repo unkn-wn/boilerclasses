@@ -307,8 +307,16 @@ function shuffle<T>(arr: T[]) {
 }
 
 if (values.proxies!==undefined) {
-	const prox: any[] = JSON.parse(await readFile(values.proxies, "utf-8"));
-	for (const p of prox) dispatchers.push(new ProxyAgent(p));
+	const prox: string[] = JSON.parse(await readFile(values.proxies, "utf-8"));
+	for (const p of prox) {
+		const parts = p.split(":");
+		if (parts.length!=2 && parts.length!=4)
+			throw `expected 2 (host,port) or 4 parts (host,port,user,pass) for proxy ${p}`;
+		dispatchers.push(new ProxyAgent({
+			uri: `http://${parts[0]}:${parts[1]}`,
+			token: parts.length==2 ? undefined : `Basic ${Buffer.from(`${parts[2]}:${parts[3]}`).toString('base64')}`
+		}));
+	}
 	shuffle(dispatchers);
 }
 

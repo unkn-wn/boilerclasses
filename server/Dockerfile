@@ -22,7 +22,7 @@ FROM base as runner
 
 WORKDIR /server
 
-COPY --from=builder server/scripts ./
+COPY --from=builder server/scripts ./scripts
 COPY shared /shared
 COPY --from=builder /server/build/install/boilerclasses ./boilerclasses
 COPY server/application.prod.conf application.conf

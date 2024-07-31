@@ -144,8 +144,8 @@ class Courses(val env: Environment, val log: Logger) {
 
                     if (mode>0) {
                         last=offset-start
-                        if (last>=termAttr.length)
-                            termBuf=termAttr.resizeBuffer(1+termAttr.length)
+                        if (last>=termBuf.size)
+                            termBuf=termAttr.resizeBuffer(1+last)
                         termBuf[last]=c.lowercaseChar()
                     }
 
@@ -219,9 +219,9 @@ class Courses(val env: Environment, val log: Logger) {
         "subject" to 100,
         "course" to 150,
         "subjectName" to 150,
-        "title" to 130,
-        "desc" to 15,
-        "instructor" to 20,
+        "title" to 150,
+        "desc" to 35,
+        "instructor" to 80,
         "prereq" to 10,
         "term" to 100,
     ).mapValues { it.value.toFloat()/10.0f }
@@ -371,17 +371,18 @@ class Courses(val env: Environment, val log: Logger) {
         val analyzer = queryFieldAnalyzer()
 
         val bq = BooleanQuery.Builder()
-        if (trimQuery.isNotEmpty()) makeQueryParser(analyzer).let { qp->
-            bq.add(qp.parse(trimQuery), BooleanClause.Occur.SHOULD)
-        }
+        val parser = makeQueryParser(analyzer)
+        if (trimQuery.isNotEmpty()) {
+            bq.add(parser.parse(trimQuery), BooleanClause.Occur.SHOULD)
 
-        for ((k,v) in weights) {
-            if (v<5) continue
-
-            val term = analyzer.normalize(k,trimQuery)
-            bq.add(BoostQuery(FuzzyQuery(Term(k, term)), v), BooleanClause.Occur.SHOULD)
-            bq.add(BoostQuery(PhraseQuery(k, term), v*2), BooleanClause.Occur.SHOULD)
-            bq.add(BoostQuery(PrefixQuery(Term(k, term)), v*3f), BooleanClause.Occur.SHOULD)
+            for ((k,v) in weights) {
+                val term = analyzer.normalize(k,trimQuery)
+                bq.add(BoostQuery(FuzzyQuery(Term(k, term)), v), BooleanClause.Occur.SHOULD)
+                parser.createPhraseQuery(k, trimQuery)?.let {
+                    bq.add(BoostQuery(it, v), BooleanClause.Occur.SHOULD)
+                }
+                bq.add(BoostQuery(PrefixQuery(Term(k, term)), v*3f), BooleanClause.Occur.SHOULD)
+            }
         }
 
         if (req.minCourse!=null || req.maxCourse!=null)

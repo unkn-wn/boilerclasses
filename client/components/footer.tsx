@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Anchor } from "./util";
 import { IconBrandGithubFilled, IconInfoCircleFilled } from "@tabler/icons-react";
 import { AppCtx } from "./wrapper";
+import { twMerge } from "tailwind-merge";
 
 function InfoModal() {
 	return <div className="pt-5 flex flex-col gap-3" >
@@ -16,10 +17,10 @@ function InfoModal() {
 	</div>;
 }
 
-export const Footer = () => {
+export const Footer = ({className}: {className?: string}) => {
 	const ctx = useContext(AppCtx);
 	return (
-		<div className='grid justify-center py-5'>
+		<div className={twMerge('grid justify-center py-5', className)} >
 			<h1 className='mx-2 text-gray-400 text-sm text-center break-words'>
 				<span className='flex items-center justify-center'>
 					<Anchor target="_blank" onClick={()=>ctx.open({type: "other", modal: <InfoModal/>})} >

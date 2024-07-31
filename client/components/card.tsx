@@ -13,6 +13,7 @@ export function Card({ course, id, frameless, termFilter, ...info }: CourseId&Se
   .find(s => s.scheduleType=="Distance Learning")!=undefined, [course]);
 
   const term = latestTerm(course, termFilter) ?? latestTerm(course)!;
+  const url = `/course/${id}?term=${term}`;
 
   const body = <CourseContext.Provider value={{
       course: course, info, 
@@ -40,7 +41,7 @@ export function Card({ course, id, frameless, termFilter, ...info }: CourseId&Se
 
   if (frameless) return (
     <div className="flex flex-col gap-1">
-      <Anchor href={`/course/${id}`} className="text-white hover:bg-inherit" >
+      <Anchor href={url} className="text-white hover:bg-inherit" >
         <h2 className="text-2xl font-display font-bold">
           {course.subject} {course.course}: {course.name}
         </h2>
@@ -49,7 +50,7 @@ export function Card({ course, id, frameless, termFilter, ...info }: CourseId&Se
     </div>
   );
   else return (
-    <AppLink href={`/course/${id}`}
+    <AppLink href={url}
       className="flex flex-col bg-zinc-800 gap-1 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer">
         <h2 className="text-xl font-display font-bold">{course.subject} {course.course}: {course.name}</h2>
         {body}

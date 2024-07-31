@@ -13,7 +13,7 @@ import { AppLink } from "./clientutil";
 
 export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>&Partial<LinkProps>> = ({className,href,...props}) => {
 	const classN = twMerge(
-	`text-gray-300 inline-flex align-middle items-center gap-1 underline decoration-dashed decoration-1
+	`text-gray-300 inline-flex flex-row align-middle items-center gap-1 underline decoration-dashed decoration-1
 		underline-offset-2 transition-all hover:text-gray-50 hover:bg-cyan-100/5 cursor-pointer`,className
 	);
 	if (href!=undefined)
@@ -51,7 +51,7 @@ export const Chip = ({className, ...props}: HTMLAttributes<HTMLSpanElement>) =>
 
 export const StatusPage = ({children, title}: {children: React.ReactNode, title: string}) =>
 	<>
-		<div className="flex h-screen flex-col justify-between items-center py-20 px-5" >
+		<div className="flex h-dvh flex-col justify-between items-center py-20 px-5" >
 			<AppLink href="/" ><LogoText/></AppLink>
 			<div className="flex flex-col lg:w-96" >
 				<h1 className="font-display font-extrabold text-4xl mb-4" >{title}</h1>
@@ -67,7 +67,7 @@ export const StatusPage = ({children, title}: {children: React.ReactNode, title:
 export function ButtonPopover({children, className, title, desc}: {children: React.ReactNode, className?: ClassNameValue, title: string, desc?: string}) {
 	return <Popover placement="bottom" showArrow triggerScaleOnOpen={false} >
 		<PopoverTrigger>
-			<button className={twMerge("flex flex-row gap-2 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700 aria-expanded:border-blue-500 outline-none flex-1 md:flex-none", className)} >
+			<button className={twMerge("flex justify-between flex-row gap-2 px-2 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700 aria-expanded:border-blue-500 outline-none flex-1 md:flex-none", className)} >
 				<div className="flex flex-col items-start justify-center" >
 					<span>{title}</span>
 					<span className="text-gray-300 text-sm" >{desc}</span>

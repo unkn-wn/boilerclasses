@@ -6,7 +6,7 @@ import attributeToGenEd from "../../attributeToGenEd.json";
 import { abbr, Anchor, CatalogLinkButton, Chip, firstLast, gpaColor, LinkButton, Loading, selectProps } from "@/components/util";
 import { Footer } from "@/components/footer";
 import { AppCtx, AppWrapper, useAPI } from "@/components/wrapper";
-import { useContext, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import boilerexamsCourses from "../../boilerexamsCourses.json";
 import boilerexams from "../../../public/boilerexams-icon.png";
 import reddit from "../../../public/reddit-icon.png";
@@ -114,7 +114,7 @@ function InstructorSemGPA({xs, all}: {xs: Instructor[], all: Instructor[]}) {
 								<p className='text-zinc-200 text-xs'>{sections} section{sections==1?"":"s"}</p>
 							</div>
 							<Anchor onClick={() => cc.selTerm(sem)}
-								className='text-zinc-500 mx-auto text-sm'>{formatTerm(sem)}</Anchor>
+								className='text-zinc-400 text-center text-sm'>{formatTerm(sem)}</Anchor>
 						</div>
 					))}
 				</div>
@@ -129,7 +129,18 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 		.filter(x=>x!=undefined);
 
 	const latest = latestTerm(course)!;
-	const [term, setTerm] = useState<Term>(latest);
+	const [termO, setTerm] = useState<Term|null>(null);
+	const term = termO ?? latest;
+
+	useEffect(()=>{
+		const searchTerm = new URL(window.location.href).searchParams.get("term");
+		if (searchTerm!=null && Object.keys(info.terms).includes(searchTerm))
+			setTerm(searchTerm as Term);
+	}, []);
+
+	useEffect(()=> {
+		if (termO!=null) window.history.replaceState(null,"",`?term=${termO}`);
+	}, [term]);
 
 	const instructors = instructorsForTerm(course, term) ?? [];
 
@@ -144,7 +155,7 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 
 	const wrapProfStats = (title: React.ReactNode, inner: React.ReactNode) => (<>
 		<h2 className="text-2xl font-display font-extrabold mb-5" >{title}</h2>
-		<input autoFocus type="text" placeholder="Filter instructors..."
+		<input type="text" placeholder="Filter instructors..."
 			value={instructorSearch} onChange={v => setInstructorSearch(v.target.value)}
 			className="text-white text-md bg-neutral-950 w-full p-2 border-2 border-zinc-900 focus:outline-none focus:border-blue-500 transition duration-300 rounded-lg mb-5" >
 		</input>
@@ -173,12 +184,12 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 			else app.open({type: "error", name: "Term not available",
 				msg: "We don't have data for this semester"})
 		}, selSection:setSection
-	}} ><div className={`flex flex-col h-screen min-h-screen container mx-auto p-5 mt-5 gap-5`}>
+	}} ><div className={`flex flex-col h-dvh container mx-auto p-5 mt-5 gap-5`}>
 		<div className="flex md:flex-row flex-col gap-4 items-stretch relative" >
 
 			{/* Left half of panel */}
 			<div className="flex flex-col md:mr-3 justify-start h-full basis-5/12 md:flex-shrink-0">
-				<div className='flex flex-row gap-1 align-middle'>
+				<div className='flex flex-row gap-3 align-middle'>
 					<Anchor
 						className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition md:absolute md:-left-10'
 						onClick={app.back} >
@@ -189,7 +200,7 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 				</div>
 
 				<div className="flex flex-col gap-4 -mt-3 mb-1">
-					<div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
+					<div className="flex flex-row flex-wrap mb-1 items-center">
 
 						{/* Credits Display */}
 						<p className="text-sm text-gray-400 font-bold">
@@ -223,7 +234,9 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 					<div className="flex flex-wrap flex-row items-center gap-3 text-sm" >
 						Data from <Select
 							options={Object.keys(course.sections)
-								.map(x => ({label: formatTerm(x as Term), value: x as Term}))}
+								.map((x):[number,Term]=>[termIdx(x as Term),x as Term])
+								.sort((a,b)=>b[0]-a[0])
+								.map(([_,x]) => ({label: formatTerm(x), value: x}))}
 							value={{label: formatTerm(term), value: term}}
 							onChange={(x: SingleValue<{label: string, value: Term}>) => setTerm(x!.value)}
 							{...selectProps}

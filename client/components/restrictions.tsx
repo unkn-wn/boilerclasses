@@ -12,7 +12,7 @@ function RestrictionCard({mid,pre,post,exclusive}: {mid:string,pre:string,post:s
 					className="text-blue-300 inline" >
 					{collapsed ? `...show more` : "Show less"}</Anchor>;
 
-	return <div className={`flex flex-row gap-2 p-2 first:rounded-t-xl last:rounded-b-xl ${exclusive ? "bg-red-900" : "bg-yellow-800"}`} >
+	return <div className={`flex flex-row gap-2 p-2 first:rounded-t-xl last:rounded-b-xl ${exclusive ? "bg-rose-900" : "bg-amber-900"}`} >
 		<span className="flex-shrink-0" >
 			{exclusive ? <IconBan size={20} /> : <IconCircleCheck size={20}/>}
 		</span>
@@ -37,7 +37,7 @@ function RestrictionEl<T extends Restriction["type"], E extends boolean>({restri
 		return `${s.length>1 ? s.slice(0,-1).join(", ")+" or " : ""}${s[s.length-1]}`;
 	}
 
-	const s = r.length>0?"s":"";
+	const s = r.length!=1?"s":"";
 	switch (type) {
 		case "class": mid=joinOr<"class">(x=>{
 			let b = `${x.class=="Freshman" ? "Freshmen" : `${x.class}s`}`
