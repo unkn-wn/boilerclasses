@@ -1,8 +1,13 @@
+FROM node:22-alpine3.19 as nodejs
+
 FROM eclipse-temurin:22-alpine AS base
 
-FROM base as builder
+COPY --from=nodejs /usr/lib /usr/lib/
+COPY --from=nodejs /usr/local/lib /usr/local/lib/
+COPY --from=nodejs /usr/local/include /usr/local/include/
+COPY --from=nodejs /usr/local/bin /usr/local/bin/
 
-RUN apk update && apk add --no-cache nodejs npm
+FROM base as builder
 
 WORKDIR /server
 
@@ -27,4 +32,6 @@ COPY shared /shared
 COPY --from=builder /server/build/install/boilerclasses ./boilerclasses
 COPY server/application.prod.conf application.conf
 
+HEALTHCHECK --interval=5m --timeout=1s \
+  CMD curl -s -o /dev/null -w "%{http_code}" -X POST localhost:9000/info | grep -q 200 || exit 1
 CMD ./boilerclasses/bin/boilerclasses

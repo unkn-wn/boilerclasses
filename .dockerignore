@@ -2,6 +2,8 @@ server/.*
 server/*.iml
 
 server/build
+server/.kotlin
+server/.idea
 
 server/application.conf
 server/proxies.json
