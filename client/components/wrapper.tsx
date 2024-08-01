@@ -21,15 +21,24 @@ export type AppCtx = {
 
 export const AppCtx = React.createContext<AppCtx>("context not initialized" as any)
 
-export function usePromise<R>(f: (rerun: () => void) => Promise<R>, deps: any[]): R|null {
+export function usePromise<R>(f: (rerun: () => void, abort: AbortController) => Promise<R>, deps: any[]): R|null {
 	const [ret, setRet] = useState<R|null>(null);
+
 	useEffect(() => {
+		const abort = new AbortController();
+
 		const attempt = () => f(() => {
+			if (abort.signal.aborted) return;
 			setRet(null);
 			attempt();
-		}).then(setRet);
+		}, abort).then((x) => {
+			if (!abort.signal.aborted) setRet(x);
+		});
+
 		attempt();
+		return () => abort.abort();
 	}, deps);
+
 	return ret;
 }
 
@@ -39,11 +48,14 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 	const c = useContext(AppCtx);
 
 	const body = JSON.stringify(data); //hehe, cursed
-	return usePromise(async (rerun) => {
+	return usePromise(async (rerun, abort) => {
 		try {
 			const resp = await (await fetch(`/api/${endpoint}`, {
-				method: method ?? "POST", body: data==undefined ? undefined : body
+				method: method ?? "POST", body: data==undefined ? undefined : body,
+				signal: abort.signal
 			})).json() as ServerResponse<R>;
+
+			if (abort.signal.aborted) return null;
 
 			if (resp.status=="error") {
 				const recover = handleErr?.(resp);
@@ -67,6 +79,8 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 				return {res: resp.result, endpoint, req: data};
 			}
 		} catch(e) {
+			if (abort.signal.aborted) return null;
+
 			console.error(`Fetching ${endpoint}: ${e}`);
 
 			c.open({

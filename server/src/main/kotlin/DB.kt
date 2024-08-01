@@ -30,7 +30,8 @@ object InstantSerializer : KSerializer<Instant> {
 }
 
 class DB(env: Environment) {
-    val db = Database.connect("jdbc:sqlite:${Path(env.getProperty("db.path")!!).absolutePathString()}?foreign_keys=on", "org.sqlite.JDBC")
+    val db = Database.connect("jdbc:sqlite:${
+        Path("./data/db.sqlite").absolutePathString()}?foreign_keys=on", "org.sqlite.JDBC")
     val rng = SecureRandom()
 
     fun genKey(): String {

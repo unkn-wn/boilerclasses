@@ -2,7 +2,6 @@
 
 import { IconArrowLeft } from "@tabler/icons-react";
 import { Course, CourseId, creditStr, emptyInstructorGrade, formatTerm, Instructor, InstructorGrade, InstructorGrades, instructorsForTerm, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx } from "../../../../shared/types";
-import attributeToGenEd from "../../attributeToGenEd.json";
 import { abbr, Anchor, CatalogLinkButton, Chip, firstLast, gpaColor, LinkButton, Loading, selectProps } from "@/components/util";
 import { Footer } from "@/components/footer";
 import { AppCtx, AppWrapper, useAPI } from "@/components/wrapper";
@@ -18,10 +17,12 @@ import React from "react";
 import { ProfLink } from "@/components/proflink";
 import Graph from "@/components/graph";
 import { InstructorList } from "@/components/instructorlist";
-import { CourseContext } from "@/components/clientutil";
+import { AppTooltip, CourseContext } from "@/components/clientutil";
 import { Calendar, calendarDays } from "@/components/calendar";
 import { Prereqs } from "@/components/prereqs";
 import { Restrictions } from "@/components/restrictions";
+import { SimilarCourses } from "@/components/similar";
+import { CourseChips, GPAIndicator } from "@/components/card";
 
 function InstructorGradeView({xs,type}: {xs: Instructor[], type:"rmp"|"gpa"}) {
 	const cc=useContext(CourseContext);
@@ -114,7 +115,7 @@ function InstructorSemGPA({xs, all}: {xs: Instructor[], all: Instructor[]}) {
 								<p className='text-zinc-200 text-xs'>{sections} section{sections==1?"":"s"}</p>
 							</div>
 							<Anchor onClick={() => cc.selTerm(sem)}
-								className='text-zinc-400 text-center text-sm'>{formatTerm(sem)}</Anchor>
+								className='text-zinc-400 text-sm justify-center'>{formatTerm(sem)}</Anchor>
 						</div>
 					))}
 				</div>
@@ -124,10 +125,6 @@ function InstructorSemGPA({xs, all}: {xs: Instructor[], all: Instructor[]}) {
 }
 
 function CourseDetail({course, id, info}: {course: Course, id:string, info: ServerInfo}) {
-	const scheduleTypes = [...new Set(Object.values(course.sections).flat().map(x => x.scheduleType))];
-	const geneds = course.attributes.map(x => attributeToGenEd[x as keyof typeof attributeToGenEd])
-		.filter(x=>x!=undefined);
-
 	const latest = latestTerm(course)!;
 	const [termO, setTerm] = useState<Term|null>(null);
 	const term = termO ?? latest;
@@ -139,8 +136,9 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 	}, []);
 
 	useEffect(()=> {
-		if (termO!=null) window.history.replaceState(null,"",`?term=${termO}`);
-	}, [term]);
+		if (termO!=null)
+			window.history.replaceState(null,"",termO==latest ? "?" : `?term=${termO}`);
+	}, [termO]);
 
 	const instructors = instructorsForTerm(course, term) ?? [];
 
@@ -208,29 +206,10 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 						</p>
 
 						{/* Separator Display */}
-						{(geneds.length > 0 || scheduleTypes.length > 0) &&
-							<span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
-
-						{/* Schedule Type Display */}
-						{scheduleTypes.map((s, i) => (
-							<Chip className="bg-purple-600 border-purple-800" key={s}> {s} </Chip>
-						))}
-
-						{/* Latest Semester Display */}
-						<Chip className="bg-sky-600 border-sky-800" >
-							{formatTerm(term)}
-						</Chip>
-
-						{/* Gened Type Display */}
-						{geneds.map((gened, i) => (
-							<span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
-								key={i}>
-								{gened}
-							</span>
-						))}
+						<span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
+						<CourseChips/>
 					</div>
-					{/* <p>{course.gpa[""]}</p> */}
-
+					
 					<div className="flex flex-wrap flex-row items-center gap-3 text-sm" >
 						Data from <Select
 							options={Object.keys(course.sections)
@@ -254,9 +233,10 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 					<InstructorList/>
 				</div>
 
-
 				{/* Other Links Buttons */}
-				<div className="flex flex-row flex-wrap my-2 gap-2">
+				<div className="flex flex-row flex-wrap my-2 gap-2 items-center">
+					<GPAIndicator/>
+
 					<LinkButton href={`https://www.reddit.com/r/Purdue/search/?q=${course.subject}${course.course.toString().replace(/00$/, '')} OR "${course.subject} ${course.course.toString().replace(/00$/, '')}" OR ${
 							instructors.map(x => `"${firstLast(x.name)}"`).join(" OR ")
 						}`} target="_blank" rel="noopener noreferrer" className="bg-orange-600 hover:bg-orange-700 transition-background duration-300 ease-out"
@@ -329,6 +309,7 @@ function CourseDetail({course, id, info}: {course: Course, id:string, info: Serv
 		</div>
 
 		{!smallCalendar && <Calendar />}
+		<SimilarCourses/>
 
 		<div className='mt-auto'>
 			<Footer />

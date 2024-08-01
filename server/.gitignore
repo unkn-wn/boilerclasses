@@ -43,7 +43,6 @@ tmp/
 .kotlin
 
 .env
-db.sqlite
 application.conf
 
 proxies.json

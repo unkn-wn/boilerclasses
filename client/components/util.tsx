@@ -46,7 +46,7 @@ export const Loading = (props: SpinnerProps) => <div className="h-full w-full fl
 </div>
 
 export const Chip = ({className, ...props}: HTMLAttributes<HTMLSpanElement>) =>
-	<span className={twMerge("text-sm px-3 py-1 mx-1 my-1 rounded-full border-solid border border-gray-300 bg-gray-600 whitespace-nowrap", className)}
+	<span className={twMerge("text-xs px-3 py-1 mx-0.5 my-0.5 rounded-full border-solid border border-gray-300 bg-gray-600 whitespace-nowrap", className)}
 		{...props} >{props.children}</span>
 
 export const StatusPage = ({children, title}: {children: React.ReactNode, title: string}) =>
@@ -75,7 +75,7 @@ export function ButtonPopover({children, className, title, desc}: {children: Rea
 				<IconChevronDown />
 			</button>
 		</PopoverTrigger>
-		<PopoverContent className='bg-zinc-900 border-gray-800 p-5 pt-3'>
+		<PopoverContent className='bg-zinc-900 border-gray-800 p-5 pt-3' >
 			{children}
 		</PopoverContent>
 	</Popover>;

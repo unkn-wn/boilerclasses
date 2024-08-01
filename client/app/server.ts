@@ -1,13 +1,12 @@
-"use server" //like you shouldn't use any of these from client so this is useless
-
 //utilities for server...
+//you shouldn't use any of these from non-server components
 
 import { notFound } from "next/navigation";
 import { CourseId, ServerInfo, ServerResponse } from "../../shared/types";
 
 //a much worse api wrapper for server
 export const api = <T,>(endpoint: string, data?: any): Promise<T> =>
-	fetch(`${process.env.SERVER}/${endpoint}`, {
+	fetch(`${process.env.SERVER_URL}/${endpoint}`, {
 		method: "POST",
 		body: data==undefined ? undefined : JSON.stringify(data),
 		cache: "no-store"

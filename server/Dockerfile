@@ -1,4 +1,4 @@
-FROM node:22-alpine3.19 as nodejs
+FROM node:22-alpine3.19 AS nodejs
 
 FROM eclipse-temurin:22-alpine AS base
 
@@ -7,7 +7,7 @@ COPY --from=nodejs /usr/local/lib /usr/local/lib/
 COPY --from=nodejs /usr/local/include /usr/local/include/
 COPY --from=nodejs /usr/local/bin /usr/local/bin/
 
-FROM base as builder
+FROM base AS builder
 
 WORKDIR /server
 
@@ -23,7 +23,9 @@ RUN ./gradlew wrapper --gradle-version latest
 COPY server .
 RUN ./gradlew installDist
 
-FROM base as runner
+FROM base AS runner
+
+RUN apk add --no-cache curl bash
 
 WORKDIR /server
 
@@ -33,5 +35,5 @@ COPY --from=builder /server/build/install/boilerclasses ./boilerclasses
 COPY server/application.prod.conf application.conf
 
 HEALTHCHECK --interval=5m --timeout=1s \
-  CMD curl -s -o /dev/null -w "%{http_code}" -X POST localhost:9000/info | grep -q 200 || exit 1
+  CMD curl -s -o /dev/null -w "%{http_code}" -X POST localhost:8080/info | grep -q 200 || exit 1
 CMD ./boilerclasses/bin/boilerclasses

@@ -8,10 +8,13 @@ import io.jooby.exception.NotFoundException
 import io.jooby.kt.runApp
 import io.jooby.netty.NettyServer
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+import java.io.File
+import kotlin.random.Random
 
 val json = Json {
     classDiscriminatorMode= ClassDiscriminatorMode.NONE
@@ -75,6 +78,9 @@ inline fun<reified T> Context.resp(x: T): Context {
 }
 
 suspend fun main(args: Array<String>) = coroutineScope {
+    if (!File("./data").isDirectory)
+        throw RuntimeException("the server should be run alongside a data directory for courses and DB")
+
     runApp(args) {
         val db = DB(environment)
         val courses = Courses(environment, log)
@@ -127,6 +133,12 @@ suspend fun main(args: Array<String>) = coroutineScope {
                             put("course", Json.encodeToJsonElement(it))
                         }
                     })
+                }
+            }
+
+            post("/similar") {
+                ctx.json<String>().let {
+                    ctx.resp(courses.similarCourses(it))
                 }
             }
 

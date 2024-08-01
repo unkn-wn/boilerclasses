@@ -4,6 +4,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.json.*
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.util.Locale
 
 // just stowing the bodies here 🪦
 object CourseData {
@@ -46,8 +50,17 @@ object CourseData {
     @Serializable
     data class SectionTime(
         val day: String,
-        val time: String
-    )
+        val time: String,
+    ) {
+        companion object {
+            val formatter = DateTimeFormatterBuilder().parseCaseInsensitive()
+                .appendPattern("h:mm a").toFormatter(Locale.ENGLISH)
+        }
+
+        fun toTimes(): List<LocalTime> = time.split(" - ").map {
+            LocalTime.parse(it, formatter)
+        }
+    }
 
     @Serializable
     data class SectionInstructor(
@@ -214,6 +227,15 @@ object CourseData {
         fun prereqs(): PreReqs? = when (prereqs) {
             is JsonObject -> Json.decodeFromJsonElement<PreReqs>(prereqs)
             else -> null
+        }
+
+        fun avgGPA(terms: Set<String>?): Double? = instructor.values.flatMap {
+            if (terms==null) it.values else it.filterKeys { x->terms.contains(x) }.values
+        }.map {
+            (it.gpa ?: 0.0)*it.gpaSections.toDouble() to it.gpaSections
+        }.reduceOrNull { acc, pair -> acc.first + pair.first to acc.second + pair.second }?.let {
+            if (it.second==0) null
+            else it.first/it.second.toDouble()
         }
     }
 

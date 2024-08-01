@@ -10,7 +10,8 @@ COPY client .
 COPY shared /shared
 
 ARG SERVER_URL
-ENV SERVER ${SERVER_URL}
+ARG NEXT_PUBLIC_ROOT_URL
+ARG NEXT_PUBLIC_GTM_ID
 
 RUN npm run build
 CMD ["npm", "run", "start"]

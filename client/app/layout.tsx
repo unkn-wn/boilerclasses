@@ -12,6 +12,8 @@ const desc = "BoilerClasses (Boiler Classes) - Purdue's course catalog with over
 const title="BoilerClasses - Purdue Course Catalog";
 const url = process.env.NEXT_PUBLIC_ROOT_URL!;
 const domain = new URL(url).host;
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID!==undefined && process.env.NEXT_PUBLIC_GTM_ID.length>0
+  ? process.env.NEXT_PUBLIC_GTM_ID : null;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -47,8 +49,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
 
         <link rel="canonical" href={url} />
 
-        {process.env.NEXT_PUBLIC_GTM_ID!==undefined &&
-          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />}
+        {gtmId!=null && <GoogleTagManager gtmId={gtmId} />}
       </head>
       <body>
         {children}

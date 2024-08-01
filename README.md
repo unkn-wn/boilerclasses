@@ -1,69 +1,56 @@
 # [BoilerClasses](https://www.boilerclasses.com/)
 
-
-
-https://github.com/unkn-wn/boilerclasses/assets/43097991/6c5121e0-797f-48ab-ace8-6ce5a05859e2
-
-
-
 # Structure
-BoilerClasses is a simple [Next.js](https://nextjs.org/) app with a few Python helper files to format and organize the data. We use a [Redis](https://redis.io/) instance to store and rapidly query all our data. 
+BoilerClasses combines a [Next.js](https://nextjs.org/) with a [Kotlin](https://kotlinlang.org/) + [Jooby](https://jooby.io/) backend using [Apache Lucene](https://lucene.apache.org/) to provide an enhanced course catalog.
 
-We use [Fly.io](https://fly.io/) through [Docker](https://www.docker.com/) to host our app. More steps to run the Docker container through our Dockerfile can be found below. 
+We use [Docker](https://www.docker.com/), specifically Compose, to host our app.
 
 # Setup
 You can clone this repository and run a local instance of the app in two ways (with or without Docker):
 
-## With Docker
-Make sure you have `docker` installed and the daemon running. More information about installation can be found [here](https://docs.docker.com/get-docker/). Once you get that up and running, navigate into the cloned repository and run:
-
-```
-docker build . -t boilerclasses
-```
-After the image is created, run:
-```
-docker run -it -p 3000:3000 boilerclasses
-```
-This will expose the container's port `3000` to your machine. Navigate to `localhost:3000` to view the app! You can edit whatever files you want locally, but you'll have to rebuild the image every time you want to view your changes. Thus, not ideal for quick changes.
-
 ## Without Docker
-1. Firstly, make sure you have [python](https://www.python.org/downloads/), [node](https://nodejs.org/en/download/), and [redis](https://redis.io/docs/install/install-redis/) installed.
+When developing, you should run the server and client in development mode, without Docker.
+
+1. Firstly, make sure you have [node](https://nodejs.org/en/download/) installed.
 2. Then, navigate into the `server` directory and run the following commands:
    ```
-   python3 download.py
-   python3 harmonize.py
+   wget boilerclasses.com/data -O ./data/courses.json
    ```
-   `download.py` will download JSON files for you from our [S3 bucket](https://s3.amazonaws.com/boilerclasses) and `harmonize.py` will combine these to give you a single JSON file containing all the information required. More details regarding what these files do are coming soon.  
-3. Now, you want to spawn a Redis instance at the port `6379`. To do this, run the following command:
+   This downloads a single JSON file containing all the information required. Its format is fully specified by shared/types.ts
+3. Once you have the data for the server, you can run it. Create application.conf, and enter
+   ```dotenv
+   server.port=8080
    ```
-   redis-server --daemonize yes
-   ```
-   The `daemonize` argument will make it run in the background. Alternatively, if you have docker but don't want to install redis-server, you can run:
-   ```
-   docker run --name boilerclasses-redis -i --rm -p 6379:6379 redis/redis-stack-server:latest redis-stack-server --save
-   ```
-   Functionally, both of the above commands are equivalent. 
-5. Once you have that, you can push all the data from the JSON file generated in step 2 to the Redis instance. To do this, run:
-   ```
-   python3 push.py
-   ```
-6. Now, navigate back to the root directory and run:
+   to set the port. Then either run/debug using a Kotlin IDE of your choice (you should probably use IntelliJ), or type `./gradlew run`
+4. Now that the server is up, you can run the client by navigating to the ``client`` directory and running:
    ```
    npm install
    npm run dev
    ```
    Now, you can make changes within the Next.js app and have them reflect in real-time at `localhost:3000`.
 
-   PS: if you look at the Dockerfile, you can see that these exact commands are run!
+## With Docker (deployment)
+First, configure the deployment by using a .env file or other. Here's an example:
+```dotenv
+DATA_SOURCE=/home/you/boilerclasses/data
+PROXIES_PATH=/home/you/boilerclasses/proxies.json
+SCRAPE_ARGS="-p /run/secrets/proxies"
+SCRAPE_INTERVAL=360 # in minutes
+ROOT_URL=http://localhost:8000
+```
+
+`DATA_SOURCE` creates a bind mount to persist data, and `PROXIES_PATH` (if specified) mounts the file from the location to `/run/secrets/proxies` use as proxies when scraping data (if they're referenced in `SCRAPE_ARGS` as above). If you don't have any proxies, leave it blank and remove the arguments from `SCRAPE_ARGS`.
+
+Make sure you have `docker` installed and the daemon running. More information about installation can be found [here](https://docs.docker.com/get-docker/). Once you get that up and running, navigate into the cloned repository and run:
+
+```
+docker compose up -d
+```
+
+This will expose the app at `localhost:8000`. You can edit whatever files you want locally, but you'll have to rebuild the image every time you want to view your changes. Thus, not ideal for quick changes.
 
 # Data Collection
-There are four scripts in the `server` directory that aid with data collection:
-1. `scrape.py` scrapes a particular semester's data from Purdue's catalog. Generates a singular JSON file for a semester.
-3. `download.py` either downloads the data from our [S3 bucket](https://s3.amazonaws.com/boilerclasses), or runs `scrape.py` for every semester. The default is downloading because it's faster.
-4. `harmonize.py` combines all the JSON files downloaded and makes one JSON containing all the data required.
-5. `push.py` pushes the data from the resultant JSON from `harmonize.py` to the Redis instance.
-
-Running the `scrape.py` script might give you issues, but feel free to tweak line ~42 where the driver is initialized. It is somewhat system-dependent -- that configuration should work on MacOS with a Google Chrome driver and `selenium v4.x`. If you want more clarification/help, open up an [issue](https://github.com/unkn-wn/boilerclasses/issues)!
+Use `npx tsx server/scripts/fetch.ts` to fetch data. To see the arguments, take a look at the parseArgs invocation (I'm too lazy to document things here, but its pretty straightforward). Errors while running due to invalid prerequsities are expected for some terms, though no courses should be dropped. `fetch.ts` scrapes the Purdue Catalog, RateMyProfessor, and BoilerGrades in turn.
 
 # Future Improvements
 We're trying to integrate as many features as possible, and we'll have open issues for the same. If you find a *bug* or have any *feedback*, let us through a [PR](https://github.com/unkn-wn/boilerclasses/pulls) or our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLScoE5E-G7dbr7-v9dY5S7UeIoojjMTjP_XstLz38GBpib5MPA/viewform). All contributions are very, very welcome!

@@ -75,6 +75,12 @@ export function Prereqs({prereqs, isChild}: {prereqs: PreReqs, isChild?: boolean
 		<Prereq prereq={prereqs.leaf} />
 	</div>;
 
+	if (prereqs.type=="and" && !isChild) {
+		return <div className="flex flex-col gap-2" >
+			{prereqs.vs.map((v,i) => <Prereqs isChild key={i} prereqs={v} />)}
+		</div>
+	}
+
 	return <div className={`flex flex-col relative border ${prereqs.type=="and" ? "border-amber-500 bg-amber-800" : "border-sky-300 bg-sky-900"} py-4 pl-3 mt-4 rounded-l-xl ${
 			isChild ? "border-r-0" : "rounded-r-xl" }`} >
 		<div className={`absolute left-10 top-0 transform -translate-y-1/2 py-1 px-4 rounded-t-md ${prereqs.type=="and" ? "bg-amber-800" : "bg-sky-900"}`} >

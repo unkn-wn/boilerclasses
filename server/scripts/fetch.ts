@@ -1,6 +1,6 @@
 import { abort, exit } from "node:process";
 import { isDeepStrictEqual, parseArgs } from 'node:util';
-import { Day, PreReqs, Restriction, termPre, validDays,Section,Course,PreReq,levels, Level, Grade, grades, CourseLikePreReq, Seats, normalizeName, gradeGPA, RMPInfo, Data, Term, InstructorGrade, toInstructorGrade, mergeGrades, termIdx  } from "../../shared/types";
+import { Day, PreReqs, Restriction, termPre, validDays,Section,Course,PreReq,levels, Level, Grade, grades, CourseLikePreReq, Seats, normalizeName, gradeGPA, RMPInfo, Data, Term, InstructorGrade, toInstructorGrade, mergeGrades, termIdx, formatTerm  } from "../../shared/types";
 import assert from "node:assert";
 import * as cheerio from "cheerio";
 import { Cheerio } from "cheerio";
@@ -278,10 +278,7 @@ const {values, positionals} = parseArgs({
 	}
 });
 
-if (values.term==undefined) {
-	console.error("term not provided");
-	abort();
-} else if (values.output==undefined) {
+if (values.output==undefined) {
 	console.error("no output file");
 	abort();
 }
@@ -320,14 +317,14 @@ if (values.proxies!==undefined) {
 	shuffle(dispatchers);
 }
 
-let termTy:string|undefined, termYear:number|undefined;
-for (const ty of termPre) {
+let termTy:string|null=null, termYear:number|null=null;
+if (values.term!=undefined) for (const ty of termPre) {
 	if (values.term.startsWith(ty))
 		termTy=ty, termYear=Number.parseInt(values.term.slice(ty.length));
 }
 
-assert(termTy!==undefined && termYear!==undefined, "invalid term");
-const t = `${termTy}${termYear}` as Term, idx=termIdx(t);
+if (termTy==null || termYear==null)
+	console.log("term invalid or not specified, using latest");
 
 const dispatcherWait = 1000, dispatcherErrorWait = 30_000;
 
@@ -436,13 +433,27 @@ const ords = ["first","second","third","fourth","fifth","sixth","seventh","eight
 
 const terms = await getHTML("https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched");
 const termList = terms("select[name=\"p_term\"]").children()
-	.toArray().map(e => [terms(e).text().trim(), e.attribs.value]);
-const termFormatted = `${termTy[0].toUpperCase()}${termTy.slice(1)} ${termYear}`;
-const termId = termList.find(([k,v]) => k.startsWith(termFormatted))?.at(1);
+	.toArray()
+	.filter(x=>x.attribs.value!==undefined && x.attribs.value.length>0)
+	.map((e):[string,string] => [terms(e).text().trim(), e.attribs.value]);
 
-if (termId==undefined) throw "term not found";
+let t: Term|undefined, idx: number=-1, termId: string|undefined;
+if (termTy!=null && termYear!=null) {
+	t = `${termTy}${termYear}` as Term, idx=termIdx(t);
+	termId = termList.find(([k,v]) => k.startsWith(formatTerm(t!)))?.at(1);
+} else {
+	for (const [k,v] of termList) {
+		const id = k.split(" ").slice(0,2).join("").toLowerCase() as Term;
+		if (termIdx(id)>idx) {
+			t=id, idx=termIdx(id), termId=v;
+		}
+	}
+}
 
-console.log("fetching subjects");
+if (t==undefined || termId==undefined)
+	throw "term not found";
+
+console.log(`fetching subjects for term ${formatTerm(t)}`);
 const courseSearch = await postHTML("https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_cat_term_date", [
 	["call_proc_in", "bwckctlg.p_disp_dyn_ctlg"],
 	["cat_term_in", termId]
@@ -1019,7 +1030,7 @@ const d: Data = {
 	terms: {
 		...data.terms,
 		[t]: {
-			id: termId, name: termFormatted,
+			id: termId, name: formatTerm(t),
 			lastUpdated: (new Date()).toISOString()
 		} as Data["terms"]["fall0"]
 	},

@@ -22,6 +22,8 @@ export type SearchState = {
 	minCourse?: number, maxCourse?: number,
 	subjects: string[], terms: Term[],
 	scheduleType: string[],
+	minGPA?: number, maxGPA?: number,
+	minMinute?: number, maxMinute?: number,
 	page: number
 };
 
@@ -32,7 +34,8 @@ const defaultSearchState: SearchState = {
 const spec: Record<keyof SearchState, "array"|"number"|"string"> = {
 	query: "string", minCredits: "number", maxCredits: "number",
 	attributes: "array", minCourse: "number", maxCourse: "number",
-	subjects: "array", terms: "array", scheduleType: "array", page: "number"
+	subjects: "array", terms: "array", scheduleType: "array", page: "number",
+	minGPA: "number", maxGPA: "number", minMinute: "number", maxMinute: "number"
 };
 
 export function encodeToQuery(x: any) {
@@ -86,6 +89,17 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 		}
 	};
 
+	const renderRange = (a?: number, b?: number) =>
+		a!=undefined ? (b!=undefined ? `${a} - ${b}` : `${a}+`) : (b!=undefined ? `up to ${b}` : undefined);
+	const renderTime = (x: number) => {
+		const h = Math.floor(x/60), m=Math.round(x)%60;
+		const h2 = (h+11)%12 +1, m2=m<10 ? `0${m}` : m;
+		return `${h2}:${m2} ${h>=12 ? "p" : "a"}m`;
+	};
+	const renderTimeRange = (a?: number, b?: number) =>
+		a!=undefined ? (b!=undefined ? `${renderTime(a)} - ${renderTime(b)}` : `after ${renderTime(a)}`)
+			: (b!=undefined ? `before ${renderTime(b)}` : undefined);
+
 	const api = useAPI<ServerSearch,SearchState>("search", {data: searchState, method: "POST"});
 
 	const cond = api!=null && api.res.npage<=searchState.page;
@@ -96,6 +110,8 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 	let activeFilters=[];
 	if (searchState.minCourse!=undefined || searchState.maxCourse!=undefined) activeFilters.push("level");
 	if (searchState.minCredits!=undefined || searchState.maxCredits!=undefined) activeFilters.push("credits");
+	if (searchState.minGPA!=undefined || searchState.maxGPA!=undefined) activeFilters.push("GPA");
+	if (searchState.minMinute!=undefined || searchState.maxMinute!=undefined) activeFilters.push("time");
 	if (searchState.scheduleType.length>0) activeFilters.push("schedule");
 	if (searchState.attributes.length>0) activeFilters.push("attributes");
 	if (searchState.terms.length>0) activeFilters.push("semester");
@@ -159,12 +175,8 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 				</Collapse>
 				
 				<div className="flex flex-row justify-between items-end w-full gap-2 flex-wrap" >
-					{!filtersCollapsed ? <div className="flex flex-row items-stretch gap-2 flex-1 md:flex-none" >
-						<ButtonPopover title="Credits" desc={
-							searchState.minCredits!=undefined ? (searchState.maxCredits!=undefined
-								? `${searchState.minCredits} - ${searchState.maxCredits}` : `${searchState.minCredits}+`)
-								: (searchState.maxCredits!=undefined ? `up to ${searchState.maxCredits}` : undefined)
-						} >
+					{!filtersCollapsed ? <div className="flex flex-row items-stretch gap-2 flex-1 md:flex-none flex-wrap" >
+						<ButtonPopover title="Credits" desc={renderRange(searchState.minCredits, searchState.maxCredits)} >
 							<Slider label="Credit range"
 								step={1} minValue={1} maxValue={18}
 								showSteps showTooltip defaultValue={
@@ -181,11 +193,8 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 								className="min-w-56"
 							/>
 						</ButtonPopover>
-						<ButtonPopover title="Level" desc={
-							searchState.minCourse!=undefined ? (searchState.maxCourse!=undefined
-								? `${searchState.minCourse} - ${searchState.maxCourse}` : `${searchState.minCourse}+`)
-								: (searchState.maxCourse!=undefined ? `up to ${searchState.maxCourse}` : undefined)
-						} >
+
+						<ButtonPopover title="Level" desc={renderRange(searchState.minCourse, searchState.maxCourse)} >
 							<Slider label="Course range"
 								step={100} minValue={100} maxValue={900}
 								showSteps showTooltip defaultValue={
@@ -202,6 +211,45 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 								className="min-w-56"
 							/>
 						</ButtonPopover>
+
+						<ButtonPopover title="Time" desc={renderTimeRange(searchState.minMinute, searchState.maxMinute)} >
+							<p className="mb-3" >Latest semester section time</p>
+							<Slider
+								step={15} minValue={5*60} maxValue={24*60}
+								marks={[...new Array(5)].map((x,i)=> {
+									const v = 60*((24-5)*i/4+5);
+									return { label: renderTime(v), value: v};
+								})}
+								onChange={(([a,b]: [number,number]) => 
+									setSearchState({...searchState,
+										minMinute: a==5*60 ? undefined : a, maxMinute: b==24*60 ? undefined : b})
+								) as any}
+								defaultValue={[searchState.minMinute ?? 5*60, searchState.maxMinute ?? 24*60]}
+								getValue={(x)=>{
+									const [a,b] = x as [number,number];
+									return `${renderTime(a)} - ${renderTime(b)}`;
+								}}
+								className="min-w-80 text-nowrap px-1"
+							/>
+						</ButtonPopover>
+
+						<ButtonPopover title="GPA" desc={renderRange(searchState.minGPA, searchState.maxGPA)} >
+							<Slider label="Average GPA"
+								step={0.05} minValue={1} maxValue={4}
+								showTooltip onChange={(([a,b]: [number,number]) => 
+									setSearchState({...searchState,
+										minGPA: a==1 ? undefined : a, maxGPA: b==4 ? undefined : b})
+								) as any}
+								defaultValue={[searchState.minGPA ?? 1, searchState.maxGPA ?? 4]}
+								getValue={(x)=>{
+									const [a,b] = x as [number,number];
+									return `${a.toFixed(2)} - ${b.toFixed(2)}`;
+								}}
+								className="min-w-56 mb-3"
+							/>
+							<p>Averaged over all sections in dataset.</p>
+						</ButtonPopover>
+
 						<ButtonPopover title="Schedule" desc={
 							searchState.scheduleType.length>0
 							? `${searchState.scheduleType.length} of ${info.scheduleTypes.length} types` : undefined
@@ -256,7 +304,7 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 					</div>
 				</>
 				:
-				<div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
+				<div className='flex flex-col h-full w-full items-center justify-center align-center gap-2 mt-5 mb-11'>
 					<IconMoodLookDown size={50} color='#DAAA00' />
 					<div className='text-white'>No results found!</div>
 					<div className='text-white -tranzinc-y-3'>Try changing the filters</div>

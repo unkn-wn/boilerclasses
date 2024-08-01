@@ -25,10 +25,8 @@ import org.apache.lucene.analysis.standard.StandardTokenizer
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute
 import org.apache.lucene.document.*
-import org.apache.lucene.index.DirectoryReader
-import org.apache.lucene.index.IndexWriter
-import org.apache.lucene.index.IndexWriterConfig
-import org.apache.lucene.index.Term
+import org.apache.lucene.index.*
+import org.apache.lucene.queries.mlt.MoreLikeThis
 import org.apache.lucene.queryparser.flexible.standard.parser.ParseException
 import org.apache.lucene.queryparser.simple.SimpleQueryParser
 import org.apache.lucene.search.*
@@ -39,17 +37,27 @@ import org.slf4j.Logger
 import java.io.File
 import java.time.Duration
 import java.time.Instant
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.time.Duration.Companion.minutes
 
-fun formatTerm(term: String): String {
-    for (x in listOf("fall", "summer", "spring", "winter"))
-        if (term.startsWith(x))
-            return "${x.replaceFirstChar { it.uppercaseChar() }} ${term.substring(x.length)}"
+val termTypes = listOf("fall", "summer", "spring", "winter")
+
+fun parseTerm(term: String): Pair<Int,Int> {
+    for ((i,x) in termTypes.withIndex())
+        if (term.startsWith(x)) return i to term.substring(x.length).toInt()
     throw IllegalArgumentException("invalid term")
 }
+
+fun formatTerm(term: String): String = parseTerm(term).let {
+    "${termTypes[it.first].replaceFirstChar {x->x.uppercase()}} ${it.second}"
+}
+
+fun termIdx(term: String) = parseTerm(term).let { it.second*termTypes.size + it.first }
+fun timeToMin(x: LocalTime) = x.toSecondOfDay()/60
 
 fun CourseData.Course.strId() = "$subject$course$name".filter {it.isLetterOrDigit()}
 
@@ -66,6 +74,8 @@ class Courses(val env: Environment, val log: Logger) {
         val subjects: List<String> = emptyList(),
         val scheduleType: List<String> = emptyList(),
         val terms: List<String> = emptyList(),
+        val minMinute: Int? = null, val maxMinute: Int? = null,
+        val minGPA: Float? = null, val maxGPA: Float? = null,
         val page: Int=0
     ) {
         fun isEmpty() = copy(query=query.trim(), page=0) == SearchReq("")
@@ -86,15 +96,17 @@ class Courses(val env: Environment, val log: Logger) {
         val ms: Double
     )
 
-    val scrapeInterval = env.getProperty("scrapeInterval")?.toInt()?.minutes
+    val scrapeInterval = env.getProperty("scrapeInterval")
+        ?.ifBlank {null}?.toInt()?.minutes
     val scrapeArgs = env.getProperty("scrapeArgs") ?: ""
     private val coursesFile = File("./data/courses.json")
     private val indexFile = File("./data/index")
     private val indexSwapFile = File("./data/index-tmp")
 
-    val mut = Mutex()
+    val lock = RwLock()
     private var courses: CourseData.Data? = null
-    private val courseMap = mutableMapOf<String, CourseData.Course>()
+    private var courseMap = mutableMapOf<String, CourseData.Course>()
+    private var courseIdx = mutableMapOf<String,Int>()
 
     private fun crapAnalyzer() = object: Analyzer() {
         val tokenizer = object: Tokenizer() {
@@ -199,6 +211,7 @@ class Courses(val env: Environment, val log: Logger) {
 
     private var idx: MMapDirectory? = null
     private var dirReader: DirectoryReader? = null
+    private var moreLike: MoreLikeThis? = null
     private var searcher: IndexSearcher? = null
 
     val fieldAnalyzer = PerFieldAnalyzerWrapper(EnglishAnalyzer(), mapOf(
@@ -226,43 +239,61 @@ class Courses(val env: Environment, val log: Logger) {
         "term" to 100,
     ).mapValues { it.value.toFloat()/10.0f }
 
+    private val similarFields = listOf(
+        "subject", "subjectName", "title", "desc", "instructor", "term"
+    )
+
     fun makeQueryParser(analyzer: Analyzer) = SimpleQueryParser(analyzer, weights)
 
     suspend fun loadCourses() {
         try {
             log.info("loading courses")
-            val c = Json.decodeFromStream<CourseData.Data>(coursesFile.inputStream())
+            var c = Json.decodeFromStream<CourseData.Data>(coursesFile.inputStream())
+
+            val subjectMap = c.subjects.associateBy { it.abbr }
+            val attrMap = c.attributes.associateBy { it.name.lowercase() }
+
+            // normalize attributes
+            c=c.copy(courses=c.courses.map {
+                it.copy(attributes=it.attributes.map { attr->
+                    attrMap[attr.lowercase()]?.id ?: attr
+                })
+            })
 
             if (indexSwapFile.exists()) indexSwapFile.deleteRecursively()
 
             val newIdx = MMapDirectory(indexSwapFile.toPath())
             val cfg = IndexWriterConfig(fieldAnalyzer)
-//            cfg.setCodec(object: Lucene99Codec() {
-//                override fun getPostingsFormatForField(field: String?): PostingsFormat {
-//                    if (field=="suggest")
-//                        return Completion99PostingsFormat()
-//                    return super.getPostingsFormatForField(field)
-//                }
-//            })
             val writer = IndexWriter(newIdx, cfg)
 
             log.info("indexing courses")
-            courseMap.clear()
+
+            val newCourseMap = mutableMapOf<String,CourseData.Course>()
+            val newCourseIdx = mutableMapOf<String,Int>()
+
             writer.addDocuments(c.courses.withIndex().map { (i,course)->
-                courseMap[course.strId()]=course
-                courseMap["${course.subject}${course.course}"]=course
-                val subjectMap = c.subjects.associateBy { it.abbr }
-                val attrMap = c.attributes.associateBy { it.name.lowercase() }
+                course.strId().let {id->
+                    newCourseMap[id]=course
+                    newCourseIdx[id]=i
+                }
+
+                newCourseMap["${course.subject}${course.course}"]=course
 
                 Document().apply {
-                    add(Field("subject", course.subject, TextField.TYPE_NOT_STORED))
+                    val textTermVec = FieldType().apply {
+                        setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS);
+                        setTokenized(true)
+                        setStoreTermVectors(true)
+                        freeze()
+                    }
+
+                    add(Field("subject", course.subject, textTermVec))
                     add(StringField("subjectString", course.subject, Field.Store.NO))
                     add(Field("subjectName",
-                        subjectMap[course.subject]!!.name, TextField.TYPE_NOT_STORED))
+                        subjectMap[course.subject]!!.name, textTermVec))
                     add(Field("course", course.course.toString(), TextField.TYPE_NOT_STORED))
-                    add(Field("title", course.name, TextField.TYPE_NOT_STORED))
-//                    add(SuggestField("suggest", "${course.subject}${course.course}", 1))
-                    add(Field("desc", course.description, TextField.TYPE_NOT_STORED))
+                    add(Field("title", course.name, textTermVec))
+                    add(Field("desc", course.description, textTermVec))
                     add(IntField("courseInt", course.course, Field.Store.NO))
 
                     val reqs = mutableListOf<CourseData.PreReq>()
@@ -303,7 +334,7 @@ class Courses(val env: Environment, val log: Logger) {
                     course.sections.values.flatten().flatMap {it.instructors}
                         .map {it.name}.distinct()
                         .joinToString(" ").let {
-                            add(Field("instructor", it, TextField.TYPE_NOT_STORED))
+                            add(Field("instructor", it, textTermVec))
                         }
 
                     course.sections.keys.forEach {
@@ -311,7 +342,7 @@ class Courses(val env: Environment, val log: Logger) {
                     }
 
                     course.sections.keys.joinToString(" ") {c.terms[it]!!.name}.let {
-                        add(Field("term", it, TextField.TYPE_NOT_STORED))
+                        add(Field("term", it, textTermVec))
                     }
 
                     course.sections.values.flatten().map {it.scheduleType}
@@ -319,8 +350,16 @@ class Courses(val env: Environment, val log: Logger) {
                             add(StringField("scheduleType", it, Field.Store.NO))
                         }
 
-                    course.attributes.flatMap { listOfNotNull(it, attrMap[it.lowercase()]?.id) }
-                        .forEach { add(StringField("attributes", it, Field.Store.NO)) }
+                    course.sections.maxBy {termIdx(it.key)}.value
+                        .flatMap { it.times }.mapNotNull {it.toTimes().firstOrNull()}.forEach {
+                        add(IntField("time", timeToMin(it), Field.Store.NO))
+                    }
+
+                    course.avgGPA(null)?.let {
+                        add(FloatField("gpa", it.toFloat(), Field.Store.NO))
+                    }
+
+                    course.attributes.forEach { add(StringField("attributes", it, Field.Store.NO)) }
                 }
             })
 
@@ -328,8 +367,11 @@ class Courses(val env: Environment, val log: Logger) {
 
             log.info("finished indexing")
             newIdx?.close()
-            mut.withLock {
+            lock.write {
                 courses = c
+                courseIdx=newCourseIdx
+                courseMap=newCourseMap
+
                 dirReader?.close()
                 idx?.close()
 
@@ -339,6 +381,9 @@ class Courses(val env: Environment, val log: Logger) {
                 idx=MMapDirectory(indexFile.toPath())
                 dirReader=DirectoryReader.open(idx)
                 searcher=IndexSearcher(dirReader)
+                moreLike=MoreLikeThis(dirReader).apply {
+                    fieldNames=similarFields.toTypedArray()
+                }
             }
         } catch (e: Throwable) {
             log.error("error parsing/indexing course data:", e)
@@ -347,19 +392,26 @@ class Courses(val env: Environment, val log: Logger) {
         }
     }
 
-    suspend fun searchCourses(req: SearchReq): SearchOutput {
-        val (searcher, courses) = mut.withLock {
-            if (searcher==null) throw APIErrTy.Loading.err("courses not indexed yet")
-            searcher!! to courses!!
+    suspend fun similarCourses(id: String): List<SearchResult> = lock.read {
+        val c = courseIdx[id] ?: throw APIErrTy.NotFound.err("course with id $id not found")
+        searcher!!.search(moreLike!!.like(c), 10).scoreDocs.filter {
+            it.doc!=c && it.score>4.5
+        }.map {
+            courses!!.courses[it.doc].let { c-> SearchResult(it.score, c.strId(), c) }
         }
+    }
+
+    suspend fun searchCourses(req: SearchReq): SearchOutput = lock.read {
+        if (searcher==null) throw APIErrTy.Loading.err("courses not indexed yet")
+        val c = courses!!.courses
 
         if (req.page<0) throw APIErrTy.BadRequest.err("page is negative");
 
         if (req.isEmpty())
-            return courses.courses.subList(req.page*numResults, min(courses.courses.size, (req.page+1)*numResults)).map {
+            return@read c.subList(req.page*numResults, min(c.size, (req.page+1)*numResults)).map {
                 SearchResult(0.0f,it.strId(),it)
-            }.let { SearchOutput(it, courses.courses.size,
-                (courses.courses.size+numResults-1)/numResults, 0.0) }
+            }.let { SearchOutput(it, c.size,
+                (c.size+numResults-1)/numResults, 0.0) }
 
         val startTime = Instant.now()
         val trimQuery = req.query.trim()
@@ -391,11 +443,20 @@ class Courses(val env: Environment, val log: Logger) {
                 req.maxCourse?.times(100) ?: Int.MAX_VALUE),
                 BooleanClause.Occur.FILTER)
 
+        if (req.minMinute!=null || req.maxMinute!=null)
+            bq.add(IntField.newRangeQuery("time", req.minMinute ?: 0,
+                req.maxMinute ?: Int.MAX_VALUE), BooleanClause.Occur.FILTER)
+
         if (req.minCredits!=null)
             bq.add(IntField.newRangeQuery("maxCredits", req.minCredits, Int.MAX_VALUE),
                 BooleanClause.Occur.FILTER)
         if (req.maxCredits!=null)
             bq.add(IntField.newRangeQuery("minCredits", 0, req.maxCredits),
+                BooleanClause.Occur.FILTER)
+
+        if (req.minGPA!=null || req.maxGPA!=null)
+            bq.add(FloatField.newRangeQuery("gpa",
+                req.minGPA ?: 0.0f, req.maxGPA ?: Float.MAX_VALUE),
                 BooleanClause.Occur.FILTER)
 
         listOf(
@@ -413,30 +474,30 @@ class Courses(val env: Environment, val log: Logger) {
         val q = bq.build()
         val cnt = min(maxResults, (req.page+1)*numResults)
         val manager = TopScoreDocCollectorManager(cnt, 500)
-        val res = searcher.search(q, manager)
+        val res = searcher!!.search(q, manager)
 //        res.scoreDocs.firstOrNull()?.let {
 //            println(searcher.explain(q, it.doc).toString())
 //        }
 
         val intHits = res.totalHits.value.toInt()
         //num pages may change as numhits increases...
-        return SearchOutput(res.scoreDocs.takeLast((res.scoreDocs.size-1)%numResults +1)
+        return@read SearchOutput(res.scoreDocs.takeLast((res.scoreDocs.size-1)%numResults +1)
             .map {
-                courses.courses[it.doc].let {c-> SearchResult(it.score, c.strId(), c) }
+                c[it.doc].let {c-> SearchResult(it.score, c.strId(), c) }
             }, intHits, max(1,min(intHits+numResults-1, maxResults)/numResults),
             Duration.between(startTime, Instant.now()).toNanos().toDouble()/1e6)
     }
 
-    suspend fun courses() = mut.withLock {
+    suspend fun courses() = lock.read {
         courses ?: throw APIErrTy.Loading.err("courses not loaded")
     }
 
-    suspend fun download() = mut.withLock {
+    suspend fun download() = lock.read {
         if (courses==null) throw APIErrTy.Loading.err("courses not loaded")
         AttachedFile(coursesFile.toPath())
     }
 
-    suspend fun courseById(id: String) = mut.withLock {
+    suspend fun courseById(id: String) = lock.read {
         courseMap[id] ?: throw APIErrTy.NotFound.err("course with id $id not found")
     }
 

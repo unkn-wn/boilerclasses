@@ -61,15 +61,15 @@ export function AppTooltip({content, children, placement, className, onChange, .
 
 	useEffect(()=>{
 		if (open) {
+			if (reallyOpen==app.tooltipCount) return;
+
 			onChange?.(true);
 			app.incTooltipCount();
 
 			if (ctx) {
 				//forward course context
 				app.open({type: "other", modal: <CourseContext.Provider value={cc} >
-					<IsInTooltipContext.Provider value={true} >
-						{content}
-					</IsInTooltipContext.Provider>
+					{content}
 				</CourseContext.Provider>, onClose() {
 					onChange?.(false);
 				}});
@@ -96,8 +96,10 @@ export function AppTooltip({content, children, placement, className, onChange, .
 	return <Tooltip showArrow placement={placement} content={
 			<IsInTooltipContext.Provider value={true} >{content}</IsInTooltipContext.Provider>
 		}
+		classNames={{content: "max-w-96"}}
 		isOpen={reallyOpen==app.tooltipCount}
 		onPointerEnter={interact} onPointerLeave={unInteract} >
+
 		<div className={twMerge("inline-block", className)}
 			onPointerEnter={interact} onPointerLeave={unInteract}
 			onClick={(ev)=>{

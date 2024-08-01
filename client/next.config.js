@@ -3,7 +3,7 @@ module.exports = {
   reactStrictMode: true,
   async rewrites() {
     return [
-      { source: '/api/:path*', destination: `${process.env["SERVER"]}/:path*` },
+      { source: '/api/:path*', destination: `${process.env["SERVER_URL"]}/:path*` },
     ]
   }
 }

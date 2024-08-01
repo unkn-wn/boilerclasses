@@ -1,17 +1,15 @@
 import { useContext, useMemo } from 'react';
-import { CourseId, creditStr, formatTerm, latestTerm, ServerInfo, Term } from "../../shared/types";
-import { abbr, Anchor, Chip, Loading } from "./util";
+import { Course, CourseId, creditStr, formatTerm, latestTerm, mergeGrades, ServerInfo, Term } from "../../shared/types";
+import { abbr, Anchor, Chip, gpaColor, Loading } from "./util";
 import { InstructorList } from "./instructorlist";
 import { AppLink, AppTooltip, CourseContext } from "./clientutil";
 import { useAPI } from "./wrapper";
 import { TooltipPlacement } from "@nextui-org/tooltip";
+import { twMerge } from "tailwind-merge";
+import attributeToGenEd from "../app/attributeToGenEd.json";
 
 //ideally maybe have term inherited from search semester filter.............?????
-export function Card({ course, id, frameless, termFilter, ...info }: CourseId&ServerInfo&{frameless?: boolean, termFilter?: Term[]}) {
-  const hasDistance = useMemo(() =>
-    Object.values(course.sections).flat()
-  .find(s => s.scheduleType=="Distance Learning")!=undefined, [course]);
-
+export function Card({ course, id, frameless, termFilter, className, ...info }: CourseId&ServerInfo&{frameless?: boolean, termFilter?: Term[], className?: string}) {
   const term = latestTerm(course, termFilter) ?? latestTerm(course)!;
   const url = `/course/${id}?term=${term}`;
 
@@ -22,7 +20,7 @@ export function Card({ course, id, frameless, termFilter, ...info }: CourseId&Se
       selTerm: ()=>{}
     }}>
       <p className="lg:text-sm text-sm text-gray-300 font-medium">
-        {creditStr(course)}
+        {creditStr(course)} {<GPAIndicator smol />}
       </p>
 
       <InstructorList short className="my-2" />
@@ -32,10 +30,7 @@ export function Card({ course, id, frameless, termFilter, ...info }: CourseId&Se
       </p>
 
       <div className="flex flex-row flex-wrap">
-        {hasDistance && <Chip className="border-purple-500 bg-purple-700">
-          Distance Learning
-        </Chip>}
-        <Chip className="border-cyan-400 bg-sky-800" >{formatTerm(term)}</Chip>
+        <CourseChips/>
       </div>
     </CourseContext.Provider>;
 
@@ -51,7 +46,7 @@ export function Card({ course, id, frameless, termFilter, ...info }: CourseId&Se
   );
   else return (
     <AppLink href={url}
-      className="flex flex-col bg-zinc-800 gap-1 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer">
+      className={twMerge("flex flex-col bg-zinc-800 gap-1 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer", className)} >
         <h2 className="text-xl font-display font-bold">{course.subject} {course.course}: {course.name}</h2>
         {body}
     </AppLink>
@@ -90,4 +85,41 @@ export function CourseLink({placement,...props}:
   } >
     <Anchor className={cid!=null && cid=="notFound" ? "no-underline" : "text-white"} >{subject} {num}</Anchor>
   </AppTooltip>
+}
+
+export function CourseChips() {
+  const cc = useContext(CourseContext);
+	const scheduleTypes = [...new Set(Object.values(cc.course.sections).flat().map(x => x.scheduleType))];
+	const geneds = cc.course.attributes.map(x => attributeToGenEd[x as keyof typeof attributeToGenEd])
+		.filter(x=>x!=undefined);
+
+  return <>
+    {scheduleTypes.map((s) => (
+      <Chip className="bg-purple-600 border-purple-800" key={s}> {s} </Chip>
+    ))}
+
+    <Chip className="bg-sky-600 border-sky-800" >
+      {formatTerm(latestTerm(cc.course)!)}
+    </Chip>
+
+    {geneds.map((gened) => (
+      <Chip className="bg-[#64919b] border-[#415f65]" key={gened} >
+        {gened}
+      </Chip>
+    ))}
+  </>;
+}
+
+export function GPAIndicator({smol}:{smol?:boolean}) {
+  const cc = useContext(CourseContext);
+
+	const totalGrades = useMemo(() =>
+		mergeGrades(Object.values(cc.course.instructor).flatMap(x=>Object.values(x))), [cc.course])
+
+  return <AppTooltip content={`averaged over ${totalGrades.gpaSections} sections`} >
+    <div className={`text-white flex flex-row cursor-pointer font-display ${smol ? "font-bold gap-1" : "font-extrabold gap-2"} items-center m-1 p-1 rounded-md px-3 bg-${totalGrades.gpa==null ? "zinc-800" : gpaColor(totalGrades.gpa)}`} >
+      <span className={smol ? "text-xs font-light" : "font-normal"} >GPA</span>
+      <h2 className={smol ? "text-sm" : "text-2xl"} >{totalGrades.gpa?.toFixed(2) ?? "?"}</h2>
+    </div>
+  </AppTooltip>;
 }
