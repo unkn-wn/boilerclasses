@@ -245,13 +245,16 @@ object Schema {
             else -> null
         }
 
-        fun grades(terms: Set<String>?): InstructorGrade = instructor.values.flatMap {
-            if (terms==null) it.values else it.filterKeys { x->terms.contains(x) }.values
-        }.fold(InstructorGrade(emptyMap(), null, 0, 0)) { acc, x ->
+        fun grades(terms: Set<String>?): InstructorGrade = instructor.values
+            .flatMap {
+                if (terms==null) it.values else it.filterKeys { x->terms.contains(x) }.values
+            }
+            .fold(InstructorGrade(emptyMap(), null, 0, 0)) { acc, x ->
             InstructorGrade(acc.grade + x.grade.mapValues {
-                (acc.grade[it.key]?:0.0)+it.value
-            },
-                if (acc.gpaSections>0 || x.gpaSections>0) (acc.gpa?:0.0) + (x.gpa?:0.0) else null,
+                    (acc.grade[it.key]?:0.0)+it.value*x.numSections
+                },
+                if (acc.gpaSections>0 || x.gpaSections>0) (acc.gpa?:0.0)
+                        + (x.gpa?.times(x.gpaSections)?:0.0) else null,
                 acc.gpaSections+x.gpaSections,
                 acc.numSections+x.numSections)
         }.let { g->
