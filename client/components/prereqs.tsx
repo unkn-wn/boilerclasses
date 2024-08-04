@@ -13,7 +13,7 @@ function PrereqCourseLikeLink({prereq}: {prereq: CourseLikePreReq}) {
 			txt=`${prereq.subject} ${prereq.course}`;
 			kind="this course";
 			const num = Number.parseInt(prereq.course);
-			if (isFinite(num)) extra=<CourseLink type="fetch" subject={prereq.subject} num={num} />
+			if (isFinite(num)) extra=<CourseLink type="lookup" subject={prereq.subject} num={num} />
 			break;
 		case "courseRange": txt=`${prereq.subject} ${prereq.course}-${prereq.courseTo}`; kind="courses in this range"; break;
 		case "subject": txt=`${prereq.subject}`; kind="this subject"; break;

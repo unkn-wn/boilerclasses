@@ -1,10 +1,10 @@
 "use client"
 
-import { Course, CourseId, creditStr, emptyInstructorGrade, formatTerm, CourseInstructor, InstructorGrade, InstructorGrades, instructorsForTerm, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx } from "../../../../shared/types";
+import { Course, CourseId, creditStr, emptyInstructorGrade, formatTerm, CourseInstructor, InstructorGrade, InstructorGrades, mergeInstructors, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx, toSmallCourse, SmallCourse } from "../../../../shared/types";
 import { abbr, Anchor, CatalogLinkButton, firstLast, LinkButton, Loading, RedditButton, selectProps } from "@/components/util";
 import { Footer } from "@/components/footer";
-import { AppCtx, AppWrapper, useAPI } from "@/components/wrapper";
-import { useContext, useMemo, useState } from "react";
+import { AppCtx, AppWrapper, setAPI, useAPI, useInfo } from "@/components/wrapper";
+import { useContext, useEffect, useMemo, useState } from "react";
 import boilerexamsCourses from "../../boilerexamsCourses.json";
 import boilerexams from "../../../public/boilerexams-icon.png";
 import Image from "next/image";
@@ -13,17 +13,18 @@ import Select, { MultiValue } from "react-select";
 import { ProfLink } from "@/components/proflink";
 import Graph from "@/components/graph";
 import { InstructorList } from "@/components/instructorlist";
-import { BackButton, BarsStat, CourseContext, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, WrapStat } from "@/components/clientutil";
+import { BackButton, BarsStat, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, WrapStat } from "@/components/clientutil";
 import { Calendar, calendarDays } from "@/components/calendar";
 import { Prereqs } from "@/components/prereqs";
 import { Restrictions } from "@/components/restrictions";
 import { SimilarCourses } from "@/components/similar";
 import { CourseChips, GPAIndicator } from "@/components/card";
 
-function InstructorGradeView({xs,type}: {xs: CourseInstructor[], type:"rmp"|"gpa"}) {
-	const cc=useContext(CourseContext);
+const useSmall = (cid: CourseId) => useMemo(()=>toSmallCourse(cid),[cid.id]);
 
+function InstructorGradeView({xs,type,cid,term}: {xs: CourseInstructor[], cid: CourseId, term: Term, type:"rmp"|"gpa"}) {
 	let res: (RMPInfo|null)[]|null=null;
+	const small = useSmall(cid);
 	if (type=="rmp") {
 		const o=useAPI<(RMPInfo|null)[],string[]>("rmp", {data: xs.map(x=>x.name)});
 		if (o==null) return <Loading/>
@@ -32,8 +33,8 @@ function InstructorGradeView({xs,type}: {xs: CourseInstructor[], type:"rmp"|"gpa
 	}
 
 	let out: [CourseInstructor, number|null][] = xs.map((i,j) => {
-		if (type=="gpa" && cc.course.instructor[i.name]!=undefined) {
-			const g = mergeGrades(Object.values(cc.course.instructor[i.name]));
+		if (type=="gpa" && cid.course.instructor[i.name]!=undefined) {
+			const g = mergeGrades(Object.values(cid.course.instructor[i.name]));
 			if (g.gpa!=null) return [i,g.gpa];
 		} else if (type=="rmp" && res!=null && res[j]!=null && res[j].numRatings>0) {
 			return [i,res[j].avgRating];
@@ -44,31 +45,32 @@ function InstructorGradeView({xs,type}: {xs: CourseInstructor[], type:"rmp"|"gpa
 
 	return <BarsStat lhs={i=>
 			<ProfLink x={i} className="font-semibold text-nowrap text-white"
+				course={small} term={term}
 				label={abbr(i.name, 25)} />
 			} className="grid-cols-[4fr_10fr_1fr] "
 			vs={out} type={type} />
 }
 
-function InstructorSemGPA({xs, all}: {xs: CourseInstructor[], all: CourseInstructor[]}) {
-	const cc= useContext(CourseContext);
-	const idx = termIdx(cc.term);
+function InstructorSemGPA({xs, term, cid}: {xs: CourseInstructor[], term: Term, cid: CourseId}) {
+	const idx = termIdx(term);
 
 	const vs = xs.map((x): [CourseInstructor, InstructorGrades] => [
-			x, cc.course.instructor[x.name] ?? {}
+			x, cid.course.instructor[x.name] ?? {}
 		]).map(([i,x]): [CourseInstructor, [Term, number|null, number][]] => [
 			i, Object.entries(x).filter(([sem,v]) => termIdx(sem as Term)<=idx)
 				.map(([sem,v])=>[sem as Term, v?.gpa ?? null, v?.numSections ?? 0]),
 		]);
 	
-	return <NameSemGPA vs={vs} lhs={i=><ProfLink className='text-white font-bold text-xl' x={i} />} />;
+	return <NameSemGPA vs={vs} lhs={i=><ProfLink className='text-white font-bold text-xl' x={i}
+		course={useSmall(cid)} term={term} />} />;
 }
 
-function CourseDetail({course, id, info}: {course: Course, id:number, info: ServerInfo}) {
-	const latest = latestTerm(course)!;
+function CourseDetail(cid: CourseId) {
+	const latest = latestTerm(cid.course)!;
 	const [term, setTerm] = searchState<Term>(latest, (p) => p.get("term") as Term|null,
 		(x)=> x==latest ? null : new URLSearchParams([["term",x]]))
 
-	const instructors = instructorsForTerm(course, term) ?? [];
+	const course = cid.course;
 
 	const [instructorSearch, setInstructorSearch] = useState("");
 	const [selectedInstructors, setSelInstructors] = useState<CourseInstructor[]>([]);
@@ -78,6 +80,9 @@ function CourseDetail({course, id, info}: {course: Course, id:number, info: Serv
 			[x.name,course.instructor[x.name]==undefined ? emptyInstructorGrade
 				: mergeGrades(Object.values(course.instructor[x.name]))]
 		), [selectedInstructors, term, course]);
+
+	const small = useSmall(cid);
+	const instructors = small.termInstructors[term] ?? [];
 
 	const searchInstructors = useMemo(() => {
 		const v = simp(instructorSearch);
@@ -89,15 +94,16 @@ function CourseDetail({course, id, info}: {course: Course, id:number, info: Serv
 
 	const days = calendarDays(course, term);
 	const smallCalendar = days.length<=3;
-	const calSections = course.sections[term].map((x):[CourseId, Section]=>[{course,id},x]);
+	const calSections = course.sections[term].map((x):[SmallCourse, Section]=>[small,x]);
 
-	const catalog=`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=${info.terms[term]!.id}&subj_code_in=${course.subject}&crse_numb_in=${course.course}`;
+	const catalog=`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=${useInfo().terms[term]!.id}&subj_code_in=${course.subject}&crse_numb_in=${course.course}`;
 
 	const statProps = {search:instructorSearch, setSearch:setInstructorSearch, searchName: "instructors"};
 
-	return <CourseContext.Provider value={{
-		course, id, term, info
-	}} ><SelectionContext.Provider value={{
+	const gradesForTerm = useMemo(()=>
+		mergeGrades(Object.values(course.instructor).map(x=>x[term] ?? emptyInstructorGrade)), [term]);
+
+	return <SelectionContext.Provider value={{
 		selTerm(term) {
 			if (term in course.sections) setTerm(term);
 			else app.open({type: "error", name: "Term not available",
@@ -120,22 +126,25 @@ function CourseDetail({course, id, info}: {course: Course, id:number, info: Serv
 
 						{/* Separator Display */}
 						<span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
-						<CourseChips/>
+						<CourseChips course={small} />
 					</div>
 					
-					<TermSelect term={term} setTerm={setTerm} info={info} terms={Object.keys(course.sections) as Term[]} name="Data" />
+					<TermSelect term={term} setTerm={setTerm} terms={Object.keys(course.sections) as Term[]} name="Data" />
 
 					{term!=latest && <div className="border border-zinc-700 bg-zinc-900 p-2 rounded-md" >
 						<h2 className="font-bold font-display text-lg" >Note:</h2>
 						<p>Most course data, except for sections and instructors, is from {formatTerm(latest)}. Fall back to the catalog for exact data from an older term.</p>
 					</div>}
 
-					<InstructorList/>
+					<InstructorList course={small} term={term} whomst={instructors} />
 				</div>
 
 				{/* Other Links Buttons */}
 				<div className="flex flex-row flex-wrap my-2 gap-1 items-center">
-					<GPAIndicator/>
+					{gradesForTerm.gpa!=null ?
+						<GPAIndicator grades={gradesForTerm} tip={`Averaged over ${gradesForTerm.gpaSections} section${gradesForTerm.gpaSections==1?"":"s"} from ${formatTerm(term)}`} />
+						: <GPAIndicator grades={small.grades} />
+					}
 
 					<RedditButton keywords={[
 							`${course.subject}${course.course.toString().replace(/00$/, '')}`,
@@ -174,17 +183,17 @@ function CourseDetail({course, id, info}: {course: Course, id:number, info: Serv
 					<Tabs {...tabProps} >
 						<Tab key="gpa" title="GPA" >
 							<WrapStat title="GPA by professor" {...statProps} >
-								<InstructorGradeView xs={searchInstructors} type="gpa" />
+								<InstructorGradeView xs={searchInstructors} type="gpa" cid={cid} term={term} />
 							</WrapStat>
 						</Tab>
 						<Tab key="gpaSemester" title="GPA Breakdown" >
 							<WrapStat title="GPA by semester" {...statProps} >
-								<InstructorSemGPA xs={searchInstructors} all={instructors} />
+								<InstructorSemGPA xs={searchInstructors} cid={cid} term={term} />
 							</WrapStat>
 						</Tab>
 						<Tab key="rmp" title="Rating" >
 							<WrapStat title="RateMyProfessor ratings" {...statProps} >
-								<InstructorGradeView xs={searchInstructors} type="rmp" />
+								<InstructorGradeView xs={searchInstructors} type="rmp" cid={cid} term={term} />
 							</WrapStat>
 						</Tab>
 						<Tab key="grades" title="Grade distribution" >
@@ -203,20 +212,24 @@ function CourseDetail({course, id, info}: {course: Course, id:number, info: Serv
 					</Tabs>
 				</div>
 
-				{smallCalendar && <Calendar info={info} sections={calSections} days={days} term={term} />}
+				{smallCalendar && <Calendar sections={calSections} days={days} term={term} />}
 			</div>
 		</div>
 
-		{!smallCalendar && <Calendar info={info} sections={calSections} days={days} term={term} />}
+		{!smallCalendar && <Calendar sections={calSections} days={days} term={term} />}
 
-		<SimilarCourses/>
+		<SimilarCourses id={cid.id} />
 
 		<div className='mt-auto'>
 			<Footer />
 		</div>
-	</></SelectionContext.Provider></CourseContext.Provider>;
+	</></SelectionContext.Provider>;
 }
 
 export function CourseDetailApp(props: CourseId&{info: ServerInfo}) {
-		return <AppWrapper className="lg:pl-14" ><CourseDetail {...props} /></AppWrapper>
+	useEffect(()=>{
+		setAPI<Course, number>("course", {data: props.id, result: props.course})
+	});
+
+	return <AppWrapper className="lg:pl-14" info={props.info} ><CourseDetail {...props} /></AppWrapper>
 }

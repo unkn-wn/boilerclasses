@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { ServerResponse } from "../../shared/types";
+import { Course, ServerInfo, ServerResponse } from "../../shared/types";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { NextUIProvider } from "@nextui-org/system";
 import { Button } from "./util";
@@ -17,7 +17,8 @@ export type AppModal = {
 export type AppCtx = {
 	open: (m: AppModal) => void,
 	tooltipCount: number, incTooltipCount: ()=>void,
-	forward: ()=>void, back: ()=>void
+	forward: ()=>void, back: ()=>void,
+	info: ServerInfo
 };
 
 export const AppCtx = React.createContext<AppCtx>("context not initialized" as any)
@@ -25,10 +26,12 @@ export const AppCtx = React.createContext<AppCtx>("context not initialized" as a
 export function usePromise<R>(f: (rerun: () => void) => Promise<R|null>, deps: any[]): R|null {
 	const [ret, setRet] = useState<R|null>(null);
 
+	const i = useRef(0);
 	useEffect(() => {
+		const oi = ++i.current;
 		const attempt = () => f(() => attempt())
 			.then((x) => {
-				if (x!=null) setRet(x)
+				if (x!=null && i.current==oi) setRet(x);
 			});
 		attempt();
 	}, deps);
@@ -36,28 +39,46 @@ export function usePromise<R>(f: (rerun: () => void) => Promise<R|null>, deps: a
 	return ret;
 }
 
+const cache: Record<string, Promise<any>> = {};
+
+export function setAPI<R,T extends any=null>(endpoint: string, {data,method,result}: {
+	data?: T, method?: string, result: R
+}) {
+	const r: ServerResponse<R> = { status: "ok", result };
+	cache[`${method ?? "POST"} ${endpoint}\n${JSON.stringify(data)}`] = Promise.resolve(r);
+}
+
 export function useAPI<R,T extends any=null>(endpoint: string, {data, method, handleErr, defer}: {
-	data?: T, method?: string, handleErr?: (e: ServerResponse<R>&{status:"error"}) => R|undefined,
+	data?: T, method?: string,
+	handleErr?: (e: ServerResponse<R>&{status:"error"}) => R|undefined,
 	defer?: boolean
 }={}) {
 	const c = useContext(AppCtx);
-	const inFlight = useRef<AbortController|null>(null);
 
 	const body = JSON.stringify(data); //hehe, cursed
 	return usePromise(async (rerun) => {
 		if (defer) return;
 
-		const before = inFlight.current;
-		const abort = new AbortController();
-		inFlight.current = abort;
-
 		try {
-			const resp = await (await fetch(`/api/${endpoint}`, {
-				method: method ?? "POST", body: data==undefined ? undefined : body,
-				signal: abort.signal
-			})).json() as ServerResponse<R>;
+			const k = `${method ?? "POST"} ${endpoint}\n${body}`;
 
-			if (abort.signal.aborted) return null;
+			let cacheBad = cache[k]==undefined;
+			if (cache[k]!=undefined) {
+				try {
+					const r=await cache[k];
+					if (r.status!="ok") cacheBad=true;
+				} catch (e) {
+					cacheBad=true;
+				};
+			}
+
+			if (cacheBad) {
+				cache[k] = fetch(`/api/${endpoint}`, {
+					method: method ?? "POST", body: data==undefined ? undefined : body,
+				}).then(x=>x.json());
+			}
+
+			const resp = await cache[k] as ServerResponse<R>;
 
 			if (resp.status=="error") {
 				const recover = handleErr?.(resp);
@@ -81,23 +102,23 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 				return {res: resp.result, endpoint, req: data};
 			}
 		} catch(e) {
-			if (abort.signal.aborted) return null;
-
 			console.error(`Fetching ${endpoint}: ${e}`);
 
 			c.open({
 				type: "error", name: "Error reaching API",
 				msg: `Fetch error: ${e instanceof Error ? e.message : e}. Try refreshing?`, retry: rerun
 			});
-		} finally {
-			before?.abort();
 		}
 
 		return null;
 	}, [endpoint, body, defer]);
 }
 
-export function AppWrapper({children, className}: {children: React.ReactNode, className?: string}) {
+export const useInfo = (): ServerInfo => useContext(AppCtx).info;
+export const useCourse = (id: number): Course|null =>
+	useAPI<Course,number>("course", {data:id})?.res ?? null;
+
+export function AppWrapper({children, className, info}: {children: React.ReactNode, className?: string, info: ServerInfo}) {
 	//😒
 	const [activeModals, setActiveModals] = useState<AppModal[]>([]);
 	const [modalVisible, setModalVisible] = useState<Record<"error"|"other", boolean>>({
@@ -189,11 +210,11 @@ export function AppWrapper({children, className}: {children: React.ReactNode, cl
 						window.localStorage.setItem("backUrl", JSON.stringify(backUrls.slice(0,-1)));
 						router.push(backUrls[backUrls.length-1]);
 					}
-				},
+				}, info
 			}}>
 
 			{m}
-			<div id="parent" className={twMerge("flex flex-col bg-neutral-950 container mx-auto p-4 lg:mt-5 gap-5 max-w-screen-xl", className)}>
+			<div id="parent" className={twMerge("flex flex-col bg-neutral-950 container mx-auto p-4 lg:px-14 lg:mt-5 gap-5 max-w-screen-xl", className)}>
 				{children}
 			</div>
 		</AppCtx.Provider>

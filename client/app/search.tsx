@@ -10,7 +10,7 @@ import { Slider } from "@nextui-org/slider";
 import attributeToGenEd from "./attributeToGenEd.json";
 import { twMerge } from "tailwind-merge";
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
-import { useAPI } from "@/components/wrapper";
+import { useAPI, useInfo } from "@/components/wrapper";
 import { Card } from "@/components/card";
 import { Collapse } from 'react-collapse';
 import { Pagination } from "@nextui-org/pagination";
@@ -68,8 +68,9 @@ export function decodeQueryToSearchState(query: URLSearchParams) {
 	return x;
 }
 
-export function Search({init, info, autoFocus, clearSearch, setSearchState, includeLogo}: {init: Partial<SearchState>, info: ServerInfo, autoFocus?:boolean, clearSearch?: ()=>void, setSearchState: (s:SearchState)=>void, includeLogo?: boolean}) {
+export function Search({init, autoFocus, clearSearch, setSearchState, includeLogo}: {init: Partial<SearchState>, autoFocus?:boolean, clearSearch?: ()=>void, setSearchState: (s:SearchState)=>void, includeLogo?: boolean}) {
 	const searchState = {...defaultSearchState, ...init};
+	const info = useInfo();
 
 	const sortedTerms = useMemo(()=>
 		Object.keys(info.terms).map(k=>({k: k as Term, idx: termIdx(k as Term)}))
@@ -300,9 +301,9 @@ export function Search({init, info, autoFocus, clearSearch, setSearchState, incl
 			? <Loading/> : (api.res.results.length>0 ? //:)
 				<>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-						{api.res.results.map(x => <Card key={x.id}
+						{api.res.results.map(x => <Card key={x.course.id}
 							termFilter={searchState.terms.length==0 ? undefined : searchState.terms}
-							{...x} {...info} />)}
+							course={x.course} />)}
 					</div>
 					<div className="w-full flex flex-col items-center" >
 						<Pagination total={api.res.npage} initialPage={api.req!.page+1} onChange={

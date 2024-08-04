@@ -209,6 +209,24 @@ object Schema {
     }
 
     @Serializable
+    data class SmallCourse(
+        val id: Int,
+
+        val name: String,
+        val subject: String,
+        val course: Int,
+        val termInstructors: Map<String, List<SectionInstructor>>,
+
+        val lastUpdated: String,
+        val description: String,
+        val credits: Credits,
+        val attributes: List<String>,
+        val scheduleTypes: List<String>,
+
+        val grades: InstructorGrade
+    )
+
+    @Serializable
     data class Course(
         val name: String,
         val subject: String,
@@ -227,13 +245,17 @@ object Schema {
             else -> null
         }
 
-        fun avgGPA(terms: Set<String>?): Double? = instructor.values.flatMap {
+        fun grades(terms: Set<String>?): InstructorGrade = instructor.values.flatMap {
             if (terms==null) it.values else it.filterKeys { x->terms.contains(x) }.values
-        }.map {
-            (it.gpa ?: 0.0)*it.gpaSections.toDouble() to it.gpaSections
-        }.reduceOrNull { acc, pair -> acc.first + pair.first to acc.second + pair.second }?.let {
-            if (it.second==0) null
-            else it.first/it.second.toDouble()
+        }.fold(InstructorGrade(emptyMap(), null, 0, 0)) { acc, x ->
+            InstructorGrade(acc.grade + x.grade.mapValues {
+                (acc.grade[it.key]?:0.0)+it.value
+            },
+                if (acc.gpaSections>0 || x.gpaSections>0) (acc.gpa?:0.0) + (x.gpa?:0.0) else null,
+                acc.gpaSections+x.gpaSections,
+                acc.numSections+x.numSections)
+        }.let { g->
+            g.copy(grade=g.grade.mapValues { it.value/g.numSections }, gpa=g.gpa?.let {it/g.gpaSections})
         }
     }
 
@@ -262,7 +284,20 @@ object Schema {
     data class CourseId(
         val id: Int,
         val course: Course
-    )
+    ) {
+        fun toSmall() = SmallCourse(
+            id, course.name, course.subject, course.course,
+            course.sections.mapValues {(k,v)->
+                v.flatMap {it.instructors}.groupingBy {it.name}
+                    .reduce { a,b,c-> SectionInstructor(a,b.primary||c.primary) }
+                    .values.toList()
+            },
+            course.lastUpdated, course.description, course.credits,
+            course.attributes,
+            course.sections.values.flatten().map {it.scheduleType}.distinct(),
+            course.grades(null)
+        )
+    }
 
     @Serializable
     data class GradeData(

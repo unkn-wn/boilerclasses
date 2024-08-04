@@ -1,24 +1,24 @@
 import { useContext, useState } from "react"
 import { Anchor } from "./util"
-import { formatTerm, CourseInstructor, instructorsForTerm } from "../../shared/types";
+import { formatTerm, CourseInstructor, SmallCourse, Term } from "../../shared/types";
 import { ProfLink } from "./proflink";
-import { CourseContext } from "./clientutil";
 import { twMerge } from "tailwind-merge";
 
-export function InstructorList({short, className, whomst}: {short?: boolean, className?: string, whomst?: CourseInstructor[]}) {
-	const cc = useContext(CourseContext);
-	const instructors = whomst ?? (instructorsForTerm(cc.course, cc.term) ?? []);
+export function InstructorList({term, short, className, whomst: instructors, course}: {
+	term: Term, short?: boolean, className?: string,
+	whomst: CourseInstructor[], course: SmallCourse
+}) {
 	if (instructors.length==0) return <></>;
 
 	const [showMoreInstructors, setShowMoreInstructors] = useState(false);
 	const curInstructors = showMoreInstructors ? instructors : instructors.slice(0,3);
 
 	return <div className={twMerge("flex flex-wrap flex-row lg:text-sm text-sm mt-1 font-medium items-center gap-1", className)} >
-		{!short && <span className="text-gray-400 font-bold text-xs mr-2">{formatTerm(cc.term)} Instructors: </span>}
+		{!short && <span className="text-gray-400 font-bold text-xs mr-2">{formatTerm(term)} Instructors: </span>}
 
 		{curInstructors.map((prof, i) => (
 			<span key={i}>
-				<ProfLink x={prof} />
+				<ProfLink x={prof} course={course} term={term} />
 				{i < curInstructors.length - 1 && ","}
 			</span>
 		))}

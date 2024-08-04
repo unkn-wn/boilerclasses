@@ -1,10 +1,10 @@
-import { Course, formatTerm, CourseInstructor, mergeGrades, RMPInfo, Term, InstructorId, InstructorGrade } from "../../shared/types";
-import { Anchor, capitalize, Chip, firstLast, gpaColor } from "./util";
-import { useAPI } from "./wrapper";
+import { Course, formatTerm, CourseInstructor, mergeGrades, RMPInfo, Term, InstructorId, InstructorGrade, SmallCourse } from "../../shared/types";
+import { Anchor, capitalize, Chip, firstLast, gpaColor, Loading } from "./util";
+import { useAPI, useCourse } from "./wrapper";
 import { CircularProgress, CircularProgressProps } from "@nextui-org/progress";
 import { twMerge } from "tailwind-merge";
 import { useContext } from "react";
-import { AppTooltip, CourseContext, SelectionContext, useMd } from "./clientutil";
+import { AppTooltip, SelectionContext, useMd } from "./clientutil";
 import { SectionLink } from "./sectionlink";
 
 export const CircProg = ({c,...props}: CircularProgressProps&{c: string}) => <CircularProgress
@@ -70,20 +70,23 @@ export function Meters({children, name, rmp, grade, className, gpaSub}: {name: s
 	</div>;
 }
 
-function ProfData({x}: {x: CourseInstructor}) {
+function ProfData({x, course, term}: {x: CourseInstructor, course: SmallCourse, term: Term}) {
 	const data = useAPI<InstructorId|null, string>("profbyname", {data: x.name, handleErr(e) {
 		if (e.error=="notFound") return null;
 	}})?.res ?? null;
 
-	const cc = useContext(CourseContext);
 	const selCtx = useContext(SelectionContext);
 
-	const ts = Object.entries(cc.course.sections).filter(([k,v]) => v.find(s=>
-		s.instructors.includes(x))!=undefined).map(([k,v]) => k as Term);
-	const secs = cc.course.sections[cc.term].filter(v => v.instructors.includes(x));
+	const full = useCourse(course.id);
+	if (full==null) return <Loading/>;
 
-	const g = cc.course.instructor[x.name]!=undefined
-		? mergeGrades(Object.values(cc.course.instructor[x.name])) : null;
+	const ts = Object.entries(full.sections).filter(([k,v]) => v.find(
+		s=>s.instructors.find(v=>v.name==x.name)
+	)).map(([k,v]) => k as Term);
+	const secs = full.sections[term].filter(v => v.instructors.find(y=>y.name==x.name));
+
+	const g = full.instructor[x.name]!=undefined
+		? mergeGrades(Object.values(full.instructor[x.name])) : null;
 
 	const i = data?.instructor;
 
@@ -108,10 +111,10 @@ function ProfData({x}: {x: CourseInstructor}) {
 			<Meters name={x.name} rmp={data?.rmp ?? null} grade={g} gpaSub="(this course)" />
 		</div>
 
-		<div className="w-full flex-row flex items-center p-3 gap-3" >
-			<div className="flex flex-row" >
-				Sections: {secs.map(s => <SectionLink section={s} className="ml-1" key={s.crn} >
-					<Anchor>{s.section}</Anchor>
+		<div className="w-full flex-row flex items-center p-3 gap-3 flex-wrap" >
+			<div className="flex flex-row flex-wrap" >
+				Sections: {secs.map((s,i) => <SectionLink course={course} term={term} section={s} className="ml-1" key={s.crn} >
+					<Anchor>{s.section}</Anchor>{i<secs.length-1 && ", "}
 				</SectionLink>)}.
 			</div>
 			<div className="flex flex-row flex-wrap">
@@ -122,8 +125,10 @@ function ProfData({x}: {x: CourseInstructor}) {
 	</div>;
 }
 
-export function ProfLink({x, label, className}: {x: CourseInstructor, label?: string, className?: string}) {
-	return <AppTooltip placement={useMd() ? "left" : "bottom"} content={<ProfData x={x} />} >
+export function ProfLink({x, label, className, course, term}: {x: CourseInstructor, label?: string, className?: string, course: SmallCourse, term: Term}) {
+	return <AppTooltip placement={useMd() ? "left" : "bottom"} content={
+		<ProfData x={x} course={course} term={term} />
+	} >
 		<div className={twMerge("inline-block", className)} >
 			<Anchor className={className} >{label ?? x.name}</Anchor>
 		</div>

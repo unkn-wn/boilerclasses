@@ -1,8 +1,8 @@
 "use client"
 
-import { AppCtx, AppWrapper } from "@/components/wrapper";
-import { CourseId, emptyInstructorGrade, InstructorGrade, InstructorId, latestTermofTerms, mergeGrades, Section, ServerInfo, Term, termIdx, toInstructorGrade } from "../../../../shared/types";
-import { BackButton, BarsStat, CourseContext, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, WrapStat } from "@/components/clientutil";
+import { AppCtx, AppWrapper, useInfo } from "@/components/wrapper";
+import { CourseId, emptyInstructorGrade, InstructorGrade, InstructorId, latestTermofTerms, mergeGrades, Section, ServerInfo, Term, termIdx, toInstructorGrade, toSmallCourse } from "../../../../shared/types";
+import { BackButton, BarsStat, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, WrapStat } from "@/components/clientutil";
 import { Anchor, capitalize, RedditButton, selectProps } from "@/components/util";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import { useContext, useMemo, useState } from "react";
@@ -13,7 +13,7 @@ import { CourseLink } from "@/components/card";
 import { Calendar } from "@/components/calendar";
 import { decodeQueryToSearchState, encodeToQuery, Search, SearchState } from "@/app/search";
 
-export function Instructor({instructor, info}: {info: ServerInfo, instructor: InstructorId}) {
+export function Instructor({instructor}: {instructor: InstructorId}) {
 	const i = instructor.instructor;
 	const total = mergeGrades(i.grades.map(x=>toInstructorGrade(x.data)));
 
@@ -88,9 +88,13 @@ export function Instructor({instructor, info}: {info: ServerInfo, instructor: In
 
 	const days = [...new Set(termSecs.flatMap(x=>x[2].times.map(y=>y.day)))];
 	const smallCalendar = days.length<=3;
+
+	const smallCourses = useMemo(()=>new Map(
+		instructor.courses.map(x=>[x.id, toSmallCourse(x)])
+	), [])
 	const cal = <>
-		<TermSelect term={term} setTerm={setTerm} info={info} terms={allTerms} name="Schedule" />
-		<Calendar days={days} sections={termSecs.map(x=>[x[0],x[2]])} term={term} info={info} />
+		<TermSelect term={term} setTerm={setTerm} terms={allTerms} name="Schedule" />
+		<Calendar days={days} sections={termSecs.map(x=>[smallCourses.get(x[0].id)!,x[2]])} term={term} />
 	</>;
 
 	const main=<>
@@ -138,17 +142,15 @@ export function Instructor({instructor, info}: {info: ServerInfo, instructor: In
 							<WrapStat title="GPA by course" {...statProps} >
 								<BarsStat vs={searchCourses.map(x=>[x, courseGrades.get(x.id)!.gpa])}
 									type="gpa"
-									lhs={x=> <CourseContext.Provider value={{ ...x, info, term }} >
-										<CourseLink type="ctx" />
-									</CourseContext.Provider>} />
+									lhs={x=> <CourseLink type="course" course={smallCourses.get(x.id)!} /> } />
 							</WrapStat>
 						</Tab>
 						<Tab key="gpaSemester" title="GPA Breakdown" {...statProps} >
 							<WrapStat title="GPA by course" {...statProps} >
 								<NameSemGPA vs={semGPA}
-									lhs={x=> <CourseContext.Provider value={{ ...x, info, term }} >
-										<div className="text-xl font-display font-extrabold" ><CourseLink type="ctx" /></div>
-									</CourseContext.Provider>} />
+									lhs={x=> <div className="text-xl font-display font-extrabold" >
+										<CourseLink type="course" course={smallCourses.get(x.id)!} />
+									</div>} />
 							</WrapStat>
 						</Tab>
 						<Tab key="grades" title="Grade distribution" >
@@ -178,7 +180,7 @@ export function Instructor({instructor, info}: {info: ServerInfo, instructor: In
 		<div className="flex flex-col" >
 			<h2 className="font-extrabold font-display text-3xl mb-2" >All Courses</h2>
 			<Search init={initSearch.search} setSearchState={(search)=>setInitSearch({...initSearch, search})}
-				includeLogo={false} info={info} />
+				includeLogo={false} />
 		</div>
 	</>;
 
@@ -194,6 +196,6 @@ export function Instructor({instructor, info}: {info: ServerInfo, instructor: In
 	</SelectionContext.Provider>;
 }
 
-export function InstructorApp(props: {info: ServerInfo, instructor: InstructorId}) {
-	return <AppWrapper className="lg:pl-14" ><Instructor {...props} /></AppWrapper>
+export function InstructorApp({info,instructor}: {info: ServerInfo, instructor: InstructorId}) {
+	return <AppWrapper info={info} ><Instructor instructor={instructor} /></AppWrapper>
 }

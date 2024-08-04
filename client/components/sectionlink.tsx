@@ -1,12 +1,14 @@
 import { useContext } from "react";
-import { Day, Section, validDays } from "../../shared/types";
-import { AppTooltip, CourseContext, SelectionContext, useMd } from "./clientutil";
+import { Course, Day, Section, SmallCourse, Term, validDays } from "../../shared/types";
+import { AppTooltip, SelectionContext, useMd } from "./clientutil";
 import { InstructorList } from "./instructorlist";
 import { CatalogLinkButton } from "./util";
 import { CourseLink } from "./card";
+import { useInfo } from "./wrapper";
 
-export function SectionLink({children, section, className}: {children: React.ReactNode, section: Section, className?: string}) {
-	const cc=useContext(CourseContext);
+export function SectionLink({term, course, children, section, className}: {
+	term: Term, course: SmallCourse, children: React.ReactNode, section: Section, className?: string
+}) {
 	const selCtx=useContext(SelectionContext);
 	const byTimes = new Map<string,Day[]>();
 
@@ -27,7 +29,7 @@ export function SectionLink({children, section, className}: {children: React.Rea
 		content={
 			<div className="flex flex-col p-2 items-start max-w-60" >
 				<h3 className="font-display font-bold text-lg" >
-					<CourseLink type="ctx" />
+					<CourseLink type="course" course={course} />
 				</h3>
 				<h3 className="font-display font-bold text-xl" >
 					Section {section.section}
@@ -41,7 +43,7 @@ export function SectionLink({children, section, className}: {children: React.Rea
 				)]}
 
 				<div className="flex flex-col gap-3 mt-3 items-start" >
-					<InstructorList whomst={section.instructors} />
+					<InstructorList whomst={section.instructors} course={course} term={term} />
 					<p>{section.dateRange.map(x => new Date(x).toLocaleDateString()).join(" to ")}</p>
 
 					<p>
@@ -58,7 +60,7 @@ export function SectionLink({children, section, className}: {children: React.Rea
 						Permission of {perm} required
 					</p>}
 
-					<CatalogLinkButton href={`https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_detail_sched?term_in=${cc.info.terms[cc.term]!.id}&crn_in=${section.crn}`} />
+					<CatalogLinkButton href={`https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_detail_sched?term_in=${useInfo().terms[term]!.id}&crn_in=${section.crn}`} />
 				</div>
 			</div>
 		} className={className} >

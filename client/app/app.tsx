@@ -38,8 +38,8 @@ export function App({info}: {info: ServerInfo}) {
 		return encodeToQuery(x[0]);
 	});
 
-	return <AppWrapper className="gap-0" >{ initSearch ?
-		<Search init={initSearch[0]} autoFocus={initSearch[1]} info={info} clearSearch={()=>setInitSearch(null)} setSearchState={(s) => {
+	return <AppWrapper className="gap-0" info={info} >{ initSearch ?
+		<Search init={initSearch[0]} autoFocus={initSearch[1]} clearSearch={()=>setInitSearch(null)} setSearchState={(s) => {
 			setInitSearch([s,false]);
 		}} includeLogo />
 		: <Landing setSearch={(s) => setInitSearch([{query: s}, true])} />

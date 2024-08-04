@@ -1,23 +1,16 @@
 "use client"
 
 import React, { useEffect, useState, PointerEvent, HTMLAttributes, useContext } from "react";
-import { Course, CourseInstructor, formatTerm, Section, ServerInfo, SmallCourse, Term, termIdx } from "../../shared/types";
+import { Course, CourseInstructor, formatTerm, latestTermofTerms, Section, ServerInfo, SmallCourse, Term, termIdx } from "../../shared/types";
 import { Tooltip, TooltipPlacement } from "@nextui-org/tooltip";
 import { twMerge } from "tailwind-merge";
-import { AppCtx } from "./wrapper";
+import { AppCtx, useInfo } from "./wrapper";
 import Link, { LinkProps } from "next/link";
 import { Anchor, gpaColor, selectProps } from "./util";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { Progress } from "@nextui-org/progress";
 import { TabsProps } from "@nextui-org/tabs";
 import { default as Select, SingleValue } from "react-select";
-
-export type CourseContextType = {
-	small: SmallCourse,
-	useCourse: ()=>Course|null,
-	info: ServerInfo,
-	term: Term
-};
 
 export type SelectionContext = {
 	section: Section|null,
@@ -28,8 +21,6 @@ export type SelectionContext = {
 export const SelectionContext = React.createContext<SelectionContext>({
 	section: null, selSection(){}, selTerm() {}
 });
-
-export const CourseContext = React.createContext<CourseContextType>("uninitialized context" as any);
 
 export function useMediaQuery(q: MediaQueryList|string, init: boolean=true) {
 	const [x, set] = useState(init);
@@ -69,21 +60,18 @@ export function AppTooltip({content, children, placement, className, onChange, .
 		if (!ctx && p.pointerType=="mouse") setOpen(true);
 	};
 
-	const cc = useContext(CourseContext);
-
 	useEffect(()=>{
 		if (open) {
 			if (reallyOpen==app.tooltipCount) return;
 
-			onChange?.(true);
 			app.incTooltipCount();
 
 			if (ctx) {
-				//forward course context
-				app.open({type: "other", modal: <CourseContext.Provider value={cc} >
-					{content}
-				</CourseContext.Provider>, onClose() {
-					onChange?.(false);
+				app.open({type: "other", modal: <SelectionContext.Provider value={useContext(SelectionContext)} >
+						{content}
+					</SelectionContext.Provider>, onClose() {
+					setOpen(false);
+					setReallyOpen(null);
 				}});
 			} else {
 				const tm = setTimeout(() => {
@@ -98,13 +86,16 @@ export function AppTooltip({content, children, placement, className, onChange, .
 					clearTimeout(tm);
 				};
 			}
-		} else {
-			if (!ctx) onChange?.(false);
+		} else if (!ctx) {
 			const tm = setTimeout(() => setReallyOpen(null), 500);
 			return ()=>clearTimeout(tm);
 		}
 	}, [open]);
 
+	useEffect(()=> {
+		onChange?.(reallyOpen==app.tooltipCount);
+	}, [reallyOpen==app.tooltipCount])
+	
 	return <Tooltip showArrow placement={placement} content={
 			<IsInTooltipContext.Provider value={true} >{content}</IsInTooltipContext.Provider>
 		}
@@ -128,9 +119,7 @@ export function AppLink(props: LinkProps&HTMLAttributes<HTMLAnchorElement>) {
 	const app = useContext(AppCtx);
 	return <Link {...props} onClick={(ev) => {
 		props.onClick?.(ev);
-		if (new URL("/course/ARAB10100StandardArabicLevelI", window.location.href).href
-			!=new URL(window.location.href).href)
-			app.forward();
+		app.forward();
 	}} >
 		{props.children}
 	</Link>
@@ -271,7 +260,7 @@ export const tabProps: TabsProps = {
 	}
 };
 
-export const TermSelect = ({term, terms, info, setTerm, name}: {term: Term, terms: Term[], info: ServerInfo, setTerm: (t:Term)=>void, name: string}) =>
+export const TermSelect = ({term, terms, setTerm, name}: {term: Term, terms: Term[], setTerm: (t:Term)=>void, name: string}) =>
 	<div className="flex flex-wrap flex-row items-center gap-3 text-sm" >
 		{name} from <Select
 			options={terms.map((x):[number,Term]=>[termIdx(x as Term),x as Term])
@@ -282,7 +271,7 @@ export const TermSelect = ({term, terms, info, setTerm, name}: {term: Term, term
 			{...selectProps}
 		/>
 		<span className="text-gray-400" >
-			last updated {new Date(info.terms[term]!.lastUpdated).toLocaleDateString()}
+			last updated {new Date(useInfo().terms[term]!.lastUpdated).toLocaleDateString()}
 		</span>
 	</div>;
 

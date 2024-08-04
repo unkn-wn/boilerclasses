@@ -10,7 +10,9 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.json.encodeToJsonElement
 import org.apache.lucene.analysis.*
 import org.apache.lucene.analysis.core.DecimalDigitFilter
 import org.apache.lucene.analysis.core.LetterTokenizer
@@ -77,8 +79,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
     @Serializable
     data class SearchResult(
         val score: Float,
-        val id: Int,
-        val course: Schema.Course
+        val course: JsonElement
     )
 
     @Serializable
@@ -204,6 +205,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
     private var searcher: IndexSearcher? = null
 
     private var courseById = emptyMap<Int,Schema.Course>()
+    private var smallCourseById = emptyMap<Int,JsonElement>()
     private var sortedCourses = listOf<Schema.CourseId>()
 
     private val fieldAnalyzer = PerFieldAnalyzerWrapper(EnglishAnalyzer(), mapOf(
@@ -249,6 +251,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
             val newSortedCourses = c.sortedWith(
                 compareBy<Schema.CourseId>({it.course.subject}, {it.course.course})
             )
+            val newSmallCourses = c.associate { it.id to Json.encodeToJsonElement(it.toSmall()) }
 
             if (indexSwapFile.exists()) indexSwapFile.deleteRecursively()
 
@@ -340,7 +343,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                         add(IntField("time", timeToMin(it), Field.Store.NO))
                     }
 
-                    cid.course.avgGPA(null)?.let {
+                    cid.course.grades(null).gpa?.let {
                         add(FloatField("gpa", it.toFloat(), Field.Store.NO))
                     }
 
@@ -361,6 +364,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                 
                 sortedCourses = newSortedCourses
                 courseById = newCourseById
+                smallCourseById = newSmallCourses
 
                 idx=MMapDirectory(indexFile.toPath())
                 dirReader=DirectoryReader.open(idx)
@@ -383,7 +387,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
             val id = fields.document(scoredoc.doc).getField("id").numericValue().toInt()
             SearchResult(
                 if (scoredoc.score.isNaN()) 0.0f else scoredoc.score,
-                id, courseById[id]!!
+                smallCourseById[id]!!
             )
         }
     }
@@ -405,7 +409,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
             return@read sortedCourses.subList(req.page*numResults,
                 min(sortedCourses.size,(req.page+1)*numResults)).map {
 
-                SearchResult(0.0f,it.id,it.course)
+                SearchResult(0.0f, smallCourseById[it.id]!!)
             }.let {
                 SearchOutput(it, sortedCourses.size,
                     (sortedCourses.size+numResults-1)/numResults, 0.0)

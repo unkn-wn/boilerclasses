@@ -181,8 +181,8 @@ export type Instructor = {
 };
 
 export type InstructorId = {
-  id: number, instructor: Instructor, rmp?: RMPInfo,
-  courses: CourseId[]
+  id: number, instructor: Instructor,
+  rmp?: RMPInfo, courses: CourseId[]
 };
 
 export function normalizeName(name: string) {
@@ -220,6 +220,9 @@ export type ServerInfo = {
   scheduleTypes: string[]
 };
 
+// just what goes on the card...
+// oof.
+// (otherwise each search is like 2-5 MB, tens of thousands of lines of JSON...)
 export type SmallCourse = {
   id: number,
 
@@ -233,19 +236,23 @@ export type SmallCourse = {
   description: string,
   credits: {type: "range", min: number, max: number}|{type: "fixed", values: number[]},
   attributes: string[],
-  scheduleTypes: string[]
+  scheduleTypes: string[],
+
+  grades: InstructorGrade
 };
 
 export type CourseId = {course: Course, id: number};
 
-export const makeCourseIdSmall = (cid: CourseId): SmallCourse => ({
+export const toSmallCourse = (cid: CourseId): SmallCourse => ({
   id: cid.id, ...cid.course,
-  termInstructors: Object.entries(cid.course.sections).map(([k,v]) =>
-  )
-})
+  termInstructors: Object.fromEntries(Object.entries(cid.course.sections)
+    .map(([k,v]) => [k as Term, mergeInstructors(v.flatMap(x=>x.instructors))])),
+  grades: mergeGrades(Object.values(cid.course.instructor).flatMap(x=>Object.values(x))),
+  scheduleTypes: [...new Set(Object.values(cid.course.sections).flat().map(s=>s.scheduleType))]
+});
 
 export type ServerSearch = {
-  results: ({score: number}&CourseId)[],
+  results: ({score: number, course:SmallCourse})[],
   numHits: number, npage: number, ms: number
 };
 
@@ -275,8 +282,7 @@ export function sectionsByTerm(course: Course) {
     .sort(([a,x],[b,y]) => termIdx(b)-termIdx(a));
 }
 
-export function instructorsForTerm(course: Course, term: Term) {
-  const all = course.sections[term].flatMap(x => x.instructors);
+export function mergeInstructors(all: CourseInstructor[]) {
   const primary = new Map(all.filter(x => x.primary).map(x=>[x.name,x]));
   return [...primary.values(), ...new Map(all.filter(x => !primary.has(x.name))
     .map(x=>[x.name,x])).values()];

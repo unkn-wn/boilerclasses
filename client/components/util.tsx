@@ -18,8 +18,14 @@ export const Anchor: React.FC<(AnchorHTMLAttributes<HTMLAnchorElement>)&Partial<
 	`text-gray-300 inline-flex flex-row align-middle items-center gap-1 underline decoration-dashed decoration-1
 		underline-offset-2 transition-all hover:text-gray-50 hover:bg-cyan-100/5 cursor-pointer`,className
 	);
-	if (href!=undefined)
-		return <AppLink href={href} rel="noopener noreferrer" className={classN} {...props} >{props.children}</AppLink>;
+
+	//special protocols which nextjs link can't handle...
+	if (href?.startsWith("mailto:"))
+		return <a className={classN} href={href} {...props} >{props.children}</a>
+	else if (href!=undefined)
+		return <AppLink href={href} rel="noopener noreferrer" className={classN} {...props} >
+			{props.children}
+		</AppLink>;
 	else return <a className={classN} href="#" {...props} onClick={(ev) => {
 		ev.preventDefault();
 		props.onClick?.(ev);
