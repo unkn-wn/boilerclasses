@@ -1,12 +1,12 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { courseById, getInfo } from "@/app/server";
 import { CourseDetailApp } from "./course";
 
 export async function generateMetadata(
   { params }: {params: {id: string}},
-  parent: ResolvingMetadata
 ): Promise<Metadata> {
-	const {course, id} = await courseById(params.id);
+	const id = Number.parseInt(params.id);
+	const course = await courseById(id);
 
 	const title = `${course.subject}${course.course}: ${course.name} at Purdue`;
 
@@ -27,7 +27,8 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: {params: {id: string}}) {
-	const course = await courseById(params.id);
+	const id = Number.parseInt(params.id);
+	const course = await courseById(id);
 	const info = await getInfo();
-	return <CourseDetailApp {...course} info={info} />;
+	return <CourseDetailApp course={course} id={id} info={info} />;
 }

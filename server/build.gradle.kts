@@ -41,6 +41,8 @@ dependencies {
 
 //    implementation("org.zeromq:jeromq:0.6.0")
     implementation("org.xerial:sqlite-jdbc:3.46.0.1")
+
+//    implementation("com.microsoft.azure:msal4j:1.14.2")
 }
 
 kotlin {

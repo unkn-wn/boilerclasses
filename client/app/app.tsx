@@ -1,15 +1,15 @@
 "use client"
 
-import { useEffect, useState } from "react";
 import icon from "../public/icon.png";
 import { Footer } from "@/components/footer";
 
 import { LogoText } from "@/components/util";
 import { ServerInfo } from "../../shared/types";
-import { decodeQueryToSearchState, Search, SearchState } from "./search";
+import { decodeQueryToSearchState, encodeToQuery, Search, SearchState } from "./search";
 import Image from "next/image";
 
 import { AppWrapper } from "@/components/wrapper";
+import { searchState } from "@/components/clientutil";
 
 const Landing = ({setSearch}: {setSearch: (s: string) => void}) =>
 	<>
@@ -26,21 +26,22 @@ const Landing = ({setSearch}: {setSearch: (s: string) => void}) =>
 				className="text-white text-lg md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
 			/>
 
-
 			<Footer className="absolute bottom-0 left-0 right-0" />
 		</div>
 	</>;
 
 export function App({info}: {info: ServerInfo}) {
-	const [initSearch, setInitSearch] = useState<[Partial<SearchState>,boolean]|null>(null);
+	const [initSearch, setInitSearch] = searchState<[Partial<SearchState>,boolean]|null>(null, (x) => {
+		return [decodeQueryToSearchState(x),false];
+	}, (x) => {
+		if (x==null) return;
+		return encodeToQuery(x[0]);
+	});
 
-	useEffect(() => {
-		if (window.location.search!="")
-			setInitSearch([decodeQueryToSearchState(new URLSearchParams(window.location.search)),false]);
-	}, []);
-
-	return <AppWrapper>{ initSearch ?
-		<Search init={initSearch[0]} autoFocus={initSearch[1]} info={info} clearSearch={()=>setInitSearch(null)} />
+	return <AppWrapper className="gap-0" >{ initSearch ?
+		<Search init={initSearch[0]} autoFocus={initSearch[1]} info={info} clearSearch={()=>setInitSearch(null)} setSearchState={(s) => {
+			setInitSearch([s,false]);
+		}} includeLogo />
 		: <Landing setSearch={(s) => setInitSearch([{query: s}, true])} />
 	}</AppWrapper>;
 }

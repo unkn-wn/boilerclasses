@@ -2,15 +2,13 @@ package com.boilerclasses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.json.*
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
 import java.util.Locale
 
 // just stowing the bodies here 🪦
-object CourseData {
+object Schema {
     @Serializable
     data class RMPInfo(
         val avgDifficulty: Double,
@@ -105,7 +103,7 @@ object CourseData {
         data class Attribute(
             val attribute: String,
             override val concurrent: Boolean
-        ) : CourseLike()
+        ): CourseLike()
         @Serializable
         @SerialName("range")
         data class Range(
@@ -121,10 +119,10 @@ object CourseData {
         ): PreReq()
         @Serializable
         @SerialName("gpa")
-        data class Gpa(val minimum: Double) : PreReq()
+        data class Gpa(val minimum: Double): PreReq()
         @Serializable
         @SerialName("credits")
-        data class Credits(val minimum: Int) : PreReq()
+        data class Credits(val minimum: Int): PreReq()
         @Serializable
         @SerialName("studentAttribute")
         data class StudentAttribute(val attr: String): PreReq()
@@ -138,31 +136,31 @@ object CourseData {
         @SerialName("level")
         data class Level(
             val level: String, override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
 
         @Serializable
         @SerialName("major")
         data class Major(
             val major: String, override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
 
         @Serializable
         @SerialName("degree")
         data class Degree(
             val degree: String, override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
 
         @Serializable
         @SerialName("program")
         data class Program(
             val program: String, override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
 
         @Serializable
         @SerialName("college")
         data class College(
             val college: String, override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
 
         @Serializable
         @SerialName("class")
@@ -173,27 +171,27 @@ object CourseData {
             val maxCredit: Int?=null,
             val year: Int?=null,
             override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
 
         @Serializable
         @SerialName("cohort")
         data class Cohort(
             val cohort: String,
             override val exclusive: Boolean
-        ) : Restriction()
+        ): Restriction()
     }
 
     @Serializable
     sealed class PreReqs {
         @Serializable
         @SerialName("leaf")
-        data class Leaf(val leaf: PreReq) : PreReqs()
+        data class Leaf(val leaf: PreReq): PreReqs()
         @Serializable
         @SerialName("or")
-        data class Or(val vs: List<PreReqs>) : PreReqs()
+        data class Or(val vs: List<PreReqs>): PreReqs()
         @Serializable
         @SerialName("and")
-        data class And(val vs: List<PreReqs>) : PreReqs()
+        data class And(val vs: List<PreReqs>): PreReqs()
     }
 
     @Serializable
@@ -222,7 +220,7 @@ object CourseData {
         val credits: Credits,
         val attributes: List<String>,
         val prereqs: JsonElement,
-        val restrictions: List<Restriction>
+        val restrictions: List<Restriction>,
     ) {
         fun prereqs(): PreReqs? = when (prereqs) {
             is JsonObject -> Json.decodeFromJsonElement<PreReqs>(prereqs)
@@ -240,16 +238,48 @@ object CourseData {
     }
 
     @Serializable
+    data class Instructor(
+        val name: String,
+        val grades: List<GradeData>,
+        val nicknames: List<String>,
+        val dept: String? = null,
+        val title: String? = null,
+        val office: String? = null,
+        val site: String? = null,
+        val email: String? = null,
+        val lastUpdated: String
+    )
+
+    @Serializable
+    data class InstructorId(
+        val id: Int,
+        val instructor: Instructor,
+        val rmp: RMPInfo?=null,
+        val courses: List<CourseId>
+    )
+
+    @Serializable
+    data class CourseId(
+        val id: Int,
+        val course: Course
+    )
+
+    @Serializable
+    data class GradeData(
+        val subject: String,
+        val course: String,
+        val term: String,
+        val data: Map<String, Double?>
+    )
+
+    @Serializable
     data class Term(val id: String, val name: String, val lastUpdated: String)
     @Serializable
     data class Subject(val abbr: String, val name: String)
     @Serializable
     data class Attribute(val id: String, val name: String)
-
     @Serializable
-    data class Data(
-        val courses: List<Course>,
-        val rmp: Map<String, RMPInfo>,
+    data class Info(
         val terms: Map<String, Term>,
         val subjects: List<Subject>,
         val attributes: List<Attribute>,

@@ -13,12 +13,13 @@ services:
       - type: bind
         source: ${DATA_SOURCE?DATA_SOURCE is required}
         target: /server/data
+    ports:
+      - 127.0.0.1:4000:8080
   frontend:
     build:
       context: .
       dockerfile: ./client/Dockerfile
       args: # nextjs uses at build time. these are public (in a sense)!
-        - SERVER_URL=http://api:8080
         - NEXT_PUBLIC_ROOT_URL=${ROOT_URL?ROOT_URL is required}
         - NEXT_PUBLIC_GTM_ID=${GTM_ID-}
     ports:

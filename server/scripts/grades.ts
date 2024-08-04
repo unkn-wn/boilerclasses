@@ -1,5 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
-import { Grade, grades, Term, termPre } from "../../shared/types"
+import { Grade, grades, Term, termPre } from "../../shared/types";
 import * as XLSX from 'xlsx';
 
 export type Grades = {
@@ -7,21 +6,14 @@ export type Grades = {
 	course: string,
 	term: Term,
 	instructor: string,
-	grades: Partial<Record<Grade, number>>
+	data: Partial<Record<Grade, number>>
 };
 
-let excel: XLSX.WorkBook|null=null;
-let lastUrl: string|null = null;
+export async function getGrades(buf: ArrayBuffer): Promise<Grades[]> {
+	console.log("loading grades from buffer...");
+	const excel = XLSX.read(buf);
 
-export async function getGrades(url: string): Promise<Grades[]> {
-	if (excel==null || url!=lastUrl) {
-		console.log("downloading grades...");
-		excel = XLSX.read(await (await fetch(url)).arrayBuffer());
-		// excel = XLSX.read(await readFile("./grades.xlsx"));
-		lastUrl=url;
-	}
-
-	console.log("reading grades");
+	console.log("reading grades...");
 	const out: Grades[] = [];
 	for (const [_, sheet] of Object.entries(excel.Sheets).reverse()) {
 		const data: Record<number, (string|number)>[] = XLSX.utils.sheet_to_json(sheet, { header: 1 });
@@ -106,7 +98,7 @@ export async function getGrades(url: string): Promise<Grades[]> {
 			}
 
 			out.push({
-				subject, course, grades,
+				subject, course, data: grades,
 				term: `${termTy}${parts[1]}` as Term,
 				instructor: o["Instructor"]
 			});

@@ -36,4 +36,5 @@ COPY server/application.prod.conf application.conf
 
 HEALTHCHECK --interval=5m --timeout=1s \
   CMD curl -s -o /dev/null -w "%{http_code}" -X POST localhost:8080/info | grep -q 200 || exit 1
-CMD ./boilerclasses/bin/boilerclasses
+
+CMD cd ./scripts && npm run migrate:latest && cd .. && ./boilerclasses/bin/boilerclasses

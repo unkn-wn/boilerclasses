@@ -119,7 +119,7 @@ export type Seats = {
   used: number, left: number
 };
 
-export type Instructor = {primary: boolean, name: string};
+export type CourseInstructor = {primary: boolean, name: string};
 
 export type Section = {
   crn: number,
@@ -140,7 +140,7 @@ export type Section = {
   dateRange: [string, string],
   scheduleType: string,
   
-  instructors: Instructor[]
+  instructors: CourseInstructor[]
 };
 
 export const validDays = ["M","T","W","R","F","S"];
@@ -161,6 +161,28 @@ export type Course = {
   attributes: string[],
   prereqs: PreReqs | "failed" | "none", //may fail to parse
   restrictions: Restriction[]
+};
+
+export type Instructor = {
+  name: string,
+	grades: {
+    subject: string, course: string, term: Term,
+    data: Partial<Record<Grade, number>>
+  }[],
+
+  nicknames: string[],
+  dept?: string,
+  title?: string,
+  office?: string,
+  site?: string,
+  email?: string,
+
+  lastUpdated: string,
+};
+
+export type InstructorId = {
+  id: number, instructor: Instructor, rmp?: RMPInfo,
+  courses: CourseId[]
 };
 
 export function normalizeName(name: string) {
@@ -185,24 +207,43 @@ export const gradeGPA: Partial<Record<Grade, number>> = {
   "A+": 4, "E": 0, "F": 0
 };
 
-export type Data = {
-  courses: Course[],
-  rmp: Record<string, RMPInfo>,
+export type ServerResponse<T> = {
+  status:"error",
+  error: "notFound"|"unauthorized"|"badRequest"|"loading"|"rateLimited"|"other",
+  message: string|null
+} | {status: "ok", result: T}
+
+export type ServerInfo = {
   terms: Partial<Record<Term,{ id: string, name: string, lastUpdated: string }>>,
   subjects: { abbr: string, name: string }[],
   attributes: { id: string, name: string }[],
   scheduleTypes: string[]
-}
+};
 
-export type ServerResponse<T> = {
-  status:"error",
-  error: "notFound"|"unauthorized"|"badRequest"|"loading"|"rateLimited"|"other",
-  msg: string|null
-} | {status: "ok", result: T}
+export type SmallCourse = {
+  id: number,
 
-export type ServerInfo = Pick<Data, "attributes"|"terms"|"subjects"|"scheduleTypes">
+  name: string,
+  subject: string,
+  course: number,
+  termInstructors: Record<Term,CourseInstructor[]>,
 
-export type CourseId = {course: Course, id: string};
+  lastUpdated: string,
+
+  description: string,
+  credits: {type: "range", min: number, max: number}|{type: "fixed", values: number[]},
+  attributes: string[],
+  scheduleTypes: string[]
+};
+
+export type CourseId = {course: Course, id: number};
+
+export const makeCourseIdSmall = (cid: CourseId): SmallCourse => ({
+  id: cid.id, ...cid.course,
+  termInstructors: Object.entries(cid.course.sections).map(([k,v]) =>
+  )
+})
+
 export type ServerSearch = {
   results: ({score: number}&CourseId)[],
   numHits: number, npage: number, ms: number
@@ -214,7 +255,7 @@ export function termIdx(t: Term) {
   return Number.parseInt(t.slice(termPre[i].length))*termPre.length + i;
 }
 
-export function creditStr(course: Course) {
+export function creditStr(course: {credits: Course["credits"]}) {
   let out;
   if (course.credits.type=="range") {
     out=`${course.credits.min} to ${course.credits.max} credits`;
@@ -255,13 +296,17 @@ export function formatTerm(t: Term) {
   return `${x[0].toUpperCase()}${x.slice(1)} ${t.slice(x.length)}`;
 }
 
-export function latestTerm(course: Course, restrict?: Term[]): Term|null {
+export function latestTermofTerms(terms: Term[], restrict?: Term[]): Term|null {
   let latest=null, idx=-1;
-  for (const k in course.sections) {
-    const v = termIdx(k as Term);
-    if (v>idx && (restrict===undefined || restrict.includes(k as Term)))
-      idx=v, latest=k as Term;
+  for (const k of terms) {
+    const v = termIdx(k);
+    if (v>idx && (restrict===undefined || restrict.includes(k)))
+      idx=v, latest=k;
   }
 
   return latest;
+}
+
+export function latestTerm(course: Course, restrict?: Term[]): Term|null {
+  return latestTermofTerms(Object.keys(course.sections) as Term[],restrict);
 }

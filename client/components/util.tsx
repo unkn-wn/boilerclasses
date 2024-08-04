@@ -1,5 +1,5 @@
 import { Spinner, SpinnerProps } from "@nextui-org/spinner";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import { ClassNameValue, twMerge } from "tailwind-merge";
 import { Footer } from "./footer";
@@ -10,8 +10,10 @@ import Image from "next/image";
 import purdue from "../public/purdue-icon.png";
 import { LinkProps } from "next/link";
 import { AppLink } from "./clientutil";
+import { AppCtx } from "./wrapper";
+import reddit from "../public/reddit-icon.png";
 
-export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>&Partial<LinkProps>> = ({className,href,...props}) => {
+export const Anchor: React.FC<(AnchorHTMLAttributes<HTMLAnchorElement>)&Partial<LinkProps>> = ({className,href,...props}) => {
 	const classN = twMerge(
 	`text-gray-300 inline-flex flex-row align-middle items-center gap-1 underline decoration-dashed decoration-1
 		underline-offset-2 transition-all hover:text-gray-50 hover:bg-cyan-100/5 cursor-pointer`,className
@@ -35,7 +37,7 @@ export const Button = ({className, icon, ...props}: HTMLAttributes<HTMLButtonEle
 	</button>
 
 export const LinkButton = ({className, icon, ...props}: React.AnchorHTMLAttributes<HTMLAnchorElement>&{icon?: React.ReactNode}) =>
-	<a className={twMerge('flex flex-row gap-4 px-3 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700 active:border-blue-500 text-sm',className)} rel="noopener noreferrer" {...props} >
+	<a className={twMerge('flex flex-row gap-2 px-3 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700 active:border-blue-500 text-sm',className)} rel="noopener noreferrer" {...props} >
 		{icon &&
 			<span className="inline-block h-4 w-auto" >{icon}</span> }
 		{props.children}
@@ -127,6 +129,22 @@ export const CatalogLinkButton = ({href}: {href:string}) =>
 		Catalog
 	</LinkButton>
 
+export const RedditButton = ({keywords}: {keywords:string[]}) =>
+	<LinkButton href={`https://www.reddit.com/r/Purdue/search/?q=${
+			encodeURIComponent(keywords.join(" OR "))
+		}`} target="_blank" rel="noopener noreferrer" className="bg-orange-600 hover:bg-orange-700 transition-background duration-300 ease-out"
+		icon={<Image src={reddit} alt="Reddit" className="w-full h-full" />}>
+
+		Reddit
+	</LinkButton>;
+
+export function capitalize(s: string) {
+	const noCap = ["of", "a", "an", "the", "in"];
+	return s.split(/\s+/g).filter(x=>x.length>0).map((x,i)=>{
+		if (i>0 && noCap.includes(x)) return x;
+		else return `${x[0].toUpperCase()}${x.slice(1)}`;
+	}).join(" ");
+}
 // export const AppSelect = ({...props}: SelectProps) => <Select {...props}
 // 		classNames={{
 // 			trigger: twMerge("px-4 py-1.5 bg-zinc-900 border text-white rounded-xl border-zinc-900 hover:border-zinc-700 data-[hover=true]:bg-zinc-900 data-[open=true]:border-blue-500", props.classNames?.trigger)

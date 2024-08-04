@@ -4,9 +4,22 @@
 	"private": true,
 	"dependencies": {
 		"@types/node": "^20.14.12",
+		"better-sqlite3": "^11.1.2",
 		"cheerio": "^1.0.0-rc.12",
-		"tsx": "^4.16.2",
+		"cli-progress": "^3.12.0",
+		"knex": "^3.1.0",
+		"tsx": "^4.16.5",
 		"undici": "^6.19.4",
 		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+	},
+	"scripts": {
+		"migrate:up": "node --import tsx/esm ./node_modules/.bin/knex migrate:up",
+		"migrate:latest": "node --import tsx/esm ./node_modules/.bin/knex migrate:latest",
+		"migrate:make": "node --import tsx/esm ./node_modules/.bin/knex migrate:make -x ts",
+		"migrate:down": "node --import tsx/esm ./node_modules/.bin/knex migrate:down",
+		"migrate:rollback": "node --import tsx/esm ./node_modules/.bin/knex migrate:rollback"
+	},
+	"devDependencies": {
+		"@types/cli-progress": "^3.11.6"
 	}
 }

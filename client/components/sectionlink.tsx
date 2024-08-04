@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { Day, Section, validDays } from "../../shared/types";
-import { AppTooltip, CourseContext, useMd } from "./clientutil";
+import { AppTooltip, CourseContext, SelectionContext, useMd } from "./clientutil";
 import { InstructorList } from "./instructorlist";
 import { CatalogLinkButton } from "./util";
 import { CourseLink } from "./card";
 
 export function SectionLink({children, section, className}: {children: React.ReactNode, section: Section, className?: string}) {
 	const cc=useContext(CourseContext);
+	const selCtx=useContext(SelectionContext);
 	const byTimes = new Map<string,Day[]>();
 
 	for (const x of section.times)
@@ -20,8 +21,8 @@ export function SectionLink({children, section, className}: {children: React.Rea
 	const mq = useMd();
 	return <AppTooltip placement={mq ? "right" : "top"}
 		onChange={x => {
-			if (x) cc.selSection(section);
-			else if (section==cc.section) cc.selSection(null);
+			if (x) selCtx.selSection(section);
+			else if (section==selCtx.section) selCtx.selSection(null);
 		}}
 		content={
 			<div className="flex flex-col p-2 items-start max-w-60" >

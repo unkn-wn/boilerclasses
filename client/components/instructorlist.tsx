@@ -1,13 +1,15 @@
 import { useContext, useState } from "react"
 import { Anchor } from "./util"
-import { formatTerm, Instructor, instructorsForTerm } from "../../shared/types";
+import { formatTerm, CourseInstructor, instructorsForTerm } from "../../shared/types";
 import { ProfLink } from "./proflink";
 import { CourseContext } from "./clientutil";
 import { twMerge } from "tailwind-merge";
 
-export function InstructorList({short, className, whomst}: {short?: boolean, className?: string, whomst?: Instructor[]}) {
+export function InstructorList({short, className, whomst}: {short?: boolean, className?: string, whomst?: CourseInstructor[]}) {
 	const cc = useContext(CourseContext);
 	const instructors = whomst ?? (instructorsForTerm(cc.course, cc.term) ?? []);
+	if (instructors.length==0) return <></>;
+
 	const [showMoreInstructors, setShowMoreInstructors] = useState(false);
 	const curInstructors = showMoreInstructors ? instructors : instructors.slice(0,3);
 

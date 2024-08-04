@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ServerResponse } from "../../shared/types";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { NextUIProvider } from "@nextui-org/system";
 import { Button } from "./util";
 import { useRouter } from "next/navigation";
+import { twMerge } from "tailwind-merge";
 
 export type AppModal = {
 	type: "error", name: string, msg: string, retry?: () => void
@@ -21,34 +22,35 @@ export type AppCtx = {
 
 export const AppCtx = React.createContext<AppCtx>("context not initialized" as any)
 
-export function usePromise<R>(f: (rerun: () => void, abort: AbortController) => Promise<R>, deps: any[]): R|null {
+export function usePromise<R>(f: (rerun: () => void) => Promise<R|null>, deps: any[]): R|null {
 	const [ret, setRet] = useState<R|null>(null);
 
 	useEffect(() => {
-		const abort = new AbortController();
-
-		const attempt = () => f(() => {
-			if (abort.signal.aborted) return;
-			setRet(null);
-			attempt();
-		}, abort).then((x) => {
-			if (!abort.signal.aborted) setRet(x);
-		});
-
+		const attempt = () => f(() => attempt())
+			.then((x) => {
+				if (x!=null) setRet(x)
+			});
 		attempt();
-		return () => abort.abort();
 	}, deps);
 
 	return ret;
 }
 
-export function useAPI<R,T extends any=null>(endpoint: string, {data, method, handleErr}: {
-	data?: T, method?: string, handleErr?: (e: ServerResponse<R>&{status:"error"}) => R|undefined
+export function useAPI<R,T extends any=null>(endpoint: string, {data, method, handleErr, defer}: {
+	data?: T, method?: string, handleErr?: (e: ServerResponse<R>&{status:"error"}) => R|undefined,
+	defer?: boolean
 }={}) {
 	const c = useContext(AppCtx);
+	const inFlight = useRef<AbortController|null>(null);
 
 	const body = JSON.stringify(data); //hehe, cursed
-	return usePromise(async (rerun, abort) => {
+	return usePromise(async (rerun) => {
+		if (defer) return;
+
+		const before = inFlight.current;
+		const abort = new AbortController();
+		inFlight.current = abort;
+
 		try {
 			const resp = await (await fetch(`/api/${endpoint}`, {
 				method: method ?? "POST", body: data==undefined ? undefined : body,
@@ -74,7 +76,7 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 				}
 
 				console.error(resp);
-				c.open({type: "error", name, msg: resp.msg ?? "Error performing API request.", retry: rerun })
+				c.open({type: "error", name, msg: resp.message ?? "Error performing API request.", retry: rerun })
 			} else {
 				return {res: resp.result, endpoint, req: data};
 			}
@@ -87,13 +89,15 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 				type: "error", name: "Error reaching API",
 				msg: `Fetch error: ${e instanceof Error ? e.message : e}. Try refreshing?`, retry: rerun
 			});
+		} finally {
+			before?.abort();
 		}
 
 		return null;
-	}, [endpoint, body]);
+	}, [endpoint, body, defer]);
 }
 
-export function AppWrapper({children}: {children: React.ReactNode}) {
+export function AppWrapper({children, className}: {children: React.ReactNode, className?: string}) {
 	//😒
 	const [activeModals, setActiveModals] = useState<AppModal[]>([]);
 	const [modalVisible, setModalVisible] = useState<Record<"error"|"other", boolean>>({
@@ -189,7 +193,9 @@ export function AppWrapper({children}: {children: React.ReactNode}) {
 			}}>
 
 			{m}
-			{children}
+			<div id="parent" className={twMerge("flex flex-col bg-neutral-950 container mx-auto p-4 lg:mt-5 gap-5 max-w-screen-xl", className)}>
+				{children}
+			</div>
 		</AppCtx.Provider>
   </NextUIProvider>);
 }

@@ -2,7 +2,7 @@ import { Button, ButtonPopover, Loading, LogoText, selectProps } from "@/compone
 import icon from "../public/icon.png";
 import Image from "next/image";
 import { IconArrowUp, IconChevronUp, IconFilterFilled, IconInfoCircle, IconMoodLookDown } from "@tabler/icons-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Select from 'react-select';
 import { formatTerm, ServerInfo, ServerSearch, Term, termIdx } from "../../shared/types";
 import { Footer } from "@/components/footer";
@@ -24,14 +24,15 @@ export type SearchState = {
 	scheduleType: string[],
 	minGPA?: number, maxGPA?: number,
 	minMinute?: number, maxMinute?: number,
-	page: number
+	page: number,
+	instructors: string[]
 };
 
 const defaultSearchState: SearchState = {
-	query: "", attributes: [], subjects: [], scheduleType: [], terms: [], page: 0
+	query: "", attributes: [], subjects: [], scheduleType: [], terms: [], page: 0, instructors: []
 };
 
-const spec: Record<keyof SearchState, "array"|"number"|"string"> = {
+const spec: Partial<Record<keyof SearchState, "array"|"number"|"string">> = {
 	query: "string", minCredits: "number", maxCredits: "number",
 	attributes: "array", minCourse: "number", maxCourse: "number",
 	subjects: "array", terms: "array", scheduleType: "array", page: "number",
@@ -49,7 +50,7 @@ export function encodeToQuery(x: any) {
 	return u;
 }
 
-function decodeFromQuery<T>(x: URLSearchParams, spec: Record<keyof T, "array"|"number"|"string">, base: T) {
+function decodeFromQuery<T>(x: URLSearchParams, spec: Partial<Record<keyof T, "array"|"number"|"string">>, base: T) {
 	for (const k in spec) {
 		const g = x.getAll(k);
 		//@ts-ignore
@@ -67,12 +68,8 @@ export function decodeQueryToSearchState(query: URLSearchParams) {
 	return x;
 }
 
-export function Search({init, info, autoFocus, clearSearch}: {init: Partial<SearchState>, info: ServerInfo, autoFocus?:boolean, clearSearch: ()=>void}) {
-	const [searchState, setSearchState] = useState<SearchState>({...defaultSearchState, ...init});
-
-	useEffect(() => {
-		window.history.replaceState(null,"",`?${encodeToQuery(searchState).toString()}`);
-	}, [searchState]);
+export function Search({init, info, autoFocus, clearSearch, setSearchState, includeLogo}: {init: Partial<SearchState>, info: ServerInfo, autoFocus?:boolean, clearSearch?: ()=>void, setSearchState: (s:SearchState)=>void, includeLogo?: boolean}) {
+	const searchState = {...defaultSearchState, ...init};
 
 	const sortedTerms = useMemo(()=>
 		Object.keys(info.terms).map(k=>({k: k as Term, idx: termIdx(k as Term)}))
@@ -119,21 +116,31 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 
 	const [filtersCollapsed, setFiltersCollapsed] = useState(true);
 
-	return <div id="parent" className={"flex flex-col h-[70dvh] bg-neutral-950 container mx-auto p-4"}>
-		<div id="scrollToTopBtn" className='hidden'>
-			<button className='fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:-tranzinc-y-0.5 transition'
-				onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-				<IconArrowUp color="white" />
-			</button>
-		</div>
+	const [scrollToTop, setScrollToTop] = useState(false);
+	const searchBarRef = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		const onScroll = () => {
+			if (searchBarRef.current!==null)
+				setScrollToTop(window.scrollY>searchBarRef.current.offsetTop+400);
+		};
 
-		<div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8 cursor-pointer' onClick={clearSearch} >
+		window.addEventListener('scroll', onScroll);
+		return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+	return <>
+		{scrollToTop && <button className="fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:-tranzinc-y-0.5 transition"
+			onClick={() => searchBarRef.current?.scrollIntoView({ behavior: "smooth" })}>
+			<IconArrowUp color="white" className="mx-auto my-auto" />
+		</button>}
+
+		{includeLogo && <div ref={includeLogo ? searchBarRef : undefined} className='flex flex-row mb-2 md:mb-4 lg:mb-8 cursor-pointer' onClick={clearSearch} >
 			<Image src={icon} alt="icon" className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16' />
 			<LogoText className="text-2xl md:text-5xl" />
-		</div>
+		</div>}
 
 		{/* Search Bar */}
-		<div className="mb-3">
+		<div className="mb-3" ref={includeLogo ? undefined : searchBarRef} >
 			<input
 				autoFocus={autoFocus} id="search" type="text"
 				placeholder="Search for courses..."
@@ -174,7 +181,7 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 					</div>
 				</Collapse>
 				
-				<div className="flex flex-row justify-between items-end w-full gap-2 flex-wrap" >
+				<div className="flex flex-col md:flex-row justify-between items-end w-full gap-2 flex-wrap" >
 					{!filtersCollapsed ? <div className="flex flex-row items-stretch gap-2 flex-1 md:flex-none flex-wrap" >
 						<ButtonPopover title="Credits" desc={renderRange(searchState.minCredits, searchState.maxCredits)} >
 							<Slider label="Credit range"
@@ -307,11 +314,11 @@ export function Search({init, info, autoFocus, clearSearch}: {init: Partial<Sear
 				<div className='flex flex-col h-full w-full items-center justify-center align-center gap-2 mt-5 mb-11'>
 					<IconMoodLookDown size={50} color='#DAAA00' />
 					<div className='text-white'>No results found!</div>
-					<div className='text-white -tranzinc-y-3'>Try changing the filters</div>
+					{activeFilters.length>0 && <div className='text-white -tranzinc-y-3'>Maybe try changing the filters?</div>}
 				</div>)}
 
 		<div className='mt-auto'>
 			<Footer />
 		</div>
-	</div>;
+	</>;
 }

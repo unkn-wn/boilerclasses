@@ -9,7 +9,7 @@ server/application.conf
 server/proxies.json
 
 server/scripts/node_modules
-server/data/index
+server/data
 
 client/.next
 client/.vscode

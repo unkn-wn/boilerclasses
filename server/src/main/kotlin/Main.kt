@@ -1,20 +1,18 @@
 package com.boilerclasses
 
-import com.boilerclasses.CourseData.Attribute
-import com.boilerclasses.CourseData.Subject
-import com.boilerclasses.CourseData.Term
+import com.boilerclasses.Schema.Attribute
+import com.boilerclasses.Schema.Subject
+import com.boilerclasses.Schema.Term
 import io.jooby.*
 import io.jooby.exception.NotFoundException
 import io.jooby.kt.runApp
 import io.jooby.netty.NettyServer
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import java.io.File
-import kotlin.random.Random
 
 val json = Json {
     classDiscriminatorMode= ClassDiscriminatorMode.NONE
@@ -27,11 +25,12 @@ enum class APIErrTy {
     BadRequest,
     Loading,
     RateLimited,
+    LoginErr,
     Other;
 
     fun code() = when(this) {
         NotFound -> StatusCode.NOT_FOUND
-        Unauthorized -> StatusCode.UNAUTHORIZED
+        LoginErr, Unauthorized -> StatusCode.UNAUTHORIZED
         BadRequest -> StatusCode.BAD_REQUEST
         RateLimited -> StatusCode.TOO_MANY_REQUESTS
         Other,Loading -> StatusCode.SERVER_ERROR
@@ -40,6 +39,7 @@ enum class APIErrTy {
     fun str() = when(this) {
         NotFound -> "notFound"
         Unauthorized -> "unauthorized"
+        LoginErr -> "loginErr"
         BadRequest -> "badRequest"
         Loading -> "loading"
         RateLimited -> "rateLimited"
@@ -83,7 +83,7 @@ suspend fun main(args: Array<String>) = coroutineScope {
 
     runApp(args) {
         val db = DB(environment)
-        val courses = Courses(environment, log)
+        val courses = Courses(environment, log, db)
 
         launch { courses.runScraper() }
 
@@ -92,31 +92,37 @@ suspend fun main(args: Array<String>) = coroutineScope {
                 ctx.header("X-Forwarded-For").valueOrNull()?.let {
                     ctx.remoteAddress=it.split(",").last().trim()
                 }
+
+            ctx.header("Authorization").valueOrNull()?.let {
+                it.split(" ")
+            }
         }
 
         install(NettyServer())
 
         coroutine {
-            @Serializable
-            data class Info(
-                val terms: Map<String, Term>,
-                val subjects: List<Subject>,
-                val attributes: List<Attribute>,
-                val scheduleTypes: List<String>
-            )
-
             post("/info") {
-                courses.courses().let {
-                    ctx.resp(Info(it.terms, it.subjects, it.attributes, it.scheduleTypes))
-                }
+                ctx.resp(db.getInfo())
             }
 
             post("/all") {
-                ctx.resp(courses.courses().courses.map {
+                val courses = db.allCourses().map {
                     buildJsonObject {
-                        put("id", it.strId())
-                        put("lastUpdated", it.lastUpdated)
+                        put("id", it.id)
+                        put("lastUpdated", it.course.lastUpdated)
                     }
+                }
+
+                val profs = db.allInstructors().map {
+                    buildJsonObject {
+                        put("id", it.key)
+                        put("lastUpdated", it.value.lastUpdated)
+                    }
+                }
+
+                ctx.resp(buildJsonObject {
+                    put("courses", Json.encodeToJsonElement(courses))
+                    put("instructors", Json.encodeToJsonElement(profs))
                 })
             }
 
@@ -126,27 +132,32 @@ suspend fun main(args: Array<String>) = coroutineScope {
             }
 
             post("/course") {
-                ctx.json<String>().let {
-                    ctx.resp(courses.courseById(it).let {
-                        buildJsonObject {
-                            put("id", it.strId())
-                            put("course", Json.encodeToJsonElement(it))
-                        }
-                    })
+                ctx.json<Int>().let {
+                    ctx.resp(courses.getCourse(it) ?: throw APIErrTy.NotFound.err())
+                }
+            }
+
+            @Serializable data class LookupRequest(val subject: String, val course: Int)
+            post("/lookup") {
+                ctx.json<LookupRequest>().let {
+                    ctx.resp(db.lookupCourses(it.subject, it.course))
                 }
             }
 
             post("/similar") {
-                ctx.json<String>().let {
-                    ctx.resp(courses.similarCourses(it))
-                }
+                ctx.json<Int>().let { ctx.resp(courses.similarCourses(it)) }
+            }
+
+            post("/prof") {
+                ctx.resp(db.getInstructor(ctx.json<Int>()) ?: throw APIErrTy.NotFound.err())
+            }
+
+            post("/profbyname") {
+                ctx.resp(db.getInstructorByName(ctx.json<String>()) ?: throw APIErrTy.NotFound.err())
             }
 
             post("/rmp") {
-                val profs = ctx.json<List<String>>()
-                ctx.resp(courses.courses().let { c->
-                    profs.map { c.rmp[it] }
-                })
+                ctx.resp(db.getRMPs(ctx.json<List<String>>()))
             }
 
             get("/data") { courses.download() }

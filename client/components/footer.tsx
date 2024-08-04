@@ -28,8 +28,7 @@ export const Footer = ({className}: {className?: string}) => {
 						BoilerClasses
 					</Anchor>
 				</span>
-				is an unofficial catalog for Purdue courses made by Purdue students, <br className='hidden md:block' />
-				based in <strong>West Lafayette, Indiana</strong>.
+				is an unofficial catalog for Purdue courses <br className='hidden md:block' /> made by Purdue students.
 			</h1>
 		</div>
 	);
