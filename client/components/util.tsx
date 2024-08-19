@@ -15,7 +15,7 @@ import reddit from "../public/reddit-icon.png";
 
 export const Anchor: React.FC<(AnchorHTMLAttributes<HTMLAnchorElement>)&Partial<LinkProps>> = ({className,href,...props}) => {
 	const classN = twMerge(
-	`text-gray-300 inline-flex flex-row align-middle items-center gap-1 underline decoration-dashed decoration-1
+	`text-gray-300 inline-flex flex-row align-baseline items-baseline gap-1 underline decoration-dashed decoration-1
 		underline-offset-2 transition-all hover:text-gray-50 hover:bg-cyan-100/5 cursor-pointer`,className
 	);
 

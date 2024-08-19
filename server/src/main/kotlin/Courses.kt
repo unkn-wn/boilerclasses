@@ -276,12 +276,17 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                     add(SortedDocValuesField("subjectSort", BytesRef(cid.course.subject)))
                     add(SortedDocValuesField("courseSort", BytesRef(cid.course.course)))
 
+                    val secs = cid.course.sections.values.asSequence().flatten()
+
                     add(Field("subject", cid.course.subject, textTermVec))
                     add(StringField("subjectString", cid.course.subject, Field.Store.NO))
                     add(Field("subjectName",
                         subjectMap[cid.course.subject]!!.name, textTermVec))
                     add(Field("course", cid.course.course.toString(), TextField.TYPE_NOT_STORED))
-                    add(Field("title", cid.course.name, textTermVec))
+                    add(Field("title", (
+                            listOf(cid.course.subject, cid.course.course, cid.course.name)
+                                    + secs.mapNotNull { it.name }
+                            ).joinToString(" "), textTermVec))
                     add(Field("desc", cid.course.description, textTermVec))
                     add(IntField("courseInt", cid.course.course, Field.Store.NO))
 
@@ -314,7 +319,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                         add(Field("prereq", it, TextField.TYPE_NOT_STORED))
                     }
 
-                    cid.course.sections.values.asSequence().flatten().flatMap {it.instructors}
+                    secs.flatMap {it.instructors}
                         .also { instructors->
                             instructors.map {it.name}.distinct().forEach {
                                 add(StringField("instructorString", it, Field.Store.NO))
@@ -333,7 +338,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                         add(Field("term", it, textTermVec))
                     }
 
-                    cid.course.sections.values.flatten().map {it.scheduleType}
+                    secs.map {it.scheduleType}
                         .distinct().forEach {
                             add(StringField("scheduleType", it, Field.Store.NO))
                         }
@@ -429,7 +434,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                 val term = analyzer.normalize(k,trimQuery)
                 bq.add(BoostQuery(FuzzyQuery(Term(k, term)), v), BooleanClause.Occur.SHOULD)
                 parser.createPhraseQuery(k, trimQuery)?.let {
-                    bq.add(BoostQuery(it, v), BooleanClause.Occur.SHOULD)
+                    bq.add(BoostQuery(it, v*2f), BooleanClause.Occur.SHOULD)
                 }
                 bq.add(BoostQuery(PrefixQuery(Term(k, term)), v*3f), BooleanClause.Occur.SHOULD)
             }

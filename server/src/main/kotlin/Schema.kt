@@ -33,6 +33,7 @@ object Schema {
 
     @Serializable
     data class Section(
+        val name: String?=null,
         val crn: Int,
         val section: String,
         val times: List<SectionTime>,

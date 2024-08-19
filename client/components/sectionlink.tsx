@@ -31,7 +31,10 @@ export function SectionLink({term, course, children, section, className}: {
 				<h3 className="font-display font-bold text-lg" >
 					<CourseLink type="course" course={course} />
 				</h3>
-				<h3 className="font-display font-bold text-xl" >
+				{section.name && <h3 className="font-bold text-xl" >
+					{section.name}
+				</h3>} 
+				<h3 className={`font-display font-bold ${section.name==undefined ? "text-xl" : "text-lg"}`} >
 					Section {section.section}
 				</h3>
 				<p className="text-gray-300 text-sm mb-3" >CRN {section.crn}</p>

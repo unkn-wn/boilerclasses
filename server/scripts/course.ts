@@ -300,7 +300,7 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 
 	//subject -> course code
 	type CourseInfo = {
-		name: string, sections: Section[],
+		sections: Section[],
 		grades: Map<string, Grades[]>
 	};
 
@@ -413,13 +413,14 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 		for (let i=0; i<names.length; i++) {
 			const s = courseNames.get(names[i].subject) ?? new Map<number, CourseInfo>();
 			if (!s.has(names[i].course)) s.set(names[i].course, {
-				name: names[i].name, sections: [], grades: new Map()
+				sections: [], grades: new Map()
 			});
 
 			courseNames.set(names[i].subject, s);
 
 			const x = more[i];
 			if (x!=null) allSections.push({
+				name: names[i].name,
 				course: names[i].course, subject: names[i].subject,
 				crn: names[i].crn,
 				section: names[i].section,
@@ -480,6 +481,8 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 			"subj_code_in": subject,
 			"crse_numb_in": course.toString()
 		});
+
+		const name = res(".nttitle").first().text().split(" - ")[1].trim();
 
 		const td = res("div.pagebodydiv table.datadisplaytable[width=\"100%\"] td.ntdefault");
 		let bits: {
@@ -678,8 +681,7 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 		const info = courseNames.get(subject)!.get(course)!;
 
 		await knex.transaction(async trans => {
-			const pcourseRow = (await trans<DBCourse>("course")
-				.where({subject, course, name: info.name}).first());
+			const pcourseRow = await trans<DBCourse>("course").where({subject, course, name}).first();
 			const pcourse = pcourseRow==undefined ? undefined : JSON.parse(pcourseRow.data);
 
 			const newInstructors = new Set(info.sections.flatMap(x => x.instructors).map(x => x.name));
@@ -739,11 +741,13 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 			};
 
 			const toMerge: Course = {
-				name: info.name, subject, course,
+				name, subject, course,
 				instructor: instructorOut,
 				description: bits[0].txt,
 				restrictions, credits,
-				sections: { [t]: info.sections as Course["sections"]["fall0"] },
+				sections: { [t]: info.sections.map(sec => ({
+					...sec, name: sec.name==name ? undefined : sec.name
+				})) },
 				prereqs: reqs, attributes,
 				lastUpdated: new Date().toISOString()
 			}; 
@@ -753,7 +757,7 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 			let id: number;
 			if (pcourseRow==undefined)
 				id=(await trans<DBCourse>("course").insert({
-					subject, course, name: info.name,
+					subject, course, name,
 					data: JSON.stringify(newCourse)
 				}, "id"))[0].id;
 			else {

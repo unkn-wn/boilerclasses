@@ -122,6 +122,7 @@ export type Seats = {
 export type CourseInstructor = {primary: boolean, name: string};
 
 export type Section = {
+  name?: string, // section name if it differs from course name, e.g. in variable title courses
   crn: number,
   section: string,
 
@@ -294,7 +295,7 @@ export function instructorStr(course: Course) {
     .filter(x=>x.primary).map(x=>x.name))];
   const [instructors, extra] = [arr.slice(0,2), arr.length<=2 ? null : arr.length-2];
   return `${instructors.length==0 ? `No instructors assigned for ${formatTerm(t)}`
-    : instructors.join(", ")} ${extra!=null && ` and ${extra} other${extra==1 ? "" : "s"}`}`;
+    : instructors.join(", ")}${extra==null ? "" : ` and ${extra} other${extra==1 ? "" : "s"}`}`;
 }
 
 export function formatTerm(t: Term) {

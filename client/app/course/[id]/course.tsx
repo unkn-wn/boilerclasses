@@ -13,7 +13,7 @@ import Select, { MultiValue } from "react-select";
 import { ProfLink } from "@/components/proflink";
 import Graph from "@/components/graph";
 import { InstructorList } from "@/components/instructorlist";
-import { BackButton, BarsStat, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, WrapStat } from "@/components/clientutil";
+import { BackButton, BarsStat, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, useMd, WrapStat } from "@/components/clientutil";
 import { Calendar, calendarDays } from "@/components/calendar";
 import { Prereqs } from "@/components/prereqs";
 import { Restrictions } from "@/components/restrictions";
@@ -25,6 +25,7 @@ const useSmall = (cid: CourseId) => useMemo(()=>toSmallCourse(cid),[cid.id]);
 function InstructorGradeView({xs,type,cid,term}: {xs: CourseInstructor[], cid: CourseId, term: Term, type:"rmp"|"gpa"}) {
 	let res: (RMPInfo|null)[]|null=null;
 	const small = useSmall(cid);
+	const isMd = useMd();
 	if (type=="rmp") {
 		const o=useAPI<(RMPInfo|null)[],string[]>("rmp", {data: xs.map(x=>x.name)});
 		if (o==null) return <Loading/>
@@ -46,7 +47,7 @@ function InstructorGradeView({xs,type,cid,term}: {xs: CourseInstructor[], cid: C
 	return <BarsStat lhs={i=>
 			<ProfLink x={i} className="font-semibold text-nowrap text-white"
 				course={small} term={term}
-				label={abbr(i.name, 25)} />
+				label={abbr(i.name, isMd ? 35 : 20)} />
 			} className="grid-cols-[4fr_10fr_1fr] "
 			vs={out} type={type} />
 }
@@ -61,8 +62,10 @@ function InstructorSemGPA({xs, term, cid}: {xs: CourseInstructor[], term: Term, 
 				.map(([sem,v])=>[sem as Term, v?.gpa ?? null, v?.numSections ?? 0]),
 		]);
 	
-	return <NameSemGPA vs={vs} lhs={i=><ProfLink className='text-white font-bold text-xl' x={i}
-		course={useSmall(cid)} term={term} />} />;
+	const small = useSmall(cid);
+	return <NameSemGPA vs={vs} lhs={i=>
+		<ProfLink className='text-white font-bold text-xl' x={i} course={small} term={term} />
+	} />;
 }
 
 function CourseDetail(cid: CourseId) {
@@ -231,5 +234,5 @@ export function CourseDetailApp(props: CourseId&{info: ServerInfo}) {
 		setAPI<Course, number>("course", {data: props.id, result: props.course})
 	});
 
-	return <AppWrapper className="lg:pl-14" info={props.info} ><CourseDetail {...props} /></AppWrapper>
+	return <AppWrapper info={props.info} ><CourseDetail {...props} /></AppWrapper>
 }

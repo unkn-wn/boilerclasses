@@ -10,7 +10,7 @@ import attributeToGenEd from "../app/attributeToGenEd.json";
 
 //ideally maybe have term inherited from search semester filter.............?????
 //causes hydration errors due to nested links (card and professors, gpa, etc)
-export function Card({ course, frameless, termFilter, className }: {frameless?: boolean, termFilter?: Term[], className?: string, course: SmallCourse}) {
+export function Card({ course, frameless, termFilter, className, extra }: {frameless?: boolean, termFilter?: Term[], className?: string, course: SmallCourse, extra?: React.ReactNode}) {
   const terms = Object.keys(course.termInstructors) as Term[];
   const term = latestTermofTerms(terms, termFilter) ?? latestTermofTerms(terms)!;
   const url = `/course/${course.id}?term=${term}`;
@@ -19,6 +19,8 @@ export function Card({ course, frameless, termFilter, className }: {frameless?: 
       <div className="lg:text-sm text-sm text-gray-300 font-medium flex flex-row flex-wrap items-center gap-1">
         {creditStr(course)} {<GPAIndicator grades={course.grades} smol />}
       </div>
+
+      {extra}
 
       <InstructorList short className="my-2" whomst={course.termInstructors[term]} term={term} course={course} />
 
@@ -50,9 +52,9 @@ export function Card({ course, frameless, termFilter, className }: {frameless?: 
   );
 };
 
-export function CourseLink({...props}:
-  ({type:"lookup",subject: string, num: number}|{type:"course", course: SmallCourse})) {
+type LookupOrCourse = {type:"lookup",subject: string, num: number}|{type:"course", course: SmallCourse};
 
+function useLookupOrCourse(props: LookupOrCourse): [SmallCourse|"notFound"|null, string, number] {
   let cid: "notFound"|SmallCourse|null=null;
   let subject:string, num:number;
   //cant change type! different hooks
@@ -69,16 +71,32 @@ export function CourseLink({...props}:
     cid=props.course, subject=cid.subject, num=cid.course;
   }
 
-  return <AppTooltip placement={useMd() ? "right" : "bottom"} content={
-    <div className="pt-2 pb-1 px-2" >{cid==null ? <Loading />
-      : (cid=="notFound" ? <div>
+  return [cid, subject, num];
+}
+
+export function CourseLinkPopup({extra, ...props}: LookupOrCourse&{extra?: React.ReactNode}) {
+  const [cid, subject, num] = useLookupOrCourse(props); //may be mounted separately from courselink, so needs to fetch (cached) separately
+
+  return <div className="pt-2 pb-1 px-2" >{cid==null ? <Loading label={`Loading ${subject}${num}`} />
+    : (cid=="notFound" ? <div className="p-2" >
+      {extra ? <>
+        <h2 className="text-2xl font-display font-extrabold mb-2" >{subject} {num}</h2>
+        {extra}
+        <p className="mt-2" >We don't have any more information on this course</p>
+      </> : <>
         <h2 className="text-2xl font-display font-extrabold" >Course not found</h2>
         <p>Maybe it's been erased from the structure of the universe, or it just isn't on our servers...</p>
-      </div>
-        : <Card frameless course={cid} />)
-    }</div>
-  } >
-    <Anchor className={cid!=null && cid=="notFound" ? "no-underline" : "text-white"} >
+      </>}
+    </div>
+      : <Card frameless extra={extra} course={cid} />)
+  }</div>;
+}
+
+export function CourseLink({...props}: LookupOrCourse) {
+  const [cid, subject, num] = useLookupOrCourse(props);
+
+  return <AppTooltip placement={useMd() ? "right" : "bottom"} content={<CourseLinkPopup {...props} />} >
+    <Anchor className={cid=="notFound" || cid==null ? "no-underline" : "text-white"} >
       {subject} {num}
     </Anchor>
   </AppTooltip>

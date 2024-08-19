@@ -60,6 +60,8 @@ export function AppTooltip({content, children, placement, className, onChange, .
 		if (!ctx && p.pointerType=="mouse") setOpen(true);
 	};
 
+	const selCtx = useContext(SelectionContext);
+
 	useEffect(()=>{
 		if (open) {
 			if (reallyOpen==app.tooltipCount) return;
@@ -67,7 +69,7 @@ export function AppTooltip({content, children, placement, className, onChange, .
 			app.incTooltipCount();
 
 			if (ctx) {
-				app.open({type: "other", modal: <SelectionContext.Provider value={useContext(SelectionContext)} >
+				app.open({type: "other", modal: <SelectionContext.Provider value={selCtx} >
 						{content}
 					</SelectionContext.Provider>, onClose() {
 					setOpen(false);
@@ -129,7 +131,7 @@ export const BackButton = ({children}: {children: React.ReactNode}) =>
 	<div className='flex flex-row gap-3 align-middle'>
 		<Anchor className='lg:mt-1 mr-1 h-fit hover:-translate-x-0.5 transition lg:absolute lg:-left-10'
 			onClick={useContext(AppCtx).back} >
-			<IconArrowLeft size={30} />
+			<IconArrowLeft className="self-center" size={30} />
 		</Anchor>
 
 		<div className="md:text-3xl text-2xl font-bold mb-6 font-display flex flex-col items-start">
@@ -194,12 +196,13 @@ export function BarsStat<T>({lhs,type,vs,className}: {lhs: (x: T)=>React.ReactNo
 }
 
 export function NameSemGPA<T>({vs,lhs}: {vs: [T, [Term, number|null, number|null][]][], lhs: (x: T)=>React.ReactNode}) {
-	if (vs.length==0 || vs[0][1].length==0) {
-		return <p className='text-white text-xl font-bold'>No data available</p>;
-	}
-
+	const selCtx = useContext(SelectionContext);
+	
 	const sems = [...new Set(vs.flatMap(x => x[1]).map(x=>x[0]))]
 		.sort((a,b) => termIdx(a)-termIdx(b)).slice(-5);
+
+	if (sems.length==0)
+		return <p className='text-white text-xl font-bold'>No data available</p>;
 
 	const sorted = vs.map((x):[T, [Term, number|null, number|null][], number]=> {
 		const bySem = new Map(x[1].map(v=>[v[0],v]));
@@ -213,8 +216,6 @@ export function NameSemGPA<T>({vs,lhs}: {vs: [T, [Term, number|null, number|null
 		];
 	}).sort((a,b)=>b[2]-a[2]);
 	
-	const selCtx = useContext(SelectionContext);
-	
 	return <div>
 		{sorted.map(([i, x], j) => (
 			<div key={j} className='flex flex-col mt-5'>
@@ -226,7 +227,9 @@ export function NameSemGPA<T>({vs,lhs}: {vs: [T, [Term, number|null, number|null
 								gpa!=null ? `bg-${gpaColor(gpa)}` : ""
 							}`} >
 								<p className='text-white text-xl font-display font-black'>{gpa?.toFixed(1) ?? "?"}</p>
-								{sections!=null && <p className='text-zinc-200 text-xs'>{sections} section{sections==1?"":"s"}</p>}
+								{sections!=null && <p className='text-zinc-200 text-xs'>
+									{sections} section{sections==1?"":"s"}
+								</p>}
 							</div>
 							<Anchor onClick={() => selCtx.selTerm(sem)}
 								className='text-zinc-400 text-sm justify-center text-center'>{formatTerm(sem)}</Anchor>

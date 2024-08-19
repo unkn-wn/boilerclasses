@@ -192,7 +192,7 @@ export function AppWrapper({children, className, info}: {children: React.ReactNo
 			setBackUrls(JSON.parse(it));
 			window.localStorage.removeItem("backUrl");
 		}
-	});
+	}, []);
 
   return (<NextUIProvider>
 		<AppCtx.Provider value={{open: (m) => {
@@ -207,8 +207,11 @@ export function AppWrapper({children, className, info}: {children: React.ReactNo
 				}, back() {
 					if (backUrls.length==0) router.push("/");
 					else {
-						window.localStorage.setItem("backUrl", JSON.stringify(backUrls.slice(0,-1)));
+						const nb = backUrls.slice(0,-1);
+						window.localStorage.setItem("backUrl", JSON.stringify(nb));
 						router.push(backUrls[backUrls.length-1]);
+						//happens in the very rare case that back urls get fucked up (e.g. due to load timing / maybe refreshing the current page after opening a new one) and we end up pushing the same url, in which case the page does not refresh
+						setBackUrls(nb);
 					}
 				}, info
 			}}>
