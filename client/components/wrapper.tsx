@@ -57,7 +57,6 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 
 	const body = JSON.stringify(data); //hehe, cursed
 	return usePromise(async (rerun) => {
-		console.log(`fetching ${endpoint}`);
 		if (defer) return;
 
 		try {

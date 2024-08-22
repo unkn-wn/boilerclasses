@@ -35,13 +35,12 @@ export function Instructor({instructor}: {instructor: InstructorId}) {
 		term: defaultTerm, search: {instructors: [i.name]}
 	}, (x) => {
 		return {
-			search: decodeQueryToSearchState(x),
-			term: x.get("term") as Term ?? defaultTerm,
-			instructors: [i.name]
+			search: {...decodeQueryToSearchState(x), instructors: [i.name]},
+			term: x.get("term") as Term ?? defaultTerm
 		};
 	}, (x) => {
 		if (x==null) return;
-		const p = encodeSearchState(x.search);
+		const p = encodeSearchState({...x.search, instructors: undefined});
 		if (x.term!=defaultTerm) p.append("term", x.term);
 		return p;
 	});
@@ -179,7 +178,9 @@ export function Instructor({instructor}: {instructor: InstructorId}) {
 		
 		<div className="flex flex-col" >
 			<h2 className="font-extrabold font-display text-3xl mb-2" >All Courses</h2>
-			<Search init={initSearch.search} setSearchState={(search)=>setInitSearch({...initSearch, search})}
+			<Search init={initSearch.search} setSearchState={(search)=>
+					setInitSearch({...initSearch, search})
+				}
 				includeLogo={false} />
 		</div>
 	</>;
