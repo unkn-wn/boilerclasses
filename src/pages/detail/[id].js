@@ -419,7 +419,7 @@ const CardDetails = ({ courseData, semData }) => {
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="Reddit" boxSize={4} className="my-auto" />
+                  <Image src="/reddit-icon.png" alt="Reddit" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
