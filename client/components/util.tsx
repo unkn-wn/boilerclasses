@@ -114,13 +114,9 @@ export const selectProps = {
 	styles: {menu: (props: any) => ({zIndex: 100})}
 };
 
-export function gpaColor(gpa: number): string {
-	if (gpa<1.0) return "red-600";
-	else if (gpa<2.0) return "rose-600";
-	else if (gpa<2.5) return "orange-600";
-	else if (gpa<3.0) return "amber-600";
-	else if (gpa<3.5) return "cyan-600";
-	else return "green-600";
+export function gpaColor(gpa: number|null): string|undefined {
+	if (gpa==null) return undefined;
+	return `hsl(${13+(107-13)*Math.pow(gpa,2.5)/Math.pow(4.0,2.5)}, 68%, 42%)`;
 }
 
 export const firstLast = (s: string) => {
@@ -131,7 +127,7 @@ export const firstLast = (s: string) => {
 export const CatalogLinkButton = ({href}: {href:string}) =>
 	<LinkButton href={href} target="_blank"
 		className="bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out text-white"
-		icon={<Image src={purdue} alt="Purdue Catalog" className="w-full h-full" />}>
+		icon={<Image src={purdue} alt="Purdue Catalog" className="w-auto h-full" />}>
 		Catalog
 	</LinkButton>
 
@@ -139,7 +135,7 @@ export const RedditButton = ({keywords}: {keywords:string[]}) =>
 	<LinkButton href={`https://www.reddit.com/r/Purdue/search/?q=${
 			encodeURIComponent(keywords.join(" OR "))
 		}`} target="_blank" rel="noopener noreferrer" className="bg-orange-600 hover:bg-orange-700 transition-background duration-300 ease-out"
-		icon={<Image src={reddit} alt="Reddit" className="w-full h-full" />}>
+		icon={<Image src={reddit} alt="Reddit" className="w-auto h-full" />}>
 
 		Reddit
 	</LinkButton>;

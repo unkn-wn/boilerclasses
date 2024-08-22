@@ -4,20 +4,25 @@ import { useAPI, useCourse } from "./wrapper";
 import { CircularProgress, CircularProgressProps } from "@nextui-org/progress";
 import { twMerge } from "tailwind-merge";
 import { useContext } from "react";
-import { AppTooltip, SelectionContext, useMd } from "./clientutil";
+import { AppTooltip, SelectionContext, StyleClasses, useMd } from "./clientutil";
 import { SectionLink } from "./sectionlink";
 
-export const CircProg = ({c,...props}: CircularProgressProps&{c: string}) => <CircularProgress
-	classNames={{
-		base: "mx-auto",
-		svg: "w-24 h-24",
-		indicator: `stroke-${c}`,
-		track: `stroke-${c}/10`,
-		value: `text-2xl font-semibold text-${c}`
-	}}
-	strokeWidth={3} size="lg" showValueLabel={true}
-	aria-label="professor statistic" {...props}
-/>;
+export const CircProg = ({cssColor,...props}: CircularProgressProps&{cssColor: string|undefined}) =>
+	<StyleClasses f={(r)=> <CircularProgress ref={r}
+		classNames={{
+			base: "mx-auto",
+			svg: "w-24 h-24",
+			indicator: `strokeColor`,
+			track: `strokeColorTransparent`,
+			value: `text-2xl font-semibold textColor`
+		}}
+		strokeWidth={3} size="lg" showValueLabel={true}
+		aria-label="professor statistic" {...props}
+	/>} classStyles={{
+		strokeColor: {stroke: cssColor},
+		strokeColorTransparent: {stroke: cssColor, strokeOpacity: "10%"},
+		textColor: {color: cssColor}
+	}} />;
 
 export const Meter = ({v,type}: {v:number|null, type: "gpa"|"rmp"}) => {
 	if (v==null) {
@@ -27,11 +32,11 @@ export const Meter = ({v,type}: {v:number|null, type: "gpa"|"rmp"}) => {
 					<p className='text-zinc-200 text-lg font-bold text-center mt-2'>No data</p>
 				</div>
 
-				<CircProg c="white" valueLabel="?" value={0} />
+				<CircProg cssColor="white" valueLabel="?" value={0} />
 			</div>
 		</>;
 	} else {
-		return <CircProg c={gpaColor(type=="gpa" ? v : v-1)}
+		return <CircProg cssColor={gpaColor(type=="gpa" ? v : v-1)}
 			valueLabel={v.toFixed(1)} value={v}
 			minValue={type=="gpa" ? 0 : 1} maxValue={type=="gpa" ? 4 : 5} />;
 	}
@@ -45,7 +50,7 @@ export function Meters({children, name, rmp, grade, className, gpaSub}: {name: s
 		<div className="relative flex flex-col w-full flex-1 p-4 rounded-xl gap-2 hover:scale-[1.05] transition-all items-center justify-evenly" >
 			<Meter v={nrating==0 ? null : (rmp?.avgRating ?? null)} type="rmp" />
 			<div className="flex flex-col items-center" >
-				<Anchor className="text-lg font-display font-bold text-center text-white" href={rmpUrl} >
+				<Anchor target="_blank" className="text-lg font-display font-bold text-center text-white" href={rmpUrl} >
 					RateMyProfessor
 				</Anchor>
 				{rmp && <span className="text-sm text-gray-400" >
@@ -60,7 +65,7 @@ export function Meters({children, name, rmp, grade, className, gpaSub}: {name: s
 				<h3 className="text-lg font-display font-bold text-center" >
 					Average GPA<br/>{gpaSub}
 				</h3>
-				{grade?.numSections && <span className="text-sm text-gray-400" >
+				{grade?.numSections!=null && grade?.numSections>0 && <span className="text-sm text-gray-400" >
 					{grade.numSections} section{grade.numSections!=1&&"s"}
 				</span>}
 			</div>

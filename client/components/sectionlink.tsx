@@ -39,11 +39,11 @@ export function SectionLink({term, course, children, section, className}: {
 				</h3>
 				<p className="text-gray-300 text-sm mb-3" >CRN {section.crn}</p>
 
-				{[...byTimes.entries().map(([k,v]) =>
+				{[...byTimes.entries()].map(([k,v]) =>
 					<p key={k} >
 						<b>{v.map(x=>validDays.indexOf(x)).sort().map(i=>validDays[i]).join("")}</b>, {k}
 					</p>
-				)]}
+				)}
 
 				<div className="flex flex-col gap-3 mt-3 items-start" >
 					<InstructorList whomst={section.instructors} course={course} term={term} />

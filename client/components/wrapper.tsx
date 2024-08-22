@@ -29,7 +29,7 @@ export function usePromise<R>(f: (rerun: () => void) => Promise<R|null>, deps: a
 	const i = useRef(0);
 	useEffect(() => {
 		const oi = ++i.current;
-		const attempt = () => f(() => attempt())
+		const attempt = () => f(attempt)
 			.then((x) => {
 				if (x!=null && i.current==oi) setRet(x);
 			});
@@ -57,19 +57,24 @@ export function useAPI<R,T extends any=null>(endpoint: string, {data, method, ha
 
 	const body = JSON.stringify(data); //hehe, cursed
 	return usePromise(async (rerun) => {
+		console.log(`fetching ${endpoint}`);
 		if (defer) return;
 
 		try {
 			const k = `${method ?? "POST"} ${endpoint}\n${body}`;
 
 			let cacheBad = cache[k]==undefined;
-			if (cache[k]!=undefined) {
+			while (true) {
 				try {
-					const r=await cache[k];
+					const t = cache[k];
+					const r=await t;
+					if (t!=cache[k]) continue;
 					if (r.status!="ok") cacheBad=true;
 				} catch (e) {
 					cacheBad=true;
 				};
+
+				break;
 			}
 
 			if (cacheBad) {

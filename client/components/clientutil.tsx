@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState, PointerEvent, HTMLAttributes, useContext } from "react";
+import React, { useEffect, useState, PointerEvent, HTMLAttributes, useContext, useRef } from "react";
 import { Course, CourseInstructor, formatTerm, latestTermofTerms, Section, ServerInfo, SmallCourse, Term, termIdx } from "../../shared/types";
 import { Tooltip, TooltipPlacement } from "@nextui-org/tooltip";
 import { twMerge } from "tailwind-merge";
@@ -159,6 +159,19 @@ export function searchState<T>(start: T, init: (params: URLSearchParams) => T|un
 	}];
 }
 
+export function StyleClasses({f,classStyles}: {f: (setRef: React.Ref<HTMLElement|null>)=>React.ReactNode, classStyles: Record<string, Partial<CSSStyleDeclaration>>}) {
+	const ref = useRef<HTMLElement|null>(null);
+	useEffect(()=>{
+		const e = ref.current!;
+		for (const [cls, styles] of Object.entries(classStyles)) {
+			const st = (e.getElementsByClassName(cls)[0] as HTMLElement).style;
+			for (const k in styles)
+				if (styles[k]!==undefined) st[k]=styles[k];
+		}
+	}, []);
+	return f(ref);
+}
+
 export function BarsStat<T>({lhs,type,vs,className}: {lhs: (x: T)=>React.ReactNode, type: "gpa"|"rmp", vs: [T,number|null][], className?: string}) {
 	const y=vs.toSorted((a,b)=>(b[1]??-1) - (a[1]??-1)).map(([i,x], j)=>{
 		if (x==null) {
@@ -179,12 +192,15 @@ export function BarsStat<T>({lhs,type,vs,className}: {lhs: (x: T)=>React.ReactNo
 			{lhs(i)}
 
 			<div className="flex flex-row items-center" >
-				<Progress value={x} minValue={type=="gpa" ? 0 : 1} maxValue={type=="gpa" ? 4 : 5} classNames={{
-					indicator: `bg-${c}`
-				}} />
+				<StyleClasses f={(ref)=>
+					<Progress value={x} minValue={type=="gpa" ? 0 : 1} maxValue={type=="gpa" ? 4 : 5} classNames={{
+						indicator: "indicator"
+					}} ref={ref} />}
+					classStyles={{indicator: {backgroundColor: c}}}
+				/>
 			</div>
 
-			<span className={`bg-${c} px-2 py-1 rounded-lg my-auto font-black font-display text-xl`} >
+			<span className="px-2 py-1 rounded-lg my-auto font-black font-display text-xl" style={{backgroundColor: c}} >
 				{x.toFixed(1)}
 			</span>
 		</React.Fragment>;
@@ -223,9 +239,9 @@ export function NameSemGPA<T>({vs,lhs}: {vs: [T, [Term, number|null, number|null
 				<div className='grid grid-flow-col auto-cols-fr justify-stretch'>
 					{x.map(([sem, gpa, sections]) => (
 						<div key={sem} className='flex flex-col mt-2'>
-							<div className={`flex flex-col h-12 items-center justify-center py-5 ${
-								gpa!=null ? `bg-${gpaColor(gpa)}` : ""
-							}`} >
+							<div className="flex flex-col h-12 items-center justify-center py-5"
+								style={{backgroundColor: gpaColor(gpa)}} >
+
 								<p className='text-white text-xl font-display font-black'>{gpa?.toFixed(1) ?? "?"}</p>
 								{sections!=null && <p className='text-zinc-200 text-xs'>
 									{sections} section{sections==1?"":"s"}
@@ -278,4 +294,5 @@ export const TermSelect = ({term, terms, setTerm, name}: {term: Term, terms: Ter
 		</span>
 	</div>;
 
+// used for client side filtering (e.g. instructors in prof tabs)
 export const simp = (x: string) => x.toLowerCase().replace(/[^a-z]/g, "");

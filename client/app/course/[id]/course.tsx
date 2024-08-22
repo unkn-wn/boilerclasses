@@ -76,13 +76,6 @@ function CourseDetail(cid: CourseId) {
 	const course = cid.course;
 
 	const [instructorSearch, setInstructorSearch] = useState("");
-	const [selectedInstructors, setSelInstructors] = useState<CourseInstructor[]>([]);
-
-	const graphGrades: [string,InstructorGrade][] = useMemo(() =>
-		selectedInstructors.map(x =>
-			[x.name,course.instructor[x.name]==undefined ? emptyInstructorGrade
-				: mergeGrades(Object.values(course.instructor[x.name]))]
-		), [selectedInstructors, term, course]);
 
 	const small = useSmall(cid);
 	const instructors = small.termInstructors[term] ?? [];
@@ -91,6 +84,17 @@ function CourseDetail(cid: CourseId) {
 		const v = simp(instructorSearch);
 		return instructors.filter(x => simp(x.name).includes(v));
 	}, [term, instructorSearch]);
+
+	const firstInstructor = instructors.find(x=>course.instructor[x.name]!==undefined);
+	const [selectedInstructors, setSelInstructors] = useState<CourseInstructor[]>(
+		firstInstructor==undefined ? [] : [firstInstructor]
+	);
+
+	const graphGrades: [string,InstructorGrade][] = useMemo(() =>
+		selectedInstructors.map(x =>
+			[x.name,course.instructor[x.name]==undefined ? emptyInstructorGrade
+				: mergeGrades(Object.values(course.instructor[x.name]))]
+		), [selectedInstructors, term, course]);
 
 	const [section, setSection] = useState<Section|null>(null);
 	const app = useContext(AppCtx);
@@ -159,7 +163,7 @@ function CourseDetail(cid: CourseId) {
 					{boilerexamsCourses.includes(`${course.subject}${course.course}`) &&
 						<LinkButton href={`https://www.boilerexams.com/courses/${course.subject}${course.course.toString()}/topics`}
 							className="bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out"
-							icon={<Image src={boilerexams} alt="Boilerexams" className="filter w-full h-full" />} >
+							icon={<Image src={boilerexams} alt="Boilerexams" className="filter w-auto h-full" />} >
 
 							Boilerexams
 						</LinkButton>
@@ -204,9 +208,7 @@ function CourseDetail(cid: CourseId) {
 							<Select isMulti options={instructors}
 								value={selectedInstructors} getOptionLabel={x => x.name} getOptionValue={x=>x.name}
 								onChange={(x: MultiValue<CourseInstructor>)=>setSelInstructors(x as CourseInstructor[])}
-								isOptionDisabled={(x: CourseInstructor) =>
-									course.instructor[x.name]==undefined
-								}
+								isOptionDisabled={(x: CourseInstructor) => course.instructor[x.name]==undefined}
 								{...selectProps}
 							/>
 

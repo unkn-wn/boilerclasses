@@ -39,10 +39,10 @@ const spec: Partial<Record<keyof SearchState, "array"|"number"|"string">> = {
 	minGPA: "number", maxGPA: "number", minMinute: "number", maxMinute: "number"
 };
 
-export function encodeToQuery(x: any) {
+function encodeToQuery(x: any) {
 	const u = new URLSearchParams();
 	for (const [k,v] of Object.entries(x)) {
-		if (typeof v=="string") u.append(k,v);
+		if (typeof v=="string" && v.length>0) u.append(k,v);
 		else if (typeof v=="number") u.append(k,v.toString());
 		else if (typeof v=="object")
 			for (const el of v as any) u.append(k,el as string);
@@ -60,6 +60,11 @@ function decodeFromQuery<T>(x: URLSearchParams, spec: Partial<Record<keyof T, "a
 		//@ts-ignore
 		else if (g.length>0) base[k]=g[0];
 	}
+}
+
+export function encodeSearchState(state: Partial<SearchState>) {
+	return encodeToQuery({...state,
+		page: state.page==undefined || state.page==0 ? undefined : state.page+1});
 }
 
 export function decodeQueryToSearchState(query: URLSearchParams) {
@@ -101,6 +106,13 @@ export function Search({init, autoFocus, clearSearch, setSearchState, includeLog
 	const api = useAPI<ServerSearch,SearchState>("search", {data: searchState, method: "POST"});
 
 	const cond = api!=null && api.res.npage<=searchState.page;
+	useEffect(() => {
+		if (cond) setSearchState({...searchState, page: api.res.npage-1});
+	}, [cond]);
+
+	const params = Object.values({...searchState, page: undefined});
+	useEffect(()=>setSearchState({...searchState, page: 0}), params);
+
 	useEffect(() => {
 		if (cond) setSearchState({...searchState, page: api.res.npage-1});
 	}, [cond]);
@@ -301,7 +313,7 @@ export function Search({init, autoFocus, clearSearch, setSearchState, includeLog
 			? <Loading/> : (api.res.results.length>0 ? //:)
 				<>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-						{api.res.results.map(x => <Card key={x.course.id}
+						{api.res.results.map(x => <Card key={`${x.course.id}\n${x.course.varTitle}`}
 							termFilter={searchState.terms.length==0 ? undefined : searchState.terms}
 							course={x.course} />)}
 					</div>

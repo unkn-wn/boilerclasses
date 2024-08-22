@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 
 import { LogoText } from "@/components/util";
 import { ServerInfo } from "../../shared/types";
-import { decodeQueryToSearchState, encodeToQuery, Search, SearchState } from "./search";
+import { decodeQueryToSearchState, encodeSearchState, Search, SearchState } from "./search";
 import Image from "next/image";
 
 import { AppWrapper } from "@/components/wrapper";
@@ -35,7 +35,7 @@ export function App({info}: {info: ServerInfo}) {
 		return [decodeQueryToSearchState(x),false];
 	}, (x) => {
 		if (x==null) return;
-		return encodeToQuery(x[0]);
+		return encodeSearchState(x[0]);
 	});
 
 	return <AppWrapper className="gap-0" info={info} >{ initSearch ?

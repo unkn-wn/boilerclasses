@@ -1,4 +1,4 @@
-import { IconCaretRightFilled } from "@tabler/icons-react";
+import { IconInfoTriangleFilled, IconSchool } from "@tabler/icons-react";
 import { CourseLikePreReq, PreReq, PreReqs } from "../../shared/types";
 import { CourseLink, CourseLinkPopup } from "./card";
 import { AppTooltip, useMd } from "./clientutil";
@@ -34,8 +34,8 @@ function PrereqCourseLikeLink({prereq}: {prereq: CourseLikePreReq}) {
 			<span className="font-extrabold" >{`Can${prereq.concurrent ? "":"'t"} be taken concurrently`}</span>
 		].map((x,i) => {
 			if (x==false) return <React.Fragment key={i} />
-			return <div key={i} className="flex flex-row gap-1 items-center" >
-				<IconCaretRightFilled/> {x}
+			return <div key={i} className="flex flex-row gap-2 items-center" >
+				<IconInfoTriangleFilled className="text-xs" /> {x}
 			</div>
 		})}
 	</div>;
@@ -75,15 +75,15 @@ function Prereq({prereq}: {prereq: PreReq}) {
 		default:
 			return <PrereqCourseLikeLink prereq={prereq} />
 	}
-	
 }
+
 export function Prereqs({prereqs, isChild}: {prereqs: PreReqs, isChild?: boolean}) {
 	if (prereqs.type=="leaf") return <div className="flex flex-row gap-2 pr-2" >
-		<IconCaretRightFilled/>
+		<IconSchool/>
 		<Prereq prereq={prereqs.leaf} />
 	</div>;
 
-	if (prereqs.type=="and" && !isChild) {
+	if (prereqs.type=="and" && !isChild && !prereqs.vs.some(p=>p.type=="or")) {
 		return <div className="flex flex-col gap-2" >
 			{prereqs.vs.map((v,i) => <Prereqs isChild key={i} prereqs={v} />)}
 		</div>

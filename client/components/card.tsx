@@ -47,6 +47,8 @@ export function Card({ course, frameless, termFilter, className, extra }: {frame
     <AppLink href={url}
       className={twMerge("flex flex-col bg-zinc-800 gap-1 p-6 rounded-md shadow-md hover:scale-105 transition hover:transition cursor-pointer", className)} >
         <h2 className="text-xl font-display font-bold">{course.subject} {course.course}: {course.name}</h2>
+        {course.varTitle && 
+          <h3 className="text-lg font-display font-bold">{course.varTitle}</h3>}
         {body}
     </AppLink>
   );
@@ -125,7 +127,8 @@ export function CourseChips({course}: {course: SmallCourse}) {
 
 export function GPAIndicator({grades,smol,tip}:{grades: InstructorGrade, smol?:boolean, tip?:string}) {
   return <AppTooltip content={tip ?? (grades.gpaSections==0 ? "No data" : `Averaged over ${grades.gpaSections} section${grades.gpaSections==1?"":"s"} (all time)`)} >
-    <div className={`text-white flex flex-row cursor-pointer font-display ${smol ? "font-bold gap-1" : "font-extrabold gap-2"} items-center m-1 p-1 rounded-md px-3 bg-${grades.gpa==null ? "zinc-800" : gpaColor(grades.gpa)}`} >
+    <div className={`text-white flex flex-row cursor-pointer font-display ${smol ? "font-bold gap-1" : "font-extrabold gap-2"} items-center m-1 p-1 rounded-md px-3 ${grades.gpa==null ? "bg-zinc-800" : ""}`}
+      style={{backgroundColor: gpaColor(grades.gpa)}} >
       <span className={smol ? "text-xs font-light" : "font-normal"} >GPA</span>
       <h2 className={smol ? "text-sm" : "text-2xl"} >{grades.gpa?.toFixed(2) ?? "?"}</h2>
     </div>

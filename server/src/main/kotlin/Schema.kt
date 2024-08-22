@@ -214,6 +214,7 @@ object Schema {
         val id: Int,
 
         val name: String,
+        val varTitle: String?,
         val subject: String,
         val course: Int,
         val termInstructors: Map<String, List<SectionInstructor>>,
@@ -289,8 +290,8 @@ object Schema {
         val id: Int,
         val course: Course
     ) {
-        fun toSmall() = SmallCourse(
-            id, course.name, course.subject, course.course,
+        fun toSmall(varTitle: String?) = SmallCourse(
+            id, course.name, varTitle, course.subject, course.course,
             course.sections.mapValues {(k,v)->
                 v.flatMap {it.instructors}.groupingBy {it.name}
                     .reduce { a,b,c-> SectionInstructor(a,b.primary||c.primary) }

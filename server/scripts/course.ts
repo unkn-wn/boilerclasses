@@ -401,9 +401,9 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 					(new Date(dateRange[0])).toISOString(),
 					(new Date(dateRange[1])).toISOString()
 				] as [string,string],
-				instructors: [...instructors.entries().map(([k,v]) => ({
+				instructors: [...instructors.entries()].map(([k,v]) => ({
 					name: k, primary: v
-				}))],
+				})),
 				scheduleType
 			};
 		});
@@ -469,8 +469,8 @@ export async function updateCourses({term: t,termId,grades,knex,subjectArg}:{
 		courseNames.get(sec.subject)!.get(sec.course)!.sections.push(s);
 	}, (sec) => `${sec.subject} ${sec.course} - ${sec.section}`);
 
-	const courseArr = [...courseNames.entries().flatMap(([subject,courses]) => courses.keys()
-		.map((k): [string,number] => [subject,k]))];
+	const courseArr = [...courseNames.entries()].flatMap(([subject,courses]) => [...courses.keys()]
+		.map((k): [string,number] => [subject,k]));
 
 	console.log(`getting details for ${courseArr.length} courses`);
 

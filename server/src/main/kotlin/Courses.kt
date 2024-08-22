@@ -205,20 +205,20 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
     private var searcher: IndexSearcher? = null
 
     private var courseById = emptyMap<Int,Schema.Course>()
-    private var smallCourseById = emptyMap<Int,JsonElement>()
+    private var smallCourseBySearchId = emptyMap<Int,JsonElement>()
     private var sortedCourses = listOf<Schema.CourseId>()
 
     private val fieldAnalyzer = PerFieldAnalyzerWrapper(EnglishAnalyzer(), mapOf(
         "subject" to subjectAnalyzer(), "course" to idAnalyzer(true),
         "prereqs" to crapAnalyzer(), "instructor" to StandardAnalyzer(),
-        "suggest" to crapAnalyzer()
+        "suggest" to crapAnalyzer(), "titleStandard" to StandardAnalyzer()
     ))
 
     //same thing but course is crap, function (above is only for indexing)
     private fun queryFieldAnalyzer() = PerFieldAnalyzerWrapper(EnglishAnalyzer(), mapOf(
         "subject" to subjectAnalyzer(), "course" to crapAnalyzer(),
         "prereqs" to crapAnalyzer(), "instructor" to StandardAnalyzer(),
-        "suggest" to crapAnalyzer()
+        "suggest" to crapAnalyzer(), "titleStandard" to StandardAnalyzer()
     ))
 
     private val weights = mapOf(
@@ -226,7 +226,8 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
         "subject" to 130,
         "course" to 150,
         "subjectName" to 150,
-        "title" to 150,
+        "title" to 100,
+        "titleStandard" to 50,
         "desc" to 35,
         "instructor" to 80,
         "prereq" to 10,
@@ -251,7 +252,15 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
             val newSortedCourses = c.sortedWith(
                 compareBy<Schema.CourseId>({it.course.subject}, {it.course.course})
             )
-            val newSmallCourses = c.associate { it.id to Json.encodeToJsonElement(it.toSmall()) }
+
+            data class IndexCourse(val searchId: Int, val cid: Schema.CourseId, val small: Schema.SmallCourse)
+            val indexCourses = c.flatMap {
+                it.course.sections.values.flatten().map { sec->sec.name }.distinct().map {
+                    secName -> secName to it
+                }
+            }.mapIndexed { i, x -> IndexCourse(i, x.second, x.second.toSmall(x.first)) }
+
+            val newSmallCourses = indexCourses.associate {it.searchId to Json.encodeToJsonElement(it.small)}
 
             if (indexSwapFile.exists()) indexSwapFile.deleteRecursively()
 
@@ -263,7 +272,9 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
 
             val instructorNicks = db.allInstructors().values.associate {it.name to it.nicknames}
 
-            writer.addDocuments(c.map { cid->
+            writer.addDocuments(indexCourses.map { indexCourse->
+                val cid = indexCourse.cid
+
                 Document().apply {
                     val textTermVec = FieldType().apply {
                         setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS);
@@ -272,7 +283,8 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                         freeze()
                     }
 
-                    add(IntField("id", cid.id, Field.Store.YES))
+                    add(IntField("id", indexCourse.cid.id, Field.Store.YES))
+                    add(IntField("searchId", indexCourse.searchId, Field.Store.YES))
                     add(SortedDocValuesField("subjectSort", BytesRef(cid.course.subject)))
                     add(SortedDocValuesField("courseSort", BytesRef(cid.course.course)))
 
@@ -283,10 +295,12 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                     add(Field("subjectName",
                         subjectMap[cid.course.subject]!!.name, textTermVec))
                     add(Field("course", cid.course.course.toString(), TextField.TYPE_NOT_STORED))
-                    add(Field("title", (
-                            listOf(cid.course.subject, cid.course.course, cid.course.name)
-                                    + secs.mapNotNull { it.name }
-                            ).joinToString(" "), textTermVec))
+                    val titleStr = (listOf(cid.course.subject, cid.course.course, cid.course.name)
+                            + if (indexCourse.small.varTitle!=null)
+                                listOf(indexCourse.small.varTitle) else emptyList()
+                        ).joinToString(" ")
+                    add(Field("title", titleStr, textTermVec))
+                    add(Field("titleStandard", titleStr, TextField.TYPE_NOT_STORED))
                     add(Field("desc", cid.course.description, textTermVec))
                     add(IntField("courseInt", cid.course.course, Field.Store.NO))
 
@@ -369,7 +383,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
                 
                 sortedCourses = newSortedCourses
                 courseById = newCourseById
-                smallCourseById = newSmallCourses
+                smallCourseBySearchId = newSmallCourses
 
                 idx=MMapDirectory(indexFile.toPath())
                 dirReader=DirectoryReader.open(idx)
@@ -389,10 +403,10 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
         val fields = searcher!!.storedFields()
 
         return scoredocs.map { scoredoc ->
-            val id = fields.document(scoredoc.doc).getField("id").numericValue().toInt()
+            val id = fields.document(scoredoc.doc).getField("searchId").numericValue().toInt()
             SearchResult(
                 if (scoredoc.score.isNaN()) 0.0f else scoredoc.score,
-                smallCourseById[id]!!
+                smallCourseBySearchId[id]!!
             )
         }
     }
@@ -414,7 +428,7 @@ class Courses(val env: Environment, val log: Logger, val db: DB) {
             return@read sortedCourses.subList(req.page*numResults,
                 min(sortedCourses.size,(req.page+1)*numResults)).map {
 
-                SearchResult(0.0f, smallCourseById[it.id]!!)
+                SearchResult(0.0f, Json.encodeToJsonElement(it.toSmall(null)))
             }.let {
                 SearchOutput(it, sortedCourses.size,
                     (sortedCourses.size+numResults-1)/numResults, 0.0)

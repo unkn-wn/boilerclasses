@@ -228,6 +228,7 @@ export type SmallCourse = {
   id: number,
 
   name: string,
+  varTitle: string|null,
   subject: string,
   course: number,
   termInstructors: Record<Term,CourseInstructor[]>,
@@ -245,7 +246,7 @@ export type SmallCourse = {
 export type CourseId = {course: Course, id: number};
 
 export const toSmallCourse = (cid: CourseId): SmallCourse => ({
-  id: cid.id, ...cid.course,
+  id: cid.id, ...cid.course, varTitle: null,
   termInstructors: Object.fromEntries(Object.entries(cid.course.sections)
     .map(([k,v]) => [k as Term, mergeInstructors(v.flatMap(x=>x.instructors))])),
   grades: mergeGrades(Object.values(cid.course.instructor).flatMap(x=>Object.values(x))),

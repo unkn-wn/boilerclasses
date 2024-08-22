@@ -11,7 +11,7 @@ import { default as Select, MultiValue } from "react-select";
 import Graph from "@/components/graph";
 import { CourseLink } from "@/components/card";
 import { Calendar } from "@/components/calendar";
-import { decodeQueryToSearchState, encodeToQuery, Search, SearchState } from "@/app/search";
+import { decodeQueryToSearchState, encodeSearchState, encodeToQuery, Search, SearchState } from "@/app/search";
 
 export function Instructor({instructor}: {instructor: InstructorId}) {
 	const i = instructor.instructor;
@@ -41,7 +41,7 @@ export function Instructor({instructor}: {instructor: InstructorId}) {
 		};
 	}, (x) => {
 		if (x==null) return;
-		const p = encodeToQuery(x.search);
+		const p = encodeSearchState(x.search);
 		if (x.term!=defaultTerm) p.append("term", x.term);
 		return p;
 	});

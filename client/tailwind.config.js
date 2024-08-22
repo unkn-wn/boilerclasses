@@ -16,8 +16,8 @@ module.exports = {
   },
   safelist: [
     ...["red-600", "rose-600", "orange-600", "amber-600", "cyan-600", "green-600", "white"]
-        .flatMap(x=> [`bg-${x}`, `text-${x}`, `stroke-${x}/10`, `stroke-${x}`]),
-        "bg-blue-100"
+      .flatMap(x=> [`bg-${x}`, `text-${x}`, `stroke-${x}/10`, `stroke-${x}`]),
+    "bg-blue-100"
   ],
   plugins: [nextui({
     layout: {

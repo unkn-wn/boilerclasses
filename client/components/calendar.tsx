@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { SelectionContext } from "./clientutil";
 import { Course, CourseId, Day, Section, ServerInfo, SmallCourse, Term, validDays } from "../../shared/types";
 import { SectionLink } from "./sectionlink";
+import { abbr } from "./util";
+import React from "react";
 
 function minutesInDay(t: string) {
 	const re = /(\d+):(\d+) (am|pm)/;
@@ -42,11 +44,26 @@ export function Calendar({days, sections: secs, term}: {days: Day[], sections: [
 					<div className="overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
 						{ inD.map(([_,start,end,c,sec], i) => {
 							const hi = sec.crn==selCtx.section?.crn;
+
+							let name = sec.instructors.find(x=>x.primary)?.name;
+							const content = [sec.section, start];
+
+							if (name!=undefined) {
+								name = abbr(name, 20);
+								content.push(sec.scheduleType.slice(0,3));
+							}
+
 							return <SectionLink key={i} term={term} section={sec} course={c}
 								className={`w-full ${hi ? "bg-amber-600" : "bg-zinc-700 hover:bg-zinc-600"} py-1 px-2 rounded-md transition-all mt-1 first:mt-0 cursor-pointer`} >
 
-								<p className="font-bold font-display" >{sec.scheduleType}</p>
-								<p className={`text-xs ${hi ? "text-white" : "text-gray-400"}`} >{sec.section} - {start}</p>
+								<p className="font-bold font-display" >{name ?? sec.scheduleType}</p>
+								{sec.name && <p className="font-bold font-display text-sm" >{sec.name}</p>}
+								<div className={`text-xs flex flex-row items-stretch gap-1 ${hi ? "text-white" : "text-gray-400"}`} >
+									{content.map((x,i) => <React.Fragment key={i} >
+										<span>{x}</span>
+										{i<content.length-1 && <div className={`mx-1 w-px my-0.5 ${hi ? "bg-white" : "bg-gray-400"}`} ></div>}
+									</React.Fragment>)}
+								</div>
 							</SectionLink>
 						}) }
 					</div>
