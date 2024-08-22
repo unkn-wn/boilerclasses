@@ -14,23 +14,23 @@ ChartJS.register(
 );
 
 const graphColors = [
-  "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
+	"#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
 ];
 
-export const Graph = ({grades,title}: { grades: [string, InstructorGrade][], title:string }) => {
-	const allLetterGrades: Grade[]=[...new Set(grades.flatMap(x=>Object.entries(x[1].grade)
-		.filter(([k,v])=>k in gradeGPA && v>0).map(([k,v])=>k) as Grade[]))];
-	allLetterGrades.sort((a,b) => gradeGPA[b]!-gradeGPA[a]!
-		-(a=="E"?0.1:0)+(b=='E'? 0.1:0)-(a=="A+"?0.1:0)+(b=='A+'? 0.1:0));
+export const Graph = ({ grades, title }: { grades: [string, InstructorGrade][], title: string }) => {
+	const allLetterGrades: Grade[] = [...new Set(grades.flatMap(x => Object.entries(x[1].grade)
+		.filter(([k, v]) => k in gradeGPA && v > 0).map(([k, v]) => k) as Grade[]))];
+	allLetterGrades.sort((a, b) => gradeGPA[b]! - gradeGPA[a]!
+		- (a == "E" ? 0.1 : 0) + (b == 'E' ? 0.1 : 0) - (a == "A+" ? 0.1 : 0) + (b == 'A+' ? 0.1 : 0));
 
-	const datasets = grades.map((x,i) => {
-		const d = allLetterGrades.map(g=>x[1].grade[g] ?? 0);
-		const tot = d.reduce((a,b)=>a+b);
+	const datasets = grades.map((x, i) => {
+		const d = allLetterGrades.map(g => x[1].grade[g] ?? 0);
+		const tot = d.reduce((a, b) => a + b);
 
 		return {
-			backgroundColor: graphColors[i%graphColors.length],
+			backgroundColor: graphColors[i % graphColors.length],
 			label: x[0],
-			data: d.map(y=>100*y/tot),
+			data: d.map(y => 100 * y / tot),
 			barPercentage: 1
 		};
 	});
@@ -50,8 +50,8 @@ export const Graph = ({grades,title}: { grades: [string, InstructorGrade][], tit
 						},
 						tooltip: {
 							callbacks: {
-								title(ctx) {return ctx.map(x=>x.dataset.label!);},
-								label(ctx) {return `${allLetterGrades[ctx.parsed.x]}: ${ctx.parsed.y.toFixed(0)}%`;}
+								title(ctx) { return ctx.map(x => x.dataset.label!); },
+								label(ctx) { return `${allLetterGrades[ctx.parsed.x]}: ${ctx.parsed.y.toFixed(0)}%`; }
 							},
 							intersect: false
 						},

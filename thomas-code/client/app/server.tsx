@@ -9,12 +9,12 @@ import { ImageResponse } from "next/og";
 export const api = <T,>(endpoint: string, data?: any): Promise<T> =>
 	fetch(`${process.env.SERVER_URL}/${endpoint}`, {
 		method: "POST",
-		body: data==undefined ? undefined : JSON.stringify(data),
+		body: data == undefined ? undefined : JSON.stringify(data),
 		cache: "no-store"
 	}).then((res) => res.json() as Promise<ServerResponse<T>>)
 		.then((res) => {
-			if (res.status=="error") {
-				if (res.error=="notFound") notFound();
+			if (res.status == "error") {
+				if (res.error == "notFound") notFound();
 				throw new Error(`couldn't fetch ${endpoint}: ${res.error} - ${res.message}`)
 			}
 			return res.result;
@@ -36,7 +36,7 @@ export async function makeThumbnail(title: string, sub: string) {
 	return new ImageResponse(
 		(
 			<div tw="w-full h-full flex flex-col justify-center items-center bg-stone-900">
-				<img src={`data:image/png;base64,${icon}`} alt="logo" height={200} width={200}/>
+				<img src={`data:image/png;base64,${icon}`} alt="logo" height={200} width={200} />
 				<div tw="text-white flex flex-col px-16 pb-16 pt-8 items-center">
 					<div tw="flex text-5xl w-full mb-4 items-center text-center" style={{ fontWeight: 500 }}>
 						{title}
@@ -47,9 +47,9 @@ export async function makeThumbnail(title: string, sub: string) {
 				</div>
 			</div>
 		),
-		{ 
-			width: 1200, 
-			height: 628, 
+		{
+			width: 1200,
+			height: 628,
 			fonts: [
 				{
 					name: 'Inter',

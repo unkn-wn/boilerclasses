@@ -6,7 +6,7 @@ import { Grades } from "./grades";
 import { Element } from "cheerio";
 import { isDeepStrictEqual } from "node:util";
 
-async function RMPGraphQL(query: string, variables: Record<string,any>) {
+async function RMPGraphQL(query: string, variables: Record<string, any>) {
 	return await fetchDispatcher(x => x.json(), "https://www.ratemyprofessors.com/graphql", {
 		method: "POST",
 		body: JSON.stringify({ query, variables }),
@@ -20,7 +20,7 @@ async function RMPGraphQL(query: string, variables: Record<string,any>) {
 
 const schoolName = "Purdue University - West Lafayette";
 
-export async function updateInstructors({instructors,grades,knex}:{
+export async function updateInstructors({ instructors, grades, knex }: {
 	instructors: Set<string>, grades: Grades[], knex: Knex
 }) {
 	console.log(`retrieving professor ratings`);
@@ -37,11 +37,11 @@ export async function updateInstructors({instructors,grades,knex}:{
 			}
 		}
 	}`, {
-		query: {text: schoolName}
+		query: { text: schoolName }
 	});
 
 	const schoolCandidates: any[] = res.data.newSearch.schools.edges;
-	if (schoolCandidates.length==0) {
+	if (schoolCandidates.length == 0) {
 		throw `no schools found matching ${schoolName}`;
 	}
 
@@ -76,23 +76,23 @@ export async function updateInstructors({instructors,grades,knex}:{
 		}`, { text: k, schoolID });
 
 		const nname = normalizeName(k);
-		const candidate = (res.data.newSearch.teachers.edges as any[]).map(x => x.node).find(x => 
-			normalizeName(`${x.firstName} ${x.lastName}`)==nname
+		const candidate = (res.data.newSearch.teachers.edges as any[]).map(x => x.node).find(x =>
+			normalizeName(`${x.firstName} ${x.lastName}`) == nname
 		);
-		
+
 		const instructor: Omit<Instructor, "lastUpdated"> = {
 			name: k,
-			grades: gradeByInstructor.get(nname)?.map(g=>({...g, instructor:undefined})) ?? [],
+			grades: gradeByInstructor.get(nname)?.map(g => ({ ...g, instructor: undefined })) ?? [],
 			nicknames: []
 		};
 
-		let rmp:RMPInfo|null=null;
+		let rmp: RMPInfo | null = null;
 
-		if (candidate!==undefined) {
-			const rmpId = Number.parseInt(Buffer.from(candidate.id,"base64").toString("utf-8").trimIfStarts("Teacher-"));
+		if (candidate !== undefined) {
+			const rmpId = Number.parseInt(Buffer.from(candidate.id, "base64").toString("utf-8").trimIfStarts("Teacher-"));
 			if (!isFinite(rmpId)) throw "invalid RMP teacher id";
 
-			rmp={
+			rmp = {
 				avgDifficulty: candidate.avgDifficulty,
 				avgRating: candidate.avgRating, numRatings: candidate.numRatings,
 				wouldTakeAgainPercent: candidate.wouldTakeAgainPercent,
@@ -111,29 +111,29 @@ export async function updateInstructors({instructors,grades,knex}:{
 
 		const lis = search("#results li").toArray();
 		const li = lis
-			.map((x):[string,Element]=>[search(x).find(".cn-name").first().text().trim(),x])
-			.find(x=>normalizeName(x[0])==nname);
-		
-		if (li!==undefined) {
+			.map((x): [string, Element] => [search(x).find(".cn-name").first().text().trim(), x])
+			.find(x => normalizeName(x[0]) == nname);
+
+		if (li !== undefined) {
 			const x = search(li[1]);
 
-			const els = new Map(x.find("table > tbody > tr").toArray().map(x=>[
-					search(x).children("th"),
-					search(x).children("td")
-				].map(v=>search(v).text().trim()))
-				.map(a=>[a[0].toLowerCase(),a[1]]));
-			
+			const els = new Map(x.find("table > tbody > tr").toArray().map(x => [
+				search(x).children("th"),
+				search(x).children("td")
+			].map(v => search(v).text().trim()))
+				.map(a => [a[0].toLowerCase(), a[1]]));
+
 			if (els.has("nickname"))
 				instructor.nicknames.push(els.get("nickname")!);
-			
-			const keyMap: [string, "email"|"dept"|"office"|"site"|"title"][] = [
+
+			const keyMap: [string, "email" | "dept" | "office" | "site" | "title"][] = [
 				["email", "email"], ["department", "dept"], ["office", "office"],
 				["url", "site"], ["title", "title"]
 			];
 
-			for (const [k,v] of keyMap) {
+			for (const [k, v] of keyMap) {
 				const a = els.get(k);
-				if (a!==undefined) instructor[v]=a;
+				if (a !== undefined) instructor[v] = a;
 			}
 		}
 
@@ -142,10 +142,10 @@ export async function updateInstructors({instructors,grades,knex}:{
 				.where("name", k).select("data").first();
 
 			let updated = new Date().toISOString();
-			if (d!=undefined) {
+			if (d != undefined) {
 				const old: Instructor = JSON.parse(d.data);
-				if (isDeepStrictEqual({...old, lastUpdated: undefined}, instructor))
-					updated=old.lastUpdated;
+				if (isDeepStrictEqual({ ...old, lastUpdated: undefined }, instructor))
+					updated = old.lastUpdated;
 			}
 
 			await tx<DBInstructor>("instructor")

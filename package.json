@@ -20,6 +20,8 @@
     "base64-arraybuffer": "^1.0.2",
     "chakra-multiselect": "^0.4.6",
     "chart.js": "^4.4.1",
+    "cheerio": "^1.0.0",
+    "cli-progress": "^3.12.0",
     "cors": "^2.8.5",
     "net": "^1.0.2",
     "next": "14.0.3",

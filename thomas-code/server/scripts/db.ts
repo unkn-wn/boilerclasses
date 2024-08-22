@@ -10,7 +10,7 @@ export type DBInstructor = {
 	id: number,
 	//stored in separate columns so i can query rmp quickly w/o all data w/o using extract
 	name: string,
-	rmp: RMPInfo|null,
+	rmp: RMPInfo | null,
 	data: string //Instructor (rmp is duplicated :/, but its fine)
 };
 
