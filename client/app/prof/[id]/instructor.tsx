@@ -11,7 +11,7 @@ import { default as Select, MultiValue } from "react-select";
 import Graph from "@/components/graph";
 import { CourseLink } from "@/components/card";
 import { Calendar } from "@/components/calendar";
-import { decodeQueryToSearchState, encodeSearchState, encodeToQuery, Search, SearchState } from "@/app/search";
+import { decodeQueryToSearchState, encodeSearchState, Search, SearchState } from "@/app/search";
 
 export function Instructor({instructor}: {instructor: InstructorId}) {
 	const i = instructor.instructor;
