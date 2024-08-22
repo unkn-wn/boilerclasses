@@ -70,3 +70,5 @@ We're trying to integrate as many features as possible, and we'll have open issu
 
 # Acknowledgements
 Inspired by [classes.wtf](https://classes.wtf) and Purdue's slow course catalogs. We'd like to also thank our friends over at [Boilerexams](https://boilerexams.com) and [BoilerGrades](https://boilergrades.com/).
+
+Huge thanks to [Thomas](https://github.com/canislupaster) for writing a major chunk of this!
