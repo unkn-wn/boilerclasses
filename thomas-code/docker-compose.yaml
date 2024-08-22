@@ -1,0 +1,31 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    secrets:
+      - proxies
+    environment:
+      - SCRAPE_ARGS=${SCRAPE_ARGS?SCRAPE_ARGS is required}
+      - SCRAPE_INTERVAL=${SCRAPE_INTERVAL}
+      - SERVER_PORT=8080
+    volumes:
+      - type: bind
+        source: ${DATA_SOURCE?DATA_SOURCE is required}
+        target: /server/data
+    ports:
+      - 127.0.0.1:4000:8080
+  frontend:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+      args: # nextjs uses at build time. these are public (in a sense)!
+        - NEXT_PUBLIC_ROOT_URL=${ROOT_URL?ROOT_URL is required}
+        - NEXT_PUBLIC_GTM_ID=${GTM_ID-}
+    ports:
+      - 127.0.0.1:8000:3000
+    environment:
+      - SERVER_URL=http://api:8080
+secrets:
+  proxies:
+    file: ${PROXIES_PATH-}
