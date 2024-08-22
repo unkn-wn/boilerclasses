@@ -200,7 +200,7 @@ export function BarsStat<T>({lhs,type,vs,className}: {lhs: (x: T)=>React.ReactNo
 				/>
 			</div>
 
-			<span className="px-2 py-1 rounded-lg my-auto font-black font-display text-xl" style={{backgroundColor: c}} >
+			<span className="px-2 py-1 rounded-lg my-auto font-black font-display text-xl text-center" style={{backgroundColor: c}} >
 				{x.toFixed(1)}
 			</span>
 		</React.Fragment>;
