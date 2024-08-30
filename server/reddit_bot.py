@@ -106,17 +106,17 @@ try:
                 )
 
                 if found:
-                submission.reply(reply_text)
-                print(f"Reply: {reply_text}")
+                    submission.reply(reply_text)
+                    print(f"Reply: {reply_text}")
 
-                # send message to Discord bot
-                message = {
-                    "submission_title": submission.title,
-                    "courses_mentioned": all_courses,
-                    "reddit_url": f"https://www.reddit.com{submission.permalink}",
-                }
+                    # send message to Discord bot
+                    message = {
+                        "submission_title": submission.title,
+                        "courses_mentioned": all_courses,
+                        "reddit_url": f"https://www.reddit.com{submission.permalink}",
+                    }
 
-                asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
+                    asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
 
 
 except Exception as e:
