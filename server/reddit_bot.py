@@ -86,37 +86,37 @@ try:
                     )
                     continue
 
-                # get course URL
-                detailId = result_course["detailId"]
-                course_url = f"https://www.boilerclasses.com/detail/{detailId}?utm_campaign=reddit_bot"
+                    # get course URL
+                    detailId = result_course["detailId"]
+                    course_url = f"https://www.boilerclasses.com/detail/{detailId}?utm_campaign=reddit_bot"
 
-                # add course to list of all courses
-                reply_text += f"[{course_mentioned}]({course_url})\n\n"
-                all_courses.append({"name": course_mentioned, "url": course_url})
-                found = True
+                    # add course to list of all courses
+                    reply_text += f"[{course_mentioned}]({course_url})\n\n"
+                    all_courses.append({"name": course_mentioned, "url": course_url})
+                    found = True
 
-                print(f"Found: {course_mentioned} - {course_url}\n\n")
-            except Exception as e:
-                found = False
-                print(f"Error: {e}")
-                asyncio.run_coroutine_threadsafe(send_single_msg("something went wrong - " + e), client.loop)
+                    print(f"Found: {course_mentioned} - {course_url}\n\n")
+                except Exception as e:
+                    found = False
+                    print(f"Error: {e}")
+                    asyncio.run_coroutine_threadsafe(send_single_msg("something went wrong - " + e), client.loop)
 
-        reply_text += (
-            "\n^I ^am ^a ^bot. ^Please ^contact ^this ^account ^for ^any ^issues."
-        )
+                reply_text += (
+                    "\n^I ^am ^a ^bot. ^Please ^contact ^this ^account ^for ^any ^issues."
+                )
 
-        if found:
-            submission.reply(reply_text)
-            print(f"Reply: {reply_text}")
+                if found:
+                submission.reply(reply_text)
+                print(f"Reply: {reply_text}")
 
-            # send message to Discord bot
-            message = {
-                "submission_title": submission.title,
-                "courses_mentioned": all_courses,
-                "reddit_url": f"https://www.reddit.com{submission.permalink}",
-            }
+                # send message to Discord bot
+                message = {
+                    "submission_title": submission.title,
+                    "courses_mentioned": all_courses,
+                    "reddit_url": f"https://www.reddit.com{submission.permalink}",
+                }
 
-            asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
+                asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
 
 
 except Exception as e:
