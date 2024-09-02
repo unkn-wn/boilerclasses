@@ -1,5 +1,5 @@
 import { IconInfoTriangleFilled, IconSchool } from "@tabler/icons-react";
-import { CourseLikePreReq, PreReq, PreReqs } from "../../shared/types";
+import { CourseLikePreReq, PreReq, PreReqs } from "../types";
 import { CourseLink, CourseLinkPopup } from "./card";
 import { AppTooltip, useMd } from "./clientutil";
 import { Anchor } from "./util";

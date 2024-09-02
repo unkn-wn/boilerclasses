@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Anchor } from "./util"
-import { formatTerm, CourseInstructor, SmallCourse, Term } from "../../shared/types";
+import { formatTerm, CourseInstructor, SmallCourse, Term } from "../types";
 import { ProfLink } from "./proflink";
 import { twMerge } from "tailwind-merge";
 

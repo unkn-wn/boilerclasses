@@ -1,5 +1,5 @@
 import { IconBan, IconCircleCheck } from "@tabler/icons-react";
-import { Restriction } from "../../shared/types";
+import { Restriction } from "../types";
 import { Anchor } from "./util";
 import React, { useState } from "react";
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Course, Day, Section, SmallCourse, Term, validDays } from "../../shared/types";
+import { Course, Day, Section, SmallCourse, Term, validDays } from "../types";
 import { AppTooltip, SelectionContext, useMd } from "./clientutil";
 import { InstructorList } from "./instructorlist";
 import { CatalogLinkButton } from "./util";

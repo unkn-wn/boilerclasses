@@ -1,4 +1,4 @@
-import { RMPInfo } from "../../shared/types";
+import { RMPInfo } from "../../../src/types";
 
 export type DBCourse = {
 	id: number,

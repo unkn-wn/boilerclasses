@@ -1,7 +1,7 @@
 "use client"
 
 import { AppCtx, AppWrapper, useInfo } from "@/components/wrapper";
-import { CourseId, emptyInstructorGrade, InstructorGrade, InstructorId, latestTermofTerms, mergeGrades, Section, ServerInfo, Term, termIdx, toInstructorGrade, toSmallCourse } from "../../../../shared/types";
+import { CourseId, emptyInstructorGrade, InstructorGrade, InstructorId, latestTermofTerms, mergeGrades, Section, ServerInfo, Term, termIdx, toInstructorGrade, toSmallCourse } from "../../../types";
 import { BackButton, BarsStat, NameSemGPA, searchState, SelectionContext, simp, tabProps, TermSelect, WrapStat } from "@/components/clientutil";
 import { Anchor, capitalize, RedditButton, selectProps } from "@/components/util";
 import { Tab, Tabs } from "@nextui-org/tabs";

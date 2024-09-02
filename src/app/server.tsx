@@ -2,7 +2,7 @@
 //you shouldn't use any of these from non-server components
 
 import { notFound } from "next/navigation";
-import { Course, CourseId, InstructorId, ServerInfo, ServerResponse } from "../../shared/types";
+import { Course, CourseId, InstructorId, ServerInfo, ServerResponse } from "../types";
 import { ImageResponse } from "next/og";
 
 //a much worse api wrapper for server

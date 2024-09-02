@@ -2,7 +2,7 @@ import { abort, exit } from "node:process";
 import { parseArgs } from "node:util";
 import { default as knexBuilder } from "knex";
 import { addProxies, fetchDispatcher, getHTML } from "./fetch";
-import { formatTerm, Term, termIdx } from "../../shared/types";
+import { formatTerm, Term, termIdx } from "../../../src/types";
 import { getGrades, Grades } from "./grades";
 import { readFile } from "node:fs/promises";
 import { updateCourses } from "./course";

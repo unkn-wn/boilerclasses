@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import { Instructor, normalizeName, RMPInfo } from "../../shared/types";
+import { Instructor, normalizeName, RMPInfo } from "../../../src/types";
 import { fetchDispatcher, logArray, postHTML } from "./fetch";
 import { DBInstructor } from "./db";
 import { Grades } from "./grades";

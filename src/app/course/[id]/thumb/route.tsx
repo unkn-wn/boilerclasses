@@ -1,5 +1,5 @@
 import { courseById, makeThumbnail } from "../../../server";
-import { creditStr, formatTerm, instructorStr, sectionsByTerm } from "../../../../../shared/types";
+import { creditStr, formatTerm, instructorStr, sectionsByTerm } from "@/types";
 
 export const runtime = "edge";
 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useAPI } from "./wrapper";
-import { ServerSearch } from "../../shared/types";
+import { ServerSearch } from "../types";
 import { Collapse } from "react-collapse";
 import { Card } from "./card";
 

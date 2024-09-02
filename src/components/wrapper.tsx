@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Course, ServerInfo, ServerResponse } from "../../shared/types";
+import { Course, ServerInfo, ServerResponse } from "../types";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { NextUIProvider } from "@nextui-org/system";
 import { Button } from "./util";

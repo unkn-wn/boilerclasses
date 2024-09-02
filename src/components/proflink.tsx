@@ -1,4 +1,4 @@
-import { Course, formatTerm, CourseInstructor, mergeGrades, RMPInfo, Term, InstructorId, InstructorGrade, SmallCourse } from "../../shared/types";
+import { Course, formatTerm, CourseInstructor, mergeGrades, RMPInfo, Term, InstructorId, InstructorGrade, SmallCourse } from "../types";
 import { Anchor, capitalize, Chip, firstLast, gpaColor, Loading } from "./util";
 import { useAPI, useCourse } from "./wrapper";
 import { CircularProgress, CircularProgressProps } from "@nextui-org/progress";

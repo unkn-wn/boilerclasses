@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { Course, CourseId, CourseInstructor, creditStr, formatTerm, InstructorGrade, latestTerm, latestTermofTerms, mergeGrades, ServerInfo, SmallCourse, Term, toSmallCourse } from "../../shared/types";
+import { Course, CourseId, CourseInstructor, creditStr, formatTerm, InstructorGrade, latestTerm, latestTermofTerms, mergeGrades, ServerInfo, SmallCourse, Term, toSmallCourse } from "../types";
 import { abbr, Anchor, Chip, gpaColor, Loading } from "./util";
 import { InstructorList } from "./instructorlist";
 import { AppLink, AppTooltip, useMd } from "./clientutil";

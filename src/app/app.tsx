@@ -4,7 +4,7 @@ import icon from "../public/icon.png";
 import { Footer } from "@/components/footer";
 
 import { LogoText } from "@/components/util";
-import { ServerInfo } from "../../shared/types";
+import { ServerInfo } from "../types";
 import { decodeQueryToSearchState, encodeSearchState, Search, SearchState } from "./search";
 import Image from "next/image";
 

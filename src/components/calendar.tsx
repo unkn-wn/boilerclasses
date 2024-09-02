@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SelectionContext } from "./clientutil";
-import { Course, CourseId, Day, Section, ServerInfo, SmallCourse, Term, validDays } from "../../shared/types";
+import { Course, CourseId, Day, Section, ServerInfo, SmallCourse, Term, validDays } from "../types";
 import { SectionLink } from "./sectionlink";
 import { abbr } from "./util";
 import React from "react";

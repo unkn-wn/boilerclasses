@@ -1,12 +1,12 @@
 "use client"
 
-import { Course, CourseId, creditStr, emptyInstructorGrade, formatTerm, CourseInstructor, InstructorGrade, InstructorGrades, mergeInstructors, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx, toSmallCourse, SmallCourse } from "../../../../shared/types";
+import { Course, CourseId, creditStr, emptyInstructorGrade, formatTerm, CourseInstructor, InstructorGrade, InstructorGrades, mergeInstructors, latestTerm, mergeGrades, RMPInfo, Section, ServerInfo, Term, termIdx, toSmallCourse, SmallCourse } from "../../../types";
 import { abbr, Anchor, CatalogLinkButton, firstLast, LinkButton, Loading, RedditButton, selectProps } from "@/components/util";
 import { Footer } from "@/components/footer";
 import { AppCtx, AppWrapper, setAPI, useAPI, useInfo } from "@/components/wrapper";
 import { useContext, useEffect, useMemo, useState } from "react";
 import boilerexamsCourses from "../../boilerexamsCourses.json";
-import boilerexams from "../../../public/boilerexams-icon.png";
+import boilerexams from "/public/boilerexams-icon.png";
 import Image from "next/image";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import Select, { MultiValue } from "react-select";

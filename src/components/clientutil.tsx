@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState, PointerEvent, HTMLAttributes, useContext, useRef } from "react";
-import { Course, CourseInstructor, formatTerm, latestTermofTerms, Section, ServerInfo, SmallCourse, Term, termIdx } from "../../shared/types";
+import { Course, CourseInstructor, formatTerm, latestTermofTerms, Section, ServerInfo, SmallCourse, Term, termIdx } from "../types";
 import { Tooltip, TooltipPlacement } from "@nextui-org/tooltip";
 import { twMerge } from "tailwind-merge";
 import { AppCtx, useInfo } from "./wrapper";

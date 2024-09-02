@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import { Course, CourseLikePreReq, Day, formatTerm, Grade, grades, InstructorGrade, Level, levels, mergeGrades, normalizeName, PreReq, PreReqs, Restriction, Seats, Section, Term, termIdx, toInstructorGrade, validDays } from "../../shared/types";
+import { Course, CourseLikePreReq, Day, formatTerm, Grade, grades, InstructorGrade, Level, levels, mergeGrades, normalizeName, PreReq, PreReqs, Restriction, Seats, Section, Term, termIdx, toInstructorGrade, validDays } from "../../../src/types";
 import { Grades } from "./grades";
 import { getHTML, logArray, ords, postHTML, tableToObject } from "./fetch";
 import assert from "node:assert";
