@@ -83,8 +83,8 @@ try:
                     if course_mentioned != result_course_code:
                         print(
                             f"Course result was bad: {course_mentioned} != {result_course_code}"
-                    )
-                    continue
+                        )
+                        continue
 
                     # get course URL
                     detailId = result_course["detailId"]
