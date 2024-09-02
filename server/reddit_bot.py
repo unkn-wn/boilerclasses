@@ -99,27 +99,28 @@ try:
                 except Exception as e:
                     found = False
                     print(f"Error: {e}")
-                    asyncio.run_coroutine_threadsafe(send_single_msg("something went wrong - " + e), client.loop)
+                    asyncio.run_coroutine_threadsafe(
+                        send_single_msg("something went wrong - " + e), client.loop
+                    )
 
-                reply_text += (
-                    "\n^I ^am ^a ^bot. ^Please ^contact ^this ^account ^for ^any ^issues."
-                )
+            reply_text += (
+                "\n^I ^am ^a ^bot. ^Please ^contact ^this ^account ^for ^any ^issues."
+            )
 
-                if found:
-                    submission.reply(reply_text)
-                    print(f"Reply: {reply_text}")
+            if found:
+                submission.reply(reply_text)
+                print(f"Reply: {reply_text}")
 
-                    # send message to Discord bot
-                    message = {
-                        "submission_title": submission.title,
-                        "courses_mentioned": all_courses,
-                        "reddit_url": f"https://www.reddit.com{submission.permalink}",
-                    }
+                # send message to Discord bot
+                message = {
+                    "submission_title": submission.title,
+                    "courses_mentioned": all_courses,
+                    "reddit_url": f"https://www.reddit.com{submission.permalink}",
+                }
 
-                    asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
+                asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
 
 
 except Exception as e:
-    print("Crashed: " + e);
+    print("Crashed: " + e)
     asyncio.run_coroutine_threadsafe(send_single_msg(e), client.loop)
-
