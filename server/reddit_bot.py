@@ -39,7 +39,9 @@ try:
         matches = list(dict.fromkeys(matches))
 
         if matches:
-            discord_thread = threading.Thread(target=start_bot).start()
+            discord_thread = threading.Thread(target=start_bot)
+            discord_thread.start()
+
             print("\n\n--------\n" + submission.title + "\n")
 
             reply_text = "### Mentioned courses: \n"
@@ -98,9 +100,9 @@ try:
                     print(f"Found: {course_mentioned} - {course_url}\n\n")
                 except Exception as e:
                     found = False
-                    print(f"Error: {e}")
+                    print(f"Error: {str(e)}")
                     asyncio.run_coroutine_threadsafe(
-                        send_single_msg("something went wrong - " + e), client.loop
+                        send_single_msg("something went wrong - " + str(e)), client.loop
                     )
 
             reply_text += (
@@ -124,4 +126,4 @@ try:
 
 
 except Exception as e:
-    print("Crashed: " + e)
+    print("Crashed: " + str(e))
