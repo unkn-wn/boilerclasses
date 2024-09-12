@@ -29,6 +29,8 @@ course_pattern = re.compile(r"\b[A-Za-z]{2,4}\s?\d{2,5}\b", re.IGNORECASE)
 # Discord bot
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+discord_thread = threading.Thread(target=start_bot)
+discord_thread.start()
 
 print("Listening...")
 try:
@@ -39,9 +41,6 @@ try:
         matches = list(dict.fromkeys(matches))
 
         if matches:
-            discord_thread = threading.Thread(target=start_bot)
-            discord_thread.start()
-
             print("\n\n--------\n" + submission.title + "\n")
 
             reply_text = "### Mentioned courses: \n"
@@ -121,8 +120,6 @@ try:
                 }
 
                 asyncio.run_coroutine_threadsafe(send_msg(message), client.loop)
-
-            discord_thread.join()
 
 
 except Exception as e:

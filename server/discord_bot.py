@@ -33,6 +33,10 @@ async def send_single_msg(message):
     print("Sending single message")
     await channel.send(message)
 
+@client.event
+async def on_message(message):
+    if client.user.mentioned_in(message):
+        await message.channel.send("bot running")
 
 @client.event
 async def on_ready():
@@ -40,7 +44,8 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("------")
-    # await send_msg("Hello, I am online!")
+
+    await send_single_msg("Hello, I am online!")
 
 def start_bot():
     client.run(os.getenv("DISCORD_TOKEN"))
