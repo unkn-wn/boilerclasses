@@ -266,6 +266,15 @@ const CardDetails = ({ courseData, semData }) => {
     return gened[0].label;
   }
 
+  // Go back on back button, or go to home if no history
+  const goBack = () => {
+    if (window.history?.length && window.history.length > 1) {
+      router.back();
+    } else {
+      router.replace(window.location.origin || "/");
+    }
+  }
+
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
@@ -351,7 +360,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             <div className='flex flex-row gap-1'>
               {/* Back button */}
-              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
+              <button onClick={() => goBack()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
                 <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
               </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
