@@ -6,7 +6,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 import Card from "../components/card"
 import Footer from "../components/footer"
-import { ChevronDownIcon, WarningTwoIcon, ArrowUpIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, ChevronUpIcon, HamburgerIcon, WarningTwoIcon, ArrowUpIcon } from '@chakra-ui/icons'
+import { Collapse } from 'react-collapse';
 import Select from 'react-select';
 import Head from "next/head";
 import Script from 'next/script';
@@ -56,6 +57,7 @@ const CourseCatalog = () => {
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState(query.q || '');
   const [displayLanding, setDisplayLanding] = useState(true);
+  const [filtersCollapsed, setFiltersCollapsed] = useState(true);
 
   // Function to change from initial page to search result page
   function changeLanding(event) {
@@ -222,132 +224,153 @@ const CourseCatalog = () => {
               className="text-white text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
           </div>
-          <div className="flex flex-row mb-8 gap-5 items-center">
-            <p className='text-white whitespace-nowrap md:block hidden'>Filter by </p>
-            <div className='flex flex-row w-full justify-evenly gap-5 items-center md:flex-nowrap flex-wrap'>
-              <Select
-                isMulti
-                options={subjectOptions}
-                className="basic-multi-select w-full"
-                classNamePrefix="select"
-                placeholder="Subject..."
-                styles={instructorStyles}
-                color="white"
-                onChange={(value) => {
-                  setSelectedSubjects(value)
-                }}
-              />
-              <Select
-                isMulti
-                options={semesterOptions}
-                className="basic-multi-select w-full"
-                classNamePrefix="select"
-                placeholder="Semester..."
-                defaultValue={semesterOptions[0]}
-                styles={instructorStyles}
-                color="white"
-                onChange={(value) => {
-                  setSelectedSemesters(value)
-                }}
-              />
-              <Select
-                isMulti
-                options={genedsOptions}
-                className="basic-multi-select w-full"
-                classNamePrefix="select"
-                placeholder="Gen Ed..."
-                styles={instructorStyles}
-                color="white"
-                onChange={(value) => {
-                  setSelectedGenEds(value)
-                }}
-              />
-              <Popover placement='bottom-start'>
-                <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
-                    <span>Credits</span>
-                    <ChevronDownIcon color='gray-800' />
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-zinc-900 border-gray-800 '>
-                  <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
-                    <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]}
-                      onChangeEnd={(val) => {
-                        setCreditsMin(Math.round((val[0] * 18 / 100)))
-                        setCreditsMax(Math.round((val[1] * 18 / 100)))
-                      }}
-                      onChangeStart={(val) => {
-                        setCreditsMin(Math.round((val[0] * 18 / 100)))
-                        setCreditsMax(Math.round((val[1] * 18 / 100)))
-                      }}
-                    >
-                      <RangeSliderTrack>
-                        <RangeSliderFilledTrack />
-                      </RangeSliderTrack>
-                      <RangeSliderThumb index={0} />
-                      <RangeSliderThumb index={1} />
-                    </RangeSlider>
-                    <div className='text-white'>
-                      {creditsMin} - {creditsMax} Credits
-                    </div>
-                  </PopoverBody>
-                </PopoverContent>
-              </Popover>
-              <Popover placement='bottom-start'>
-                <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
-                    <span>Level</span>
-                    <ChevronDownIcon color='gray-800' />
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
-                  <Grid templateColumns='repeat(3, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
-                    <Checkbox size='md' isChecked={levels.includes(100)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 100]) : setLevels(levels.filter(x => x !== 100))}>100</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(200)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 200]) : setLevels(levels.filter(x => x !== 200))}>200</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(300)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 300]) : setLevels(levels.filter(x => x !== 300))}>300</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(400)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 400]) : setLevels(levels.filter(x => x !== 400))}>400</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(500)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 500]) : setLevels(levels.filter(x => x !== 500))}>500</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(600)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 600]) : setLevels(levels.filter(x => x !== 600))}>600</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(700)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 700]) : setLevels(levels.filter(x => x !== 700))}>700</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(800)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 800]) : setLevels(levels.filter(x => x !== 800))}>800</Checkbox>
-                    <Checkbox size='md' isChecked={levels.includes(900)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 900]) : setLevels(levels.filter(x => x !== 900))}>900</Checkbox>
-                  </Grid>
-                  <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
-                    <Button size='sm' className='w-full' onClick={() => setLevels([100, 200, 300, 400, 500, 600, 700, 800, 900])}>Reset</Button>
-                    <Button size='sm' className='w-full' onClick={() => setLevels([])}>Clear</Button>
-                  </div>
-                </PopoverContent>
-              </Popover>
-              <Popover placement='bottom-start'>
-                <PopoverTrigger>
-                  <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
-                    <span>Schedule</span>
-                    <ChevronDownIcon color='gray-800' />
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
-                  <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
-                    <Checkbox size='md' isChecked={scheds.includes("Lecture")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Lecture"]) : setScheds(scheds.filter(x => x !== "Lecture"))}>Lecture</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Distance Learning")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Distance Learning"]) : setScheds(scheds.filter(x => x !== "Distance Learning"))}>Distance Learning</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Studio")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Studio"]) : setScheds(scheds.filter(x => x !== "Studio"))}>Studio</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Individual Study")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Individual Study"]) : setScheds(scheds.filter(x => x !== "Individual Study"))}>Individual Study</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Clinic")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Clinic"]) : setScheds(scheds.filter(x => x !== "Clinic"))}>Clinic</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Experiential")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Experiential"]) : setScheds(scheds.filter(x => x !== "Experiential"))}>Experiential</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Research")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Research"]) : setScheds(scheds.filter(x => x !== "Research"))}>Research</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Recitation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Recitation"]) : setScheds(scheds.filter(x => x !== "Recitation"))}>Recitation</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Practice Study Observation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Practice Study Observation"]) : setScheds(scheds.filter(x => x !== "Practice Study Observation"))}>Practice Study Observation</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Laboratory")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Laboratory"]) : setScheds(scheds.filter(x => x !== "Laboratory"))}>Laboratory</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Laboratory Preparation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Laboratory Preparation"]) : setScheds(scheds.filter(x => x !== "Laboratory Preparation"))}>Laboratory Preparation</Checkbox>
-                    <Checkbox size='md' isChecked={scheds.includes("Presentation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Presentation"]) : setScheds(scheds.filter(x => x !== "Presentation"))}>Presentation</Checkbox>
-                  </Grid>
-                  <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
-                    <Button size='sm' className='w-full' onClick={() => setScheds(["Clinic", "Distance Learning", "Experiential", "Individual Study", "Laboratory", "Laboratory Preparation", "Lecture", "Practice Study Observation", "Presentation", "Recitation", "Research", "Studio"])}>Reset</Button>
-                    <Button size='sm' className='w-full' onClick={() => setScheds([])}>Clear</Button>
-                  </div>
-                </PopoverContent>
-              </Popover>
-            </div>
+
+          {/* All filters*/}
+          <div className="flex flex-col mb-4 gap-2">
+            <Collapse isOpened={filtersCollapsed}>
+              <div onClick={() => setFiltersCollapsed(false)} className='w-36 flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-zinc-800 text-white border border-zinc-800 hover:border-zinc-700 transition-all'>
+                <HamburgerIcon />
+                Show filters
+              </div>
+            </Collapse>
+            <Collapse isOpened={!filtersCollapsed}>
+              <div className='flex flex-row items-center gap-5'>
+                <p className='text-white whitespace-nowrap lg:block hidden'>Filter by </p>
+                <div className='flex flex-row w-full justify-evenly gap-5 items-center lg:flex-nowrap flex-wrap'>
+                  <Select
+                    isMulti
+                    options={subjectOptions}
+                    className="basic-multi-select w-full"
+                    classNamePrefix="select"
+                    placeholder="Subject..."
+                    styles={instructorStyles}
+                    color="white"
+                    onChange={(value) => {
+                      setSelectedSubjects(value)
+                    }}
+                  />
+                  <Select
+                    isMulti
+                    options={semesterOptions}
+                    className="basic-multi-select w-full"
+                    classNamePrefix="select"
+                    placeholder="Semester..."
+                    defaultValue={semesterOptions[0]}
+                    styles={instructorStyles}
+                    color="white"
+                    onChange={(value) => {
+                      setSelectedSemesters(value)
+                    }}
+                  />
+                  <Select
+                    isMulti
+                    options={genedsOptions}
+                    className="basic-multi-select w-full"
+                    classNamePrefix="select"
+                    placeholder="Gen Ed..."
+                    styles={instructorStyles}
+                    color="white"
+                    onChange={(value) => {
+                      setSelectedGenEds(value)
+                    }}
+                  />
+
+                  {/* Credits filter */}
+                  <Popover placement='bottom-start'>
+                    <PopoverTrigger>
+                      <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
+                        <span>Credits</span>
+                        <ChevronDownIcon color='gray-800' />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-zinc-900 border-gray-800 '>
+                      <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
+                        <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 100]} step={100 / 18}
+                          onChange={(val) => {
+                            setCreditsMin(Math.round((val[0] * 18 / 100)))
+                            setCreditsMax(Math.round((val[1] * 18 / 100)))
+                          }}
+                        >
+                          <RangeSliderTrack>
+                            <RangeSliderFilledTrack />
+                          </RangeSliderTrack>
+                          <RangeSliderThumb index={0} />
+                          <RangeSliderThumb index={1} />
+                        </RangeSlider>
+                        <div className='text-white'>
+                          {creditsMin} - {creditsMax} Credits
+                        </div>
+                      </PopoverBody>
+                    </PopoverContent>
+                  </Popover>
+                  <Popover placement='bottom-start'>
+                    <PopoverTrigger>
+                      <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
+                        <span>Level</span>
+                        <ChevronDownIcon color='gray-800' />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
+                      <Grid templateColumns='repeat(3, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
+                        <Checkbox size='md' isChecked={levels.includes(100)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 100]) : setLevels(levels.filter(x => x !== 100))}>100</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(200)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 200]) : setLevels(levels.filter(x => x !== 200))}>200</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(300)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 300]) : setLevels(levels.filter(x => x !== 300))}>300</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(400)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 400]) : setLevels(levels.filter(x => x !== 400))}>400</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(500)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 500]) : setLevels(levels.filter(x => x !== 500))}>500</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(600)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 600]) : setLevels(levels.filter(x => x !== 600))}>600</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(700)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 700]) : setLevels(levels.filter(x => x !== 700))}>700</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(800)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 800]) : setLevels(levels.filter(x => x !== 800))}>800</Checkbox>
+                        <Checkbox size='md' isChecked={levels.includes(900)} textColor='white' onChange={(e) => e.target.checked ? setLevels([...levels, 900]) : setLevels(levels.filter(x => x !== 900))}>900</Checkbox>
+                      </Grid>
+                      <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
+                        <Button size='sm' className='w-full' onClick={() => setLevels([100, 200, 300, 400, 500, 600, 700, 800, 900])}>Reset</Button>
+                        <Button size='sm' className='w-full' onClick={() => setLevels([])}>Clear</Button>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                  <Popover placement='bottom-start'>
+                    <PopoverTrigger>
+                      <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700' >
+                        <span>Schedule</span>
+                        <ChevronDownIcon color='gray-800' />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent backgroundColor='black' borderColor='gray.800' className='bg-black border-gray-800' width='fit-content'>
+                      <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
+                        <Checkbox size='md' isChecked={scheds.includes("Lecture")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Lecture"]) : setScheds(scheds.filter(x => x !== "Lecture"))}>Lecture</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Distance Learning")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Distance Learning"]) : setScheds(scheds.filter(x => x !== "Distance Learning"))}>Distance Learning</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Studio")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Studio"]) : setScheds(scheds.filter(x => x !== "Studio"))}>Studio</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Individual Study")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Individual Study"]) : setScheds(scheds.filter(x => x !== "Individual Study"))}>Individual Study</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Clinic")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Clinic"]) : setScheds(scheds.filter(x => x !== "Clinic"))}>Clinic</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Experiential")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Experiential"]) : setScheds(scheds.filter(x => x !== "Experiential"))}>Experiential</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Research")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Research"]) : setScheds(scheds.filter(x => x !== "Research"))}>Research</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Recitation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Recitation"]) : setScheds(scheds.filter(x => x !== "Recitation"))}>Recitation</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Practice Study Observation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Practice Study Observation"]) : setScheds(scheds.filter(x => x !== "Practice Study Observation"))}>Practice Study Observation</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Laboratory")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Laboratory"]) : setScheds(scheds.filter(x => x !== "Laboratory"))}>Laboratory</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Laboratory Preparation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Laboratory Preparation"]) : setScheds(scheds.filter(x => x !== "Laboratory Preparation"))}>Laboratory Preparation</Checkbox>
+                        <Checkbox size='md' isChecked={scheds.includes("Presentation")} textColor='white' onChange={(e) => e.target.checked ? setScheds([...scheds, "Presentation"]) : setScheds(scheds.filter(x => x !== "Presentation"))}>Presentation</Checkbox>
+                      </Grid>
+                      <div className='flex flex-row justify-evenly m-4 grow	gap-2'>
+                        <Button size='sm' className='w-full' onClick={() => setScheds(["Clinic", "Distance Learning", "Experiential", "Individual Study", "Laboratory", "Laboratory Preparation", "Lecture", "Practice Study Observation", "Presentation", "Recitation", "Research", "Studio"])}>Reset</Button>
+                        <Button size='sm' className='w-full' onClick={() => setScheds([])}>Clear</Button>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
+            </Collapse>
+
+            {/* Hide filters button */}
+            <Collapse isOpened={!filtersCollapsed} >
+              <div className="flex flex-col w-full items-center text-white" >
+                <button onClick={() => setFiltersCollapsed(true)} className="flex flex-col items-center cursor-pointer hover:-translate-y-1 transition" >
+                  <ChevronUpIcon />
+                  Hide filters
+                </button>
+              </div>
+            </Collapse>
           </div>
+
           {courses.length > 0 || searchTerm.length < 2 ?
             <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
               {courses.length > 0 && courses.map(course => (
