@@ -228,9 +228,11 @@ const CourseCatalog = () => {
           {/* All filters*/}
           <div className="flex flex-col mb-4 gap-2">
             <Collapse isOpened={filtersCollapsed}>
-              <div onClick={() => setFiltersCollapsed(false)} className='w-36 flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-zinc-800 text-white border border-zinc-800 hover:border-zinc-700 transition-all'>
-                <HamburgerIcon />
-                Show filters
+              <div className='w-full flex place-content-end'>
+                <div onClick={() => setFiltersCollapsed(false)} className='w-36 flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-zinc-800 text-white border border-zinc-800 hover:border-zinc-700 transition-all'>
+                  <HamburgerIcon />
+                  Show filters
+                </div>
               </div>
             </Collapse>
             <Collapse isOpened={!filtersCollapsed}>

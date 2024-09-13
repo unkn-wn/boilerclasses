@@ -22,10 +22,7 @@ const Card = ({ course, searchTerm }) => {
   return (
     <>
       <Link
-        href={{
-          pathname: `/detail/${course.detailId}`,
-          query: { q: searchTerm },
-        }}
+        href={{pathname: `/detail/${course.detailId}`, query: { q: searchTerm }}}
         className="flex flex-col bg-zinc-800 p-6 rounded-md shadow-md hover:scale-[1.02] transition hover:transition cursor-pointer">
 
         <h2 className="lg:text-lg md:text-lg font-bold text-white">{course.subjectCode} {course.courseCode}: {course.title}</h2>

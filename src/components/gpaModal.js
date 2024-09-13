@@ -1,31 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-	ModalBody,
-	ModalCloseButton,
-	ChakraProvider,
-	extendTheme,
-} from '@chakra-ui/react';
 
-const theme = extendTheme({
-	components: {
-		Modal: {
-			baseStyle: (props) => ({
-				dialog: {
-					bg: "#18181b"
-				}
-			})
-		}
-	}
-});
-
-
-
-const GpaModal = ({ isOpen, onClose, course }) => {
+const GpaModal = ({ course }) => {
 
 	const [gpa, setGpa] = useState({});
 
@@ -100,23 +75,14 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 
 
 	return (
-		<ChakraProvider theme={theme}>
-			<Modal isOpen={isOpen} onClose={onClose}>
-				<ModalOverlay
-					backdropFilter='blur(5px)'
-				/>
-				<ModalContent maxW={{ base: "90%", lg: "60%" }} maxH={"80%"}>
-					<ModalHeader />
-					<ModalBody className=' overflow-y-auto'>
-						<div className='flex flex-col'>
-							<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
-							<h3 className='text-white text-sm'>
-								To view instructors ordered by semester, click on the "View All Instructors" button under the title!<br />
-								This graphic displays all the professors along with their GPA for each semester. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
-								GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
-							</h3>
-							<div className='mt-2'>
-								{/*sems.length > 0 && (
+		<div className='h-[32rem] overflow-y-auto flex flex-col'>
+			<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
+			<h3 className='text-white text-sm'>
+				This graphic displays all the professors along with their GPA for each semester. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
+				GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
+			</h3>
+			<div className='mt-2'>
+				{/*sems.length > 0 && (
 									<div className='grid grid-flow-col justify-stretch'>
 										{sems.map((semester, index) => (
 											<div key={index} className='flex flex-col mt-2'>
@@ -127,30 +93,24 @@ const GpaModal = ({ isOpen, onClose, course }) => {
 										))}
 									</div>
 								)*/}
-								{Object.keys(gpa).map((instructor, index) => (
-									<div key={index} className='flex flex-col mt-5'>
-										<h2 className='text-white font-bold text-xl'>{instructor}</h2>
-										<div className='grid grid-flow-col auto-cols-fr justify-stretch'>
-											{Object.keys(gpa[instructor]).map((semester, index) => (
-												// console.log(`bg-[${gpa[instructor][semester].color}]`),
-												<div key={index} className='flex flex-col mt-2'>
-													<div className='grid h-12 text-center' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-														<p className='text-white m-auto font-semibold'>{gpa[instructor][semester].gpa}</p>
-													</div>
-													<h3 className='text-zinc-500 text-center text-sm px-1'>{semester}</h3>
-												</div>
-											))}
-										</div>
+				{Object.keys(gpa).map((instructor, index) => (
+					<div key={index} className='flex flex-col mt-5'>
+						<h2 className='text-white font-bold text-xl'>{instructor}</h2>
+						<div className='grid grid-flow-col auto-cols-fr justify-stretch'>
+							{Object.keys(gpa[instructor]).map((semester, index) => (
+								// console.log(`bg-[${gpa[instructor][semester].color}]`),
+								<div key={index} className='flex flex-col mt-2'>
+									<div className='grid h-12 text-center' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
+										<p className='text-white m-auto font-semibold'>{gpa[instructor][semester].gpa}</p>
 									</div>
-								))}
-							</div>
+									<h3 className='text-zinc-500 text-center text-sm px-1'>{semester}</h3>
+								</div>
+							))}
 						</div>
-					</ModalBody>
-					<ModalCloseButton color={'white'} />
-					<ModalFooter />
-				</ModalContent>
-			</Modal>
-		</ChakraProvider>
+					</div>
+				))}
+			</div>
+		</div>
 	);
 };
 
