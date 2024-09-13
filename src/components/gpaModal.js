@@ -103,7 +103,9 @@ const GpaModal = ({ course }) => {
 									<div className='grid h-12 text-center' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
 										<p className='text-white m-auto font-semibold'>{gpa[instructor][semester].gpa}</p>
 									</div>
-									<h3 className='text-zinc-500 text-center text-sm px-1'>{semester}</h3>
+									<h3 className='text-zinc-500 text-center text-sm px-1 hidden md:block'>{semester}</h3>
+									<h3 className='text-zinc-500 text-center text-[10px] px-1 block md:hidden'>{semester.split(" ")[0]}</h3>
+									<h3 className='text-zinc-500 text-center text-sm px-1 block md:hidden'>{" '" + semester.split(" ")[1].substring(2, 4)}</h3>
 								</div>
 							))}
 						</div>

@@ -135,22 +135,18 @@ const CardDetails = ({ courseData, semData }) => {
     // set current semester
     setSem(availableSemesters[0]);
 
+    const currentSemesterProfs = course.instructor[availableSemesters[0]];
 
-    // set default first instructor on the multiselect to the first instructor with data
-    let found = false;
-    for (const ins of allProfs) {
-      if (gpa[ins] && gpa[ins][0] !== 0) {
-        refreshGraph({ value: ins, label: ins });
-        setFirstInstructor(ins);
-        found = true;
-        break;
-      }
-    }
-
-    // if no instructor has data, set firstInstructor to first instructor in allProfs
-    if (!found) {
-      refreshGraph({ value: allProfs[0], label: allProfs[0] });
-      setFirstInstructor(allProfs[0]);
+    // Set the first instructor to the first professor in the current semester
+    if (currentSemesterProfs && currentSemesterProfs.length > 0) {
+      const firstProf = currentSemesterProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setFirstInstructor(firstProf);
+    } else {
+      // Fallback if no professors are found in the current semester
+      const firstProf = allProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setFirstInstructor(firstProf);
     }
 
     setLoading(false);
@@ -510,7 +506,7 @@ const CardDetails = ({ courseData, semData }) => {
 
                   {/* Stat Cards */}
                   <div className="flex flex-row md:gap-4 gap-2">
-                    <div className="relative flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                    <div className="relative flex flex-col items-stretch w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
 
                       {/* For when there is no GPA data for firstInstructor */}
                       {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
@@ -519,22 +515,36 @@ const CardDetails = ({ courseData, semData }) => {
                         </div>
                       }
 
-
+                      {/* GPA circular stat */}
                       <div className='md:w-1/2 m-auto mt-1'>
-                        <CircularProgressbar
-                          value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
-                          maxValue={4}
-                          text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
-                          styles={buildStyles({
-                            pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                            textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                            trailColor: '#0a0a0a',
-                          })}
-                        />
+                        {firstInstructor && curGPA[firstInstructor] ? (
+                          <CircularProgressbar
+                            value={curGPA[firstInstructor][0]}
+                            maxValue={4}
+                            text={curGPA[firstInstructor][0]}
+                            styles={buildStyles({
+                              pathColor: curGPA[firstInstructor][1],
+                              textColor: curGPA[firstInstructor][1],
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        ) : (
+                          <CircularProgressbar
+                            value={0}
+                            maxValue={4}
+                            text=""
+                            styles={buildStyles({
+                              pathColor: "",
+                              textColor: "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        )}
                       </div>
+
                       <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
                     </div>
-                    <a className="relative flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
+                    <div className="relative flex flex-col items-stretch w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
                       href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`}
                       target="_blank" rel="noopener noreferrer">
 
@@ -546,21 +556,36 @@ const CardDetails = ({ courseData, semData }) => {
                         </div>
                       }
 
+                      {/* RMP circular stat */}
                       <div className='md:w-1/2 m-auto mt-1'>
-                        <CircularProgressbar
-                          value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
-                          maxValue={5}
-                          text={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
-                          styles={buildStyles({
-                            pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                            textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                            trailColor: '#0a0a0a',
-                          })}
-                        />
+                        {firstInstructor && curRMP[firstInstructor] ? (
+                          <CircularProgressbar
+                            value={curRMP[firstInstructor]}
+                            maxValue={5}
+                            text={curRMP[firstInstructor]}
+                            styles={buildStyles({
+                              pathColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              textColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        ) : (
+                          <CircularProgressbar
+                            value={0}
+                            maxValue={5}
+                            text=""
+                            styles={buildStyles({
+                              pathColor: "",
+                              textColor: "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        )}
                       </div>
+
                       <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
                       <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
-                    </a>
+                    </div>
                   </div>
 
 
