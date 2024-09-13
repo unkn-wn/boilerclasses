@@ -27,6 +27,7 @@
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-circular-progressbar": "^2.1.0",
+    "react-collapse": "^5.1.1",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
     "react-select": "^5.8.0",

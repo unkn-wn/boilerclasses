@@ -23,7 +23,8 @@ import { useEffect, useState, useRef } from 'react';
 import Select from 'react-select';
 
 import { Image, Icon, Spinner } from '@chakra-ui/react'
-import { FaHome, FaInfo } from "react-icons/fa";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 import {
   CircularProgressbar, buildStyles
@@ -40,7 +41,6 @@ import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
 import Graph from '@/components/graph';
 import GpaModal from '@/components/gpaModal';
-import InfoModal from '@/components/infoModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
 import Prereqs from '@/components/prereqs';
 import { loadRatingsForProfs } from '@/components/RMP';
@@ -135,22 +135,18 @@ const CardDetails = ({ courseData, semData }) => {
     // set current semester
     setSem(availableSemesters[0]);
 
+    const currentSemesterProfs = course.instructor[availableSemesters[0]];
 
-    // set default first instructor on the multiselect to the first instructor with data
-    let found = false;
-    for (const ins of allProfs) {
-      if (gpa[ins] && gpa[ins][0] !== 0) {
-        refreshGraph({ value: ins, label: ins });
-        setFirstInstructor(ins);
-        found = true;
-        break;
-      }
-    }
-
-    // if no instructor has data, set firstInstructor to first instructor in allProfs
-    if (!found) {
-      refreshGraph({ value: allProfs[0], label: allProfs[0] });
-      setFirstInstructor(allProfs[0]);
+    // Set the first instructor to the first professor in the current semester
+    if (currentSemesterProfs && currentSemesterProfs.length > 0) {
+      const firstProf = currentSemesterProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setFirstInstructor(firstProf);
+    } else {
+      // Fallback if no professors are found in the current semester
+      const firstProf = allProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setFirstInstructor(firstProf);
     }
 
     setLoading(false);
@@ -175,11 +171,6 @@ const CardDetails = ({ courseData, semData }) => {
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
   const [selectableInstructors, setSelectableInstructors] = useState([]);
-
-  const [gpaModal, setGpaModal] = useState(false);
-  const [fullInstructorModal, setFullInstructorModal] = useState(false);
-  const [infoModal, setInfoModal] = useState(false);
-
 
   const instructors = new Set();
   const availableSemesters = [];
@@ -265,6 +256,21 @@ const CardDetails = ({ courseData, semData }) => {
     return gened[0].label;
   }
 
+  // Go back on back button, or go to home if no history
+  const goBack = () => {
+    if (window.history?.length && window.history.length > 1) {
+      router.back();
+      console.log(window.history.state);
+      if (!window.history.state?.as.includes("?q=")) {
+        setTimeout(() => {
+          router.reload();
+        }, 100);
+      }
+    } else {
+      router.replace(window.location.origin || "/");
+    }
+  }
+
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
@@ -339,18 +345,17 @@ const CardDetails = ({ courseData, semData }) => {
         <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
 
       </Head>
-      <GpaModal isOpen={gpaModal} onClose={setGpaModal} course={course} />
-      <FullInstructorModal isOpen={fullInstructorModal} onClose={setFullInstructorModal} course={course} />
-      <InfoModal isOpen={infoModal} onClose={setInfoModal} />
-      <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <div className={`flex flex-col min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
           <div className="flex flex-col w-full md:mr-3 justify-start h-full">
+
             <div className='flex flex-row gap-1'>
-              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'>
-                <Icon as={FaHome} alt="" boxSize={6} />
-              </a>
+              {/* Back button */}
+              <button onClick={() => goBack()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
+                <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
+              </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
             </div>
 
@@ -393,8 +398,6 @@ const CardDetails = ({ courseData, semData }) => {
 
               {/* Instructors Display */}
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
-                <div onClick={() => setFullInstructorModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:scale-105 transition-all cursor-pointer">View All Instructors</div>
-
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
 
@@ -455,103 +458,162 @@ const CardDetails = ({ courseData, semData }) => {
 
 
           {/* Right half of panel */}
-          {defaultGPA.datasets && <div className="flex flex-col w-full">
+          {defaultGPA.datasets && <div className="flex flex-col w-full overflow-clip">
 
-            <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-125 transition-all' onClick={() => setInfoModal(true)}>
+            <Tabs variant='soft-rounded' size='sm' colorScheme='gray'>
+              <TabList overflowY="hidden"
+                sx={{
+                  scrollbarWidth: 'none',
+                  '::-webkit-scrollbar': {
+                    display: 'none',
+                  },
+                }}>
+                <Tab>Overview</Tab>
+                <Tab>GPA by Semester</Tab>
+                <Tab>GPA by Professor</Tab>
+              </TabList>
+
+              <TabPanels>
+                <TabPanel>
+                  <div className='flex flex-row gap-2 md:mb-4 mb-2'>
+                    {/* Info Popup (prob not needed anymore) */}
+                    {/* <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:bg-zinc-900 transition-all' onClick={() => setInfoModal(true)}>
                 <FaInfo size={16} color='white' />
-              </a>
-              {/* Instructor Select */}
-              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
-                <div className="grow">
-                  <Select
-                    isMulti
-                    options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
-                    className="basic-multi-select w-full no-wrap"
-                    classNamePrefix="select"
-                    placeholder="Instructor..."
-                    menuPlacement='bottom'
-                    defaultValue={
-                      [{ value: firstInstructor, label: firstInstructor }]
+              </a> */}
+                    {/* Instructor Select */}
+                    {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
+                      <div className="grow">
+                        <Select
+                          isMulti
+                          options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                          className="basic-multi-select w-full no-wrap"
+                          classNamePrefix="select"
+                          placeholder="Instructor..."
+                          menuPlacement='bottom'
+                          defaultValue={
+                            [{ value: firstInstructor, label: firstInstructor }]
+                          }
+                          styles={instructorStyles}
+                          color="white"
+                          onChange={(value) => {
+                            refreshGraph(value)
+                          }}
+                        />
+                      </div>
                     }
-                    styles={instructorStyles}
-                    color="white"
-                    onChange={(value) => {
-                      refreshGraph(value)
-                    }}
-                  />
-                </div>
-              }
-            </div>
-
-
-            {/* Stat Cards */}
-            <div className="flex flex-row md:gap-4 gap-2">
-              <div className="relative flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all" onClick={() => setGpaModal(true)}>
-
-                {/* For when there is no GPA data for firstInstructor */}
-                {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
-                  <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                    <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
-                    <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> for all data!</p>
                   </div>
-                }
 
 
-                <div className='md:w-1/2 m-auto mt-1'>
-                  <CircularProgressbar
-                    value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
-                    maxValue={4}
-                    text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
-                    styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      trailColor: '#0a0a0a',
-                    })}
-                  />
-                </div>
-                <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
-              </div>
-              <a className="relative flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
-                href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`}
-                target="_blank" rel="noopener noreferrer">
+                  {/* Stat Cards */}
+                  <div className="flex flex-row md:gap-4 gap-2">
+                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
 
-                {/* For when there is no RMP data for firstInstructor */}
-                {firstInstructor && (!curRMP[firstInstructor] || curRMP[firstInstructor] === 0) &&
-                  <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                    <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {firstInstructor}</p>
-                    <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
+                      {/* For when there is no GPA data for firstInstructor */}
+                      {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
+                        <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
+                          <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-xs font-light text-center'>Click on other <span className='text-yellow-500'>tabs</span> for all data!</p>
+                        </div>
+                      }
+
+                      {/* GPA circular stat */}
+                      <div className='md:w-1/2 m-auto mt-1'>
+                        {firstInstructor && curGPA[firstInstructor] ? (
+                          <CircularProgressbar
+                            value={curGPA[firstInstructor][0]}
+                            maxValue={4}
+                            text={curGPA[firstInstructor][0]}
+                            styles={buildStyles({
+                              pathColor: curGPA[firstInstructor][1],
+                              textColor: curGPA[firstInstructor][1],
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        ) : (
+                          <CircularProgressbar
+                            value={0}
+                            maxValue={4}
+                            text=""
+                            styles={buildStyles({
+                              pathColor: "",
+                              textColor: "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        )}
+                      </div>
+
+                      <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
+                    </div>
+                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
+                      href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`}
+                      target="_blank" rel="noopener noreferrer">
+
+                      {/* For when there is no RMP data for firstInstructor */}
+                      {firstInstructor && (!curRMP[firstInstructor] || curRMP[firstInstructor] === 0) &&
+                        <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
+                          <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
+                        </div>
+                      }
+
+                      {/* RMP circular stat */}
+                      <div className='md:w-1/2 m-auto mt-1'>
+                        {firstInstructor && curRMP[firstInstructor] ? (
+                          <CircularProgressbar
+                            value={curRMP[firstInstructor]}
+                            maxValue={5}
+                            text={curRMP[firstInstructor]}
+                            styles={buildStyles({
+                              pathColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              textColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        ) : (
+                          <CircularProgressbar
+                            value={0}
+                            maxValue={5}
+                            text=""
+                            styles={buildStyles({
+                              pathColor: "",
+                              textColor: "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        )}
+                      </div>
+
+                      <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
+                      <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
+                    </div>
                   </div>
-                }
-
-                <div className='md:w-1/2 m-auto mt-1'>
-                  <CircularProgressbar
-                    value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
-                    maxValue={5}
-                    text={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
-                    styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      trailColor: '#0a0a0a',
-                    })}
-                  />
-                </div>
-                <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
-                <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
-              </a>
-            </div>
 
 
-            {/* GPA Graph */}
-            {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-              <Graph data={gpaGraph} />
-            )}
+                  {/* GPA Graph */}
+                  {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+                    <Graph data={gpaGraph} />
+                  )}
 
-            {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
-              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
-                <p className='text-center'>No data!</p>
-              </div>
-            )}
+                  {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
+                    <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
+                      <p className='text-center'>No data!</p>
+                    </div>
+                  )}
+
+                </TabPanel>
+
+                {/* All Instructors Tab */}
+                <TabPanel>
+                  <FullInstructorModal course={course} />
+                </TabPanel>
+
+                {/* GPA by Professor Tab */}
+                <TabPanel>
+                  <GpaModal course={course} />
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </div>}
         </div>
 

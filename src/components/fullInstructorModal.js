@@ -1,31 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-	ModalBody,
-	ModalCloseButton,
-	ChakraProvider,
-	extendTheme,
-} from '@chakra-ui/react';
 
-const theme = extendTheme({
-	components: {
-		Modal: {
-			baseStyle: (props) => ({
-				dialog: {
-					bg: "#18181b"
-				}
-			})
-		}
-	}
-});
-
-
-
-const FullInstructorModal = ({ isOpen, onClose, course }) => {
+const FullInstructorModal = ({ course }) => {
 
 	const [gpa, setGpa] = useState({});
 
@@ -107,46 +82,31 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 
 	return (
-		<ChakraProvider theme={theme}>
-			<Modal isOpen={isOpen} onClose={onClose}>
-				<ModalOverlay
-					backdropFilter='blur(5px)'
-				/>
-				<ModalContent maxW={{ base: "90%", md: "60%", lg: "40%" }} maxH={"80%"}>
-					<ModalHeader />
-					<ModalBody className=' overflow-y-auto'>
-						<div className='flex flex-col'>
-							<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
-							<h3 className='text-white text-sm'>
-								To view all semester GPAs sorted by professor, click on the "Average GPA" circle graph!<br />
-								This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
-								GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
-							</h3>
-							<div className='mt-2'>
-								{Object.keys(gpa).map((semester, index) => (
-									<div key={index} className='flex flex-col mt-5'>
-										<h2 className='text-white font-bold text-xl border-b border-yellow-500'>{semester}</h2>
-										<div className='flex flex-col justify-stretch'>
-											{Object.keys(gpa[semester]).map((instructor, index) => (
-												<div key={index} className='flex flex-row mt-2 items-center justify-between'>
-													<h3 className='text-white font-semibold text-md mr-2'>{instructor}</h3>
-													<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
-													<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
-														<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
-													</div>
-												</div>
-											))}
+			<div className='h-[32rem] overflow-y-auto flex flex-col'>
+				<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
+				<h3 className='text-white text-sm'>
+					This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
+					GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
+				</h3>
+				<div className='mt-2'>
+					{Object.keys(gpa).map((semester, index) => (
+						<div key={index} className='flex flex-col mt-5'>
+							<h2 className='text-white font-bold text-xl border-b border-yellow-500'>{semester}</h2>
+							<div className='flex flex-col justify-stretch'>
+								{Object.keys(gpa[semester]).map((instructor, index) => (
+									<div key={index} className='flex flex-row mt-2 items-center justify-between'>
+										<h3 className='text-white font-semibold text-md mr-2'>{instructor}</h3>
+										<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
+										<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
+											<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
 										</div>
 									</div>
 								))}
 							</div>
 						</div>
-					</ModalBody>
-					<ModalCloseButton color={'white'} />
-					<ModalFooter />
-				</ModalContent>
-			</Modal>
-		</ChakraProvider>
+					))}
+				</div>
+			</div>
 	);
 };
 
