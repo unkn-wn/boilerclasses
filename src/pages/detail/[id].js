@@ -23,7 +23,8 @@ import { useEffect, useState, useRef } from 'react';
 import Select from 'react-select';
 
 import { Image, Icon, Spinner } from '@chakra-ui/react'
-import { FaHome, FaInfo } from "react-icons/fa";
+import { FaInfo } from "react-icons/fa";
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 import {
   CircularProgressbar, buildStyles
@@ -347,10 +348,12 @@ const CardDetails = ({ courseData, semData }) => {
 
           {/* Left half of panel */}
           <div className="flex flex-col w-full md:mr-3 justify-start h-full">
+
             <div className='flex flex-row gap-1'>
-              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'>
-                <Icon as={FaHome} alt="" boxSize={6} />
-              </a>
+              {/* Back button */}
+              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
+                <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
+              </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
             </div>
 
@@ -393,7 +396,7 @@ const CardDetails = ({ courseData, semData }) => {
 
               {/* Instructors Display */}
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
-                <div onClick={() => setFullInstructorModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:scale-105 transition-all cursor-pointer">View All Instructors</div>
+                <div onClick={() => setFullInstructorModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:bg-zinc-800 transition-all cursor-pointer">View All Instructors</div>
 
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
@@ -458,7 +461,7 @@ const CardDetails = ({ courseData, semData }) => {
           {defaultGPA.datasets && <div className="flex flex-col w-full">
 
             <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-125 transition-all' onClick={() => setInfoModal(true)}>
+              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:bg-zinc-900 transition-all' onClick={() => setInfoModal(true)}>
                 <FaInfo size={16} color='white' />
               </a>
               {/* Instructor Select */}

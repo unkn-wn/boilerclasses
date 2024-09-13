@@ -1,5 +1,6 @@
 // CourseCatalog.js
 
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
@@ -29,6 +30,9 @@ import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOption
 
 const CourseCatalog = () => {
 
+  const router = useRouter();
+  const { query } = router;
+
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedSemesters, setSelectedSemesters] = useState([{ label: "Fall 2024", value: "Fall 2024" }]);
   const [selectedGenEds, setSelectedGenEds] = useState([]);
@@ -50,13 +54,13 @@ const CourseCatalog = () => {
     "Research",
     "Studio"]);
   const [courses, setCourses] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(query.q || '');
   const [displayLanding, setDisplayLanding] = useState(true);
 
   // Function to change from initial page to search result page
   function changeLanding(event) {
     if (event.length >= 2) {
-      setDisplayLanding(!displayLanding);
+      setDisplayLanding(false);
       setSearchTerm(event);
     }
   }
@@ -114,6 +118,17 @@ const CourseCatalog = () => {
         })
     }
   };
+
+  useEffect(() => {
+    // Update the URL with the search query when it changes
+    router.push({
+      pathname: '/',
+      query: { q: searchTerm },     // Include the search query
+    }, undefined, { shallow: true });
+
+    // Set searchbar to searchTerm, and change landing
+    changeLanding(searchTerm);
+  }, [searchTerm]);
 
 
   // scroll to top listener
@@ -184,7 +199,7 @@ const CourseCatalog = () => {
 
       </Head>
       <div id="scrollToTopBtn" className='hidden'>
-        <button className='fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:-translate-y-0.5 transition' onClick={() => window.scrollTo({ top: "0px", behavior: "smooth" })}>
+        <button className='fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:bg-zinc-700 transition' onClick={() => window.scrollTo({ top: "0px", behavior: "smooth" })}>
           <ArrowUpIcon fontSize={[18, 24]} color={'white'} />
         </button>
       </div>
@@ -336,7 +351,7 @@ const CourseCatalog = () => {
           {courses.length > 0 || searchTerm.length < 2 ?
             <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
               {courses.length > 0 && courses.map(course => (
-                <Card key={course.id} course={course.value} />
+                <Card key={course.id} course={course.value} searchTerm={searchTerm} />
                 // <div key={course.id}
                 //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
                 //   >
