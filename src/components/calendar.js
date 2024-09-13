@@ -199,12 +199,31 @@ const Calendar = (props) => {
 const LectureTimeDisplay = (props) => {
     const { lecture } = props;
 
+    const translateType = (type) => {
+        switch (type) {
+            case "Practice Study Observation":
+                return "PSO";
+            case "Laboratory":
+                return "Lab";
+            default:
+                return type;
+        }
+    }
+
     return (
         <Popover placement="auto" trigger="hover">
             <PopoverTrigger>
-                <span className="w-full bg-zinc-700 py-1 px-2 rounded-md hover:bg-zinc-600 transition-all">{lecture.type + " - " + lecture.startTime}</span>
+                {/* If lecture, color background lighter */}
+                <span className={`w-full py-1 px-2 rounded-md hover:bg-zinc-600 transition-all ${lecture.type === 'Lecture' ? 'bg-zinc-700' : 'bg-zinc-800'}`}>
+                    <p className="text-white">
+                        {translateType(lecture.type) + " - " + lecture.startTime}
+                    </p>
+                    <p className="text-zinc-400 text-sm">
+                        {lecture.instructors[0]}
+                    </p>
+                </span>
             </PopoverTrigger>
-            <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" width='fit-content'>
+            <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" minW={{ base: "90%", lg: "max-content" }}>
                 <PopoverArrow />
                 <PopoverHeader fontWeight='semibold'>{lecture.type}</PopoverHeader>
                 <PopoverBody>

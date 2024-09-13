@@ -345,7 +345,7 @@ const CardDetails = ({ courseData, semData }) => {
         <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
 
       </Head>
-      <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <div className={`flex flex-col min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
@@ -506,12 +506,13 @@ const CardDetails = ({ courseData, semData }) => {
 
                   {/* Stat Cards */}
                   <div className="flex flex-row md:gap-4 gap-2">
-                    <div className="relative flex flex-col items-stretch w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
 
                       {/* For when there is no GPA data for firstInstructor */}
                       {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
                           <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-xs font-light text-center'>Click on other <span className='text-yellow-500'>tabs</span> for all data!</p>
                         </div>
                       }
 
@@ -544,7 +545,7 @@ const CardDetails = ({ courseData, semData }) => {
 
                       <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
                     </div>
-                    <div className="relative flex flex-col items-stretch w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
+                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
                       href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`}
                       target="_blank" rel="noopener noreferrer">
 
