@@ -1,8 +1,8 @@
 # [BoilerClasses](https://www.boilerclasses.com/)
 
 
+https://github.com/user-attachments/assets/93ca6f9a-a7f5-4c86-98c6-c543df0ede77
 
-https://github.com/unkn-wn/boilerclasses/assets/43097991/6c5121e0-797f-48ab-ace8-6ce5a05859e2
 
 
 
@@ -57,6 +57,7 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    PS: if you look at the Dockerfile, you can see that these exact commands are run!
 
 # Data Collection
+
 There are four scripts in the `server` directory that aid with data collection:
 1. `scrape.py` scrapes a particular semester's data from Purdue's catalog. Generates a singular JSON file for a semester.
 3. `download.py` either downloads the data from our [S3 bucket](https://s3.amazonaws.com/boilerclasses), or runs `scrape.py` for every semester. The default is downloading because it's faster.
