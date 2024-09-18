@@ -256,14 +256,11 @@ const CardDetails = ({ courseData, semData }) => {
     return gened[0].label;
   }
 
-  // Go back on back button, or go to home if no history or not from boilerclasses
+  // Go back on back button, or go to home if no history
   const goBack = () => {
-    const referrer = document.referrer;
-    const isFromBoilerClasses = referrer.includes(window.location.origin);
-
-    if (isFromBoilerClasses && window.history?.length && window.history.length > 1) {
+    if (window.history?.length && window.history.length > 1) {
       router.back();
-      // console.log(window.history.state);
+      console.log(window.history.state);
       if (!window.history.state?.as.includes("?q=")) {
         setTimeout(() => {
           router.reload();
@@ -272,7 +269,7 @@ const CardDetails = ({ courseData, semData }) => {
     } else {
       router.replace(window.location.origin || "/");
     }
-  };
+  }
 
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
