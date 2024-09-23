@@ -122,12 +122,6 @@ const CourseCatalog = () => {
   };
 
   useEffect(() => {
-    // Update the URL with the search query when it changes
-    router.push({
-      pathname: '/',
-      query: { q: searchTerm },     // Include the search query
-    }, undefined, { shallow: true });
-
     // Set searchbar to searchTerm, and change landing
     changeLanding(searchTerm);
   }, [searchTerm]);
