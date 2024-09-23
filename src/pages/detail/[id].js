@@ -256,24 +256,36 @@ const CardDetails = ({ courseData, semData }) => {
     return gened[0].label;
   }
 
-  // Go back on back button, or go to home if no history or not from boilerclasses
+  // Go back on back button
   const goBack = () => {
-    const referrer = document.referrer;
-    const isFromBoilerClasses = referrer.includes(window.location.origin);
 
-    if (isFromBoilerClasses && window.history?.length && window.history.length > 1) {
-      router.back();
-      // console.log(window.history.state);
-      if (!window.history.state?.as.includes("?q=")) {
-        setTimeout(() => {
-          router.reload();
-        }, 100);
-      }
-    } else {
-      router.replace(window.location.origin || "/");
+    // if referrer isn't from boilerclasses, go to home
+    // const referrer = document.referrer;
+    // const isFromBoilerClasses = referrer.includes(window.location.origin);
+    // console.log(referrer, isFromBoilerClasses);
+
+    // if (!isFromBoilerClasses) {
+    //   router.replace(window.location.origin || "/");
+    //   return;
+    // }
+
+    // if current url contqains ?q=, then go back with query
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    if (currentURL.includes("?q=")) {
+      router.push({ pathname: window.location.origin, query: { q: currentURL.split("?q=")[1] } });
+      return;
     }
-  };
 
+    // if history exists, go back, and reload if going back from prereqs
+    router.back();
+    if (!window.history.state?.as.includes("?q=")) {
+      setTimeout(() => {
+        router.reload();
+      }, 100);
+    }
+
+  };
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
