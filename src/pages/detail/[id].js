@@ -278,11 +278,16 @@ const CardDetails = ({ courseData, semData }) => {
     }
 
     // if history exists, go back, and reload if going back from prereqs
-    router.back();
-    if (!window.history.state?.as.includes("?q=")) {
-      setTimeout(() => {
-        router.reload();
-      }, 100);
+    if (window.history.length > 1) {
+      router.back();
+      if (!window.history.state?.as.includes("?q=")) {
+        setTimeout(() => {
+          router.reload();
+        }, 100);
+      }
+    } else {
+      // if no history, go to home
+      router.push("/");
     }
 
   };
