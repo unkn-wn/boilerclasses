@@ -28,6 +28,7 @@ import {
 
 import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions, instructorStyles } from '@/lib/utils';
 
+const currentSemester = "Fall 2024";
 
 const CourseCatalog = () => {
 
@@ -35,7 +36,7 @@ const CourseCatalog = () => {
   const { query } = router;
 
   const [selectedSubjects, setSelectedSubjects] = useState([]);
-  const [selectedSemesters, setSelectedSemesters] = useState([{ label: "Fall 2024", value: "Fall 2024" }]);
+  const [selectedSemesters, setSelectedSemesters] = useState([{ label: currentSemester, value: currentSemester }]);
   const [selectedGenEds, setSelectedGenEds] = useState([]);
   const [creditsMin, setCreditsMin] = useState(0);
   const [creditsMax, setCreditsMax] = useState(18);
@@ -58,6 +59,24 @@ const CourseCatalog = () => {
   const [searchTerm, setSearchTerm] = useState(query.q || '');
   const [displayLanding, setDisplayLanding] = useState(true);
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
+
+
+  // Gets all the filters as a string for displaying to users
+  const getAllFiltersString = () => {
+    const selectedSubjectsString = selectedSubjects.length != 0 ? (selectedSubjects.length == 1 ? selectedSubjects[0].value : "subjects") : "";
+    // if single semester selected, show that semester
+    const selectedSemestersString = selectedSemesters.length > 0 ? (selectedSemesters.length == 1 ? selectedSemesters[0].label : "semesters") : "";
+    const selectedGenEdsString = selectedGenEds.length != 0 ? (selectedGenEds.length == 1 ? selectedGenEds[0].label : "gen eds") : "";
+    const creditsString = creditsMin != 0 || creditsMax != 18 ? "credits" : "";
+    // levelsString checking if length is 9 for 100-900
+    const levelsString = levels.length != 9 ? "levels" : "";
+    // checkinf if length is 12 for all 12 types
+    const schedsString = scheds.length != 12 ? "type of course" : "";
+
+    return [selectedSubjectsString, selectedSemestersString, selectedGenEdsString, creditsString, levelsString, schedsString].filter(x => x != "").join(", ");
+  }
+
+  const allFiltersString = getAllFiltersString();
 
   // Function to change from initial page to search result page
   function changeLanding(event) {
@@ -223,9 +242,13 @@ const CourseCatalog = () => {
           <div className="flex flex-col mb-4 gap-2">
             <Collapse isOpened={filtersCollapsed}>
               <div className='w-full flex place-content-end'>
-                <div onClick={() => setFiltersCollapsed(false)} className='w-36 flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-zinc-800 text-white border border-zinc-800 hover:border-zinc-700 transition-all'>
+                <div onClick={() => setFiltersCollapsed(false)} className='flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-zinc-800 text-white border border-zinc-800 hover:border-zinc-700 transition-all'>
                   <HamburgerIcon />
-                  Show filters
+                    {allFiltersString != "" ?
+                      <p className="line-clamp-2 md:line-clamp-1 max-w-md">Filtering by {allFiltersString}</p>
+                      :
+                      <p>Show filters</p>
+                    }
                 </div>
               </div>
             </Collapse>
