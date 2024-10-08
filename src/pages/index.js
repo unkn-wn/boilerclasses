@@ -28,7 +28,7 @@ import {
 
 import { subjectStyles, semesterStyles, subjects, semesterOptions, subjectOptions, genedsOptions, instructorStyles } from '@/lib/utils';
 
-const currentSemester = "Fall 2024";
+const currentSemester = "Spring 2025";
 
 const CourseCatalog = () => {
 

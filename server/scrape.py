@@ -28,7 +28,7 @@ def format_instructors(by_sched):
   return by_sched
 
 parser = argparse.ArgumentParser(description='which semester')
-parser.add_argument("-sem", default="Fall 2024", dest="sem", help="which semester (default: Fall 2024)")
+parser.add_argument("-sem", default="Spring 2025", dest="sem", help="which semester (default: Spring 2025)")
 
 args = parser.parse_args()
 
