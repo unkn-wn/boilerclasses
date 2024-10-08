@@ -56,7 +56,7 @@ const CourseCatalog = () => {
     "Research",
     "Studio"]);
   const [courses, setCourses] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(query.q || '');
+  const [searchTerm, setSearchTerm] = useState(transform(query.q) || '');
   const [displayLanding, setDisplayLanding] = useState(true);
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
 
@@ -87,6 +87,9 @@ const CourseCatalog = () => {
   }
 
   function transform(query) {
+    if (!query) {
+      return "";
+    }
     query = query.trim()
     query = query.replaceAll(/[-;+]/g, " ");
     query = query.replaceAll(/[~!#%$^&*()\[\]\{\}:'<>,@=|?.`"“”]/g, "");
