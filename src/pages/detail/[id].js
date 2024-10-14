@@ -480,7 +480,7 @@ const CardDetails = ({ courseData, semData }) => {
           {/* Right half of panel */}
           {defaultGPA.datasets && <div className="flex flex-col w-full overflow-clip">
 
-            <Tabs variant='soft-rounded' size='sm' colorScheme='gray'>
+            <Tabs variant='soft-rounded' size='sm' colorScheme='gray' defaultIndex={ firstInstructor == "TBA" ? 1 : 0}>
               <TabList overflowY="hidden"
                 sx={{
                   scrollbarWidth: 'none',
