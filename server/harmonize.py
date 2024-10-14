@@ -119,10 +119,12 @@ for class_id in tqdm(all_classes):
                 instrs = []
                 for instr in class_sem["instructor"]:
                     instrs.append(instr.split(" ")[0] + " " + instr.split(" ")[-1])
+                instrs = [x.replace("TBA TBA", "TBA") for x in instrs]
                 class_data["instructor"][class_sem["term"]] = instrs
 
                 if "<a href=" not in class_sem["description"]:
                     class_data["description"] = class_sem["description"]
+    
     class_data["title"] = instances[0]["title"]
     class_data["subjectCode"] = s
     class_data["courseCode"] = c
