@@ -532,7 +532,7 @@ const CardDetails = ({ courseData, semData }) => {
                       {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
                           <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
-                          <p className='text-zinc-500 text-xs font-light text-center'>Click on other <span className='text-yellow-500'>tabs</span> for all data!</p>
+                          <p className='text-zinc-500 text-xs font-light text-center'>Click on other tabs for more data!</p>
                         </div>
                       }
 
