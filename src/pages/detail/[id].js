@@ -566,8 +566,7 @@ const CardDetails = ({ courseData, semData }) => {
                       <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
                     </div>
                     <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
-                      href={`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`}
-                      target="_blank" rel="noopener noreferrer">
+                      onClick={() => window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`, '_blank')}>
 
                       {/* For when there is no RMP data for firstInstructor */}
                       {firstInstructor && (!curRMP[firstInstructor] || curRMP[firstInstructor] === 0) &&
