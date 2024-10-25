@@ -1,8 +1,8 @@
 # [BoilerClasses](https://www.boilerclasses.com/)
 
 
+https://github.com/user-attachments/assets/93ca6f9a-a7f5-4c86-98c6-c543df0ede77
 
-https://github.com/unkn-wn/boilerclasses/assets/43097991/6c5121e0-797f-48ab-ace8-6ce5a05859e2
 
 
 
@@ -57,15 +57,17 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    PS: if you look at the Dockerfile, you can see that these exact commands are run!
 
 # Data Collection
+
 There are four scripts in the `server` directory that aid with data collection:
 1. `scrape.py` scrapes a particular semester's data from Purdue's catalog. Generates a singular JSON file for a semester.
 3. `download.py` either downloads the data from our [S3 bucket](https://s3.amazonaws.com/boilerclasses), or runs `scrape.py` for every semester. The default is downloading because it's faster.
 4. `harmonize.py` combines all the JSON files downloaded and makes one JSON containing all the data required.
 5. `push.py` pushes the data from the resultant JSON from `harmonize.py` to the Redis instance.
 
+Running the `scrape.py` script might give you issues, but feel free to tweak line ~42 where the driver is initialized. It is somewhat system-dependent -- that configuration should work on MacOS with a Google Chrome driver and `selenium v4.x`. If you want more clarification/help, open up an [issue](https://github.com/unkn-wn/boilerclasses/issues)!
 
 # Future Improvements
-We're trying to integrate as many features as possible, and we'll have open issues for the same. If you find a bug or have any feedback, let us through a [PR](https://github.com/unkn-wn/boilerclasses/pulls) or our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLScoE5E-G7dbr7-v9dY5S7UeIoojjMTjP_XstLz38GBpib5MPA/viewform). All contributions are very, very welcome!
+We're trying to integrate as many features as possible, and we'll have open issues for the same. If you find a *bug* or have any *feedback*, let us through a [PR](https://github.com/unkn-wn/boilerclasses/pulls) or our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLScoE5E-G7dbr7-v9dY5S7UeIoojjMTjP_XstLz38GBpib5MPA/viewform). All contributions are very, very welcome!
 
 # Acknowledgements
 Inspired by [classes.wtf](https://classes.wtf) and Purdue's slow course catalogs. We'd like to also thank our friends over at [Boilerexams](https://boilerexams.com) and [BoilerGrades](https://boilergrades.com/).

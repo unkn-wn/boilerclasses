@@ -67,7 +67,7 @@ out = {}
 semesters = []
 all_classes = []
 # TODO: change for semester
-latest_sem = "Fall 2024"
+latest_sem = "Spring 2025"
 
 for file_name in os.listdir(args.folder):
     path = args.folder + file_name
@@ -114,9 +114,17 @@ for class_id in tqdm(all_classes):
                 else:
                     class_data["sched"].extend(class_sem["sched"])
                 class_data["terms"].append(class_sem["term"])
-                class_data["instructor"][class_sem["term"]] = class_sem["instructor"]
+
+                # formatting instructor names to only First Last
+                instrs = []
+                for instr in class_sem["instructor"]:
+                    instrs.append(instr.split(" ")[0] + " " + instr.split(" ")[-1])
+                instrs = [x.replace("TBA TBA", "TBA") for x in instrs]
+                class_data["instructor"][class_sem["term"]] = instrs
+
                 if "<a href=" not in class_sem["description"]:
                     class_data["description"] = class_sem["description"]
+    
     class_data["title"] = instances[0]["title"]
     class_data["subjectCode"] = s
     class_data["courseCode"] = c
@@ -232,23 +240,30 @@ for i in range(len(course_data)):
     for semester, data in course_data[i]["gpa"].items():
         for entry in data:
             instructor = entry[0]
-            if instructor in gpa_data:
-                if semester in gpa_data[instructor]:
-                    for k in range(len(gpa_data[instructor][semester])):
-                        gpa_data[instructor][semester][k] = round(
+            if instructor.find(",") == -1:
+                formattedInstructor = instructor
+            else:
+                formattedInstructor = (instructor.split(", ")[1] + " " + instructor.split(", ")[0]).strip()
+
+            formattedInstructor = formattedInstructor.split(" ")[0] + " " + formattedInstructor.split(" ")[-1]
+
+            if formattedInstructor in gpa_data:
+                if semester in gpa_data[formattedInstructor]:
+                    for k in range(len(gpa_data[formattedInstructor][semester])):
+                        gpa_data[formattedInstructor][semester][k] = round(
                             (
-                                gpa_data[instructor][semester][k] * gpa_data_count[instructor][semester]
+                                gpa_data[formattedInstructor][semester][k] * gpa_data_count[formattedInstructor][semester]
                                 + entry[1][k]
                             )
-                            / (gpa_data_count[instructor][semester] + 1),
+                            / (gpa_data_count[formattedInstructor][semester] + 1),
                             2,
                         )
                 else:
-                    gpa_data[instructor][semester] = entry[1]
-                    gpa_data_count[instructor][semester] = 1
+                    gpa_data[formattedInstructor][semester] = entry[1]
+                    gpa_data_count[formattedInstructor][semester] = 1
             else:
-                gpa_data[instructor] = {semester: entry[1]}
-                gpa_data_count[instructor] = {semester: 1}
+                gpa_data[formattedInstructor] = {semester: entry[1]}
+                gpa_data_count[formattedInstructor] = {semester: 1}
 
     course_data[i]["gpa"] = gpa_data
 

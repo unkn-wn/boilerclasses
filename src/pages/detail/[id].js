@@ -1,30 +1,50 @@
-import { Inter } from 'next/font/google'
-import { semesters, subjects } from "../../lib/utils"
-const inter = Inter({ subsets: ['latin'] })
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import ErrorPage from 'next/error'
+/*
+ * Details page for a specific course - includes course description, instructors, GPA, RMP ratings,
+ * prerequisites, and a calendar view of lecture times.
+ */
 
+
+// ----- Next.js imports -----
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
+
+import Head from 'next/head';
+import Script from 'next/script';
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error'
+// ---------------------
+
+
+// ----- React imports -----
+import { useEffect, useState, useRef } from 'react';
+
+
+// ----- Misc imports -----
 import Select from 'react-select';
 
-import { Image, cookieStorageManager, Icon } from '@chakra-ui/react'
-import { FaHome, FaInfo } from "react-icons/fa";
+import { Image, Icon, Spinner } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 import {
   CircularProgressbar, buildStyles
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+// ------------------
 
 
-
+// ----- Component imports -----
 import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
+import { semesters, subjects } from "@/lib/utils"
+
 import Footer from '@/components/footer';
-import Head from 'next/head';
-import Calendar from '../../components/calendar';
-import Graph from '../../components/graph';
+import Calendar from '@/components/calendar';
+import Graph from '@/components/graph';
 import GpaModal from '@/components/gpaModal';
-import InfoModal from '@/components/infoModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
+import Prereqs from '@/components/prereqs';
+import { loadRatingsForProfs } from '@/components/RMP';
+// ------------------------
 
 
 const CardDetails = ({ courseData, semData }) => {
@@ -32,80 +52,49 @@ const CardDetails = ({ courseData, semData }) => {
   const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
 
-  const parsePrereqs = (prereq, i) => {
-
-    if (prereq.split(' ').length == 2) {
-      const detailId = prereq.split(' ')[0]
-      const concurrent = prereq.split(' ')[1]
-      const subjectCodeMatch = detailId.match(/[A-Z]+/);
-      if (!subjectCodeMatch) {
-        return null;
-      }
-      const subjectCode = subjectCodeMatch[0];
-
-      const subject = subjects.find((s) => s == subjectCode);
-      const courseNumberMatch = detailId.match(/\d+/);
-      if (!courseNumberMatch) {
-        return null;
-      }
-      const courseNumber = courseNumberMatch[0];
-      return (
-        <span className='' key={i}>
-          <a href={`/detail/${detailId}`}
-            target="_blank" rel="noopener noreferrer"
-            className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
-            {subjectCode}  {courseNumber}
-          </a>
-          {concurrent == "True" ? " [may be taken concurrently]" : ""}
-        </span>
-      )
-    } else if (prereq.split(' ').length == 3) {
-      const concurrent = prereq.split(' ')[1]
-      return `${prereq.split(' ')[0]} ${prereq.split(' ')[1]}${concurrent == "True" ? " [may be taken concurrently]" : ""}`
-    } else {
-      return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
-    }
-
-  }
-
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-
-  //   const params = new URLSearchParams({ detailId: router.query.id });
-  //   fetch('/api/get?' + params)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data["course"]["documents"].length > 0) {
-  //         setCourse(data["course"]["documents"][0].value);
-  //         setSem(data["course"]["documents"][0].value.terms[0]);
-  //         setLoading(false);
-  //       } else {
-  //         setLoading(false);
-  //       }
-  //     })
-  // }, [router.isReady])
-
-
+  // UseEffect that loads on first render
   useEffect(() => {
     if (!course) return;
-    // set descriptions to none if it's html
+    // console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
 
+    // set descriptions to none if it's html
     if (course.description && course.description.startsWith("<a href=")) {
       setCourse({ ...course, description: "No Description Available" });
     }
 
-    // set graph
+    // Set allProfs variable with all course instructors
+    const allProfs = [];
+    for (const semester in course.instructor) {
+      for (const instructor of course.instructor[semester]) {
+        if (!allProfs.includes(instructor)) {
+          allProfs.push(instructor);
+        }
+      }
+    }
+
     const grades = [];
     const gpa = {};
     let curr = 0;
-    for (const instructor in course.gpa) {
 
-      const color = graphColors[(curr++) % graphColors.length];
+    // for each instructor, calculate avg gpa and grade distribution
+    for (const instructor of allProfs) {
 
       let avg_gpa = 0;
       let avg_grade_dist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+      if (!course.gpa[instructor]) { // if no data for instructor, set to 0
+        gpa[instructor] = [0, "#ffffff"];
+        grades.push({
+          label: instructor,
+          data: avg_grade_dist,
+          backgroundColor: "#ffffff"
+        });
+        continue;
+      }
+
+      const color = graphColors[(curr++) % graphColors.length];
       let count = 0;
-      for (const sem in course.gpa[instructor]) {
+      for (const sem in course.gpa[instructor]) { // for each semester, calculate avg gpa and grade distribution
         avg_gpa += course.gpa[instructor][sem][13];
         for (let i = 0; i < 13; i++) {
           avg_grade_dist[i] += course.gpa[instructor][sem][i];
@@ -126,10 +115,13 @@ const CardDetails = ({ courseData, semData }) => {
 
     }
 
+    // Sets the gpaGraph state for the graph component
     setGpaGraph({
       labels,
-      datasets: grades
+      //datasets: grades
+      datasets: []
     });
+
     setDefaultGPA({
       labels,
       datasets: grades
@@ -138,48 +130,47 @@ const CardDetails = ({ courseData, semData }) => {
 
 
     // Set selectable instructors
+    setSelectableInstructors(allProfs);
 
-    const instrs = [];
-    for (const instructor in course.gpa) {
-      if (!instrs.includes(instructor)) {
-        instrs.push(instructor);
-      }
+    // set current semester
+    setSem(availableSemesters[0]);
+
+    const currentSemesterProfs = course.instructor[availableSemesters[0]];
+
+    // Set the first instructor to the first professor in the current semester
+    if (currentSemesterProfs && currentSemesterProfs.length > 0) {
+      const firstProf = currentSemesterProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setFirstInstructor(firstProf);
+    } else {
+      // Fallback if no professors are found in the current semester
+      const firstProf = allProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setFirstInstructor(firstProf);
     }
-    setSelectableInstructors(instrs);
-
-    // set instructors
-    changeInstructors(availableSemesters[0]);
-
 
     setLoading(false);
 
   }, [router.isReady])
 
+
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
-    if (!course) return;
-    for (const instructor in course.gpa) {
-      getRMPRating(instructor).then((rating) => {
-        setCurRMP((prevRMP) => {
-          return { ...prevRMP, [instructor]: rating };
-        });
-      });
+    loadRatingsForProfs(course).then((ratings) => {
+      setCurRMP(ratings);
+    });
+  }, [course]);
 
-    }
-  }, [router.isReady]);
 
+  // ------------------ STATES ------------------ //
   const [firstInstructor, setFirstInstructor] = useState("");
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
+
   const [sem, setSem] = useState(semData);
   const [gpaGraph, setGpaGraph] = useState({});
   const [defaultGPA, setDefaultGPA] = useState({});
   const [selectableInstructors, setSelectableInstructors] = useState([]);
-
-  const [gpaModal, setGpaModal] = useState(false);
-  const [fullInstructorModal, setFullInstructorModal] = useState(false);
-  const [infoModal, setInfoModal] = useState(false);
-
 
   const instructors = new Set();
   const availableSemesters = [];
@@ -194,30 +185,8 @@ const CardDetails = ({ courseData, semData }) => {
     } catch { }
   });
 
-  const changeInstructors = (sem) => {
 
-    setSem(sem);
-    availableSemesters.forEach((otherSem) => {
-      if (otherSem !== sem) {
-        try {
-          document.getElementById(otherSem).classList.remove("bg-sky-600");
-        } catch { }
-      }
-    });
-
-    try {
-      document.getElementById(sem).classList.add("bg-sky-600");
-    } catch { }
-  }
-
-
-  // This is used to set default instructor on the multiselect
-  useEffect(() => {
-    refreshGraph([selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor })));
-    setFirstInstructor(selectableInstructors[0]);
-  }, [selectableInstructors]);
-
-
+  // Function to get searchable prof string for Reddit search
   const getSearchableProfString = () => {
     //create ret string = ""
     //for each prof in curInstructors, add to ret string with " OR "
@@ -234,30 +203,38 @@ const CardDetails = ({ courseData, semData }) => {
 
   }
 
-
   // Refresh graph when instructors change
   const refreshGraph = (instructors) => {
     const gpa = defaultGPA.datasets;
-    if (!gpa || gpa.length === 0) return;
+    if (!gpa || gpa.length === 0 || !instructors) return;
 
     setFirstInstructor(" ");
     try {
-      setFirstInstructor(instructors[0].label);
+      setFirstInstructor(instructors[instructors.length - 1].label);
     } catch {
       setFirstInstructor("");
     }
 
+    try {
+      const newgpa = gpa.filter(inst => {
+        const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
+        return isIncluded;
+      });
 
-    const newgpa = gpa.filter(inst => {
-      const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
-      return isIncluded;
-    });
-
-    setGpaGraph({
-      labels,
-      datasets: newgpa,
-    });
+      setGpaGraph({
+        labels,
+        datasets: newgpa,
+      });
+    } catch {
+      console.error("Error filtering instructors");
+    }
   };
+
+  // To refresh graph when everythings loaded
+  useEffect(() => {
+    if (!course) return;
+    refreshGraph([{ value: firstInstructor, label: firstInstructor }]);
+  }, [defaultGPA.datasets]);
 
 
   // Function to replace gened codes with actual names
@@ -279,103 +256,78 @@ const CardDetails = ({ courseData, semData }) => {
     return gened[0].label;
   }
 
+  // Go back on back button
+  const goBack = () => {
 
-  // Function to get link for RMP on the dial graph
-  function getFormattedName(instructor) {
-    if (!instructor) return ''; // Check if instructor is provided
-    const nameParts = instructor.split(", ");
-    if (nameParts.length < 2) return ''; // Check if split operation succeeded
-    const firstName = nameParts[1].split(" ")[0];
-    const lastName = nameParts[0];
-    return `${firstName} ${lastName}`;
-  }
+    // if referrer isn't from boilerclasses, go to home
+    // const referrer = document.referrer;
+    // const isFromBoilerClasses = referrer.includes(window.location.origin);
+    // console.log(referrer, isFromBoilerClasses);
 
+    // if (!isFromBoilerClasses) {
+    //   router.replace(window.location.origin || "/");
+    //   return;
+    // }
 
-  // Get RateMyProfessor ratings for instructor
-  async function getRMPRating(instructor) {
-    if (!instructor) return;
-
-    // Instructor in format "Last, First Middle", convert to "First Last"
-    let instructorSplit = [];
-    try {
-      instructorSplit = instructor.split(", ");
-      instructorSplit.push(instructorSplit[1].split(" ")[0]);
-    } catch {
+    // if current url contqains ?q=, then go back with query
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    if (currentURL.includes("?q=")) {
+      router.push({ pathname: window.location.origin, query: { q: currentURL.split("?q=")[1] } });
       return;
     }
 
-    const name = instructorSplit[2] + " " + instructorSplit[0];
-
-    try {
-      const params = new URLSearchParams({ q: "Purdue University" });
-      const responseSchools = await fetch("/api/ratings/searchSchool?" + params);
-      const schools = await responseSchools.json();
-
-      const profs = [];
-
-      for (const school of schools["schools"]) {
-        if (school.city === "West Lafayette") {
-          const paramsTeacher = new URLSearchParams({ name: name, id: school.id });
-          const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
-          const prof = await responseProf.json()
-          if (!(prof["prof"] === undefined || prof["prof"].length == 0)) {
-            profs.push(...prof["prof"]);
-          }
-        }
+    // if history exists, go back, and reload if going back from prereqs
+    if (window.history.length > 1) {
+      router.back();
+      if (!window.history.state?.as.includes("?q=")) {
+        setTimeout(() => {
+          router.reload();
+        }, 100);
       }
-
-      if (profs.length === 0) return 0;
-      const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
-      const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
-      const RMPrating = await responseRMP.json();
-      return RMPrating["RMPrating"].avgRating;
-    } catch {
-      return;
+    } else {
+      // if no history, go to home
+      router.push("/");
     }
 
+  };
 
-  }
+  ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
   if (JSON.stringify(course) == '{}') {
     return <ErrorPage statusCode={404} />
   }
 
-  const renderPrereqs = () => {
-    try {
-      return (
-        (course.prereqs && course.prereqs[0].split(' ')[0] != router.query.id) && <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
-          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
-          {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
-        </p>
-      );
-    } catch (error) {
-      console.log(course.prereqs);
-      return <></>;
-    }
+  if (loading) {
+    return (
+      <div className='h-screen w-screen flex items-center justify-center'>
+        <Spinner size="lg" color="white" />
+      </div>
+    )
   }
 
   return (
     <>
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-48L6TGYD2L', {
+            page_path: window.location.pathname,
+          });`
+        }}
+      />
       <Head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-48L6TGYD2L', {
-              page_path: window.location.pathname,
-            });`
-          }}
-        />
         <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-        <meta name="description" content={`${courseData.description}`} />
-        <meta name="keywords" content={`${courseData.subjectCode}, ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
+        <meta name="description" content={`Course ${courseData.subjectCode} ${courseData.courseCode} Purdue: ${courseData.description}`} />
+        <meta name="keywords" content={`Purdue, Course, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
@@ -410,19 +362,20 @@ const CardDetails = ({ courseData, semData }) => {
           '&sem=' + encodeURIComponent(semData)
         } />
 
+        <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
+
       </Head>
-      <GpaModal isOpen={gpaModal} onClose={setGpaModal} course={course} />
-      <FullInstructorModal isOpen={fullInstructorModal} onClose={setFullInstructorModal} course={course} />
-      <InfoModal isOpen={infoModal} onClose={setInfoModal} />
-      <div className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <div className={`flex flex-col min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
           <div className="flex flex-col w-full md:mr-3 justify-start h-full">
+
             <div className='flex flex-row gap-1'>
-              <a href="https://boilerclasses.com" className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 transition'>
-                <Icon as={FaHome} alt="" boxSize={6} />
-              </a>
+              {/* Back button */}
+              <button onClick={() => goBack()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
+                <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
+              </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
             </div>
 
@@ -465,13 +418,11 @@ const CardDetails = ({ courseData, semData }) => {
 
               {/* Instructors Display */}
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
-                <div onClick={() => setFullInstructorModal(true)} className="text-gray-300 bg-zinc-700 py-1 px-2 font-bold text-sm text-center mr-3 rounded-md hover:scale-105 transition-all cursor-pointer">View All Instructors</div>
-
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
 
                   {course.instructor[sem].map((prof, i) => (
-                    <>
+                    <span key={i}>
                       <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                         target="_blank" rel="noopener noreferrer"
                         className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
@@ -479,38 +430,26 @@ const CardDetails = ({ courseData, semData }) => {
                         {prof}
                       </a>
                       {i < course.instructor[sem].length - 1 && ", "}
-                    </>
+                    </span>
                   ))}
                 </div>
               </div>
             </div>
 
 
-            {/* Semester Tags */}
-            {/* <div className="flex flex-row flex-wrap gap-1 mb-1">
-              {availableSemesters.map((sem, i) => (
-                <button className={`text-xs px-2 py-1 rounded-full border-solid border
-                                          ${i === 0 ? "bg-sky-600" : ""} border-sky-800 whitespace-nowrap transition-all`}
-                  key={i}
-                  id={sem}
-                  onClick={() => changeInstructors(sem)}>{sem}</button>
-              ))}
-            </div>
-             */}
-
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap my-2">
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="https://static-00.iconduck.com/assets.00/reddit-icon-512x450-etuh24un.png" alt="" boxSize={4} className="my-auto" />
+                  <Image src="/reddit-icon.png" alt="Reddit" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
               <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202510&subj_code_in=${course.subjectCode}&crse_numb_in=${course.courseCode}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
-                  <Image src="/purdue-icon.png" alt="" boxSize={4} className="my-auto" />
+                  <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
                   Catalog
                 </div>
               </a>
@@ -518,7 +457,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
                   className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
-                    <Image src="/boilerexams-icon.png" alt="" boxSize={4} className="my-auto filter" />
+                    <Image src="/boilerexams-icon.png" alt="Boilerexams" boxSize={4} className="my-auto filter" />
                     Boilerexams
                   </div>
                 </a>
@@ -528,9 +467,10 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
+            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {course.courseCode} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
-            {renderPrereqs()}
+            <Prereqs course={course} router={router} />
 
 
 
@@ -538,86 +478,161 @@ const CardDetails = ({ courseData, semData }) => {
 
 
           {/* Right half of panel */}
-          {defaultGPA.datasets && <div className="flex flex-col w-full ">
+          {defaultGPA.datasets && <div className="flex flex-col w-full overflow-clip">
 
-            <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-              <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:scale-125 transition-all' onClick={() => setInfoModal(true)}>
+            <Tabs variant='soft-rounded' size='sm' colorScheme='gray' defaultIndex={ firstInstructor == "TBA" ? 1 : 0}>
+              <TabList overflowY="hidden"
+                sx={{
+                  scrollbarWidth: 'none',
+                  '::-webkit-scrollbar': {
+                    display: 'none',
+                  },
+                }}>
+                <Tab>Overview</Tab>
+                <Tab>GPA by Semester</Tab>
+                <Tab>GPA by Professor</Tab>
+              </TabList>
+
+              <TabPanels>
+                <TabPanel>
+                  <div className='flex flex-row gap-2 md:mb-4 mb-2'>
+                    {/* Info Popup (prob not needed anymore) */}
+                    {/* <a className='p-2 rounded-lg bg-zinc-800 my-auto cursor-pointer	hover:bg-zinc-900 transition-all' onClick={() => setInfoModal(true)}>
                 <FaInfo size={16} color='white' />
-              </a>
-              {/* Instructor Select */}
-              {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
-                <div className="grow">
-                  <Select
-                    isMulti
-                    options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
-                    className="basic-multi-select w-full no-wrap"
-                    classNamePrefix="select"
-                    placeholder="Instructor..."
-                    menuPlacement='bottom'
-                    defaultValue={
-                      selectableInstructors.length > 0
-                        ? [selectableInstructors[0]].map((instructor) => ({ value: instructor, label: instructor }))
-                        : null
+              </a> */}
+                    {/* Instructor Select */}
+                    {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
+                      <div className="grow">
+                        <Select
+                          isMulti
+                          options={selectableInstructors.map((instructor) => ({ value: instructor, label: instructor }))}
+                          className="basic-multi-select w-full no-wrap"
+                          classNamePrefix="select"
+                          placeholder="Instructor..."
+                          menuPlacement='bottom'
+                          defaultValue={
+                            [{ value: firstInstructor, label: firstInstructor }]
+                          }
+                          styles={instructorStyles}
+                          color="white"
+                          onChange={(value) => {
+                            refreshGraph(value)
+                          }}
+                        />
+                      </div>
                     }
-                    styles={instructorStyles}
-                    color="white"
-                    onChange={(value) => {
-                      refreshGraph(value)
-                    }}
-                  />
-                </div>
-              }
-            </div>
+                  </div>
 
 
-            {/* Stat Cards */}
-            <div className="flex flex-row md:gap-4 gap-2">
-              <div className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all" onClick={() => setGpaModal(true)}>
-                <div className='md:w-1/2 m-auto mt-1'>
-                  <CircularProgressbar
-                    value={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? 0 : curGPA[firstInstructor][0]}
-                    maxValue={4}
-                    text={typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][0]}
-                    styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      trailColor: '#0a0a0a',
-                    })}
-                  />
-                </div>
-                <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
-              </div>
-              <a className="flex flex-col h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer	hover:scale-[1.05] transition-all"
-                href={`https://www.ratemyprofessors.com/search/professors/783?q=${getFormattedName(firstInstructor)}`}
-                target="_blank" rel="noopener noreferrer">
-                <div className='md:w-1/2 m-auto mt-1'>
-                  <CircularProgressbar
-                    value={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? 0 : curRMP[firstInstructor]}
-                    maxValue={5}
-                    text={typeof firstInstructor === "undefined" || typeof curRMP[firstInstructor] === "undefined" ? "" : curRMP[firstInstructor]}
-                    styles={buildStyles({
-                      pathColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      textColor: `${typeof firstInstructor === "undefined" || typeof curGPA[firstInstructor] === "undefined" ? "" : curGPA[firstInstructor][1]}`,
-                      trailColor: '#0a0a0a',
-                    })}
-                  />
-                </div>
-                <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
-                <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
-              </a>
-            </div>
+                  {/* Stat Cards */}
+                  <div className="flex flex-row md:gap-4 gap-2">
+                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+
+                      {/* For when there is no GPA data for firstInstructor */}
+                      {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
+                        <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
+                          <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-xs font-light text-center'>Click on other tabs for more data!</p>
+                        </div>
+                      }
+
+                      {/* GPA circular stat */}
+                      <div className='md:w-1/2 m-auto mt-1'>
+                        {firstInstructor && curGPA[firstInstructor] ? (
+                          <CircularProgressbar
+                            value={curGPA[firstInstructor][0]}
+                            maxValue={4}
+                            text={curGPA[firstInstructor][0]}
+                            styles={buildStyles({
+                              pathColor: curGPA[firstInstructor][1],
+                              textColor: curGPA[firstInstructor][1],
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        ) : (
+                          <CircularProgressbar
+                            value={0}
+                            maxValue={4}
+                            text=""
+                            styles={buildStyles({
+                              pathColor: "",
+                              textColor: "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        )}
+                      </div>
+
+                      <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
+                    </div>
+                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
+                      onClick={() => window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`, '_blank')}>
+
+                      {/* For when there is no RMP data for firstInstructor */}
+                      {firstInstructor && (!curRMP[firstInstructor] || curRMP[firstInstructor] === 0) &&
+                        <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
+                          <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
+                        </div>
+                      }
+
+                      {/* RMP circular stat */}
+                      <div className='md:w-1/2 m-auto mt-1'>
+                        {firstInstructor && curRMP[firstInstructor] ? (
+                          <CircularProgressbar
+                            value={curRMP[firstInstructor]}
+                            maxValue={5}
+                            text={curRMP[firstInstructor]}
+                            styles={buildStyles({
+                              pathColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              textColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        ) : (
+                          <CircularProgressbar
+                            value={0}
+                            maxValue={5}
+                            text=""
+                            styles={buildStyles({
+                              pathColor: "",
+                              textColor: "",
+                              trailColor: '#0a0a0a',
+                            })}
+                          />
+                        )}
+                      </div>
+
+                      <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
+                      <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
+                    </div>
+                  </div>
 
 
-            {/* GPA Graph */}
-            {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-              <Graph data={gpaGraph} />
-            )}
+                  {/* GPA Graph */}
+                  {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
+                    <Graph data={gpaGraph} />
+                  )}
 
-            {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
-              <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
-                <p className='text-center'>No data!</p>
-              </div>
-            )}
+                  {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
+                    <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
+                      <p className='text-center'>No data!</p>
+                    </div>
+                  )}
+
+                </TabPanel>
+
+                {/* All Instructors Tab */}
+                <TabPanel>
+                  <FullInstructorModal course={course} />
+                </TabPanel>
+
+                {/* GPA by Professor Tab */}
+                <TabPanel>
+                  <GpaModal course={course} />
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </div>}
         </div>
 
@@ -635,6 +650,8 @@ const CardDetails = ({ courseData, semData }) => {
 };
 
 
+
+// @Sarthak made this, some api call to get course data
 export async function getServerSideProps(context) {
 
   const params = new URLSearchParams({ detailId: context.params.id });

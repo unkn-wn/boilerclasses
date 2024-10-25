@@ -38,10 +38,13 @@ const InfoModal = ({ isOpen, onClose }) => {
 					<ModalBody className=' overflow-y-auto'>
 
 							<p className='text-white'>
-								The <span className='font-bold text-yellow-500'>first instructor selected</span> represents the Average GPA and RateMyProfessors Rating on the circle graphs! To view a different average GPA or RateMyProfessor (RMP) rating, click the instructor dropdown and select a different instructor, and remove the previous instructor.
+								The <span className='font-bold text-yellow-500'>last instructor selected</span> represents the Average GPA and RateMyProfessors Rating on the circle graphs! To view a different average GPA or RateMyProfessor (RMP) rating, click the instructor dropdown and select a different instructor.
 								<br />
 								<br />
-								To view <span className='font-bold text-yellow-500'>all instructor GPAs</span>, click on the "Average GPA circle graph". It will display the breakdown of each professor's GPA per semester. 0 means that the professor has not taught that semester.
+								Sometimes, the RateMyProfessor rating may take a moment to load.
+								<br />
+								<br />
+								To view <span className='font-bold text-yellow-500'>all instructor GPAs</span>, click on the "Average GPA" circle graph. It will display the breakdown of each professor's GPA per semester. 0 means that the professor has not taught that semester.
 							</p>
 
 					</ModalBody>

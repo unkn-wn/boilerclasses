@@ -54,7 +54,7 @@ const Calendar = (props) => {
         let data;
 
         try {
-            const semester = "202510";
+            const semester = "202520";
             const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
             // console.log(url);
             const response = await fetch(url);
@@ -127,7 +127,7 @@ const Calendar = (props) => {
     if (Object.values(lectures).every(lecture => lecture.length === 0)) {
         return (
             <>
-                <div className="mb-2 ml-2 text-sm text-gray-500">Fall 2024 Schedule: </div>
+                <div className="mb-2 ml-2 text-sm text-gray-500">Spring 2025 Schedule: </div>
                 <div className='grid justify-center w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
                     {wait ? <Spinner /> : <p className="text-gray-500">Schedule not available!</p>}
                 </div>
@@ -138,7 +138,7 @@ const Calendar = (props) => {
 
     return (
         <>
-            <div className="mb-2 ml-2 text-sm text-gray-500">Fall 2024 Schedule: </div>
+            <div className="mb-2 ml-2 text-sm text-gray-500">Spring 2025 Schedule: </div>
             {/* Calendar View for Lecture Times */}
             <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
                 <div className='md:border-r-2 md:pr-4 border-gray-500'>
@@ -199,12 +199,31 @@ const Calendar = (props) => {
 const LectureTimeDisplay = (props) => {
     const { lecture } = props;
 
+    const translateType = (type) => {
+        switch (type) {
+            case "Practice Study Observation":
+                return "PSO";
+            case "Laboratory":
+                return "Lab";
+            default:
+                return type;
+        }
+    }
+
     return (
         <Popover placement="auto" trigger="hover">
             <PopoverTrigger>
-                <span className="w-full bg-zinc-700 py-1 px-2 rounded-md hover:scale-105 transition-all">{lecture.type + " - " + lecture.startTime}</span>
+                {/* If lecture, color background lighter */}
+                <span className={`w-full py-1 px-2 rounded-md hover:bg-zinc-600 transition-all ${lecture.type === 'Lecture' ? 'bg-zinc-700' : 'bg-zinc-800'}`}>
+                    <p className="text-white">
+                        {translateType(lecture.type) + " - " + lecture.startTime}
+                    </p>
+                    <p className="text-zinc-400 text-sm">
+                        {lecture.instructors[0]}
+                    </p>
+                </span>
             </PopoverTrigger>
-            <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" width='fit-content'>
+            <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" minW={{ base: "90%", lg: "max-content" }}>
                 <PopoverArrow />
                 <PopoverHeader fontWeight='semibold'>{lecture.type}</PopoverHeader>
                 <PopoverBody>

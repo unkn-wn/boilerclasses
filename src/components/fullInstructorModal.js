@@ -1,31 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-	ModalBody,
-	ModalCloseButton,
-	ChakraProvider,
-	extendTheme,
-} from '@chakra-ui/react';
 
-const theme = extendTheme({
-	components: {
-		Modal: {
-			baseStyle: (props) => ({
-				dialog: {
-					bg: "#18181b"
-				}
-			})
-		}
-	}
-});
-
-
-
-const FullInstructorModal = ({ isOpen, onClose, course }) => {
+const FullInstructorModal = ({ course }) => {
 
 	const [gpa, setGpa] = useState({});
 
@@ -54,23 +29,11 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 	};
 
 
-	// Helper function to format instructor name
-	function formatInstructorName(name) {
-		if (name === "TBA") return 'TBA';
-		const splitName = name.split(' ');
-		const lastName = splitName.pop();
-		const firstName = splitName.shift();
-		const middleName = splitName.join(' ');
-		if (middleName.length === 1) {
-			splitName[0] = middleName + '.';
-		}
-		return `${lastName}, ${firstName}${splitName.length > 0 ? ' ' + splitName.join(' ') : ''}`;
-	}
-
-
 	useEffect(() => {
 		if (!course) return;
-		if (Object.keys(course.gpa).length === 0) return;
+		// @unkn-wn @knightron0 delete this comment after review:
+		// Is there a reason why we do the following check?
+		// if (Object.keys(course.gpa).length === 0) return;
 		// console.log(JSON.stringify(course, null, 2));
 
 		/////////////////////////////////////////////////////
@@ -78,31 +41,22 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 		const consolidatedData = {};
 
-		// Populate consolidatedData with all semesters and professors
+		// Populate consolidatedData with all semesters and professors and gpas
 		for (const semester in course.instructor) {
 			consolidatedData[semester] = {};
 			for (const instructor of course.instructor[semester]) {
-				const formattedInstructor = formatInstructorName(instructor);
-				consolidatedData[semester][formattedInstructor] = {
-					gpa: "No GPA",
-					color: getColor(0)
+				let gpa = "No GPA";
+				let color = getColor(0);
+				if (course.gpa[instructor] && course.gpa[instructor][semester]) {
+					gpa = course.gpa[instructor][semester][13] || "No GPA";
+					color = getColor(course.gpa[instructor][semester][13] || 0);
+				}
+				consolidatedData[semester][instructor] = {
+					gpa: gpa,
+					color: color
 				};
 			}
 		}
-
-		// Update consolidatedData with available grades data
-		for (const instructor in course.gpa) {
-			for (const semester in course.gpa[instructor]) {
-				if (consolidatedData[semester] && consolidatedData[semester][instructor]) {
-					const gpa = course.gpa[instructor][semester][13];
-					consolidatedData[semester][instructor] = {
-						gpa: gpa || "No GPA",
-						color: getColor(gpa || 0)
-					};
-				}
-			}
-		}
-
 
 		// SORTING BY SEMESTERS
 		const sortedSemesters = Object.keys(consolidatedData).sort((a, b) => {
@@ -128,45 +82,31 @@ const FullInstructorModal = ({ isOpen, onClose, course }) => {
 
 
 	return (
-		<ChakraProvider theme={theme}>
-			<Modal isOpen={isOpen} onClose={onClose}>
-				<ModalOverlay
-					backdropFilter='blur(5px)'
-				/>
-				<ModalContent maxW={{ base: "90%", md: "60%", lg: "40%" }} maxH={"80%"}>
-					<ModalHeader />
-					<ModalBody className=' overflow-y-auto'>
-						<div className='flex flex-col'>
-							<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
-							<h3 className='text-white text-sm'>
-								To view all semester GPAs sorted by professor, click on the "Average GPA" circle graph!<br />
-								This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!
-							</h3>
-							<div className='mt-2'>
-								{Object.keys(gpa).map((semester, index) => (
-									<div key={index} className='flex flex-col mt-5'>
-										<h2 className='text-white font-bold text-xl border-b border-yellow-500'>{semester}</h2>
-										<div className='flex flex-col justify-stretch'>
-											{Object.keys(gpa[semester]).map((instructor, index) => (
-												<div key={index} className='flex flex-row mt-2 items-center justify-between'>
-													<h3 className='text-white font-semibold text-md mr-2'>{instructor}</h3>
-													<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
-													<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
-														<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
-													</div>
-												</div>
-											))}
+			<div className='h-[32rem] overflow-y-auto flex flex-col'>
+				<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
+				<h3 className='text-white text-sm'>
+					This graphic displays all the semesters with each professor. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
+					GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
+				</h3>
+				<div className='mt-2'>
+					{Object.keys(gpa).map((semester, index) => (
+						<div key={index} className='flex flex-col mt-5'>
+							<h2 className='text-white font-bold text-xl border-b border-yellow-500'>{semester}</h2>
+							<div className='flex flex-col justify-stretch'>
+								{Object.keys(gpa[semester]).map((instructor, index) => (
+									<div key={index} className='flex flex-row mt-2 items-center justify-between'>
+										<h3 className='text-white font-semibold text-md mr-2'>{instructor}</h3>
+										<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
+										<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
+											<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
 										</div>
 									</div>
 								))}
 							</div>
 						</div>
-					</ModalBody>
-					<ModalCloseButton color={'white'} />
-					<ModalFooter />
-				</ModalContent>
-			</Modal>
-		</ChakraProvider>
+					))}
+				</div>
+			</div>
 	);
 };
 
