@@ -56,8 +56,9 @@ const CourseCatalog = () => {
     "Research",
     "Studio"]);
   const [courses, setCourses] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(transform(query.q) || '');
-  const [displayLanding, setDisplayLanding] = useState(true);
+  const [searchTerm, setSearchTerm] = useState(query.q || '');
+
+  const [displayLanding, setDisplayLanding] = useState(true); 
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
 
 
@@ -87,6 +88,7 @@ const CourseCatalog = () => {
   }
 
   function transform(query) {
+
     if (!query) {
       return "";
     }
@@ -99,10 +101,16 @@ const CourseCatalog = () => {
     return query;
   }
 
-  // On a filter change, rerun the search
   useEffect(() => {
-    search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, levelMin, levelMax, JSON.stringify(levels), JSON.stringify(scheds)]);
+    setSearchTerm(query.q || '')
+}, [query]);
+
+  // On a filter change, rerun the search
+
+  useEffect(() => {
+      search();
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), searchTerm, creditsMin, creditsMax, levelMin, levelMax, JSON.stringify(levels), JSON.stringify(scheds)]);
+
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
@@ -130,7 +138,6 @@ const CourseCatalog = () => {
           //TEMPORAY FIX FOR DESCRIPTIONS
           //for every item, console log description
           data['courses']['documents'].map((item) => {
-            //console.log(item.value.description)
             //If description begins with <a href= then set it to No Description Available
             if (item.value.description.startsWith("<a href=")) {
               item.value.description = "No Description Available"
@@ -397,18 +404,6 @@ const CourseCatalog = () => {
             <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
               {courses.length > 0 && courses.map(course => (
                 <Card key={course.id} course={course.value} searchTerm={searchTerm} />
-                // <div key={course.id}
-                //   // onClick={() => openPopUp(course.title, course.subjectCode, course.courseCode, course.instructor, course.description, course.capacity, course.credits, course.term)}
-                //   >
-
-
-                //   {/* <a onClick={(e) => e.stopPropagation()} href={`https://www.ratemyprofessors.com/search/professors/783?q=${course.instructor[0]}`}
-                //     target="_blank"
-                //     rel="noopener noreferrer"
-                //     className=''>
-                //     <button className='bg-blue-500 text-white rounded-md px-2 py-1 shadow-md hover:-translate-y-1 transition-all bottom-0'>RateMyProfessor</button>
-                //   </a> */}
-
               ))}
             </div>
             :
