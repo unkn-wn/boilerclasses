@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 
-latest_sem = "Fall 2024"
+latest_sem = "Spring 2025"
 
 # Reddit API
 reddit = praw.Reddit(
