@@ -5,7 +5,6 @@ https://github.com/user-attachments/assets/93ca6f9a-a7f5-4c86-98c6-c543df0ede77
 
 
 
-
 # Structure
 BoilerClasses is a simple [Next.js](https://nextjs.org/) app with a few Python helper files to format and organize the data. We use a [Redis](https://redis.io/) instance to store and rapidly query all our data. 
 
