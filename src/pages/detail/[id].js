@@ -308,21 +308,6 @@ const CardDetails = ({ courseData, semData }) => {
 
   return (
     <>
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-      />
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-48L6TGYD2L', {
-            page_path: window.location.pathname,
-          });`
-        }}
-      />
       <Head>
         <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
         <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
