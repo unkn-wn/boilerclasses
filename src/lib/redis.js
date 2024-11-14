@@ -9,12 +9,12 @@ async function connect() {
   }
 }
 
-export async function searchCourses(q, sub, term, gen, cmin, cmax, levels, sched) {
+export async function searchCourses(q, sub, term, gen, cmin, cmax, levels, sched, size) {
   await connect();
   try {
     const formattedLevels = levels.map(level => `@courseCode:[${parseInt(level)*100}, ${parseInt(level)*100 + 9999}]`)
     const res = await client.ft.search('idx:classes', `${q}${q.trim().length > 0 ? "*" : ""}${sub[0].length > 0 ? ` @subjectCode:{${sub.join("|")}}` : ""}${term[0].length > 0 ? ` @terms:{${term.join("|")}}` : ""}${gen[0].length > 0 ? gen.map((g) => ` @gened:{${g}}`) : ""} (@creditMin:[${cmin}, ${cmax}] | @creditMax:[${cmin}, ${cmax}])${levels[0].length > 0 ? ` (${formattedLevels.join(" | ")})` : " @courseCode:[0, 0]"}${sched[0].length > 0 ? ` @sched:{${sched.join("|")}}` : " @sched:{}"}`, {
-      LIMIT: { size: 100, from: 0 }
+      LIMIT: { size: size, from: 0 }
     });
     return res;
   } catch {
