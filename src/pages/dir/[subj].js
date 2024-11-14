@@ -1,44 +1,71 @@
 import Link from 'next/link'
+import Head from 'next/head';
 
+import { useRouter } from 'next/router';
 
-const SubjectDirectory = ({ courses }) => {
-  
+import Footer from '@/components/footer';
+
+const SubjectDirectory = ({ courses, subject }) => {
+  const router = useRouter();
+
   return <>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-10">
-      {courses && courses.length > 0 ? (
-        courses.sort((a, b) => a.value.courseCode - b.value.courseCode).map((course) => (
-          <Link key={course.value.detailId} href={`/detail/${course.value.detailId}`} className="p-6 bg-zinc-900 p-6 rounded-md shadow-md text-lg font-semibold text-white underline decoration-dotted underline-offset-4 hover:scale-[1.02] hover:transition cursor-pointer">
+    <Head>
+      <title>{`${subject} Courses - BoilerClasses`}</title>
+      <meta name="title" content={`${subject} Courses - BoilerClasses`} />
+      <meta name="description" content={`BoilerClasses (Boiler Classes) - Purdue's course catalog with over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more for ${subject}.`} />
+      <meta name="keywords" content={`Purdue, Purdue University, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers, ${subject}`} />
+      <meta name='og:locality' content='West Lafayette' />
+      <meta name='og:region' content='IN' />
+      <meta name='og:postal-code' content='47906' />
+      <meta name='og:postal-code' content='47907' />
+
+      <link rel="canonical" href={`https://boilerclasses.com/dir/${subject}`} />
+    </Head>
+
+    <div className='m-10'>
+      <button onClick={() => router.back()} className='text-white text-xl'>&lt;</button>
+      <h1 className='font-bold text-white text-3xl mb-4'>{subject} Courses</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {courses && courses.length > 0 ? (
+          courses.sort((a, b) => a.value.courseCode - b.value.courseCode).map((course) => (
+            <Link key={course.value.detailId} href={`/detail/${course.value.detailId}`} className="p-6 bg-zinc-900 rounded-md shadow-md text-lg font-semibold text-white underline decoration-dotted underline-offset-4 hover:scale-[1.02] transition cursor-pointer">
               {course.value.subjectCode} {course.value.courseCode}: {course.value.title}
-          </Link>
-        ))
-      ) : (
-        <p className="text-center text-gray-500">No courses available.</p>
-      )}
+            </Link>
+          ))
+        ) : (
+          <p className="text-center text-gray-500">No courses available.</p>
+        )}
+      </div>
     </div>
+
+    <Footer />
   </>
 };
 
 
 
 export async function getServerSideProps(context) {
-  const params = new URLSearchParams({ q: "", sub: context.params.subj, term: [], gen: [], cmin: 0, cmax: 18, levels: [100, 200, 300, 400, 500, 600, 700, 800, 900], sched: ["Clinic",
-    "Distance Learning",
-    "Experiential",
-    "Individual Study",
-    "Laboratory",
-    "Laboratory Preparation",
-    "Lecture",
-    "Practice Study Observation",
-    "Presentation",
-    "Recitation",
-    "Research",
-    "Studio"],
-    maxlim: 1000});
+  const params = new URLSearchParams({
+    q: "", sub: context.params.subj, term: [], gen: [], cmin: 0, cmax: 18, levels: [100, 200, 300, 400, 500, 600, 700, 800, 900], sched: ["Clinic",
+      "Distance Learning",
+      "Experiential",
+      "Individual Study",
+      "Laboratory",
+      "Laboratory Preparation",
+      "Lecture",
+      "Practice Study Observation",
+      "Presentation",
+      "Recitation",
+      "Research",
+      "Studio"],
+    maxlim: 1000
+  });
   const response = await fetch('http://localhost:3000/api/search?' + params);
   const data = await response.json();
   return {
     props: {
-      courses: data.courses.documents || null
+      courses: data.courses.documents || null,
+      subject: context.params.subj
     },
   };
 }
