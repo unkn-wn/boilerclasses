@@ -123,7 +123,7 @@ const CourseCatalog = () => {
       const subParam = selectedSubjects.map((x) => x.value)
       const termParam = selectedSemesters.map((x) => x.value)
       const genParam = selectedGenEds.map((x) => x.value)
-      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, levels: levels, sched: scheds });
+      const params = new URLSearchParams({ q: transform(searchTerm), sub: subParam, term: termParam, gen: genParam, cmin: creditsMin, cmax: creditsMax, levels: levels, sched: scheds, maxlim: 100 });
       fetch('/api/search?' + params)
         .then((response) => response.json())
         .then((data) => {
@@ -173,28 +173,11 @@ const CourseCatalog = () => {
 
   return (
     <>
-      {/* <!-- Google tag (gtag.js) --> */}
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-      />
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-48L6TGYD2L', {
-              page_path: window.location.pathname,
-            });
-          `
-        }}
-      />
       <Head>
         <title>BoilerClasses - Purdue Course Catalog</title>
         <meta name="title" content="BoilerClasses - Purdue Course Catalog" />
         <meta name="description" content="BoilerClasses (Boiler Classes) - Purdue's course catalog with over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
-        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
+        <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, Courses, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
@@ -224,8 +207,8 @@ const CourseCatalog = () => {
       {!displayLanding ?
         <div id="parent" className={`flex flex-col h-screen min-h-screen bg-neutral-950 container mx-auto p-4 ${inter.className}`}>
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
-            <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16 cursor-pointer' />
-            <h1 onClick={() => changeLanding("")} className='text-2xl md:text-5xl font-semibold my-auto ml-2 select-none text-white cursor-pointer'>BoilerClasses</h1>
+            <img src='/boilerclasses-FULL.png' onClick={() => setDisplayLanding(true)} className='my-auto w-10 h-10 ml-2 mr-2 lg:ml-0 md:w-16 md:h-16 cursor-pointer' />
+            <h1 onClick={() => setDisplayLanding(true)} className='text-2xl md:text-5xl font-semibold my-auto ml-2 select-none text-white cursor-pointer'>BoilerClasses</h1>
           </div>
           {/* Search Bar */}
           <div className="mb-6">
@@ -430,8 +413,8 @@ const CourseCatalog = () => {
         <div>
           <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
             <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
-              <img src='/boilerclasses-FULL.png' onClick={() => changeLanding("")} className='my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
-              <h1 onClick={() => changeLanding("")} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+              <img src='/boilerclasses-FULL.png' onClick={() => setDisplayLanding(false)} className='my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
+              <h1 onClick={() => setDisplayLanding(false)} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
             </div>
             <input
               id="landingSearch"
