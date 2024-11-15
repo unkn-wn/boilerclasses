@@ -292,6 +292,16 @@ const CardDetails = ({ courseData, semData }) => {
 
   };
 
+
+  // function to strip course code to remove the 00s
+  function stripCourseCode(courseCode) {
+    let formattedName = courseCode.toString();
+    if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
+      formattedName = formattedName.slice(0, -2);
+    }
+    return formattedName;
+  }
+
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
   if (JSON.stringify(course) == '{}') {
@@ -309,10 +319,10 @@ const CardDetails = ({ courseData, semData }) => {
   return (
     <>
       <Head>
-        <title>{`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`}</title>
-        <meta name="title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
-        <meta name="description" content={`Course ${courseData.subjectCode} ${courseData.courseCode} Purdue: ${courseData.description}`} />
-        <meta name="keywords" content={`Purdue, Course, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
+        <title>{`${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}: ${courseData.title} | BoilerClasses`}</title>
+        <meta name="title" content={`${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}: ${courseData.title} | BoilerClasses`} />
+        <meta name="description" content={`Course ${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)} Purdue: ${courseData.description}`} />
+        <meta name="keywords" content={`Purdue, Course, ${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}, ${courseData.subjectCode} ${courseData.courseCode}, ${courseData.title}, ${courseData.description.split(' ')}`} />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
@@ -320,12 +330,12 @@ const CardDetails = ({ courseData, semData }) => {
 
         <meta property="og:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
         <meta property="og:type" content="website" />
-        <meta name="og:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="og:title" content={`${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}: ${courseData.title} | BoilerClasses`} />
         <meta name="og:description" content={`${courseData.description}`} />
         <meta property="og:image" content={
           "https://boilerclasses.com/api/og?" +
           'sub=' + encodeURIComponent(courseData.subjectCode) +
-          '&course=' + encodeURIComponent(courseData.courseCode) +
+          '&course=' + encodeURIComponent(stripCourseCode(courseData.courseCode)) +
           '&title=' + encodeURIComponent(courseData.title) +
           '&credits=' + encodeURIComponent(courseData.credits[1]) +
           '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
@@ -335,12 +345,12 @@ const CardDetails = ({ courseData, semData }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="boilerclasses.com" />
         <meta property="twitter:url" content={`https://boilerclasses.com/detail/${courseData.detailId}`} />
-        <meta name="twitter:title" content={`${courseData.subjectCode} ${courseData.courseCode}: ${courseData.title} | BoilerClasses`} />
+        <meta name="twitter:title" content={`${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}: ${courseData.title} | BoilerClasses`} />
         <meta name="twitter:description" content={`${courseData.description}`} />
         <meta property="twitter:image" content={
           "https://boilerclasses.com/api/og?" +
           'sub=' + encodeURIComponent(courseData.subjectCode) +
-          '&course=' + encodeURIComponent(courseData.courseCode) +
+          '&course=' + encodeURIComponent(stripCourseCode(courseData.courseCode)) +
           '&title=' + encodeURIComponent(courseData.title) +
           '&credits=' + encodeURIComponent(courseData.credits[1]) +
           '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
@@ -424,7 +434,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap my-2">
-              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${course.courseCode.toString().replace(/00$/, '')} OR "${course.subjectCode} ${course.courseCode.toString().replace(/00$/, '')}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${stripCourseCode(course.courseCode)} OR "${course.subjectCode} ${stripCourseCode(courseData.courseCode)}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="/reddit-icon.png" alt="Reddit" boxSize={4} className="my-auto" />
@@ -452,7 +462,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Description */}
             <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
-            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {course.courseCode} from Purdue University - West Lafayette.</h1>
+            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
             <Prereqs course={course} router={router} />
@@ -465,7 +475,7 @@ const CardDetails = ({ courseData, semData }) => {
           {/* Right half of panel */}
           {defaultGPA.datasets && <div className="flex flex-col w-full overflow-clip">
 
-            <Tabs variant='soft-rounded' size='sm' colorScheme='gray' defaultIndex={ firstInstructor == "TBA" ? 1 : 0}>
+            <Tabs variant='soft-rounded' size='sm' colorScheme='gray' defaultIndex={firstInstructor == "TBA" ? 1 : 0}>
               <TabList overflowY="hidden"
                 sx={{
                   scrollbarWidth: 'none',
