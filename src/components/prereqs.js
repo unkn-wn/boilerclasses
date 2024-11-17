@@ -4,12 +4,6 @@ import Link from 'next/link';
 const Prereqs = ({ course }) => {
   const router = useRouter();
 
-  const handleClick = (detailId) => {
-    router.push(`/detail/${detailId}`).then(() => {
-      router.reload();
-    });
-  };
-
   const parsePrereqs = (prereq, i) => {
     if (prereq.split(' ').length == 2) {
       const [detailId, concurrent] = prereq.split(' ');
@@ -25,7 +19,7 @@ const Prereqs = ({ course }) => {
 
       return (
         <span className='' key={i}>
-          <a onClick={() => handleClick(detailId)}
+          <a onClick={() => router.push(`/detail/${detailId}`)}
             className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
             {subjectCode} {courseNumber}
           </a>

@@ -40,8 +40,6 @@ const CourseCatalog = () => {
   const [selectedGenEds, setSelectedGenEds] = useState([]);
   const [creditsMin, setCreditsMin] = useState(0);
   const [creditsMax, setCreditsMax] = useState(18);
-  const [levelMin, setLevelMin] = useState(100);
-  const [levelMax, setLevelMax] = useState(900);
   const [levels, setLevels] = useState([100, 200, 300, 400, 500, 600, 700, 800, 900]);
   const [scheds, setScheds] = useState(["Clinic",
     "Distance Learning",
@@ -56,7 +54,7 @@ const CourseCatalog = () => {
     "Research",
     "Studio"]);
   const [courses, setCourses] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(transform(query.q) || '');
+  const [searchTerm, setSearchTerm] = useState(query.q || '');
   const [displayLanding, setDisplayLanding] = useState(true);
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
 
@@ -102,7 +100,7 @@ const CourseCatalog = () => {
   // On a filter change, rerun the search
   useEffect(() => {
     search();
-  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, levelMin, levelMax, JSON.stringify(levels), JSON.stringify(scheds)]);
+  }, [JSON.stringify(selectedSubjects), JSON.stringify(selectedSemesters), JSON.stringify(selectedGenEds), transform(searchTerm), creditsMin, creditsMax, JSON.stringify(levels), JSON.stringify(scheds)]);
 
   // This is used for focusing on proper search bar on load
   useEffect(() => {
