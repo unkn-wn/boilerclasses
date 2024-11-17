@@ -140,12 +140,12 @@ const CardDetails = ({ courseData, semData }) => {
     if (currentSemesterProfs && currentSemesterProfs.length > 0) {
       const firstProf = currentSemesterProfs[0];
       refreshGraph({ value: firstProf, label: firstProf });
-      setFirstInstructor(firstProf);
+      setSelectedInstructors([firstProf]);
     } else {
       // Fallback if no professors are found in the current semester
       const firstProf = allProfs[0];
       refreshGraph({ value: firstProf, label: firstProf });
-      setFirstInstructor(firstProf);
+      setSelectedInstructors([firstProf]);
     }
 
     setLoading(false);
@@ -162,7 +162,7 @@ const CardDetails = ({ courseData, semData }) => {
 
 
   // ------------------ STATES ------------------ //
-  const [firstInstructor, setFirstInstructor] = useState("");
+  const [selectedInstructors, setSelectedInstructors] = useState([]);
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
 
@@ -207,12 +207,11 @@ const CardDetails = ({ courseData, semData }) => {
     const gpa = defaultGPA.datasets;
     if (!gpa || gpa.length === 0 || !instructors) return;
 
-    setFirstInstructor(" ");
-    try {
-      setFirstInstructor(instructors[instructors.length - 1].label);
-    } catch {
-      setFirstInstructor("");
-    }
+    const instructorNames = Array.isArray(instructors)
+      ? instructors.map(inst => inst.value)
+      : [instructors.value];
+
+    setSelectedInstructors(instructorNames);
 
     try {
       const newgpa = gpa.filter(inst => {
@@ -232,7 +231,7 @@ const CardDetails = ({ courseData, semData }) => {
   // To refresh graph when everythings loaded
   useEffect(() => {
     if (!courseData) return;
-    refreshGraph([{ value: firstInstructor, label: firstInstructor }]);
+    refreshGraph([{ value: selectedInstructors[selectedInstructors.length - 1], label: selectedInstructors[selectedInstructors.length - 1] }]);
   }, [defaultGPA.datasets]);
 
 
@@ -438,7 +437,7 @@ const CardDetails = ({ courseData, semData }) => {
           {/* Right half of panel */}
           {defaultGPA.datasets && <div className="flex flex-col w-full overflow-clip">
 
-            <Tabs variant='soft-rounded' size='sm' colorScheme='gray' defaultIndex={firstInstructor == "TBA" ? 1 : 0}>
+            <Tabs variant='soft-rounded' size='sm' colorScheme='gray' defaultIndex={selectedInstructors[selectedInstructors.length - 1] == "TBA" ? 1 : 0}>
               <TabList overflowY="hidden"
                 sx={{
                   scrollbarWidth: 'none',
@@ -468,9 +467,7 @@ const CardDetails = ({ courseData, semData }) => {
                           classNamePrefix="select"
                           placeholder="Instructor..."
                           menuPlacement='bottom'
-                          defaultValue={
-                            [{ value: firstInstructor, label: firstInstructor }]
-                          }
+                          value={selectedInstructors.map(instructor => ({ value: instructor, label: instructor }))}
                           styles={instructorStyles}
                           color="white"
                           onChange={(value) => {
@@ -487,23 +484,23 @@ const CardDetails = ({ courseData, semData }) => {
                     <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
 
                       {/* For when there is no GPA data for firstInstructor */}
-                      {curGPA[firstInstructor] && curGPA[firstInstructor][0] === 0 &&
+                      {curGPA[selectedInstructors[selectedInstructors.length - 1]] && curGPA[selectedInstructors[selectedInstructors.length - 1]][0] === 0 &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                          <p className='text-zinc-500 text-md font-bold text-center'>No data available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-md font-bold text-center'>No data available for {selectedInstructors[selectedInstructors.length - 1]}</p>
                           <p className='text-zinc-500 text-xs font-light text-center'>Click on other tabs for more data!</p>
                         </div>
                       }
 
                       {/* GPA circular stat */}
                       <div className='md:w-1/2 m-auto mt-1'>
-                        {firstInstructor && curGPA[firstInstructor] ? (
+                        {selectedInstructors[selectedInstructors.length - 1] && curGPA[selectedInstructors[selectedInstructors.length - 1]] ? (
                           <CircularProgressbar
-                            value={curGPA[firstInstructor][0]}
+                            value={curGPA[selectedInstructors[selectedInstructors.length - 1]][0]}
                             maxValue={4}
-                            text={curGPA[firstInstructor][0]}
+                            text={curGPA[selectedInstructors[selectedInstructors.length - 1]][0]}
                             styles={buildStyles({
-                              pathColor: curGPA[firstInstructor][1],
-                              textColor: curGPA[firstInstructor][1],
+                              pathColor: curGPA[selectedInstructors[selectedInstructors.length - 1]][1],
+                              textColor: curGPA[selectedInstructors[selectedInstructors.length - 1]][1],
                               trailColor: '#0a0a0a',
                             })}
                           />
@@ -524,26 +521,26 @@ const CardDetails = ({ courseData, semData }) => {
                       <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
                     </div>
                     <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
-                      onClick={() => window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${firstInstructor}`, '_blank')}>
+                      onClick={() => window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${selectedInstructors[selectedInstructors.length - 1]}`, '_blank')}>
 
                       {/* For when there is no RMP data for firstInstructor */}
-                      {firstInstructor && (!curRMP[firstInstructor] || curRMP[firstInstructor] === 0) &&
+                      {selectedInstructors[selectedInstructors.length - 1] && (!curRMP[selectedInstructors[selectedInstructors.length - 1]] || curRMP[selectedInstructors[selectedInstructors.length - 1]] === 0) &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                          <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {firstInstructor}</p>
+                          <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {selectedInstructors[selectedInstructors.length - 1]}</p>
                           <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
                         </div>
                       }
 
                       {/* RMP circular stat */}
                       <div className='md:w-1/2 m-auto mt-1'>
-                        {firstInstructor && curRMP[firstInstructor] ? (
+                        {selectedInstructors[selectedInstructors.length - 1] && curRMP[selectedInstructors[selectedInstructors.length - 1]] ? (
                           <CircularProgressbar
-                            value={curRMP[firstInstructor]}
+                            value={curRMP[selectedInstructors[selectedInstructors.length - 1]]}
                             maxValue={5}
-                            text={curRMP[firstInstructor]}
+                            text={curRMP[selectedInstructors[selectedInstructors.length - 1]]}
                             styles={buildStyles({
-                              pathColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
-                              textColor: curGPA[firstInstructor] ? curGPA[firstInstructor][1] : "",
+                              pathColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : "",
+                              textColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : "",
                               trailColor: '#0a0a0a',
                             })}
                           />
