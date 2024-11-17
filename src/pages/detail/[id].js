@@ -57,9 +57,9 @@ const CardDetails = ({ courseData, semData }) => {
     // console.log(JSON.stringify(courseData, null, 2)); // for debugging and you dont wanna start server
 
     // set descriptions to none if it's html
-    // if (courseData.description && courseData.description.startsWith("<a href=")) {
-    //   setCourse({ ...courseData, description: "No Description Available" });
-    // }
+    if (courseData.description && courseData.description.startsWith("<a href=")) {
+      courseData.description = "No Description Available";
+    }
 
     // Set allProfs variable with all courseData instructors
     const allProfs = [];
