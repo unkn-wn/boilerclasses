@@ -49,23 +49,22 @@ import { loadRatingsForProfs } from '@/components/RMP';
 
 const CardDetails = ({ courseData, semData }) => {
   const router = useRouter();
-  const [course, setCourse] = useState(courseData);
   const [loading, setLoading] = useState(true);
 
   // UseEffect that loads on first render
   useEffect(() => {
-    if (!course) return;
-    // console.log(JSON.stringify(course, null, 2)); // for debugging and you dont wanna start server
+    if (!courseData) return;
+    // console.log(JSON.stringify(courseData, null, 2)); // for debugging and you dont wanna start server
 
     // set descriptions to none if it's html
-    if (course.description && course.description.startsWith("<a href=")) {
-      setCourse({ ...course, description: "No Description Available" });
-    }
+    // if (courseData.description && courseData.description.startsWith("<a href=")) {
+    //   setCourse({ ...courseData, description: "No Description Available" });
+    // }
 
-    // Set allProfs variable with all course instructors
+    // Set allProfs variable with all courseData instructors
     const allProfs = [];
-    for (const semester in course.instructor) {
-      for (const instructor of course.instructor[semester]) {
+    for (const semester in courseData.instructor) {
+      for (const instructor of courseData.instructor[semester]) {
         if (!allProfs.includes(instructor)) {
           allProfs.push(instructor);
         }
@@ -82,7 +81,7 @@ const CardDetails = ({ courseData, semData }) => {
       let avg_gpa = 0;
       let avg_grade_dist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-      if (!course.gpa[instructor]) { // if no data for instructor, set to 0
+      if (!courseData.gpa[instructor]) { // if no data for instructor, set to 0
         gpa[instructor] = [0, "#ffffff"];
         grades.push({
           label: instructor,
@@ -94,10 +93,10 @@ const CardDetails = ({ courseData, semData }) => {
 
       const color = graphColors[(curr++) % graphColors.length];
       let count = 0;
-      for (const sem in course.gpa[instructor]) { // for each semester, calculate avg gpa and grade distribution
-        avg_gpa += course.gpa[instructor][sem][13];
+      for (const sem in courseData.gpa[instructor]) { // for each semester, calculate avg gpa and grade distribution
+        avg_gpa += courseData.gpa[instructor][sem][13];
         for (let i = 0; i < 13; i++) {
-          avg_grade_dist[i] += course.gpa[instructor][sem][i];
+          avg_grade_dist[i] += courseData.gpa[instructor][sem][i];
         }
         count++;
       }
@@ -135,7 +134,7 @@ const CardDetails = ({ courseData, semData }) => {
     // set current semester
     setSem(availableSemesters[0]);
 
-    const currentSemesterProfs = course.instructor[availableSemesters[0]];
+    const currentSemesterProfs = courseData.instructor[availableSemesters[0]];
 
     // Set the first instructor to the first professor in the current semester
     if (currentSemesterProfs && currentSemesterProfs.length > 0) {
@@ -151,15 +150,15 @@ const CardDetails = ({ courseData, semData }) => {
 
     setLoading(false);
 
-  }, [router.isReady])
+  }, [router.isReady, courseData]);
 
 
   // Another UseEffect to asynchronously get RMP ratings
   useEffect(() => {
-    loadRatingsForProfs(course).then((ratings) => {
+    loadRatingsForProfs(courseData).then((ratings) => {
       setCurRMP(ratings);
     });
-  }, [course]);
+  }, [courseData]);
 
 
   // ------------------ STATES ------------------ //
@@ -178,8 +177,8 @@ const CardDetails = ({ courseData, semData }) => {
 
   semesters.forEach((sem) => {
     try {
-      course.instructor[sem].forEach((prof) => instructors.add(prof));
-      if (course.terms.includes(sem)) {
+      courseData.instructor[sem].forEach((prof) => instructors.add(prof));
+      if (courseData.terms.includes(sem)) {
         availableSemesters.push(sem);
       }
     } catch { }
@@ -192,7 +191,7 @@ const CardDetails = ({ courseData, semData }) => {
     //for each prof in curInstructors, add to ret string with " OR "
 
     let ret = " OR ";
-    course.instructor[sem].forEach((prof) => {
+    courseData.instructor[sem].forEach((prof) => {
 
       const profSplit = prof.split(" ");
       ret += `"${profSplit[0]} ${profSplit[profSplit.length - 1]}" OR `;
@@ -232,7 +231,7 @@ const CardDetails = ({ courseData, semData }) => {
 
   // To refresh graph when everythings loaded
   useEffect(() => {
-    if (!course) return;
+    if (!courseData) return;
     refreshGraph([{ value: firstInstructor, label: firstInstructor }]);
   }, [defaultGPA.datasets]);
 
@@ -256,44 +255,8 @@ const CardDetails = ({ courseData, semData }) => {
     return gened[0].label;
   }
 
-  // Go back on back button
-  const goBack = () => {
 
-    // if referrer isn't from boilerclasses, go to home
-    // const referrer = document.referrer;
-    // const isFromBoilerClasses = referrer.includes(window.location.origin);
-    // console.log(referrer, isFromBoilerClasses);
-
-    // if (!isFromBoilerClasses) {
-    //   router.replace(window.location.origin || "/");
-    //   return;
-    // }
-
-    // if current url contqains ?q=, then go back with query
-    const currentURL = window.location.href;
-    console.log(currentURL);
-    if (currentURL.includes("?q=")) {
-      router.push({ pathname: window.location.origin, query: { q: currentURL.split("?q=")[1] } });
-      return;
-    }
-
-    // if history exists, go back, and reload if going back from prereqs
-    if (window.history.length > 1) {
-      router.back();
-      if (!window.history.state?.as.includes("?q=")) {
-        setTimeout(() => {
-          router.reload();
-        }, 100);
-      }
-    } else {
-      // if no history, go to home
-      router.push("/");
-    }
-
-  };
-
-
-  // function to strip course code to remove the 00s
+  // function to strip courseData code to remove the 00s
   function stripCourseCode(courseCode) {
     let formattedName = courseCode.toString();
     if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
@@ -304,7 +267,7 @@ const CardDetails = ({ courseData, semData }) => {
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
-  if (JSON.stringify(course) == '{}') {
+  if (JSON.stringify(courseData) == '{}') {
     return <ErrorPage statusCode={404} />
   }
 
@@ -368,10 +331,10 @@ const CardDetails = ({ courseData, semData }) => {
 
             <div className='flex flex-row gap-1'>
               {/* Back button */}
-              <button onClick={() => goBack()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
+              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
                 <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
               </button>
-              <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{course.subjectCode} {course.courseCode}: {course.title}</p>
+              <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{courseData.subjectCode} {courseData.courseCode}: {courseData.title}</p>
             </div>
 
             <div className="flex flex-col gap-4 -mt-3 mb-1">
@@ -379,16 +342,16 @@ const CardDetails = ({ courseData, semData }) => {
 
                 {/* Credits Display */}
                 <p className="text-sm text-gray-400 font-bold">
-                  {course.credits[0] === course.credits[1]
-                    ? `${course.credits[0]} Credits`
-                    : `${course.credits[0]} - ${course.credits[1]} Credits`}
+                  {courseData.credits[0] === courseData.credits[1]
+                    ? `${courseData.credits[0]} Credits`
+                    : `${courseData.credits[0]} - ${courseData.credits[1]} Credits`}
                 </p>
 
                 {/* Separator Display */}
-                {(course.gened.length > 0 || course.sched.length > 0) && <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
+                {(courseData.gened.length > 0 || courseData.sched.length > 0) && <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
 
                 {/* Schedule Type Display */}
-                {course.sched.map((s, i) => (
+                {courseData.sched.map((s, i) => (
                   <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap transition-all`}
                     key={i}>
                     {s}
@@ -401,7 +364,7 @@ const CardDetails = ({ courseData, semData }) => {
                 </span>
 
                 {/* Gened Type Display */}
-                {course.gened.map((gened, i) => (
+                {courseData.gened.map((gened, i) => (
                   <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                     key={i}>
                     {genedCodeToName(gened)}
@@ -409,14 +372,14 @@ const CardDetails = ({ courseData, semData }) => {
                 ))}
 
               </div>
-              {/* <p>{course.gpa[""]}</p> */}
+              {/* <p>{courseData.gpa[""]}</p> */}
 
               {/* Instructors Display */}
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
 
-                  {course.instructor[sem].map((prof, i) => (
+                  {courseData.instructor[sem].map((prof, i) => (
                     <span key={i}>
                       <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
                         target="_blank" rel="noopener noreferrer"
@@ -424,7 +387,7 @@ const CardDetails = ({ courseData, semData }) => {
                         key={i}>
                         {prof}
                       </a>
-                      {i < course.instructor[sem].length - 1 && ", "}
+                      {i < courseData.instructor[sem].length - 1 && ", "}
                     </span>
                   ))}
                 </div>
@@ -434,22 +397,22 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Other Links Buttons */}
             <div className="flex flex-row flex-wrap my-2">
-              <a href={`https://www.reddit.com/r/Purdue/search/?q=${course.subjectCode}${stripCourseCode(course.courseCode)} OR "${course.subjectCode} ${stripCourseCode(courseData.courseCode)}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://www.reddit.com/r/Purdue/search/?q=${courseData.subjectCode}${stripCourseCode(courseData.courseCode)} OR "${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="/reddit-icon.png" alt="Reddit" boxSize={4} className="my-auto" />
                   Reddit
                 </div>
               </a>
-              <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202510&subj_code_in=${course.subjectCode}&crse_numb_in=${course.courseCode}`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202510&subj_code_in=${courseData.subjectCode}&crse_numb_in=${courseData.courseCode}`} target="_blank" rel="noopener noreferrer"
                 className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
                   Catalog
                 </div>
               </a>
-              {boilerExamsCourses.includes(`${course.subjectCode}${course.courseCode}`) &&
-                <a href={`https://www.boilerexams.com/courses/${course.subjectCode}${course.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
+              {boilerExamsCourses.includes(`${courseData.subjectCode}${courseData.courseCode}`) &&
+                <a href={`https://www.boilerexams.com/courses/${courseData.subjectCode}${courseData.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
                   className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
                     <Image src="/boilerexams-icon.png" alt="Boilerexams" boxSize={4} className="my-auto filter" />
@@ -461,11 +424,11 @@ const CardDetails = ({ courseData, semData }) => {
 
 
             {/* Description */}
-            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{course.description}</p>
-            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {course.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.</h1>
+            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{courseData.description}</p>
+            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {courseData.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
-            <Prereqs course={course} router={router} />
+            <Prereqs course={courseData} router={router} />
 
 
 
@@ -619,12 +582,12 @@ const CardDetails = ({ courseData, semData }) => {
 
                 {/* All Instructors Tab */}
                 <TabPanel>
-                  <FullInstructorModal course={course} />
+                  <FullInstructorModal course={courseData} />
                 </TabPanel>
 
                 {/* GPA by Professor Tab */}
                 <TabPanel>
-                  <GpaModal course={course} />
+                  <GpaModal course={courseData} />
                 </TabPanel>
               </TabPanels>
             </Tabs>
@@ -632,7 +595,7 @@ const CardDetails = ({ courseData, semData }) => {
         </div>
 
         {/* Calendar View for Lecture Times */}
-        {<Calendar subjectCode={course.subjectCode} courseCode={course.courseCode} title={course.title} />}
+        {<Calendar subjectCode={courseData.subjectCode} courseCode={courseData.courseCode} title={courseData.title} />}
 
         <div className='mt-auto'>
           <Footer />
@@ -646,7 +609,7 @@ const CardDetails = ({ courseData, semData }) => {
 
 
 
-// @Sarthak made this, some api call to get course data
+// @Sarthak made this, some api call to get courseData data
 export async function getServerSideProps(context) {
 
   const params = new URLSearchParams({ detailId: context.params.id });
