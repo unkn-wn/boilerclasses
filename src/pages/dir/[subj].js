@@ -4,9 +4,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Footer from '@/components/footer';
+import ErrorPage from 'next/error';
 
 const SubjectDirectory = ({ courses, subject }) => {
   const router = useRouter();
+
+  if (!courses || courses.length === 0) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   return <>
     <Head>
