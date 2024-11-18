@@ -20,7 +20,7 @@ const Prereqs = ({ course }) => {
       return (
         <span className='' key={i}>
           <a onClick={() => router.push(`/detail/${detailId}`)}
-            className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out text-blue-600'>
+            className='underline decoration-dotted cursor-pointer hover:text-blue-700 transition-all duration-300 ease-out text-blue-600'>
             {subjectCode} {courseNumber}
           </a>
           {concurrent === "True" ? " [may be taken concurrently]" : ""}
