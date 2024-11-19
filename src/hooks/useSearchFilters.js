@@ -23,14 +23,16 @@ const DEFAULT_FILTERS = {
   ]
 };
 
-export const useSearchFilters = (currentSemester) => {
+export const CURRENT_SEMESTER = "Spring 2025";
+
+export const useSearchFilters = () => {
   const router = useRouter();
   const { query } = router;
 
   // Combined filters state
   const [filters, setFilters] = useState({
     ...DEFAULT_FILTERS,
-    semesters: [{ label: currentSemester, value: currentSemester }],
+    semesters: [{ label: CURRENT_SEMESTER, value: CURRENT_SEMESTER }],
     searchTerm: query.q || '',
   });
 
@@ -98,7 +100,14 @@ export const useSearchFilters = (currentSemester) => {
     });
 
     try {
-      const response = await fetch('/api/search?' + params);
+      let baseUrl = window.location.href;
+      if (baseUrl.includes("localhost")) {
+        baseUrl = "http://localhost:3000";
+      } else {
+        baseUrl = "https://boilerclasses.com";
+      }
+
+      const response = await fetch(`${baseUrl}/api/search?` + params);
       const data = await response.json();
 
       // Clean up descriptions

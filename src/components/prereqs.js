@@ -37,8 +37,7 @@ const Prereqs = ({ course }) => {
   try {
     return (
       (course.prereqs && course.prereqs[0].split(' ')[0] !== router.query.id) && (
-        <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
-          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
+        <p className="lg:text-sm text-xs text-gray-400 font-medium">
           {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
         </p>
       )

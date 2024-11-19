@@ -13,7 +13,7 @@ import {
     Spinner,
 } from '@chakra-ui/react'
 
-
+// Component
 const Calendar = (props) => {
 
     const { subjectCode, courseCode, title } = props;
@@ -27,101 +27,14 @@ const Calendar = (props) => {
     const [wait, setWait] = useState(true);
 
 
-    function convertTo12HourFormat(time) {
-        const [hour, minute] = time.split(':');
-
-        const period = hour >= 12 ? 'PM' : 'AM';
-
-        const hour12 = hour % 12 || 12;
-
-        const time12 = `${hour12}:${minute} ${period}`;
-
-        return time12;
-    }
-
-
-    // Get purdue.io data for course sections and lecture times
-    const getCourseData = async (subjectCode, courseCode, title) => {
-
-        const updatedLectures = {
-            Monday: [],
-            Tuesday: [],
-            Wednesday: [],
-            Thursday: [],
-            Friday: []
-        };
-
-        let data;
-
-        try {
-            const semester = "202520";
-            const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
-            // console.log(url);
-            const response = await fetch(url);
-            setWait(false);
-            data = await response.json();
-
-            setLectures(updatedLectures);
-
-            data = data.value[0];
-
-        } catch (e) {
-            setWait(false);
-            return;
-        }
-
-        if (!data) {
-            setWait(false);
-            return;
-        }
-
-        for (const cls of data.Classes) {
-            for (const section of cls.Sections) {
-                for (const meeting of section.Meetings) {
-                    try {
-                        const { DaysOfWeek, StartDate, EndDate, Type } = meeting;
-                        const startTimeRaw = meeting.StartTime;
-                        const startTime = convertTo12HourFormat(startTimeRaw);
-                        const duration = meeting.Duration.split("PT")[1];
-                        const instructors = meeting.Instructors.map(instr => instr.Name);
-
-                        const lecture = {
-                            startDate: StartDate,
-                            endDate: EndDate,
-                            type: Type,
-                            startTime,
-                            startTimeRaw,
-                            duration,
-                            instructors
-                        };
-
-                        DaysOfWeek.split(",").forEach(day => {
-                            updatedLectures[day.trim()].push(lecture);
-                        });
-                    } catch (e) {
-                        continue;
-                    }
-
-                }
-            }
-        }
-
-        for (const day in updatedLectures) {
-            updatedLectures[day].sort((a, b) => {
-                const aTime = a.startTimeRaw.split(':');
-                const bTime = b.startTimeRaw.split(':');
-                const aDate = new Date(1970, 0, 1, aTime[0], aTime[1], 0);
-                const bDate = new Date(1970, 0, 1, bTime[0], bTime[1], 0);
-                return aDate - bDate;
-            });
-        }
-        // console.log(updatedLectures);
-
-        setLectures(updatedLectures);
-    }
-
     useEffect(() => {
-        getCourseData(subjectCode, courseCode, title);
+        const fetchCourseData = async () => {
+            const lectureData = await getCourseData(subjectCode, courseCode, title);
+            setLectures(lectureData);
+        }
+
+        fetchCourseData();
+        setWait(false);
     }, [subjectCode, courseCode, title]);
 
     if (Object.values(lectures).every(lecture => lecture.length === 0)) {
@@ -196,19 +109,20 @@ const Calendar = (props) => {
     )
 }
 
+
+export const translateType = (type) => {
+    switch (type) {
+        case "Practice Study Observation":
+            return "PSO";
+        case "Laboratory":
+            return "Lab";
+        default:
+            return type;
+    }
+}
+
 const LectureTimeDisplay = (props) => {
     const { lecture } = props;
-
-    const translateType = (type) => {
-        switch (type) {
-            case "Practice Study Observation":
-                return "PSO";
-            case "Laboratory":
-                return "Lab";
-            default:
-                return type;
-        }
-    }
 
     return (
         <Popover placement="auto" trigger="hover">
@@ -238,5 +152,170 @@ const LectureTimeDisplay = (props) => {
 }
 
 
-
 export default Calendar;
+
+
+// helper functions ///////////////////////////////////////
+
+// lectures grouped by days
+export const getCourseData = async (subjectCode, courseCode, title) => {
+    const updatedLectures = {
+        Monday: [],
+        Tuesday: [],
+        Wednesday: [],
+        Thursday: [],
+        Friday: [],
+        None: []
+    };
+
+    let data;
+
+    try {
+        const semester = "202520";
+        const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" + semester + "';$expand=Sections($expand=Meetings($expand=Instructors)))&$filter=Subject/Abbreviation eq '" + subjectCode + "' and Number eq '" + courseCode + "' and Title eq '" + title + "'";
+        // console.log(url);
+
+        const response = await fetch(url);
+        data = await response.json();
+
+        data = data.value[0];
+    } catch (e) {
+        console.error('Error fetching course data:', e);
+        return updatedLectures;
+    }
+
+    if (!data) {
+        console.log('No lecture data found for ' + subjectCode + ' ' + courseCode);
+        return updatedLectures;
+    }
+
+    for (const cls of data.Classes) {
+        for (const section of cls.Sections) {
+            for (const meeting of section.Meetings) {
+                try {
+                    const { DaysOfWeek, StartDate, EndDate, Type, Id, RoomId } = meeting;
+                    const startTimeRaw = meeting.StartTime || "00:00";
+                    const startTime = convertTo12HourFormat(startTimeRaw);
+                    const duration = meeting.Duration.split("PT")[1];
+                    const instructors = meeting.Instructors.map(instr => instr.Name);
+
+                    const lecture = {
+                        id: `${subjectCode}-${courseCode}-${Type}-${StartDate}-${startTimeRaw}-${Id}-${RoomId}`,
+                        startDate: StartDate,
+                        endDate: EndDate,
+                        type: Type,
+                        startTime,
+                        startTimeRaw,
+                        duration,
+                        instructors,
+                        room: RoomId
+                    };
+
+                    DaysOfWeek.split(",").forEach(day => {
+                        const dayLectures = updatedLectures[day.trim()];
+                        const lectureExists = dayLectures.some(existingLecture => existingLecture.id === lecture.id);
+
+                        if (!lectureExists) {
+                            dayLectures.push(lecture);
+                        }
+                    });
+                } catch (e) {
+                    continue;
+                }
+            }
+        }
+    }
+
+    for (const day in updatedLectures) {
+        updatedLectures[day].sort((a, b) => {
+            const aTime = a.startTimeRaw.split(':');
+            const bTime = b.startTimeRaw.split(':');
+            const aDate = new Date(1970, 0, 1, aTime[0], aTime[1], 0);
+            const bDate = new Date(1970, 0, 1, bTime[0], bTime[1], 0);
+            return aDate - bDate;
+        });
+    }
+
+    return updatedLectures;
+};
+
+// New function to group lectures by time slots
+export const groupLecturesByTimeSlot = (dayGroupedLectures) => {
+    const timeSlotMap = new Map();
+
+    // Process each day's lectures
+    Object.entries(dayGroupedLectures).forEach(([day, lectures]) => {
+        lectures.forEach(lecture => {
+            const start = convertTimeToNumber(lecture.startTimeRaw);
+            const end = calculateEndTime(lecture.startTimeRaw, lecture.duration);
+
+            const key = `${lecture.id}-${lecture.type}-${start}-${end}-${lecture.instructors.join(',')}`;
+
+            if (!timeSlotMap.has(key)) {
+                timeSlotMap.set(key, {
+                    id: lecture.id,
+                    type: lecture.type,
+                    start,
+                    end,
+                    startTime: lecture.startTime,
+                    startTimeRaw: lecture.startTimeRaw,
+                    duration: lecture.duration,
+                    instructors: lecture.instructors,
+                    startDate: lecture.startDate,
+                    endDate: lecture.endDate,
+                    days: [day]
+                });
+            } else {
+                // Only add the day if the IDs match
+                const existing = timeSlotMap.get(key);
+                if (!existing.days.includes(day) && existing.id === lecture.id) {
+                    existing.days.push(day);
+                }
+            }
+        });
+    });
+
+    // Convert to array and sort by start time
+    const arr = Array.from(timeSlotMap.values())
+        .sort((a, b) => a.start - b.start);
+
+    console.log(arr);
+    return arr;
+};
+
+// Helper function to convert time string to number (e.g., "9:30" -> 930)
+export const convertTimeToNumber = (timeStr) => {
+    const [hours, minutes] = timeStr.split(':');
+    return parseInt(hours) * 100 + parseInt(minutes);
+};
+
+// Helper function to convert number to time string (e.g., 930 -> "9:30"), AM/PM format
+export const convertNumberToTime = (timeNum) => {
+    const hours = Math.floor(timeNum / 100);
+    const minutes = timeNum % 100;
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const hour12 = hours % 12 || 12;
+    return `${hour12}:${minutes.toString().padStart(2, '0')} ${period}`;
+};
+
+// Helper function to calculate end time from start time and duration
+export const calculateEndTime = (startTime, duration) => {
+    const [hours, minutes] = startTime.split(':').map(Number);
+    const durationHours = duration.includes('H') ? parseInt(duration.split('H')[0]) : 0;
+    const durationMinutes = duration.includes('M') ?
+        parseInt(duration.split('H')[1]?.replace('M', '') || duration.replace('M', '')) : 0;
+
+    let totalMinutes = hours * 60 + minutes + (durationHours * 60) + durationMinutes;
+    const endHours = Math.floor(totalMinutes / 60);
+    const endMinutes = totalMinutes % 60;
+
+    return endHours * 100 + endMinutes;
+};
+
+// Helper function to convert 24-hour format to 12-hour format
+export const convertTo12HourFormat = (time) => {
+    const [hour, minute] = time.split(':');
+    const period = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minute} ${period}`;
+};

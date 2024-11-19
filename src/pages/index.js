@@ -12,7 +12,6 @@ import SearchFilters from '@/components/searchFilters';
 import { useSearchFilters } from '@/hooks/useSearchFilters';
 
 const inter = Inter({ subsets: ['latin'] });
-const currentSemester = "Spring 2025";
 
 const CourseCatalog = () => {
 
@@ -25,7 +24,7 @@ const CourseCatalog = () => {
     setFiltersCollapsed,
     courses,
     transformQuery
-  } = useSearchFilters(currentSemester);
+  } = useSearchFilters();
 
   // Gets all the filters as a string for displaying to users
   const getAllFiltersString = () => {
