@@ -22,8 +22,8 @@ export const processLectureData = (courseResults, courses) => {
 
     const courseName = `${courses[index].subjectCode} ${courses[index].courseCode}`;
 
-    courseData.Classes.forEach(course => {
-      course.Sections.forEach(section => {
+    courseData.Classes.forEach(classData => {
+      classData.Sections.forEach(section => {
         section.Meetings.forEach(meeting => {
           const days = meeting.DaysOfWeek.split(',').map(day => day.trim().slice(0, 3));
           const startTime = meeting.StartTime.split('.')[0];
@@ -35,6 +35,7 @@ export const processLectureData = (courseResults, courses) => {
           coursesArray.push({
             id: meeting.Id,
             name: courseName,
+            classId: classData.Id,  // Add classId
             type: meeting.Type,
             start,
             end,
@@ -86,7 +87,27 @@ const groupLecturesByTime = (lectures) => {
 
 const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const groupedLectures = groupLecturesByTime(lectures);
+
+  // First group by class sections
+  const classSections = lectures.reduce((acc, lecture) => {
+    if (!acc[lecture.classId]) {
+      acc[lecture.classId] = {};
+    }
+    const timeKey = lecture.startTime;
+    if (!acc[lecture.classId][timeKey]) {
+      acc[lecture.classId][timeKey] = [];
+    }
+    acc[lecture.classId][timeKey].push(lecture);
+    return acc;
+  }, {});
+
+  // Sort class sections by their earliest time
+  const sortedClassSections = Object.entries(classSections)
+    .sort(([, timesA], [, timesB]) => {
+      const firstTimeA = Object.keys(timesA).sort((a, b) => sortByTime(a, b))[0];
+      const firstTimeB = Object.keys(timesB).sort((a, b) => sortByTime(a, b))[0];
+      return sortByTime(firstTimeA, firstTimeB);
+    });
 
   return (
     <div className="">
@@ -99,36 +120,42 @@ const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle }
         <span className="font-semibold">{courseName}</span>
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="xl" >
+      <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
         <ModalContent containerProps={{ justifyContent: 'flex-end', paddingRight: '4rem' }}>
           <ModalHeader className='bg-zinc-900 text-white'>{courseName} Sections</ModalHeader>
           <ModalCloseButton className='text-white' />
           <ModalBody pb={6} className='bg-zinc-900 text-white'>
             <Stack spacing={4}>
-              {Object.entries(groupedLectures).map(([timeKey, lecturesAtTime]) => (
-                <div key={timeKey}>
-                  <div className="text-sm font-semibold mb-2">
-                    {timeKey}
-                  </div>
-                  <div className="flex flex-wrap gap-4">
-                    {lecturesAtTime.map((lecture) => (
-                      <Checkbox
-                        key={lecture.id}
-                        isChecked={selectedLectures.has(lecture.id)}
-                        onChange={() => onLectureToggle(lecture.id)}
-                        colorScheme="blue"
-                        className="flex-1 min-w-[200px]"
-                      >
-                        <span className="text-sm">
-                          {`${lecture.type} - ${lecture.room}`}
-                          <div className="text-xs text-gray-400">
-                            {`${lecture.day.join(', ')} • ${lecture.instructors.join(', ')}`}
-                          </div>
-                        </span>
-                      </Checkbox>
+              {sortedClassSections.map(([classId, timeGroups], sectionIndex) => (
+                <div key={classId} className="border-b border-zinc-700 pb-2 mb-2">
+                  <div className="text-sm font-bold mb-2 text-blue-400">Class Section {sectionIndex + 1}</div>
+                  {Object.entries(timeGroups)
+                    .sort(([timeA], [timeB]) => sortByTime(timeA, timeB))
+                    .map(([timeKey, lectures]) => (
+                      <div key={timeKey} className="mb-2">
+                        <div className="text-sm font-semibold mb-2">{timeKey}</div>
+                        <div className="flex flex-row flex-wrap gap-2">
+                          {lectures.map((lecture) => (
+                            <div className='flex-grow mx-2 flex-1'>
+                              <Checkbox
+                                key={lecture.id}
+                                isChecked={selectedLectures.has(lecture.id)}
+                                onChange={() => onLectureToggle(lecture.id, lecture.classId)}
+                                colorScheme="blue"
+                              >
+                                <span className="text-sm">
+                                  {`${lecture.type} - ${lecture.room}`}
+                                  <div className="text-xs text-gray-400">
+                                    {`${lecture.day.join(', ')} • ${lecture.instructors.join(', ')}`}
+                                  </div>
+                                </span>
+                              </Checkbox>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     ))}
-                  </div>
                 </div>
               ))}
             </Stack>
@@ -139,15 +166,35 @@ const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle }
   );
 };
 
+// Update ScheduleManager component to handle class-based selection
 const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange }) => {
-  const handleLectureToggle = (lectureId) => {
+  const handleLectureToggle = (lectureId, classId) => {
     const newSelectedLectures = new Set(selectedLectureIds);
-    if (newSelectedLectures.has(lectureId)) {
-      newSelectedLectures.delete(lectureId);
+    const clickedLecture = lectures.find(lecture => lecture.id === lectureId);
+
+    // If selecting a new lecture
+    if (!selectedLectureIds.has(lectureId)) {
+      // Remove other lectures from the same course (but keep other courses)
+      lectures
+        .filter(lecture => lecture.name === clickedLecture.name)
+        .forEach(lecture => {
+          newSelectedLectures.delete(lecture.id);
+        });
+
+      // Add the selected lecture and any other lectures from its class
+      lectures
+        .filter(lecture => lecture.classId === classId)
+        .forEach(lecture => {
+          if (selectedLectureIds.has(lecture.id) || lecture.id === lectureId) {
+            newSelectedLectures.add(lecture.id);
+          }
+        });
     } else {
-      newSelectedLectures.add(lectureId);
+      // If deselecting, just remove this specific lecture
+      newSelectedLectures.delete(lectureId);
     }
-    onLectureSelectionChange([...newSelectedLectures]); // Convert Set to Array before passing
+
+    onLectureSelectionChange([...newSelectedLectures]);
   };
 
   // Group lectures by course name

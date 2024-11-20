@@ -143,7 +143,7 @@ const Schedule = () => {
                       </div>
                     ) : (
                       <div
-                        className="flex self-end rounded-full border h-8 w-8 text-center justify-center px-2 font-bold shadow-sm shadow-white/20 cursor-pointer transition border-zinc-700 hover:bg-zinc-500"
+                        className="flex self-end rounded-full border h-8 w-8 text-center justify-center px-2 font-bold shadow-sm shadow-white/20 cursor-pointer transition border-yellow-500 bg-yellow-500/50 hover:bg-yellow-500"
                         onClick={() => setPinCourses([...pinCourses, selectedCourse.value])}
                       >
                         {isLoading ? <div><Spinner /></div> : '+'}
