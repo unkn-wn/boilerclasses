@@ -121,7 +121,7 @@ const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle }
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
-        <ModalOverlay />
+        <ModalOverlay bg={'blackAlpha.300'} />
         <ModalContent containerProps={{ justifyContent: 'flex-end', paddingRight: '4rem' }}>
           <ModalHeader className='bg-zinc-900 text-white'>{courseName} Sections</ModalHeader>
           <ModalCloseButton className='text-white' />
