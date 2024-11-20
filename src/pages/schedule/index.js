@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 import { Spinner } from '@chakra-ui/react'
+import { IoMdOpen, IoIosAdd, IoMdTrash } from "react-icons/io";
 
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedsOptions, labels, graphColors } from '@/lib/utils';
@@ -35,11 +36,11 @@ const Schedule = () => {
   useEffect(() => {
     if (!selectedCourse) return;
 
-    sanitizeDescription(selectedCourse.value);
-    const allProfs = collectAllProfessors(selectedCourse.value.instructor);
+    sanitizeDescription(selectedCourse);
+    const allProfs = collectAllProfessors(selectedCourse.instructor);
     const { grades, gpa } = calculateGradesAndGPA(
       allProfs,
-      selectedCourse.value.gpa,
+      selectedCourse.gpa,
       graphColors
     );
 
@@ -59,7 +60,7 @@ const Schedule = () => {
     }
     console.log("Selected course:", course);
     updateFilter('searchTerm', '');
-    setSelectedCourse(course);
+    setSelectedCourse(course.value);
   };
 
   return (
@@ -94,7 +95,7 @@ const Schedule = () => {
           </div>
 
           <div className='mx-2'>
-            <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} />
+            <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} />
           </div>
         </div>
 
@@ -123,32 +124,45 @@ const Schedule = () => {
 
                   {/* LEFT SIDE - Course Info */}
                   <div className='w-1/2'>
-                    <h1 className='font-bold text-3xl'>{selectedCourse.value.subjectCode} {selectedCourse.value.courseCode}</h1>
-                    <h2 className='font-bold text-lg'>{selectedCourse.value.title}</h2>
+                    <h1 className='font-bold text-3xl'>{selectedCourse.subjectCode} {selectedCourse.courseCode}</h1>
+                    <h2 className='font-bold text-lg'>{selectedCourse.title}</h2>
 
                     {/* Description Display */}
-                    <p className="text-sm text-gray-200 mt-1 pb-4 break-words">{selectedCourse.value.description}</p>
+                    <p className="text-sm text-gray-200 mt-1 pb-4 break-words">{selectedCourse.description}</p>
                   </div>
 
                   {/* RIGHT SIDE - Course Details */}
                   <div className="flex flex-col w-1/2 gap-2 h-fit">
 
-                    {/* Pin Course button */}
-                    {pinCourses.some(course => course.detailId === selectedCourse.value.detailId) ? (
-                      <div
-                        className="flex self-end rounded-full border h-8 w-8 text-center justify-center px-2 font-bold shadow-sm shadow-white/20 cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
-                        onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.value.detailId))}
+                    <div className='flex flex-row self-end gap-2'>
+
+                      {/* Open in details button */}
+                      <a
+                        href={`https://www.boilerclasses.com/detail/${selectedCourse.detailId}`}
+                        target="_blank"
                       >
-                        {isLoading ? <div><Spinner /></div> : '-'}
-                      </div>
-                    ) : (
-                      <div
-                        className="flex self-end rounded-full border h-8 w-8 text-center justify-center px-2 font-bold shadow-sm shadow-white/20 cursor-pointer transition border-yellow-500 bg-yellow-500/50 hover:bg-yellow-500"
-                        onClick={() => setPinCourses([...pinCourses, selectedCourse.value])}
-                      >
-                        {isLoading ? <div><Spinner /></div> : '+'}
-                      </div>
-                    )}
+                        <div className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
+                          <IoMdOpen />
+                        </div>
+                      </a>
+                      {/* Pin Course button */}
+                      {pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
+                        <div
+                          className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                          onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
+                        >
+                          {isLoading ? <div><Spinner /></div> : <IoMdTrash />}
+                        </div>
+                      ) : (
+                        <div
+                          className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                          onClick={() => setPinCourses([...pinCourses, selectedCourse])}
+                        >
+                          {isLoading ? <div><Spinner /></div> : <IoIosAdd />}
+                        </div>
+                      )}
+
+                    </div>
 
                     <div className='grid grid-cols-2 gap-4 w-full'>
 
@@ -158,7 +172,7 @@ const Schedule = () => {
 
                         <div className='flex flex-row gap-1 flex-wrap'>
                           {/* Schedule Type Display */}
-                          {selectedCourse.value.sched.map((s, i) => (
+                          {selectedCourse.sched.map((s, i) => (
                             <span className='text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap text-ellipsis overflow-hidden hover:overflow-visible transition-all z-10'
                               key={i}>
                               {s}
@@ -167,10 +181,10 @@ const Schedule = () => {
 
 
                           {/* Gened Type Display */}
-                          {selectedCourse.value.gened.map((gened, i) => (
+                          {selectedCourse.gened.map((gened, i) => (
                             <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                               key={i}>
-                              {genedsOptions.filter(x => x.value === gened)[0].label}
+                              {genedsOptions.filter(x => x === gened)[0].label}
                             </span>
                           ))}
                         </div>
@@ -181,9 +195,9 @@ const Schedule = () => {
                       <div className="text-sm font-bold flex flex-col">
                         Credits
                         <p className='px-4 text-black bg-white rounded-md text-center w-fit'>
-                          {selectedCourse.value.credits[0] === selectedCourse.value.credits[1]
-                            ? `${selectedCourse.value.credits[0]}`
-                            : `${selectedCourse.value.credits[0]} - ${selectedCourse.value.credits[1]}`}
+                          {selectedCourse.credits[0] === selectedCourse.credits[1]
+                            ? `${selectedCourse.credits[0]}`
+                            : `${selectedCourse.credits[0]} - ${selectedCourse.credits[1]}`}
                         </p>
                       </div>
 
@@ -197,7 +211,7 @@ const Schedule = () => {
                       <div className="flex flex-wrap flex-row gap-x-1 text-sm text-blue-400 font-light">
 
 
-                        {selectedCourse.value.instructor[CURRENT_SEMESTER].map((prof, i) => (
+                        {selectedCourse.instructor[CURRENT_SEMESTER].map((prof, i) => (
                           <span key={i}>
                             <a
                               href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
@@ -209,18 +223,18 @@ const Schedule = () => {
                             >
                               {prof}
                             </a>
-                            {i < selectedCourse.value.instructor[CURRENT_SEMESTER].length - 1 && ", "}
+                            {i < selectedCourse.instructor[CURRENT_SEMESTER].length - 1 && ", "}
                           </span>
                         ))}
                       </div>
                     </div>
 
                     {/* Prerequisites Display */}
-                    {selectedCourse.value.prereqs && (
+                    {selectedCourse.prereqs && (
                       <div className='w-full'>
                         <p className="text-sm font-bold">Prerequisites</p>
                         <Prereqs
-                          course={selectedCourse.value}
+                          course={selectedCourse}
                         />
                       </div>
                     )}
@@ -229,13 +243,13 @@ const Schedule = () => {
                     <div className='w-full'>
                       <p className="text-sm font-bold">GPA Averages (Last 5 Semesters)</p>
                       <ScheduleGpaModal
-                        course={selectedCourse.value}
+                        course={selectedCourse}
                       />
                     </div>
 
                   </div>
                 </div>
-                {/* <p>{selectedCourse.value.gpa[""]}</p> */}
+                {/* <p>{selectedCourse.gpa[""]}</p> */}
 
 
                 {/* Graph */}

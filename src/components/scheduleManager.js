@@ -207,7 +207,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
   }, {});
 
   return (
-    <div className='m-4 grid grid-cols-4 gap-2'>
+    <div className='m-4 flex flex-row flex-wrap gap-2'>
       {Object.entries(courseGroups).map(([courseName, courseLectures]) => (
         <CourseGroup
           key={courseName}

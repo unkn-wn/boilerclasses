@@ -6,14 +6,14 @@ import { Tooltip } from '@chakra-ui/react';
 
 // Helper function to convert number to time string
 export const convertNumberToTime = (timeNum) => {
-    const hours = Math.floor(timeNum / 100);
-    const minutes = timeNum % 100;
-    const period = hours >= 12 ? 'PM' : 'AM';
-    const hour12 = hours % 12 || 12;
-    return `${hour12}:${minutes.toString().padStart(2, '0')} ${period}`;
+  const hours = Math.floor(timeNum / 100);
+  const minutes = timeNum % 100;
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const hour12 = hours % 12 || 12;
+  return `${hour12}:${minutes.toString().padStart(2, '0')} ${period}`;
 };
 
-const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
+const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => {
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [allLectures, setAllLectures] = useState([]);
   const [displayedLectures, setDisplayedLectures] = useState([]);
@@ -108,6 +108,18 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
     return hours + (minutes / 60);
   };
 
+
+  const reselectCourseDetails = (overlappingCourse) => {
+    for (const course of courses) {
+      for (const crn of course.crn) {
+        if (crn === parseInt(overlappingCourse.crn)) {
+          setSelectedCourse(course);
+          return;
+        }
+      }
+    }
+  };
+
   return (
     <div className='flex flex-col '>
       <div className="flex flex-col w-full h-full relative">
@@ -186,7 +198,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
                                 className='z-10 backdrop-blur-md'
                               >
                                 <div
-                                  className={`relative text-white text-xs overflow-hidden text-center rounded-lg border z-10 transition-all duration-200
+                                  className={`relative text-white text-xs overflow-hidden text-center rounded-lg border z-10 cursor-pointer transition-all duration-200
                                   ${hoveredCourse === overlappingCourse.name ? 'ring-2 ring-white' : ''}`}
                                   style={{
                                     borderColor: graphColors[colorIndex % graphColors.length],
@@ -200,6 +212,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
                                   }}
                                   onMouseEnter={() => setHoveredCourse(overlappingCourse.name)}
                                   onMouseLeave={() => setHoveredCourse(null)}
+                                  onClick={() => reselectCourseDetails(overlappingCourse)}
                                 >
                                   {`${translateType(overlappingCourse.type)} ${overlappingCourse.name}`}
                                 </div>
