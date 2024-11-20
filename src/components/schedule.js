@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { graphColors } from "@/lib/utils";
-import { getCourseData, convertNumberToTime, translateType } from './calendar';
+import { getCourseData, convertTo12HourFormat, translateType } from './calendar';
 import ScheduleManager, { processLectureData } from './scheduleManager';
 import { Tooltip } from '@chakra-ui/react';
+
+// Helper function to convert number to time string
+export const convertNumberToTime = (timeNum) => {
+    const hours = Math.floor(timeNum / 100);
+    const minutes = timeNum % 100;
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const hour12 = hours % 12 || 12;
+    return `${hour12}:${minutes.toString().padStart(2, '0')} ${period}`;
+};
 
 const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
   const [hoveredCourse, setHoveredCourse] = useState(null);
@@ -10,6 +19,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
   const [displayedLectures, setDisplayedLectures] = useState([]);
   // Create a map to store course name to color index mapping
   const [courseColorMap] = useState(new Map());
+  const [selectedLectureIds, setSelectedLectureIds] = useState(new Set());
 
   // Add this helper function at the beginning of the component
   const getCourseColorIndex = (courseName) => {
@@ -29,6 +39,9 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
     const fetchCourseData = async () => {
       if (!courses.length) {
         setIsLoading(false);
+        setAllLectures([]); // Reset lectures when no courses
+        setDisplayedLectures([]); // Reset displayed lectures
+        setSelectedLectureIds(new Set());
         return;
       }
 
@@ -38,13 +51,18 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
           getCourseData(course.subjectCode, course.courseCode, course.title)
         );
 
-        const courseResults = await Promise.all(coursePromises);
-        const processedLectures = processLectureData(courseResults, courses);
+        const rawResults = await Promise.all(coursePromises);
+        const processedLectures = processLectureData(rawResults, courses);
+
+        // Keep existing displayed lectures that are still valid
+        const validLectureIds = new Set(processedLectures.map(lecture => lecture.id));
+        const updatedSelectedIds = new Set(
+          Array.from(selectedLectureIds).filter(id => validLectureIds.has(id))
+        );
 
         setAllLectures(processedLectures);
-        console.log('All Lectures:', processedLectures);
-
-        // setDisplayedLectures(processedLectures);
+        setSelectedLectureIds(updatedSelectedIds);
+        setDisplayedLectures(processedLectures.filter(lecture => updatedSelectedIds.has(lecture.id)));
       } catch (error) {
         console.error('Error fetching course data:', error);
       } finally {
@@ -55,6 +73,11 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
     fetchCourseData();
   }, [courses]);
 
+  const handleLectureSelectionChange = (selectedIds) => {
+    const selectedSet = new Set(selectedIds); // Convert array to Set
+    setSelectedLectureIds(selectedSet);
+    setDisplayedLectures(allLectures.filter(lecture => selectedSet.has(lecture.id)));
+  };
 
   const getOverlappingCourses = (day, course) => {
     // First, get all courses for this day
@@ -141,6 +164,8 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
                                 <p className="font-bold">{overlappingCourse.name}</p>
                                 <p>{overlappingCourse.type}</p>
                                 <p>{overlappingCourse.startTime} - {convertNumberToTime(overlappingCourse.end)}</p>
+                                <p>{overlappingCourse.room}</p>
+                                <br />
                                 {overlappingCourse.instructors && (
                                   <p>Instructor(s): {overlappingCourse.instructors.join(', ')}</p>
                                 )}
@@ -196,7 +221,8 @@ const ScheduleCalendar = ({ courses = [], setIsLoading }) => {
       <div className="space-y-4">
         <ScheduleManager
           lectures={allLectures}
-          onLectureSelectionChange={setDisplayedLectures}
+          selectedLectureIds={selectedLectureIds}
+          onLectureSelectionChange={handleLectureSelectionChange}
         />
       </div>
     </div>

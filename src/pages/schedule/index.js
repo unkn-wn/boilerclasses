@@ -134,14 +134,21 @@ const Schedule = () => {
                   <div className="flex flex-col w-1/2 gap-2 h-fit">
 
                     {/* Pin Course button */}
-                    <div
-                      className='flex self-end rounded-full border-zinc-700 border h-8 w-8 text-center justify-center px-2 shadow-sm shadow-white/20 cursor-pointer hover:bg-zinc-500 transition'
-                      onClick={() => { setPinCourses([...pinCourses, selectedCourse.value]); }}
-                    >
-                      {isLoading ?
-                        <div><Spinner /></div> : '+'
-                      }
-                    </div>
+                    {pinCourses.some(course => course.detailId === selectedCourse.value.detailId) ? (
+                      <div
+                        className="flex self-end rounded-full border h-8 w-8 text-center justify-center px-2 font-bold shadow-sm shadow-white/20 cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                        onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.value.detailId))}
+                      >
+                        {isLoading ? <div><Spinner /></div> : '-'}
+                      </div>
+                    ) : (
+                      <div
+                        className="flex self-end rounded-full border h-8 w-8 text-center justify-center px-2 font-bold shadow-sm shadow-white/20 cursor-pointer transition border-zinc-700 hover:bg-zinc-500"
+                        onClick={() => setPinCourses([...pinCourses, selectedCourse.value])}
+                      >
+                        {isLoading ? <div><Spinner /></div> : '+'}
+                      </div>
+                    )}
 
                     <div className='grid grid-cols-2 gap-4 w-full'>
 
