@@ -22,11 +22,11 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
   const [selectedLectureIds, setSelectedLectureIds] = useState(new Set());
 
   // Add this helper function at the beginning of the component
-  const getCourseColorIndex = (courseName) => {
-    if (!courseColorMap.has(courseName)) {
-      courseColorMap.set(courseName, courseColorMap.size);
+  const getCourseColorIndex = (detailId) => {
+    if (!courseColorMap.has(detailId)) {
+      courseColorMap.set(detailId, courseColorMap.size);
     }
-    return courseColorMap.get(courseName);
+    return courseColorMap.get(detailId);
   };
 
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
@@ -61,6 +61,25 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
           Array.from(selectedLectureIds).filter(id => validLectureIds.has(id))
         );
 
+        // Find newly pinned courses and select their first lecture
+        courses.forEach((course) => {
+          if (course.initialPin) {
+            // Find all lectures for this course
+            const courseLectures = processedLectures.filter(
+              lecture => lecture.courseDetails.detailId === course.detailId
+            );
+
+            // Find the first lecture-type meeting
+            const firstLecture = courseLectures.find(lecture => lecture.type === "Lecture");
+
+            if (firstLecture) {
+              // Add just the lecture
+              updatedSelectedIds.add(firstLecture.id);
+            }
+            delete course.initialPin;
+          }
+        });
+
         setAllLectures(processedLectures);
         setSelectedLectureIds(updatedSelectedIds);
         setDisplayedLectures(processedLectures.filter(lecture => updatedSelectedIds.has(lecture.id)));
@@ -72,7 +91,9 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
     };
 
     fetchCourseData();
-  }, [courses]);
+    // Add courses.length and a stringified version of the last course to dependencies
+    // This ensures the effect runs when courses change or when a course is reselected
+  }, [courses, courses.length, courses[courses.length - 1]?.tmp_inc]);
 
   const handleLectureSelectionChange = (selectedIds) => {
     const selectedSet = new Set(selectedIds); // Convert array to Set
@@ -165,7 +186,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                       return (
                         <div className="flex flex-row absolute top-0 left-0 w-full h-full" key={courseIndex}>
                           {overlaps.map((overlappingCourse, index) => {
-                            const colorIndex = getCourseColorIndex(overlappingCourse.name.split(' -')[0]);
+                            const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId);
                             // Calculate position based on THIS course's times, not the original course
                             const startPos = calculateTimePosition(overlappingCourse.start);
                             const endPos = calculateTimePosition(overlappingCourse.end);
@@ -174,7 +195,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
 
                             const tooltipContent = (
                               <div className="text-left p-2 text-xs font-light">
-                                <p className="font-bold">{overlappingCourse.name}</p>
+                                <p className="font-bold">{overlappingCourse.name}: {overlappingCourse.courseDetails.title}</p>
                                 <p>{overlappingCourse.type}</p>
                                 <p>{overlappingCourse.startTime} - {convertNumberToTime(overlappingCourse.end)}</p>
                                 <p>{overlappingCourse.room}</p>
@@ -196,11 +217,11 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                                 color="white"
                                 border={`2px solid ${graphColors[colorIndex % graphColors.length]}`}
                                 rounded={5}
-                                className='z-50 backdrop-blur-md'
+                                className='z-50 backdrop-blur-md backdrop-brightness-50'
                               >
                                 <div
                                   className={`relative text-white text-xs overflow-hidden text-center rounded-lg border z-10 cursor-pointer transition-all duration-200
-                                  ${hoveredCourse === overlappingCourse.name ? 'ring-2 ring-white' : ''}`}
+                                  ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
                                   style={{
                                     borderColor: graphColors[colorIndex % graphColors.length],
                                     backgroundColor: graphColors[colorIndex % graphColors.length] + "50",
@@ -211,7 +232,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                                     width: `${100 / overlaps.length}%`,
                                     // marginLeft: `${(index * 100) / overlaps.length}%`
                                   }}
-                                  onMouseEnter={() => setHoveredCourse(overlappingCourse.name)}
+                                  onMouseEnter={() => setHoveredCourse(overlappingCourse.courseDetails.detailId)}
                                   onMouseLeave={() => setHoveredCourse(null)}
                                   onClick={() => reselectCourseDetails(overlappingCourse)}
                                 >

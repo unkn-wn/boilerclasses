@@ -63,7 +63,8 @@ const Calendar = (props) => {
                             room: `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`,
                             startTime: convertTo12HourFormat(meeting.StartTime.split('.')[0]),
                             endTime,
-                            days: meeting.DaysOfWeek
+                            days: meeting.DaysOfWeek,
+                            detailId: props.detailId  // Add this line
                         });
                     }
                 });
@@ -149,7 +150,7 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
             semester + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
             "&$filter=Subject/Abbreviation eq '" + subjectCode +
             "' and Number eq '" + courseCode +
-            "' and Title eq '" + title + "'";
+            "' and Title eq '" + encodeURIComponent(title) + "'";
         // console.log(url);
 
         const response = await fetch(url);

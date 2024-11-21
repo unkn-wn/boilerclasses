@@ -92,7 +92,7 @@ export const ScheduleGpaModal = ({ course }) => {
 							}
 						</div>
 						{Object.keys(gpa).map((instructor, index) => (
-							<div key={index} className='grid grid-flow-row py-1 gap-2'>
+							<div key={index} className='grid grid-flow-row py-1 gap-1'>
 								<h2 className='text-white text-xs'>{instructor}</h2>
 								<div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
 									{Object.keys(gpa[instructor]).map((semester, index) => (

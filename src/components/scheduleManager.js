@@ -89,21 +89,22 @@ const groupLecturesByTime = (lectures) => {
   );
 };
 
-const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle, setSelectedCourse }) => {
+const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const selectedCourseLectures = lectures.filter(lecture => selectedLectures.has(lecture.id));
   const hasSelectedLectures = selectedCourseLectures.length > 0;
 
   const reselectCourseDetails = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    let courseDetails = lectures[0]?.courseDetails;
-    if (courseDetails.tmp_inc) {
-      courseDetails.tmp_inc++;
-    } else {
-      courseDetails.tmp_inc = 1;
-    }
-    console.log(courseDetails);
-    setSelectedCourse(lectures[0]?.courseDetails);
+    const courseDetails = [...lectures][0].courseDetails;
+
+    // Create a new object with all the properties to trigger React's change detection
+    const newCourseDetails = {
+      ...courseDetails,
+      tmp_inc: Date.now(), // Use Date.now() for a unique value each time
+    };
+
+    setSelectedCourse(newCourseDetails);
   };
 
   // Add this section to process class sections before modal rendering
@@ -131,21 +132,26 @@ const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle, 
     <div className="border border-zinc-700 rounded-lg overflow-hidden">
 
       <div className="flex-grow bg-zinc-900 p-2">
-        <div className="flex flex-row gap-2 mb-2">
-          <div className="font-semibold text-white text-xl self-center mx-2">{courseName}</div>
-          <Button
-            variant=""
-            onClick={onOpen}
-            className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
+        <div className="flex flex-row gap-2 mb-2 justify-between">
+          <div className="flex flex-col font-semibold text-white text-xl self-center mx-2 break-words overflow-hidden">
+            {parentCourse.subjectCode}{parentCourse.courseCode}
+            <p className='text-sm'>{parentCourse.title}</p>
+          </div>
+          <div className='flex flex-row gap-2'>
+            <Button
+              variant=""
+              onClick={onOpen}
+              className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
-            leftIcon={<IoMdOpen />}
-          >View Sections</Button>
-          <Button
-            variant=""
-            onClick={reselectCourseDetails}
-            className="bg-zinc-800 text-white hover:brightness-125"
-            rightIcon={<IoIosArrowForward />}
-          >Open Course</Button>
+              leftIcon={<IoMdOpen />}
+            >View Sections</Button>
+            <Button
+              variant=""
+              onClick={reselectCourseDetails}
+              className="bg-zinc-800 text-white hover:brightness-125"
+              rightIcon={<IoIosArrowForward />}
+            >Open Course</Button>
+          </div>
         </div>
         {hasSelectedLectures ? (
           <div className="flex flex-col gap-2">
@@ -181,7 +187,7 @@ const CourseGroup = ({ courseName, lectures, selectedLectures, onLectureToggle, 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay bg={'blackAlpha.400'} />
         <ModalContent containerProps={{ justifyContent: 'flex-end', paddingRight: '4rem' }}>
-          <ModalHeader className='bg-zinc-900 text-white'>{courseName} Sections</ModalHeader>
+          <ModalHeader className='bg-zinc-900 text-white'>{parentCourse.subjectCode}{parentCourse.courseCode}: {parentCourse.title}</ModalHeader>
           <ModalCloseButton className='text-white' />
           <ModalBody pb={6} className='bg-zinc-900 text-white'>
             <Stack spacing={4}>
@@ -234,7 +240,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
     if (!selectedLectureIds.has(lectureId)) {
       // Remove other lectures from the same course (but keep other courses)
       lectures
-        .filter(lecture => lecture.name === clickedLecture.name)
+        .filter(lecture => lecture.courseDetails.detailId === clickedLecture.courseDetails.detailId)
         .forEach(lecture => {
           newSelectedLectures.delete(lecture.id);
         });
@@ -255,22 +261,23 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
     onLectureSelectionChange([...newSelectedLectures]);
   };
 
-  // Group lectures by course name
+  // Group lectures by course name - Update this grouping to use detailId
   const courseGroups = lectures.reduce((acc, lecture) => {
-    if (!acc[lecture.name]) {
-      acc[lecture.name] = [];
+    const key = lecture.courseDetails.detailId;
+    if (!acc[key]) {
+      acc[key] = [];
     }
-    acc[lecture.name].push(lecture);
+    acc[key].push(lecture);
     return acc;
   }, {});
 
   return (
     <div className="space-y-2 py-4 pl-4">
       <h2 className="text-lg font-semibold text-white mb-4">Course Sections</h2>
-      {courseGroups && Object.keys(courseGroups).length !== 0 ? Object.entries(courseGroups).map(([courseName, courseLectures]) => (
+      {courseGroups && Object.keys(courseGroups).length !== 0 ? Object.entries(courseGroups).map(([detailId, courseLectures]) => (
         <CourseGroup
-          key={courseName}
-          courseName={courseName}
+          key={detailId}
+          parentCourse={courseLectures[0].courseDetails}
           lectures={courseLectures}
           selectedLectures={selectedLectureIds}
           onLectureToggle={handleLectureToggle}

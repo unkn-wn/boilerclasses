@@ -54,13 +54,13 @@ const Schedule = () => {
     // highlight the div with the selected course
     async function highlightCourseDiv() {
       const courseDiv = document.getElementById("course_details");
-      courseDiv.classList.add("border-yellow-500", "border-4");
-      courseDiv.classList.remove("border-zinc-800", "border");
+      courseDiv.classList.add("ring-4", "ring-yellow-500");
+      // courseDiv.classList.remove("border-zinc-800", "border");
 
       await new Promise(resolve => setTimeout(resolve, 500));
 
-      courseDiv.classList.remove("border-yellow-500", "border-4");
-      courseDiv.classList.add("border-zinc-800", "border");
+      courseDiv.classList.remove("ring-4", "ring-yellow-500");
+      // courseDiv.classList.add("border-zinc-800", "border");
     }
 
     // Call the function to highlight the element
@@ -172,7 +172,12 @@ const Schedule = () => {
                       ) : (
                         <div
                           className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
-                          onClick={() => setPinCourses([...pinCourses, selectedCourse])}
+                          onClick={() => {
+                            setPinCourses([...pinCourses, {
+                              ...selectedCourse,
+                              initialPin: true  // Add this flag to indicate it's a new pin
+                            }]);
+                          }}
                         >
                           {isLoading ? <div><Spinner /></div> : 'Add Course'}
                         </div>
