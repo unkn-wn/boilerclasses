@@ -128,7 +128,7 @@ const Schedule = () => {
             <div className='flex flex-col h-full justify-center mx-12'>
               <h1 className='font-bold text-3xl'>Welcome to <span className='text-yellow-500'>BoilerClasses</span></h1>
               <h2 className='font-light text-sm'>
-                Utilize the scheduling assistant to plan your semester. Use the search bar to find courses, and pin them to show up in the schedule!
+                Utilize the scheduling assistant to plan your semester. Use the search bar to find courses, and add them to show up in the schedule!
               </h2>
             </div>
           ) : (
@@ -161,7 +161,7 @@ const Schedule = () => {
                           Open Details
                         </div>
                       </a>
-                      {/* Pin Course button */}
+                      {/* Add Course button */}
                       {pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                         <div
                           className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
@@ -174,7 +174,7 @@ const Schedule = () => {
                           className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                           onClick={() => setPinCourses([...pinCourses, selectedCourse])}
                         >
-                          {isLoading ? <div><Spinner /></div> : 'Pin Course'}
+                          {isLoading ? <div><Spinner /></div> : 'Add Course'}
                         </div>
                       )}
 

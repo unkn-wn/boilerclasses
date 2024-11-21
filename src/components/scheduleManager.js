@@ -277,7 +277,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
           setSelectedCourse={setSelectedCourse}
         />
       )) : (
-        <p className="text-gray-500 text-sm">Search for a course by using the search bar, then pin a course to show up here!</p>
+        <p className="text-gray-500 text-sm">Search for a course by using the search bar, then add a course to show up here!</p>
       )}
     </div>
   );
