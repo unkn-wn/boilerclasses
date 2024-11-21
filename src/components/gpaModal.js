@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+
+const replaceZeroGpaWithDash = (gpaValue) => {
+	return gpaValue === 0 ? '-' : gpaValue;
+};
 
 const GpaModal = ({ course }) => {
 	const [gpa, setGpa] = useState({});
@@ -37,7 +42,7 @@ const GpaModal = ({ course }) => {
 								// console.log(`bg-[${gpa[instructor][semester].color}]`),
 								<div key={index} className='flex flex-col mt-2'>
 									<div className='grid h-12 text-center' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-										<p className='text-white m-auto font-semibold'>{gpa[instructor][semester].gpa}</p>
+										<p className='text-white m-auto font-semibold'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
 									</div>
 									<h3 className='text-zinc-500 text-center text-sm px-1 hidden md:block'>{semester}</h3>
 									<h3 className='text-zinc-500 text-center text-[10px] px-1 block md:hidden'>{semester.split(" ")[0]}</h3>
@@ -53,7 +58,6 @@ const GpaModal = ({ course }) => {
 };
 
 export default GpaModal;
-
 
 export const ScheduleGpaModal = ({ course }) => {
 	const [gpa, setGpa] = useState({});
@@ -71,24 +75,37 @@ export const ScheduleGpaModal = ({ course }) => {
 		setGpa(grades);
 	}, [course]);
 
+	const semesters = Object.keys(gpa).length != 0 ? Object.keys(gpa[Object.keys(gpa)[0]]) : [];
+
 	return (
 		<div className='flex flex-col'>
 			{Object.keys(gpa).length != 0 ?
 				(
-					Object.keys(gpa).map((instructor, index) => (
-						<div key={index} className='grid grid-flow-row my-2 gap-2'>
-							<h2 className='text-white text-xs'>{instructor}</h2>
-							<div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
-								{Object.keys(gpa[instructor]).map((semester, index) => (
-									<div key={index} className='flex flex-col'>
-										<div className='grid py-1 text-center rounded-md' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-											<p className='text-white m-auto text-sm font-light'>{gpa[instructor][semester].gpa}</p>
-										</div>
-									</div>
-								))}
-							</div>
+					<>
+						<div className='w-full grid grid-cols-5 font-bold mt-2 border-b'>
+							{semesters.length > 4 ? semesters.slice(0, 5).map((semester, i) => (
+								<div key={i} className='flex flex-col'>
+									<h3 className='text-center text-[10px]'>{semester.split(" ")[0]}</h3>
+									<h3 className='text-center text-[10px]'>{" '" + semester.split(" ")[1].substring(2, 4)}</h3>
+								</div>
+							)) : <></>
+							}
 						</div>
-					))
+						{Object.keys(gpa).map((instructor, index) => (
+							<div key={index} className='grid grid-flow-row py-1 gap-2'>
+								<h2 className='text-white text-xs'>{instructor}</h2>
+								<div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
+									{Object.keys(gpa[instructor]).map((semester, index) => (
+										<div key={index} className='flex flex-col'>
+											<div className='grid py-1 text-center rounded-md' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
+												<p className='text-white m-auto text-sm font-light'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						))}
+					</>
 				) : (
 					<div>
 						<h1 className='text-white text-sm font-light text-center'>No data for current instructors.</h1>
@@ -97,8 +114,6 @@ export const ScheduleGpaModal = ({ course }) => {
 		</div>
 	);
 };
-
-
 
 // Function to get color based on GPA
 const getColor = (gpa) => {

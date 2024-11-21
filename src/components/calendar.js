@@ -150,7 +150,7 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
             "&$filter=Subject/Abbreviation eq '" + subjectCode +
             "' and Number eq '" + courseCode +
             "' and Title eq '" + title + "'";
-        console.log(url);
+        // console.log(url);
 
         const response = await fetch(url);
         const data = await response.json();

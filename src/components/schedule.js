@@ -52,6 +52,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
         );
 
         const rawResults = await Promise.all(coursePromises);
+        // Pass the full courses array to processLectureData
         const processedLectures = processLectureData(rawResults, courses);
 
         // Keep existing displayed lectures that are still valid
@@ -121,7 +122,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
   };
 
   return (
-    <div className='flex flex-col '>
+    <div className='flex flex-col'>
       <div className="flex flex-col w-full h-full relative">
         {/* Header Row */}
         <div className="flex flex-row">
@@ -142,7 +143,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
               {times.map((time, timeIndex) => (
                 <div
                   key={`${day}-${time}`}
-                  className="h-8 border-b border-zinc-800"
+                  className="h-8 border-b border-zinc-600"
                 >
                   {dayIndex === 0 && ( // Only display time labels on the first column
                     <div className="absolute -left-16 w-16 text-right pr-2 -translate-y-4 text-zinc-500">
@@ -195,7 +196,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                                 color="white"
                                 border={`2px solid ${graphColors[colorIndex % graphColors.length]}`}
                                 rounded={5}
-                                className='z-10 backdrop-blur-md'
+                                className='z-50 backdrop-blur-md'
                               >
                                 <div
                                   className={`relative text-white text-xs overflow-hidden text-center rounded-lg border z-10 cursor-pointer transition-all duration-200
@@ -236,6 +237,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
           lectures={allLectures}
           selectedLectureIds={selectedLectureIds}
           onLectureSelectionChange={handleLectureSelectionChange}
+          setSelectedCourse={setSelectedCourse}
         />
       </div>
     </div>

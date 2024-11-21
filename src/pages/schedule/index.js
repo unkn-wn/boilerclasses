@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 import { Spinner } from '@chakra-ui/react'
-import { IoMdOpen, IoIosAdd, IoMdTrash } from "react-icons/io";
+import { IoMdOpen, IoMdTrash } from "react-icons/io";
 
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedsOptions, labels, graphColors } from '@/lib/utils';
@@ -50,6 +50,21 @@ const Schedule = () => {
       labels,
       datasets: averageGrades,
     });
+
+    // highlight the div with the selected course
+    async function highlightCourseDiv() {
+      const courseDiv = document.getElementById("course_details");
+      courseDiv.classList.add("border-yellow-500", "border-4");
+      courseDiv.classList.remove("border-zinc-800", "border");
+
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      courseDiv.classList.remove("border-yellow-500", "border-4");
+      courseDiv.classList.add("border-zinc-800", "border");
+    }
+
+    // Call the function to highlight the element
+    highlightCourseDiv();
   }, [selectedCourse]);
 
   // When selecting an item
@@ -58,7 +73,7 @@ const Schedule = () => {
       console.error("No course selected");
       return;
     }
-    console.log("Selected course:", course);
+    console.log("Selected course:", course.value);
     updateFilter('searchTerm', '');
     setSelectedCourse(course.value);
   };
@@ -100,7 +115,7 @@ const Schedule = () => {
         </div>
 
         {/* Right Side */}
-        <div className='flex flex-col w-1/2 h-full overflow-hidden'>
+        <div className='flex flex-col w-1/2 h-full'>
           <div className="mb-6">
             <CourseSearch
               courses={courses}
@@ -120,7 +135,7 @@ const Schedule = () => {
             <>
               {/* Selected Course */}
               <div className='flex flex-col h-full'>
-                <div className='flex flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border'>
+                <div id="course_details" className='flex flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
                   <div className='w-1/2'>
@@ -141,8 +156,9 @@ const Schedule = () => {
                         href={`https://www.boilerclasses.com/detail/${selectedCourse.detailId}`}
                         target="_blank"
                       >
-                        <div className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
+                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
                           <IoMdOpen />
+                          Open Details
                         </div>
                       </a>
                       {/* Pin Course button */}
@@ -155,10 +171,10 @@ const Schedule = () => {
                         </div>
                       ) : (
                         <div
-                          className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                          className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                           onClick={() => setPinCourses([...pinCourses, selectedCourse])}
                         >
-                          {isLoading ? <div><Spinner /></div> : <IoIosAdd />}
+                          {isLoading ? <div><Spinner /></div> : 'Pin Course'}
                         </div>
                       )}
 
@@ -181,10 +197,10 @@ const Schedule = () => {
 
 
                           {/* Gened Type Display */}
-                          {selectedCourse.gened.map((gened, i) => (
+                          {selectedCourse.gened.length > 0 && selectedCourse.gened.map((gened, i) => (
                             <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                               key={i}>
-                              {genedsOptions.filter(x => x === gened)[0].label}
+                              {genedsOptions.filter(x => x.value === gened)[0]?.label || ''}
                             </span>
                           ))}
                         </div>
@@ -235,13 +251,14 @@ const Schedule = () => {
                         <p className="text-sm font-bold">Prerequisites</p>
                         <Prereqs
                           course={selectedCourse}
+                          scheduler={true}
                         />
                       </div>
                     )}
 
                     {/* gpaModal */}
                     <div className='w-full'>
-                      <p className="text-sm font-bold">GPA Averages (Last 5 Semesters)</p>
+                      <p className="text-sm font-bold">GPA Avg Per Semester</p>
                       <ScheduleGpaModal
                         course={selectedCourse}
                       />
@@ -253,14 +270,14 @@ const Schedule = () => {
 
 
                 {/* Graph */}
-                <div className='border border-zinc-800 shadow-md shadow-white/10 h-1/3 rounded-xl my-4'>
+                <div className='border border-zinc-800 shadow-md shadow-white/10 h-1/2 rounded-xl my-4'>
 
                   {gpaGraph.datasets ? (
                     <div className='h-full'>
                       <Graph data={gpaGraph} />
                     </div>
                   ) : (
-                    <div className="flex flex-col w-full h-96 bg-zinc-900 mx-auto p-4 rounded-xl">
+                    <div className="flex flex-col w-full bg-zinc-900 mx-auto p-4 rounded-xl">
                       <div className="h-full w-full mb-4">
                         <h1 className="text-center text-lg font-semibold text-white">
                           No grade data available for this course.
