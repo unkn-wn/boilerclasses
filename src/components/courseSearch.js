@@ -13,6 +13,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   // Close dropdown when clicking outside
   useEffect(() => {
+    updateFilter('semesters', []);
+
     const handleClickOutside = (event) => {
       if (
         wrapperRef.current &&

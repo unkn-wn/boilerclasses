@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { IoMdOpen, IoIosArrowForward } from "react-icons/io";
 
-import { convertTo12HourFormat } from './calendar';
+import { convertTo12HourFormat, translateType } from './calendar';
 
 export const processLectureData = (courseResults, courses) => {
   const coursesArray = [];
@@ -42,10 +42,10 @@ export const processLectureData = (courseResults, courses) => {
             type: meeting.Type,
             start,
             end,
-            day: days,
+            day: days.includes("Non") ? ["None"] : days, // if no days, set to None
             instructors: meeting.Instructors.map(i => i.Name),
-            startTime: convertTo12HourFormat(startTime),
-            room: `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`,
+            startTime: startTime === '00:00' ? "No Meeting Time" : convertTo12HourFormat(startTime), // if no time, set to No Meeting Time
+            room: `${meeting.Room.Building.ShortCode}` === 'TBA' ? 'TBA' : `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`, // if "TBA", set to TBA
             duration,
             crn: section.Crn,
             courseDetails: course, // Add the full course object
@@ -59,6 +59,10 @@ export const processLectureData = (courseResults, courses) => {
 };
 
 const sortByTime = (a, b) => {
+  // Have "No Meeting Time" show last
+  if (a === "No Meeting Time") return 1;
+  if (b === "No Meeting Time") return -1;
+
   // Convert times to comparable numbers (assuming 12-hour format)
   const getTimeValue = (time) => {
     const [hour, minute] = time.split(':');
@@ -89,6 +93,21 @@ const groupLecturesByTime = (lectures) => {
   );
 };
 
+const dayOrder = {
+  'Mon': 0,
+  'Tue': 1,
+  'Wed': 2,
+  'Thu': 3,
+  'Fri': 4,
+  'None': 5
+};
+
+const sortByFirstDay = (a, b) => {
+  const firstDayA = a.day[0] || 'None';
+  const firstDayB = b.day[0] || 'None';
+  return dayOrder[firstDayA] - dayOrder[firstDayB];
+};
+
 const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const selectedCourseLectures = lectures.filter(lecture => selectedLectures.has(lecture.id));
@@ -107,26 +126,56 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
     setSelectedCourse(newCourseDetails);
   };
 
-  // Add this section to process class sections before modal rendering
+  // Modified section to process and sort class sections
   const classSections = lectures.reduce((acc, lecture) => {
     if (!acc[lecture.classId]) {
       acc[lecture.classId] = {};
     }
-    const timeKey = lecture.startTime;
-    if (!acc[lecture.classId][timeKey]) {
-      acc[lecture.classId][timeKey] = [];
+    const typeKey = lecture.type;
+    if (!acc[lecture.classId][typeKey]) {
+      acc[lecture.classId][typeKey] = {};
     }
-    acc[lecture.classId][timeKey].push(lecture);
+    const timeKey = lecture.startTime;
+    if (!acc[lecture.classId][typeKey][timeKey]) {
+      acc[lecture.classId][typeKey][timeKey] = [];
+    }
+    acc[lecture.classId][typeKey][timeKey].push(lecture);
     return acc;
   }, {});
 
-  // Sort class sections by their earliest time
+  // Sort class sections by type (Lecture first) and then by time
   const sortedClassSections = Object.entries(classSections)
-    .sort(([, timesA], [, timesB]) => {
-      const firstTimeA = Object.keys(timesA).sort((a, b) => sortByTime(a, b))[0];
-      const firstTimeB = Object.keys(timesB).sort((a, b) => sortByTime(a, b))[0];
-      return sortByTime(firstTimeA, firstTimeB);
+    .sort(([, typesA], [, typesB]) => {
+      const getEarliestTimeForType = (types, targetType) => {
+        if (!types[targetType]) return "99:99"; // Return late time if type doesn't exist
+        return Object.keys(types[targetType]).sort((a, b) => sortByTime(a, b))[0];
+      };
+
+      // Check for Lecture type first
+      const hasLectureA = typesA["Lecture"];
+      const hasLectureB = typesB["Lecture"];
+      if (hasLectureA && !hasLectureB) return -1;
+      if (!hasLectureA && hasLectureB) return 1;
+
+      // If both have lectures or both don't, sort by earliest time
+      const earliestTimeA = Object.keys(typesA).reduce((earliest, type) => {
+        const typeEarliest = getEarliestTimeForType(typesA, type);
+        return sortByTime(earliest, typeEarliest) < 0 ? earliest : typeEarliest;
+      }, "99:99");
+
+      const earliestTimeB = Object.keys(typesB).reduce((earliest, type) => {
+        const typeEarliest = getEarliestTimeForType(typesB, type);
+        return sortByTime(earliest, typeEarliest) < 0 ? earliest : typeEarliest;
+      }, "99:99");
+
+      return sortByTime(earliestTimeA, earliestTimeB);
     });
+
+  // Add scroll handler when opening modal
+  const handleModalOpen = () => {
+    window.scrollTo({ top: 0 });
+    onOpen();
+  };
 
   return (
     <div className="border border-zinc-700 rounded-lg overflow-hidden">
@@ -134,13 +183,13 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
       <div className="flex-grow bg-zinc-900 p-2">
         <div className="flex flex-row gap-2 mb-2 justify-between">
           <div className="flex flex-col font-semibold text-white text-xl self-center mx-2 break-words overflow-hidden">
-            {parentCourse.subjectCode}{parentCourse.courseCode}
+            {parentCourse.subjectCode} {parentCourse.courseCode}
             <p className='text-sm'>{parentCourse.title}</p>
           </div>
           <div className='flex flex-row gap-2'>
             <Button
               variant=""
-              onClick={onOpen}
+              onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
               leftIcon={<IoMdOpen />}
@@ -150,7 +199,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               onClick={reselectCourseDetails}
               className="bg-zinc-800 text-white hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
-            >Open Course</Button>
+            >Show Course</Button>
           </div>
         </div>
         {hasSelectedLectures ? (
@@ -161,9 +210,9 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                 className="flex justify-between items-center p-2 rounded-md bg-zinc-800"
               >
                 <div className="text-sm text-white">
-                  <div>{`${lecture.type} - ${lecture.room}`}</div>
+                  <div>{`${lecture.type} ${lecture.instructors.length === 0 ? '' : '-'} ${lecture.instructors}`}</div>
                   <div className="text-xs text-gray-400">
-                    {`${lecture.day.join(', ')} • ${lecture.startTime}`}
+                    {`${lecture.day.join(', ')} • ${lecture.startTime} • ${lecture.room}`}
                   </div>
                 </div>
                 <Button
@@ -191,33 +240,54 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
           <ModalCloseButton className='text-white' />
           <ModalBody pb={6} className='bg-zinc-900 text-white'>
             <Stack spacing={4}>
-              {sortedClassSections.map(([classId, timeGroups], sectionIndex) => (
+              {sortedClassSections.map(([classId, typeGroups], sectionIndex) => (
                 <div key={classId} className="border-b border-zinc-700 pb-2 mb-2">
                   <div className="text-sm font-bold mb-2 text-blue-400">Class Section {sectionIndex + 1}</div>
-                  {Object.entries(timeGroups)
-                    .sort(([timeA], [timeB]) => sortByTime(timeA, timeB))
-                    .map(([timeKey, lectures]) => (
-                      <div key={timeKey} className="mb-2">
-                        <div className="text-sm font-semibold mb-2">{timeKey}</div>
-                        <div className="flex flex-row flex-wrap gap-2">
-                          {lectures.map((lecture) => (
-                            <div className='flex-grow mx-2 flex-1'>
-                              <Checkbox
-                                key={lecture.id}
-                                isChecked={selectedLectures.has(lecture.id)}
-                                onChange={() => onLectureToggle(lecture.id, lecture.classId)}
-                                colorScheme="blue"
-                              >
-                                <span className="text-sm">
-                                  {`${lecture.type} - ${lecture.room}`}
-                                  <div className="text-xs text-gray-400">
-                                    {`${lecture.day.join(', ')} • ${lecture.instructors.join(', ')}`}
+                  {Object.entries(typeGroups)
+                    .sort(([typeA], [typeB]) => {
+                      // Sort by type, with Lecture always first
+                      if (typeA === "Lecture") return -1;
+                      if (typeB === "Lecture") return 1;
+                      return typeA.localeCompare(typeB);
+                    })
+                    .map(([typeKey, timeGroups]) => (
+                      <div key={typeKey} className="mb-4">
+                        <div className="text-sm font-semibold mb-2 text-gray-400">{typeKey}</div>
+                        {Object.entries(timeGroups)
+                          .sort(([timeA], [timeB]) => sortByTime(timeA, timeB))
+                          .map(([timeKey, lectures]) => (
+                            <div key={timeKey} className="mb-2">
+                              <div className="text-sm font-semibold mb-2">{timeKey}</div>
+                              <div className="flex flex-row flex-wrap gap-4">
+                                {lectures
+                                  .sort(sortByFirstDay)
+                                  .map((lecture) => (
+                                  <div className='flex-grow flex-1' key={lecture.id}>
+                                    <Checkbox
+                                      isChecked={selectedLectures.has(lecture.id)}
+                                      onChange={() => onLectureToggle(lecture.id, lecture.classId)}
+                                      colorScheme="blue"
+                                    >
+                                      <span className="text-sm">
+                                        <div className="font-medium text-white">
+                                          {lecture.day.join(', ')}
+                                        </div>
+                                        <div className="text-xs text-zinc-300">
+                                          {lecture.instructors.length > 0
+                                            ? lecture.instructors.join(', ')
+                                            : 'Instructors Not Listed'
+                                          }
+                                        </div>
+                                        <div className="text-xs text-gray-400">
+                                          {translateType(lecture.type)} - {lecture.room}
+                                        </div>
+                                      </span>
+                                    </Checkbox>
                                   </div>
-                                </span>
-                              </Checkbox>
+                                ))}
+                              </div>
                             </div>
                           ))}
-                        </div>
                       </div>
                     ))}
                 </div>

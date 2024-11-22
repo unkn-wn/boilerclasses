@@ -66,6 +66,11 @@ export const ScheduleGpaModal = ({ course }) => {
 		const grades = processGpaData(course, true);
 
 		// only show instructors that are teaching in the current semester
+		if (!course.instructor[CURRENT_SEMESTER]) {
+			setGpa({});
+			return;
+		}
+
 		for (const instructor in grades) {
 			if (!course.instructor[CURRENT_SEMESTER].includes(instructor)) {
 				delete grades[instructor];
@@ -108,7 +113,7 @@ export const ScheduleGpaModal = ({ course }) => {
 					</>
 				) : (
 					<div>
-						<h1 className='text-white text-sm font-light text-center'>No data for current instructors.</h1>
+						<p className='text-white text-sm font-light text-center'>No data for current instructors.</p>
 					</div>
 				)}
 		</div>

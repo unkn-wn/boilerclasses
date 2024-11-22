@@ -183,15 +183,6 @@ const CardDetails = ({ courseData, semData }) => {
   }
 
 
-  // function to strip courseData code to remove the 00s
-  function stripCourseCode(courseCode) {
-    let formattedName = courseCode.toString();
-    if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
-      formattedName = formattedName.slice(0, -2);
-    }
-    return formattedName;
-  }
-
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
   if (JSON.stringify(courseData) == '{}') {
@@ -538,6 +529,16 @@ const CardDetails = ({ courseData, semData }) => {
 };
 
 export default CardDetails;
+
+
+// function to strip courseData code to remove the 00s
+export function stripCourseCode(courseCode) {
+  let formattedName = courseCode.toString();
+  if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
+    formattedName = formattedName.slice(0, -2);
+  }
+  return formattedName;
+}
 
 
 // @Sarthak made this, some api call to get courseData data

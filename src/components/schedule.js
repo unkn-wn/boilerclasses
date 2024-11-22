@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { graphColors } from "@/lib/utils";
+
+import { stripCourseCode } from '@/pages/detail/[id]';
+
 import { getCourseData, convertTo12HourFormat, translateType } from './calendar';
 import ScheduleManager, { processLectureData } from './scheduleManager';
 import { Tooltip } from '@chakra-ui/react';
@@ -70,12 +73,15 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
             );
 
             // Find the first lecture-type meeting
-            const firstLecture = courseLectures.find(lecture => lecture.type === "Lecture");
-
-            if (firstLecture) {
-              // Add just the lecture
-              updatedSelectedIds.add(firstLecture.id);
+            let firstLecture = courseLectures.find(lecture => lecture.type === "Lecture");
+            // if not found, select first meeting
+            if (!firstLecture) {
+              courseLectures.sort((a, b) => a.start - b.start);
+              firstLecture = courseLectures[0];
             }
+
+            updatedSelectedIds.add(firstLecture.id);
+
             delete course.initialPin;
           }
         });
@@ -173,14 +179,14 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                   )}
                 </div>
               ))}
-
+              {console.log(day)}
               {/* Display Lectures for the Day */}
               <div className='flex flex-row'>
                 {displayedLectures
                   .filter(course => course.day.includes(day))
                   .map((course, courseIndex) => {
                     const overlaps = getOverlappingCourses(day, course);
-
+                    console.log(displayedLectures);
                     // Only render this group once, when we encounter the earliest course
                     if (!overlaps.some(c => c.start < course.start)) {
                       return (
@@ -190,7 +196,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                             // Calculate position based on THIS course's times, not the original course
                             const startPos = calculateTimePosition(overlappingCourse.start);
                             const endPos = calculateTimePosition(overlappingCourse.end);
-                            const top = (startPos - 6) * 2; // Subtract 7 since our grid starts at 7 AM
+                            const top = (startPos - 6) * 2; // Subtract 6 since our grid starts at 6 am technically
                             const height = (endPos - startPos) * 2;
 
                             const tooltipContent = (
@@ -220,7 +226,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                                 className='z-50 backdrop-blur-md backdrop-brightness-50'
                               >
                                 <div
-                                  className={`relative text-white text-xs overflow-hidden text-center rounded-lg border z-10 cursor-pointer transition-all duration-200
+                                  className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-[1px]
                                   ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
                                   style={{
                                     borderColor: graphColors[colorIndex % graphColors.length],
@@ -236,7 +242,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                                   onMouseLeave={() => setHoveredCourse(null)}
                                   onClick={() => reselectCourseDetails(overlappingCourse)}
                                 >
-                                  {`${translateType(overlappingCourse.type)} ${overlappingCourse.name}`}
+                                  {`${translateType(overlappingCourse.type)} ${overlappingCourse.courseDetails.subjectCode}${stripCourseCode(overlappingCourse.courseDetails.courseCode)}`}
                                 </div>
                               </Tooltip>
                             );

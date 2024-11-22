@@ -161,8 +161,10 @@ const Schedule = () => {
                           Open Details
                         </div>
                       </a>
+
                       {/* Add Course button */}
-                      {pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
+                      {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
+                        pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                         <div
                           className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
                           onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
@@ -180,6 +182,12 @@ const Schedule = () => {
                           }}
                         >
                           {isLoading ? <div><Spinner /></div> : 'Add Course'}
+                        </div>
+                      )) : (
+                        <div
+                          className="flex self-end rounded-full text-center border items-center justify-center p-2 text-sm transition border-zinc-700 bg-zinc-900"
+                        >
+                          Course not offered<br /> in {CURRENT_SEMESTER}
                         </div>
                       )}
 
@@ -232,21 +240,26 @@ const Schedule = () => {
                       <div className="flex flex-wrap flex-row gap-x-1 text-sm text-blue-400 font-light">
 
 
-                        {selectedCourse.instructor[CURRENT_SEMESTER].map((prof, i) => (
-                          <span key={i}>
-                            <a
-                              href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className='underline decoration-dotted hover:text-blue-300 transition-all duration-300 ease-out'
-                              key={i}
-                              onClick={(event) => event.stopPropagation()}
-                            >
-                              {prof}
-                            </a>
-                            {i < selectedCourse.instructor[CURRENT_SEMESTER].length - 1 && ", "}
-                          </span>
-                        ))}
+                        {selectedCourse.instructor[CURRENT_SEMESTER] ? (
+                          selectedCourse.instructor[CURRENT_SEMESTER].map((prof, i) => (
+
+                            <span key={i}>
+                              <a
+                                href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className='underline decoration-dotted hover:text-blue-300 transition-all duration-300 ease-out'
+                                key={i}
+                                onClick={(event) => event.stopPropagation()}
+                              >
+                                {prof}
+                              </a>
+                              {i < selectedCourse.instructor[CURRENT_SEMESTER].length - 1 && ", "}
+                            </span>
+                          ))
+                        ) : (
+                          <p className='text-white text-sm font-light text-center w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
+                        )}
                       </div>
                     </div>
 
