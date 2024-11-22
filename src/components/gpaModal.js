@@ -121,7 +121,7 @@ export const ScheduleGpaModal = ({ course }) => {
 };
 
 // Function to get color based on GPA
-const getColor = (gpa) => {
+export const getColor = (gpa) => {
 	if (gpa === 0) {
 		return "#18181b";
 	}

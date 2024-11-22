@@ -16,17 +16,24 @@ async function getRMPRating(instructor) {
 
     let rating = 0;
 
+    let baseUrl = window.location.href;
+    if (baseUrl.includes("localhost")) {
+      baseUrl = "http://localhost:3000";
+    } else {
+      baseUrl = "https://boilerclasses.com";
+    }
+
     // for all Purdue University schools in West Lafayette, search prof
     const schools = ["U2Nob29sLTc4Mw==", "U2Nob29sLTE3NTk5"]; // purdue IDs for West Lafayette
     for (const school of schools) {
       const paramsTeacher = new URLSearchParams({ name: instructor, id: school });
-      const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
+      const responseProf = await fetch(baseUrl + "/api/ratings/searchTeacher?" + paramsTeacher);
       const prof = await responseProf.json();
       const profs = prof.prof.filter(Boolean);
 
       if (profs.length > 0) {
         const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
-        const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
+        const responseRMP = await fetch(baseUrl + "/api/ratings/getTeacher?" + paramsGetTeacher);
         const RMPrating = await responseRMP.json();
         rating = RMPrating.RMPrating.avgRating;
         break;
@@ -65,6 +72,13 @@ async function getAllRMPRatings(allProfs) {
   );
 
   return ratings;
+}
+
+
+// Add these new utility functions before loadRatingsForProfs
+export function getRMPScore(rmpData, instructor) {
+  if (!rmpData || !instructor) return null;
+  return rmpData[instructor] || null;
 }
 
 

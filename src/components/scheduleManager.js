@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Checkbox,
   Stack,
@@ -14,6 +14,31 @@ import {
 import { IoMdOpen, IoIosArrowForward } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
+import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
+import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph';
+import { getColor } from './gpaModal';
+import { graphColors } from '@/lib/utils';
+
+// Add this helper function at the top of the file
+const normalizeInstructorName = (lectureName, courseInstructors) => {
+  if (!lectureName) return "";
+
+  // Split names into parts
+  const nameParts = lectureName.split(' ');
+  const firstName = nameParts[0];
+  const lastName = nameParts[nameParts.length - 1];
+
+  // Find matching instructor from course data
+  const matchingInstructor = Object.values(courseInstructors)
+    .flat()
+    .find(instructor => {
+      const instructorParts = instructor.split(' ');
+      return instructorParts[0] === firstName &&
+        instructorParts[instructorParts.length - 1] === lastName;
+    });
+
+  return matchingInstructor || lectureName;
+};
 
 export const processLectureData = (courseResults, courses) => {
   const coursesArray = [];
@@ -35,6 +60,11 @@ export const processLectureData = (courseResults, courses) => {
           const start = hours * 100 + minutes;
           const end = calculateEndTime(startTime, duration);
 
+          // Normalize instructor names before adding to coursesArray
+          const normalizedInstructors = meeting.Instructors.map(i =>
+            normalizeInstructorName(i.Name, course.instructor)
+          );
+
           coursesArray.push({
             id: meeting.Id,
             name: courseName,
@@ -43,7 +73,7 @@ export const processLectureData = (courseResults, courses) => {
             start,
             end,
             day: days.includes("Non") ? ["None"] : days, // if no days, set to None
-            instructors: meeting.Instructors.map(i => i.Name),
+            instructors: normalizedInstructors,
             startTime: startTime === '00:00' ? "No Meeting Time" : convertTo12HourFormat(startTime), // if no time, set to No Meeting Time
             room: `${meeting.Room.Building.ShortCode}` === 'TBA' ? 'TBA' : `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`, // if "TBA", set to TBA
             duration,
@@ -110,6 +140,30 @@ const sortByFirstDay = (a, b) => {
 
 const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [rmpScores, setRmpScores] = useState({});
+  const [instructorGPAs, setInstructorGPAs] = useState({});
+
+  // Load RMP scores and calculate GPAs when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      // Load RMP scores
+      loadRatingsForProfs(parentCourse).then(scores => {
+        setRmpScores(scores);
+      });
+
+      // Calculate GPAs using graph.js function
+      const allInstructors = collectAllProfessors(parentCourse.instructor);
+
+      const { gpa } = calculateGradesAndGPA(
+        Array.from(allInstructors),
+        parentCourse.gpa,
+        graphColors
+      );
+
+      setInstructorGPAs(gpa);
+    }
+  }, [isOpen, parentCourse]);
+
   const selectedCourseLectures = lectures.filter(lecture => selectedLectures.has(lecture.id));
   const hasSelectedLectures = selectedCourseLectures.length > 0;
 
@@ -258,33 +312,49 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                           .map(([timeKey, lectures]) => (
                             <div key={timeKey} className="mb-2">
                               <div className="text-sm font-semibold mb-2">{timeKey}</div>
-                              <div className="flex flex-row flex-wrap gap-4">
+                              <div className="flex flex-row flex-wrap gap-2">
                                 {lectures
                                   .sort(sortByFirstDay)
                                   .map((lecture) => (
-                                  <div className='flex-grow flex-1' key={lecture.id}>
-                                    <Checkbox
-                                      isChecked={selectedLectures.has(lecture.id)}
-                                      onChange={() => onLectureToggle(lecture.id, lecture.classId)}
-                                      colorScheme="blue"
-                                    >
-                                      <span className="text-sm">
-                                        <div className="font-medium text-white">
-                                          {lecture.day.join(', ')}
-                                        </div>
-                                        <div className="text-xs text-zinc-300">
-                                          {lecture.instructors.length > 0
-                                            ? lecture.instructors.join(', ')
-                                            : 'Instructors Not Listed'
-                                          }
-                                        </div>
-                                        <div className="text-xs text-gray-400">
-                                          {translateType(lecture.type)} - {lecture.room}
-                                        </div>
-                                      </span>
-                                    </Checkbox>
-                                  </div>
-                                ))}
+                                    <div className='flex-grow flex-1' key={lecture.id}>
+                                      <Checkbox
+                                        isChecked={selectedLectures.has(lecture.id)}
+                                        onChange={() => onLectureToggle(lecture.id, lecture.classId)}
+                                        colorScheme="blue"
+                                      >
+                                        <span className="text-sm">
+                                          <div className="font-medium text-white">
+                                            {lecture.day.join(', ')}
+                                          </div>
+                                          <div className="text-xs text-zinc-300">
+
+                                            {/* Instructor mapping, includes gpa and rmp per prof */}
+                                            {lecture.instructors.map(instructor => (
+                                              <div key={instructor} className='flex flex-row gap-1'>
+                                                {instructor}
+                                                {instructorGPAs[instructor]?.[0] > 0 &&
+                                                  <div className='px-1 rounded font-bold'
+                                                    style={{
+                                                      backgroundColor: getColor(instructorGPAs[instructor][0]),
+                                                    }}>
+                                                    {`GPA: ${instructorGPAs[instructor][0].toFixed(2)}`}
+                                                  </div>
+                                                }
+                                                {getRMPScore(rmpScores, instructor) &&
+                                                  <div className='px-1 rounded font-bold bg-zinc-600'>
+                                                    {`RMP: ${getRMPScore(rmpScores, instructor)}`}
+                                                  </div>
+                                                }
+                                              </div>
+                                            ))}
+                                          </div>
+                                          <div className="text-xs text-gray-400">
+                                            {translateType(lecture.type)} - {lecture.room}
+                                          </div>
+                                        </span>
+                                      </Checkbox>
+                                    </div>
+                                  ))}
                               </div>
                             </div>
                           ))}

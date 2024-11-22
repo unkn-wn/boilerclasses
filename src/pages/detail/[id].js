@@ -64,6 +64,7 @@ const CardDetails = ({ courseData, semData }) => {
     };
 
     sanitizeDescription(courseData);
+    console.log(courseData.instructor);
     const allProfs = collectAllProfessors(courseData.instructor);
     const { grades, gpa } = calculateGradesAndGPA(
       allProfs,

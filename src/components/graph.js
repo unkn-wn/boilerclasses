@@ -37,7 +37,7 @@ const Graph = (props) => {
 							},
 							title: {
 								display: true,
-								text: 'Grade Distribution',
+								text: '% Grade Distribution Across All Instructors',
 								color: "white"
 							},
 						},
