@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 import { Spinner } from '@chakra-ui/react'
-import { IoMdOpen, IoMdTrash } from "react-icons/io";
+import { IoMdOpen, IoMdTrash, IoIosClose } from "react-icons/io";
 
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedsOptions, labels, graphColors } from '@/lib/utils';
@@ -92,9 +92,9 @@ const Schedule = () => {
         <link rel="canonical" href="https://schedule.boilerclasses.com/" />
       </Head>
 
-      <div id="parent" className="flex flex-row gap-10 h-screen min-h-screen bg-neutral-950 container mx-auto p-4 text-white">
+      <div id="parent" className="flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto p-4 text-white">
         {/* Left Side */}
-        <div className='flex flex-col w-1/2 gap-2'>
+        <div className='flex flex-col w-full lg:w-1/2 gap-2'>
           {/* Logo */}
           <div className='flex flex-row my-2 justify-center'>
             <Link className="flex flex-row" href='https://boilerclasses.com'>
@@ -109,13 +109,19 @@ const Schedule = () => {
             </Link>
           </div>
 
+          {/* mobile message */}
+          <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
+            <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
+            Use the Scheduling Assistant on Desktop for the best experience!
+          </div>
+
           <div className='mx-2'>
             <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} />
           </div>
         </div>
 
         {/* Right Side */}
-        <div className='flex flex-col w-1/2 h-full'>
+        <div id="right_side" className='flex flex-col w-full lg:w-1/2 h-full'>
           <div className="mb-6">
             <CourseSearch
               courses={courses}
@@ -135,10 +141,10 @@ const Schedule = () => {
             <>
               {/* Selected Course */}
               <div className='flex flex-col h-full'>
-                <div id="course_details" className='flex flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border transition-all'>
+                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
-                  <div className='w-1/2'>
+                  <div className='lg:w-1/2'>
                     <h1 className='font-bold text-3xl'>{selectedCourse.subjectCode} {selectedCourse.courseCode}</h1>
                     <h2 className='font-bold text-lg'>{selectedCourse.title}</h2>
 
@@ -147,9 +153,9 @@ const Schedule = () => {
                   </div>
 
                   {/* RIGHT SIDE - Course Details */}
-                  <div className="flex flex-col w-1/2 gap-2 h-fit">
+                  <div className="flex flex-col lg:w-1/2 gap-2 h-fit">
 
-                    <div className='flex flex-row self-end gap-2'>
+                    <div className='flex flex-row self-center lg:self-end gap-2'>
 
                       {/* Open in details button */}
                       <a
@@ -165,25 +171,25 @@ const Schedule = () => {
                       {/* Add Course button */}
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
-                        <div
-                          className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
-                          onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
-                        >
-                          {isLoading ? <div><Spinner /></div> : <IoMdTrash />}
-                        </div>
-                      ) : (
-                        <div
-                          className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
-                          onClick={() => {
-                            setPinCourses([...pinCourses, {
-                              ...selectedCourse,
-                              initialPin: true  // Add this flag to indicate it's a new pin
-                            }]);
-                          }}
-                        >
-                          {isLoading ? <div><Spinner /></div> : 'Add Course'}
-                        </div>
-                      )) : (
+                          <div
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                            onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
+                          >
+                            {isLoading ? <div><Spinner /></div> : <IoMdTrash />}
+                          </div>
+                        ) : (
+                          <div
+                            className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                            onClick={() => {
+                              setPinCourses([...pinCourses, {
+                                ...selectedCourse,
+                                initialPin: true  // Add this flag to indicate it's a new pin
+                              }]);
+                            }}
+                          >
+                            {isLoading ? <div><Spinner /></div> : 'Add Course'}
+                          </div>
+                        )) : (
                         <div
                           className="flex self-end rounded-full text-center border items-center justify-center p-2 text-sm transition border-zinc-700 bg-zinc-900"
                         >
@@ -288,7 +294,7 @@ const Schedule = () => {
 
 
                 {/* Graph */}
-                <div className='border border-zinc-800 shadow-md shadow-white/10 h-1/2 rounded-xl my-4'>
+                <div className='border border-zinc-800 shadow-md shadow-white/10 h-96 lg:h-1/2 rounded-xl my-4'>
 
                   {gpaGraph.datasets ? (
                     <div className='h-full'>

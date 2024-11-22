@@ -149,8 +149,8 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
   };
 
   return (
-    <div className='flex flex-col'>
-      <div className="flex flex-col w-full h-full relative">
+    <div className='flex flex-col w-full lg:w-auto'>
+      <div className="flex flex-col w-full h-full relative overflow-x-auto">
         {/* Header Row */}
         <div className="flex flex-row">
           <div className="w-16"></div>
@@ -273,7 +273,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
       </div>
 
       {/* Manager Section */}
-      <div className="space-y-4">
+      <div className="space-y-4 mt-4">
         <ScheduleManager
           lectures={allLectures}
           selectedLectureIds={selectedLectureIds}

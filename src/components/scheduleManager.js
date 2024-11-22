@@ -168,7 +168,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
   const hasSelectedLectures = selectedCourseLectures.length > 0;
 
   const reselectCourseDetails = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('right_side').scrollIntoView({ behavior: 'smooth', block: 'start' });
     const courseDetails = [...lectures][0].courseDetails;
 
     // Create a new object with all the properties to trigger React's change detection
@@ -235,12 +235,12 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
     <div className="border border-zinc-700 rounded-lg overflow-hidden">
 
       <div className="flex-grow bg-zinc-900 p-2">
-        <div className="flex flex-row gap-2 mb-2 justify-between">
-          <div className="flex flex-col font-semibold text-white text-xl self-center mx-2 break-words overflow-hidden">
+        <div className="flex flex-col sm:flex-row gap-2 mb-2 justify-between">
+          <div className="flex flex-col font-semibold text-white text-xl self-start mx-2 break-words overflow-hidden">
             {parentCourse.subjectCode} {parentCourse.courseCode}
             <p className='text-sm'>{parentCourse.title}</p>
           </div>
-          <div className='flex flex-row gap-2'>
+          <div className='flex flex-col xl:flex-row gap-2 justify-center sm:justify-end'>
             <Button
               variant=""
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
@@ -289,7 +289,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
       {/* Modal content remains the same */}
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay bg={'blackAlpha.400'} />
-        <ModalContent containerProps={{ justifyContent: 'flex-end', paddingRight: '4rem' }}>
+        <ModalContent containerProps={{ justifyContent: 'flex-end' }} marginEnd={[undefined, undefined, '1rem', '1rem', '4rem']}>
           <ModalHeader className='bg-zinc-900 text-white'>{parentCourse.subjectCode}{parentCourse.courseCode}: {parentCourse.title}</ModalHeader>
           <ModalCloseButton className='text-white' />
           <ModalBody pb={6} className='bg-zinc-900 text-white'>
@@ -312,11 +312,11 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                           .map(([timeKey, lectures]) => (
                             <div key={timeKey} className="mb-2">
                               <div className="text-sm font-semibold mb-2">{timeKey}</div>
-                              <div className="flex flex-row flex-wrap gap-2">
+                              <div className="flex flex-col sm:flex-row flex-wrap gap-2">
                                 {lectures
                                   .sort(sortByFirstDay)
                                   .map((lecture) => (
-                                    <div className='flex-grow flex-1' key={lecture.id}>
+                                    <div className='flex-grow flex-1 min-w-[250px]' key={lecture.id}>
                                       <Checkbox
                                         isChecked={selectedLectures.has(lecture.id)}
                                         onChange={() => onLectureToggle(lecture.id, lecture.classId)}
