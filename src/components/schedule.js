@@ -179,79 +179,93 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
                   )}
                 </div>
               ))}
-              {console.log(day)}
+
               {/* Display Lectures for the Day */}
               <div className='flex flex-row'>
-                {displayedLectures
-                  .filter(course => course.day.includes(day))
-                  .map((course, courseIndex) => {
-                    const overlaps = getOverlappingCourses(day, course);
-                    console.log(displayedLectures);
-                    // Only render this group once, when we encounter the earliest course
-                    if (!overlaps.some(c => c.start < course.start)) {
-                      return (
-                        <div className="flex flex-row absolute top-0 left-0 w-full h-full" key={courseIndex}>
-                          {overlaps.map((overlappingCourse, index) => {
-                            const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId);
-                            // Calculate position based on THIS course's times, not the original course
-                            const startPos = calculateTimePosition(overlappingCourse.start);
-                            const endPos = calculateTimePosition(overlappingCourse.end);
-                            const top = (startPos - 6) * 2; // Subtract 6 since our grid starts at 6 am technically
-                            const height = (endPos - startPos) * 2;
+                {(() => {
+                  // Track which courses we've already rendered
+                  const renderedGroups = new Set();
 
-                            const tooltipContent = (
-                              <div className="text-left p-2 text-xs font-light">
-                                <p className="font-bold">{overlappingCourse.name}: {overlappingCourse.courseDetails.title}</p>
-                                <p>{overlappingCourse.type}</p>
-                                <p>{overlappingCourse.startTime} - {convertNumberToTime(overlappingCourse.end)}</p>
-                                <p>{overlappingCourse.room}</p>
-                                <br />
-                                {overlappingCourse.instructors && (
-                                  <p>Instructor(s): {overlappingCourse.instructors.join(', ')}</p>
-                                )}
-                                <p>Days: {overlappingCourse.day.join(', ')}</p>
-                              </div>
-                            );
+                  return displayedLectures
+                    .filter(course => course.day.includes(day))
+                    .map((course, courseIndex) => {
+                      // Skip if this course is part of an already rendered group
+                      if (renderedGroups.has(course.id)) return null;
 
-                            return (
-                              <Tooltip
-                                key={overlappingCourse.id}
-                                label={tooltipContent}
-                                placement="auto-end"
-                                hasArrow
-                                bg={graphColors[colorIndex % graphColors.length] + "50"}
-                                color="white"
-                                border={`2px solid ${graphColors[colorIndex % graphColors.length]}`}
-                                rounded={5}
-                                className='z-50 backdrop-blur-md backdrop-brightness-50'
-                              >
-                                <div
-                                  className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-[1px]
-                                  ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
-                                  style={{
-                                    borderColor: graphColors[colorIndex % graphColors.length],
-                                    backgroundColor: graphColors[colorIndex % graphColors.length] + "50",
-                                    top: `${top}rem`,
-                                    height: `${height}rem`,
-                                    left: '0',
-                                    right: '0',
-                                    width: `${100 / overlaps.length}%`,
-                                    // marginLeft: `${(index * 100) / overlaps.length}%`
-                                  }}
-                                  onMouseEnter={() => setHoveredCourse(overlappingCourse.courseDetails.detailId)}
-                                  onMouseLeave={() => setHoveredCourse(null)}
-                                  onClick={() => reselectCourseDetails(overlappingCourse)}
-                                >
-                                  {`${translateType(overlappingCourse.type)} ${overlappingCourse.courseDetails.subjectCode}${stripCourseCode(overlappingCourse.courseDetails.courseCode)}`}
+                      const overlaps = getOverlappingCourses(day, course);
+
+                      // Sort overlaps by start time and get earliest
+                      const sortedOverlaps = [...overlaps].sort((a, b) => a.start - b.start);
+
+                      // Only proceed if this is the earliest course in its group
+                      if (course.id === sortedOverlaps[0].id) {
+                        // Mark all courses in this group as rendered
+                        sortedOverlaps.forEach(c => renderedGroups.add(c.id));
+
+                        return (
+                          <div className="flex flex-row absolute top-0 left-0 w-full h-full" key={courseIndex}>
+                            {sortedOverlaps.map((overlappingCourse, index) => {
+                              const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId);
+                              // Calculate position based on THIS course's times, not the original course
+                              const startPos = calculateTimePosition(overlappingCourse.start);
+                              const endPos = calculateTimePosition(overlappingCourse.end);
+                              const top = (startPos - 6) * 2; // Subtract 6 since our grid starts at 6 am technically
+                              const height = (endPos - startPos) * 2;
+
+                              const tooltipContent = (
+                                <div className="text-left p-2 text-xs font-light">
+                                  <p className="font-bold">{overlappingCourse.name}: {overlappingCourse.courseDetails.title}</p>
+                                  <p>{overlappingCourse.type}</p>
+                                  <p>{overlappingCourse.startTime} - {convertNumberToTime(overlappingCourse.end)}</p>
+                                  <p>{overlappingCourse.room}</p>
+                                  <br />
+                                  {overlappingCourse.instructors && (
+                                    <p>Instructor(s): {overlappingCourse.instructors.join(', ')}</p>
+                                  )}
+                                  <p>Days: {overlappingCourse.day.join(', ')}</p>
                                 </div>
-                              </Tooltip>
-                            );
-                          })}
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
+                              );
+
+                              return (
+                                <Tooltip
+                                  key={overlappingCourse.id}
+                                  label={tooltipContent}
+                                  placement="auto-end"
+                                  hasArrow
+                                  bg={graphColors[colorIndex % graphColors.length] + "50"}
+                                  color="white"
+                                  border={`2px solid ${graphColors[colorIndex % graphColors.length]}`}
+                                  rounded={5}
+                                  className='z-50 backdrop-blur-md backdrop-brightness-50'
+                                >
+                                  <div
+                                    className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-[1px]
+                                    ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
+                                    style={{
+                                      borderColor: graphColors[colorIndex % graphColors.length],
+                                      backgroundColor: graphColors[colorIndex % graphColors.length] + "50",
+                                      top: `${top}rem`,
+                                      height: `${height}rem`,
+                                      left: '0',
+                                      right: '0',
+                                      width: `${100 / overlaps.length}%`,
+                                      // marginLeft: `${(index * 100) / overlaps.length}%`
+                                    }}
+                                    onMouseEnter={() => setHoveredCourse(overlappingCourse.courseDetails.detailId)}
+                                    onMouseLeave={() => setHoveredCourse(null)}
+                                    onClick={() => reselectCourseDetails(overlappingCourse)}
+                                  >
+                                    {`${translateType(overlappingCourse.type)} ${overlappingCourse.courseDetails.subjectCode}${stripCourseCode(overlappingCourse.courseDetails.courseCode)}`}
+                                  </div>
+                                </Tooltip>
+                              );
+                            })}
+                          </div>
+                        );
+                      }
+                      return null;
+                    });
+                })()}
               </div>
             </div>
           ))}
