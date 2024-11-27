@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const Prereqs = ({ course }) => {
+const Prereqs = ({ course, scheduler = false }) => {
   const router = useRouter();
 
   const parsePrereqs = (prereq, i) => {
@@ -19,7 +19,7 @@ const Prereqs = ({ course }) => {
 
       return (
         <span className='' key={i}>
-          <a onClick={() => router.push(`/detail/${detailId}`)}
+          <a onClick={() => scheduler ? router.push(`https://www.boilerclasses.com/detail/${detailId}`) : router.push(`/detail/${detailId}`)}
             className='underline decoration-dotted cursor-pointer hover:text-blue-700 transition-all duration-300 ease-out text-blue-600'>
             {subjectCode} {courseNumber}
           </a>
@@ -37,8 +37,7 @@ const Prereqs = ({ course }) => {
   try {
     return (
       (course.prereqs && course.prereqs[0].split(' ')[0] !== router.query.id) && (
-        <p className="lg:text-sm text-xs text-gray-400 mb-4 font-medium">
-          <span className="text-gray-400 lg:text-sm text-xs">Prerequisites: </span>
+        <p className="lg:text-sm text-xs text-gray-400 font-medium">
           {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
         </p>
       )
