@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { graphColors } from "@/lib/utils";
 import { useToast } from '@chakra-ui/react';
 
@@ -8,7 +8,9 @@ import { getCourseData, convertTo12HourFormat, translateType } from './calendar'
 import ScheduleManager, { processLectureData } from './scheduleManager';
 import { Tooltip } from '@chakra-ui/react';
 
-// Helper function to convert number to time string
+/**
+ * Converts military time to formatted 12-hour string
+ */
 export const convertNumberToTime = (timeNum) => {
   const hours = Math.floor(timeNum / 100);
   const minutes = timeNum % 100;
@@ -22,8 +24,8 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [allLectures, setAllLectures] = useState([]);
   const [displayedLectures, setDisplayedLectures] = useState([]);
-  // Create a map to store course name to color index mapping
-  const [courseColorMap] = useState(new Map());
+  // Memoize course color mapping
+  const courseColorMap = useMemo(() => new Map(), []);
   const [selectedLectureIds, setSelectedLectureIds] = useState(() => {
     // Load saved lectures from localStorage on initial render
     if (typeof window !== 'undefined') {
@@ -137,26 +139,25 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
     // This ensures the effect runs when courses change or when a course is reselected
   }, [courses, courses.length, courses[courses.length - 1]?.tmp_inc]);
 
-  const handleLectureSelectionChange = (selectedIds) => {
-    const selectedSet = new Set(selectedIds); // Convert array to Set
+  // Optimize lecture selection handler
+  const handleLectureSelectionChange = useCallback((selectedIds) => {
+    const selectedSet = new Set(selectedIds);
     setSelectedLectureIds(selectedSet);
     setDisplayedLectures(allLectures.filter(lecture => selectedSet.has(lecture.id)));
-  };
+  }, [allLectures]);
 
+  /**
+   * Finds all courses that overlap with a given course on a specific day
+   */
   const getOverlappingCourses = (day, course) => {
-    // First, get all courses for this day
     const coursesOnDay = displayedLectures.filter(c => c.day.includes(day));
-
-    // Find all courses that form a continuous overlapping chain with the given course
     const overlappingGroup = new Set();
+
     const findOverlaps = (currentCourse) => {
       for (const otherCourse of coursesOnDay) {
         if (overlappingGroup.has(otherCourse)) continue;
-
-        // Check if the courses overlap
         if (!(otherCourse.end <= currentCourse.start || otherCourse.start >= currentCourse.end)) {
           overlappingGroup.add(otherCourse);
-          // Recursively find other overlaps
           findOverlaps(otherCourse);
         }
       }

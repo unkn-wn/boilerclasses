@@ -1,16 +1,16 @@
 // schedule.boilerclasses.com
 
+// Group external imports
 import Head from 'next/head';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useMemo } from 'react';
 import { Spinner, Tooltip } from '@chakra-ui/react'
 import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning } from "react-icons/io";
 
+// Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedsOptions, labels, graphColors } from '@/lib/utils';
-
 import CourseSearch from '@/components/courseSearch';
 import ScheduleCalendar from '@/components/schedule';
 import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/components/graph';
@@ -51,48 +51,37 @@ const Schedule = () => {
     }
   }, [pinCourses]);
 
-  // Process data into graph data
-  useEffect(() => {
-    if (!selectedCourse) return;
+  // Memoize graph data calculation
+  const graphData = useMemo(() => {
+    if (!selectedCourse) return null;
 
     sanitizeDescription(selectedCourse);
     const allProfs = collectAllProfessors(selectedCourse.instructor);
-    const { grades, gpa } = calculateGradesAndGPA(
-      allProfs,
-      selectedCourse.gpa,
-      graphColors
-    );
-
-    const averageGrades = averageAllData(grades);
-
-    setGpaGraph({
+    const { grades } = calculateGradesAndGPA(allProfs, selectedCourse.gpa, graphColors);
+    return {
       labels,
-      datasets: averageGrades,
-    });
+      datasets: averageAllData(grades),
+    };
+  }, [selectedCourse]);
 
-    // highlight the div with the selected course
-    async function highlightCourseDiv() {
+  useEffect(() => {
+    if (!graphData) return;
+    setGpaGraph(graphData);
+
+    // Highlight course details section
+    const highlightCourseDiv = async () => {
       const courseDiv = document.getElementById("course_details");
       courseDiv.classList.add("ring-4", "ring-yellow-500");
-      // courseDiv.classList.remove("border-zinc-800", "border");
-
       await new Promise(resolve => setTimeout(resolve, 500));
-
       courseDiv.classList.remove("ring-4", "ring-yellow-500");
-      // courseDiv.classList.add("border-zinc-800", "border");
-    }
+    };
 
-    // Call the function to highlight the element
     highlightCourseDiv();
-  }, [selectedCourse]);
+  }, [graphData]);
 
   // When selecting an item
   const handleOnSelect = (course) => {
-    if (!course) {
-      console.error("No course selected");
-      return;
-    }
-    console.log("Selected course:", course.value);
+    if (!course) return;
     updateFilter('searchTerm', '');
     setSelectedCourse(course.value);
   };
@@ -154,8 +143,8 @@ const Schedule = () => {
             />
           </div>
           {selectedCourse === null ? (
-            <div className='flex flex-col h-full justify-center mx-12'>
-              <h1 className='font-bold text-3xl'>Welcome to <span className='text-yellow-500'>BoilerClasses</span></h1>
+            <div className='flex flex-col justify-center mx-12 max-h-screen h-full'>
+              <h1 className='font-bold text-2xl lg:text-3xl'>Welcome to <span className='text-yellow-500'>BoilerClasses</span></h1>
               <h2 className='font-light text-sm'>
                 Utilize the scheduling assistant to plan your semester. Use the search bar to find courses, and add them to show up in the schedule!
               </h2>

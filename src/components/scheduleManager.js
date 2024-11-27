@@ -19,27 +19,30 @@ import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph'
 import { getColor } from './gpaModal';
 import { graphColors } from '@/lib/utils';
 
-// Add this helper function at the top of the file
+/**
+ * Normalizes instructor names between RMP and course data
+ */
 const normalizeInstructorName = (lectureName, courseInstructors) => {
   if (!lectureName) return "";
-
-  // Split names into parts
   const nameParts = lectureName.split(' ');
   const firstName = nameParts[0];
   const lastName = nameParts[nameParts.length - 1];
 
-  // Find matching instructor from course data
-  const matchingInstructor = Object.values(courseInstructors)
+  return Object.values(courseInstructors)
     .flat()
     .find(instructor => {
       const instructorParts = instructor.split(' ');
       return instructorParts[0] === firstName &&
         instructorParts[instructorParts.length - 1] === lastName;
-    });
-
-  return matchingInstructor || lectureName;
+    }) || lectureName;
 };
 
+/**
+ * Processes raw lecture data into a standardized format
+ * @param {Array} courseResults - Raw course data from API
+ * @param {Array} courses - Course objects from application state
+ * @returns {Array} Processed lecture data
+ */
 export const processLectureData = (courseResults, courses) => {
   const coursesArray = [];
 
@@ -106,17 +109,17 @@ const sortByTime = (a, b) => {
   return getTimeValue(a) - getTimeValue(b);
 };
 
+/**
+ * Groups lectures by time and sorts them
+ */
 const groupLecturesByTime = (lectures) => {
   const grouped = lectures.reduce((acc, lecture) => {
     const timeKey = lecture.startTime;
-    if (!acc[timeKey]) {
-      acc[timeKey] = [];
-    }
+    if (!acc[timeKey]) acc[timeKey] = [];
     acc[timeKey].push(lecture);
     return acc;
   }, {});
 
-  // Convert to array, sort by time only, and convert back to object
   return Object.fromEntries(
     Object.entries(grouped)
       .sort(([timeA, _], [timeB, __]) => sortByTime(timeA, timeB))
@@ -138,6 +141,9 @@ const sortByFirstDay = (a, b) => {
   return dayOrder[firstDayA] - dayOrder[firstDayB];
 };
 
+/**
+ * Renders a group of related course sections
+ */
 const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [rmpScores, setRmpScores] = useState({});
