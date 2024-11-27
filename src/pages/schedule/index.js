@@ -34,7 +34,6 @@ const Schedule = () => {
   });
 
   const [pinCourses, setPinCourses] = useState(() => {
-    // Load saved courses from localStorage on initial render
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('pinnedCourses');
       return saved ? JSON.parse(saved) : [];
@@ -44,7 +43,25 @@ const Schedule = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // Add effect to save pinned courses whenever they change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedCourse = localStorage.getItem('selectedCourse');
+      if (savedCourse) {
+        setSelectedCourse(JSON.parse(savedCourse));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (selectedCourse) {
+        localStorage.setItem('selectedCourse', JSON.stringify(selectedCourse));
+      } else {
+        localStorage.removeItem('selectedCourse');
+      }
+    }
+  }, [selectedCourse]);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('pinnedCourses', JSON.stringify(pinCourses));
@@ -84,10 +101,15 @@ const Schedule = () => {
     if (!course) return;
     updateFilter('searchTerm', '');
     setSelectedCourse(course.value);
+    localStorage.setItem('selectedCourse', JSON.stringify(course.value));
   };
 
   const handleCourseRemove = (detailId) => {
     setPinCourses(prevCourses => prevCourses.filter(course => course.detailId !== detailId));
+    if (selectedCourse?.detailId === detailId) {
+      setSelectedCourse(null);
+      localStorage.removeItem('selectedCourse');
+    }
   };
 
   return (

@@ -100,7 +100,7 @@ export const useSearchFilters = () => {
     });
 
     try {
-      const response = await fetch(`http://localhost:3000/api/search?` + params);
+      const response = await fetch(`/api/search?${params}`);
       const data = await response.json();
 
       // Clean up descriptions

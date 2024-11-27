@@ -20,13 +20,13 @@ async function getRMPRating(instructor) {
     const schools = ["U2Nob29sLTc4Mw==", "U2Nob29sLTE3NTk5"]; // purdue IDs for West Lafayette
     for (const school of schools) {
       const paramsTeacher = new URLSearchParams({ name: instructor, id: school });
-      const responseProf = await fetch("http://localhost:3000/api/ratings/searchTeacher?" + paramsTeacher);
+      const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
       const prof = await responseProf.json();
       const profs = prof.prof.filter(Boolean);
 
       if (profs.length > 0) {
         const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
-        const responseRMP = await fetch("http://localhost:3000/api/ratings/getTeacher?" + paramsGetTeacher);
+        const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
         const RMPrating = await responseRMP.json();
         rating = RMPrating.RMPrating.avgRating;
         break;
