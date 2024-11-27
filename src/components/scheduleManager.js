@@ -372,6 +372,23 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
 // Update ScheduleManager component to handle class-based selection
 const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse }) => {
+  const [minCredits, setMinCredits] = useState(0);
+  const [maxCredits, setMaxCredits] = useState(0);
+
+  useEffect(() => {
+    const credits = Array.from(selectedLectureIds).reduce((acc, id) => {
+      const lecture = lectures.find(lecture => lecture.id === id);
+      if (lecture) {
+        acc[0] += lecture.courseDetails.credits[0] || 0;
+        acc[1] += lecture.courseDetails.credits[1] || 0;
+      }
+      return acc;
+    }, [0, 0]);
+
+    setMinCredits(credits[0]);
+    setMaxCredits(credits[1]);
+  }, [selectedLectureIds, lectures]);
+
   const handleLectureToggle = (lectureId, classId) => {
     const newSelectedLectures = new Set(selectedLectureIds);
     const clickedLecture = lectures.find(lecture => lecture.id === lectureId);
@@ -412,8 +429,11 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
   }, {});
 
   return (
-    <div className="space-y-2 py-4 pl-4">
-      <h2 className="text-lg font-semibold text-white mb-4">Course Sections</h2>
+    <div className="flex flex-col space-y-2 py-4 pl-4">
+      <div className='flex flex-row justify-between'>
+        <h2 className="text-lg font-semibold text-white mb-4">Course Sections</h2>
+        <h2 className="text-lg font-semibold text-white mb-4">Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}</h2>
+      </div>
       {courseGroups && Object.keys(courseGroups).length !== 0 ? Object.entries(courseGroups).map(([detailId, courseLectures]) => (
         <CourseGroup
           key={detailId}

@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-import { Spinner } from '@chakra-ui/react'
-import { IoMdOpen, IoMdTrash, IoIosClose } from "react-icons/io";
+import { Spinner, Tooltip } from '@chakra-ui/react'
+import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning } from "react-icons/io";
 
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedsOptions, labels, graphColors } from '@/lib/utils';
@@ -190,11 +190,19 @@ const Schedule = () => {
                             {isLoading ? <div><Spinner /></div> : 'Add Course'}
                           </div>
                         )) : (
-                        <div
-                          className="flex self-end rounded-full text-center border items-center justify-center p-2 text-sm transition border-zinc-700 bg-zinc-900"
-                        >
-                          Course not offered<br /> in {CURRENT_SEMESTER}
-                        </div>
+                          <Tooltip 
+                            label={`Course not offered in ${CURRENT_SEMESTER}`}
+                            aria-label="Course availability tooltip"
+                            hasArrow
+                            placement="bottom"
+                            background="#a16207"
+                          >
+                            <div
+                              className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-yellow-700 bg-yellow-900 hover:bg-yellow-700"
+                            >
+                              <IoIosWarning />
+                            </div>
+                          </Tooltip>
                       )}
 
                     </div>
