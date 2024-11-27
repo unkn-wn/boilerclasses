@@ -16,24 +16,17 @@ async function getRMPRating(instructor) {
 
     let rating = 0;
 
-    let baseUrl = window.location.href;
-    if (baseUrl.includes("localhost")) {
-      baseUrl = "http://localhost:3000";
-    } else {
-      baseUrl = "https://boilerclasses.com";
-    }
-
     // for all Purdue University schools in West Lafayette, search prof
     const schools = ["U2Nob29sLTc4Mw==", "U2Nob29sLTE3NTk5"]; // purdue IDs for West Lafayette
     for (const school of schools) {
       const paramsTeacher = new URLSearchParams({ name: instructor, id: school });
-      const responseProf = await fetch(baseUrl + "/api/ratings/searchTeacher?" + paramsTeacher);
+      const responseProf = await fetch("/api/ratings/searchTeacher?" + paramsTeacher);
       const prof = await responseProf.json();
       const profs = prof.prof.filter(Boolean);
 
       if (profs.length > 0) {
         const paramsGetTeacher = new URLSearchParams({ id: profs[0].id });
-        const responseRMP = await fetch(baseUrl + "/api/ratings/getTeacher?" + paramsGetTeacher);
+        const responseRMP = await fetch("/api/ratings/getTeacher?" + paramsGetTeacher);
         const RMPrating = await responseRMP.json();
         rating = RMPrating.RMPrating.avgRating;
         break;
@@ -75,18 +68,11 @@ async function getAllRMPRatings(allProfs) {
 }
 
 
-// Add these new utility functions before loadRatingsForProfs
-export function getRMPScore(rmpData, instructor) {
-  if (!rmpData || !instructor) return null;
-  return rmpData[instructor] || null;
-}
-
-
 // Asynchronously fetch RMP rating for all professors
 let isLoadingRatings = false;
 
-export async function loadRatingsForProfs(course, onUpdate = null) {
-  if (!course) return Promise.resolve({});
+export async function loadRatingsForProfs(course) {
+  if (!course) return Promise.resolve({}); // Return an empty object if no course
 
   const allProfs = [];
   for (const semester in course.instructor) {
@@ -97,21 +83,16 @@ export async function loadRatingsForProfs(course, onUpdate = null) {
     }
   }
 
-  if (isLoadingRatings) return Promise.resolve({});
+  if (isLoadingRatings) {
+    return Promise.resolve({}); // Return an empty object if already loading
+  }
+
   isLoadingRatings = true;
 
-  const ratings = {};
   try {
-    // Process professors individually for streaming updates
-    const promises = allProfs.map(async (instructor) => {
-      const rating = await getRMPRating(instructor);
-      ratings[instructor] = rating;
-      // Call callback with accumulated ratings so far
-      if (onUpdate) onUpdate({...ratings});
-    });
-
-    await Promise.all(promises);
-    return ratings;
+    const ratings = await getAllRMPRatings(allProfs);
+    const newRMP = { ...ratings };
+    return newRMP;
   } catch (error) {
     console.error("Error loading ratings:", error);
     return Promise.resolve({});
