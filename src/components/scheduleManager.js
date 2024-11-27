@@ -410,11 +410,14 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
     const credits = Array.from(selectedLectureIds).reduce((acc, id) => {
       const lecture = lectures.find(lecture => lecture.id === id);
       if (lecture) {
-        acc[0] += lecture.courseDetails.credits[0] || 0;
-        acc[1] += lecture.courseDetails.credits[1] || 0;
+        if (!acc[2].has(lecture.courseDetails.detailId)) {
+          acc[0] += lecture.courseDetails.credits[0] || 0;
+          acc[1] += lecture.courseDetails.credits[1] || 0;
+          acc[2].add(lecture.courseDetails.detailId);
+        }
       }
       return acc;
-    }, [0, 0]);
+    }, [0, 0, new Set()]);
 
     setMinCredits(credits[0]);
     setMaxCredits(credits[1]);
