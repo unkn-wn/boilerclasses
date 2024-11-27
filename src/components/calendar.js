@@ -80,7 +80,7 @@ const Calendar = (props) => {
     };
 
 
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const days = ['M', 'T', 'W', 'R', 'F'];
 
     return (
         <>

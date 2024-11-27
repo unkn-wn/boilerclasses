@@ -9,15 +9,17 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button
+  Button,
+  Tooltip
 } from '@chakra-ui/react';
-import { IoMdOpen, IoIosArrowForward, IoMdClose } from "react-icons/io";
+import { IoMdOpen, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
 import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph';
 import { getColor } from './gpaModal';
 import { graphColors } from '@/lib/utils';
+import { downloadICS } from '@/lib/ics';
 
 /**
  * Normalizes instructor names between RMP and course data
@@ -71,17 +73,19 @@ export const processLectureData = (courseResults, courses) => {
           coursesArray.push({
             id: meeting.Id,
             name: courseName,
-            classId: classData.Id,  // Add classId
+            classId: classData.Id,
             type: meeting.Type,
             start,
             end,
-            day: days.includes("Non") ? ["None"] : days, // if no days, set to None
+            day: days.includes("Non") ? ["None"] : days,
             instructors: normalizedInstructors,
             startTime: startTime === '00:00' ? "No Meeting Time" : convertTo12HourFormat(startTime), // if no time, set to No Meeting Time
             room: `${meeting.Room.Building.ShortCode}` === 'TBA' ? 'TBA' : `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`, // if "TBA", set to TBA
             duration,
             crn: section.Crn,
-            courseDetails: course, // Add the full course object
+            courseDetails: course,
+            startDate: meeting.StartDate,
+            endDate: meeting.EndDate
           });
         });
       });
@@ -455,11 +459,34 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
     return acc;
   }, {});
 
+  const selectedLectures = lectures.filter(lecture => selectedLectureIds.has(lecture.id));
+  
   return (
     <div className="flex flex-col space-y-2 py-4 pl-4">
       <div className='flex flex-row justify-between mb-4'>
+      <div className='flex flex-row gap-2'>
         <h2 className="text-lg font-semibold text-white">Course Sections</h2>
-        <h2 className="text-xs text-zinc-400 self-end">Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}</h2>
+        {selectedLectures.length > 0 && (
+          <Tooltip
+          label={`Export schedule to .ics format`}
+          aria-label="Download Schedule"
+          hasArrow
+          placement="bottom"
+          background="#27272a"
+        >
+          <div
+            className="flex self-end rounded-full h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition hover:bg-zinc-800 duration-300"
+            onClick={() => downloadICS(selectedLectures)}>
+              <IoMdDownload />
+          </div>
+
+        </Tooltip>
+        
+          )}
+        </div>
+        <h2 className="text-xs text-zinc-400 self-end">
+          Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}
+        </h2>
       </div>
       {courseGroups && Object.keys(courseGroups).length !== 0 ? Object.entries(courseGroups).map(([detailId, courseLectures]) => (
         <CourseGroup
