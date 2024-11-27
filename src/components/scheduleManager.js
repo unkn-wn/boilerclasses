@@ -11,7 +11,7 @@ import {
   useDisclosure,
   Button
 } from '@chakra-ui/react';
-import { IoMdOpen, IoIosArrowForward } from "react-icons/io";
+import { IoMdOpen, IoIosArrowForward, IoMdClose } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
@@ -236,13 +236,20 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
       <div className="flex-grow bg-zinc-900 p-2">
         <div className="flex flex-col sm:flex-row gap-2 mb-2 justify-between">
-          <div className="flex flex-col font-semibold text-white text-xl self-start mx-2 break-words overflow-hidden">
-            {parentCourse.subjectCode} {parentCourse.courseCode}
-            <p className='text-sm'>{parentCourse.title}</p>
+          <div className='flex flex-row'>
+            <div className="w-6 h-6 aspect-square rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-700 transition-colors cursor-pointer" 
+                onClick={() => console.log("TODO IMPLEMENT THIS")}>
+              <IoMdClose className="text-zinc-400 text-sm" />
+            </div>
+            <div className="flex flex-col font-semibold text-white text-xl self-start mx-2 break-words overflow-hidden">
+              {parentCourse.subjectCode} {parentCourse.courseCode}
+              <p className='text-sm'>{parentCourse.title}</p>
+            </div>
           </div>
           <div className='flex flex-col xl:flex-row gap-2 justify-center sm:justify-end'>
             <Button
               variant=""
+              size="sm"
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
@@ -250,6 +257,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             >View Sections</Button>
             <Button
               variant=""
+              size="sm" 
               onClick={reselectCourseDetails}
               className="bg-zinc-800 text-white hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
@@ -371,7 +379,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 };
 
 // Update ScheduleManager component to handle class-based selection
-const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, setPinCourses }) => {
+const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse }) => {
   const [minCredits, setMinCredits] = useState(0);
   const [maxCredits, setMaxCredits] = useState(0);
 

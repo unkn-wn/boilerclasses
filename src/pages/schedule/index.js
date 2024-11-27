@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import Link from 'next/link';
+import { Inter } from 'next/font/google';
 import { useState, useEffect } from 'react';
 
 import { Spinner, Tooltip } from '@chakra-ui/react'
@@ -15,6 +16,8 @@ import ScheduleCalendar from '@/components/schedule';
 import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/components/graph';
 import { ScheduleGpaModal } from '@/components/gpaModal';
 import Prereqs from '@/components/prereqs';
+
+const inter = Inter({ subsets: ['latin'] });
 
 const Schedule = () => {
   const {
@@ -107,7 +110,7 @@ const Schedule = () => {
         <link rel="canonical" href="https://schedule.boilerclasses.com/" />
       </Head>
 
-      <div id="parent" className="flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto p-4 text-white">
+      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto p-4 text-white ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
           {/* Logo */}
