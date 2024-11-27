@@ -100,14 +100,7 @@ export const useSearchFilters = () => {
     });
 
     try {
-      let baseUrl = window.location.href;
-      if (baseUrl.includes("localhost")) {
-        baseUrl = "http://localhost:3000";
-      } else {
-        baseUrl = "https://boilerclasses.com";
-      }
-
-      const response = await fetch(`${baseUrl}/api/search?` + params);
+      const response = await fetch(`http://localhost:3000/api/search?` + params);
       const data = await response.json();
 
       // Clean up descriptions
