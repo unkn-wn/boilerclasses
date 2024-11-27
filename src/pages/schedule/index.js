@@ -16,6 +16,7 @@ import ScheduleCalendar from '@/components/schedule';
 import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/components/graph';
 import { ScheduleGpaModal } from '@/components/gpaModal';
 import Prereqs from '@/components/prereqs';
+import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -96,6 +97,10 @@ const Schedule = () => {
     setSelectedCourse(course.value);
   };
 
+  const handleCourseRemove = (detailId) => {
+    setPinCourses(prevCourses => prevCourses.filter(course => course.detailId !== detailId));
+  };
+
   return (
     <>
       <Head>
@@ -134,12 +139,12 @@ const Schedule = () => {
           </div>
 
           <div className='mx-2'>
-            <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} />
+            <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} onCourseRemove={handleCourseRemove} />
           </div>
         </div>
 
         {/* Right Side */}
-        <div id="right_side" className='flex flex-col w-full lg:w-1/2 h-full'>
+        <div id="right_side" className='flex flex-col w-full lg:w-1/2'>
           <div className="mb-6">
             <CourseSearch
               courses={courses}
@@ -158,7 +163,7 @@ const Schedule = () => {
           ) : (
             <>
               {/* Selected Course */}
-              <div className='flex flex-col h-full'>
+              <div className='flex flex-col lg:h-screen'>
                 <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
@@ -208,7 +213,7 @@ const Schedule = () => {
                             {isLoading ? <div><Spinner /></div> : 'Add Course'}
                           </div>
                         )) : (
-                          <Tooltip 
+                          <Tooltip
                             label={`Course not offered in ${CURRENT_SEMESTER}`}
                             aria-label="Course availability tooltip"
                             hasArrow
@@ -324,7 +329,7 @@ const Schedule = () => {
 
                   {gpaGraph.datasets ? (
                     <div className='h-full'>
-                      <Graph data={gpaGraph} />
+                      <Graph data={gpaGraph} scheduler />
                     </div>
                   ) : (
                     <div className="flex flex-col w-full bg-zinc-900 mx-auto p-4 rounded-xl">
@@ -342,6 +347,7 @@ const Schedule = () => {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

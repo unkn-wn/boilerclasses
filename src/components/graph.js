@@ -18,8 +18,9 @@ ChartJS.register(
 	Legend
 );
 
-const Graph = (props) => {
-	const { data } = props;
+const Graph = ({ data, scheduler = false }) => {
+
+	const chartTitle = scheduler ? '% Grade Distribution Across All Instructors' : '% Grade Distribution';
 
 	return (
 		<>
@@ -37,7 +38,7 @@ const Graph = (props) => {
 							},
 							title: {
 								display: true,
-								text: '% Grade Distribution Across All Instructors',
+								text: chartTitle,
 								color: "white"
 							},
 						},

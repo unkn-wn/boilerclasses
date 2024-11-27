@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphColors } from "@/lib/utils";
+import { useToast } from '@chakra-ui/react';
 
 import { stripCourseCode } from '@/pages/detail/[id]';
 
@@ -16,7 +17,8 @@ export const convertNumberToTime = (timeNum) => {
   return `${hour12}:${minutes.toString().padStart(2, '0')} ${period}`;
 };
 
-const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => {
+const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCourseRemove }) => {
+  const toast = useToast();
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [allLectures, setAllLectures] = useState([]);
   const [displayedLectures, setDisplayedLectures] = useState([]);
@@ -105,6 +107,26 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
         setDisplayedLectures(processedLectures.filter(lecture => updatedSelectedIds.has(lecture.id)));
       } catch (error) {
         console.error('Error fetching course data:', error);
+        toast({
+          render: () => (
+            <div className="flex flex-col p-3 bg-red-600/50 rounded-md">
+              <span className="font-bold text-white mb-1">
+                Something went wrong, please let us know!
+              </span>
+              <a
+                href="https://forms.gle/jtpLPbXm4X4RFoNh6"
+                className="text-white underline hover:text-gray-200 text-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Report Issue
+              </a>
+            </div>
+          ),
+          duration: 5000,
+          isClosable: true,
+          position: 'top'
+        });
       } finally {
         setIsLoading(false);
       }
@@ -293,6 +315,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
           selectedLectureIds={selectedLectureIds}
           onLectureSelectionChange={handleLectureSelectionChange}
           setSelectedCourse={setSelectedCourse}
+          onCourseRemove={onCourseRemove}
         />
       </div>
     </div>

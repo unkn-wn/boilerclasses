@@ -150,7 +150,7 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
             semester + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
             "&$filter=Subject/Abbreviation eq '" + subjectCode +
             "' and Number eq '" + courseCode +
-            "' and Title eq '" + encodeURIComponent(title) + "'";
+            "' and contains(Title, '" + encodeURIComponent(title) + "')";
         // console.log(url);
 
         const response = await fetch(url);

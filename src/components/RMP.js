@@ -85,8 +85,8 @@ export function getRMPScore(rmpData, instructor) {
 // Asynchronously fetch RMP rating for all professors
 let isLoadingRatings = false;
 
-export async function loadRatingsForProfs(course) {
-  if (!course) return Promise.resolve({}); // Return an empty object if no course
+export async function loadRatingsForProfs(course, onUpdate = null) {
+  if (!course) return Promise.resolve({});
 
   const allProfs = [];
   for (const semester in course.instructor) {
@@ -97,16 +97,21 @@ export async function loadRatingsForProfs(course) {
     }
   }
 
-  if (isLoadingRatings) {
-    return Promise.resolve({}); // Return an empty object if already loading
-  }
-
+  if (isLoadingRatings) return Promise.resolve({});
   isLoadingRatings = true;
 
+  const ratings = {};
   try {
-    const ratings = await getAllRMPRatings(allProfs);
-    const newRMP = { ...ratings };
-    return newRMP;
+    // Process professors individually for streaming updates
+    const promises = allProfs.map(async (instructor) => {
+      const rating = await getRMPRating(instructor);
+      ratings[instructor] = rating;
+      // Call callback with accumulated ratings so far
+      if (onUpdate) onUpdate({...ratings});
+    });
+
+    await Promise.all(promises);
+    return ratings;
   } catch (error) {
     console.error("Error loading ratings:", error);
     return Promise.resolve({});

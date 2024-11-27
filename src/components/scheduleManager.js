@@ -138,7 +138,7 @@ const sortByFirstDay = (a, b) => {
   return dayOrder[firstDayA] - dayOrder[firstDayB];
 };
 
-const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse }) => {
+const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [rmpScores, setRmpScores] = useState({});
   const [instructorGPAs, setInstructorGPAs] = useState({});
@@ -146,9 +146,9 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
     if (isOpen) {
-      // Load RMP scores
-      loadRatingsForProfs(parentCourse).then(scores => {
-        setRmpScores(scores);
+      // Load RMP scores with streaming updates
+      loadRatingsForProfs(parentCourse, (updatedScores) => {
+        setRmpScores(updatedScores);
       });
 
       // Calculate GPAs using graph.js function
@@ -231,14 +231,27 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
     onOpen();
   };
 
+  // Add this new function to handle course removal
+  const handleRemoveCourse = () => {
+    const courseDetailId = parentCourse.detailId;
+    // Remove all lectures associated with this course
+    lectures.forEach(lecture => {
+      if (selectedLectures.has(lecture.id)) {
+        onLectureToggle(lecture.id, lecture.classId);
+      }
+    });
+    // Remove the course from pinned courses
+    onCourseRemove(parentCourse.detailId);
+  };
+
   return (
     <div className="border border-zinc-700 rounded-lg overflow-hidden">
 
       <div className="flex-grow bg-zinc-900 p-2">
         <div className="flex flex-col sm:flex-row gap-2 mb-2 justify-between">
           <div className='flex flex-row'>
-            <div className="w-6 h-6 aspect-square rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-700 transition-colors cursor-pointer" 
-                onClick={() => console.log("TODO IMPLEMENT THIS")}>
+            <div className="self-center w-6 h-6 aspect-square rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-700 transition-colors cursor-pointer"
+                onClick={handleRemoveCourse}>
               <IoMdClose className="text-zinc-400 text-sm" />
             </div>
             <div className="flex flex-col font-semibold text-white text-xl self-start mx-2 break-words overflow-hidden">
@@ -257,7 +270,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             >View Sections</Button>
             <Button
               variant=""
-              size="sm" 
+              size="sm"
               onClick={reselectCourseDetails}
               className="bg-zinc-800 text-white hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
@@ -324,7 +337,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                 {lectures
                                   .sort(sortByFirstDay)
                                   .map((lecture) => (
-                                    <div className='flex-grow flex-1 min-w-[250px]' key={lecture.id}>
+                                    <div className='flex-grow flex-1 min-w-[100px]' key={lecture.id}>
                                       <Checkbox
                                         isChecked={selectedLectures.has(lecture.id)}
                                         onChange={() => onLectureToggle(lecture.id, lecture.classId)}
@@ -379,7 +392,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 };
 
 // Update ScheduleManager component to handle class-based selection
-const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse }) => {
+const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, onCourseRemove }) => {
   const [minCredits, setMinCredits] = useState(0);
   const [maxCredits, setMaxCredits] = useState(0);
 
@@ -438,9 +451,9 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
 
   return (
     <div className="flex flex-col space-y-2 py-4 pl-4">
-      <div className='flex flex-row justify-between'>
-        <h2 className="text-lg font-semibold text-white mb-4">Course Sections</h2>
-        <h2 className="text-lg font-semibold text-white mb-4">Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}</h2>
+      <div className='flex flex-row justify-between mb-4'>
+        <h2 className="text-lg font-semibold text-white">Course Sections</h2>
+        <h2 className="text-xs text-zinc-400 self-end">Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}</h2>
       </div>
       {courseGroups && Object.keys(courseGroups).length !== 0 ? Object.entries(courseGroups).map(([detailId, courseLectures]) => (
         <CourseGroup
@@ -450,6 +463,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
           selectedLectures={selectedLectureIds}
           onLectureToggle={handleLectureToggle}
           setSelectedCourse={setSelectedCourse}
+          onCourseRemove={onCourseRemove}
         />
       )) : (
         <p className="text-gray-500 text-sm">Search for a course by using the search bar, then add a course to show up here!</p>
