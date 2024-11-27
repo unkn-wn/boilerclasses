@@ -264,7 +264,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                 className="flex justify-between items-center p-2 rounded-md bg-zinc-800"
               >
                 <div className="text-sm text-white">
-                  <div>{`${lecture.type} ${lecture.instructors.length === 0 ? '' : '-'} ${lecture.instructors}`}</div>
+                  <div>{`${lecture.type} ${lecture.instructors.length === 0 ? '' : '-'} ${lecture.instructors.join(", ")}`}</div>
                   <div className="text-xs text-gray-400">
                     {`${lecture.day.join(', ')} • ${lecture.startTime} • ${lecture.room}`}
                   </div>
@@ -371,7 +371,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 };
 
 // Update ScheduleManager component to handle class-based selection
-const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse }) => {
+const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, setPinCourses }) => {
   const [minCredits, setMinCredits] = useState(0);
   const [maxCredits, setMaxCredits] = useState(0);
 

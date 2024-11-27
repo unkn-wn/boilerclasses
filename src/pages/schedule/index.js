@@ -29,8 +29,23 @@ const Schedule = () => {
     datasets: []
   });
 
-  const [pinCourses, setPinCourses] = useState([]);
+  const [pinCourses, setPinCourses] = useState(() => {
+    // Load saved courses from localStorage on initial render
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('pinnedCourses');
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+
   const [isLoading, setIsLoading] = useState(false);
+
+  // Add effect to save pinned courses whenever they change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('pinnedCourses', JSON.stringify(pinCourses));
+    }
+  }, [pinCourses]);
 
   // Process data into graph data
   useEffect(() => {

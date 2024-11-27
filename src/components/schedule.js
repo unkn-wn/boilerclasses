@@ -22,7 +22,21 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse }) => 
   const [displayedLectures, setDisplayedLectures] = useState([]);
   // Create a map to store course name to color index mapping
   const [courseColorMap] = useState(new Map());
-  const [selectedLectureIds, setSelectedLectureIds] = useState(new Set());
+  const [selectedLectureIds, setSelectedLectureIds] = useState(() => {
+    // Load saved lectures from localStorage on initial render
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('selectedLectures');
+      return new Set(saved ? JSON.parse(saved) : []);
+    }
+    return new Set();
+  });
+
+  // Add effect to save selected lectures whenever they change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('selectedLectures', JSON.stringify([...selectedLectureIds]));
+    }
+  }, [selectedLectureIds]);
 
   // Add this helper function at the beginning of the component
   const getCourseColorIndex = (detailId) => {
