@@ -132,14 +132,10 @@ for class_id in tqdm(all_classes):
     class_data["sched"] = list(set(class_data["sched"]))
     if "description" not in class_data:
         class_data["description"] = instances[0]["description"]
-    class_data["credits"] = next(
-        (instance["credits"] for instance in instances if "<a href=" not in instance["description"]),
-        [0, 0]
-    )
+    class_data["credits"] = instances[0]["credits"]
     for instance in instances:
-        if "<a href=" not in instance["description"]:
-            class_data["credits"][0] = min(instance["credits"][0], class_data["credits"][0])
-            class_data["credits"][1] = max(instance["credits"][1], class_data["credits"][1])
+        class_data["credits"][0] = min(instance["credits"][0], class_data["credits"][0])
+        class_data["credits"][1] = max(instance["credits"][1], class_data["credits"][1])
     out[class_id] = class_data
 
 course_data = []
