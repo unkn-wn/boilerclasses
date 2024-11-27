@@ -1,7 +1,7 @@
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 const formatICSDate = (date) => {
-  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0];
 };
 
 const parseDate = (dateString) => {
@@ -12,7 +12,7 @@ const parseDate = (dateString) => {
 const getNextDayOccurrence = (dayAbbr, afterDate) => {
   const days = { 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5 };
   const targetDay = days[dayAbbr];
-  
+
   let nextOccurrence = new Date(afterDate);
   while (nextOccurrence.getDay() !== targetDay) {
     nextOccurrence.setDate(nextOccurrence.getDate() + 1);
@@ -27,6 +27,21 @@ export const generateICS = (lectures) => {
     'PRODID:-//BoilerClasses//Schedule//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
+    'BEGIN:VTIMEZONE',
+    'TZID:America/New_York',
+    'BEGIN:STANDARD',
+    'DTSTART:20071104T020000',
+    'RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11',
+    'TZOFFSETFROM:-0400',
+    'TZOFFSETTO:-0500',
+    'END:STANDARD',
+    'BEGIN:DAYLIGHT',
+    'DTSTART:20070311T020000',
+    'RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3',
+    'TZOFFSETFROM:-0500',
+    'TZOFFSETTO:-0400',
+    'END:DAYLIGHT',
+    'END:VTIMEZONE'
   ];
 
   lectures.forEach(lecture => {
@@ -39,8 +54,8 @@ export const generateICS = (lectures) => {
       const startDate = getNextDayOccurrence(day, semesterStart);
       const [startHour, startMinute] = lecture.startTime.match(/(\d+):(\d+)/).slice(1);
       startDate.setHours(
-        lecture.startTime.includes('PM') && startHour !== '12' 
-          ? parseInt(startHour) + 12 
+        lecture.startTime.includes('PM') && startHour !== '12'
+          ? parseInt(startHour) + 12
           : parseInt(startHour)
       );
       startDate.setMinutes(parseInt(startMinute));
@@ -56,8 +71,8 @@ export const generateICS = (lectures) => {
         'BEGIN:VEVENT',
         `UID:${lecture.id}-${day}@boilerclasses.com`,
         `DTSTAMP:${formatICSDate(new Date())}`,
-        `DTSTART:${formatICSDate(startDate)}`,
-        `DTEND:${formatICSDate(endDate)}`,
+        `DTSTART;TZID=America/New_York:${formatICSDate(startDate)}`,
+        `DTEND;TZID=America/New_York:${formatICSDate(endDate)}`,
         `RRULE:FREQ=WEEKLY;UNTIL=${formatICSDate(semesterEnd)}`,
         `SUMMARY:${lecture.name} - ${lecture.type}`,
         `LOCATION:${lecture.room}`,
@@ -80,4 +95,4 @@ export const downloadICS = (lectures) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}; 
+};

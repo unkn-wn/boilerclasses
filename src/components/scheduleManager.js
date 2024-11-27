@@ -261,7 +261,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
         <div className="flex flex-col sm:flex-row gap-2 mb-2 justify-between">
           <div className='flex flex-row'>
             <div className="self-center w-6 h-6 aspect-square rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-700 transition-colors cursor-pointer"
-                onClick={handleRemoveCourse}>
+              onClick={handleRemoveCourse}>
               <IoMdClose className="text-zinc-400 text-sm" />
             </div>
             <div className="flex flex-col font-semibold text-white text-xl self-start mx-2 break-words overflow-hidden">
@@ -463,28 +463,26 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
   }, {});
 
   const selectedLectures = lectures.filter(lecture => selectedLectureIds.has(lecture.id));
-  
+
   return (
     <div className="flex flex-col space-y-2 py-4 pl-4">
       <div className='flex flex-row justify-between mb-4'>
-      <div className='flex flex-row gap-2'>
-        <h2 className="text-lg font-semibold text-white">Course Sections</h2>
-        {selectedLectures.length > 0 && (
-          <Tooltip
-          label={`Export schedule to .ics format`}
-          aria-label="Download Schedule"
-          hasArrow
-          placement="bottom"
-          background="#27272a"
-        >
-          <div
-            className="flex self-end rounded-full h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition hover:bg-zinc-800 duration-300"
-            onClick={() => downloadICS(selectedLectures)}>
-              <IoMdDownload />
-          </div>
-
-        </Tooltip>
-        
+        <div className='flex md:flex-row flex-col gap-2'>
+          <h2 className="text-lg font-semibold text-white">Course Sections</h2>
+          {selectedLectures.length > 0 && (
+            <Tooltip
+              label={`Export schedule to .ics format`}
+              aria-label="Download Schedule"
+              hasArrow
+              placement="bottom"
+              background="#27272a"
+            >
+              <div
+                className="flex rounded-full h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition hover:bg-zinc-800 duration-300"
+                onClick={() => downloadICS(selectedLectures)}>
+                <IoMdDownload />
+              </div>
+            </Tooltip>
           )}
         </div>
         <h2 className="text-xs text-zinc-400 self-end">
