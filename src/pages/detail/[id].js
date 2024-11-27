@@ -34,12 +34,12 @@ import "react-circular-progressbar/dist/styles.css";
 
 
 // ----- Component imports -----
-import { instructorStyles, graphColors, boilerExamsCourses, labels } from '@/lib/utils';
+import { instructorStyles, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
 import { semesters, subjects } from "@/lib/utils"
 
 import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
-import Graph from '@/components/graph';
+import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA } from '@/components/graph';
 import GpaModal from '@/components/gpaModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
 import Prereqs from '@/components/prereqs';
@@ -54,103 +54,45 @@ const CardDetails = ({ courseData, semData }) => {
   // UseEffect that loads on first render
   useEffect(() => {
     if (!courseData) return;
-    // console.log(JSON.stringify(courseData, null, 2)); // for debugging and you dont wanna start server
 
-    // set descriptions to none if it's html
-    if (courseData.description && courseData.description.startsWith("<a href=")) {
-      courseData.description = "No Description Available";
-    }
+    // Helper to handle initial instructor setup
+    const setupInitialInstructor = (allProfs, semesterProfs, semester) => {
+      const firstProf =
+        semesterProfs?.length > 0 ? semesterProfs[0] : allProfs[0];
+      refreshGraph({ value: firstProf, label: firstProf });
+      setSelectedInstructors([firstProf]);
+    };
 
-    // Set allProfs variable with all courseData instructors
-    const allProfs = [];
-    for (const semester in courseData.instructor) {
-      for (const instructor of courseData.instructor[semester]) {
-        if (!allProfs.includes(instructor)) {
-          allProfs.push(instructor);
-        }
-      }
-    }
+    sanitizeDescription(courseData);
 
-    const grades = [];
-    const gpa = {};
-    let curr = 0;
+    const allProfs = collectAllProfessors(courseData.instructor);
+    const { grades, gpa } = calculateGradesAndGPA(
+      allProfs,
+      courseData.gpa,
+      graphColors
+    );
 
-    // for each instructor, calculate avg gpa and grade distribution
-    for (const instructor of allProfs) {
-
-      let avg_gpa = 0;
-      let avg_grade_dist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-      if (!courseData.gpa[instructor]) { // if no data for instructor, set to 0
-        gpa[instructor] = [0, "#ffffff"];
-        grades.push({
-          label: instructor,
-          data: avg_grade_dist,
-          backgroundColor: "#ffffff"
-        });
-        continue;
-      }
-
-      const color = graphColors[(curr++) % graphColors.length];
-      let count = 0;
-      for (const sem in courseData.gpa[instructor]) { // for each semester, calculate avg gpa and grade distribution
-        avg_gpa += courseData.gpa[instructor][sem][13];
-        for (let i = 0; i < 13; i++) {
-          avg_grade_dist[i] += courseData.gpa[instructor][sem][i];
-        }
-        count++;
-      }
-
-      for (let i = 0; i < 13; i++) {
-        avg_grade_dist[i] = Math.round(avg_grade_dist[i] / count * 100) / 100;
-      }
-
-      gpa[instructor] = [Math.round(avg_gpa / count * 100) / 100, color];
-      grades.push({
-        label: instructor,
-        data: avg_grade_dist,
-        backgroundColor: color
-      });
-
-    }
-
-    // Sets the gpaGraph state for the graph component
     setGpaGraph({
       labels,
-      //datasets: grades
-      datasets: []
+      datasets: [],
     });
-
     setDefaultGPA({
       labels,
-      datasets: grades
+      datasets: grades,
     });
     setCurGPA(gpa);
-
-
-    // Set selectable instructors
     setSelectableInstructors(allProfs);
 
-    // set current semester
     setSem(availableSemesters[0]);
-
-    const currentSemesterProfs = courseData.instructor[availableSemesters[0]];
-
-    // Set the first instructor to the first professor in the current semester
-    if (currentSemesterProfs && currentSemesterProfs.length > 0) {
-      const firstProf = currentSemesterProfs[0];
-      refreshGraph({ value: firstProf, label: firstProf });
-      setSelectedInstructors([firstProf]);
-    } else {
-      // Fallback if no professors are found in the current semester
-      const firstProf = allProfs[0];
-      refreshGraph({ value: firstProf, label: firstProf });
-      setSelectedInstructors([firstProf]);
-    }
+    setupInitialInstructor(
+      allProfs,
+      courseData.instructor[availableSemesters[0]],
+      availableSemesters[0]
+    );
 
     setLoading(false);
-
   }, [router.isReady, courseData]);
+
 
 
   // Another UseEffect to asynchronously get RMP ratings
@@ -237,32 +179,10 @@ const CardDetails = ({ courseData, semData }) => {
 
   // Function to replace gened codes with actual names
   const genedCodeToName = (code) => {
-    const genedsOptions = [
-      { label: "Behavioral/Social Science", value: "BSS" },
-      { label: "Civics Literacy", value: "Civics Literacy" },
-      { label: "Humanities", value: "Humanities" },
-      { label: "JEDI", value: "JEDI" },
-      { label: "Oral Communications", value: "OC" },
-      { label: "Information Literacy", value: "IL" },
-      { label: "Quantitative Reasoning", value: "QR" },
-      { label: "Science", value: "Science" },
-      { label: "Science Technology and Society", value: "STS" },
-      { label: "Written Communication", value: "WC" }
-    ]
-
     const gened = genedsOptions.filter(gened => gened.value === code);
     return gened[0].label;
   }
 
-
-  // function to strip courseData code to remove the 00s
-  function stripCourseCode(courseCode) {
-    let formattedName = courseCode.toString();
-    if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
-      formattedName = formattedName.slice(0, -2);
-    }
-    return formattedName;
-  }
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
@@ -427,7 +347,10 @@ const CardDetails = ({ courseData, semData }) => {
             <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {courseData.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
-            <Prereqs course={courseData} router={router} />
+            <div className='flex flex-row mb-4'>
+              <span className="text-gray-400 lg:text-sm text-xs">Prerequisites:&nbsp;</span>
+              <Prereqs course={courseData} />
+            </div>
 
 
 
@@ -566,7 +489,9 @@ const CardDetails = ({ courseData, semData }) => {
 
                   {/* GPA Graph */}
                   {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 && (
-                    <Graph data={gpaGraph} />
+                    <div className='md:mt-4 mt-2 mb-4 h-96'>
+                      <Graph data={gpaGraph} />
+                    </div>
                   )}
 
                   {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
@@ -604,6 +529,17 @@ const CardDetails = ({ courseData, semData }) => {
 
 };
 
+export default CardDetails;
+
+
+// function to strip courseData code to remove the 00s
+export function stripCourseCode(courseCode) {
+  let formattedName = courseCode.toString();
+  if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
+    formattedName = formattedName.slice(0, -2);
+  }
+  return formattedName;
+}
 
 
 // @Sarthak made this, some api call to get courseData data
@@ -634,5 +570,3 @@ export async function getServerSideProps(context) {
     },
   }
 }
-
-export default CardDetails;
