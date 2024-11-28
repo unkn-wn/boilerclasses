@@ -80,7 +80,7 @@ const Calendar = (props) => {
     };
 
 
-    const days = ['M', 'T', 'W', 'R', 'F'];
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
     return (
         <>
@@ -91,7 +91,7 @@ const Calendar = (props) => {
                     <div key={day} className={`${index !== 0 ? 'border-t-2 mt-4 md:border-t-0 md:mt-0 md:ml-4' : ''
                         } ${index !== days.length - 1 ? 'md:border-r-2 md:pr-4' : ''
                         } border-gray-500`}>
-                        <p className='relative text-right text-gray-500'>{day.charAt(0)}</p>
+                        <p className='relative text-right text-gray-500'>{day === "Thursday" ? "R" : day.charAt(0)}</p>
                         <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                             {getMeetingsForDay(day).map((meeting, i) => (
                                 <MeetingDisplay
