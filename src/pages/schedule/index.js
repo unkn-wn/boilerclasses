@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import { useState, useEffect, useMemo } from 'react';
 import { Spinner, Tooltip } from '@chakra-ui/react'
-import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoIosAdd } from "react-icons/io";
+import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-icons/io";
 
 // Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
@@ -131,29 +131,29 @@ const Schedule = () => {
         <link rel="canonical" href="https://schedule.boilerclasses.com/" />
       </Head>
 
-      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto p-4 text-white ${inter.className}`}>
+      {/* Logo */}
+      <div className='flex flex-row mt-4 mb-2 justify-center'>
+        <Link className="flex flex-row" href='https://boilerclasses.com'>
+          <img
+            src='/boilerclasses-FULL.png'
+            className='my-auto w-8 h-8'
+            alt="BoilerClasses Logo"
+          />
+          <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-white'>
+            BoilerClasses
+          </h1>
+        </Link>
+      </div>
+
+      {/* mobile message */}
+      <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
+        <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
+        Use the Scheduling Assistant on Desktop for the best experience!
+      </div>
+
+      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto px-4 text-white ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
-          {/* Logo */}
-          <div className='flex flex-row my-2 justify-center'>
-            <Link className="flex flex-row" href='https://boilerclasses.com'>
-              <img
-                src='/boilerclasses-FULL.png'
-                className='my-auto w-8 h-8'
-                alt="BoilerClasses Logo"
-              />
-              <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-white'>
-                BoilerClasses
-              </h1>
-            </Link>
-          </div>
-
-          {/* mobile message */}
-          <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
-            <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
-            Use the Scheduling Assistant on Desktop for the best experience!
-          </div>
-
           <div className='mx-2'>
             <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} onCourseRemove={handleCourseRemove} />
           </div>
@@ -222,7 +222,7 @@ const Schedule = () => {
                           </div>
                         ) : (
                           <div
-                            className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                            className="flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
@@ -233,7 +233,7 @@ const Schedule = () => {
                             {isLoading ? (
                               <div className="flex items-center justify-center"><Spinner /></div>
                             ) : (<>
-                              <IoIosAdd size={24} />
+                              <IoMdAdd />
                               <span className='whitespace-nowrap'>Add Course</span>
                             </>)}
                           </div>
@@ -352,8 +352,8 @@ const Schedule = () => {
                 {/* Graph */}
                 <div className="my-4">
                   {gpaGraph.datasets &&
-                   gpaGraph.datasets.length > 0 &&
-                   !gpaGraph.datasets[0].data.every(value => value === 0) ? (
+                    gpaGraph.datasets.length > 0 &&
+                    !gpaGraph.datasets[0].data.every(value => value === 0) ? (
                     <div className='border border-zinc-800 shadow-md shadow-white/10 rounded-xl h-96'>
                       <div className='h-full'>
                         <Graph data={gpaGraph} scheduler />
