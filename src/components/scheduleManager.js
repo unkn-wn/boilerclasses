@@ -12,7 +12,7 @@ import {
   Button,
   Tooltip
 } from '@chakra-ui/react';
-import { IoMdOpen, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
+import { IoMdInformationCircleOutline, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
@@ -319,15 +319,15 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
-              leftIcon={<IoMdOpen />}
-            >View Sections</Button>
+              leftIcon={<IoMdInformationCircleOutline />}
+            ><p className='-translate-y-[0.05rem]'>View Sections</p></Button>
             <Button
               variant=""
               size="sm"
               onClick={reselectCourseDetails}
               className="bg-zinc-800 text-white hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
-            >Show Course</Button>
+            ><p className='-translate-y-[0.05rem]'>Show Course</p></Button>
           </div>
         </div>
         {hasSelectedLectures ? (
@@ -522,9 +522,10 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
               background="#27272a"
             >
               <div
-                className="flex rounded-full h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition hover:bg-zinc-800 duration-300"
+                className="flex rounded-full gap-1 items-center justify-center pl-2 pr-[0.6rem] font-light text-xs text-zinc-400 cursor-pointer transition bg-zinc-800 hover:brightness-125 duration-300"
                 onClick={() => downloadICS(selectedLectures)}>
                 <IoMdDownload />
+                <p>Export Schedule</p>
               </div>
             </Tooltip>
           )}

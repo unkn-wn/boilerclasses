@@ -298,7 +298,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
                                   className='z-50 backdrop-blur-md backdrop-brightness-50'
                                 >
                                   <div
-                                    className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-[1px]
+                                    className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-xl
                                     ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
                                     style={{
                                       borderColor: graphColors[colorIndex % graphColors.length],
