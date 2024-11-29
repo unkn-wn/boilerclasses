@@ -178,7 +178,29 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
     for (const course of courses) {
       for (const crn of course.crn) {
         if (crn === parseInt(overlappingCourse.crn)) {
-          setSelectedCourse(course);
+          // Create a new copy of the course with initialPin and timestamp
+          const courseWithPin = {
+            ...course,
+            initialPin: true,
+            tmp_inc: Date.now(), // Force re-render
+            scrollToMeeting: overlappingCourse.id
+          };
+
+          // Update all lectures related to this course with the new course details
+          setAllLectures(prevLectures =>
+            prevLectures.map(lecture => {
+              if (lecture.courseDetails.detailId === course.detailId) {
+                return {
+                  ...lecture,
+                  courseDetails: courseWithPin
+                };
+              }
+              return lecture;
+            })
+          );
+
+          // uncomment if we want to reselect course (highlight it)
+          // setSelectedCourse(courseWithPin);
           return;
         }
       }

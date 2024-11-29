@@ -21,6 +21,9 @@ import { getColor } from './gpaModal';
 import { graphColors } from '@/lib/utils';
 import { downloadICS } from '@/lib/ics';
 
+// Add this at the top of the file, outside of any component
+const rmpScoresCache = new Map();
+
 /**
  * Normalizes instructor names between RMP and course data
  */
@@ -150,22 +153,48 @@ const sortByFirstDay = (a, b) => {
  */
 const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [rmpScores, setRmpScores] = useState({});
+  const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
   const [instructorGPAs, setInstructorGPAs] = useState({});
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
     if (parentCourse?.initialPin) {
       onOpen();
-
       delete parentCourse.initialPin;
+
+      // Add delay to wait for modal content to render
+      if (parentCourse?.scrollToMeeting) {
+        const meetingId = parentCourse.scrollToMeeting;
+        // Use a MutationObserver to wait for the element to exist
+        const observer = new MutationObserver((mutations, obs) => {
+          const meetingCheckbox = document.getElementById(meetingId);
+          if (meetingCheckbox) {
+            setTimeout(() => {
+              meetingCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100); // Small additional delay for modal animation
+            obs.disconnect(); // Stop observing once found
+          }
+        });
+
+        // Start observing the modal body for changes
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+
+        // Cleanup observer after 2 seconds if element is never found
+        setTimeout(() => observer.disconnect(), 2000);
+      }
     }
 
     if (isOpen) {
-      // Load RMP scores with streaming updates
-      loadRatingsForProfs(parentCourse, (updatedScores) => {
-        setRmpScores(updatedScores);
-      });
+      // Only load RMP scores if they're not in the cache
+      if (!rmpScoresCache.has(parentCourse.detailId)) {
+        loadRatingsForProfs(parentCourse, (updatedScores) => {
+          setRmpScores(updatedScores);
+          rmpScoresCache.set(parentCourse.detailId, updatedScores);
+        });
+      }
 
       // Calculate GPAs using graph.js function
       const allInstructors = collectAllProfessors(parentCourse.instructor);
@@ -340,7 +369,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
           <ModalBody pb={6} className='bg-zinc-900 text-white'>
             <Stack spacing={4}>
               {sortedClassSections.map(([classId, typeGroups], sectionIndex) => (
-                <div key={classId} className="border-b border-zinc-700 pb-2 mb-2">
+                <div key={classId} className="border-b border-zinc-700 pb=2 mb-2">
                   <div className="text-sm font-bold mb-2 text-blue-400">Class Section {sectionIndex + 1}</div>
                   {Object.entries(typeGroups)
                     .sort(([typeA], [typeB]) => {
@@ -363,6 +392,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                   .map((lecture) => (
                                     <div className='flex-grow flex-1 min-w-[100px]' key={lecture.id}>
                                       <Checkbox
+                                        id={lecture.id} // Add this line to identify the checkbox
                                         isChecked={selectedLectures.has(lecture.id)}
                                         onChange={() => onLectureToggle(lecture.id, lecture.classId)}
                                         colorScheme="blue"
