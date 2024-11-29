@@ -320,7 +320,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
               leftIcon={<IoMdInformationCircleOutline />}
-            ><p>View Sections</p></Button>
+            ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
               variant=""
               size="sm"
@@ -350,7 +350,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                   onClick={() => onLectureToggle(lecture.id, lecture.classId)}
                   _hover={{ bg: "blackAlpha.500" }}
                 >
-                  Remove
+                  Remove Section
                 </Button>
               </div>
             ))}
