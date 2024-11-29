@@ -100,7 +100,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
 
             updatedSelectedIds.add(firstLecture.id);
 
-            delete course.initialPin;
+            // delete course.initialPin;
           }
         });
 
@@ -125,7 +125,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
               </a>
             </div>
           ),
-          duration: 5000,
+          duration: 2000,
           isClosable: true,
           position: 'top'
         });

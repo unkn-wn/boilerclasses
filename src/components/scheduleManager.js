@@ -155,6 +155,12 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
+    if (parentCourse?.initialPin) {
+      onOpen();
+
+      delete parentCourse.initialPin;
+    }
+
     if (isOpen) {
       // Load RMP scores with streaming updates
       loadRatingsForProfs(parentCourse, (updatedScores) => {
@@ -179,6 +185,14 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
   const reselectCourseDetails = () => {
     document.getElementById('right_side').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const detailsDiv = document.getElementById('course_details');
+    if (detailsDiv) {
+      detailsDiv.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
     const courseDetails = [...lectures][0].courseDetails;
 
     // Create a new object with all the properties to trigger React's change detection
@@ -361,7 +375,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
                                             {/* Instructor mapping, includes gpa and rmp per prof */}
                                             {lecture.instructors.map(instructor => (
-                                              <div key={instructor} className='flex flex-row gap-1'>
+                                              <div key={instructor} className='flex flex-row flex-wrap gap-1'>
                                                 {instructor}
                                                 {instructorGPAs[instructor]?.[0] > 0 &&
                                                   <div className='px-1 rounded font-bold'
@@ -373,7 +387,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                                 }
                                                 {getRMPScore(rmpScores, instructor) &&
                                                   <div className='px-1 rounded font-bold bg-zinc-600'>
-                                                    {`RMP: ${getRMPScore(rmpScores, instructor)}`}
+                                                    {`RateMyProf: ${getRMPScore(rmpScores, instructor)}`}
                                                   </div>
                                                 }
                                               </div>

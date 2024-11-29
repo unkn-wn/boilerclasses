@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import { useState, useEffect, useMemo } from 'react';
 import { Spinner, Tooltip } from '@chakra-ui/react'
-import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning } from "react-icons/io";
+import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoIosAdd } from "react-icons/io";
 
 // Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
@@ -198,7 +198,7 @@ const Schedule = () => {
                       >
                         <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
                           <IoMdOpen />
-                          Open Details
+                          <span className='whitespace-nowrap'>Open Details</span>
                         </div>
                       </a>
 
@@ -206,10 +206,14 @@ const Schedule = () => {
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                           <div
-                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
                             onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
                           >
-                            {isLoading ? <div><Spinner /></div> : <IoMdTrash />}
+                            {isLoading ? (
+                              <div className="flex items-center justify-center"><Spinner /></div>
+                            ) : (
+                              <div className="flex items-center justify-center"><IoMdTrash size={16} /></div>
+                            )}
                           </div>
                         ) : (
                           <div
@@ -217,26 +221,31 @@ const Schedule = () => {
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
-                                initialPin: true  // Add this flag to indicate it's a new pin
+                                initialPin: true
                               }]);
                             }}
                           >
-                            {isLoading ? <div><Spinner /></div> : 'Add Course'}
+                            {isLoading ? (
+                              <div className="flex items-center justify-center"><Spinner /></div>
+                            ) : (<>
+                              <IoIosAdd size={24} />
+                              <span className='whitespace-nowrap'>Add Course</span>
+                            </>)}
                           </div>
                         )) : (
-                          <Tooltip
-                            label={`Course not offered in ${CURRENT_SEMESTER}`}
-                            aria-label="Course availability tooltip"
-                            hasArrow
-                            placement="bottom"
-                            background="#a16207"
+                        <Tooltip
+                          label={`Course not offered in ${CURRENT_SEMESTER}`}
+                          aria-label="Course availability tooltip"
+                          hasArrow
+                          placement="bottom"
+                          background="#a16207"
+                        >
+                          <div
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-yellow-700 bg-yellow-900 hover:bg-yellow-700"
                           >
-                            <div
-                              className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-yellow-700 bg-yellow-900 hover:bg-yellow-700"
-                            >
-                              <IoIosWarning />
-                            </div>
-                          </Tooltip>
+                            <div className="flex items-center justify-center"><IoIosWarning size={16} /></div>
+                          </div>
+                        </Tooltip>
                       )}
 
                     </div>
@@ -306,7 +315,7 @@ const Schedule = () => {
                             </span>
                           ))
                         ) : (
-                          <p className='text-white text-sm font-light text-center w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
+                          <p className='text-white text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
                         )}
                       </div>
                     </div>
@@ -336,22 +345,22 @@ const Schedule = () => {
 
 
                 {/* Graph */}
-                <div className='border border-zinc-800 shadow-md shadow-white/10 h-96 lg:h-1/2 rounded-xl my-4'>
-
-                  {gpaGraph.datasets ? (
-                    <div className='h-full'>
-                      <Graph data={gpaGraph} scheduler />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col w-full bg-zinc-900 mx-auto p-4 rounded-xl">
-                      <div className="h-full w-full mb-4">
-                        <h1 className="text-center text-lg font-semibold text-white">
-                          No grade data available for this course.
-                        </h1>
+                <div className="my-4">
+                  {gpaGraph.datasets &&
+                   gpaGraph.datasets.length > 0 &&
+                   !gpaGraph.datasets[0].data.every(value => value === 0) ? (
+                    <div className='border border-zinc-800 shadow-md shadow-white/10 rounded-xl h-96'>
+                      <div className='h-full'>
+                        <Graph data={gpaGraph} scheduler />
                       </div>
                     </div>
+                  ) : (
+                    <div className="border border-zinc-800 shadow-md shadow-white/10 rounded-xl bg-zinc-900 p-4">
+                      <h1 className="text-center text-md font-light text-white py-4">
+                        No grade data available for this course.
+                      </h1>
+                    </div>
                   )}
-
                 </div>
               </div>
             </>

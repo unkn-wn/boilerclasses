@@ -162,7 +162,7 @@ export const averageAllData = (grades) => {
 	const avgData = [{
 		label: "Average",
 		data: avg.map((val) => Math.round(val / grades.length * 100) / 100),
-		backgroundColor: graphColors[Math.floor(Math.random() * graphColors.length)],
+		backgroundColor: graphColors[2],
 	}];
 
 	return avgData;
