@@ -43,6 +43,7 @@ const Schedule = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // loads the previously selected course from localStorage when the page loads
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedCourse = localStorage.getItem('selectedCourse');
@@ -52,6 +53,7 @@ const Schedule = () => {
     }
   }, []);
 
+  // saves the selected course to localStorage whenever it changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (selectedCourse) {
@@ -62,13 +64,14 @@ const Schedule = () => {
     }
   }, [selectedCourse]);
 
+  // keeps the pinned courses synced with localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('pinnedCourses', JSON.stringify(pinCourses));
     }
   }, [pinCourses]);
 
-  // Memoize graph data calculation
+  // processes the selected course data and generates the grade distribution graph
   const graphData = useMemo(() => {
     if (!selectedCourse) return null;
 
@@ -81,6 +84,7 @@ const Schedule = () => {
     };
   }, [selectedCourse]);
 
+  // updates the graph and adds a brief highlight animation to the course details section
   useEffect(() => {
     if (!graphData) return;
     setGpaGraph(graphData);
@@ -96,7 +100,7 @@ const Schedule = () => {
     highlightCourseDiv();
   }, [graphData]);
 
-  // When selecting an item
+  // handles when a user selects a course from the search dropdown
   const handleOnSelect = (course) => {
     if (!course) return;
     updateFilter('searchTerm', '');
@@ -104,6 +108,7 @@ const Schedule = () => {
     localStorage.setItem('selectedCourse', JSON.stringify(course.value));
   };
 
+  // removes a course from the pinned courses list and clears selection if it was selected
   const handleCourseRemove = (detailId) => {
     setPinCourses(prevCourses => prevCourses.filter(course => course.detailId !== detailId));
     if (selectedCourse?.detailId === detailId) {

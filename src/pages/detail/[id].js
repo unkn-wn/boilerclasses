@@ -349,7 +349,6 @@ const CardDetails = ({ courseData, semData }) => {
 
             {/* Prerequisites */}
             <div className='flex flex-row mb-4'>
-              <span className="text-gray-400 lg:text-sm text-xs">Prerequisites:&nbsp;</span>
               <Prereqs course={courseData} />
             </div>
 
