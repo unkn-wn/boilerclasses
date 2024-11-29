@@ -16,8 +16,7 @@ export default async function middleware(req) {
   const url = new URL(req.url);
   const hostname = req.headers.get("host") || "";
 
-  const allowedDomains = ["localhost:3000", "boilerclasses.com", "pr-138-unkn-wn-boilerclasses.fly.dev"];
-  // const allowedDomains = ["localhost:3000", "boilerclasses.com"];
+  const allowedDomains = ["localhost:3000", "boilerclasses.com", "boilerclasses.fly.dev"];
 
   const isAllowedDomain = allowedDomains.some(domain => hostname.includes(domain));
 
