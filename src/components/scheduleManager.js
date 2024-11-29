@@ -12,7 +12,7 @@ import {
   Button,
   Tooltip
 } from '@chakra-ui/react';
-import { IoMdOpen, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
+import { IoMdInformationCircleOutline, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
@@ -20,6 +20,9 @@ import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph'
 import { getColor } from './gpaModal';
 import { graphColors } from '@/lib/utils';
 import { downloadICS } from '@/lib/ics';
+
+// Add this at the top of the file, outside of any component
+const rmpScoresCache = new Map();
 
 /**
  * Normalizes instructor names between RMP and course data
@@ -150,16 +153,48 @@ const sortByFirstDay = (a, b) => {
  */
 const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [rmpScores, setRmpScores] = useState({});
+  const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
   const [instructorGPAs, setInstructorGPAs] = useState({});
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
+    if (parentCourse?.initialPin) {
+      onOpen();
+      delete parentCourse.initialPin;
+
+      // Add delay to wait for modal content to render
+      if (parentCourse?.scrollToMeeting) {
+        const meetingId = parentCourse.scrollToMeeting;
+        // Use a MutationObserver to wait for the element to exist
+        const observer = new MutationObserver((mutations, obs) => {
+          const meetingCheckbox = document.getElementById(meetingId);
+          if (meetingCheckbox) {
+            setTimeout(() => {
+              meetingCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100); // Small additional delay for modal animation
+            obs.disconnect(); // Stop observing once found
+          }
+        });
+
+        // Start observing the modal body for changes
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+
+        // Cleanup observer after 2 seconds if element is never found
+        setTimeout(() => observer.disconnect(), 2000);
+      }
+    }
+
     if (isOpen) {
-      // Load RMP scores with streaming updates
-      loadRatingsForProfs(parentCourse, (updatedScores) => {
-        setRmpScores(updatedScores);
-      });
+      // Only load RMP scores if they're not in the cache
+      if (!rmpScoresCache.has(parentCourse.detailId)) {
+        loadRatingsForProfs(parentCourse, (updatedScores) => {
+          setRmpScores(updatedScores);
+          rmpScoresCache.set(parentCourse.detailId, updatedScores);
+        });
+      }
 
       // Calculate GPAs using graph.js function
       const allInstructors = collectAllProfessors(parentCourse.instructor);
@@ -179,6 +214,14 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
   const reselectCourseDetails = () => {
     document.getElementById('right_side').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const detailsDiv = document.getElementById('course_details');
+    if (detailsDiv) {
+      detailsDiv.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
     const courseDetails = [...lectures][0].courseDetails;
 
     // Create a new object with all the properties to trigger React's change detection
@@ -276,15 +319,15 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
-              leftIcon={<IoMdOpen />}
-            >View Sections</Button>
+              leftIcon={<IoMdInformationCircleOutline />}
+            ><p>View Sections</p></Button>
             <Button
               variant=""
               size="sm"
               onClick={reselectCourseDetails}
               className="bg-zinc-800 text-white hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
-            >Show Course</Button>
+            ><p>Show Course</p></Button>
           </div>
         </div>
         {hasSelectedLectures ? (
@@ -326,7 +369,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
           <ModalBody pb={6} className='bg-zinc-900 text-white'>
             <Stack spacing={4}>
               {sortedClassSections.map(([classId, typeGroups], sectionIndex) => (
-                <div key={classId} className="border-b border-zinc-700 pb-2 mb-2">
+                <div key={classId} className="border-b border-zinc-700 pb=2 mb-2">
                   <div className="text-sm font-bold mb-2 text-blue-400">Class Section {sectionIndex + 1}</div>
                   {Object.entries(typeGroups)
                     .sort(([typeA], [typeB]) => {
@@ -349,6 +392,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                   .map((lecture) => (
                                     <div className='flex-grow flex-1 min-w-[100px]' key={lecture.id}>
                                       <Checkbox
+                                        id={lecture.id} // Add this line to identify the checkbox
                                         isChecked={selectedLectures.has(lecture.id)}
                                         onChange={() => onLectureToggle(lecture.id, lecture.classId)}
                                         colorScheme="blue"
@@ -361,7 +405,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
 
                                             {/* Instructor mapping, includes gpa and rmp per prof */}
                                             {lecture.instructors.map(instructor => (
-                                              <div key={instructor} className='flex flex-row gap-1'>
+                                              <div key={instructor} className='flex flex-row flex-wrap gap-1'>
                                                 {instructor}
                                                 {instructorGPAs[instructor]?.[0] > 0 &&
                                                   <div className='px-1 rounded font-bold'
@@ -373,7 +417,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                                 }
                                                 {getRMPScore(rmpScores, instructor) &&
                                                   <div className='px-1 rounded font-bold bg-zinc-600'>
-                                                    {`RMP: ${getRMPScore(rmpScores, instructor)}`}
+                                                    {`RateMyProf: ${getRMPScore(rmpScores, instructor)}`}
                                                   </div>
                                                 }
                                               </div>
@@ -478,9 +522,10 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
               background="#27272a"
             >
               <div
-                className="flex rounded-full h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition hover:bg-zinc-800 duration-300"
+                className="flex rounded-full gap-1 items-center justify-center pl-2 pr-[0.6rem] font-light text-xs text-zinc-400 cursor-pointer transition bg-zinc-800 hover:brightness-125 duration-300"
                 onClick={() => downloadICS(selectedLectures)}>
                 <IoMdDownload />
+                <p>Export Schedule</p>
               </div>
             </Tooltip>
           )}

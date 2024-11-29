@@ -113,7 +113,7 @@ export const ScheduleGpaModal = ({ course }) => {
 					</>
 				) : (
 					<div>
-						<p className='text-white text-sm font-light text-center'>No data for current instructors.</p>
+						<p className='text-white text-sm font-light text-left'>No data for current instructors.</p>
 					</div>
 				)}
 		</div>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import { useState, useEffect, useMemo } from 'react';
 import { Spinner, Tooltip } from '@chakra-ui/react'
-import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning } from "react-icons/io";
+import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-icons/io";
 
 // Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
@@ -43,6 +43,7 @@ const Schedule = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // loads the previously selected course from localStorage when the page loads
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedCourse = localStorage.getItem('selectedCourse');
@@ -52,6 +53,7 @@ const Schedule = () => {
     }
   }, []);
 
+  // saves the selected course to localStorage whenever it changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (selectedCourse) {
@@ -62,13 +64,14 @@ const Schedule = () => {
     }
   }, [selectedCourse]);
 
+  // keeps the pinned courses synced with localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('pinnedCourses', JSON.stringify(pinCourses));
     }
   }, [pinCourses]);
 
-  // Memoize graph data calculation
+  // processes the selected course data and generates the grade distribution graph
   const graphData = useMemo(() => {
     if (!selectedCourse) return null;
 
@@ -81,6 +84,7 @@ const Schedule = () => {
     };
   }, [selectedCourse]);
 
+  // updates the graph and adds a brief highlight animation to the course details section
   useEffect(() => {
     if (!graphData) return;
     setGpaGraph(graphData);
@@ -96,7 +100,7 @@ const Schedule = () => {
     highlightCourseDiv();
   }, [graphData]);
 
-  // When selecting an item
+  // handles when a user selects a course from the search dropdown
   const handleOnSelect = (course) => {
     if (!course) return;
     updateFilter('searchTerm', '');
@@ -104,6 +108,7 @@ const Schedule = () => {
     localStorage.setItem('selectedCourse', JSON.stringify(course.value));
   };
 
+  // removes a course from the pinned courses list and clears selection if it was selected
   const handleCourseRemove = (detailId) => {
     setPinCourses(prevCourses => prevCourses.filter(course => course.detailId !== detailId));
     if (selectedCourse?.detailId === detailId) {
@@ -115,40 +120,54 @@ const Schedule = () => {
   return (
     <>
       <Head>
-        <title>Schedule Assistant - BoilerClasses</title>
-        <meta name="title" content="Schedule Assistant - BoilerClasses" />
+        <title>Schedule Assistant | BoilerClasses</title>
+        <meta name="title" content="Schedule Assistant | BoilerClasses" />
         <meta name="description" content="BoilerClasses Scheduling Assistant - Plan your next courses from over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, Courses, Schedule, Scheduling, Assistant, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
+
+        <meta property="og:url" content="https://schedule.boilerclasses.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Schedule Assistant | BoilerClasses" />
+        <meta property="og:description" content="BoilerClasses Scheduling Assistant - Plan your next courses from over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
+        <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/0413e8c7-edd6-4344-bc7a-8fc27d840783.png?token=XWki0pXYsNvGaeuQwxsWOq1GkgkT-SJQTrP2LtDWKyE&height=776&width=1200&expires=33268877667" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="boilerclasses.com" />
+        <meta property="twitter:url" content="https://schedule.boilerclasses.com" />
+        <meta name="twitter:title" content="Schedule Assistant | BoilerClasses" />
+        <meta name="twitter:description" content="BoilerClasses Scheduling Assistant - Plan your next courses from over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
+        <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/0413e8c7-edd6-4344-bc7a-8fc27d840783.png?token=XWki0pXYsNvGaeuQwxsWOq1GkgkT-SJQTrP2LtDWKyE&height=776&width=1200&expires=33268877667" />
+
         <link rel="canonical" href="https://schedule.boilerclasses.com/" />
       </Head>
 
-      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto p-4 text-white ${inter.className}`}>
+      {/* Logo */}
+      <div className='flex flex-row mt-4 mb-2 justify-center'>
+        <Link className="flex flex-row" href='https://boilerclasses.com'>
+          <img
+            src='/boilerclasses-FULL.png'
+            className='my-auto w-8 h-8'
+            alt="BoilerClasses Logo"
+          />
+          <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-white'>
+            BoilerClasses
+          </h1>
+        </Link>
+      </div>
+
+      {/* mobile message */}
+      <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
+        <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
+        Use the Scheduling Assistant on Desktop for the best experience!
+      </div>
+
+      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto px-4 text-white ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
-          {/* Logo */}
-          <div className='flex flex-row my-2 justify-center'>
-            <Link className="flex flex-row" href='https://boilerclasses.com'>
-              <img
-                src='/boilerclasses-FULL.png'
-                className='my-auto w-8 h-8'
-                alt="BoilerClasses Logo"
-              />
-              <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-white'>
-                BoilerClasses
-              </h1>
-            </Link>
-          </div>
-
-          {/* mobile message */}
-          <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
-            <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
-            Use the Scheduling Assistant on Desktop for the best experience!
-          </div>
-
           <div className='mx-2'>
             <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} onCourseRemove={handleCourseRemove} />
           </div>
@@ -198,7 +217,7 @@ const Schedule = () => {
                       >
                         <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
                           <IoMdOpen />
-                          Open Details
+                          <span className='whitespace-nowrap'>Open Details</span>
                         </div>
                       </a>
 
@@ -206,37 +225,46 @@ const Schedule = () => {
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                           <div
-                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
                             onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
                           >
-                            {isLoading ? <div><Spinner /></div> : <IoMdTrash />}
+                            {isLoading ? (
+                              <div className="flex items-center justify-center"><Spinner /></div>
+                            ) : (
+                              <div className="flex items-center justify-center"><IoMdTrash size={16} /></div>
+                            )}
                           </div>
                         ) : (
                           <div
-                            className="flex self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                            className="flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
-                                initialPin: true  // Add this flag to indicate it's a new pin
+                                initialPin: true
                               }]);
                             }}
                           >
-                            {isLoading ? <div><Spinner /></div> : 'Add Course'}
+                            {isLoading ? (
+                              <div className="flex items-center justify-center"><Spinner /></div>
+                            ) : (<>
+                              <IoMdAdd />
+                              <span className='whitespace-nowrap'>Add Course</span>
+                            </>)}
                           </div>
                         )) : (
-                          <Tooltip
-                            label={`Course not offered in ${CURRENT_SEMESTER}`}
-                            aria-label="Course availability tooltip"
-                            hasArrow
-                            placement="bottom"
-                            background="#a16207"
+                        <Tooltip
+                          label={`Course not offered in ${CURRENT_SEMESTER}`}
+                          aria-label="Course availability tooltip"
+                          hasArrow
+                          placement="bottom"
+                          background="#a16207"
+                        >
+                          <div
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-yellow-700 bg-yellow-900 hover:bg-yellow-700"
                           >
-                            <div
-                              className="flex self-end rounded-full border h-8 w-8 items-center justify-center px-2 font-bold cursor-pointer transition border-yellow-700 bg-yellow-900 hover:bg-yellow-700"
-                            >
-                              <IoIosWarning />
-                            </div>
-                          </Tooltip>
+                            <div className="flex items-center justify-center"><IoIosWarning size={16} /></div>
+                          </div>
+                        </Tooltip>
                       )}
 
                     </div>
@@ -306,7 +334,7 @@ const Schedule = () => {
                             </span>
                           ))
                         ) : (
-                          <p className='text-white text-sm font-light text-center w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
+                          <p className='text-white text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
                         )}
                       </div>
                     </div>
@@ -336,22 +364,22 @@ const Schedule = () => {
 
 
                 {/* Graph */}
-                <div className='border border-zinc-800 shadow-md shadow-white/10 h-96 lg:h-1/2 rounded-xl my-4'>
-
-                  {gpaGraph.datasets ? (
-                    <div className='h-full'>
-                      <Graph data={gpaGraph} scheduler />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col w-full bg-zinc-900 mx-auto p-4 rounded-xl">
-                      <div className="h-full w-full mb-4">
-                        <h1 className="text-center text-lg font-semibold text-white">
-                          No grade data available for this course.
-                        </h1>
+                <div className="my-4">
+                  {gpaGraph.datasets &&
+                    gpaGraph.datasets.length > 0 &&
+                    !gpaGraph.datasets[0].data.every(value => value === 0) ? (
+                    <div className='border border-zinc-800 shadow-md shadow-white/10 rounded-xl h-96'>
+                      <div className='h-full'>
+                        <Graph data={gpaGraph} scheduler />
                       </div>
                     </div>
+                  ) : (
+                    <div className="border border-zinc-800 shadow-md shadow-white/10 rounded-xl bg-zinc-900 p-4">
+                      <h1 className="text-center text-md font-light text-white py-4">
+                        No grade data available for this course.
+                      </h1>
+                    </div>
                   )}
-
                 </div>
               </div>
             </>

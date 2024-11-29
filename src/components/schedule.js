@@ -100,7 +100,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
 
             updatedSelectedIds.add(firstLecture.id);
 
-            delete course.initialPin;
+            // delete course.initialPin;
           }
         });
 
@@ -125,7 +125,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
               </a>
             </div>
           ),
-          duration: 5000,
+          duration: 2000,
           isClosable: true,
           position: 'top'
         });
@@ -178,7 +178,29 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
     for (const course of courses) {
       for (const crn of course.crn) {
         if (crn === parseInt(overlappingCourse.crn)) {
-          setSelectedCourse(course);
+          // Create a new copy of the course with initialPin and timestamp
+          const courseWithPin = {
+            ...course,
+            initialPin: true,
+            tmp_inc: Date.now(), // Force re-render
+            scrollToMeeting: overlappingCourse.id
+          };
+
+          // Update all lectures related to this course with the new course details
+          setAllLectures(prevLectures =>
+            prevLectures.map(lecture => {
+              if (lecture.courseDetails.detailId === course.detailId) {
+                return {
+                  ...lecture,
+                  courseDetails: courseWithPin
+                };
+              }
+              return lecture;
+            })
+          );
+
+          // uncomment if we want to reselect course (highlight it)
+          // setSelectedCourse(courseWithPin);
           return;
         }
       }
@@ -276,7 +298,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
                                   className='z-50 backdrop-blur-md backdrop-brightness-50'
                                 >
                                   <div
-                                    className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-[1px]
+                                    className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-xl
                                     ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
                                     style={{
                                       borderColor: graphColors[colorIndex % graphColors.length],

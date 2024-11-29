@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+
 const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -110,18 +112,25 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
                 key={course.id}
                 onClick={() => handleSelect(course)}
                 onMouseEnter={() => setSelectedIndex(index)}
-                className={`px-4 py-2 cursor-pointer ${
-                  selectedIndex === index
-                    ? 'bg-neutral-800 text-white'
-                    : 'text-white hover:bg-neutral-800'
-                }`}
+                className={`flex flex-row justify-between px-4 py-2 cursor-pointer ${selectedIndex === index
+                  ? 'bg-neutral-800 text-white'
+                  : 'text-white hover:bg-neutral-800'
+                  }`}
               >
-                <div className="font-medium">
-                  {course.value.subjectCode} {course.value.courseCode}
+                <div>
+                  <div className="font-medium flex items-center justify-between">
+                    <span>{course.value.subjectCode} {course.value.courseCode}</span>
+
+                  </div>
+                  <div className="text-sm text-neutral-400 truncate">
+                    {course.value.title}
+                  </div>
                 </div>
-                <div className="text-sm text-neutral-400 truncate">
-                  {course.value.title}
-                </div>
+                {!course.value.terms.includes(CURRENT_SEMESTER) && (
+                  <span className="text-xs px-2 py-1 rounded h-fit self-center bg-orange-500/50 text-orange-100/50">
+                    Not Offered in {CURRENT_SEMESTER}
+                  </span>
+                )}
               </div>
             ))
           ) : (
