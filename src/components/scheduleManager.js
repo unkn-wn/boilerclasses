@@ -12,7 +12,7 @@ import {
   Button,
   Tooltip
 } from '@chakra-ui/react';
-import { IoMdInformationCircleOutline, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
+import { IoMdInformationCircleOutline, IoIosSwap, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
@@ -319,7 +319,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
-              leftIcon={<IoMdInformationCircleOutline />}
+              leftIcon={ hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
             ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
               variant=""
@@ -438,6 +438,11 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                 </div>
               ))}
             </Stack>
+            <div className="block md:hidden">
+              <Button variant="" size="sm" onClick={onClose} className='bg-blue-900 text-white hover:brightness-125 h-full'>
+                Confirm
+              </Button>
+            </div>
           </ModalBody>
         </ModalContent>
       </Modal>

@@ -88,8 +88,8 @@ const CourseCatalog = () => {
   return (
     <>
       <Head>
-        <title>BoilerClasses - Purdue Course Catalog</title>
-        <meta name="title" content="BoilerClasses - Purdue Course Catalog" />
+        <title>BoilerClasses | Purdue Course Catalog</title>
+        <meta name="title" content="BoilerClasses | Purdue Course Catalog" />
         <meta name="description" content="BoilerClasses (Boiler Classes) - Purdue's course catalog with over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, Courses, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
@@ -99,14 +99,14 @@ const CourseCatalog = () => {
 
         <meta property="og:url" content="https://boilerclasses.com/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="BoilerClasses - Purdue Course Catalog" />
+        <meta property="og:title" content="BoilerClasses | Purdue Course Catalog" />
         <meta property="og:description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/d60e5fdb-3257-4101-8a5c-f0cc4da5cdf9.png?token=XH3_7P8qGpJk2isgIYcTV7AWA8ZK6vUEcQIAkMxgVjc&height=776&width=1200&expires=33268680502" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="boilerclasses.com" />
         <meta property="twitter:url" content="https://boilerclasses.com/" />
-        <meta name="twitter:title" content="BoilerClasses - Purdue Course Catalog" />
+        <meta name="twitter:title" content="BoilerClasses | Purdue Course Catalog" />
         <meta name="twitter:description" content="BoilerClasses (Boiler Classes) is a Purdue course catalog containing 8000+ Purdue courses and courses. Find geneds, grades, prerequisites, and more." />
         <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/d60e5fdb-3257-4101-8a5c-f0cc4da5cdf9.png?token=XH3_7P8qGpJk2isgIYcTV7AWA8ZK6vUEcQIAkMxgVjc&height=776&width=1200&expires=33268680502" />
 
