@@ -320,14 +320,14 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
               leftIcon={<IoMdInformationCircleOutline />}
-            ><p className='-translate-y-[0.05rem]'>View Sections</p></Button>
+            ><p>View Sections</p></Button>
             <Button
               variant=""
               size="sm"
               onClick={reselectCourseDetails}
               className="bg-zinc-800 text-white hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
-            ><p className='-translate-y-[0.05rem]'>Show Course</p></Button>
+            ><p>Show Course</p></Button>
           </div>
         </div>
         {hasSelectedLectures ? (

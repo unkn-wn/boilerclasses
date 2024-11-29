@@ -120,14 +120,28 @@ const Schedule = () => {
   return (
     <>
       <Head>
-        <title>Schedule Assistant - BoilerClasses</title>
-        <meta name="title" content="Schedule Assistant - BoilerClasses" />
+        <title>Schedule Assistant | BoilerClasses</title>
+        <meta name="title" content="Schedule Assistant | BoilerClasses" />
         <meta name="description" content="BoilerClasses Scheduling Assistant - Plan your next courses from over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
         <meta name="keywords" content="Purdue, Purdue Univesity, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, Courses, Schedule, Scheduling, Assistant, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers" />
         <meta name='og:locality' content='West Lafayette' />
         <meta name='og:region' content='IN' />
         <meta name='og:postal-code' content='47906' />
         <meta name='og:postal-code' content='47907' />
+
+        <meta property="og:url" content="https://schedule.boilerclasses.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Schedule Assistant | BoilerClasses" />
+        <meta property="og:description" content="BoilerClasses Scheduling Assistant - Plan your next courses from over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
+        <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/0413e8c7-edd6-4344-bc7a-8fc27d840783.png?token=XWki0pXYsNvGaeuQwxsWOq1GkgkT-SJQTrP2LtDWKyE&height=776&width=1200&expires=33268877667" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="boilerclasses.com" />
+        <meta property="twitter:url" content="https://schedule.boilerclasses.com" />
+        <meta name="twitter:title" content="Schedule Assistant | BoilerClasses" />
+        <meta name="twitter:description" content="BoilerClasses Scheduling Assistant - Plan your next courses from over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more." />
+        <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/0413e8c7-edd6-4344-bc7a-8fc27d840783.png?token=XWki0pXYsNvGaeuQwxsWOq1GkgkT-SJQTrP2LtDWKyE&height=776&width=1200&expires=33268877667" />
+
         <link rel="canonical" href="https://schedule.boilerclasses.com/" />
       </Head>
 
