@@ -5,6 +5,10 @@
 		<priority>1</priority>
 	</url>
 	<url>
+		<loc>https://schedule.boilerclasses.com/</loc>
+		<priority>1</priority>
+	</url>
+	<url>
 		<loc>https://boilerclasses.com/detail/AAE20000UndergraduateSophomoreSeminar</loc>
 		<priority>0.92</priority>
 	</url>
