@@ -10,10 +10,15 @@ import { WarningTwoIcon, ArrowUpIcon } from '@chakra-ui/icons';
 
 import SearchFilters from '@/components/searchFilters';
 import { useSearchFilters } from '@/hooks/useSearchFilters';
+import { Button } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { IoMdCalendar } from "react-icons/io";
 
 const inter = Inter({ subsets: ['latin'] });
 
 const CourseCatalog = () => {
+
+  const router = useRouter(); 
 
   const {
     filters,
@@ -184,7 +189,7 @@ const CourseCatalog = () => {
 
         /* Landing Page */
         <div>
-          <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center">
+          <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center justify-center">
             <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
               <img src='/boilerclasses-FULL.png' onClick={() => setDisplayLanding(false)} className='my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
               <h1 onClick={() => setDisplayLanding(false)} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
@@ -198,6 +203,15 @@ const CourseCatalog = () => {
               }}
               className="text-white text-sm md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
+            <div className='flex justify-center mt-8'>
+                <Button
+                  variant=""
+                  size="sm"
+                  onClick={() => router.push('https://schedule.boilerclasses.com')}
+                  className={`bg-blue-900 text-white hover:brightness-125 h-full w-1/2`}
+                  leftIcon={<IoMdCalendar />}
+                ><p>Try our Scheduling Assistant!</p></Button>
+            </div>
 
           </div >
           <div className='absolute bottom-0 w-full'>
