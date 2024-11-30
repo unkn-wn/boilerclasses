@@ -203,16 +203,15 @@ const CourseCatalog = () => {
               }}
               className="text-white text-sm md:text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
-            <div className='flex justify-center mt-8'>
                 <Button
-                  variant=""
-                  size="sm"
                   onClick={() => router.push('https://schedule.boilerclasses.com')}
-                  className={`bg-blue-900 text-white hover:brightness-125 h-full w-1/2`}
+                  className="flex justify-self-center mt-4 md:mt-6 bg-zinc-800 text-white hover:brightness-125 w-fit p-4"
+                  variant=''
+                  size={{base: 'xs', sm: 'sm', md: 'md'}}
                   leftIcon={<IoMdCalendar />}
-                ><p>Try our Scheduling Assistant!</p></Button>
-            </div>
-
+                >
+                  Try our Schedule Assistant!
+                </Button>
           </div >
           <div className='absolute bottom-0 w-full'>
             <Footer />
