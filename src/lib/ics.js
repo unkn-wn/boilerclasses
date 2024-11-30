@@ -1,7 +1,7 @@
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 const formatICSDate = (date) => {
-  return date.toISOString().replace(/[-:]/g, '').split('.')[0];
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 };
 
 const parseDate = (dateString) => {
@@ -71,8 +71,8 @@ export const generateICS = (lectures) => {
         'BEGIN:VEVENT',
         `UID:${lecture.id}-${day}@boilerclasses.com`,
         `DTSTAMP:${formatICSDate(new Date())}`,
-        `DTSTART;TZID=America/New_York:${formatICSDate(startDate)}`,
-        `DTEND;TZID=America/New_York:${formatICSDate(endDate)}`,
+        `DTSTART:${formatICSDate(startDate)}`,
+        `DTEND:${formatICSDate(endDate)}`,
         `RRULE:FREQ=WEEKLY;UNTIL=${formatICSDate(semesterEnd)}`,
         `SUMMARY:${lecture.name} - ${lecture.type}`,
         `LOCATION:${lecture.room}`,
