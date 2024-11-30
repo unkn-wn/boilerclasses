@@ -224,7 +224,7 @@ const Schedule = () => {
                       {/* Add Course button */}
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
-                          <div
+                          <button
                             className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
                             onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
                           >
@@ -233,9 +233,9 @@ const Schedule = () => {
                             ) : (
                               <div className="flex items-center justify-center"><IoMdTrash size={16} /></div>
                             )}
-                          </div>
+                          </button>
                         ) : (
-                          <div
+                          <button
                             className="flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                             onClick={() => {
                               setPinCourses([...pinCourses, {
@@ -250,7 +250,7 @@ const Schedule = () => {
                               <IoMdAdd />
                               <span className='whitespace-nowrap'>Add Course</span>
                             </>)}
-                          </div>
+                          </button>
                         )) : (
                         <Tooltip
                           label={`Course not offered in ${CURRENT_SEMESTER}`}

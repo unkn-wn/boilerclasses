@@ -130,10 +130,11 @@ for code in class_codes:
     curr_td = curr_table.find_elements(By.TAG_NAME, "td")[-1]
     # possible improvement: add prof email 
     sched_type = curr_table.find_elements(By.TAG_NAME, "td")[-2].text
-    instructors = curr_td.text.split(",")
-    for j in range(len(instructors)):
-      instructors[j] = instructors[j].split("(")[0].strip()
-    # instructor_name = curr_td.text.split("(")[0].strip()
+    instructors = []
+    tmp_instructors = curr_td.text.split(",")
+    for j in range(len(tmp_instructors)):
+      if ("(P)" in curr_td.text and "(P)" in tmp_instructors[j]) or ("(P)" not in curr_td.text):
+        instructors.append(tmp_instructors[j].split("(")[0].strip())
 
     if classfullId in doneIds:
       if sched_type in doneIds[classfullId]["instructor"]:

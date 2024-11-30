@@ -29,7 +29,6 @@ export default async function middleware(req) {
   const subdomainData = subdomains.find(d => d.subdomain === subdomain);
 
   if (subdomainData) {
-    console.log(url, subdomain);
     return NextResponse.rewrite(new URL(`/${subdomain}${url.pathname}`, req.url));
   }
 

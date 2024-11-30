@@ -15,8 +15,8 @@ const SubjectDirectory = ({ courses, subject }) => {
 
   return <>
     <Head>
-      <title>{`${subject} Courses - BoilerClasses`}</title>
-      <meta name="title" content={`${subject} Courses - BoilerClasses`} />
+      <title>{`${subject} Courses | BoilerClasses`}</title>
+      <meta name="title" content={`${subject} Courses | BoilerClasses`} />
       <meta name="description" content={`Course catalog for Purdue ${subject} from BoilerClasses. BoilerClasses has over 13000 Purdue University courses. Find geneds, grades, prerequisites, schedules, and more for ${subject}.`} />
       <meta name="keywords" content={`Purdue, Purdue University, Purdue Courses, BoilerClasses, Boiler Classes, Boiler, Classes, BoilerCourses, Boiler Class, Catalog, Catalogue, Purdue Course Search, Purdue Course Catalog, Boilermakers, ${subject}`} />
       <meta name='og:locality' content='West Lafayette' />

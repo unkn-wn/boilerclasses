@@ -12,7 +12,7 @@ import {
   Button,
   Tooltip
 } from '@chakra-ui/react';
-import { IoMdInformationCircleOutline, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
+import { IoMdInformationCircleOutline, IoIosSwap, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
 
 import { convertTo12HourFormat, translateType } from './calendar';
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
@@ -319,8 +319,8 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
-              leftIcon={<IoMdInformationCircleOutline />}
-            ><p>View Sections</p></Button>
+              leftIcon={ hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
+            ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
               variant=""
               size="sm"
@@ -337,7 +337,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                 key={lecture.id}
                 className="flex justify-between items-center p-2 rounded-md bg-zinc-800"
               >
-                <div className="text-sm text-white">
+                <div className="text-sm text-white flex-1">
                   <div>{`${lecture.type} ${lecture.instructors.length === 0 ? '' : '-'} ${lecture.instructors.join(", ")}`}</div>
                   <div className="text-xs text-gray-400">
                     {`${lecture.day.join(', ')} • ${lecture.startTime} • ${lecture.room}`}
@@ -349,8 +349,9 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                   variant="ghost"
                   onClick={() => onLectureToggle(lecture.id, lecture.classId)}
                   _hover={{ bg: "blackAlpha.500" }}
+                  className="shrink-0"
                 >
-                  Remove
+                  Remove Section
                 </Button>
               </div>
             ))}
@@ -440,6 +441,17 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             </Stack>
           </ModalBody>
         </ModalContent>
+        {/* Add fixed bottom button for mobile */}
+        <div className="block md:hidden fixed z-[9999] bottom-0 left-0 right-0 m-4">
+          <Button
+            variant=""
+            size="md"
+            onClick={onClose}
+            className='w-full bg-blue-900 text-white hover:brightness-125 shadow-md shadow-black'
+          >
+            Save and Close
+          </Button>
+        </div>
       </Modal>
     </div>
   );
