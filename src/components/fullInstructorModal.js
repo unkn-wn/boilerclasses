@@ -47,7 +47,7 @@ const FullInstructorModal = ({ course }) => {
 		for (const semester in course.instructor) {
 			consolidatedData[semester] = {};
 			for (const instructor of course.instructor[semester]) {
-				let gpa = "No GPA";
+				let gpa = "-";
 				let color = getColor(0);
 				if (course.gpa[instructor] && course.gpa[instructor][semester]) {
 					gpa = course.gpa[instructor][semester][13] || "No GPA";
@@ -87,7 +87,7 @@ const FullInstructorModal = ({ course }) => {
 			<div className='h-[32rem] overflow-y-auto flex flex-col'>
 				<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
 				<h3 className='text-white text-sm'>
-					This graphic displays all the semesters with each professor. Use the search bar below to filter for a specific professor!<br />
+					This graphic displays all semesters and professors that have taught this course. Use the search bar below to filter for a specific professor!<br />
 					GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
 				</h3>
 				<SearchBar
