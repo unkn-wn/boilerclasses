@@ -1,4 +1,5 @@
 import { semesters } from "../lib/utils"
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';  // Add this import
 import React from 'react';
 import Link from 'next/link'
 
@@ -62,7 +63,16 @@ const Card = ({ course, searchTerm }) => {
               Distance Learning
             </p>}
             {availableSemesters.map((sem, i) => (
-              (i < 2) && <span className="text-sm text-white px-2 py-1 mx-1 my-1 rounded-full bg-sky-700 whitespace-nowrap" key={i}>{sem}</span>
+              (i < 2) && <span
+                className={`text-sm text-white px-2 py-1 mx-1 my-1 rounded-full whitespace-nowrap ${
+                  sem === CURRENT_SEMESTER
+                    ? 'bg-yellow-600 border-2 border-yellow-700'
+                    : 'bg-sky-800 border-2 border-sky-700'
+                }`}
+                key={i}
+              >
+                {sem}
+              </span>
             ))}
           </div>
 

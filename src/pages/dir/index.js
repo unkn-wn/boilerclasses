@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import Footer from '@/components/footer';
+import SearchBar from '@/components/SearchBar';
 
 const Directory = () => {
   const router = useRouter();
@@ -33,14 +34,11 @@ const Directory = () => {
       <div className='m-10'>
         <button onClick={() => router.back()} className='text-white text-xl'>&lt;</button>
         <h1 className='font-bold text-white text-3xl mb-4'>All Subjects Directory</h1>
-        <input
-          type="text"
+        <SearchBar
           placeholder="Filter subjects..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full mb-4 p-2 bg-zinc-800 text-white rounded-md border border-zinc-700 focus:outline-none focus:border-zinc-500"
+          onChange={setSearchQuery}
         />
-
         <div className="grid gap-4 grid-cols-4">
           {filteredCodes.map((code) => (
             <Link key={code} href={`/dir/${code}`}
