@@ -24,6 +24,7 @@ const DEFAULT_FILTERS = {
 };
 
 export const CURRENT_SEMESTER = "Spring 2025";
+export const PREVIOUS_SEMESTER = "Fall 2024";
 
 export const useSearchFilters = () => {
   const router = useRouter();

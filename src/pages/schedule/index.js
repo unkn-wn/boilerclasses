@@ -43,31 +43,12 @@ const Schedule = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // loads the previously selected course from localStorage when the page loads
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedCourse = localStorage.getItem('selectedCourse');
-      if (savedCourse) {
-        setSelectedCourse(JSON.parse(savedCourse));
-      }
-    }
-  }, []);
-
-  // saves the selected course to localStorage whenever it changes
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (selectedCourse) {
-        localStorage.setItem('selectedCourse', JSON.stringify(selectedCourse));
-      } else {
-        localStorage.removeItem('selectedCourse');
-      }
-    }
-  }, [selectedCourse]);
-
   // keeps the pinned courses synced with localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('pinnedCourses', JSON.stringify(pinCourses));
+      // remove initialPin before saving
+      const coursesToSave = pinCourses.map(({ initialPin, ...course }) => course);
+      localStorage.setItem('pinnedCourses', JSON.stringify(coursesToSave));
     }
   }, [pinCourses]);
 
@@ -240,7 +221,8 @@ const Schedule = () => {
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
-                                initialPin: true
+                                initialPin: true,
+                                tmp_inc: Date.now()
                               }]);
                             }}
                           >
