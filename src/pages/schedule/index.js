@@ -67,7 +67,9 @@ const Schedule = () => {
   // keeps the pinned courses synced with localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('pinnedCourses', JSON.stringify(pinCourses));
+      // remove initialPin before saving
+      const coursesToSave = pinCourses.map(({ initialPin, ...course }) => course);
+      localStorage.setItem('pinnedCourses', JSON.stringify(coursesToSave));
     }
   }, [pinCourses]);
 
@@ -240,7 +242,8 @@ const Schedule = () => {
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
-                                initialPin: true
+                                initialPin: true,
+                                tmp_inc: Date.now()
                               }]);
                             }}
                           >
