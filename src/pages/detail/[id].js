@@ -16,7 +16,7 @@ import ErrorPage from 'next/error'
 
 
 // ----- React imports -----
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 
 // ----- Misc imports -----
@@ -34,6 +34,8 @@ import "react-circular-progressbar/dist/styles.css";
 
 
 // ----- Component imports -----
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+
 import { instructorStyles, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
 import { semesters, subjects } from "@/lib/utils"
 
@@ -267,7 +269,21 @@ const CardDetails = ({ courseData, semData }) => {
                 </p>
 
                 {/* Separator Display */}
-                {(courseData.gened.length > 0 || courseData.sched.length > 0) && <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />}
+                <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
+
+                {/* Latest Semester Display with conditional styling */}
+                <span className={`text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${
+                  sem === CURRENT_SEMESTER
+                    ? 'bg-yellow-600 border-yellow-500'
+                    : 'bg-sky-600 border-sky-500'
+                }`}>
+                  {sem}
+                </span>
+
+                {/* Second Separator */}
+                {(courseData.sched.length > 0 || courseData.gened.length > 0) &&
+                  <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
+                }
 
                 {/* Schedule Type Display */}
                 {courseData.sched.map((s, i) => (
@@ -276,11 +292,6 @@ const CardDetails = ({ courseData, semData }) => {
                     {s}
                   </span>
                 ))}
-
-                {/* Latest Semester Display */}
-                <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-sky-600 border-sky-800 whitespace-nowrap transition-all`}>
-                  {sem}
-                </span>
 
                 {/* Gened Type Display */}
                 {courseData.gened.map((gened, i) => (

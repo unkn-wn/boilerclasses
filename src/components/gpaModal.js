@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import SearchBar from '@/components/SearchBar';
+
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 const replaceZeroGpaWithDash = (gpaValue) => {
@@ -8,33 +10,31 @@ const replaceZeroGpaWithDash = (gpaValue) => {
 
 const GpaModal = ({ course }) => {
 	const [gpa, setGpa] = useState({});
+	const [searchQuery, setSearchQuery] = useState('');
 
 	useEffect(() => {
 		const grades = processGpaData(course);
 		setGpa(grades);
 	}, [course]);
 
+	const filteredInstructors = Object.keys(gpa).filter(instructor =>
+		instructor.toLowerCase().includes(searchQuery.toLowerCase())
+	);
 
 	return (
 		<div className='h-[32rem] overflow-y-auto flex flex-col'>
 			<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
 			<h3 className='text-white text-sm'>
-				This graphic displays all the professors along with their GPA for each semester. Pro-tip: use ⌘F or Ctrl+F to search for a specific professor!<br />
+				This graphic displays all the professors along with their GPA for each semester. Use the search bar to filter for a specific professor!<br />
 				GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
 			</h3>
+			<SearchBar
+				placeholder="Filter instructors..."
+				value={searchQuery}
+				onChange={setSearchQuery}
+			/>
 			<div className='mt-2'>
-				{/*sems.length > 0 && (
-									<div className='grid grid-flow-col justify-stretch'>
-										{sems.map((semester, index) => (
-											<div key={index} className='flex flex-col mt-2'>
-												<div className='grid h-12 text-center'>
-													<p className='text-white m-auto'>{semester}</p>
-												</div>
-											</div>
-										))}
-									</div>
-								)*/}
-				{Object.keys(gpa).map((instructor, index) => (
+				{filteredInstructors.map((instructor, index) => (
 					<div key={index} className='flex flex-col mt-5'>
 						<h2 className='text-white font-bold text-xl'>{instructor}</h2>
 						<div className='grid grid-flow-col auto-cols-fr justify-stretch'>

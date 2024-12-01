@@ -155,6 +155,12 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
 
         const response = await fetch(url);
         const data = await response.json();
+
+        if (data.value.length > 1) {
+            console.warn('Multiple courses found with the same title:', data.value);
+            data.value = data.value.filter(course => course.Title === title);
+        }
+
         return data.value[0];
     } catch (e) {
         console.error('Error fetching course data:', e);
