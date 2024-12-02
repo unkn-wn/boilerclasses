@@ -146,7 +146,6 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
 export const getCourseData = async (subjectCode, courseCode, title) => {
     try {
         // BANDAID FIX #1: Hardcode STAT 416 and STAT 519
-        console.log(subjectCode, courseCode);
         if (subjectCode === 'STAT') {
             if (courseCode === 41600 || courseCode === 51900) {
                 subjectCode = 'MA';
