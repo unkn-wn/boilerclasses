@@ -145,6 +145,14 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
 
 export const getCourseData = async (subjectCode, courseCode, title) => {
     try {
+        // BANDAID FIX #1: Hardcode STAT 416 and STAT 519
+        if (subjectCode === 'STAT') {
+            if (courseCode === 41600 || courseCode === 51900) {
+                subjectCode = 'MA';
+            }
+        }
+
+        // HARD CODED SEMESTER
         const semester = "202520";
         const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" +
             semester + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
@@ -156,6 +164,7 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
         const response = await fetch(url);
         const data = await response.json();
 
+        // BANDAID FIX #2: Filter out courses with the same title
         if (data.value.length > 1) {
             console.warn('Multiple courses found with the same title:', data.value);
             data.value = data.value.filter(course => course.Title === title);
