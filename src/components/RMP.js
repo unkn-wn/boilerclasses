@@ -44,9 +44,10 @@ async function getRMPRating(instructor) {
   }
 }
 
+// Using O(n^2) Levenshtein distance 
 function isSimilar(targetInstructor, searchedInstructorArray) {
+  const LEVENSHTEIN_THRESHOLD = 0.8;  // Threshold for "similarity"
   function similarityScore(fullName1, fullName2) {
-      // Calculate the similarity score using Levenshtein distance 
       const len1 = fullName1.length;
       const len2 = fullName2.length;
       const dp = Array.from({ length: len1 + 1 }, () => Array(len2 + 1).fill(0));
@@ -81,7 +82,7 @@ function isSimilar(targetInstructor, searchedInstructorArray) {
       }
   }
 
-  return highestScore > 0.8 ? bestMatch : null; // Threshold for "similarity"
+  return highestScore > LEVENSHTEIN_THRESHOLD ? bestMatch : null; 
 }
 
 // Batched RMP ratings fetch for allProfs
