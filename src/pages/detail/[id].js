@@ -305,18 +305,12 @@ const CardDetails = ({ courseData, semData }) => {
               {/* <p>{courseData.gpa[""]}</p> */}
 
               {/* Instructors Display */}
-              <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
+              <div className="flex flex-wrap flex-row lg:text-sm text-sm text-white -mt-2 font-medium">
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
-
                   {courseData.instructor[sem].map((prof, i) => (
                     <span key={i}>
-                      <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'
-                        key={i}>
                         {prof}
-                      </a>
                       {i < courseData.instructor[sem].length - 1 && ", "}
                     </span>
                   ))}
