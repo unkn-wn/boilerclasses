@@ -12,7 +12,7 @@ import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-ic
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedsOptions, labels, graphColors } from '@/lib/utils';
 import CourseSearch from '@/components/courseSearch';
-import ScheduleCalendar from '@/components/schedule';
+import ScheduleCalendar from '@/components/schedule/schedule';
 import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/components/graph';
 import { ScheduleGpaModal } from '@/components/gpaModal';
 import Prereqs from '@/components/prereqs';

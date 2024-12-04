@@ -1,36 +1,36 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import TimeGrid from './TimeGrid';
+import CalendarCourse from './CalendarCourse';
+import { DAYS } from './utils/constants';
 import { graphColors } from "@/lib/utils";
 import { useToast } from '@chakra-ui/react';
 
 import { stripCourseCode } from '@/pages/detail/[id]';
 
-import { getCourseData, convertTo12HourFormat, translateType } from './calendar';
+import { getCourseData, translateType } from '../calendar';
 import ScheduleManager, { processLectureData } from './scheduleManager';
 import { Tooltip } from '@chakra-ui/react';
-
-/**
- * Converts military time to formatted 12-hour string
- */
-export const convertNumberToTime = (timeNum) => {
-  const hours = Math.floor(timeNum / 100);
-  const minutes = timeNum % 100;
-  const period = hours >= 12 ? 'PM' : 'AM';
-  const hour12 = hours % 12 || 12;
-  return `${hour12}:${minutes.toString().padStart(2, '0')} ${period}`;
-};
+import { convertNumberToTime } from '@/lib/timeUtils';
 
 const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCourseRemove }) => {
   const toast = useToast();
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [allLectures, setAllLectures] = useState([]);
   const [displayedLectures, setDisplayedLectures] = useState([]);
-  // Memoize course color mapping
+
   const courseColorMap = useMemo(() => new Map(), []);
   const [selectedLectureIds, setSelectedLectureIds] = useState(() => {
-    // Load saved lectures from localStorage on initial render
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('selectedLectures');
-      return new Set(saved ? JSON.parse(saved) : []);
+    try {
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem('selectedLectures');
+
+        const parsedData = saved ? JSON.parse(saved) : [];
+        const dataArray = Array.isArray(parsedData) ? parsedData : [];
+
+        return new Set(dataArray);
+      }
+    } catch (error) {
+      console.error('Error loading selected lectures:', error);
     }
     return new Set();
   });
@@ -42,7 +42,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
     }
   }, [selectedLectureIds]);
 
-  // Add this helper function at the beginning of the component
+  // Func to get course color index based on detailId
   const getCourseColorIndex = (detailId) => {
     if (!courseColorMap.has(detailId)) {
       courseColorMap.set(detailId, courseColorMap.size);
@@ -210,7 +210,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
         {/* Header Row */}
         <div className="flex flex-row">
           <div className="w-16"></div>
-          {days.map(day => (
+          {DAYS.map(day => (
             <div key={day} className="flex-1 text-center font-bold text-zinc-500">
               {day}
             </div>
@@ -218,114 +218,57 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
         </div>
 
         {/* Grid with Lectures */}
-        <div className="pl-16 relative flex flex-row overflow-auto h-full">
-          {/* Day Columns */}
-          {days.map((day, dayIndex) => (
-            <div key={day} className="flex-1 relative">
-              {/* Time Grid Lines */}
-              {times.map((time, timeIndex) => (
-                <div
-                  key={`${day}-${time}`}
-                  className="h-8 border-b border-zinc-600"
-                >
-                  {dayIndex === 0 && ( // Only display time labels on the first column
-                    <div className="absolute -left-16 w-16 text-right pr-2 -translate-y-4 text-zinc-500">
-                      {time}
-                    </div>
-                  )}
-                </div>
-              ))}
+        <TimeGrid>
+          {(day) => (
+            <div className='flex flex-row'>
+              {(() => {
+                const renderedGroups = new Set();
 
-              {/* Display Lectures for the Day */}
-              <div className='flex flex-row'>
-                {(() => {
-                  // Track which courses we've already rendered
-                  const renderedGroups = new Set();
+                return displayedLectures
+                  .filter(course => course.day.includes(day))
+                  .map((course, courseIndex) => {
+                    if (renderedGroups.has(course.id)) return null;
 
-                  return displayedLectures
-                    .filter(course => course.day.includes(day))
-                    .map((course, courseIndex) => {
-                      // Skip if this course is part of an already rendered group
-                      if (renderedGroups.has(course.id)) return null;
+                    const overlaps = getOverlappingCourses(day, course);
+                    const sortedOverlaps = [...overlaps].sort((a, b) => a.start - b.start);
 
-                      const overlaps = getOverlappingCourses(day, course);
+                    if (course.id === sortedOverlaps[0].id) {
+                      sortedOverlaps.forEach(c => renderedGroups.add(c.id));
 
-                      // Sort overlaps by start time and get earliest
-                      const sortedOverlaps = [...overlaps].sort((a, b) => a.start - b.start);
+                      return (
+                        <div className="flex flex-row absolute top-0 left-0 w-full h-full" key={courseIndex}>
+                          {sortedOverlaps.map((overlappingCourse, index) => {
+                            const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId);
+                            const startPos = calculateTimePosition(overlappingCourse.start);
+                            const endPos = calculateTimePosition(overlappingCourse.end);
+                            const top = (startPos - 6) * 2;
+                            const height = (endPos - startPos) * 2;
 
-                      // Only proceed if this is the earliest course in its group
-                      if (course.id === sortedOverlaps[0].id) {
-                        // Mark all courses in this group as rendered
-                        sortedOverlaps.forEach(c => renderedGroups.add(c.id));
-
-                        return (
-                          <div className="flex flex-row absolute top-0 left-0 w-full h-full" key={courseIndex}>
-                            {sortedOverlaps.map((overlappingCourse, index) => {
-                              const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId);
-                              // Calculate position based on THIS course's times, not the original course
-                              const startPos = calculateTimePosition(overlappingCourse.start);
-                              const endPos = calculateTimePosition(overlappingCourse.end);
-                              const top = (startPos - 6) * 2; // Subtract 6 since our grid starts at 6 am technically
-                              const height = (endPos - startPos) * 2;
-
-                              const tooltipContent = (
-                                <div className="text-left p-2 text-xs font-light">
-                                  <p className="font-bold">{overlappingCourse.name}: {overlappingCourse.courseDetails.title}</p>
-                                  <p>{overlappingCourse.type}</p>
-                                  <p>{overlappingCourse.startTime} - {convertNumberToTime(overlappingCourse.end)}</p>
-                                  <p>{overlappingCourse.room}</p>
-                                  <br />
-                                  {overlappingCourse.instructors && (
-                                    <p>Instructor(s): {overlappingCourse.instructors.join(', ')}</p>
-                                  )}
-                                  <p>Days: {overlappingCourse.day.join(', ')}</p>
-                                </div>
-                              );
-
-                              return (
-                                <Tooltip
-                                  key={overlappingCourse.id}
-                                  label={tooltipContent}
-                                  placement="auto-end"
-                                  hasArrow
-                                  bg={graphColors[colorIndex % graphColors.length] + "50"}
-                                  color="white"
-                                  border={`2px solid ${graphColors[colorIndex % graphColors.length]}`}
-                                  rounded={5}
-                                  className='z-50 backdrop-blur-md backdrop-brightness-50'
-                                >
-                                  <div
-                                    className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-xl
-                                    ${hoveredCourse === overlappingCourse.courseDetails.detailId ? 'ring-2 ring-white' : ''}`}
-                                    style={{
-                                      borderColor: graphColors[colorIndex % graphColors.length],
-                                      backgroundColor: graphColors[colorIndex % graphColors.length] + "50",
-                                      top: `${top}rem`,
-                                      height: `${height}rem`,
-                                      left: '0',
-                                      right: '0',
-                                      width: `${100 / overlaps.length}%`,
-                                      // marginLeft: `${(index * 100) / overlaps.length}%`
-                                    }}
-                                    onMouseEnter={() => setHoveredCourse(overlappingCourse.courseDetails.detailId)}
-                                    onMouseLeave={() => setHoveredCourse(null)}
-                                    onClick={() => reselectCourseDetails(overlappingCourse)}
-                                  >
-                                    {`${translateType(overlappingCourse.type)} ${overlappingCourse.courseDetails.subjectCode}${stripCourseCode(overlappingCourse.courseDetails.courseCode)}`}
-                                  </div>
-                                </Tooltip>
-                              );
-                            })}
-                          </div>
-                        );
-                      }
-                      return null;
-                    });
-                })()}
-              </div>
+                            return (
+                              <CalendarCourse
+                                key={overlappingCourse.id}
+                                course={overlappingCourse}
+                                colorIndex={colorIndex}
+                                isHovered={hoveredCourse === overlappingCourse.courseDetails.detailId}
+                                onHover={(isHovered) => setHoveredCourse(isHovered ? overlappingCourse.courseDetails.detailId : null)}
+                                onClick={() => reselectCourseDetails(overlappingCourse)}
+                                width={100 / overlaps.length}
+                                style={{
+                                  top: `${top}rem`,
+                                  height: `${height}rem`,
+                                }}
+                              />
+                            );
+                          })}
+                        </div>
+                      );
+                    }
+                    return null;
+                  });
+              })()}
             </div>
-          ))}
-        </div>
+          )}
+        </TimeGrid>
       </div>
 
       {/* Manager Section */}
