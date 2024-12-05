@@ -3,7 +3,7 @@ import { IoMdDownload } from "react-icons/io";
 import HoverMenu from './HoverMenu';
 import CourseGroup from './CourseGroup';
 import { downloadICS } from '@/lib/ics';
-import { downloadPDF } from '@/lib/pdf';
+import { openPDFInNewTab } from '@/lib/pdf';  // Update import
 import { calculateEndTime, convertTo12HourFormat } from '@/lib/timeUtils';
 import { normalizeInstructorName } from './utils/scheduleUtils';
 
@@ -135,7 +135,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
                 {
                   label: 'Export as PDF',
                   icon: <IoMdDownload />,
-                  onClick: () => downloadPDF(selectedLectures)
+                  onClick: () => openPDFInNewTab(selectedLectures)
                 }
               ]}
             >

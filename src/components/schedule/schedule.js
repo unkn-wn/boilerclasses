@@ -2,15 +2,11 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import TimeGrid from './TimeGrid';
 import CalendarCourse from './CalendarCourse';
 import { DAYS } from './utils/constants';
-import { graphColors } from "@/lib/utils";
 import { useToast } from '@chakra-ui/react';
 
-import { stripCourseCode } from '@/pages/detail/[id]';
 
-import { getCourseData, translateType } from '../calendar';
+import { getCourseData } from '../calendar';
 import ScheduleManager, { processLectureData } from './scheduleManager';
-import { Tooltip } from '@chakra-ui/react';
-import { convertNumberToTime } from '@/lib/timeUtils';
 
 const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCourseRemove }) => {
   const toast = useToast();
@@ -49,12 +45,6 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
     }
     return courseColorMap.get(detailId);
   };
-
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-  const times = [
-    '', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM',
-    '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM'
-  ];
 
   useEffect(() => {
     const fetchCourseData = async () => {
@@ -205,7 +195,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
   };
 
   return (
-    <div className='flex flex-col w-full lg:w-auto'>
+    <div id="schedule_calendar" className='flex flex-col w-full lg:w-auto'>
       <div className="flex flex-col w-full h-full relative overflow-x-auto">
         {/* Header Row */}
         <div className="flex flex-row">
