@@ -1,4 +1,3 @@
-
 import { graphColors } from '@/lib/utils';
 
 // get all professors of a course in an array
@@ -14,7 +13,7 @@ export const collectAllProfessors = (instructors) => {
     return allProfs;
 };
 
-// Helper to calculate GPA and grade distributions into this format:
+// Helper to calculate GPA and grade distributions into this format (used for graph and general gpa displays):
 // {
 //     grades: [
 //         {
@@ -174,4 +173,46 @@ export const processGpaData = (course, recentOnly = false) => {
     }
 
     return grades;
+};
+
+
+// Calculate overall GPA across all professors for a course, outputs
+// {
+//     gpa: 3.11,
+//     color: "#ffffff" (based on getColor)
+// }
+export const calculateOverallGPA = (courseData) => {
+    const allProfs = [];
+    let totalGpa = 0;
+    let profCount = 0;
+
+    try {
+        // Get GPA for each professor
+        for (const prof in courseData.gpa) {
+            if (prof === '') continue;
+            allProfs.push(prof);
+        }
+
+        const { gpa } = calculateGradesAndGPA(allProfs, courseData.gpa);
+
+        // Calculate average GPA across all professors
+        for (const prof in gpa) {
+            if (gpa[prof][0] !== 0) {
+                totalGpa += gpa[prof][0];
+                profCount++;
+            }
+        }
+
+        const avgGpa = profCount > 0 ? (totalGpa / profCount).toFixed(2) : 0;
+        return {
+            gpa: avgGpa,
+            color: getColor(avgGpa)
+        };
+    } catch (e) {
+        console.error("Overall GPA not found: ", e);
+        return {
+            gpa: 0,
+            color: getColor(0)
+        };
+    }
 };

@@ -1,5 +1,7 @@
-import { semesters } from "../lib/utils"
-import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';  // Add this import
+import { semesters } from "@/lib/utils"
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import OverallGpa from "./OverallGpa";
+
 import React from 'react';
 import Link from 'next/link'
 
@@ -59,6 +61,8 @@ const Card = ({ course, searchTerm }) => {
           </p>
 
           <div className="flex flex-row flex-wrap">
+            <OverallGpa courseData={course} card />
+
             {course.sched.includes("Distance Learning") && <p className="text-sm px-2 py-1 mx-1 my-1 rounded-full border-solid border border-purple-500 bg-purple-300 whitespace-nowrap">
               Distance Learning
             </p>}
