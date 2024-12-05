@@ -105,8 +105,8 @@ export const getColor = (gpa) => {
     const perc2 = perc * perc * 0.9;
 
     const color1 = [122, 0, 0];    // red
-    const color2 = [180, 124, 34];   // yellow
-    const color3 = [75, 179, 29];    // green
+    const color2 = [186, 158, 3];   // yellow
+    const color3 = [75, 235, 29];    // green
 
     let w1, w2, w3;
     if (perc2 <= 0.5) {
