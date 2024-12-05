@@ -15,6 +15,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   // Close dropdown when clicking outside
   useEffect(() => {
+    updateFilter('semesters', []);
+
     const handleClickOutside = (event) => {
       if (
         wrapperRef.current &&
@@ -85,13 +87,18 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
 
-  // Add this sorting function
-  const sortedCourses = courses.sort((a, b) => {
+  // sort courses to show current sem courses first
+  const sortedCourses = [...courses].sort((a, b) => {
     const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
     const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
+
     if (aOffered && !bOffered) return -1;
-    if (!aOffered && bOffered) return 1;
-    return 0;
+    if (!bOffered && aOffered) return 1;
+
+    // If both are offered or both are not offered, sort by subject and course code
+    return `${a.value.subjectCode}${a.value.courseCode}`.localeCompare(
+      `${b.value.subjectCode}${b.value.courseCode}`
+    );
   });
 
   return (
