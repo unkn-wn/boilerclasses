@@ -10,10 +10,10 @@ import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-ic
 
 // Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
-import { genedsOptions, labels } from '@/lib/utils';
+import { genedsOptions, labels, sanitizeDescription } from '@/lib/utils';
 import CourseSearch from '@/components/schedule/courseSearch';
 import ScheduleCalendar from '@/components/schedule/schedule';
-import Graph, { sanitizeDescription } from '@/components/graph';
+import Graph from '@/components/graph';
 import { collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/lib/gpaUtils';
 import { ScheduleGpaModal } from '@/components/gpaModal';
 import Prereqs from '@/components/prereqs';

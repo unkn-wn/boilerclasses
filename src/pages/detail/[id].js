@@ -37,11 +37,11 @@ import "react-circular-progressbar/dist/styles.css";
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 import { instructorStyles, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
-import { semesters } from "@/lib/utils"
+import { semesters, sanitizeDescription } from "@/lib/utils"
 
 import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
-import Graph, { sanitizeDescription } from '@/components/graph';
+import Graph from '@/components/graph';
 import { collectAllProfessors, calculateGradesAndGPA } from '@/lib/gpaUtils';
 import GpaModal from '@/components/gpaModal';
 import FullInstructorModal from '@/components/fullInstructorModal';

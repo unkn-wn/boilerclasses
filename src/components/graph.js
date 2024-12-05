@@ -60,7 +60,7 @@ const Graph = ({ data, scheduler = false }) => {
 							}
 						}
 					}} data={data}
-				// {
+				// { 				(example dataset for testing)
 				//   {
 				//     labels,
 				//     datasets: [{
@@ -77,10 +77,3 @@ const Graph = ({ data, scheduler = false }) => {
 }
 
 export default Graph;
-
-// util functions for graph and gpa
-export const sanitizeDescription = (data) => {
-	if (data.description && data.description.startsWith("<a href=")) {
-		data.description = "No Description Available";
-	}
-};
