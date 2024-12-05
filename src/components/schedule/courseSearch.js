@@ -15,8 +15,6 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   // Close dropdown when clicking outside
   useEffect(() => {
-    updateFilter('semesters', []);
-
     const handleClickOutside = (event) => {
       if (
         wrapperRef.current &&
@@ -87,6 +85,15 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
 
+  // Add this sorting function
+  const sortedCourses = courses.sort((a, b) => {
+    const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
+    const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
+    if (aOffered && !bOffered) return -1;
+    if (!aOffered && bOffered) return 1;
+    return 0;
+  });
+
   return (
     <div ref={wrapperRef} className="relative w-full">
       <div className="relative">
@@ -106,8 +113,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
       {shouldShowDropdown && (
         <div className="absolute z-50 w-full mt-2 bg-neutral-900 rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
-          {courses.length > 0 ? (
-            courses.slice(0, 10).map((course, index) => (
+          {sortedCourses.length > 0 ? (
+            sortedCourses.slice(0, 10).map((course, index) => (
               <div
                 key={course.id}
                 onClick={() => handleSelect(course)}
