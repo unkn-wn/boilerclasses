@@ -27,12 +27,14 @@ export const collectAllProfessors = (instructors) => {
 //     gpa: {
 //         "instr1": [3.11, "#ffffff"],
 //         "instr2": [3.55, "#ffffff"],
-//     }
+//     },
+//     totalSemCount: 2,
 // }
 export const calculateGradesAndGPA = (profs, gpaData) => {
     const grades = [];
     const gpa = {};
     let colorIndex = 0;
+    let totalSemCount = 0;
 
     for (const instructor of profs) {
         let avgGPA = 0;
@@ -71,8 +73,10 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
             data: avgGradeDist,
             backgroundColor: color,
         });
+
+        totalSemCount += semesterCount;
     }
-    return { grades, gpa };
+    return { grades, gpa, totalSemCount };
 };
 
 // Average all data for all professors into grade array format like above ^^
@@ -99,15 +103,27 @@ export const getColor = (gpa) => {
 
     const perc = gpa / 4.0;
     const perc2 = perc * perc * 0.9;
-    const color1 = [221, 170, 51];
-    const color2 = [79, 0, 56];
 
-    const w1 = perc2;
-    const w2 = 1 - perc2;
+    const color1 = [122, 0, 0];    // red
+    const color2 = [180, 124, 34];   // yellow
+    const color3 = [75, 179, 29];    // green
 
-    const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-    const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-    const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
+    let w1, w2, w3;
+    if (perc2 <= 0.5) {
+        // Blend between red and yellow for lower GPAs
+        w1 = (0.5 - perc2) * 2;
+        w2 = 1 - w1;
+        w3 = 0;
+    } else {
+        // Blend between yellow and green for higher GPAs
+        w1 = 0;
+        w2 = (1 - perc2) * 2;
+        w3 = 1 - w2;
+    }
+
+    const r = Math.round(color1[0] * w1 + color2[0] * w2 + color3[0] * w3);
+    const g = Math.round(color1[1] * w1 + color2[1] * w2 + color3[1] * w3);
+    const b = Math.round(color1[2] * w1 + color2[2] * w2 + color3[2] * w3);
 
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
@@ -179,7 +195,9 @@ export const processGpaData = (course, recentOnly = false) => {
 // Calculate overall GPA across all professors for a course, outputs
 // {
 //     gpa: 3.11,
-//     color: "#ffffff" (based on getColor)
+//     color: "#ffffff" (based on getColor),
+//     profCount: 2,
+//     totalSemCount: 4,
 // }
 export const calculateOverallGPA = (courseData) => {
     const allProfs = [];
@@ -193,7 +211,7 @@ export const calculateOverallGPA = (courseData) => {
             allProfs.push(prof);
         }
 
-        const { gpa } = calculateGradesAndGPA(allProfs, courseData.gpa);
+        const { gpa, totalSemCount } = calculateGradesAndGPA(allProfs, courseData.gpa);
 
         // Calculate average GPA across all professors
         for (const prof in gpa) {
@@ -206,13 +224,17 @@ export const calculateOverallGPA = (courseData) => {
         const avgGpa = profCount > 0 ? (totalGpa / profCount).toFixed(2) : 0;
         return {
             gpa: avgGpa,
-            color: getColor(avgGpa)
+            color: getColor(avgGpa),
+            profCount,
+            totalSemCount,
         };
     } catch (e) {
         console.error("Overall GPA not found: ", e);
         return {
             gpa: 0,
-            color: getColor(0)
+            color: getColor(0),
+            profCount: 0,
+            totalSemCount: 0,
         };
     }
 };
