@@ -85,7 +85,7 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
     setIsOpen(true);
   };
 
-  const shouldShowDropdown = isOpen && searchTerm.trim().length > 0;
+  const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
 
   return (
     <div ref={wrapperRef} className="relative w-full">
