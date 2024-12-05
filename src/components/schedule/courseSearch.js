@@ -85,7 +85,21 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
     setIsOpen(true);
   };
 
-  const shouldShowDropdown = isOpen && searchTerm.trim().length > 0;
+  const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
+
+  // sort courses to show current sem courses first
+  const sortedCourses = [...courses].sort((a, b) => {
+    const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
+    const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
+
+    if (aOffered && !bOffered) return -1;
+    if (!bOffered && aOffered) return 1;
+
+    // If both are offered or both are not offered, sort by subject and course code
+    return `${a.value.subjectCode}${a.value.courseCode}`.localeCompare(
+      `${b.value.subjectCode}${b.value.courseCode}`
+    );
+  });
 
   return (
     <div ref={wrapperRef} className="relative w-full">
@@ -106,8 +120,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
       {shouldShowDropdown && (
         <div className="absolute z-50 w-full mt-2 bg-neutral-900 rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
-          {courses.length > 0 ? (
-            courses.slice(0, 10).map((course, index) => (
+          {sortedCourses.length > 0 ? (
+            sortedCourses.slice(0, 10).map((course, index) => (
               <div
                 key={course.id}
                 onClick={() => handleSelect(course)}

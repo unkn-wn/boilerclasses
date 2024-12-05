@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import {
-  Checkbox,
-  Stack,
+  Button,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -9,148 +9,20 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button,
-  Tooltip
+  Stack,
+  Checkbox,
 } from '@chakra-ui/react';
-import { IoMdInformationCircleOutline, IoIosSwap, IoIosArrowForward, IoMdClose, IoMdDownload } from "react-icons/io";
-
-import { convertTo12HourFormat, translateType } from './calendar';
+import { IoMdInformationCircleOutline, IoIosSwap, IoIosArrowForward, IoMdClose } from "react-icons/io";
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
 import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph';
-import { getColor } from './gpaModal';
+import { getColor } from '../gpaModal';
 import { graphColors } from '@/lib/utils';
-import { downloadICS } from '@/lib/ics';
+import { translateType } from '../calendar';
+import { sortByTime, sortByFirstDay } from './utils/sortUtils';
 
-// Add this at the top of the file, outside of any component
+// Cache for RMP ratings
 const rmpScoresCache = new Map();
 
-/**
- * Normalizes instructor names between RMP and course data
- */
-const normalizeInstructorName = (lectureName, courseInstructors) => {
-  if (!lectureName) return "";
-  const nameParts = lectureName.split(' ');
-  const firstName = nameParts[0];
-  const lastName = nameParts[nameParts.length - 1];
-
-  return Object.values(courseInstructors)
-    .flat()
-    .find(instructor => {
-      const instructorParts = instructor.split(' ');
-      return instructorParts[0] === firstName &&
-        instructorParts[instructorParts.length - 1] === lastName;
-    }) || lectureName;
-};
-
-/**
- * Processes raw lecture data into a standardized format
- * @param {Array} courseResults - Raw course data from API
- * @param {Array} courses - Course objects from application state
- * @returns {Array} Processed lecture data
- */
-export const processLectureData = (courseResults, courses) => {
-  const coursesArray = [];
-
-  courseResults.forEach((courseData, index) => {
-    if (!courseData?.Classes?.[0]?.Sections) return;
-
-    // Store the full course object for reference
-    const course = courses[index];
-    const courseName = `${course.subjectCode} ${course.courseCode}`;
-
-    courseData.Classes.forEach(classData => {
-      classData.Sections.forEach(section => {
-        section.Meetings.forEach(meeting => {
-          const days = meeting.DaysOfWeek.split(',').map(day => day.trim().slice(0, 3));
-          const startTime = meeting.StartTime == null ? '00:00' : meeting.StartTime.split('.')[0];
-          const [hours, minutes] = startTime.split(':').map(Number);
-          const duration = meeting.Duration.replace('PT', '');
-          const start = hours * 100 + minutes;
-          const end = calculateEndTime(startTime, duration);
-
-          // Normalize instructor names before adding to coursesArray
-          const normalizedInstructors = meeting.Instructors.map(i =>
-            normalizeInstructorName(i.Name, course.instructor)
-          );
-
-          coursesArray.push({
-            id: meeting.Id,
-            name: courseName,
-            classId: classData.Id,
-            type: meeting.Type,
-            start,
-            end,
-            day: days.includes("Non") ? ["None"] : days,
-            instructors: normalizedInstructors,
-            startTime: startTime === '00:00' ? "No Meeting Time" : convertTo12HourFormat(startTime), // if no time, set to No Meeting Time
-            room: `${meeting.Room.Building.ShortCode}` === 'TBA' ? 'TBA' : `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`, // if "TBA", set to TBA
-            duration,
-            crn: section.Crn,
-            courseDetails: course,
-            startDate: meeting.StartDate,
-            endDate: meeting.EndDate
-          });
-        });
-      });
-    });
-  });
-
-  return coursesArray;
-};
-
-const sortByTime = (a, b) => {
-  // Have "No Meeting Time" show last
-  if (a === "No Meeting Time") return 1;
-  if (b === "No Meeting Time") return -1;
-
-  // Convert times to comparable numbers (assuming 12-hour format)
-  const getTimeValue = (time) => {
-    const [hour, minute] = time.split(':');
-    const isPM = time.includes('PM');
-    let hourNum = parseInt(hour);
-    if (isPM && hourNum !== 12) hourNum += 12;
-    if (!isPM && hourNum === 12) hourNum = 0;
-    return hourNum * 60 + parseInt(minute);
-  };
-
-  return getTimeValue(a) - getTimeValue(b);
-};
-
-/**
- * Groups lectures by time and sorts them
- */
-const groupLecturesByTime = (lectures) => {
-  const grouped = lectures.reduce((acc, lecture) => {
-    const timeKey = lecture.startTime;
-    if (!acc[timeKey]) acc[timeKey] = [];
-    acc[timeKey].push(lecture);
-    return acc;
-  }, {});
-
-  return Object.fromEntries(
-    Object.entries(grouped)
-      .sort(([timeA, _], [timeB, __]) => sortByTime(timeA, timeB))
-  );
-};
-
-const dayOrder = {
-  'Mon': 0,
-  'Tue': 1,
-  'Wed': 2,
-  'Thu': 3,
-  'Fri': 4,
-  'None': 5
-};
-
-const sortByFirstDay = (a, b) => {
-  const firstDayA = a.day[0] || 'None';
-  const firstDayB = b.day[0] || 'None';
-  return dayOrder[firstDayA] - dayOrder[firstDayB];
-};
-
-/**
- * Renders a group of related course sections
- */
 const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
@@ -162,7 +34,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
       onOpen();
       delete parentCourse.initialPin;
 
-      // Add delay to wait for modal content to render
+      // SCROLL TO MEETING CHECKBOX on modal open
       if (parentCourse?.scrollToMeeting) {
         const meetingId = parentCourse.scrollToMeeting;
         // Use a MutationObserver to wait for the element to exist
@@ -457,124 +329,4 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
   );
 };
 
-// Update ScheduleManager component to handle class-based selection
-const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, onCourseRemove }) => {
-  const [minCredits, setMinCredits] = useState(0);
-  const [maxCredits, setMaxCredits] = useState(0);
-
-  useEffect(() => {
-    const credits = Array.from(selectedLectureIds).reduce((acc, id) => {
-      const lecture = lectures.find(lecture => lecture.id === id);
-      if (lecture) {
-        if (!acc[2].has(lecture.courseDetails.detailId)) {
-          acc[0] += lecture.courseDetails.credits[0] || 0;
-          acc[1] += lecture.courseDetails.credits[1] || 0;
-          acc[2].add(lecture.courseDetails.detailId);
-        }
-      }
-      return acc;
-    }, [0, 0, new Set()]);
-
-    setMinCredits(credits[0]);
-    setMaxCredits(credits[1]);
-  }, [selectedLectureIds, lectures]);
-
-  const handleLectureToggle = (lectureId, classId) => {
-    const newSelectedLectures = new Set(selectedLectureIds);
-    const clickedLecture = lectures.find(lecture => lecture.id === lectureId);
-
-    // If selecting a new lecture
-    if (!selectedLectureIds.has(lectureId)) {
-      // Remove other lectures from the same course (but keep other courses)
-      lectures
-        .filter(lecture => lecture.courseDetails.detailId === clickedLecture.courseDetails.detailId)
-        .forEach(lecture => {
-          newSelectedLectures.delete(lecture.id);
-        });
-
-      // Add the selected lecture and any other lectures from its class
-      lectures
-        .filter(lecture => lecture.classId === classId)
-        .forEach(lecture => {
-          if (selectedLectureIds.has(lecture.id) || lecture.id === lectureId) {
-            newSelectedLectures.add(lecture.id);
-          }
-        });
-    } else {
-      // If deselecting, just remove this specific lecture
-      newSelectedLectures.delete(lectureId);
-    }
-
-    onLectureSelectionChange([...newSelectedLectures]);
-  };
-
-  // Group lectures by course name - Update this grouping to use detailId
-  const courseGroups = lectures.reduce((acc, lecture) => {
-    const key = lecture.courseDetails.detailId;
-    if (!acc[key]) {
-      acc[key] = [];
-    }
-    acc[key].push(lecture);
-    return acc;
-  }, {});
-
-  const selectedLectures = lectures.filter(lecture => selectedLectureIds.has(lecture.id));
-
-  return (
-    <div className="flex flex-col space-y-2 py-4 pl-4">
-      <div className='flex flex-row justify-between mb-4'>
-        <div className='flex md:flex-row flex-col gap-2'>
-          <h2 className="text-lg font-semibold text-white">Course Sections</h2>
-          {selectedLectures.length > 0 && (
-            <Tooltip
-              label={`Export schedule to .ics format`}
-              aria-label="Download Schedule"
-              hasArrow
-              placement="bottom"
-              background="#27272a"
-            >
-              <div
-                className="flex rounded-full gap-1 items-center justify-center pl-2 pr-[0.6rem] font-light text-xs text-zinc-400 cursor-pointer transition bg-zinc-800 hover:brightness-125 duration-300"
-                onClick={() => downloadICS(selectedLectures)}>
-                <IoMdDownload />
-                <p>Export Schedule</p>
-              </div>
-            </Tooltip>
-          )}
-        </div>
-        <h2 className="text-xs text-zinc-400 self-end">
-          Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}
-        </h2>
-      </div>
-      {courseGroups && Object.keys(courseGroups).length !== 0 ? Object.entries(courseGroups).map(([detailId, courseLectures]) => (
-        <CourseGroup
-          key={detailId}
-          parentCourse={courseLectures[0].courseDetails}
-          lectures={courseLectures}
-          selectedLectures={selectedLectureIds}
-          onLectureToggle={handleLectureToggle}
-          setSelectedCourse={setSelectedCourse}
-          onCourseRemove={onCourseRemove}
-        />
-      )) : (
-        <p className="text-gray-500 text-sm">Search for a course by using the search bar, then add a course to show up here!</p>
-      )}
-    </div>
-  );
-};
-
-
-export const calculateEndTime = (startTime, duration) => {
-  const [hours, minutes] = startTime.split(':').map(Number);
-  const durationHours = duration.includes('H') ? parseInt(duration.split('H')[0]) : 0;
-  const durationMinutes = duration.includes('M') ?
-    parseInt(duration.split('H')[1]?.replace('M', '') || duration.replace('M', '')) : 0;
-
-  let totalMinutes = hours * 60 + minutes + (durationHours * 60) + durationMinutes;
-  const endHours = Math.floor(totalMinutes / 60);
-  const endMinutes = totalMinutes % 60;
-
-  return endHours * 100 + endMinutes;
-};
-
-export default ScheduleManager;
+export default CourseGroup;

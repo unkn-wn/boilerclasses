@@ -272,11 +272,10 @@ const CardDetails = ({ courseData, semData }) => {
                 <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
 
                 {/* Latest Semester Display with conditional styling */}
-                <span className={`text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${
-                  sem === CURRENT_SEMESTER
+                <span className={`text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
                     ? 'bg-yellow-600 border-yellow-500'
                     : 'bg-sky-600 border-sky-500'
-                }`}>
+                  }`}>
                   {sem}
                 </span>
 
@@ -308,7 +307,6 @@ const CardDetails = ({ courseData, semData }) => {
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
                 <div className='mt-1'>
                   <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
-
                   {courseData.instructor[sem].map((prof, i) => (
                     <span key={i}>
                       <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}

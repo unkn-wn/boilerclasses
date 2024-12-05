@@ -81,7 +81,7 @@ export const useSearchFilters = () => {
 
   // Search function
   const search = async () => {
-    const { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
+    let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
       setCourses([]);
@@ -133,8 +133,15 @@ export const useSearchFilters = () => {
     filters.credits.min,
     filters.credits.max,
     JSON.stringify(filters.levels),
-    JSON.stringify(filters.scheduleTypes)
+    JSON.stringify(filters.scheduleTypes),
+    JSON.stringify(query),
   ]);
+
+  // search term useEffect. Figure out how we can stick to just one useEffect
+  useEffect(() => {
+    updateFilter("searchTerm", query.q);
+  }, [query]);
+
 
   return {
     filters,
@@ -144,6 +151,6 @@ export const useSearchFilters = () => {
     filtersCollapsed,
     setFiltersCollapsed,
     courses,
-    transformQuery
+    transformQuery,
   };
 };

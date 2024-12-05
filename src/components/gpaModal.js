@@ -80,42 +80,44 @@ export const ScheduleGpaModal = ({ course }) => {
 		setGpa(grades);
 	}, [course]);
 
-	const semesters = Object.keys(gpa).length != 0 ? Object.keys(gpa[Object.keys(gpa)[0]]) : [];
-
 	return (
 		<div className='flex flex-col'>
-			{Object.keys(gpa).length != 0 ?
-				(
-					<>
-						<div className='w-full grid grid-cols-5 font-bold mt-2 border-b'>
-							{semesters.length > 4 ? semesters.slice(0, 5).map((semester, i) => (
+			{Object.keys(gpa).length != 0 ? (
+				<>
+					<div className='w-full grid font-bold mt-2 border-b'
+						style={{
+							gridTemplateColumns: `repeat(${Object.keys(gpa).length > 0 ?
+								Math.min(Object.keys(gpa[Object.keys(gpa)[0]]).length, 5) : 1}, minmax(0, 1fr))`
+						}}>
+						{Object.keys(gpa).length > 0 &&
+							Object.keys(gpa[Object.keys(gpa)[0]]).slice(0, 5).map((semester, i) => (
 								<div key={i} className='flex flex-col'>
 									<h3 className='text-center text-[10px]'>{semester.split(" ")[0]}</h3>
 									<h3 className='text-center text-[10px]'>{" '" + semester.split(" ")[1].substring(2, 4)}</h3>
 								</div>
-							)) : <></>
-							}
-						</div>
-						{Object.keys(gpa).map((instructor, index) => (
-							<div key={index} className='grid grid-flow-row py-1 gap-1'>
-								<h2 className='text-white text-xs'>{instructor}</h2>
-								<div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
-									{Object.keys(gpa[instructor]).map((semester, index) => (
-										<div key={index} className='flex flex-col'>
-											<div className='grid py-1 text-center rounded-md' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-												<p className='text-white m-auto text-sm font-light'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
-						))}
-					</>
-				) : (
-					<div>
-						<p className='text-white text-sm font-light text-left'>No data for current instructors.</p>
+							))
+						}
 					</div>
-				)}
+					{Object.keys(gpa).map((instructor, index) => (
+						<div key={index} className='grid grid-flow-row py-1 gap-1'>
+							<h2 className='text-white text-xs'>{instructor}</h2>
+							<div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
+								{Object.keys(gpa[instructor]).map((semester, index) => (
+									<div key={index} className='flex flex-col'>
+										<div className='grid py-1 text-center rounded-md' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
+											<p className='text-white m-auto text-sm font-light'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
+					))}
+				</>
+			) : (
+				<div>
+					<p className='text-white text-sm font-light text-left'>No data for current instructors.</p>
+				</div>
+			)}
 		</div>
 	);
 };

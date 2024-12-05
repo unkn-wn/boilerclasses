@@ -13,8 +13,7 @@ import {
     Spinner,
 } from '@chakra-ui/react'
 
-import { convertNumberToTime } from './schedule';
-import { calculateEndTime } from './scheduleManager';
+import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
 
 // Component
 const Calendar = (props) => {
@@ -188,13 +187,5 @@ export const translateType = (type) => {
             return type;
     }
 }
-
-// Helper function to convert 24-hour format to 12-hour format
-export const convertTo12HourFormat = (time) => {
-    const [hour, minute] = time.split(':');
-    const period = hour >= 12 ? 'PM' : 'AM';
-    const hour12 = hour % 12 || 12;
-    return `${hour12}:${minute} ${period}`;
-};
 
 export default Calendar;

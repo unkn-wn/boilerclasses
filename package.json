@@ -21,6 +21,7 @@
     "chakra-multiselect": "^0.4.6",
     "chart.js": "^4.4.1",
     "cors": "^2.8.5",
+    "jspdf": "^2.5.2",
     "net": "^1.0.2",
     "next": "^14.2.18",
     "nextjs-cors": "^2.2.0",
