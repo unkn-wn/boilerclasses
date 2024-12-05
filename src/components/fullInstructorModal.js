@@ -1,34 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
+import { getColor } from '@/lib/gpaUtils';
 
 const FullInstructorModal = ({ course }) => {
 
 	const [gpa, setGpa] = useState({});
 	const [searchQuery, setSearchQuery] = useState('');
-
-	// function to get color based on gpa:
-	const getColor = (gpa) => {
-		if (gpa === 0) {
-			return "#18181b";
-		}
-
-		// calculate the color based on gpa as a percentage of 4.0
-		const perc = gpa / 4.0;
-		const perc2 = perc * perc * 0.9;
-		const color1 = [221, 170, 51]; // higher gpa color
-		const color2 = [79, 0, 56]; // lower gpa color
-
-		const w1 = perc2;
-		const w2 = 1 - perc2;
-
-		const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-		const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-		const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
-
-		const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-		// console.log(hex);
-		return hex;
-	};
 
 
 	useEffect(() => {

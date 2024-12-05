@@ -10,10 +10,11 @@ import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-ic
 
 // Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
-import { genedsOptions, labels, graphColors } from '@/lib/utils';
+import { genedsOptions, labels } from '@/lib/utils';
 import CourseSearch from '@/components/schedule/courseSearch';
 import ScheduleCalendar from '@/components/schedule/schedule';
-import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/components/graph';
+import Graph, { sanitizeDescription } from '@/components/graph';
+import { collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/lib/gpaUtils';
 import { ScheduleGpaModal } from '@/components/gpaModal';
 import Prereqs from '@/components/prereqs';
 import Footer from '@/components/footer';
@@ -79,7 +80,7 @@ const Schedule = () => {
 
     sanitizeDescription(selectedCourse);
     const allProfs = collectAllProfessors(selectedCourse.instructor);
-    const { grades } = calculateGradesAndGPA(allProfs, selectedCourse.gpa, graphColors);
+    const { grades } = calculateGradesAndGPA(allProfs, selectedCourse.gpa);
     return {
       labels,
       datasets: averageAllData(grades),

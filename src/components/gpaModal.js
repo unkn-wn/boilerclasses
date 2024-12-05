@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
 import SearchBar from '@/components/SearchBar';
-
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { processGpaData } from '@/lib/gpaUtils';
 
 const replaceZeroGpaWithDash = (gpaValue) => {
-	return gpaValue === 0 ? '-' : gpaValue;
+    return gpaValue === 0 ? '-' : gpaValue;
 };
 
 const GpaModal = ({ course }) => {
@@ -120,84 +119,4 @@ export const ScheduleGpaModal = ({ course }) => {
 			)}
 		</div>
 	);
-};
-
-// Function to get color based on GPA
-export const getColor = (gpa) => {
-	if (gpa === 0) {
-		return "#18181b";
-	}
-
-	// Calculate the color based on GPA as a percentage of 4.0
-	const perc = gpa / 4.0;
-	const perc2 = perc * perc * 0.9;
-	const color1 = [221, 170, 51]; // Higher GPA color
-	const color2 = [79, 0, 56]; // Lower GPA color
-
-	const w1 = perc2;
-	const w2 = 1 - perc2;
-
-	const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-	const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-	const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
-
-	const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-	return hex;
-};
-
-// Function to process GPA data
-const processGpaData = (course, recentOnly = false) => {
-	if (!course || Object.keys(course.gpa).length === 0) return {};
-
-	const grades = {};
-	const sems = [];
-
-	// Collect all semesters across all instructors
-	for (const instructor in course.gpa) {
-		for (const semester in course.gpa[instructor]) {
-			if (!sems.includes(semester)) {
-				sems.push(semester);
-			}
-		}
-	}
-
-	// Sort semesters chronologically
-	const sorted_sems = sems.sort((a, b) => {
-		const a_split = a.split(" ");
-		const b_split = b.split(" ");
-		if (a_split[1] !== b_split[1]) {
-			return a_split[1] - b_split[1]; // Compare years
-		}
-
-		const seasons = ["Spring", "Summer", "Fall"];
-		return seasons.indexOf(a_split[0]) - seasons.indexOf(b_split[0]); // Compare seasons
-	});
-
-	// Process GPA data for each instructor
-	for (const instructor in course.gpa) {
-		grades[instructor] = {};
-
-		// Get recent semesters if flag is true, but keep all semesters with GPA = 0
-		const instructorSemesters = sorted_sems;
-		const recentSemesters = recentOnly
-			? instructorSemesters.slice(-5)
-			: instructorSemesters;
-
-		// Fill in GPA and color for each semester
-		for (const semester of instructorSemesters) {
-			if (!recentSemesters.includes(semester)) continue; // Skip if not in the recent subset
-
-			// Fill in GPA data, defaulting to 0 if not present
-			if (!course.gpa[instructor][semester]) {
-				grades[instructor][semester] = { gpa: 0, color: getColor(0) };
-			} else {
-				grades[instructor][semester] = {
-					gpa: course.gpa[instructor][semester][13],
-					color: getColor(course.gpa[instructor][semester][13]),
-				};
-			}
-		}
-	}
-
-	return grades;
 };

@@ -14,9 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { IoMdInformationCircleOutline, IoIosSwap, IoIosArrowForward, IoMdClose } from "react-icons/io";
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
-import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph';
-import { getColor } from '../gpaModal';
-import { graphColors } from '@/lib/utils';
+import { calculateGradesAndGPA, collectAllProfessors, getColor } from '@/lib/gpaUtils';
 import { translateType } from '../calendar';
 import { sortByTime, sortByFirstDay } from './utils/sortUtils';
 
@@ -74,7 +72,6 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
       const { gpa } = calculateGradesAndGPA(
         Array.from(allInstructors),
         parentCourse.gpa,
-        graphColors
       );
 
       setInstructorGPAs(gpa);

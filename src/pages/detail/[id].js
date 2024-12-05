@@ -36,12 +36,13 @@ import "react-circular-progressbar/dist/styles.css";
 // ----- Component imports -----
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
-import { instructorStyles, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
-import { semesters, subjects } from "@/lib/utils"
+import { instructorStyles, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
+import { semesters } from "@/lib/utils"
 
 import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
-import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA } from '@/components/graph';
+import Graph, { sanitizeDescription } from '@/components/graph';
+import { collectAllProfessors, calculateGradesAndGPA } from '@/lib/gpaUtils';
 import GpaModal from '@/components/gpaModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
 import Prereqs from '@/components/prereqs';
@@ -71,7 +72,6 @@ const CardDetails = ({ courseData, semData }) => {
     const { grades, gpa } = calculateGradesAndGPA(
       allProfs,
       courseData.gpa,
-      graphColors
     );
 
     setGpaGraph({
