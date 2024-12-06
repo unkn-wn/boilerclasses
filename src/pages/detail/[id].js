@@ -244,7 +244,7 @@ const CardDetails = ({ courseData, semData }) => {
         <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
 
       </Head>
-      <div className={`flex flex-col min-h-screen bg-neutral-950 container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <div className={`flex flex-col min-h-screen bg-background container mx-auto p-5 mt-5 ${inter.className} text-white`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
