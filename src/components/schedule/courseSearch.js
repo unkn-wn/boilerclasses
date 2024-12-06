@@ -119,14 +119,18 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
                 <div>
                   <div className="font-medium flex items-center justify-between">
                     <span>{course.value.subjectCode} {course.value.courseCode}</span>
-
                   </div>
                   <div className="text-sm text-neutral-400 truncate">
                     {course.value.title}
                   </div>
+                  {!course.value.terms.includes(CURRENT_SEMESTER) && (
+                    <span className="md:hidden block text-xs px-2 py-1 rounded h-fit w-fit self-start bg-orange-500/50 text-orange-100/50">
+                      Not Offered in {CURRENT_SEMESTER}
+                    </span>
+                  )}
                 </div>
                 {!course.value.terms.includes(CURRENT_SEMESTER) && (
-                  <span className="text-xs px-2 py-1 rounded h-fit self-center bg-orange-500/50 text-orange-100/50">
+                  <span className="hidden md:block text-xs px-2 py-1 rounded h-fit self-start bg-orange-500/50 text-orange-100/50">
                     Not Offered in {CURRENT_SEMESTER}
                   </span>
                 )}
