@@ -40,8 +40,9 @@ const GpaModal = ({ course }) => {
 							{Object.keys(gpa[instructor]).map((semester, index) => (
 								// console.log(`bg-[${gpa[instructor][semester].color}]`),
 								<div key={index} className='flex flex-col mt-2'>
-									<div className='grid h-12 text-center' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-										<p className='text-white m-auto font-semibold'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
+									<div className='grid h-12 text-center relative overflow-hidden' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
+										<div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none' />
+										<p className='text-white m-auto font-black relative z-10'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
 									</div>
 									<h3 className='text-zinc-500 text-center text-sm px-1 hidden md:block'>{semester}</h3>
 									<h3 className='text-zinc-500 text-center text-[10px] px-1 block md:hidden'>{semester.split(" ")[0]}</h3>
@@ -103,8 +104,9 @@ export const ScheduleGpaModal = ({ course }) => {
 							<div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
 								{Object.keys(gpa[instructor]).map((semester, index) => (
 									<div key={index} className='flex flex-col'>
-										<div className='grid py-1 text-center rounded-md' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-											<p className='text-white m-auto text-sm font-light'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
+										<div className='grid py-1 text-center rounded-md relative overflow-hidden' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
+											<div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none' />
+											<p className='text-white m-auto text-sm font-bold relative z-10'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
 										</div>
 									</div>
 								))}

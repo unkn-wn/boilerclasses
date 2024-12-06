@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   Button,
@@ -188,7 +187,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
               className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
             text-white hover:brightness-125 h-full`}
-              leftIcon={ hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
+              leftIcon={hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
             ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
               variant=""
@@ -277,14 +276,19 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                             {lecture.instructors.map(instructor => (
                                               <div key={instructor} className='flex flex-row flex-wrap gap-1'>
                                                 {instructor}
-                                                {instructorGPAs[instructor]?.[0] > 0 &&
-                                                  <div className='px-1 rounded font-bold'
+                                                {instructorGPAs[instructor]?.[0] > 0 && (
+                                                  <div className='px-1 rounded font-bold relative overflow-hidden'
                                                     style={{
                                                       backgroundColor: getColor(instructorGPAs[instructor][0]),
                                                     }}>
-                                                    {`GPA: ${instructorGPAs[instructor][0].toFixed(2)}`}
+                                                    {/* Dark gradient backdrop */}
+                                                    <div className='absolute inset-0 bg-gradient-to-l from-black/30 to-transparent pointer-events-none' />
+                                                    {/* Text on top */}
+                                                    <span className='relative z-10 text-white'>
+                                                      {`GPA: ${instructorGPAs[instructor][0].toFixed(2)}`}
+                                                    </span>
                                                   </div>
-                                                }
+                                                )}
                                                 {getRMPScore(rmpScores, instructor) &&
                                                   <div className='px-1 rounded font-bold bg-zinc-600'>
                                                     {`RateMyProf: ${getRMPScore(rmpScores, instructor)}`}

@@ -33,42 +33,29 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   // Handle keyboard navigation
   const handleKeyDown = (e) => {
-    if (!isOpen && courses.length > 0) {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        setIsOpen(true);
-        return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setIsOpen(true);
+      setSelectedIndex(prev =>
+        prev < Math.min(courses.length - 1, 9) ? prev + 1 : 0
+      );
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setIsOpen(true);
+      setSelectedIndex(prev =>
+        prev <= 0 ? Math.min(courses.length - 1, 9) : prev - 1
+      );
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const displayedCourses = sortedCourses.slice(0, 10);
+      if (displayedCourses.length > 0) {
+        const courseToSelect = selectedIndex >= 0 ? displayedCourses[selectedIndex] : displayedCourses[0];
+        handleSelect(courseToSelect);
       }
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setSelectedIndex(prev =>
-          prev < Math.min(courses.length - 1, 9) ? prev + 1 : prev
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setSelectedIndex(prev => prev > 0 ? prev - 1 : prev);
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (courses.length > 0) {
-          // If nothing is selected, choose the first result
-          if (selectedIndex === -1) {
-            handleSelect(courses[0]);
-          } else {
-            handleSelect(courses[selectedIndex]);
-          }
-        }
-        break;
-      case 'Escape':
-        setIsOpen(false);
-        setSelectedIndex(-1);
-        inputRef.current?.blur();
-        break;
-      default:
-        return;
+    } else if (e.key === 'Escape') {
+      setIsOpen(false);
+      setSelectedIndex(-1);
+      inputRef.current?.blur();
     }
   };
 
@@ -87,19 +74,17 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
 
-  // sort courses to show current sem courses first
-  const sortedCourses = [...courses].sort((a, b) => {
-    const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
-    const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
-
-    if (aOffered && !bOffered) return -1;
-    if (!bOffered && aOffered) return 1;
-
-    // If both are offered or both are not offered, sort by subject and course code
-    return `${a.value.subjectCode}${a.value.courseCode}`.localeCompare(
-      `${b.value.subjectCode}${b.value.courseCode}`
-    );
-  });
+  // Move sorting logic here so it updates with courses changes
+  const sortedCourses = shouldShowDropdown
+    ? [...courses].sort((a, b) => {
+      const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
+      const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
+      if (aOffered && !bOffered) return -1;
+      if (!aOffered && bOffered) return 1;
+      return `${a.value.subjectCode}${a.value.courseCode}`
+        .localeCompare(`${b.value.subjectCode}${b.value.courseCode}`);
+    })
+    : [];
 
   return (
     <div ref={wrapperRef} className="relative w-full">

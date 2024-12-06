@@ -16,10 +16,11 @@ const OverallGpa = ({ courseData, card }) => {
       px={2}
       py={1}
     >
-      <div className={`justify-center flex whitespace-nowrap
+      <div className={`relative justify-center flex whitespace-nowrap
         ${card ? 'text-sm px-2 py-1 mx-1 my-1 rounded-full' : 'px-5 rounded-md'}`}
         style={{ backgroundColor: color }}>
-        <span className={`my-auto ${card ? '' : 'text-lg'} font-black text-white`}>
+        <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none' />
+        <span className={`my-auto ${card ? '' : 'text-lg'} z-10 font-black text-white`}>
           GPA: {gpa === 0 ? "N/A" : gpa}
         </span>
       </div>
