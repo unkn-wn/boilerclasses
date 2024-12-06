@@ -273,7 +273,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
 
                 {/* Latest Semester Display with conditional styling */}
-                <span className={`text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
+                <span className={`text-xs px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
                     ? 'bg-yellow-600 border-yellow-500'
                     : 'bg-sky-600 border-sky-500'
                   }`}>
@@ -336,7 +336,7 @@ const CardDetails = ({ courseData, semData }) => {
               </a>
               {/* term_in=202520 means 2025 spring. 202610 means 2025 fall*/}
               <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202520&subj_code_in=${courseData.subjectCode}&crse_numb_in=${courseData.courseCode}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-yellow-600 hover:bg-yellow-700 transition-all duration-300 ease-out">
+                className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
                   Catalog
