@@ -294,8 +294,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                                     style={{
                                                       backgroundColor: getColor(instructorGPAs[instructor][0]),
                                                     }}>
-                                                    {/* Dark gradient backdrop */}
-                                                    <div className='absolute inset-0 bg-gradient-to-l from-black/30 to-transparent pointer-events-none' />
+                                                    {/* <div className='absolute inset-0 bg-gradient-to-l from-black/30 to-transparent pointer-events-none' /> */}
                                                     {/* Text on top */}
                                                     <span className='relative z-10 text-white'>
                                                       {`GPA: ${instructorGPAs[instructor][0].toFixed(2)}`}

@@ -25,7 +25,7 @@ const GpaModal = ({ course }) => {
 			<h1 className='text-white text-2xl font-bold'>GPA Breakdown</h1>
 			<h3 className='text-white text-sm'>
 				This graphic displays all the professors along with their GPA for each semester. Use the search bar to filter for a specific professor!<br />
-				GPA: <span className='bg-[#8f3301] px-2'>1.0</span> ― <span className='bg-[#4beb1d] px-2 text-black'>4.0</span>
+				GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
 			</h3>
 			<SearchBar
 				placeholder="Filter instructors..."
@@ -41,7 +41,7 @@ const GpaModal = ({ course }) => {
 								// console.log(`bg-[${gpa[instructor][semester].color}]`),
 								<div key={index} className='flex flex-col mt-2'>
 									<div className='grid h-12 text-center relative overflow-hidden' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-										<div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none' />
+										{/* <div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none' /> */}
 										<p className='text-white m-auto font-black relative z-10'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
 									</div>
 									<h3 className='text-zinc-500 text-center text-sm px-1 hidden md:block'>{semester}</h3>
@@ -105,7 +105,7 @@ export const ScheduleGpaModal = ({ course }) => {
 								{Object.keys(gpa[instructor]).map((semester, index) => (
 									<div key={index} className='flex flex-col'>
 										<div className='grid py-1 text-center rounded-md relative overflow-hidden' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-											<div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none' />
+											{/* <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none' /> */}
 											<p className='text-white m-auto text-sm font-bold relative z-10'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
 										</div>
 									</div>

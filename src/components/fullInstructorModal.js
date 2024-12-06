@@ -65,7 +65,7 @@ const FullInstructorModal = ({ course }) => {
 			<h1 className='text-white text-2xl font-bold'>All Instructors Breakdown</h1>
 			<h3 className='text-white text-sm'>
 				This graphic displays all semesters and professors that have taught this course. Use the search bar below to filter for a specific professor!<br />
-				GPA: <span className='bg-[#8f3301] px-2'>1.0</span> ― <span className='bg-[#4beb1d] px-2 text-black'>4.0</span>
+				GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
 			</h3>
 			<SearchBar
 				placeholder="Filter instructors..."
@@ -89,7 +89,7 @@ const FullInstructorModal = ({ course }) => {
 										<h3 className='text-white font-semibold text-md mr-2'>{instructor}</h3>
 										<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
 										<div className='relative grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
-											<div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none' />
+											{/* <div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none' /> */}
 											<p className='text-white m-auto font-black z-10'>{gpa[semester][instructor].gpa}</p>
 										</div>
 									</div>

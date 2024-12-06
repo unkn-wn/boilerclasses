@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
@@ -7,6 +7,28 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const wrapperRef = useRef(null);
   const inputRef = useRef(null);
+  const coursesRef = useRef([]);
+
+  const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
+
+  const displayedCourses = useMemo(() => {
+    if (!shouldShowDropdown) return [];
+
+    const sorted = [...courses].sort((a, b) => {
+      const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
+      const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
+      if (aOffered && !bOffered) return -1;
+      if (!aOffered && bOffered) return 1;
+      return `${a.value.subjectCode}${a.value.courseCode}`
+        .localeCompare(`${b.value.subjectCode}${b.value.courseCode}`);
+    });
+    return sorted.slice(0, 10);
+  }, [courses, shouldShowDropdown]);
+
+  // Update coursesRef when displayedCourses changes
+  useEffect(() => {
+    coursesRef.current = displayedCourses;
+  }, [displayedCourses]);
 
   // Reset selected index when courses change
   useEffect(() => {
@@ -37,19 +59,18 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
       e.preventDefault();
       setIsOpen(true);
       setSelectedIndex(prev =>
-        prev < Math.min(courses.length - 1, 9) ? prev + 1 : 0
+        prev < coursesRef.current.length - 1 ? prev + 1 : 0
       );
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setIsOpen(true);
       setSelectedIndex(prev =>
-        prev <= 0 ? Math.min(courses.length - 1, 9) : prev - 1
+        prev <= 0 ? coursesRef.current.length - 1 : prev - 1
       );
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      const displayedCourses = sortedCourses.slice(0, 10);
-      if (displayedCourses.length > 0) {
-        const courseToSelect = selectedIndex >= 0 ? displayedCourses[selectedIndex] : displayedCourses[0];
+      if (coursesRef.current.length > 0) {
+        const courseToSelect = selectedIndex >= 0 ? coursesRef.current[selectedIndex] : coursesRef.current[0];
         handleSelect(courseToSelect);
       }
     } else if (e.key === 'Escape') {
@@ -72,20 +93,6 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
     setIsOpen(true);
   };
 
-  const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
-
-  // Move sorting logic here so it updates with courses changes
-  const sortedCourses = shouldShowDropdown
-    ? [...courses].sort((a, b) => {
-      const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
-      const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
-      if (aOffered && !bOffered) return -1;
-      if (!aOffered && bOffered) return 1;
-      return `${a.value.subjectCode}${a.value.courseCode}`
-        .localeCompare(`${b.value.subjectCode}${b.value.courseCode}`);
-    })
-    : [];
-
   return (
     <div ref={wrapperRef} className="relative w-full">
       <div className="relative">
@@ -105,8 +112,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
       {shouldShowDropdown && (
         <div className="absolute z-50 w-full mt-2 bg-neutral-900 rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
-          {sortedCourses.length > 0 ? (
-            sortedCourses.slice(0, 10).map((course, index) => (
+          {displayedCourses.length > 0 ? (
+            displayedCourses.map((course, index) => (
               <div
                 key={course.id}
                 onClick={() => handleSelect(course)}

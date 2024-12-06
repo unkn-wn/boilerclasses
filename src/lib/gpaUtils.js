@@ -97,35 +97,25 @@ export const averageAllData = (grades) => {
 
 // Function to get color based on GPA
 export const getColor = (gpa) => {
-    if (gpa === 0) {
-        return "#18181b";
-    }
+	if (gpa === 0) {
+		return "#18181b";
+	}
 
-    const perc = gpa / 4.0;
-    const perc2 = perc * perc * 0.9;
+	// Calculate the color based on GPA as a percentage of 4.0
+	const perc = gpa / 4.0;
+	const perc2 = perc * perc * perc;
+	const color1 = [221, 170, 51]; // Higher GPA color
+	const color2 = [79, 0, 56]; // Lower GPA color
 
-    const color1 = [122, 0, 0];    // red
-    const color2 = [186, 158, 3];   // yellow
-    const color3 = [75, 235, 29];    // green
+	const w1 = perc2;
+	const w2 = 1 - perc2;
 
-    let w1, w2, w3;
-    if (perc2 <= 0.5) {
-        // Blend between red and yellow for lower GPAs
-        w1 = (0.5 - perc2) * 2;
-        w2 = 1 - w1;
-        w3 = 0;
-    } else {
-        // Blend between yellow and green for higher GPAs
-        w1 = 0;
-        w2 = (1 - perc2) * 2;
-        w3 = 1 - w2;
-    }
+	const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
+	const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
+	const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
 
-    const r = Math.round(color1[0] * w1 + color2[0] * w2 + color3[0] * w3);
-    const g = Math.round(color1[1] * w1 + color2[1] * w2 + color3[1] * w3);
-    const b = Math.round(color1[2] * w1 + color2[2] * w2 + color3[2] * w3);
-
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	return hex;
 };
 
 // Processes GPA data into this format, used for gpaModal.js
