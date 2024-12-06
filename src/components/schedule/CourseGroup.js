@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   Button,
@@ -14,19 +13,21 @@ import {
 } from '@chakra-ui/react';
 import { IoMdInformationCircleOutline, IoIosSwap, IoIosArrowForward, IoMdClose } from "react-icons/io";
 import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
-import { calculateGradesAndGPA, collectAllProfessors } from '@/components/graph';
-import { getColor } from '../gpaModal';
-import { graphColors } from '@/lib/utils';
+import { calculateGradesAndGPA, collectAllProfessors, getColor } from '@/lib/gpaUtils';
 import { translateType } from '../calendar';
 import { sortByTime, sortByFirstDay } from './utils/sortUtils';
+import { getCourseColorIndex } from './schedule';
+import { graphColors } from '@/lib/utils';
 
 // Cache for RMP ratings
 const rmpScoresCache = new Map();
 
-const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
+const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove, courseColorMap }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
   const [instructorGPAs, setInstructorGPAs] = useState({});
+  const colorIndex = getCourseColorIndex(parentCourse.detailId, courseColorMap);
+  const courseColor = graphColors[colorIndex % graphColors.length];
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
@@ -74,7 +75,6 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
       const { gpa } = calculateGradesAndGPA(
         Array.from(allInstructors),
         parentCourse.gpa,
-        graphColors
       );
 
       setInstructorGPAs(gpa);
@@ -188,10 +188,13 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             <Button
               variant=""
               size="sm"
-              onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
-              className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
-            text-white hover:brightness-125 h-full`}
-              leftIcon={ hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
+              onClick={handleModalOpen}
+              style={{
+                backgroundColor: hasSelectedLectures ? courseColor + "50" : 'rgb(39 39 42)',
+                borderColor: hasSelectedLectures ? courseColor : 'rgb(39 39 42)',
+              }}
+              className="text-white hover:brightness-125 h-full border"
+              leftIcon={hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
             ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
               variant=""
@@ -269,6 +272,12 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                         isChecked={selectedLectures.has(lecture.id)}
                                         onChange={() => onLectureToggle(lecture.id, lecture.classId)}
                                         colorScheme="blue"
+                                        sx={{
+                                          '[data-checked] > span:first-of-type': {
+                                            background: `${courseColor} !important`,
+                                            borderColor: `${courseColor} !important`
+                                          }
+                                        }}
                                       >
                                         <span className="text-sm">
                                           <div className="font-medium text-white">
@@ -280,14 +289,18 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                             {lecture.instructors.map(instructor => (
                                               <div key={instructor} className='flex flex-row flex-wrap gap-1'>
                                                 {instructor}
-                                                {instructorGPAs[instructor]?.[0] > 0 &&
-                                                  <div className='px-1 rounded font-bold'
+                                                {instructorGPAs[instructor]?.[0] > 0 && (
+                                                  <div className='px-1 rounded font-bold relative overflow-hidden'
                                                     style={{
                                                       backgroundColor: getColor(instructorGPAs[instructor][0]),
                                                     }}>
-                                                    {`GPA: ${instructorGPAs[instructor][0].toFixed(2)}`}
+                                                    {/* <div className='absolute inset-0 bg-gradient-to-l from-black/30 to-transparent pointer-events-none' /> */}
+                                                    {/* Text on top */}
+                                                    <span className='relative z-10 text-white'>
+                                                      {`GPA: ${instructorGPAs[instructor][0].toFixed(2)}`}
+                                                    </span>
                                                   </div>
-                                                }
+                                                )}
                                                 {getRMPScore(rmpScores, instructor) &&
                                                   <div className='px-1 rounded font-bold bg-zinc-600'>
                                                     {`RateMyProf: ${getRMPScore(rmpScores, instructor)}`}

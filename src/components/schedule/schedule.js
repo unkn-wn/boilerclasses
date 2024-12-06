@@ -8,6 +8,14 @@ import { useToast } from '@chakra-ui/react';
 import { getCourseData } from '../calendar';
 import ScheduleManager, { processLectureData } from './scheduleManager';
 
+// Func to get course color index based on detailId
+export const getCourseColorIndex = (detailId, courseColorMap) => {
+  if (!courseColorMap.has(detailId)) {
+    courseColorMap.set(detailId, courseColorMap.size);
+  }
+  return courseColorMap.get(detailId);
+};
+
 const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCourseRemove }) => {
   const toast = useToast();
   const [hoveredCourse, setHoveredCourse] = useState(null);
@@ -37,14 +45,6 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
       localStorage.setItem('selectedLectures', JSON.stringify([...selectedLectureIds]));
     }
   }, [selectedLectureIds]);
-
-  // Func to get course color index based on detailId
-  const getCourseColorIndex = (detailId) => {
-    if (!courseColorMap.has(detailId)) {
-      courseColorMap.set(detailId, courseColorMap.size);
-    }
-    return courseColorMap.get(detailId);
-  };
 
   useEffect(() => {
     const fetchCourseData = async () => {
@@ -228,7 +228,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
                       return (
                         <div className="flex flex-row absolute top-0 left-0 w-full h-full" key={courseIndex}>
                           {sortedOverlaps.map((overlappingCourse, index) => {
-                            const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId);
+                            const colorIndex = getCourseColorIndex(overlappingCourse.courseDetails.detailId, courseColorMap);
                             const startPos = calculateTimePosition(overlappingCourse.start);
                             const endPos = calculateTimePosition(overlappingCourse.end);
                             const top = (startPos - 6) * 2;
@@ -269,6 +269,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
           onLectureSelectionChange={handleLectureSelectionChange}
           setSelectedCourse={setSelectedCourse}
           onCourseRemove={onCourseRemove}
+          courseColorMap={courseColorMap}
         />
       </div>
     </div>

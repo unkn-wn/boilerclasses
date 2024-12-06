@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
@@ -7,6 +7,28 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const wrapperRef = useRef(null);
   const inputRef = useRef(null);
+  const coursesRef = useRef([]);
+
+  const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
+
+  const displayedCourses = useMemo(() => {
+    if (!shouldShowDropdown) return [];
+
+    const sorted = [...courses].sort((a, b) => {
+      const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
+      const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
+      if (aOffered && !bOffered) return -1;
+      if (!aOffered && bOffered) return 1;
+      return `${a.value.subjectCode}${a.value.courseCode}`
+        .localeCompare(`${b.value.subjectCode}${b.value.courseCode}`);
+    });
+    return sorted.slice(0, 10);
+  }, [courses, shouldShowDropdown]);
+
+  // Update coursesRef when displayedCourses changes
+  useEffect(() => {
+    coursesRef.current = displayedCourses;
+  }, [displayedCourses]);
 
   // Reset selected index when courses change
   useEffect(() => {
@@ -33,42 +55,28 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
   // Handle keyboard navigation
   const handleKeyDown = (e) => {
-    if (!isOpen && courses.length > 0) {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        setIsOpen(true);
-        return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setIsOpen(true);
+      setSelectedIndex(prev =>
+        prev < coursesRef.current.length - 1 ? prev + 1 : 0
+      );
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setIsOpen(true);
+      setSelectedIndex(prev =>
+        prev <= 0 ? coursesRef.current.length - 1 : prev - 1
+      );
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (coursesRef.current.length > 0) {
+        const courseToSelect = selectedIndex >= 0 ? coursesRef.current[selectedIndex] : coursesRef.current[0];
+        handleSelect(courseToSelect);
       }
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setSelectedIndex(prev =>
-          prev < Math.min(courses.length - 1, 9) ? prev + 1 : prev
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setSelectedIndex(prev => prev > 0 ? prev - 1 : prev);
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (courses.length > 0) {
-          // If nothing is selected, choose the first result
-          if (selectedIndex === -1) {
-            handleSelect(courses[0]);
-          } else {
-            handleSelect(courses[selectedIndex]);
-          }
-        }
-        break;
-      case 'Escape':
-        setIsOpen(false);
-        setSelectedIndex(-1);
-        inputRef.current?.blur();
-        break;
-      default:
-        return;
+    } else if (e.key === 'Escape') {
+      setIsOpen(false);
+      setSelectedIndex(-1);
+      inputRef.current?.blur();
     }
   };
 
@@ -84,22 +92,6 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
     updateFilter('searchTerm', e.target.value);
     setIsOpen(true);
   };
-
-  const shouldShowDropdown = isOpen && (searchTerm ?? '').trim().length > 0;
-
-  // sort courses to show current sem courses first
-  const sortedCourses = [...courses].sort((a, b) => {
-    const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
-    const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
-
-    if (aOffered && !bOffered) return -1;
-    if (!bOffered && aOffered) return 1;
-
-    // If both are offered or both are not offered, sort by subject and course code
-    return `${a.value.subjectCode}${a.value.courseCode}`.localeCompare(
-      `${b.value.subjectCode}${b.value.courseCode}`
-    );
-  });
 
   return (
     <div ref={wrapperRef} className="relative w-full">
@@ -120,8 +112,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
       {shouldShowDropdown && (
         <div className="absolute z-50 w-full mt-2 bg-neutral-900 rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
-          {sortedCourses.length > 0 ? (
-            sortedCourses.slice(0, 10).map((course, index) => (
+          {displayedCourses.length > 0 ? (
+            displayedCourses.map((course, index) => (
               <div
                 key={course.id}
                 onClick={() => handleSelect(course)}
@@ -134,14 +126,18 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
                 <div>
                   <div className="font-medium flex items-center justify-between">
                     <span>{course.value.subjectCode} {course.value.courseCode}</span>
-
                   </div>
                   <div className="text-sm text-neutral-400 truncate">
                     {course.value.title}
                   </div>
+                  {!course.value.terms.includes(CURRENT_SEMESTER) && (
+                    <span className="md:hidden block text-xs px-2 py-1 rounded h-fit w-fit self-start bg-orange-500/50 text-orange-100/50">
+                      Not Offered in {CURRENT_SEMESTER}
+                    </span>
+                  )}
                 </div>
                 {!course.value.terms.includes(CURRENT_SEMESTER) && (
-                  <span className="text-xs px-2 py-1 rounded h-fit self-center bg-orange-500/50 text-orange-100/50">
+                  <span className="hidden md:block text-xs px-2 py-1 rounded h-fit self-start bg-orange-500/50 text-orange-100/50">
                     Not Offered in {CURRENT_SEMESTER}
                   </span>
                 )}

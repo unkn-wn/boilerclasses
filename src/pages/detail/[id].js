@@ -36,16 +36,18 @@ import "react-circular-progressbar/dist/styles.css";
 // ----- Component imports -----
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
-import { instructorStyles, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
-import { semesters, subjects } from "@/lib/utils"
+import { instructorStyles, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
+import { semesters, sanitizeDescription } from "@/lib/utils"
 
 import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
-import Graph, { sanitizeDescription, collectAllProfessors, calculateGradesAndGPA } from '@/components/graph';
+import Graph from '@/components/graph';
+import { collectAllProfessors, calculateGradesAndGPA } from '@/lib/gpaUtils';
 import GpaModal from '@/components/gpaModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
 import Prereqs from '@/components/prereqs';
 import { loadRatingsForProfs } from '@/components/RMP';
+import OverallGpa from '@/components/OverallGpa';
 // ------------------------
 
 
@@ -71,7 +73,6 @@ const CardDetails = ({ courseData, semData }) => {
     const { grades, gpa } = calculateGradesAndGPA(
       allProfs,
       courseData.gpa,
-      graphColors
     );
 
     setGpaGraph({
@@ -272,7 +273,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
 
                 {/* Latest Semester Display with conditional styling */}
-                <span className={`text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
+                <span className={`text-xs px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
                     ? 'bg-yellow-600 border-yellow-500'
                     : 'bg-sky-600 border-sky-500'
                   }`}>
@@ -324,9 +325,10 @@ const CardDetails = ({ courseData, semData }) => {
 
 
             {/* Other Links Buttons */}
-            <div className="flex flex-row flex-wrap my-2">
+            <div className="flex flex-row flex-wrap gap-2 my-1">
+              <OverallGpa courseData={courseData} />
               <a href={`https://www.reddit.com/r/Purdue/search/?q=${courseData.subjectCode}${stripCourseCode(courseData.courseCode)} OR "${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}" ${getSearchableProfString()}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 mr-1 my-1 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-800 transition-all duration-300 ease-out">
+                className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-orange-600 hover:bg-orange-700 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="/reddit-icon.png" alt="Reddit" boxSize={4} className="my-auto" />
                   Reddit
@@ -334,7 +336,7 @@ const CardDetails = ({ courseData, semData }) => {
               </a>
               {/* term_in=202520 means 2025 spring. 202610 means 2025 fall*/}
               <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202520&subj_code_in=${courseData.subjectCode}&crse_numb_in=${courseData.courseCode}`} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-[#D8B600] hover:bg-[#a88d00] transition-all duration-300 ease-out">
+                className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
                 <div className="flex flex-row gap-2">
                   <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
                   Catalog
@@ -342,7 +344,7 @@ const CardDetails = ({ courseData, semData }) => {
               </a>
               {boilerExamsCourses.includes(`${courseData.subjectCode}${courseData.courseCode}`) &&
                 <a href={`https://www.boilerexams.com/courses/${courseData.subjectCode}${courseData.courseCode.toString()}/topics`} target="_blank" rel="noopener noreferrer"
-                  className="text-sm text-white px-5 py-2 mx-1 my-1 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
+                  className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-[#b89f71] hover:bg-[#9d8c6e] transition-all duration-300 ease-out">
                   <div className="flex flex-row gap-2">
                     <Image src="/boilerexams-icon.png" alt="Boilerexams" boxSize={4} className="my-auto filter" />
                     Boilerexams
