@@ -3,13 +3,17 @@ import '@/styles/globals.css'
 import { ChakraProvider, extendTheme, Th } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js';
 import { MultiSelectTheme } from 'chakra-multiselect'
-import { ThemeProvider } from '../hooks/useTheme';
-import ThemeToggle from '../components/themeToggle'
 
 import Head from "next/head";
 import Script from 'next/script';
 
 import Footer from '@/components/footer';
+import dynamic from 'next/dynamic'
+
+const ThemeToggle = dynamic(() => import('../components/themeToggle'), { 
+  ssr: false 
+})
+
 
 const theme = extendTheme({
   components: {
@@ -20,7 +24,6 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <ThemeProvider>
       <ThemeToggle />
       {/* <!-- Google tag (gtag.js) --> */}
       <Script
@@ -46,7 +49,6 @@ export default function App({ Component, pageProps }) {
       <Component {...pageProps} />
 
       {/* <Footer /> */}
-      </ThemeProvider>
     </ChakraProvider>
   )
 }
