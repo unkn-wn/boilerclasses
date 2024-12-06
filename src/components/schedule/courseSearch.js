@@ -105,29 +105,29 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          className="text-white text-xl bg-neutral-950 w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+          className="text-white text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           placeholder="Search for courses..."
         />
       </div>
 
       {shouldShowDropdown && (
-        <div className="absolute z-50 w-full mt-2 bg-neutral-900 rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
-          {displayedCourses.length > 0 ? (
-            displayedCourses.map((course, index) => (
+        <div className="absolute z-50 w-full mt-2 bg-background rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
+          {sortedCourses.length > 0 ? (
+            sortedCourses.slice(0, 10).map((course, index) => (
               <div
                 key={course.id}
                 onClick={() => handleSelect(course)}
                 onMouseEnter={() => setSelectedIndex(index)}
                 className={`flex flex-row justify-between px-4 py-2 cursor-pointer ${selectedIndex === index
                   ? 'bg-neutral-800 text-white'
-                  : 'text-white hover:bg-neutral-800'
+                  : 'text-primary hover:bg-neutral-800'
                   }`}
               >
                 <div>
                   <div className="font-medium flex items-center justify-between">
                     <span>{course.value.subjectCode} {course.value.courseCode}</span>
                   </div>
-                  <div className="text-sm text-neutral-400 truncate">
+                  <div className="text-sm text-secondary truncate">
                     {course.value.title}
                   </div>
                   {!course.value.terms.includes(CURRENT_SEMESTER) && (
@@ -144,7 +144,7 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
               </div>
             ))
           ) : (
-            <div className="px-4 py-2 text-neutral-400">
+            <div className="px-4 py-2 text-secondary">
               No courses found
             </div>
           )}

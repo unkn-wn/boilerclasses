@@ -10,6 +10,7 @@ import Script from 'next/script';
 import Footer from '@/components/footer';
 import dynamic from 'next/dynamic'
 
+// Set server side rendering to false
 const ThemeToggle = dynamic(() => import('../components/themeToggle'), { 
   ssr: false 
 })
