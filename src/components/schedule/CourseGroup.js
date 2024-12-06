@@ -16,14 +16,18 @@ import { loadRatingsForProfs, getRMPScore } from '@/components/RMP';
 import { calculateGradesAndGPA, collectAllProfessors, getColor } from '@/lib/gpaUtils';
 import { translateType } from '../calendar';
 import { sortByTime, sortByFirstDay } from './utils/sortUtils';
+import { getCourseColorIndex } from './schedule';
+import { graphColors } from '@/lib/utils';
 
 // Cache for RMP ratings
 const rmpScoresCache = new Map();
 
-const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove }) => {
+const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle, setSelectedCourse, onCourseRemove, courseColorMap }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
   const [instructorGPAs, setInstructorGPAs] = useState({});
+  const colorIndex = getCourseColorIndex(parentCourse.detailId, courseColorMap);
+  const courseColor = graphColors[colorIndex % graphColors.length];
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
@@ -184,9 +188,12 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             <Button
               variant=""
               size="sm"
-              onClick={handleModalOpen}  // Changed from onOpen to handleModalOpen
-              className={`${hasSelectedLectures ? 'bg-blue-900' : 'bg-zinc-800'}
-            text-white hover:brightness-125 h-full`}
+              onClick={handleModalOpen}
+              style={{
+                backgroundColor: hasSelectedLectures ? courseColor + "50" : 'rgb(39 39 42)',
+                borderColor: hasSelectedLectures ? courseColor : 'rgb(39 39 42)',
+              }}
+              className="text-white hover:brightness-125 h-full border"
               leftIcon={hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
             ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
@@ -265,6 +272,12 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                         isChecked={selectedLectures.has(lecture.id)}
                                         onChange={() => onLectureToggle(lecture.id, lecture.classId)}
                                         colorScheme="blue"
+                                        sx={{
+                                          '[data-checked] > span:first-of-type': {
+                                            background: `${courseColor} !important`,
+                                            borderColor: `${courseColor} !important`
+                                          }
+                                        }}
                                       >
                                         <span className="text-sm">
                                           <div className="font-medium text-white">

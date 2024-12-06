@@ -57,7 +57,7 @@ export const processLectureData = (courseResults, courses) => {
   return coursesArray;
 };
 
-const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, onCourseRemove }) => {
+const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, onCourseRemove, courseColorMap }) => {
   const [minCredits, setMinCredits] = useState(0);
   const [maxCredits, setMaxCredits] = useState(0);
 
@@ -161,6 +161,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
           onLectureToggle={handleLectureToggle}
           setSelectedCourse={setSelectedCourse}
           onCourseRemove={onCourseRemove}
+          courseColorMap={courseColorMap}
         />
       )) : (
         <p className="text-gray-500 text-sm">Search for a course by using the search bar, then add a course to show up here!</p>
