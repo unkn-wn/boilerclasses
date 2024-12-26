@@ -127,7 +127,7 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
                 </p>
             </span>
         </PopoverTrigger>
-        <PopoverContent backgroundColor='black' borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" minW={{ base: "90%", lg: "max-content" }}>
+        <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.500' boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" minW={{ base: "90%", lg: "max-content" }}>
             <PopoverArrow />
             <PopoverHeader fontWeight='semibold'>{meeting.Type} - CRN: {meeting.crn}</PopoverHeader>
             <PopoverBody className="text-sm">
