@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+
 
 const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -38,7 +40,11 @@ const ThemeToggle = () => {
                  flex items-center justify-center
                  w-12 h-12"
     >
-      {isDarkMode ? '🌙' : '☀️'}
+      {isDarkMode ? 
+          <SunIcon fontSize={[18, 24]} color={`rgb(var(--text-color))`} />
+       : 
+          <MoonIcon fontSize={[18, 24]} color={`rgb(var(--text-color))`} />
+       }
     </button>
   );
 };
