@@ -6,16 +6,25 @@
   /* Light mode variables */
   --background-color: 250 250 250;       /* neutral-50 */
   --background-secondary-color: 229 229 229;  /* neutral-200 */
+  --background-opposite: 23 23 23;        /* neutral-950 */
+  --background-secondary-opposite: 64 64 64;  /* neutral-700 */
   --text-color: 23 23 23;                /* neutral-950 */
   --text-secondary-color: 64 64 64;      /* neutral-700 */
+  --text-opposite: 250 250 250;          /* neutral-50 */
+  --text-secondary-opposite: 229 229 229;/* neutral-200 */
 }
 
 .dark {
   /* Dark mode variables */
   --background-color: 23 23 23;          /* neutral-950 */
   --background-secondary-color: 64 64 64;/* neutral-700 */
+  --background-opposite: 250 250 250;    /* neutral-50 */
+  --background-secondary-opposite: 229 229 229;  /* neutral-200 */
   --text-color: 250 250 250;             /* neutral-50 */
   --text-secondary-color: 229 229 229;   /* neutral-200 */
+  --text-opposite: 23 23 23;             /* neutral-950 */
+  --text-secondary-opposite: 64 64 64;   /* neutral-700 */
+
 }
 
 @media (prefers-color-scheme: dark) {

@@ -35,9 +35,9 @@ const Calendar = (props) => {
     if (!courseData?.Classes?.[0]?.Sections) {
         return (
             <>
-                <div className="mb-2 ml-2 text-sm text-gray-500">Spring 2025 Schedule: </div>
-                <div className='grid justify-center w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
-                    {wait ? <Spinner /> : <p className="text-gray-500">Schedule not available!</p>}
+                <div className="mb-2 ml-2 text-sm text-primary">Spring 2025 Schedule: </div>
+                <div className='grid justify-center w-full rounded-xl bg-background p-2 md:p-4'>
+                    {wait ? <Spinner /> : <p className="text-primary">Schedule not available!</p>}
                 </div>
             </>
         )
@@ -83,14 +83,14 @@ const Calendar = (props) => {
 
     return (
         <>
-            <div className="mb-2 ml-2 text-sm text-gray-500">Spring 2025 Schedule: </div>
+            <div className="mb-2 ml-2 text-sm text-primary">Spring 2025 Schedule: </div>
             {/* Calendar View for Lecture Times */}
             <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
                 {days.map((day, index) => (
                     <div key={day} className={`${index !== 0 ? 'border-t-2 mt-4 md:border-t-0 md:mt-0 md:ml-4' : ''
                         } ${index !== days.length - 1 ? 'md:border-r-2 md:pr-4' : ''
                         } border-gray-500`}>
-                        <p className='relative text-right text-gray-500'>{day === "Thursday" ? "R" : day.charAt(0)}</p>
+                        <p className='relative text-right text-primary'>{day === "Thursday" ? "R" : day.charAt(0)}</p>
                         <div className="flex flex-col gap-1 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
                             {getMeetingsForDay(day).map((meeting, i) => (
                                 <MeetingDisplay
@@ -119,7 +119,7 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
                 onMouseEnter={() => onHover(meeting.crn)}
                 onMouseLeave={() => onHover(null)}
             >
-                <p className="text-white">
+                <p className="text-primary">
                     {translateType(meeting.Type)} - {meeting.startTime}
                 </p>
                 <p className="text-zinc-400 text-sm">

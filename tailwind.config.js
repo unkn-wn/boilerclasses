@@ -47,12 +47,16 @@ module.exports = {
       backgroundColor: {
         // Define background colors that automatically switch
         'background': 'rgb(var(--background-color) / <alpha-value>)',
-        'background-secondary': 'rgb(var(--background-secondary-color) / <alpha-value>)'
+        'background-secondary': 'rgb(var(--background-secondary-color) / <alpha-value>)',
+        'background-opposite': 'rgb(var(--background-opposite) / <alpha-value>)',
+        'background-opposite-secondary': 'rgb(var(--background-secondary-opposite) / <alpha-value>)'
       },
       textColor: {
         // Define text colors that automatically switch
         'primary': 'rgb(var(--text-color) / <alpha-value>)',
-        'secondary': 'rgb(var(--text-secondary-color) / <alpha-value>)'
+        'secondary': 'rgb(var(--text-secondary-color) / <alpha-value>)',
+        'opposite': 'rgb(var(--text-opposite) / <alpha-value>)',
+        'opposite-secondary': 'rgb(var(--text-secondary-opposite) / <alpha-value>)'
       }
     },
   },

@@ -120,10 +120,10 @@ const CourseCatalog = () => {
 
       <div id="scrollToTopBtn" className='hidden'>
         <button
-          className='fixed bg-zinc-900 z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:bg-zinc-700 transition'
+          className='fixed bg-background z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:bg-background-secondary transition'
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <ArrowUpIcon fontSize={[18, 24]} color={'white'} />
+          <ArrowUpIcon fontSize={[18, 24]} color={`rgb(var(--text-color))`} />
         </button>
       </div>
 
@@ -139,7 +139,7 @@ const CourseCatalog = () => {
             />
             <h1
               onClick={() => setDisplayLanding(true)}
-              className='text-2xl md:text-5xl font-semibold my-auto ml-2 select-none text-white cursor-pointer'
+              className='text-2xl md:text-5xl font-semibold my-auto ml-2 select-none text-primary cursor-pointer'
             >
               BoilerClasses
             </h1>
@@ -153,7 +153,7 @@ const CourseCatalog = () => {
               placeholder="Search for courses..."
               value={filters.searchTerm}
               onChange={(e) => updateFilter('searchTerm', e.target.value)}
-              className="text-white text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="placeholder:text-primary text-primary text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
           </div>
 
@@ -168,7 +168,7 @@ const CourseCatalog = () => {
 
           {/* Results */}
           {courses.length > 0 || filters.searchTerm.length < 2 ?
-            <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
+            <div className="text-opposite grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
               {courses.length > 0 && courses.map(course => (
                 <Card key={course.id} course={course.value} searchTerm={filters.searchTerm} />
               ))}
@@ -176,8 +176,8 @@ const CourseCatalog = () => {
             :
             <div className='flex flex-col h-full w-full items-center justify-center align-center gap-2'>
               <WarningTwoIcon boxSize={16} color='#DAAA00' />
-              <div className='text-white'>No results found!</div>
-              <div className='text-white -translate-y-3'>Try changing the filters</div>
+              <div className='text-primary'>No results found!</div>
+              <div className='text-primary -translate-y-3'>Try changing the filters</div>
             </div>
           }
           <div className='mt-auto'>
@@ -192,7 +192,7 @@ const CourseCatalog = () => {
           <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center justify-center">
             <div className='flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6'>
               <img src='/boilerclasses-FULL.png' onClick={() => setDisplayLanding(false)} className='my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer' />
-              <h1 onClick={() => setDisplayLanding(false)} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-white cursor-pointer'>BoilerClasses</h1>
+              <h1 onClick={() => setDisplayLanding(false)} className='text-2xl md:text-6xl mr-2 font-semibold my-auto select-none text-primary cursor-pointer'>BoilerClasses</h1>
             </div>
             <input
               id="landingSearch"
@@ -201,11 +201,11 @@ const CourseCatalog = () => {
               onChange={(e) => {
                 changeLanding(e.target.value);
               }}
-              className="text-white text-sm md:text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="placeholder:text-primary text-primary text-sm md:text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
                 <Button
                   onClick={() => router.push('https://schedule.boilerclasses.com')}
-                  className="flex justify-self-center mt-4 md:mt-6 bg-zinc-800 text-white hover:brightness-125 w-fit p-4"
+                  className="flex justify-self-center mt-4 md:mt-6 bg-background-secondary text-primary hover:brightness-125 w-fit p-4"
                   variant=''
                   size={{base: 'xs', sm: 'sm', md: 'md'}}
                   leftIcon={<IoMdCalendar />}

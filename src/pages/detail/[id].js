@@ -196,7 +196,7 @@ const CardDetails = ({ courseData, semData }) => {
   if (loading) {
     return (
       <div className='h-screen w-screen flex items-center justify-center'>
-        <Spinner size="lg" color="white" />
+        <Spinner size="lg" color={`rgb(var(--text-color))`} />
       </div>
     )
   }
@@ -245,7 +245,7 @@ const CardDetails = ({ courseData, semData }) => {
         <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
 
       </Head>
-      <div className={`flex flex-col min-h-screen bg-background container mx-auto p-5 mt-5 ${inter.className} text-white`}>
+      <div className={`flex flex-col min-h-screen bg-background container mx-auto p-5 mt-5 ${inter.className} text-primary`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
@@ -253,7 +253,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             <div className='flex flex-row gap-1'>
               {/* Back button */}
-              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-zinc-300 transition'>
+              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-opposite-secondary transition'>
                 <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
               </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{courseData.subjectCode} {courseData.courseCode}: {courseData.title}</p>
@@ -270,7 +270,7 @@ const CardDetails = ({ courseData, semData }) => {
                 </p>
 
                 {/* Separator Display */}
-                <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
+                <span className="mx-2 h-6 w-0.5 bg-background-opposite-secondary rounded" />
 
                 {/* Latest Semester Display with conditional styling */}
                 <span className={`text-xs px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
@@ -282,7 +282,7 @@ const CardDetails = ({ courseData, semData }) => {
 
                 {/* Second Separator */}
                 {(courseData.sched.length > 0 || courseData.gened.length > 0) &&
-                  <span className="mx-2 h-6 w-0.5 bg-gray-400 rounded" />
+                  <span className="mx-2 h-6 w-0.5 bg-background-opposite-secondary rounded" />
                 }
 
                 {/* Schedule Type Display */}
@@ -307,7 +307,7 @@ const CardDetails = ({ courseData, semData }) => {
               {/* Instructors Display */}
               <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
                 <div className='mt-1'>
-                  <span className="text-gray-400 font-bold text-xs">{sem} Instructors: </span>
+                  <span className="text-secondary font-bold text-xs">{sem} Instructors: </span>
                   {courseData.instructor[sem].map((prof, i) => (
                     <span key={i}>
                       <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
@@ -355,8 +355,8 @@ const CardDetails = ({ courseData, semData }) => {
 
 
             {/* Description */}
-            <p className="lg:text-base text-sm text-gray-200 mt-1 mb-3 break-words">{courseData.description}</p>
-            <h1 className="lg:text-sm text-xs text-gray-400 mt-1 mb-3 break-words">Course {courseData.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.</h1>
+            <p className="lg:text-base text-sm text-secondary mt-1 mb-3 break-words">{courseData.description}</p>
+            <h1 className="lg:text-sm text-xs text-secondary mt-1 mb-3 break-words">Course {courseData.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.</h1>
 
             {/* Prerequisites */}
             <div className='flex flex-row mb-4'>
@@ -415,13 +415,13 @@ const CardDetails = ({ courseData, semData }) => {
 
                   {/* Stat Cards */}
                   <div className="flex flex-row md:gap-4 gap-2">
-                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2">
+                    <div className="relative flex flex-col items-stretch bg-background mx-auto p-4 rounded-xl gap-2">
 
                       {/* For when there is no GPA data for firstInstructor */}
                       {curGPA[selectedInstructors[selectedInstructors.length - 1]] && curGPA[selectedInstructors[selectedInstructors.length - 1]][0] === 0 &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                          <p className='text-zinc-500 text-md font-bold text-center'>No data available for {selectedInstructors[selectedInstructors.length - 1]}</p>
-                          <p className='text-zinc-500 text-xs font-light text-center'>Click on other tabs for more data!</p>
+                          <p className='text-opposite-secondary text-md font-bold text-center'>No data available for {selectedInstructors[selectedInstructors.length - 1]}</p>
+                          <p className='text-opposite-secondary text-xs font-light text-center'>Click on other tabs for more data!</p>
                         </div>
                       }
 
@@ -452,16 +452,16 @@ const CardDetails = ({ courseData, semData }) => {
                         )}
                       </div>
 
-                      <p className='text-md font-bold text-white mb-1 text-center'>Average GPA</p>
+                      <p className='text-md font-bold text-primary mb-1 text-center'>Average GPA</p>
                     </div>
-                    <div className="relative flex flex-col items-stretch bg-zinc-900 mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
+                    <div className="relative flex flex-col items-stretch bg-background mx-auto p-4 rounded-xl gap-2 cursor-pointer hover:scale-[1.05] transition-all"
                       onClick={() => window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${selectedInstructors[selectedInstructors.length - 1]}`, '_blank')}>
 
                       {/* For when there is no RMP data for firstInstructor */}
                       {selectedInstructors[selectedInstructors.length - 1] && (!curRMP[selectedInstructors[selectedInstructors.length - 1]] || curRMP[selectedInstructors[selectedInstructors.length - 1]] === 0) &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                          <p className='text-zinc-500 text-md font-bold text-center'>No rating available for {selectedInstructors[selectedInstructors.length - 1]}</p>
-                          <p className='text-zinc-500 text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
+                          <p className='text-opposite-secondary text-md font-bold text-center'>No rating available for {selectedInstructors[selectedInstructors.length - 1]}</p>
+                          <p className='text-opposite-secondary text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
                         </div>
                       }
 
@@ -492,8 +492,8 @@ const CardDetails = ({ courseData, semData }) => {
                         )}
                       </div>
 
-                      <p className='lg:hidden font-bold text-white mb-1 text-center'>RateMyProf Rating</p>
-                      <p className='hidden lg:block font-bold text-white mb-1 text-center'>RateMyProfessors Rating</p>
+                      <p className='lg:hidden font-bold text-primary mb-1 text-center'>RateMyProf Rating</p>
+                      <p className='hidden lg:block font-bold text-primary mb-1 text-center'>RateMyProfessors Rating</p>
                     </div>
                   </div>
 
@@ -506,7 +506,7 @@ const CardDetails = ({ courseData, semData }) => {
                   )}
 
                   {!(defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0) && (
-                    <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-gray-800 mx-auto p-4 rounded-xl">
+                    <div className="lg:mt-6 md:mt-4 mt-2 mb-8 w-full h-full bg-background-secondary mx-auto p-4 rounded-xl">
                       <p className='text-center'>No data!</p>
                     </div>
                   )}
