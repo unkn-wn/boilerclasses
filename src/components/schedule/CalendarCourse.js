@@ -34,7 +34,7 @@ const CalendarCourse = ({
       placement="auto-end"
       hasArrow
       bg={`${graphColors[colorIndex % graphColors.length]}50`}
-      color="white"
+      color={`rgb(var(--text-color))`}
       border={`2px solid ${graphColors[colorIndex % graphColors.length]}`}
       rounded={5}
       className='z-50 backdrop-blur-md backdrop-brightness-50'
