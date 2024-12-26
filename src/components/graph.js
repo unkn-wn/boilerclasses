@@ -24,7 +24,7 @@ const Graph = ({ data, scheduler = false }) => {
 
 	return (
 		<>
-			<div className="h-full w-full bg-zinc-900 mx-auto p-4 rounded-xl">
+			<div className="h-full w-full bg-background mx-auto p-4 rounded-xl">
 				<Bar
 					options={{
 						responsive: true,
@@ -33,13 +33,13 @@ const Graph = ({ data, scheduler = false }) => {
 							legend: {
 								position: 'top',
 								labels: {
-									color: "white",
+									color: `rgb(var(--text-color))`,
 								}
 							},
 							title: {
 								display: true,
 								text: chartTitle,
-								color: "white"
+								color: `rgb(var(--text-color))`
 							},
 						},
 						scales: {
@@ -47,15 +47,15 @@ const Graph = ({ data, scheduler = false }) => {
 								title: {
 									display: true,
 									text: '% of Students',
-									color: "white"
+									color: `rgb(var(--text-color))`
 								},
 								grid: {
-									color: "gray"
+									color: `rgb(var(--text-color-secondary))`
 								}
 							},
 							x: {
 								grid: {
-									color: "gray"
+									color: `rgb(var(--text-color-secondary))`
 								}
 							}
 						}
