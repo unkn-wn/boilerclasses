@@ -37,7 +37,7 @@ const Card = ({ course, searchTerm }) => {
       <Link
         href={{ pathname: `/detail/${course.detailId}` }}
         passHref
-        className="flex flex-col bg-zinc-800 p-6 rounded-md shadow-md hover:scale-[1.02] transition hover:transition cursor-pointer">
+        className="flex flex-col bg-background-secondary p-6 rounded-md shadow-md hover:scale-[1.02] transition hover:transition cursor-pointer">
 
         <div onClick={() => handleLink()}>
           <h2 className="lg:text-lg md:text-lg font-bold text-white">{course.subjectCode} {course.courseCode}: {course.title}</h2>
@@ -62,7 +62,7 @@ const Card = ({ course, searchTerm }) => {
             </p>
           </div>
 
-          <p className="text-sm text-zinc-300 mb-4 break-words grow">
+          <p className="text-sm text-secondary mb-4 break-words grow">
             <span>{course.description.length > 300
               ? `${course.description.substring(0, 300)}...`
               : course.description}
