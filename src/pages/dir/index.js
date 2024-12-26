@@ -32,8 +32,8 @@ const Directory = () => {
 
       </Head>
       <div className='m-10'>
-        <button onClick={() => router.back()} className='text-white text-xl'>&lt;</button>
-        <h1 className='font-bold text-white text-3xl mb-4'>All Subjects Directory</h1>
+        <button onClick={() => router.back()} className='text-primary text-xl'>&lt;</button>
+        <h1 className='font-bold text-primary text-3xl mb-4'>All Subjects Directory</h1>
         <SearchBar
           placeholder="Filter subjects..."
           value={searchQuery}
@@ -42,7 +42,7 @@ const Directory = () => {
         <div className="grid gap-4 grid-cols-4">
           {filteredCodes.map((code) => (
             <Link key={code} href={`/dir/${code}`}
-              className="p-6 bg-zinc-900 rounded-md shadow-md text-lg font-semibold text-white underline decoration-dotted underline-offset-4 hover:scale-[1.05] transition cursor-pointer">
+              className="p-6 bg-background rounded-md shadow-md text-lg font-semibold text-primary underline decoration-dotted underline-offset-4 hover:scale-[1.05] transition cursor-pointer">
               <p className='text-center'>{code}</p>
             </Link>
           ))}

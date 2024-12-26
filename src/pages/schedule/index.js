@@ -155,19 +155,19 @@ const Schedule = () => {
             className='my-auto w-8 h-8'
             alt="BoilerClasses Logo"
           />
-          <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-white'>
+          <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-primary'>
             BoilerClasses
           </h1>
         </Link>
       </div>
 
       {/* mobile message */}
-      <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
+      <div id="mobile_msg" className='m-2 text-center text-sm text-primary items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
         <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
         Use the Scheduling Assistant on Desktop for the best experience!
       </div>
 
-      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-background container mx-auto px-4 text-white ${inter.className}`}>
+      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-background container mx-auto px-4 text-primary ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
           <div className='mx-2'>
@@ -196,7 +196,7 @@ const Schedule = () => {
             <>
               {/* Selected Course */}
               <div className='flex flex-col lg:h-screen'>
-                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border transition-all'>
+                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-background shadow-md border-background-secondary border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
                   <div className='lg:w-1/2'>
@@ -217,7 +217,7 @@ const Schedule = () => {
                         href={`https://www.boilerclasses.com/detail/${selectedCourse.detailId}`}
                         target="_blank"
                       >
-                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
+                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-background-secondary bg-background hover:bg-background-secondary">
                           <IoMdOpen />
                           <span className='whitespace-nowrap'>Open Details</span>
                         </div>
@@ -302,7 +302,7 @@ const Schedule = () => {
                       {/* Credits Display */}
                       <div className="text-sm font-bold flex flex-col">
                         Credits
-                        <p className='px-4 text-black bg-white rounded-md text-center w-fit'>
+                        <p className='px-4 text-opposite bg-background-opposite rounded-md text-center w-fit'>
                           {selectedCourse.credits[0] === selectedCourse.credits[1]
                             ? `${selectedCourse.credits[0]}`
                             : `${selectedCourse.credits[0]} - ${selectedCourse.credits[1]}`}
@@ -337,7 +337,7 @@ const Schedule = () => {
                             </span>
                           ))
                         ) : (
-                          <p className='text-white text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
+                          <p className='text-primary text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
                         )}
                       </div>
                     </div>
@@ -371,14 +371,14 @@ const Schedule = () => {
                   {gpaGraph.datasets &&
                     gpaGraph.datasets.length > 0 &&
                     !gpaGraph.datasets[0].data.every(value => value === 0) ? (
-                    <div className='border border-zinc-800 shadow-md shadow-white/10 rounded-xl h-96'>
+                    <div className='border border-background-secondary shadow-md shadow-white/10 rounded-xl h-96'>
                       <div className='h-full'>
                         <Graph data={gpaGraph} scheduler />
                       </div>
                     </div>
                   ) : (
-                    <div className="border border-zinc-800 shadow-md shadow-white/10 rounded-xl bg-zinc-900 p-4">
-                      <h1 className="text-center text-md font-light text-white py-4">
+                    <div className="border border-background-secondary shadow-md shadow-white/10 rounded-xl bg-background p-4">
+                      <h1 className="text-center text-md font-light text-primary py-4">
                         No grade data available for this course.
                       </h1>
                     </div>
