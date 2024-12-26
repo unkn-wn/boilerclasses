@@ -85,7 +85,7 @@ const Calendar = (props) => {
         <>
             <div className="mb-2 ml-2 text-sm text-primary">Spring 2025 Schedule: </div>
             {/* Calendar View for Lecture Times */}
-            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-zinc-900 p-2 md:p-4'>
+            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-background p-2 md:p-4'>
                 {days.map((day, index) => (
                     <div key={day} className={`${index !== 0 ? 'border-t-2 mt-4 md:border-t-0 md:mt-0 md:ml-4' : ''
                         } ${index !== days.length - 1 ? 'md:border-r-2 md:pr-4' : ''
@@ -114,7 +114,7 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
             <span
                 className={`w-full py-1 px-2 rounded-md transition-all ${isHighlighted
                     ? 'bg-yellow-500/50'
-                    : meeting.Type === 'Lecture' ? 'bg-zinc-700' : 'bg-zinc-800'
+                    : meeting.Type === 'Lecture' ? 'bg-background-tertiary' : 'bg-background-secondary'
                     }`}
                 onMouseEnter={() => onHover(meeting.crn)}
                 onMouseLeave={() => onHover(null)}
@@ -122,7 +122,7 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
                 <p className="text-primary">
                     {translateType(meeting.Type)} - {meeting.startTime}
                 </p>
-                <p className="text-zinc-400 text-sm">
+                <p className="text-secondary text-sm">
                     {meeting.Instructors[0]?.Name}
                 </p>
             </span>

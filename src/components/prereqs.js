@@ -46,8 +46,8 @@ const Prereqs = ({ course, scheduler = false }) => {
     return (
       (course.prereqs && course.prereqs[0].split(' ')[0] !== router.query.id) && (
         <>
-          {!scheduler && <span className="text-opposite-secondary lg:text-sm text-xs">Prerequisites:&nbsp;</span>}
-          <p className="lg:text-sm text-xs text-opposite-secondary font-medium">
+          {!scheduler && <span className="text-secondary lg:text-sm text-xs">Prerequisites:&nbsp;</span>}
+          <p className="lg:text-sm text-xs text-secondary font-medium">
             {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
           </p>
         </>
