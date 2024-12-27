@@ -41,7 +41,8 @@ import { semesters, subjects } from "@/lib/utils"
 
 import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
-import Graph from '@/components/graph';
+import Graph, { sanitizeDescription } from '@/components/graph';
+
 import { collectAllProfessors, calculateGradesAndGPA } from '@/lib/gpaUtils';
 import GpaModal from '@/components/gpaModal';
 import FullInstructorModal from '@/components/fullInstructorModal';
