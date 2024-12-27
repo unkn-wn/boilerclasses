@@ -170,16 +170,16 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
   };
 
   return (
-    <div className="border border-zinc-700 rounded-lg overflow-hidden">
+    <div className="border border-[rgb(var(--background-secondary-color))] rounded-lg overflow-hidden">
 
-      <div className="flex-grow bg-zinc-900 p-2">
+      <div className="flex-grow bg-background p-2">
         <div className="flex flex-col sm:flex-row gap-2 mb-2 justify-between">
           <div className='flex flex-row'>
-            <div className="self-center w-6 h-6 aspect-square rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-700 transition-colors cursor-pointer"
+            <div className="self-center w-6 h-6 aspect-square rounded-full border border-[rgb(var(--background-secondary-color))] flex items-center justify-center hover:bg-background-secondary transition-colors cursor-pointer"
               onClick={handleRemoveCourse}>
-              <IoMdClose className="text-zinc-400 text-sm" />
+              <IoMdClose className="text-secondary text-sm" />
             </div>
-            <div className="flex flex-col font-semibold text-white text-xl self-start mx-2 break-words overflow-hidden">
+            <div className="flex flex-col font-semibold text-primary text-xl self-start mx-2 break-words overflow-hidden">
               {parentCourse.subjectCode} {parentCourse.courseCode}
               <p className='text-sm'>{parentCourse.title}</p>
             </div>
@@ -200,7 +200,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               variant=""
               size="sm"
               onClick={reselectCourseDetails}
-              className="bg-zinc-800 text-white hover:brightness-125"
+              className="bg-background-secondary text-primary hover:brightness-125"
               rightIcon={<IoIosArrowForward />}
             ><p>Show Course</p></Button>
           </div>
@@ -210,11 +210,11 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             {selectedCourseLectures.map(lecture => (
               <div
                 key={lecture.id}
-                className="flex justify-between items-center p-2 rounded-md bg-zinc-800"
+                className="flex justify-between items-center p-2 rounded-md bg-background-secondary"
               >
-                <div className="text-sm text-white flex-1">
+                <div className="text-sm text-primary flex-1">
                   <div>{`${lecture.type} ${lecture.instructors.length === 0 ? '' : '-'} ${lecture.instructors.join(", ")}`}</div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-xs text-secondary">
                     {`${lecture.day.join(', ')} • ${lecture.startTime} • ${lecture.room}`}
                   </div>
                 </div>
@@ -232,7 +232,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             ))}
           </div>
         ) : (
-          <div className="text-sm text-gray-400 mx-2">No sections selected</div>
+          <div className="text-sm text-secondary mx-2">No sections selected</div>
         )}
       </div>
 
@@ -240,12 +240,12 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay bg={'blackAlpha.400'} />
         <ModalContent containerProps={{ justifyContent: 'flex-end' }} marginEnd={[undefined, undefined, '1rem', '1rem', '4rem']}>
-          <ModalHeader className='bg-zinc-900 text-white'>{parentCourse.subjectCode}{parentCourse.courseCode}: {parentCourse.title}</ModalHeader>
-          <ModalCloseButton className='text-white' />
-          <ModalBody pb={6} className='bg-zinc-900 text-white'>
+          <ModalHeader className='bg-background text-primary'>{parentCourse.subjectCode}{parentCourse.courseCode}: {parentCourse.title}</ModalHeader>
+          <ModalCloseButton className='text-primary' />
+          <ModalBody pb={6} className='bg-background text-primary'>
             <Stack spacing={4}>
               {sortedClassSections.map(([classId, typeGroups], sectionIndex) => (
-                <div key={classId} className="border-b border-zinc-700 pb=2 mb-2">
+                <div key={classId} className="border-b border-[rgb(var(--background-secondary-color))] pb=2 mb-2">
                   <div className="text-sm font-bold mb-2 text-blue-400">Class Section {sectionIndex + 1}</div>
                   {Object.entries(typeGroups)
                     .sort(([typeA], [typeB]) => {
@@ -256,7 +256,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                     })
                     .map(([typeKey, timeGroups]) => (
                       <div key={typeKey} className="mb-4">
-                        <div className="text-sm font-semibold mb-2 text-gray-400">{typeKey}</div>
+                        <div className="text-sm font-semibold mb-2 text-secondary">{typeKey}</div>
                         {Object.entries(timeGroups)
                           .sort(([timeA], [timeB]) => sortByTime(timeA, timeB))
                           .map(([timeKey, lectures]) => (
@@ -280,10 +280,10 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                         }}
                                       >
                                         <span className="text-sm">
-                                          <div className="font-medium text-white">
+                                          <div className="font-medium text-primary">
                                             {lecture.day.join(', ')}
                                           </div>
-                                          <div className="text-xs text-zinc-300">
+                                          <div className="text-xs text-zinc-secondary">
 
                                             {/* Instructor mapping, includes gpa and rmp per prof */}
                                             {lecture.instructors.map(instructor => (
@@ -302,14 +302,14 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                                   </div>
                                                 )}
                                                 {getRMPScore(rmpScores, instructor) &&
-                                                  <div className='px-1 rounded font-bold bg-zinc-600'>
+                                                  <div className='px-1 rounded font-bold bg-background-tertiary text-primary'>
                                                     {`RateMyProf: ${getRMPScore(rmpScores, instructor)}`}
                                                   </div>
                                                 }
                                               </div>
                                             ))}
                                           </div>
-                                          <div className="text-xs text-gray-400">
+                                          <div className="text-xs text-secondary">
                                             {translateType(lecture.type)} - {lecture.room}
                                           </div>
                                         </span>
@@ -332,7 +332,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             variant=""
             size="md"
             onClick={onClose}
-            className='w-full bg-blue-900 text-white hover:brightness-125 shadow-md shadow-black'
+            className='w-full bg-blue-900 text-primary hover:brightness-125 shadow-md shadow-black'
           >
             Save and Close
           </Button>
