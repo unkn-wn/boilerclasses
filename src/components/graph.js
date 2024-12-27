@@ -62,41 +62,43 @@ const Graph = ({ data, scheduler = false }) => {
 	return (
 		<>
 			<div className="h-full w-full bg-background mx-auto p-4 rounded-xl">
-				<Bar
-					options={{
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'top',
-								labels: {
-									color: `rgb(var(--text-color))`,
-								}
-							},
-							title: {
-								display: true,
-								text: chartTitle,
-								color: `rgb(var(--text-color))`
-							},
-						},
-						scales: {
-							y: {
-								title: {
-									display: true,
-									text: '% of Students',
-									color: `rgb(var(--text-color))`
-								},
-								grid: {
-									color: `rgb(var(--text-color-secondary))`
-								}
-							},
-							x: {
-								grid: {
-									color: `rgb(var(--text-color-secondary))`
-								}
-							}
-						}
-					}} data={data}
+			<Bar
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                color: `rgb(${chartColors.textColor})`,
+              },
+            },
+            title: {
+              display: true,
+              text: chartTitle,
+              color: `rgb(${chartColors.textColor})`,
+            },
+          },
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: '% of Students',
+                color: `rgb(${chartColors.textColor})`,
+              },
+              grid: {
+                color: `rgb(${chartColors.textSecondaryColor})`,
+              },
+            },
+            x: {
+              grid: {
+                color: `rgb(${chartColors.textSecondaryColor})`,
+              },
+            },
+          },
+        }}
+        data={data}
+
 				// {
 				//   {
 				//     labels,

@@ -137,7 +137,7 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
                   )}
                 </div>
                 {!course.value.terms.includes(CURRENT_SEMESTER) && (
-                  <span className="hidden md:block text-xs px-2 py-1 rounded h-fit self-start bg-orange-500/50 text-orange-100/50">
+                  <span className="text-secondary text-xs px-2 py-1 rounded h-fit self-center bg-orange-500/50 text-orange-100/50">
                     Not Offered in {CURRENT_SEMESTER}
                   </span>
                 )}

@@ -40,27 +40,18 @@ const Card = ({ course, searchTerm }) => {
         className="flex flex-col bg-background-secondary p-6 rounded-md shadow-md hover:scale-[1.02] transition hover:transition cursor-pointer">
 
         <div onClick={() => handleLink()}>
-          <h2 className="lg:text-lg md:text-lg font-bold text-white">{course.subjectCode} {course.courseCode}: {course.title}</h2>
-
-          <div className="lg:text-sm text-sm text-zinc-400 font-medium my-1">
-            <div className="flex flex-row">
-              <p className="self-center">
-                {course.credits[1] > 1
-                  ? `${course.credits[1]} Credits`
-                  : `${course.credits[1]} Credit`}
-                {` | `}
-              </p>
-
-              <OverallGpa courseData={course} card />
-            </div>
-            <p>
-              {uniqueInstructors[0]}
-              {uniqueInstructors.length > 1 && ", "}
-              {uniqueInstructors.length > 1 &&
-                uniqueInstructors[1]
-              }
-            </p>
-          </div>
+          <h2 className="lg:text-lg md:text-lg font-bold text-primary">{course.subjectCode} {course.courseCode}: {course.title}</h2>
+          <p className="lg:text-sm text-sm text-secondary font-medium my-1">
+            {course.credits[1] > 1
+              ? `${course.credits[1]} Credits`
+              : `${course.credits[1]} Credit`}
+            {` | `}
+            {uniqueInstructors[0]}
+            {uniqueInstructors.length > 1 && ", "}
+            {uniqueInstructors.length > 1 &&
+              uniqueInstructors[1]
+            }
+          </p>
 
           <p className="text-sm text-secondary mb-4 break-words grow">
             <span>{course.description.length > 300

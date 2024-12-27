@@ -65,7 +65,7 @@ const FullInstructorModal = ({ course }) => {
 				<h1 className='text-primary text-2xl font-bold'>All Instructors Breakdown</h1>
 				<h3 className='text-primary text-sm'>
 					This graphic displays all semesters and professors that have taught this course. Use the search bar below to filter for a specific professor!<br />
-					GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-opposite'>4.0</span>
+					GPA: <span className='text-white bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-white'>4.0</span>
 				</h3>
 				<SearchBar
 					placeholder="Filter instructors..."
