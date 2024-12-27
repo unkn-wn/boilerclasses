@@ -128,7 +128,7 @@ const CourseCatalog = () => {
       </div>
 
       {!displayLanding ? (
-        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-background container mx-auto p-4 ${inter.className}`}>
+        <div id="parent" className={`flex flex-col h-screen min-h-screen bg-super container mx-auto p-4 ${inter.className}`}>
           {/* Header */}
           <div className='flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8'>
             <img
@@ -153,7 +153,7 @@ const CourseCatalog = () => {
               placeholder="Search for courses..."
               value={filters.searchTerm}
               onChange={(e) => updateFilter('searchTerm', e.target.value)}
-              className="placeholder:text-primary text-primary text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="placeholder:text-primary text-primary text-xl bg-super w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
           </div>
 
@@ -201,7 +201,7 @@ const CourseCatalog = () => {
               onChange={(e) => {
                 changeLanding(e.target.value);
               }}
-              className="placeholder:text-primary text-primary text-sm md:text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="placeholder:text-primary text-primary text-sm md:text-xl bg-super w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
                 <Button
                   onClick={() => router.push('https://schedule.boilerclasses.com')}

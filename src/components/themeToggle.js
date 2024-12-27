@@ -12,6 +12,8 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     const root = window.document.documentElement;
+    const theme = isDarkMode ? 'dark' : 'light';
+
     if (isDarkMode) {
       root.classList.add('dark');
       root.classList.remove('light');
@@ -20,6 +22,8 @@ const ThemeToggle = () => {
       root.classList.remove('dark');
     }
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    const themeChangeEvent = new CustomEvent('themeChange', { detail: { theme } });
+    window.dispatchEvent(themeChangeEvent);
   }, [isDarkMode]);
 
   const toggleTheme = () => {
