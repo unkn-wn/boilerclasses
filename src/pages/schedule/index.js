@@ -217,7 +217,7 @@ const Schedule = () => {
                         href={`https://www.boilerclasses.com/detail/${selectedCourse.detailId}`}
                         target="_blank"
                       >
-                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-background-secondary bg-background hover:bg-background-secondary">
+                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-[rgb(var(--background-secondary-color))] bg-background hover:bg-background-secondary">
                           <IoMdOpen />
                           <span className='whitespace-nowrap'>Open Details</span>
                         </div>

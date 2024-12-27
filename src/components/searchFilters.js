@@ -31,7 +31,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
         <div className='w-full flex place-content-end'>
           <div
             onClick={() => setFiltersCollapsed(false)}
-            className='flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-background-secondary text-primary border border-zinc-800 hover:border-zinc-700 transition-all'
+            className='flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-background-secondary text-primary border border-[rgb(var(--background-secondary-color))] hover:border-[rgb(var(--background-tertiary-color))] transition-all'
           >
             <HamburgerIcon />
             {allFiltersString ? (
@@ -86,12 +86,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             {/* Credits Filter */}
             <Popover placement='bottom-start'>
               <PopoverTrigger>
-                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-zinc-900 hover:border-zinc-700'>
+                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-tertiary-color))]'>
                   <span>Credits</span>
                   <ChevronDownIcon color='gray-800' />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--super))`} borderColor='gray.800' className='bg-background border-background-secondary'>
+              <PopoverContent backgroundColor={`rgb(var(--super))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))]'>
                 <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
                   <RangeSlider
                     aria-label={['min', 'max']}
@@ -125,12 +125,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             {/* Levels Filter */}
             <Popover placement='bottom-start'>
               <PopoverTrigger>
-                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-zinc-900 hover:border-zinc-700'>
+                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-tertiary-color))]'>
                   <span>Level</span>
                   <ChevronDownIcon color="gray-800" />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-gray-800' width='fit-content'>
+              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))]' width='fit-content'>
                 <Grid templateColumns='repeat(3, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
                   {[100, 200, 300, 400, 500, 600, 700, 800, 900].map(level => (
                     <Checkbox
@@ -171,12 +171,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             {/* Schedule Types Filter */}
             <Popover placement='bottom-start'>
               <PopoverTrigger>
-                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-zinc-900 hover:border-zinc-700'>
+                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-secondary-color))] hover:border-[rgb(var(--background-tertiary-color))]'>
                   <span>Schedule</span>
                   <ChevronDownIcon color='gray-800' />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-background-secondary' width='fit-content'>
+              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))]' width='fit-content'>
                 <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
                   {[
                     "Lecture",
