@@ -59,7 +59,8 @@ module.exports = {
         'primary': 'rgb(var(--text-color) / <alpha-value>)',
         'secondary': 'rgb(var(--text-secondary-color) / <alpha-value>)',
         'opposite': 'rgb(var(--text-opposite) / <alpha-value>)',
-        'opposite-secondary': 'rgb(var(--text-secondary-opposite) / <alpha-value>)'
+        'opposite-secondary': 'rgb(var(--text-secondary-opposite) / <alpha-value>)',
+        'tertiary': 'rgb(var(--text-tertiary-color) / <alpha-value>)',
       }
     },
   },

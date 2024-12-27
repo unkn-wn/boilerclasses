@@ -167,7 +167,7 @@ const Schedule = () => {
         Use the Scheduling Assistant on Desktop for the best experience!
       </div>
 
-      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-background container mx-auto px-4 text-primary ${inter.className}`}>
+      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-super container mx-auto px-4 text-primary ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
           <div className='mx-2'>

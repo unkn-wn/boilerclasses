@@ -40,8 +40,8 @@ const CalendarCourse = ({
       className='z-50 backdrop-blur-md backdrop-brightness-50'
     >
       <div
-        className={`relative text-white text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-xl
-          ${isHovered ? 'ring-2 ring-white' : ''}`}
+        className={`relative text-primary text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-xl
+          ${isHovered ? 'ring-2 ring-primary' : ''}`}
         style={{
           borderColor: graphColors[colorIndex % graphColors.length],
           backgroundColor: graphColors[colorIndex % graphColors.length] + "50",
