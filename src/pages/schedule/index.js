@@ -197,7 +197,7 @@ const Schedule = () => {
             <>
               {/* Selected Course */}
               <div className='flex flex-col lg:h-screen'>
-                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-background shadow-md border-background-secondary border transition-all'>
+                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-background shadow-md border-[rgb(var(--background-secondary-color))] border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
                   <div className='lg:w-1/2'>
@@ -205,7 +205,7 @@ const Schedule = () => {
                     <h2 className='font-bold text-lg'>{selectedCourse.title}</h2>
 
                     {/* Description Display */}
-                    <p className="text-sm text-gray-200 mt-1 pb-4 break-words">{selectedCourse.description}</p>
+                    <p className="text-sm text-secondary mt-1 pb-4 break-words">{selectedCourse.description}</p>
                   </div>
 
                   {/* RIGHT SIDE - Course Details */}
@@ -239,7 +239,7 @@ const Schedule = () => {
                           </button>
                         ) : (
                           <button
-                            className="flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                            className="text-white flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
@@ -252,7 +252,7 @@ const Schedule = () => {
                               <div className="flex items-center justify-center"><Spinner /></div>
                             ) : (<>
                               <IoMdAdd />
-                              <span className='whitespace-nowrap'>Add Course</span>
+                              <span className='whitespace-nowrap '>Add Course</span>
                             </>)}
                           </button>
                         )) : (
@@ -282,7 +282,7 @@ const Schedule = () => {
                         <div className='flex flex-row gap-1 flex-wrap'>
                           {/* Schedule Type Display */}
                           {selectedCourse.sched.map((s, i) => (
-                            <span className='text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap text-ellipsis overflow-hidden hover:overflow-visible transition-all z-10'
+                            <span className='text-white text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap text-ellipsis overflow-hidden hover:overflow-visible transition-all z-10'
                               key={i}>
                               {s}
                             </span>
@@ -291,7 +291,7 @@ const Schedule = () => {
 
                           {/* Gened Type Display */}
                           {selectedCourse.gened.length > 0 && selectedCourse.gened.map((gened, i) => (
-                            <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
+                            <span className={`text-white text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                               key={i}>
                               {genedsOptions.filter(x => x.value === gened)[0]?.label || ''}
                             </span>
@@ -372,13 +372,13 @@ const Schedule = () => {
                   {gpaGraph.datasets &&
                     gpaGraph.datasets.length > 0 &&
                     !gpaGraph.datasets[0].data.every(value => value === 0) ? (
-                    <div className='border border-background-secondary shadow-md shadow-white/10 rounded-xl h-96'>
+                    <div className='border border-[rgb(var(--background-secondary-color))] shadow-md shadow-white/10 rounded-xl h-96'>
                       <div className='h-full'>
                         <Graph data={gpaGraph} scheduler />
                       </div>
                     </div>
                   ) : (
-                    <div className="border border-background-secondary shadow-md shadow-white/10 rounded-xl bg-background p-4">
+                    <div className="border border-[rgb(var(--background-secondary-color))] shadow-md shadow-white/10 rounded-xl bg-background p-4">
                       <h1 className="text-center text-md font-light text-primary py-4">
                         No grade data available for this course.
                       </h1>
