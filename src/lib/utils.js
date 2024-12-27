@@ -445,6 +445,10 @@ export const graphColors = [
   "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
 ];
 
+export const lightGraphColors = [
+  "#0055FF", "#00CC66", "#FF5733", "#FFA726", "#D4AC0D", "#E53935", "#FFC107", "#0288D1", "#43A047", "#D32F2F", "#8D6E63", "#388E3C", "#C2185B", "#E64A19", "#F8BBD0", "#FFCCBC", "#C5E1A5", "#FFD600", "#FFAB91", "#A1887F", "#7B1FA2", "#FFC400", "#FFE082",
+];
+
 
 export const labels = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 

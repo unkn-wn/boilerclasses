@@ -36,7 +36,7 @@ import "react-circular-progressbar/dist/styles.css";
 // ----- Component imports -----
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
-import { instructorStyles, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
+import { instructorStyles, lightGraphColors, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
 import { semesters, subjects } from "@/lib/utils"
 
 import Footer from '@/components/footer';
@@ -244,7 +244,7 @@ const CardDetails = ({ courseData, semData }) => {
         <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />
 
       </Head>
-      <div className={`flex flex-col min-h-screen bg-background container mx-auto p-5 mt-5 ${inter.className} text-primary`}>
+      <div className={`flex flex-col min-h-screen bg-super container mx-auto p-5 mt-5 ${inter.className} text-primary`}>
         <div className="flex md:flex-row flex-col md:gap-4">
 
           {/* Left half of panel */}
@@ -252,7 +252,7 @@ const CardDetails = ({ courseData, semData }) => {
 
             <div className='flex flex-row gap-1'>
               {/* Back button */}
-              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-opposite-secondary transition'>
+              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-secondary transition'>
                 <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
               </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{courseData.subjectCode} {courseData.courseCode}: {courseData.title}</p>
@@ -262,7 +262,7 @@ const CardDetails = ({ courseData, semData }) => {
               <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
 
                 {/* Credits Display */}
-                <p className="text-sm text-gray-400 font-bold">
+                <p className="text-sm text-secondary font-bold">
                   {courseData.credits[0] === courseData.credits[1]
                     ? `${courseData.credits[0]} Credits`
                     : `${courseData.credits[0]} - ${courseData.credits[1]} Credits`}
@@ -272,7 +272,7 @@ const CardDetails = ({ courseData, semData }) => {
                 <span className="mx-2 h-6 w-0.5 bg-background-opposite-secondary rounded" />
 
                 {/* Latest Semester Display with conditional styling */}
-                <span className={`text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
+                <span className={`text-white text-sm px-3 py-1 rounded-full border-solid border-2 font-bold whitespace-nowrap ${sem === CURRENT_SEMESTER
                     ? 'bg-yellow-600 border-yellow-500'
                     : 'bg-sky-600 border-sky-500'
                   }`}>
@@ -286,7 +286,7 @@ const CardDetails = ({ courseData, semData }) => {
 
                 {/* Schedule Type Display */}
                 {courseData.sched.map((s, i) => (
-                  <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap transition-all`}
+                  <span className={` text-white text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap transition-all`}
                     key={i}>
                     {s}
                   </span>
@@ -458,8 +458,8 @@ const CardDetails = ({ courseData, semData }) => {
                       {/* For when there is no RMP data for firstInstructor */}
                       {selectedInstructors[selectedInstructors.length - 1] && (!curRMP[selectedInstructors[selectedInstructors.length - 1]] || curRMP[selectedInstructors[selectedInstructors.length - 1]] === 0) &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                          <p className='text-opposite-secondary text-md font-bold text-center'>No rating available for {selectedInstructors[selectedInstructors.length - 1]}</p>
-                          <p className='text-opposite-secondary text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
+                          <p className='text-secondary text-md font-bold text-center'>No rating available for {selectedInstructors[selectedInstructors.length - 1]}</p>
+                          <p className='text-secondary text-xs font-light text-center'>Click on <span className='text-yellow-500'>this</span> to open RMP!</p>
                         </div>
                       }
 

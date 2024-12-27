@@ -50,7 +50,8 @@ module.exports = {
         'background-secondary': 'rgb(var(--background-secondary-color) / <alpha-value>)',
         'background-tertiary': 'rgb(var(--background-tertiary-color) / <alpha-value>)',
         'background-opposite': 'rgb(var(--background-opposite) / <alpha-value>)',
-        'background-opposite-secondary': 'rgb(var(--background-secondary-opposite) / <alpha-value>)'
+        'background-opposite-secondary': 'rgb(var(--background-secondary-opposite) / <alpha-value>)',
+        'super': 'rgb(var(--super) / <alpha-value>)',
 
       },
       textColor: {

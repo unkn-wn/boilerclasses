@@ -8,6 +8,8 @@ import {
 	Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import React, { useState, useEffect } from 'react';
+
 
 ChartJS.register(
 	CategoryScale,
@@ -20,46 +22,83 @@ ChartJS.register(
 
 const Graph = ({ data, scheduler = false }) => {
 
+
+	const [chartColors, setChartColors] = useState({
+    textColor: '0, 0, 0', // Default fallback
+    textSecondaryColor: '200, 200, 200', // Default fallback
+  });
+
+  // Function to fetch CSS variables
+  const getCSSVariable = (variable) => {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue(variable)
+      .trim();
+  };
+
+  // Update colors when component mounts or theme changes
+  useEffect(() => {
+    const updateColors = () => {
+      setChartColors({
+        textColor: getCSSVariable('--text-color'),
+        textSecondaryColor: getCSSVariable('--text-tertiary-color'),
+      });
+    };
+
+    // Update colors initially
+    updateColors();
+
+    // Listen for theme changes (assuming a `theme-change` event is dispatched)
+    window.addEventListener('themeChange', updateColors);
+
+    return () => {
+      window.removeEventListener('themeChange', updateColors);
+    };
+  }, []);
+
+	
+
 	const chartTitle = scheduler ? '% Grade Distribution Across All Instructors' : '% Grade Distribution';
 
 	return (
 		<>
 			<div className="h-full w-full bg-background mx-auto p-4 rounded-xl">
-				<Bar
-					options={{
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'top',
-								labels: {
-									color: `rgb(var(--text-color))`,
-								}
-							},
-							title: {
-								display: true,
-								text: chartTitle,
-								color: `rgb(var(--text-color))`
-							},
-						},
-						scales: {
-							y: {
-								title: {
-									display: true,
-									text: '% of Students',
-									color: `rgb(var(--text-color))`
-								},
-								grid: {
-									color: `rgb(var(--text-color-secondary))`
-								}
-							},
-							x: {
-								grid: {
-									color: `rgb(var(--text-color-secondary))`
-								}
-							}
-						}
-					}} data={data}
+			<Bar
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                color: `rgb(${chartColors.textColor})`,
+              },
+            },
+            title: {
+              display: true,
+              text: chartTitle,
+              color: `rgb(${chartColors.textColor})`,
+            },
+          },
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: '% of Students',
+                color: `rgb(${chartColors.textColor})`,
+              },
+              grid: {
+                color: `rgb(${chartColors.textSecondaryColor})`,
+              },
+            },
+            x: {
+              grid: {
+                color: `rgb(${chartColors.textSecondaryColor})`,
+              },
+            },
+          },
+        }}
+        data={data}
+
 				// {
 				//   {
 				//     labels,
@@ -149,7 +188,7 @@ export const calculateGradesAndGPA = (profs, gpaData, colors) => {
 };
 
 
-import { graphColors } from '@/lib/utils';
+import { graphColors, lightGraphColors } from '@/lib/utils';
 export const averageAllData = (grades) => {
 
 	const avg = Array(13).fill(0);

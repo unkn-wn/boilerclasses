@@ -88,7 +88,7 @@ const FullInstructorModal = ({ course }) => {
 				<h1 className='text-primary text-2xl font-bold'>All Instructors Breakdown</h1>
 				<h3 className='text-primary text-sm'>
 					This graphic displays all semesters and professors that have taught this course. Use the search bar below to filter for a specific professor!<br />
-					GPA: <span className='bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-opposite'>4.0</span>
+					GPA: <span className='text-white bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-white'>4.0</span>
 				</h3>
 				<SearchBar
 					placeholder="Filter instructors..."
@@ -112,7 +112,7 @@ const FullInstructorModal = ({ course }) => {
 											<h3 className='text-primary font-semibold text-md mr-2'>{instructor}</h3>
 											<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
 											<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
-												<p className='text-primary m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
+												<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
 											</div>
 										</div>
 									))}
