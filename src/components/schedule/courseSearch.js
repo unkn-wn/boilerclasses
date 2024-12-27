@@ -105,7 +105,7 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          className="text-white text-xl bg-background w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+          className="placeholder:text-secondary text-primary text-xl bg-super w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
           placeholder="Search for courses..."
         />
       </div>
@@ -119,15 +119,15 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
                 onClick={() => handleSelect(course)}
                 onMouseEnter={() => setSelectedIndex(index)}
                 className={`flex flex-row justify-between px-4 py-2 cursor-pointer ${selectedIndex === index
-                  ? 'bg-neutral-800 text-white'
-                  : 'text-primary hover:bg-neutral-800'
+                  ? 'bg-background-secondary text-primary'
+                  : 'text-primary hover:bg-background-secondary'
                   }`}
               >
                 <div>
                   <div className="font-medium flex items-center justify-between">
                     <span>{course.value.subjectCode} {course.value.courseCode}</span>
                   </div>
-                  <div className="text-sm text-secondary truncate">
+                  <div className="text-sm text-tertiary truncate">
                     {course.value.title}
                   </div>
                   {!course.value.terms.includes(CURRENT_SEMESTER) && (
@@ -144,7 +144,7 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
               </div>
             ))
           ) : (
-            <div className="px-4 py-2 text-secondary">
+            <div className="px-4 py-2 text-tertiary">
               No courses found
             </div>
           )}
