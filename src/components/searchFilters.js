@@ -17,7 +17,8 @@ import {
   RangeSliderThumb,
   Checkbox,
   Grid,
-  Button
+  Button,
+  Box
 } from '@chakra-ui/react';
 
 import { instructorStyles, subjectOptions, semesterOptions, genedsOptions } from '@/lib/utils';
@@ -50,7 +51,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             <Select
               isMulti
               options={subjectOptions}
-              className="basic-multi-select w-full"
+              className="placeholder:text-secondary basic-multi-select w-full"
               classNamePrefix="select"
               placeholder="Subject..."
               styles={instructorStyles}
@@ -90,7 +91,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
                   <ChevronDownIcon color='gray-800' />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-background-secondary'>
+              <PopoverContent backgroundColor={`rgb(var(--super))`} borderColor='gray.800' className='bg-background border-background-secondary'>
                 <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
                   <RangeSlider
                     aria-label={['min', 'max']}
@@ -107,8 +108,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
                     <RangeSliderTrack>
                       <RangeSliderFilledTrack />
                     </RangeSliderTrack>
-                    <RangeSliderThumb index={0} />
-                    <RangeSliderThumb index={1} />
+                    <RangeSliderThumb boxSize={4} index={0}>
+                    <Box bg={`rgb(var(--text-secondary-color))`} width="100%" height="100%" borderRadius="50%"  />
+                    </RangeSliderThumb>
+                    <RangeSliderThumb boxSize={4} index={1}>
+                    <Box bg={`rgb(var(--text-secondary-color))`} width="100%" height="100%" borderRadius="50%"  />
+                    </RangeSliderThumb>
                   </RangeSlider>
                   <div className='text-primary'>
                     {filters.credits.min} - {filters.credits.max} Credits
@@ -122,7 +127,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               <PopoverTrigger>
                 <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-zinc-900 hover:border-zinc-700'>
                   <span>Level</span>
-                  <ChevronDownIcon color={`rgb(var(--background-color))`} />
+                  <ChevronDownIcon color="gray-800" />
                 </button>
               </PopoverTrigger>
               <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-gray-800' width='fit-content'>

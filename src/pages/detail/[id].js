@@ -433,7 +433,7 @@ const CardDetails = ({ courseData, semData }) => {
                             styles={buildStyles({
                               pathColor: curGPA[selectedInstructors[selectedInstructors.length - 1]][1],
                               textColor: curGPA[selectedInstructors[selectedInstructors.length - 1]][1],
-                              trailColor: '#0a0a0a',
+                              trailColor: `rgb(var(--super))`,
                             })}
                           />
                         ) : (
@@ -444,7 +444,7 @@ const CardDetails = ({ courseData, semData }) => {
                             styles={buildStyles({
                               pathColor: "",
                               textColor: "",
-                              trailColor: '#0a0a0a',
+                              trailColor: `rgb(var(--super))`,
                             })}
                           />
                         )}
@@ -473,7 +473,7 @@ const CardDetails = ({ courseData, semData }) => {
                             styles={buildStyles({
                               pathColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : "",
                               textColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : "",
-                              trailColor: '#0a0a0a',
+                              trailColor: `rgb(var(--super))`,
                             })}
                           />
                         ) : (
@@ -484,7 +484,7 @@ const CardDetails = ({ courseData, semData }) => {
                             styles={buildStyles({
                               pathColor: "",
                               textColor: "",
-                              trailColor: '#0a0a0a',
+                              trailColor: `rgb(var(--super))`,
                             })}
                           />
                         )}

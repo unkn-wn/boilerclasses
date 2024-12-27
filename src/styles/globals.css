@@ -4,7 +4,7 @@
 
 :root {
   /* Light mode variables */
-  --super: 0, 0, 0;
+  --super: 255, 255, 255;
   --background-color: 250 250 250;       /* neutral-50 */
   --background-secondary-color: 229 229 229;  /* neutral-200 */
   --background-tertiary-color: 242 242 242; /* neutral-100 */
@@ -19,7 +19,7 @@
 
 .dark {
   /* Dark mode variables */
-  --super: 255, 255, 255;
+  --super: 0, 0, 0;
   --background-color: 23 23 23;          /* neutral-950 */
   --background-secondary-color: 64 64 64;/* neutral-700 */
   --background-tertiary-color: 96 96 96; /* neutral-600 */
