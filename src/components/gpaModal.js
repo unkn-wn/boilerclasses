@@ -105,7 +105,7 @@ export const ScheduleGpaModal = ({ course }) => {
 								{Object.keys(gpa[instructor]).map((semester, index) => (
 									<div key={index} className='flex flex-col'>
 										<div className='grid py-1 text-center rounded-md' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-											<p className='text-primary m-auto text-sm font-light'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
+											<p className='text-white m-auto text-sm font-light'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
 										</div>
 									</div>
 								))}
