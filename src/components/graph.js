@@ -188,7 +188,7 @@ export const calculateGradesAndGPA = (profs, gpaData, colors) => {
 };
 
 
-import { graphColors, lightGraphColors } from '@/lib/utils';
+import { graphColors } from '@/lib/utils';
 export const averageAllData = (grades) => {
 
 	const avg = Array(13).fill(0);

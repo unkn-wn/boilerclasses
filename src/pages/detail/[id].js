@@ -36,7 +36,7 @@ import "react-circular-progressbar/dist/styles.css";
 // ----- Component imports -----
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
-import { instructorStyles, lightGraphColors, graphColors, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
+import { instructorStyles, boilerExamsCourses, labels, genedsOptions } from '@/lib/utils';
 import { semesters, subjects } from "@/lib/utils"
 
 import Footer from '@/components/footer';
@@ -95,6 +95,7 @@ const CardDetails = ({ courseData, semData }) => {
     );
 
     setLoading(false);
+    console.log("GPA: " + gpa);
   }, [router.isReady, courseData]);
 
 
@@ -421,8 +422,8 @@ const CardDetails = ({ courseData, semData }) => {
                       {/* For when there is no GPA data for firstInstructor */}
                       {curGPA[selectedInstructors[selectedInstructors.length - 1]] && curGPA[selectedInstructors[selectedInstructors.length - 1]][0] === 0 &&
                         <div className='absolute right-0 left-0 top-0 p-2 backdrop-blur-sm text-center'>
-                          <p className='text-opposite-secondary text-md font-bold text-center'>No data available for {selectedInstructors[selectedInstructors.length - 1]}</p>
-                          <p className='text-opposite-secondary text-xs font-light text-center'>Click on other tabs for more data!</p>
+                          <p className='text-secondary text-md font-bold text-center'>No data available for {selectedInstructors[selectedInstructors.length - 1]}</p>
+                          <p className='text-secondary text-xs font-light text-center'>Click on other tabs for more data!</p>
                         </div>
                       }
 
@@ -474,8 +475,8 @@ const CardDetails = ({ courseData, semData }) => {
                             maxValue={5}
                             text={curRMP[selectedInstructors[selectedInstructors.length - 1]]}
                             styles={buildStyles({
-                              pathColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : "",
-                              textColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : "",
+                              pathColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : `rgb(var(--text-color))`,
+                              textColor: curGPA[selectedInstructors[selectedInstructors.length - 1]] ? curGPA[selectedInstructors[selectedInstructors.length - 1]][1] : `rgb(var(--text-color))`,
                               trailColor: `rgb(var(--super))`,
                             })}
                           />
@@ -485,8 +486,8 @@ const CardDetails = ({ courseData, semData }) => {
                             maxValue={5}
                             text=""
                             styles={buildStyles({
-                              pathColor: "",
-                              textColor: "",
+                              pathColor: `rgb(var(--text-color))`,
+                              textColor: `rgb(var(--text-color))`,
                               trailColor: `rgb(var(--super))`,
                             })}
                           />

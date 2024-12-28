@@ -526,12 +526,34 @@ export const instructorStyles = {
   }),
 }
 
-export const graphColors = [
-  "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
-];
+// export const graphColors = [
+//   "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
+// ];
 
-export const lightGraphColors = [
-  "#0055FF", "#00CC66", "#FF5733", "#FFA726", "#D4AC0D", "#E53935", "#FFC107", "#0288D1", "#43A047", "#D32F2F", "#8D6E63", "#388E3C", "#C2185B", "#E64A19", "#F8BBD0", "#FFCCBC", "#C5E1A5", "#FFD600", "#FFAB91", "#A1887F", "#7B1FA2", "#FFC400", "#FFE082",
+export const graphColors = [
+  `rgb(var(--graph-color-1))`,
+  `rgb(var(--graph-color-2))`,
+  `rgb(var(--graph-color-3))`,
+  `rgb(var(--graph-color-4))`,
+  `rgb(var(--graph-color-5))`,
+  `rgb(var(--graph-color-6))`,
+  `rgb(var(--graph-color-7))`,
+  `rgb(var(--graph-color-8))`,
+  `rgb(var(--graph-color-9))`,
+  `rgb(var(--graph-color-10))`,
+  `rgb(var(--graph-color-11))`,
+  `rgb(var(--graph-color-12))`,
+  `rgb(var(--graph-color-13))`,
+  `rgb(var(--graph-color-14))`,
+  `rgb(var(--graph-color-15))`,
+  `rgb(var(--graph-color-16))`,
+  `rgb(var(--graph-color-17))`,
+  `rgb(var(--graph-color-18))`,
+  `rgb(var(--graph-color-19))`,
+  `rgb(var(--graph-color-20))`,
+  `rgb(var(--graph-color-21))`,
+  `rgb(var(--graph-color-22))`,
+  `rgb(var(--graph-color-23))`
 ];
 
 

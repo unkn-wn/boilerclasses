@@ -89,7 +89,7 @@ const FullInstructorModal = ({ course }) => {
 											<h3 className='text-primary font-semibold text-md mr-2'>{instructor}</h3>
 											<span className='h-0.5 border-b border-dotted flex-grow mx-2' />
 											<div className='grid w-20 h-10 text-center' style={{ backgroundColor: `${gpa[semester][instructor].color}` }}>
-												<p className='text-primary m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
+												<p className='text-white m-auto font-semibold'>{gpa[semester][instructor].gpa}</p>
 											</div>
 										</div>
 									))}

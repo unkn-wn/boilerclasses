@@ -27,7 +27,8 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
   const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
   const [instructorGPAs, setInstructorGPAs] = useState({});
   const colorIndex = getCourseColorIndex(parentCourse.detailId, courseColorMap);
-  const courseColor = graphColors[colorIndex % graphColors.length];
+  const courseColor = `rgb(${graphColors[colorIndex % graphColors.length]})`;
+  console.log("course color " + courseColor);
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
@@ -193,7 +194,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                 backgroundColor: hasSelectedLectures ? courseColor + "50" : 'rgb(39 39 42)',
                 borderColor: hasSelectedLectures ? courseColor : 'rgb(39 39 42)',
               }}
-              className="text-white hover:brightness-125 h-full border"
+              className="text-primary hover:brightness-125 h-full border"
               leftIcon={hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
             ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
