@@ -34,8 +34,15 @@ const Graph = ({ data, scheduler = false }) => {
 	 * Needed to set profdata to data for some reason
 	 */
 	useEffect(() => {
+		console.log("first useeffect");
 		setProfData(data);
 	}, [data]);
+
+	useEffect(() => {
+		console.log("profdata changed to " + JSON.stringify(profData));
+		console.log("data is " + JSON.stringify(data));
+
+	}, [profData]);
 
   // Function to fetch CSS variables
   const getCSSVariable = (variable) => {
@@ -53,6 +60,7 @@ const Graph = ({ data, scheduler = false }) => {
         textColor: getCSSVariable('--text-color'),
         textSecondaryColor: getCSSVariable('--text-tertiary-color'),
       });
+			console.log("updateColors")
 			setProfData({
 				...data,
 				datasets: data.datasets.map(dataset => ({
@@ -73,7 +81,7 @@ const Graph = ({ data, scheduler = false }) => {
     return () => {
       window.removeEventListener('themeChange', updateColors);
     };
-  }, []);
+  }, [data]);
 
 	
 
