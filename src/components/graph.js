@@ -22,14 +22,24 @@ ChartJS.register(
 
 const Graph = ({ data, scheduler = false }) => {
 
-
 	const [chartColors, setChartColors] = useState({
     textColor: '0, 0, 0', // Default fallback
     textSecondaryColor: '200, 200, 200', // Default fallback
   });
 
+	const [profData, setProfData] = useState(data);
+
+
+	/**
+	 * Needed to set profdata to data for some reason
+	 */
+	useEffect(() => {
+		setProfData(data);
+	}, [data]);
+
   // Function to fetch CSS variables
   const getCSSVariable = (variable) => {
+
     return getComputedStyle(document.documentElement)
       .getPropertyValue(variable)
       .trim();
@@ -37,17 +47,27 @@ const Graph = ({ data, scheduler = false }) => {
 
   // Update colors when component mounts or theme changes
   useEffect(() => {
+
     const updateColors = () => {
       setChartColors({
         textColor: getCSSVariable('--text-color'),
         textSecondaryColor: getCSSVariable('--text-tertiary-color'),
       });
+			setProfData({
+				...data,
+				datasets: data.datasets.map(dataset => ({
+					...dataset,
+					backgroundColor: `rgb(${getCSSVariable(dataset.backgroundColor.replace('rgb(var(', '').replace('))', ''))})`
+				}))
+			});
+			
     };
 
+		
     // Update colors initially
     updateColors();
 
-    // Listen for theme changes (assuming a `theme-change` event is dispatched)
+    // Listen for theme changes (assuming a `themeChange` event is dispatched)
     window.addEventListener('themeChange', updateColors);
 
     return () => {
@@ -97,7 +117,7 @@ const Graph = ({ data, scheduler = false }) => {
             },
           },
         }}
-        data={data}
+        data={profData}
 
 				// {
 				//   {

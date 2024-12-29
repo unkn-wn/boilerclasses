@@ -36,7 +36,6 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
     let colorIndex = 0;
     let totalSemCount = 0;
 
-    console.log("Profs: " + profs);
 
     for (const instructor of profs) {
         let avgGPA = 0;
@@ -48,7 +47,7 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
             grades.push({
                 label: instructor,
                 data: avgGradeDist,
-                backgroundColor: `rgb(var(--text-color))`,
+                backgroundColor: color,
             });
             continue;
         }

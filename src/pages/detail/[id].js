@@ -95,7 +95,8 @@ const CardDetails = ({ courseData, semData }) => {
     );
 
     setLoading(false);
-    console.log("GPA: " + gpa);
+    console.log('GPA:', JSON.stringify(gpa, null, 2));
+
   }, [router.isReady, courseData]);
 
 
