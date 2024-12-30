@@ -123,7 +123,6 @@ const drawCourseBlocks = (doc, startY, selectedLectures, courseColorMap) => {
 };
 
 const drawDetailedSchedule = (doc, selectedLectures, courseColorMap) => {
-  console.log(selectedLectures);
   doc.addPage();
   let yPos = 20;
 

@@ -163,7 +163,7 @@ const Schedule = () => {
       </div>
 
       {/* mobile message */}
-      <div id="mobile_msg" className='m-2 text-center text-sm text-primary items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
+      <div id="mobile_msg" className='m-2 text-center text-sm text-white items-center justify-center font-light lg:hidden bg-yellow-900 px-2 py-1 flex flex-row'>
         <div className='cursor-pointer' onClick={() => document.getElementById('mobile_msg').classList.add('hidden')}><IoIosClose size={24} /></div>
         Use the Scheduling Assistant on Desktop for the best experience!
       </div>
@@ -228,7 +228,7 @@ const Schedule = () => {
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                           <button
-                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700 text-white"
                             onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
                           >
                             {isLoading ? (

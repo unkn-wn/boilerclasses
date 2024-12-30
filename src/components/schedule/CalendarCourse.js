@@ -31,8 +31,6 @@ const CalendarCourse = ({
     // Initial update
     updateColors();
 
-    console.log("COLOR" + color);
-
     // Listen for theme changes
     window.addEventListener('themeChange', updateColors);
 
@@ -61,7 +59,7 @@ const CalendarCourse = ({
       placement="auto-end"
       hasArrow
       bg={`${color.replace('rgb', 'rgba').replace(')', ', 0.5)')}`}
-      color={`rgb(var(--text-color))`}
+      color='white'
       border={`2px solid ${color}`}
       rounded={5}
       className='z-50 backdrop-blur-md backdrop-brightness-50'
@@ -70,6 +68,7 @@ const CalendarCourse = ({
         className={`relative text-primary text-xs overflow-hidden text-center rounded-md border z-10 cursor-pointer transition-all duration-200 backdrop-blur-xl
           ${isHovered ? 'ring-2 ring-primary' : ''}`}
         style={{
+          color: `rgb(var(--text-color))`,
           borderColor: `${color}`,
           backgroundColor: `${color.replace('rgb', 'rgba').replace(')', ', 0.5)')}`,
           width: `${width}%`,

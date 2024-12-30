@@ -112,8 +112,8 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
 
       {shouldShowDropdown && (
         <div className="absolute z-50 w-full mt-2 bg-background rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
-          {sortedCourses.length > 0 ? (
-            sortedCourses.slice(0, 10).map((course, index) => (
+          {displayedCourses.length > 0 ? (
+            displayedCourses.slice(0, 10).map((course, index) => (
               <div
                 key={course.id}
                 onClick={() => handleSelect(course)}

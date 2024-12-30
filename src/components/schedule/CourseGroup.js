@@ -27,8 +27,37 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
   const [rmpScores, setRmpScores] = useState(() => rmpScoresCache.get(parentCourse.detailId) || {});
   const [instructorGPAs, setInstructorGPAs] = useState({});
   const colorIndex = getCourseColorIndex(parentCourse.detailId, courseColorMap);
-  const courseColor = `rgb(${graphColors[colorIndex % graphColors.length]})`;
-  console.log("course color " + courseColor);
+
+
+
+  const getCSSVariable = (variable) => {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue(variable)
+      .trim();
+  };
+
+  const [courseColor, setCourseColor] = useState(`rgb(${getCSSVariable(graphColors[colorIndex % graphColors.length].replace('rgb(var(', '').replace('))', ''))})`);
+
+
+    // Update colors when component mounts or theme changes
+    useEffect(() => {
+  
+      const updateColors = () => {
+        setCourseColor(
+          `rgb(${getCSSVariable(graphColors[colorIndex % graphColors.length].replace('rgb(var(', '').replace('))', ''))})`
+        );
+      };
+      
+      // Update colors initially
+      updateColors();
+  
+      // Listen for theme changes (assuming a `themeChange` event is dispatched)
+      window.addEventListener('themeChange', updateColors);
+  
+      return () => {
+        window.removeEventListener('themeChange', updateColors);
+      };
+    }, []);
 
   // Load RMP scores and calculate GPAs when modal opens
   useEffect(() => {
@@ -191,7 +220,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
               size="sm"
               onClick={handleModalOpen}
               style={{
-                backgroundColor: hasSelectedLectures ? courseColor + "50" : 'rgb(39 39 42)',
+                backgroundColor: hasSelectedLectures ? `${courseColor.replace('rgb', 'rgba').replace(')', ', 0.5)')}` : 'rgb(39 39 42)',
                 borderColor: hasSelectedLectures ? courseColor : 'rgb(39 39 42)',
               }}
               className="text-primary hover:brightness-125 h-full border"
