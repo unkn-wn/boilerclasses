@@ -14,7 +14,7 @@ const TimeGrid = ({ children }) => {
               className="h-8 border-b border-zinc-600"
             >
               {dayIndex === 0 && (
-                <div className="absolute -left-16 w-16 text-right pr-2 -translate-y-4 text-zinc-500">
+                <div className="absolute -left-16 w-16 text-right pr-2 -translate-y-4 text-tertiary">
                   {time}
                 </div>
               )}

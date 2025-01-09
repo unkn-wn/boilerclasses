@@ -156,7 +156,7 @@ const Schedule = () => {
             className='my-auto w-8 h-8'
             alt="BoilerClasses Logo"
           />
-          <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-white'>
+          <h1 className='text-md md:text-lg font-semibold my-auto ml-2 select-none text-primary'>
             BoilerClasses
           </h1>
         </Link>
@@ -168,7 +168,7 @@ const Schedule = () => {
         Use the Scheduling Assistant on Desktop for the best experience!
       </div>
 
-      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-neutral-950 container mx-auto px-4 text-white ${inter.className}`}>
+      <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-super container mx-auto px-4 text-primary ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
           <div className='mx-2'>
@@ -197,7 +197,7 @@ const Schedule = () => {
             <>
               {/* Selected Course */}
               <div className='flex flex-col lg:h-screen'>
-                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-zinc-900 shadow-md border-zinc-800 border transition-all'>
+                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-background shadow-md border-[rgb(var(--background-secondary-color))] border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
                   <div className='lg:w-1/2'>
@@ -205,7 +205,7 @@ const Schedule = () => {
                     <h2 className='font-bold text-lg'>{selectedCourse.title}</h2>
 
                     {/* Description Display */}
-                    <p className="text-sm text-gray-200 mt-1 pb-4 break-words">{selectedCourse.description}</p>
+                    <p className="text-sm text-secondary mt-1 pb-4 break-words">{selectedCourse.description}</p>
                   </div>
 
                   {/* RIGHT SIDE - Course Details */}
@@ -218,7 +218,7 @@ const Schedule = () => {
                         href={`https://www.boilerclasses.com/detail/${selectedCourse.detailId}`}
                         target="_blank"
                       >
-                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-zinc-700 bg-zinc-900 hover:bg-zinc-700">
+                        <div className="flex gap-1 self-end rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-[rgb(var(--background-secondary-color))] bg-background hover:bg-background-secondary">
                           <IoMdOpen />
                           <span className='whitespace-nowrap'>Open Details</span>
                         </div>
@@ -228,7 +228,7 @@ const Schedule = () => {
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                           <button
-                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700"
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700 text-white"
                             onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
                           >
                             {isLoading ? (
@@ -239,7 +239,7 @@ const Schedule = () => {
                           </button>
                         ) : (
                           <button
-                            className="flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                            className="text-white flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
@@ -252,7 +252,7 @@ const Schedule = () => {
                               <div className="flex items-center justify-center"><Spinner /></div>
                             ) : (<>
                               <IoMdAdd />
-                              <span className='whitespace-nowrap'>Add Course</span>
+                              <span className='whitespace-nowrap '>Add Course</span>
                             </>)}
                           </button>
                         )) : (
@@ -282,7 +282,7 @@ const Schedule = () => {
                         <div className='flex flex-row gap-1 flex-wrap'>
                           {/* Schedule Type Display */}
                           {selectedCourse.sched.map((s, i) => (
-                            <span className='text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap text-ellipsis overflow-hidden hover:overflow-visible transition-all z-10'
+                            <span className='text-white text-xs px-2 py-1 rounded-full border-solid border bg-purple-600 border-purple-800 whitespace-nowrap text-ellipsis overflow-hidden hover:overflow-visible transition-all z-10'
                               key={i}>
                               {s}
                             </span>
@@ -291,7 +291,7 @@ const Schedule = () => {
 
                           {/* Gened Type Display */}
                           {selectedCourse.gened.length > 0 && selectedCourse.gened.map((gened, i) => (
-                            <span className={`text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
+                            <span className={`text-white text-xs px-2 py-1 rounded-full border-solid border bg-[#64919b] border-[#415f65] whitespace-nowrap transition-all`}
                               key={i}>
                               {genedsOptions.filter(x => x.value === gened)[0]?.label || ''}
                             </span>
@@ -303,7 +303,7 @@ const Schedule = () => {
                       {/* Credits Display */}
                       <div className="text-sm font-bold flex flex-col">
                         Credits
-                        <p className='px-4 text-black bg-white rounded-md text-center w-fit'>
+                        <p className='px-4 text-opposite bg-background-opposite rounded-md text-center w-fit'>
                           {selectedCourse.credits[0] === selectedCourse.credits[1]
                             ? `${selectedCourse.credits[0]}`
                             : `${selectedCourse.credits[0]} - ${selectedCourse.credits[1]}`}
@@ -338,7 +338,7 @@ const Schedule = () => {
                             </span>
                           ))
                         ) : (
-                          <p className='text-white text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
+                          <p className='text-primary text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
                         )}
                       </div>
                     </div>
@@ -372,14 +372,14 @@ const Schedule = () => {
                   {gpaGraph.datasets &&
                     gpaGraph.datasets.length > 0 &&
                     !gpaGraph.datasets[0].data.every(value => value === 0) ? (
-                    <div className='border border-zinc-800 shadow-md shadow-white/10 rounded-xl h-96'>
+                    <div className='border border-[rgb(var(--background-secondary-color))] shadow-md shadow-white/10 rounded-xl h-96'>
                       <div className='h-full'>
                         <Graph data={gpaGraph} scheduler />
                       </div>
                     </div>
                   ) : (
-                    <div className="border border-zinc-800 shadow-md shadow-white/10 rounded-xl bg-zinc-900 p-4">
-                      <h1 className="text-center text-md font-light text-white py-4">
+                    <div className="border border-[rgb(var(--background-secondary-color))] shadow-md shadow-white/10 rounded-xl bg-background p-4">
+                      <h1 className="text-center text-md font-light text-primary py-4">
                         No grade data available for this course.
                       </h1>
                     </div>

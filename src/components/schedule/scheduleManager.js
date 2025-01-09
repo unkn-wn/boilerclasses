@@ -123,7 +123,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
     <div className="flex flex-col space-y-2 py-4 pl-4">
       <div className='flex flex-row justify-between mb-4'>
         <div className='flex md:flex-row flex-col gap-2'>
-          <h2 className="text-lg font-semibold text-white">Course Sections</h2>
+          <h2 className="text-lg font-semibold text-primary">Course Sections</h2>
           {selectedLectures.length > 0 && (
             <HoverMenu
               items={[
@@ -140,7 +140,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
               ]}
             >
               <button
-                className="flex items-center gap-2 px-3 py-1 text-sm text-zinc-400 bg-zinc-800 hover:brightness-125 transition rounded"
+                className="flex items-center gap-2 px-3 py-1 text-sm text-secondary bg-background hover:brightness-125 transition rounded"
               >
                 <IoMdDownload />
                 Export Schedule
@@ -148,7 +148,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
             </HoverMenu>
           )}
         </div>
-        <h2 className="text-xs text-zinc-400 self-end">
+        <h2 className="text-xs text-tertiary self-end">
           Total Credits: {minCredits === maxCredits ? minCredits : `${minCredits} - ${maxCredits}`}
         </h2>
       </div>
@@ -164,7 +164,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
           courseColorMap={courseColorMap}
         />
       )) : (
-        <p className="text-gray-500 text-sm">Search for a course by using the search bar, then add a course to show up here!</p>
+        <p className="text-tertiary text-sm">Search for a course by using the search bar, then add a course to show up here!</p>
       )}
     </div>
   );
