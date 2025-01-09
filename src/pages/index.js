@@ -18,7 +18,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 const CourseCatalog = () => {
 
-  const router = useRouter(); 
+  const router = useRouter();
 
   const {
     filters,
@@ -201,7 +201,7 @@ const CourseCatalog = () => {
               onChange={(e) => {
                 changeLanding(e.target.value);
               }}
-              className="placeholder:text-primary text-primary text-sm md:text-xl bg-super w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+              className="placeholder:text-tertiary text-primary text-sm md:text-xl bg-super w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
             />
                 <Button
                   onClick={() => router.push('https://schedule.boilerclasses.com')}
