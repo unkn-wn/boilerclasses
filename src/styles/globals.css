@@ -5,9 +5,9 @@
 :root {
   /* Light mode variables */
   --super: 250, 250, 250;
-  --background-color: 245 245 245;       /* neutral-100 */
-  --background-secondary-color: 229 229 229;  /* neutral-200 */
-  --background-tertiary-color: 212 212 212; /* neutral-300 */
+  --background-color: 229 229 229;       /* neutral-200 */
+  --background-secondary-color: 212 212 212;  /* neutral-300 */
+  --background-tertiary-color: 163 163 163; /* neutral-400 */
   --background-opposite: 23 23 23;        /* neutral-950 */
   --background-secondary-opposite: 64 64 64;  /* neutral-700 */
   --text-color: 23 23 23;                /* neutral-950 */
@@ -44,7 +44,7 @@
 .dark {
   /* Dark mode variables */
   --super: 0, 0, 0;
-  --background-color: 23 23 23;          /* neutral-950 */
+  --background-color: 39 39 42;          /* zinc-800 */
   --background-secondary-color: 64 64 64;/* neutral-700 */
   --background-tertiary-color: 96 96 96; /* neutral-600 */
   --background-opposite: 250 250 250;    /* neutral-50 */

@@ -28,17 +28,17 @@ const SubjectDirectory = ({ courses, subject }) => {
     </Head>
 
     <div className='m-10'>
-      <button onClick={() => router.back()} className='text-white text-xl'>&lt;</button>
-      <h1 className='font-bold text-white text-3xl mb-4'>{subject} Courses</h1>
+      <button onClick={() => router.back()} className='text-primary text-xl'>&lt;</button>
+      <h1 className='font-bold text-primary text-3xl mb-4'>{subject} Courses</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {courses && courses.length > 0 ? (
           courses.sort((a, b) => a.value.courseCode - b.value.courseCode).map((course) => (
-            <Link key={course.value.detailId} href={`/detail/${course.value.detailId}`} className="p-6 bg-zinc-900 rounded-md shadow-md text-lg font-semibold text-white underline decoration-dotted underline-offset-4 hover:scale-[1.02] transition cursor-pointer">
+            <Link key={course.value.detailId} href={`/detail/${course.value.detailId}`} className="p-6 bg-background rounded-md shadow-md text-lg font-semibold text-primary underline decoration-dotted underline-offset-4 hover:scale-[1.02] transition cursor-pointer">
               {course.value.subjectCode} {course.value.courseCode}: {course.value.title}
             </Link>
           ))
         ) : (
-          <p className="text-center text-gray-500">No courses available.</p>
+          <p className="text-center text-secondary">No courses available.</p>
         )}
       </div>
     </div>

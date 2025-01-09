@@ -353,16 +353,103 @@ export const semesterStyles = {
 
 
 
+// export const instructorStyles = {
+//   control: (base, state) => ({
+//     ...base,
+//     borderRadius: "12px",
+//     background: "#18181b",
+//     borderColor: '#18181b',
+//     paddingLeft: "4px",
+//     color: 'white',
+//     ':hover': {
+//       borderColor: '#393941'
+//     },
+//     ':focus': {
+//       outline: "none"
+//     }
+//   }),
+//   menuList: styles => ({
+//     ...styles,
+//     borderColor: '#18181b',
+//     background: '#0a0a0a'
+//   }),
+//   option: (styles, { isDisabled, isFocused, isSelected }) => {
+//     return {
+//       ...styles,
+//       backgroundColor: isDisabled
+//         ? undefined
+//         : isSelected
+//           ? "#fff"
+//           : isFocused
+//             ? "#18181b"
+//             : undefined,
+//       color: isDisabled
+//         ? '#ccc'
+//         : isFocused
+//           ? "#fff"
+//           : "white",
+//       cursor: isDisabled ? 'not-allowed' : 'default',
+
+//       ':active': {
+//         ...styles[':active'],
+//         backgroundColor: !isDisabled
+//           ? isSelected
+//             ? "#fff"
+//             : "#18181b"
+//           : undefined,
+//       }
+//     }
+//   },
+//   menu: base => ({
+//     ...base,
+//     zIndex: 100,
+//     color: 'white'
+//   }),
+
+//   multiValue: (styles, { data }) => {
+//     return {
+//       ...styles,
+//       backgroundColor: "#393941"
+//     };
+//   },
+//   multiValueLabel: (styles, { data }) => ({
+//     ...styles,
+//     color: "#fff",
+//   }),
+//   multiValueRemove: (styles, { data }) => ({
+//     ...styles,
+//     color: "#fff",
+//     ':hover': {
+//       backgroundColor: "#393941",
+//       color: 'white',
+//     },
+//   }),
+
+//   input: (styles, { data }) => ({
+//     ...styles,
+//     color: "white",
+//   }),
+//   indicatorSeparator: (styles, { data }) => ({
+//     ...styles,
+//     backgroundColor: "#18181b",
+//   }),
+//   indicatorContainer: (styles, { data }) => ({
+//     ...styles,
+//     color: "#18181b",
+//   }),
+
+// }
+
 export const instructorStyles = {
   control: (base, state) => ({
     ...base,
     borderRadius: "12px",
-    background: "#18181b",
-    borderColor: '#18181b',
+    background: `rgb(var(--background-color))`,
+    borderColor: `rgb(var(--background-color))`,
     paddingLeft: "4px",
-    color: 'white',
+    color: `rgb(var(--text-color))`,
     ':hover': {
-      borderColor: '#393941'
+      borderColor: `rgb(var(--background-secondary-color))`
     },
     ':focus': {
       outline: "none"
@@ -370,8 +457,8 @@ export const instructorStyles = {
   }),
   menuList: styles => ({
     ...styles,
-    borderColor: '#18181b',
-    background: '#0a0a0a'
+    borderColor: `rgb(var(--background-color))`,
+    background: `rgb(var(--background-color))`
   }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
@@ -379,23 +466,23 @@ export const instructorStyles = {
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-          ? "#fff"
+          ? `rgb(var(--background-secondary-color))`
           : isFocused
-            ? "#18181b"
+            ? `rgb(var(--background-tertiary-color))`
             : undefined,
       color: isDisabled
-        ? '#ccc'
+        ? `rgb(var(--text-tertiary-color))`
         : isFocused
-          ? "#fff"
-          : "white",
+          ? `rgb(var(--text-color))`
+          : `rgb(var(--text-color))`,
       cursor: isDisabled ? 'not-allowed' : 'default',
 
       ':active': {
         ...styles[':active'],
         backgroundColor: !isDisabled
           ? isSelected
-            ? "#fff"
-            : "#18181b"
+            ? `rgb(var(--background-secondary-color))`
+            : `rgb(var(--background-tertiary-color))`
           : undefined,
       }
     }
@@ -403,46 +490,70 @@ export const instructorStyles = {
   menu: base => ({
     ...base,
     zIndex: 100,
-    color: 'white'
+    color: `rgb(var(--text-color))`
   }),
 
   multiValue: (styles, { data }) => {
     return {
       ...styles,
-      backgroundColor: "#393941"
+      backgroundColor: `rgb(var(--background-secondary-color))`
     };
   },
   multiValueLabel: (styles, { data }) => ({
     ...styles,
-    color: "#fff",
+    color: `rgb(var(--text-color))`,
   }),
   multiValueRemove: (styles, { data }) => ({
     ...styles,
-    color: "#fff",
+    color: `rgb(var(--text-color))`,
     ':hover': {
-      backgroundColor: "#393941",
-      color: 'white',
+      backgroundColor: `rgb(var(--background-secondary-color))`,
+      color: `rgb(var(--text-color))`,
     },
   }),
 
   input: (styles, { data }) => ({
     ...styles,
-    color: "white",
+    color: `rgb(var(--text-color))`,
   }),
   indicatorSeparator: (styles, { data }) => ({
     ...styles,
-    backgroundColor: "#18181b",
+    backgroundColor: `rgb(var(--background-color))`,
   }),
   indicatorContainer: (styles, { data }) => ({
     ...styles,
-    color: "#18181b",
+    color: `rgb(var(--background-color))`,
   }),
-
 }
 
+// export const graphColors = [
+//   "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
+// ];
 
 export const graphColors = [
-  "#87CEFA", "#98FB98", "#FFA07A", "#FFE4B5", "#F0E68C", "#FF6347", "#FFD700", "#B0E0E6", "#00FA9A", "#FF4500", "#BDB76B", "#8FBC8F", "#FF69B4", "#FA8072", "#FFDAB9", "#FFE4E1", "#F0FFF0", "#FFEC8B", "#FFE4C4", "#D2B48C", "#DDA0DD", "#FFD700", "#FFEBCD",
+  `rgb(var(--graph-color-1))`,
+  `rgb(var(--graph-color-2))`,
+  `rgb(var(--graph-color-3))`,
+  `rgb(var(--graph-color-4))`,
+  `rgb(var(--graph-color-5))`,
+  `rgb(var(--graph-color-6))`,
+  `rgb(var(--graph-color-7))`,
+  `rgb(var(--graph-color-8))`,
+  `rgb(var(--graph-color-9))`,
+  `rgb(var(--graph-color-10))`,
+  `rgb(var(--graph-color-11))`,
+  `rgb(var(--graph-color-12))`,
+  `rgb(var(--graph-color-13))`,
+  `rgb(var(--graph-color-14))`,
+  `rgb(var(--graph-color-15))`,
+  `rgb(var(--graph-color-16))`,
+  `rgb(var(--graph-color-17))`,
+  `rgb(var(--graph-color-18))`,
+  `rgb(var(--graph-color-19))`,
+  `rgb(var(--graph-color-20))`,
+  `rgb(var(--graph-color-21))`,
+  `rgb(var(--graph-color-22))`,
+  `rgb(var(--graph-color-23))`
 ];
 
 
@@ -453,7 +564,7 @@ export const boilerExamsCourses = ["MA15800", "MA16010", "MA16100", "MA16200", "
 
 // somewhat bandaid fix for missing decsriptions
 export const sanitizeDescription = (data) => {
-	if (data.description && data.description.startsWith("<a href=")) {
-		data.description = "No Description Available";
-	}
+  if (data.description && data.description.startsWith("<a href=")) {
+    data.description = "No Description Available";
+  }
 };

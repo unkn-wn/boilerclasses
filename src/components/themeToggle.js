@@ -57,18 +57,17 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="fixed top-4 right-4 z-50
                  p-3 rounded-full
-                 bg-gray-300 dark:bg-gray-700
-                 text-gray-800 dark:text-gray-200
+                 bg-background
                  shadow-lg hover:shadow-xl
-                 border border-gray-400 dark:border-gray-600
-                 hover:bg-gray-400 dark:hover:bg-gray-600
+                 border border-[rgb(var(--background-secondary-color))]
+                 hover:bg-background-secondary
                  transition-all duration-300
                  flex items-center justify-center
-                 w-12 h-12"
+                 w-8 h-8"
     >
       {isDarkMode ?
-        <SunIcon fontSize={[18, 24]} color={`rgb(var(--text-color))`} /> :
-        <MoonIcon fontSize={[18, 24]} color={`rgb(var(--text-color))`} />
+        <SunIcon fontSize={[12, 16]} color={`rgb(var(--text-color))`} /> :
+        <MoonIcon fontSize={[12, 16]} color={`rgb(var(--text-color))`} />
       }
     </button>
   );
