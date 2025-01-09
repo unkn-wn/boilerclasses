@@ -55,6 +55,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               placeholder="Subject..."
               styles={instructorStyles}
               value={filters.subjects}
+              closeMenuOnSelect={false}
               onChange={(value) => updateFilter('subjects', value)}
             />
 
@@ -67,6 +68,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               placeholder="Semester..."
               styles={instructorStyles}
               value={filters.semesters}
+              closeMenuOnSelect={false}
               onChange={(value) => updateFilter('semesters', value)}
             />
 
@@ -79,6 +81,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               placeholder="Gen Ed..."
               styles={instructorStyles}
               value={filters.genEds}
+              closeMenuOnSelect={false}
               onChange={(value) => updateFilter('genEds', value)}
             />
 
