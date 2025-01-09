@@ -55,6 +55,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               placeholder="Subject..."
               styles={instructorStyles}
               value={filters.subjects}
+              closeMenuOnSelect={false}
               onChange={(value) => updateFilter('subjects', value)}
             />
 
@@ -67,6 +68,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               placeholder="Semester..."
               styles={instructorStyles}
               value={filters.semesters}
+              closeMenuOnSelect={false}
               onChange={(value) => updateFilter('semesters', value)}
             />
 
@@ -79,6 +81,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
               placeholder="Gen Ed..."
               styles={instructorStyles}
               value={filters.genEds}
+              closeMenuOnSelect={false}
               onChange={(value) => updateFilter('genEds', value)}
             />
 
@@ -164,7 +167,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             </Popover>
 
             {/* Schedule Types Filter */}
-            <Popover placement='bottom-start'>
+            <Popover placement='bottom-end'>
               <PopoverTrigger>
                 <button className='flex flex-row gap-4 px-4 py-1.5 bg-zinc-900 items-center border text-white rounded-xl border-zinc-900 hover:border-zinc-700'>
                   <span>Schedule</span>
