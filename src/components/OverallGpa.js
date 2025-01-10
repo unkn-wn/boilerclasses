@@ -9,8 +9,8 @@ const OverallGpa = ({ courseData, card }) => {
       label={`Averaged across ${totalSemCount} semester(s) and ${profCount} professor(s)`}
       hasArrow
       placement='auto'
-      bg='gray.900'
-      color='white'
+      bg={`rgb(var(--background-secondary-color))`}
+      color={`rgb(var(--text-color))`}
       openDelay={0}
       fontSize='sm'
       px={2}

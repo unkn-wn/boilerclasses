@@ -37,7 +37,7 @@ const InfoModal = ({ isOpen, onClose }) => {
 					<ModalHeader />
 					<ModalBody className=' overflow-y-auto'>
 
-							<p className='text-white'>
+							<p className='text-primary'>
 								The <span className='font-bold text-yellow-500'>last instructor selected</span> represents the Average GPA and RateMyProfessors Rating on the circle graphs! To view a different average GPA or RateMyProfessor (RMP) rating, click the instructor dropdown and select a different instructor.
 								<br />
 								<br />

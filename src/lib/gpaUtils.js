@@ -42,11 +42,11 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
         const color = graphColors[colorIndex++ % graphColors.length];
 
         if (!gpaData[instructor]) {
-            gpa[instructor] = [0, "#ffffff"];
+            gpa[instructor] = [0, `rgb(var(--text-color))`];
             grades.push({
                 label: instructor,
                 data: avgGradeDist,
-                backgroundColor: "#ffffff",
+                backgroundColor: `rgb(var(--text-color))`,
             });
             continue;
         }
@@ -98,7 +98,7 @@ export const averageAllData = (grades) => {
 // Function to get color based on GPA
 export const getColor = (gpa) => {
 	if (gpa === 0) {
-		return "#18181b";
+		return `rgb(var(--background-color))`;
 	}
 
 	// Calculate the color based on GPA as a percentage of 4.0

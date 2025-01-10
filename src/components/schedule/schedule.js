@@ -102,12 +102,12 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
         toast({
           render: () => (
             <div className="flex flex-col p-3 bg-red-600/50 rounded-md">
-              <span className="font-bold text-white mb-1">
+              <span className="font-bold text-primary mb-1">
                 Something went wrong, please let us know!
               </span>
               <a
                 href="https://forms.gle/jtpLPbXm4X4RFoNh6"
-                className="text-white underline hover:text-gray-200 text-center"
+                className="text-primary underline hover:text-gray-200 text-center"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -201,7 +201,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
         <div className="flex flex-row">
           <div className="w-16"></div>
           {DAYS.map(day => (
-            <div key={day} className="flex-1 text-center font-bold text-zinc-500">
+            <div key={day} className="flex-1 text-center font-bold text-tertiary">
               {day}
             </div>
           ))}

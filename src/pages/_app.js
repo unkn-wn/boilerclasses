@@ -8,6 +8,13 @@ import Head from "next/head";
 import Script from 'next/script';
 
 import Footer from '@/components/footer';
+import dynamic from 'next/dynamic'
+
+// Set server side rendering to false
+const ThemeToggle = dynamic(() => import('../components/themeToggle'), {
+  ssr: false
+})
+
 
 const theme = extendTheme({
   components: {
@@ -18,6 +25,7 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
+      <ThemeToggle />
       {/* <!-- Google tag (gtag.js) --> */}
       <Script
         async
