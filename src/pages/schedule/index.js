@@ -197,7 +197,7 @@ const Schedule = () => {
             <>
               {/* Selected Course */}
               <div className='flex flex-col lg:h-screen'>
-                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-white/10 bg-background shadow-md border-[rgb(var(--background-secondary-color))] border transition-all'>
+                <div id="course_details" className='flex flex-col lg:flex-row gap-2 h-1/2 overflow-y-scroll p-4 rounded-xl shadow-[rgb(var(--background-opposite))]/10 bg-background shadow-md border-[rgb(var(--background-secondary-color))] border transition-all'>
 
                   {/* LEFT SIDE - Course Info */}
                   <div className='lg:w-1/2'>
@@ -372,13 +372,13 @@ const Schedule = () => {
                   {gpaGraph.datasets &&
                     gpaGraph.datasets.length > 0 &&
                     !gpaGraph.datasets[0].data.every(value => value === 0) ? (
-                    <div className='border border-[rgb(var(--background-secondary-color))] shadow-md shadow-white/10 rounded-xl h-96'>
+                    <div className='border border-[rgb(var(--background-secondary-color))] shadow-md shadow-[rgb(var(--background-opposite))]/10 rounded-xl h-96'>
                       <div className='h-full'>
                         <Graph data={gpaGraph} scheduler />
                       </div>
                     </div>
                   ) : (
-                    <div className="border border-[rgb(var(--background-secondary-color))] shadow-md shadow-white/10 rounded-xl bg-background p-4">
+                    <div className="border border-[rgb(var(--background-secondary-color))] shadow-md shadow-[rgb(var(--background-opposite))]/10 rounded-xl bg-background p-4">
                       <h1 className="text-center text-md font-light text-primary py-4">
                         No grade data available for this course.
                       </h1>

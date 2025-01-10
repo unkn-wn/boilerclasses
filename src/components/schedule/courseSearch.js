@@ -105,13 +105,13 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          className="placeholder:text-tertiary text-primary text-xl bg-super w-full pb-2 border-b-2 focus:outline-none focus:border-blue-500 transition duration-300"
+          className="placeholder:text-tertiary text-primary text-xl bg-super w-full pb-2 border-b-2 border-[rgb(var(--background-opposite))] focus:outline-none focus:border-blue-500 transition duration-300"
           placeholder="Search for courses..."
         />
       </div>
 
       {shouldShowDropdown && (
-        <div className="absolute z-50 w-full mt-2 bg-background rounded-lg shadow-lg border border-neutral-800 max-h-96 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-2 bg-background rounded-lg shadow-lg border border-[rgb(var(--background-secondary-color))] max-h-96 overflow-y-auto">
           {displayedCourses.length > 0 ? (
             displayedCourses.map((course, index) => (
               <div

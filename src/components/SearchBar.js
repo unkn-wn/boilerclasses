@@ -13,7 +13,7 @@ const SearchBar = ({ placeholder, value, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full my-4 p-2 pl-10 pr-10 bg-background placeholder:text-tertiary text-primary rounded-md border border-zinc-700 focus:outline-none focus:border-zinc-500"
+        className="w-full my-4 p-2 pl-10 pr-10 bg-background placeholder:text-tertiary text-primary rounded-md border border-[rgb(var(--background-secondary-color))] focus:outline-none focus:border-zinc-500"
         aria-label={placeholder}
       />
       {value && (
