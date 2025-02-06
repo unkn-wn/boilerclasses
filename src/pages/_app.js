@@ -9,6 +9,7 @@ import Script from 'next/script';
 
 import Footer from '@/components/footer';
 import dynamic from 'next/dynamic'
+import { RouteHistoryProvider } from '@/hooks/useRouteHistory';
 
 // Set server side rendering to false
 const ThemeToggle = dynamic(() => import('../components/themeToggle'), {
@@ -24,16 +25,17 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <ThemeToggle />
-      {/* <!-- Google tag (gtag.js) --> */}
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
-      />
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
+    <RouteHistoryProvider>
+      <ChakraProvider theme={theme}>
+        <ThemeToggle />
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
+        />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -41,15 +43,16 @@ export default function App({ Component, pageProps }) {
               page_path: window.location.pathname,
             });
           `
-        }}
-      />
-      <Head>
-        <title>BoilerClasses</title>
-      </Head>
+          }}
+        />
+        <Head>
+          <title>BoilerClasses</title>
+        </Head>
 
-      <Component {...pageProps} />
+        <Component {...pageProps} />
 
-      {/* <Footer /> */}
-    </ChakraProvider>
+        {/* <Footer /> */}
+      </ChakraProvider>
+    </RouteHistoryProvider>
   )
 }
