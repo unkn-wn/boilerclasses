@@ -12,6 +12,8 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error'
+import { useContext } from 'react';
+import { RouteHistoryContext, useBackOrHome } from '@/hooks/useRouteHistory';
 // ---------------------
 
 
@@ -54,6 +56,7 @@ import OverallGpa from '@/components/OverallGpa';
 const CardDetails = ({ courseData, semData }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const backOrHome = useBackOrHome();
 
   // UseEffect that loads on first render
   useEffect(() => {
@@ -253,7 +256,9 @@ const CardDetails = ({ courseData, semData }) => {
 
             <div className='flex flex-row gap-1'>
               {/* Back button */}
-              <button onClick={() => router.back()} className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-secondary transition'>
+              <button
+                onClick={backOrHome}
+                className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-secondary transition'>
                 <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
               </button>
               <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">{courseData.subjectCode} {courseData.courseCode}: {courseData.title}</p>
