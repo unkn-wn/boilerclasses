@@ -42,6 +42,11 @@ export const useSearchFilters = () => {
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
   const [courses, setCourses] = useState([]);
 
+  // Add these states after other states
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const PAGE_SIZE = 100;
+
   // Update specific filter
   const updateFilter = (filterName, value) => {
     setFilters(prevFilters => ({
@@ -80,7 +85,7 @@ export const useSearchFilters = () => {
   // }, [query]);
 
   // Search function
-  const search = async () => {
+  const search = async (isLoadMore = false) => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
@@ -97,7 +102,8 @@ export const useSearchFilters = () => {
       cmax: credits.max,
       levels,
       sched: scheduleTypes,
-      maxlim: 100
+      page: isLoadMore ? page + 1 : 1,
+      pageSize: PAGE_SIZE
     });
 
     try {
@@ -115,11 +121,27 @@ export const useSearchFilters = () => {
         }
       }));
 
-      setCourses(processedCourses);
+      // Update state
+      if (isLoadMore) {
+        setCourses(prev => [...prev, ...processedCourses]);
+        setPage(prev => prev + 1);
+      } else {
+        setCourses(processedCourses);
+        setPage(1);
+      }
+
+      setHasMore(processedCourses.length === PAGE_SIZE);
     } catch (error) {
       console.error('Search failed:', error);
-      setCourses([]);
+      if (!isLoadMore) {
+        setCourses([]);
+      }
     }
+  };
+
+  // Add loadMore function
+  const loadMore = () => {
+    search(true);
   };
 
   // Search effect
@@ -142,7 +164,6 @@ export const useSearchFilters = () => {
     updateFilter("searchTerm", query.q);
   }, [query]);
 
-
   return {
     filters,
     updateFilter,
@@ -152,5 +173,7 @@ export const useSearchFilters = () => {
     setFiltersCollapsed,
     courses,
     transformQuery,
+    hasMore,
+    loadMore
   };
 };

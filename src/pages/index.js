@@ -28,7 +28,9 @@ const CourseCatalog = () => {
     filtersCollapsed,
     setFiltersCollapsed,
     courses,
-    transformQuery
+    transformQuery,
+    hasMore,
+    loadMore
   } = useSearchFilters();
 
   // Gets all the filters as a string for displaying to users
@@ -180,6 +182,16 @@ const CourseCatalog = () => {
               <div className='text-primary -translate-y-3'>Try changing the filters</div>
             </div>
           }
+          {courses.length > 0 && hasMore && (
+            <div className="flex justify-center mt-8 mb-4">
+              <button
+                onClick={loadMore}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300"
+              >
+                Load More Results
+              </button>
+            </div>
+          )}
           <div className='mt-auto'>
             <Footer />
           </div>
