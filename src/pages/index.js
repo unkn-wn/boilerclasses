@@ -30,7 +30,8 @@ const CourseCatalog = () => {
     courses,
     transformQuery,
     hasMore,
-    loadMore
+    loadMore,
+    loadAll
   } = useSearchFilters();
 
   // Gets all the filters as a string for displaying to users
@@ -183,12 +184,18 @@ const CourseCatalog = () => {
             </div>
           }
           {courses.length > 0 && hasMore && (
-            <div className="flex justify-center mt-8 mb-4">
+            <div className="flex justify-center gap-4 mt-8 mb-4">
               <button
                 onClick={loadMore}
                 className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300"
               >
                 Load More Results
+              </button>
+              <button
+                onClick={loadAll}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded transition duration-300"
+              >
+                Load All Results
               </button>
             </div>
           )}

@@ -144,6 +144,56 @@ export const useSearchFilters = () => {
     search(true);
   };
 
+  // Add after loadMore function
+  const loadAll = async () => {
+    let currentPage = 1;
+    let hasMoreResults = true;
+    let allCourses = [...courses];
+
+    while (hasMoreResults) {
+      const params = new URLSearchParams({
+        q: transformQuery(filters.searchTerm),
+        sub: filters.subjects.map(x => x.value),
+        term: filters.semesters.map(x => x.value),
+        gen: filters.genEds.map(x => x.value),
+        cmin: filters.credits.min,
+        cmax: filters.credits.max,
+        levels: filters.levels,
+        sched: filters.scheduleTypes,
+        page: currentPage + 1,
+        pageSize: PAGE_SIZE
+      });
+
+      try {
+        const response = await fetch(`/api/search?${params}`);
+        const data = await response.json();
+        const processedCourses = data.courses.documents.map(item => ({
+          ...item,
+          value: {
+            ...item.value,
+            description: item.value.description.startsWith("<a href=")
+              ? "No Description Available"
+              : item.value.description
+          }
+        }));
+
+        if (processedCourses.length < PAGE_SIZE) {
+          hasMoreResults = false;
+        }
+
+        allCourses = [...allCourses, ...processedCourses];
+        currentPage++;
+      } catch (error) {
+        console.error('Load all failed:', error);
+        hasMoreResults = false;
+      }
+    }
+
+    setCourses(allCourses);
+    setPage(currentPage);
+    setHasMore(false);
+  };
+
   // Search effect
   useEffect(() => {
     search();
@@ -174,6 +224,7 @@ export const useSearchFilters = () => {
     courses,
     transformQuery,
     hasMore,
-    loadMore
+    loadMore,
+    loadAll
   };
 };
