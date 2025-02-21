@@ -74,14 +74,9 @@ const CourseCatalog = () => {
       setDisplayLanding(false);
       updateFilter("searchTerm", searchTerm);
     }
-    router.push(
-      {
-        pathname: router.pathname,
-        query: { ...router.query, q: searchTerm || undefined }, // Remove query if empty
-      },
-      undefined,
-      { shallow: true }
-    );
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set("q", searchTerm);
+    window.history.replaceState({}, "", newUrl);
   };
 
   // Make sure search bar updates when query changes
