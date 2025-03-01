@@ -2,7 +2,6 @@
 import React, { useState, useCallback, memo } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { getColor } from '@/lib/gpaUtils';
-import GpaExpandedView from './GpaExpandedView';
 
 // Memoized table cell component to reduce re-renders
 const GpaCell = memo(({ gpa, color }) => {
@@ -10,7 +9,7 @@ const GpaCell = memo(({ gpa, color }) => {
     return (
       <div
         className="w-full p-2 rounded"
-        style={{ backgroundColor: color || getColor(gpa) }}
+        style={{ backgroundColor: color || 'transparent' }}
       >
         <span className="text-xs font-bold text-white">
           {gpa?.toFixed(2) || '-'}
@@ -29,12 +28,12 @@ const GpaCell = memo(({ gpa, color }) => {
 GpaCell.displayName = 'GpaCell';
 
 // Memoized average cell with bolder text
-const AverageGpaCell = memo(({ averageGpa }) => {
+const AverageGpaCell = memo(({ averageGpa, color }) => {
   if (averageGpa !== null) {
     return (
       <div
         className="w-full p-2 rounded"
-        style={{ backgroundColor: getColor(averageGpa) }}
+        style={{ backgroundColor: color || 'transparent' }}
       >
         <span className="text-sm font-extrabold text-white">
           {averageGpa?.toFixed(2) || '-'}
@@ -106,7 +105,6 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
         <tbody>
           {filteredData.map((professor) => {
             const isSelected = selectedInstructors.includes(professor.name);
-            const isExpanded = expandedViews.has(professor.name);
 
             return (
               <React.Fragment key={professor.name}>
@@ -125,24 +123,18 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
                           </span>
                         )}
                       </div>
-                      <button
-                        className="p-1 rounded-full hover:bg-background-secondary transition-colors ml-2"
-                        onClick={(e) => toggleExpanded(professor.name, e)}
-                      >
-                        {isExpanded ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
-                      </button>
                     </div>
                   </td>
 
                   {/* Average GPA column */}
                   <td className="py-2 px-2 text-center border-r border-background-secondary/50">
-                    <AverageGpaCell averageGpa={professor.averageGpa} />
+                    <AverageGpaCell averageGpa={professor.averageGpa} color={getColor(professor.averageGpa)} />
                   </td>
 
                   {/* Semester GPA columns */}
                   {professor.semesterData.slice(0, 7).map((data, i) => (
                     <td key={i} className="py-2 px-2 text-center">
-                      <GpaCell gpa={data.gpa} color={data.color} />
+                      <GpaCell gpa={data.gpa} color={getColor(data.gpa)} />
                     </td>
                   ))}
 
@@ -158,13 +150,6 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
                     </td>
                   )}
                 </tr>
-
-                {isExpanded && (
-                  <GpaExpandedView
-                    professor={professor}
-                    semesters={semesters}
-                  />
-                )}
               </React.Fragment>
             );
           })}

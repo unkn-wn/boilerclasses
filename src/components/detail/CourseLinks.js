@@ -1,11 +1,13 @@
-// Component providing external links to useful resources for the course
 import React from 'react';
-import { Image } from '@chakra-ui/react';
-import OverallGpa from '@/components/OverallGpa';
+import { useDetailContext } from '@/context/DetailContext';
+import { Image, Icon } from '@chakra-ui/react';
 import { stripCourseCode } from '@/pages/detail/[id]';
 import { boilerExamsCourses } from '@/lib/utils';
+import OverallGpa from '@/components/OverallGpa';
 
-const CourseLinks = ({ courseData, sem, getSearchableProfString }) => {
+const CourseLinks = ({ courseData }) => {
+  const { sem, getSearchableProfString } = useDetailContext();
+
   return (
     <div className="flex flex-row flex-wrap gap-2 my-1">
       <OverallGpa courseData={courseData} />
@@ -25,7 +27,7 @@ const CourseLinks = ({ courseData, sem, getSearchableProfString }) => {
       <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202520&subj_code_in=${courseData.subjectCode}&crse_numb_in=${courseData.courseCode}`}
          target="_blank"
          rel="noopener noreferrer"
-         className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 ease-out">
+         className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-yellow-600 hover:bg-yellow-700 transition-all duration-300 ease-out">
         <div className="flex flex-row gap-2">
           <Image src="/purdue-icon.png" alt="Purdue Catalog" boxSize={4} className="my-auto" />
           Catalog

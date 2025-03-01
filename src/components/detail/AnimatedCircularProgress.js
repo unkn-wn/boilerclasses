@@ -65,9 +65,9 @@ const AnimatedCircularProgress = ({
     };
   }, [value, animateProgress]);
 
-  // Format displayed text
+  // Format displayed text - ensure text is a proper string, not a raw number
   const formattedText = typeof text === 'number' ?
-    (text || 0).toFixed(2) :
+    text.toFixed(2) :
     text;
 
   return (

@@ -1,70 +1,46 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
-// Fallback colors in case we can't retrieve CSS variables
-const FALLBACK_COLORS = [
-  "#3b82f6", // blue
-  "#ef4444", // red
-  "#10b981", // green
-  "#f59e0b", // amber
-  "#8b5cf6", // purple
-  "#ec4899", // pink
-  "#06b6d4", // cyan
-  "#f97316", // orange
-];
+import { useDetailContext } from '@/context/DetailContext';
 
 const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
+  // Get context data to ensure color consistency
+  const { defaultGPA } = useDetailContext();
+
   // State for professor colors retrieved from CSS
   const [professorColors, setProfessorColors] = useState({});
 
-  // Function to get a CSS variable by name
-  const getCSSVariable = (variable) => {
-    return getComputedStyle(document.documentElement)
-      .getPropertyValue(variable)
-      .trim();
-  };
-
-  // Extract colors from datasets and map them to professors
+  // Extract colors from defaultGPA and map them to professors
   useEffect(() => {
-    if (!gpaData || gpaData.length === 0) return;
+    if (!gpaData || gpaData.length === 0 || !defaultGPA.datasets) return;
 
     const colorMap = {};
 
-    // Find matching datasets for each selected professor
+    // Find matching colors from the context's defaultGPA datasets
     selectedProfessors.forEach((profName) => {
-      // Find the corresponding professor data
-      const profData = gpaData.find(prof => prof.name === profName);
+      // Find the professor in the context data
+      const contextProf = defaultGPA.datasets.find(dataset => dataset.label === profName);
+      if (contextProf) {
+        colorMap[profName] = contextProf.backgroundColor;
+      }
 
-      if (profData && profData.backgroundColor) {
-        try {
-          // Extract the CSS variable from backgroundColor format "rgb(var(--some-var))"
-          const cssVarName = profData.backgroundColor.replace('rgb(var(', '').replace('))', '');
-          const colorValue = getCSSVariable(cssVarName);
-
-          // Create full RGB color string
-          colorMap[profName] = colorValue ? `rgb(${colorValue})` : null;
-        } catch (e) {
-          console.log(`Error extracting color for ${profName}:`, e);
+      // If not found in context, look in local gpaData
+      if (!colorMap[profName]) {
+        const profData = gpaData.find(prof => prof.name === profName);
+        if (profData && profData.backgroundColor) {
+          colorMap[profName] = profData.backgroundColor;
         }
       }
     });
 
-    // Assign fallback colors to professors without extracted colors
-    selectedProfessors.forEach((profName, index) => {
-      if (!colorMap[profName]) {
-        colorMap[profName] = FALLBACK_COLORS[index % FALLBACK_COLORS.length];
-      }
-    });
-
     setProfessorColors(colorMap);
-  }, [gpaData, selectedProfessors]);
+  }, [gpaData, selectedProfessors, defaultGPA]);
 
-  // Get data only for selected professors - always run this hook
+  // Get data only for selected professors
   const selectedProfessorData = useMemo(() => {
     return gpaData.filter(prof => selectedProfessors.includes(prof.name));
   }, [gpaData, selectedProfessors]);
 
-  // Always run this hook too, regardless of whether we have data
+  // Transform data for the chart
   const chartData = useMemo(() => {
     if (selectedProfessorData.length === 0) return [];
 
@@ -84,7 +60,7 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
 
       const termA = a.split(" ")[0];
       const termB = b.split(" ")[0];
-      // Spring comes before Summer, Summer before Fall
+      // Reversed order: Spring comes before Fall (instead of Fall before Spring)
       const termOrder = { "Spring": 0, "Summer": 1, "Fall": 2 };
       return termOrder[termA] - termOrder[termB];
     });
@@ -101,17 +77,6 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
       return dataPoint;
     });
   }, [selectedProfessorData]);
-
-  // Listen for theme changes
-  useEffect(() => {
-    const updateColors = () => {
-      // Re-trigger the color extraction on theme change
-      setProfessorColors(prevColors => ({ ...prevColors }));
-    };
-
-    window.addEventListener('themeChange', updateColors);
-    return () => window.removeEventListener('themeChange', updateColors);
-  }, []);
 
   // No professors selected - show informative message
   if (selectedProfessorData.length === 0) {
@@ -143,7 +108,7 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
               tickFormatter={(value) => {
                 if (!value) return '';
                 const parts = value.split(" ");
-                return `${parts[0].substring(0, 2)} '${parts[1].substring(2)}`;
+                return `${parts[0]} '${parts[1].substring(2)}`;
               }}
             />
             <YAxis
@@ -159,12 +124,12 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
             <Legend
               formatter={(value) => <span style={{color: 'rgb(var(--text-primary-color))'}}>{value}</span>}
             />
-            {selectedProfessorData.map((prof, index) => (
+            {selectedProfessorData.map((prof) => (
               <Line
                 key={prof.name}
                 type="monotone"
                 dataKey={prof.name}
-                stroke={professorColors[prof.name] || FALLBACK_COLORS[index % FALLBACK_COLORS.length]}
+                stroke={professorColors[prof.name] || prof.backgroundColor}
                 strokeWidth={2}
                 dot={{ r: 4, strokeWidth: 1 }}
                 activeDot={{ r: 6 }}
@@ -184,5 +149,4 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
   );
 };
 
-// Memoize the component to prevent unnecessary re-renders
 export default React.memo(ProfessorComparisonChart);

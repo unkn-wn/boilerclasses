@@ -3,17 +3,19 @@ import React from 'react';
 import InstructorSelector from './InstructorSelector';
 import CourseStats from './CourseStats';
 import Graph from '@/components/graph';
+import { useDetailContext } from '@/context/DetailContext';
 
-const OverviewTabContent = ({
-  defaultGPA,
-  selectableInstructors,
-  selectedInstructors,
-  instructorStyles,
-  refreshGraph,
-  curGPA,
-  curRMP,
-  gpaGraph
-}) => {
+const OverviewTabContent = ({ instructorStyles }) => {
+  const {
+    defaultGPA,
+    selectableInstructors,
+    selectedInstructors,
+    refreshGraph,
+    curGPA,
+    curRMP,
+    gpaGraph
+  } = useDetailContext();
+
   return (
     <>
       <div className='flex flex-row gap-2 md:mb-4 mb-2'>

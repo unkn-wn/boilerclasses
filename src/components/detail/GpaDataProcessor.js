@@ -1,67 +1,80 @@
-// Utility functions to process and format GPA data for display components
-import { processGpaData, getColor } from '@/lib/gpaUtils';
+import { getColor } from '@/lib/gpaUtils';
+import { graphColors } from '@/lib/utils';
 
+/**
+ * Process GPA data from course object into a format usable by the GPA table and chart
+ */
 export const processGpaDataForDisplay = (course) => {
-  const grades = processGpaData(course);
+  if (!course || !course.gpa || Object.keys(course.gpa).length === 0) {
+    return { professorData: [], semesters: [] };
+  }
 
-  // Extract all unique semesters across all professors
+  // Extract all semesters across all professors
   const allSemesters = new Set();
-  Object.values(grades).forEach(instructorData => {
-    Object.keys(instructorData).forEach(term => allSemesters.add(term));
+  Object.values(course.gpa).forEach(semesterData => {
+    Object.keys(semesterData).forEach(semester => {
+      allSemesters.add(semester);
+    });
   });
 
-  // Sort semesters chronologically (oldest first)
+  // Sort semesters chronologically
   const sortedSemesters = Array.from(allSemesters).sort((a, b) => {
-    const [aTerm, aYear] = a.split(' ');
-    const [bTerm, bYear] = b.split(' ');
+    const aYear = parseInt(a.split(' ')[1]);
+    const bYear = parseInt(b.split(' ')[1]);
 
-    // First compare years
-    if (aYear !== bYear) return Number(aYear) - Number(bYear);
+    if (aYear !== bYear) return bYear - aYear; // Most recent years first
 
-    // If same year, Spring comes before Fall
-    if (aTerm === 'Spring' && bTerm === 'Fall') return -1;
-    if (aTerm === 'Fall' && bTerm === 'Spring') return 1;
-
-    return 0;
+    const seasonOrder = { 'Fall': 0, 'Summer': 1, 'Spring': 2 };
+    return seasonOrder[a.split(' ')[0]] - seasonOrder[b.split(' ')[0]];
   });
 
-  // Format the data for rendering
-  const formattedData = Object.keys(grades).map(instructor => {
-    // Calculate average GPA for this instructor
+  // Process data for each professor
+  const professorData = Object.entries(course.gpa).map(([name, semData], index) => {
+    // Calculate average GPA across all semesters
     let totalGpa = 0;
-    let validSemesters = 0;
+    let semesterCount = 0;
+    const gpas = [];
 
-    sortedSemesters.forEach(semester => {
-      const data = grades[instructor][semester];
-      if (data?.gpa) {
-        totalGpa += data.gpa;
-        validSemesters++;
+    Object.entries(semData).forEach(([semester, gradeDistribution]) => {
+      if (gradeDistribution[13] > 0) { // index 13 is the GPA
+        totalGpa += gradeDistribution[13];
+        semesterCount++;
+
+        gpas.push({
+          term: semester,
+          value: gradeDistribution[13]
+        });
       }
     });
 
-    const averageGpa = validSemesters > 0 ? totalGpa / validSemesters : null;
+    const averageGpa = semesterCount > 0 ? totalGpa / semesterCount : null;
+
+    // Create data for each semester (including empty ones)
+    const semesterData = sortedSemesters.map(semester => {
+      if (semData[semester]) {
+        const gpa = semData[semester][13];
+        return {
+          gpa,
+          color: getColor(gpa)
+        };
+      }
+      return { gpa: null, color: null };
+    });
+
+    // Assign a color from our palette
+    const backgroundColor = graphColors[index % graphColors.length];
 
     return {
-      name: instructor,
+      name,
       averageGpa,
-      semesterData: sortedSemesters.map(semester => {
-        const data = grades[instructor][semester];
-        return {
-          semester,
-          shortSemester: semester.split(" ")[0] + " '" + semester.split(" ")[1].substring(2, 4),
-          gpa: data?.gpa || null,
-          color: data?.color || null
-        };
-      }),
-      gpas: Object.entries(grades[instructor]).map(([term, data]) => ({
-        term: term.split(" ")[0] + " '" + term.split(" ")[1].substring(2, 4),
-        value: data.gpa || null
-      }))
+      semesterData,
+      gpas,
+      backgroundColor
     };
   });
 
   return {
-    professorData: formattedData,
+    professorData,
     semesters: sortedSemesters
   };
 };

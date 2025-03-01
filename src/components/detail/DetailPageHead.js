@@ -2,8 +2,11 @@
 import React from 'react';
 import Head from 'next/head';
 import { stripCourseCode } from '@/pages/detail/[id]';
+import { useDetailContext } from '@/context/DetailContext';
 
-const DetailPageHead = ({ courseData, semData }) => {
+const DetailPageHead = ({ courseData }) => {
+  const { sem } = useDetailContext();
+
   return (
     <Head>
       <title>{`${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}: ${courseData.title} | BoilerClasses`}</title>
@@ -25,8 +28,8 @@ const DetailPageHead = ({ courseData, semData }) => {
         '&course=' + encodeURIComponent(stripCourseCode(courseData.courseCode)) +
         '&title=' + encodeURIComponent(courseData.title) +
         '&credits=' + encodeURIComponent(courseData.credits[1]) +
-        '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
-        '&sem=' + encodeURIComponent(semData)
+        '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) +
+        '&sem=' + encodeURIComponent(sem)
       } />
 
       <meta name="twitter:card" content="summary_large_image" />
@@ -40,8 +43,8 @@ const DetailPageHead = ({ courseData, semData }) => {
         '&course=' + encodeURIComponent(stripCourseCode(courseData.courseCode)) +
         '&title=' + encodeURIComponent(courseData.title) +
         '&credits=' + encodeURIComponent(courseData.credits[1]) +
-        '&prof=' + encodeURIComponent(courseData.instructor[semData][0]) +
-        '&sem=' + encodeURIComponent(semData)
+        '&prof=' + encodeURIComponent(courseData.instructor[sem][0]) +
+        '&sem=' + encodeURIComponent(sem)
       } />
 
       <link rel="canonical" href={`https://boilerclasses.com/detail/${courseData.detailId}`} />

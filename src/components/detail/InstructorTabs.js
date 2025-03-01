@@ -2,20 +2,12 @@
 import React from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import FullInstructorModal from '@/components/fullInstructorModal';
-import InstructorSelector from './InstructorSelector';
 import OverviewTabContent from './OverviewTabContent';
+import { useDetailContext } from '@/context/DetailContext';
 
-const InstructorTabs = ({
-  courseData,
-  defaultGPA,
-  selectedInstructors,
-  selectableInstructors,
-  instructorStyles,
-  curGPA,
-  curRMP,
-  gpaGraph,
-  refreshGraph
-}) => {
+const InstructorTabs = ({ courseData, instructorStyles }) => {
+  const { selectedInstructors } = useDetailContext();
+
   return (
     <Tabs
       variant='soft-rounded'
@@ -36,16 +28,7 @@ const InstructorTabs = ({
 
       <TabPanels>
         <TabPanel>
-          <OverviewTabContent
-            defaultGPA={defaultGPA}
-            selectableInstructors={selectableInstructors}
-            selectedInstructors={selectedInstructors}
-            instructorStyles={instructorStyles}
-            refreshGraph={refreshGraph}
-            curGPA={curGPA}
-            curRMP={curRMP}
-            gpaGraph={gpaGraph}
-          />
+          <OverviewTabContent instructorStyles={instructorStyles} />
         </TabPanel>
 
         {/* All Instructors Tab */}
