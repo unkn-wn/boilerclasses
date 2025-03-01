@@ -1,19 +1,16 @@
 // Component that provides tab navigation between course overview and past instructors
 import React from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
-import FullInstructorModal from '@/components/fullInstructorModal';
 import OverviewTabContent from './OverviewTabContent';
-import { useDetailContext } from '@/components/detail/context/DetailContext';
+import GpaModal from '@/components/gpaModal';
 
 const InstructorTabs = () => {
-  const { selectedInstructors } = useDetailContext();
-
   return (
     <Tabs
       variant='soft-rounded'
       size='sm'
       colorScheme='gray'
-      defaultIndex={selectedInstructors[selectedInstructors.length - 1] === "TBA" ? 1 : 0}
+      defaultIndex={0}
     >
       <TabList overflowY="hidden"
         sx={{
@@ -23,7 +20,7 @@ const InstructorTabs = () => {
           },
         }}>
         <Tab>Overview</Tab>
-        <Tab>Past Instructors</Tab>
+        <Tab>GPA Details</Tab>
       </TabList>
 
       <TabPanels>
@@ -31,9 +28,9 @@ const InstructorTabs = () => {
           <OverviewTabContent />
         </TabPanel>
 
-        {/* All Instructors Tab */}
+        {/* GPA Details tab */}
         <TabPanel>
-          <FullInstructorModal />
+          <GpaModal />
         </TabPanel>
       </TabPanels>
     </Tabs>

@@ -1,6 +1,5 @@
 // Component that renders course description and prerequisite information
 import React from 'react';
-import Prereqs from '@/components/prereqs';
 import { stripCourseCode } from '@/lib/utils';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 
@@ -18,11 +17,6 @@ const CourseDescription = () => {
       <h1 className="lg:text-sm text-xs text-tertiary mt-1 mb-3 break-words">
         Course {courseData.subjectCode} {stripCourseCode(courseData.courseCode)} from Purdue University - West Lafayette.
       </h1>
-
-      {/* Prerequisites */}
-      <div className='flex flex-row mb-4'>
-        <Prereqs course={courseData} />
-      </div>
     </>
   );
 };

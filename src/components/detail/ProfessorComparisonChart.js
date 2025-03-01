@@ -127,10 +127,10 @@ const ProfessorComparisonChart = () => {
     return (
       <div className="bg-background p-6 rounded-lg shadow text-center">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold">Instructor GPA Comparison</h3>
+          <h3 className="text-lg font-bold">GPA Trends</h3>
         </div>
-        <p className="text-tertiary mb-2">No instructors selected</p>
-        <p className="text-sm text-tertiary">Select instructors from the GPA table to compare their GPAs.</p>
+        <p className="text-tertiary font-bold">No instructors selected</p>
+        <p className="text-xs text-tertiary">Select instructors to compare their GPAs.</p>
       </div>
     );
   }
@@ -138,7 +138,7 @@ const ProfessorComparisonChart = () => {
   return (
     <div className="bg-background p-4 rounded-lg shadow mb-6">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-bold">Instructor GPA Comparison</h3>
+        <h3 className="text-lg font-bold">GPA Trends</h3>
         <div className="text-sm text-tertiary">
           {selectedProfessorData.length} instructor{selectedProfessorData.length !== 1 ? 's' : ''} selected
         </div>

@@ -52,22 +52,6 @@ const AverageGpaCell = memo(({ averageGpa, color }) => {
 AverageGpaCell.displayName = 'AverageGpaCell';
 
 const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSelectProfessor }) => {
-  const [expandedViews, setExpandedViews] = useState(new Set());
-
-  // Memoized toggle function
-  const toggleExpanded = useCallback((professorName, e) => {
-    if (e) e.stopPropagation();
-
-    setExpandedViews(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(professorName)) {
-        newSet.delete(professorName);
-      } else {
-        newSet.add(professorName);
-      }
-      return newSet;
-    });
-  }, []);
 
   // Filter professors based on search query - recalculated only when search changes
   const filteredData = React.useMemo(() => {
@@ -80,9 +64,9 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
     <div className="overflow-x-auto bg-background rounded-lg shadow">
       <table className="w-full">
         <thead>
-          <tr className="border-b">
-            <th className="text-left py-3 px-4 font-semibold">Professor</th>
-            <th className="py-2 px-2 text-center border-r border-background-secondary/50">
+          <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
+            <th className="text-left py-3 px-4 font-semibold">Instructor</th>
+            <th className="py-2 px-2 text-center border-r border-[rgb(var(--background-tertiary-color))]">
               <div className="text-[11px] text-tertiary font-bold">
                 <span>Average</span>
               </div>
@@ -109,7 +93,7 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
             return (
               <React.Fragment key={professor.name}>
                 <tr
-                  className={`border-b border-background-secondary/30 hover:bg-background-secondary/30 transition-colors ${isSelected ? 'bg-background-secondary/20' : ''}`}
+                  className={`border-b border-[rgb(var(--background-secondary-color))] hover:bg-background-secondary transition-colors ${isSelected ? 'bg-background-secondary/20' : ''}`}
                   onClick={() => onSelectProfessor && onSelectProfessor(professor.name)}
                   style={{ cursor: onSelectProfessor ? 'pointer' : 'default' }}
                 >
@@ -118,7 +102,7 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-md">{professor.name}</h3>
                         {isSelected && (
-                          <span className="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">
+                          <span className="bg-background-secondary border border-[rgb(var(--background-tertiary-color))] text-primary text-xs px-2 py-0.5 rounded-full">
                             Selected
                           </span>
                         )}
@@ -127,7 +111,7 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
                   </td>
 
                   {/* Average GPA column */}
-                  <td className="py-2 px-2 text-center border-r border-background-secondary/50">
+                  <td className="py-2 px-2 text-center border-r border-[rgb(var(--background-tertiary-color))]">
                     <AverageGpaCell averageGpa={professor.averageGpa} color={getColor(professor.averageGpa)} />
                   </td>
 

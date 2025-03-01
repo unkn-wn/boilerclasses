@@ -33,7 +33,7 @@ const Graph = ({ data, scheduler = false }) => {
           <h3 className="text-lg font-bold">{chartTitle}</h3>
         </div>
         <div className="flex items-center justify-center h-64">
-          <p className="text-tertiary">No data available</p>
+          <p className="text-tertiary font-bold">No data available</p>
         </div>
       </div>
     );

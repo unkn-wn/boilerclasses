@@ -19,7 +19,6 @@ import { semesters, sanitizeDescription } from "@/lib/utils";
 
 import Footer from '@/components/footer';
 import Calendar from '@/components/calendar';
-import GpaModal from '@/components/gpaModal';
 import { Spinner } from '@chakra-ui/react';
 
 // Detail components
@@ -28,6 +27,7 @@ import CourseHeader from '@/components/detail/CourseHeader';
 import CourseLinks from '@/components/detail/CourseLinks';
 import CourseDescription from '@/components/detail/CourseDescription';
 import InstructorTabs from '@/components/detail/InstructorTabs';
+import Prereqs from '@/components/prereqs';
 
 // Context Provider
 import { DetailProvider } from '@/components/detail/context/DetailContext';
@@ -45,7 +45,7 @@ const CardDetails = ({ courseData, semData }) => {
       if (courseData.terms?.includes(sem)) {
         availableSemesters.push(sem);
       }
-    } catch {}
+    } catch { }
   });
 
   // Initialize the course data
@@ -82,18 +82,17 @@ const CardDetails = ({ courseData, semData }) => {
             <CourseHeader backOrHome={backOrHome} />
             <CourseLinks />
             <CourseDescription />
+            {/* Prerequisites */}
+            <div className='mb-4'>
+              <Prereqs course={courseData} />
+            </div>
           </div>
 
           {/* Right panel */}
-          <div className="flex flex-col w-full md:w-2/3 overflow-y-auto max-h-[calc(100vh-100px)] pb-">
+          <div className="flex flex-col w-full md:w-2/3 overflow-y-auto max-h-screen">
             {/* Instructor tabs section */}
             <div className="mb-8">
               <InstructorTabs />
-            </div>
-
-            {/* GPA Modal section */}
-            <div className="w-full mb-8">
-              <GpaModal />
             </div>
           </div>
         </div>
@@ -130,7 +129,7 @@ export async function getServerSideProps(context) {
       if (course.terms?.includes(sem)) {
         availableSemesters.push(sem);
       }
-    } catch {}
+    } catch { }
   });
   return {
     props: {

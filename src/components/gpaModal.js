@@ -9,7 +9,7 @@ import { extractAllSemesters } from '@/lib/utils';
 
 const GpaModal = () => {
   const {
-    courseData, // Use courseData from context instead of course prop
+    courseData,
     selectedInstructors,
     defaultGPA,
     refreshGraph
@@ -100,7 +100,7 @@ const GpaModal = () => {
     <div className="w-full text-primary p-4">
       <div className="flex flex-col mb-4">
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold">GPA Breakdown by Professor</h2>
+          <h2 className="text-2xl font-bold">GPA Breakdown</h2>
           <div className="flex items-center text-sm bg-background px-3 py-1 rounded-lg">
             <span className='mr-1'>GPA:</span>
             <span className='text-white bg-[#632230] px-2 mr-1'>1.0</span>

@@ -13,8 +13,8 @@ const CourseStats = () => {
     return (
       <div className="flex flex-row md:gap-4 gap-2">
         <div className="flex-1 flex flex-col items-center justify-center bg-background mx-auto p-4 rounded-xl h-48">
-          <p className="text-secondary text-md font-bold text-center">No instructor selected</p>
-          <p className="text-secondary text-xs font-light text-center">Select an instructor to view their statistics</p>
+          <p className="text-tertiary text-md font-bold text-center">No instructor selected</p>
+          <p className="text-tertiary text-xs font-light text-center">Select an instructor to view their statistics</p>
         </div>
       </div>
     );

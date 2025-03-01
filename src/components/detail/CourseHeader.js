@@ -4,6 +4,7 @@ import { Icon } from '@chakra-ui/react';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedCodeToName } from '@/lib/utils';
+import CourseInstructors from './CourseInstructors';
 
 const CourseHeader = ({ backOrHome }) => {
   const { courseData, sem } = useDetailContext();
@@ -78,24 +79,8 @@ const CourseHeader = ({ backOrHome }) => {
           ))}
         </div>
 
-        {/* Instructors Display */}
-        {courseData.instructor && courseData.instructor[sem] && (
-          <div className="flex flex-wrap flex-row lg:text-sm text-sm text-blue-600 -mt-2 font-medium">
-            <div className='mt-1'>
-              <span className="text-secondary font-bold text-xs">{sem} Instructors: </span>
-              {courseData.instructor[sem].map((prof, i) => (
-                <span key={i}>
-                  <a href={`https://www.ratemyprofessors.com/search/professors/783?q=${prof.split(" ")[0]} ${prof.split(" ")[prof.split(" ").length - 1]}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className='underline decoration-dotted hover:text-blue-400 transition-all duration-300 ease-out'>
-                    {prof}
-                  </a>
-                  {i < courseData.instructor[sem].length - 1 && ", "}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Replace the instructors display with the new component */}
+        <CourseInstructors />
       </div>
     </>
   );
