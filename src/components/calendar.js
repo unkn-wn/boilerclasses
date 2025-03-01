@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 
 import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 // Component
 const Calendar = () => {
@@ -83,10 +84,12 @@ const Calendar = () => {
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
     return (
-        <>
-            <div className="mb-2 ml-2 text-sm text-tertiary">Spring 2025 Schedule: </div>
+        <div className="w-full rounded-xl bg-background p-2 md:p-4 mt-4">
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-bold">{CURRENT_SEMESTER} Schedule: </h3>
+            </div>
             {/* Calendar View for Lecture Times */}
-            <div className='grid grid-cols-1 md:grid-cols-5 w-full rounded-xl bg-background p-2 md:p-4'>
+            <div className='grid grid-cols-1 md:grid-cols-5'>
                 {days.map((day, index) => (
                     <div key={day} className={`${index !== 0 ? 'border-t-2 mt-4 md:border-t-0 md:mt-0 md:ml-4' : ''
                         } ${index !== days.length - 1 ? 'md:border-r-2 md:pr-4' : ''
@@ -105,7 +108,7 @@ const Calendar = () => {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
@@ -115,7 +118,7 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
             <span
                 className={`w-full py-1 px-2 rounded-md transition-all ${isHighlighted
                     ? 'bg-yellow-600/50'
-                    : meeting.Type === 'Lecture' ? 'bg-background-secondary brightness-150' : 'bg-background-secondary/50'
+                    : meeting.Type === 'Lecture' ? 'bg-background-tertiary/75' : 'bg-background-secondary'
                     }`}
                 onMouseEnter={() => onHover(meeting.crn)}
                 onMouseLeave={() => onHover(null)}

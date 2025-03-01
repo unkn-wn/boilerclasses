@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { Icon } from '@chakra-ui/react';
-import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 import { genedCodeToName } from '@/lib/utils';
 
@@ -12,17 +12,20 @@ const CourseHeader = ({ backOrHome }) => {
 
   return (
     <>
-      <div className='flex flex-row gap-1'>
-        {/* Back button */}
+      {/* Back button on its own line */}
+      <div className="mb-2">
         <button
           onClick={backOrHome}
-          className='lg:mt-1 md:mt-0.5 mr-1 h-fit hover:-translate-x-0.5 hover:text-secondary transition'>
-          <Icon as={ChevronLeftIcon} alt="" boxSize={6} />
+          className="flex items-center text-tertiary hover:text-secondary transition-colors">
+          <Icon as={ArrowBackIcon} alt="" boxSize={4} />
+          <span className="text-sm font-medium ml-1">Back</span>
         </button>
-        <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">
-          {courseData.subjectCode} {courseData.courseCode}: {courseData.title}
-        </p>
       </div>
+
+      {/* Course title */}
+      <p className="lg:text-3xl md:text-3xl text-xl font-bold mb-6">
+        {courseData.subjectCode} {courseData.courseCode}: {courseData.title}
+      </p>
 
       <div className="flex flex-col gap-4 -mt-3 mb-1">
         <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
