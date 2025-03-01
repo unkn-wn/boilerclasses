@@ -23,6 +23,7 @@ const DEFAULT_FILTERS = {
   ]
 };
 
+// TODO: Make this dynamic
 export const CURRENT_SEMESTER = "Spring 2025";
 export const PREVIOUS_SEMESTER = "Fall 2024";
 

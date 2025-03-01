@@ -113,8 +113,8 @@ const MeetingDisplay = ({ meeting, isHighlighted, onHover }) => (
         <PopoverTrigger>
             <span
                 className={`w-full py-1 px-2 rounded-md transition-all ${isHighlighted
-                    ? 'bg-yellow-400/50'
-                    : meeting.Type === 'Lecture' ? 'bg-background-secondary' : 'bg-background-secondary/50'
+                    ? 'bg-yellow-600/50'
+                    : meeting.Type === 'Lecture' ? 'bg-background-secondary brightness-150' : 'bg-background-secondary/50'
                     }`}
                 onMouseEnter={() => onHover(meeting.crn)}
                 onMouseLeave={() => onHover(null)}

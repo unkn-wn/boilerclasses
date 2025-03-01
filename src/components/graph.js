@@ -1,3 +1,4 @@
+// Component that renders a bar chart for displaying grade distribution data
 import {
 	Chart as ChartJS,
 	CategoryScale,

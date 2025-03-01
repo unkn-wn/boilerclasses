@@ -97,7 +97,7 @@ export const averageAllData = (grades) => {
 
 // Function to get color based on GPA
 export const getColor = (gpa) => {
-	if (gpa === 0) {
+	if (gpa === 0 || gpa === null) {
 		return `rgb(var(--background-color))`;
 	}
 

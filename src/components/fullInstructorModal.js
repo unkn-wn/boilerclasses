@@ -1,3 +1,4 @@
+// Component that shows all instructors who have taught a course across all semesters with their GPAs
 import React, { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import { getColor } from '@/lib/gpaUtils';
@@ -62,7 +63,7 @@ const FullInstructorModal = ({ course }) => {
 
 	return (
 		<div className='h-[32rem] overflow-y-auto flex flex-col'>
-			<h1 className='text-primary text-2xl font-bold'>All Instructors Breakdown</h1>
+			<h1 className='text-primary text-2xl font-bold'>All Semesters Breakdown</h1>
 			<h3 className='text-primary text-sm'>
 				This graphic displays all semesters and professors that have taught this course. Use the search bar below to filter for a specific professor!<br />
 				GPA: <span className='text-white bg-[#632230] px-2'>1.0</span> ― <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
