@@ -1,11 +1,11 @@
 // Dropdown component for selecting multiple instructors to view/compare data
 import React from 'react';
 import Select from 'react-select';
+import { instructorStyles } from '@/lib/utils';
 
 const InstructorSelector = ({
   instructors,
   selectedInstructors,
-  styles,
   onChange
 }) => {
   return (
@@ -18,7 +18,7 @@ const InstructorSelector = ({
         placeholder="Instructor..."
         menuPlacement='bottom'
         value={selectedInstructors.map(instructor => ({ value: instructor, label: instructor }))}
-        styles={styles}
+        styles={instructorStyles}
         color="white"
         onChange={onChange}
       />

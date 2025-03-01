@@ -3,9 +3,9 @@ import React from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import FullInstructorModal from '@/components/fullInstructorModal';
 import OverviewTabContent from './OverviewTabContent';
-import { useDetailContext } from '@/context/DetailContext';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
 
-const InstructorTabs = ({ courseData, instructorStyles }) => {
+const InstructorTabs = () => {
   const { selectedInstructors } = useDetailContext();
 
   return (
@@ -28,12 +28,12 @@ const InstructorTabs = ({ courseData, instructorStyles }) => {
 
       <TabPanels>
         <TabPanel>
-          <OverviewTabContent instructorStyles={instructorStyles} />
+          <OverviewTabContent />
         </TabPanel>
 
         {/* All Instructors Tab */}
         <TabPanel>
-          <FullInstructorModal course={courseData} />
+          <FullInstructorModal />
         </TabPanel>
       </TabPanels>
     </Tabs>

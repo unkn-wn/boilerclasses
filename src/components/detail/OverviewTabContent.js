@@ -3,9 +3,10 @@ import React from 'react';
 import InstructorSelector from './InstructorSelector';
 import CourseStats from './CourseStats';
 import Graph from '@/components/graph';
-import { useDetailContext } from '@/context/DetailContext';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
+import ProfessorComparisonChart from './ProfessorComparisonChart';
 
-const OverviewTabContent = ({ instructorStyles }) => {
+const OverviewTabContent = () => {
   const {
     defaultGPA,
     selectableInstructors,
@@ -13,8 +14,13 @@ const OverviewTabContent = ({ instructorStyles }) => {
     refreshGraph,
     curGPA,
     curRMP,
-    gpaGraph
+    gpaGraph,
+    courseData,
+    sem
   } = useDetailContext();
+
+  // Get instructors for the current semester
+  const instructors = courseData?.instructor?.[sem] || [];
 
   return (
     <>
@@ -23,7 +29,6 @@ const OverviewTabContent = ({ instructorStyles }) => {
           <InstructorSelector
             instructors={selectableInstructors}
             selectedInstructors={selectedInstructors}
-            styles={instructorStyles}
             onChange={(value) => refreshGraph(value)}
           />
         }
@@ -38,7 +43,7 @@ const OverviewTabContent = ({ instructorStyles }) => {
 
       {/* GPA Graph */}
       {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 ? (
-        <div className='md:mt-4 mt-2 mb-4 h-96'>
+        <div className='md:mt-4 mt-2 mb-4'>
           <Graph data={gpaGraph} />
         </div>
       ) : (
@@ -46,6 +51,9 @@ const OverviewTabContent = ({ instructorStyles }) => {
           <p className='text-center'>No data!</p>
         </div>
       )}
+
+      {/* Professor GPA Comparison Chart */}
+      <ProfessorComparisonChart />
     </>
   );
 };

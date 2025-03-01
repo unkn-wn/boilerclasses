@@ -1,9 +1,14 @@
 // Component that renders course description and prerequisite information
 import React from 'react';
 import Prereqs from '@/components/prereqs';
-import { stripCourseCode } from '@/pages/detail/[id]';
+import { stripCourseCode } from '@/lib/utils';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
 
-const CourseDescription = ({ courseData }) => {
+const CourseDescription = () => {
+  const { courseData } = useDetailContext();
+
+  if (!courseData) return null;
+
   return (
     <>
       {/* Description */}

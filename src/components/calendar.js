@@ -1,3 +1,5 @@
+import React from 'react';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { useEffect, useState } from "react";
 
 import {
@@ -6,33 +8,32 @@ import {
     PopoverContent,
     PopoverHeader,
     PopoverBody,
-    PopoverFooter,
     PopoverArrow,
-    PopoverCloseButton,
-    PopoverAnchor,
     Spinner,
 } from '@chakra-ui/react'
 
 import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
 
 // Component
-const Calendar = (props) => {
-    const { subjectCode, courseCode, title } = props;
-    const [courseData, setCourseData] = useState(null);
+const Calendar = () => {
+    const { courseData } = useDetailContext();
+    const { subjectCode, courseCode, title, detailId } = courseData;
+
+    const [calendarData, setCalendarData] = useState(null);
     const [wait, setWait] = useState(true);
-    const [hoveredCrn, setHoveredCrn] = useState(null);  // Add this line
+    const [hoveredCrn, setHoveredCrn] = useState(null);
 
     useEffect(() => {
         const fetchCourseData = async () => {
             const data = await getCourseData(subjectCode, courseCode, title);
-            setCourseData(data);
+            setCalendarData(data);
         }
 
         fetchCourseData();
         setWait(false);
     }, [subjectCode, courseCode, title]);
 
-    if (!courseData?.Classes?.[0]?.Sections) {
+    if (!calendarData?.Classes?.[0]?.Sections) {
         return (
             <>
                 <div className="mb-2 ml-2 text-sm text-secondary">Spring 2025 Schedule: </div>
@@ -46,7 +47,7 @@ const Calendar = (props) => {
     // Helper function to get meetings for a specific day
     const getMeetingsForDay = (day) => {
         const meetings = [];
-        courseData.Classes.forEach(course => {
+        calendarData.Classes.forEach(course => {
             course.Sections.forEach(section => {
                 section.Meetings.forEach(meeting => {
                     if (meeting.DaysOfWeek.includes(day)) {
@@ -63,7 +64,7 @@ const Calendar = (props) => {
                             startTime: convertTo12HourFormat(meeting.StartTime.split('.')[0]),
                             endTime,
                             days: meeting.DaysOfWeek,
-                            detailId: props.detailId  // Add this line
+                            detailId,
                         });
                     }
                 });

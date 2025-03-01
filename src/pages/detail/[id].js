@@ -15,7 +15,6 @@ import { useBackOrHome } from '@/hooks/useRouteHistory';
 import { useEffect, useState } from 'react';
 
 // ----- Component imports -----
-import { instructorStyles, labels, genedsOptions } from '@/lib/utils';
 import { semesters, sanitizeDescription } from "@/lib/utils";
 
 import Footer from '@/components/footer';
@@ -31,7 +30,7 @@ import CourseDescription from '@/components/detail/CourseDescription';
 import InstructorTabs from '@/components/detail/InstructorTabs';
 
 // Context Provider
-import { DetailProvider } from '@/context/DetailContext';
+import { DetailProvider } from '@/components/detail/context/DetailContext';
 // ------------------------
 
 const CardDetails = ({ courseData, semData }) => {
@@ -57,11 +56,6 @@ const CardDetails = ({ courseData, semData }) => {
     setLoading(false);
   }, [router.isReady, courseData]);
 
-  // Function to replace gened codes with actual names
-  const genedCodeToName = (code) => {
-    const gened = genedsOptions.filter(gened => gened.value === code);
-    return gened[0]?.label || code;
-  };
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////
 
@@ -79,40 +73,33 @@ const CardDetails = ({ courseData, semData }) => {
 
   return (
     <DetailProvider courseData={courseData} initialSemester={semData}>
-      <DetailPageHead courseData={courseData} semData={semData} />
+      <DetailPageHead />
 
       <div className={`flex flex-col min-h-screen bg-super container mx-auto p-5 mt-5 ${inter.className} text-primary`}>
         <div className="flex md:flex-row flex-col md:gap-4">
-          {/* Left half of panel */}
-          <div className="flex flex-col w-full md:mr-3 justify-start h-full">
-            <CourseHeader
-              courseData={courseData}
-              backOrHome={backOrHome}
-              genedCodeToName={genedCodeToName}
-            />
-
-            <CourseLinks courseData={courseData} />
-
-            <CourseDescription courseData={courseData} />
+          {/* Left panel */}
+          <div className="flex flex-col w-full md:w-1/3 md:mr-3 justify-start h-full">
+            <CourseHeader backOrHome={backOrHome} />
+            <CourseLinks />
+            <CourseDescription />
           </div>
 
-          {/* Right half of panel */}
-          <div className="flex flex-col w-full overflow-clip">
-            <InstructorTabs courseData={courseData} instructorStyles={instructorStyles} />
-          </div>
-        </div>
+          {/* Right panel */}
+          <div className="flex flex-col w-full md:w-2/3 overflow-y-auto max-h-[calc(100vh-100px)] pb-">
+            {/* Instructor tabs section */}
+            <div className="mb-8">
+              <InstructorTabs />
+            </div>
 
-        {/* GPA by Professor section */}
-        <div className="w-full mb-8">
-          <GpaModal course={courseData} />
+            {/* GPA Modal section */}
+            <div className="w-full mb-8">
+              <GpaModal />
+            </div>
+          </div>
         </div>
 
         {/* Calendar View for Lecture Times */}
-        <Calendar
-          subjectCode={courseData.subjectCode}
-          courseCode={courseData.courseCode}
-          title={courseData.title}
-        />
+        <Calendar />
 
         <div className='mt-auto'>
           <Footer />
@@ -124,14 +111,6 @@ const CardDetails = ({ courseData, semData }) => {
 
 export default CardDetails;
 
-// function to strip courseData code to remove the 00s
-export function stripCourseCode(courseCode) {
-  let formattedName = courseCode.toString();
-  if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
-    formattedName = formattedName.slice(0, -2);
-  }
-  return formattedName;
-}
 
 // @Sarthak made this, some api call to get courseData data
 export async function getServerSideProps(context) {

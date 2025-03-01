@@ -1,11 +1,14 @@
 import React from 'react';
-import { useDetailContext } from '@/context/DetailContext';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { Icon } from '@chakra-ui/react';
 import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { genedCodeToName } from '@/lib/utils';
 
-const CourseHeader = ({ courseData, backOrHome, genedCodeToName }) => {
-  const { sem } = useDetailContext();
+const CourseHeader = ({ backOrHome }) => {
+  const { courseData, sem } = useDetailContext();
+
+  if (!courseData) return null;
 
   return (
     <>

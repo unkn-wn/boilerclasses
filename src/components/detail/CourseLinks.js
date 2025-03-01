@@ -1,12 +1,13 @@
 import React from 'react';
-import { useDetailContext } from '@/context/DetailContext';
-import { Image, Icon } from '@chakra-ui/react';
-import { stripCourseCode } from '@/pages/detail/[id]';
-import { boilerExamsCourses } from '@/lib/utils';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
+import { Image } from '@chakra-ui/react';
+import { boilerExamsCourses, stripCourseCode } from '@/lib/utils';
 import OverallGpa from '@/components/OverallGpa';
 
-const CourseLinks = ({ courseData }) => {
-  const { sem, getSearchableProfString } = useDetailContext();
+const CourseLinks = () => {
+  const { courseData, sem, getSearchableProfString } = useDetailContext();
+
+  if (!courseData) return null;
 
   return (
     <div className="flex flex-row flex-wrap gap-2 my-1">

@@ -3,12 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import GpaTable from '@/components/detail/GpaTable';
-import ProfessorComparisonChart from '@/components/detail/ProfessorComparisonChart';
-import { useDetailContext } from '@/context/DetailContext';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { getColor } from '@/lib/gpaUtils';
+import { extractAllSemesters } from '@/lib/utils';
 
-const GpaModal = ({ course }) => {
+const GpaModal = () => {
   const {
+    courseData, // Use courseData from context instead of course prop
     selectedInstructors,
     defaultGPA,
     refreshGraph
@@ -21,12 +22,12 @@ const GpaModal = ({ course }) => {
 
   // Process the data once on mount from the context
   useEffect(() => {
-    if (!course || !course.gpa || !defaultGPA.datasets) return;
+    if (!courseData || !courseData.gpa || !defaultGPA.datasets) return;
 
     // Extract professor data with their colors from defaultGPA
     const processedData = defaultGPA.datasets?.map(dataset => {
       // Get GPA data per semester for this professor
-      const profGpaData = course.gpa[dataset.label] || {};
+      const profGpaData = courseData.gpa[dataset.label] || {};
 
       // Get all semesters this professor has taught
       const profSemesters = Object.keys(profGpaData);
@@ -50,7 +51,7 @@ const GpaModal = ({ course }) => {
       const averageGpa = semesterCount > 0 ? totalGpa / semesterCount : null;
 
       // Create semester data array (to be used by the table)
-      const allSemesters = extractAllSemesters(course.gpa);
+      const allSemesters = extractAllSemesters(courseData.gpa);
       const semesterData = allSemesters.map(sem => {
         if (profGpaData[sem]) {
           const gpa = profGpaData[sem][13];
@@ -72,32 +73,9 @@ const GpaModal = ({ course }) => {
     }) || [];
 
     setProfessorData(processedData);
-    setSemesters(extractAllSemesters(course.gpa));
-  }, [course, defaultGPA]);
+    setSemesters(extractAllSemesters(courseData.gpa));
+  }, [courseData, defaultGPA]);
 
-  // Helper function to extract and sort all semesters
-  const extractAllSemesters = (gpaData) => {
-    if (!gpaData) return [];
-
-    const allSemesters = new Set();
-    Object.values(gpaData).forEach(semesterData => {
-      Object.keys(semesterData).forEach(semester => {
-        allSemesters.add(semester);
-      });
-    });
-
-    // Sort semesters chronologically (oldest first)
-    return Array.from(allSemesters).sort((a, b) => {
-      const aYear = parseInt(a.split(' ')[1]);
-      const bYear = parseInt(b.split(' ')[1]);
-
-      if (aYear !== bYear) return aYear - bYear; // Oldest year first (ascending)
-
-      // Spring comes first in the same year
-      const seasonOrder = { 'Spring': 0, 'Summer': 1, 'Fall': 2 };
-      return seasonOrder[a.split(' ')[0]] - seasonOrder[b.split(' ')[0]];
-    });
-  };
 
   // Update local selection when context changes
   useEffect(() => {
@@ -130,12 +108,6 @@ const GpaModal = ({ course }) => {
           </div>
         </div>
       </div>
-
-      {/* Comparison chart for selected professors */}
-      <ProfessorComparisonChart
-        gpaData={professorData}
-        selectedProfessors={localSelectedInstructors}
-      />
 
       <SearchBar
         placeholder="Filter instructors..."

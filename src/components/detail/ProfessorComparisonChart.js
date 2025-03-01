@@ -1,31 +1,75 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useDetailContext } from '@/context/DetailContext';
+import { useDetailContext } from '@/components/detail/context/DetailContext';
+import { getColor } from '@/lib/gpaUtils';
 
-const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
-  // Get context data to ensure color consistency
-  const { defaultGPA } = useDetailContext();
+const ProfessorComparisonChart = () => {
+  // Get all needed data from context
+  const { courseData, selectedInstructors, defaultGPA } = useDetailContext();
 
-  // State for professor colors retrieved from CSS
+  // State for processed professor data
+  const [professorData, setProfessorData] = useState([]);
+  // State for professor colors retrieved from context
   const [professorColors, setProfessorColors] = useState({});
+
+  // Process the data from context
+  useEffect(() => {
+    if (!courseData?.gpa || !defaultGPA?.datasets) return;
+
+    // Extract professor data with their colors from defaultGPA
+    const processedData = defaultGPA.datasets?.map(dataset => {
+      // Get GPA data per semester for this professor
+      const profGpaData = courseData.gpa[dataset.label] || {};
+
+      // Get all semesters this professor has taught
+      const profSemesters = Object.keys(profGpaData);
+
+      // Calculate average GPA
+      let totalGpa = 0;
+      let semesterCount = 0;
+      const gpas = [];
+
+      profSemesters.forEach(semester => {
+        if (profGpaData[semester] && profGpaData[semester][13] > 0) {
+          totalGpa += profGpaData[semester][13];
+          semesterCount++;
+          gpas.push({
+            term: semester,
+            value: profGpaData[semester][13]
+          });
+        }
+      });
+
+      const averageGpa = semesterCount > 0 ? totalGpa / semesterCount : null;
+
+      return {
+        name: dataset.label,
+        averageGpa,
+        gpas,
+        backgroundColor: dataset.backgroundColor
+      };
+    }) || [];
+
+    setProfessorData(processedData);
+  }, [courseData, defaultGPA]);
 
   // Extract colors from defaultGPA and map them to professors
   useEffect(() => {
-    if (!gpaData || gpaData.length === 0 || !defaultGPA.datasets) return;
+    if (!professorData || professorData.length === 0 || !defaultGPA?.datasets) return;
 
     const colorMap = {};
 
     // Find matching colors from the context's defaultGPA datasets
-    selectedProfessors.forEach((profName) => {
+    selectedInstructors.forEach((profName) => {
       // Find the professor in the context data
       const contextProf = defaultGPA.datasets.find(dataset => dataset.label === profName);
       if (contextProf) {
         colorMap[profName] = contextProf.backgroundColor;
       }
 
-      // If not found in context, look in local gpaData
+      // If not found in context, look in local professorData
       if (!colorMap[profName]) {
-        const profData = gpaData.find(prof => prof.name === profName);
+        const profData = professorData.find(prof => prof.name === profName);
         if (profData && profData.backgroundColor) {
           colorMap[profName] = profData.backgroundColor;
         }
@@ -33,12 +77,12 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
     });
 
     setProfessorColors(colorMap);
-  }, [gpaData, selectedProfessors, defaultGPA]);
+  }, [professorData, selectedInstructors, defaultGPA]);
 
   // Get data only for selected professors
   const selectedProfessorData = useMemo(() => {
-    return gpaData.filter(prof => selectedProfessors.includes(prof.name));
-  }, [gpaData, selectedProfessors]);
+    return professorData.filter(prof => selectedInstructors.includes(prof.name));
+  }, [professorData, selectedInstructors]);
 
   // Transform data for the chart
   const chartData = useMemo(() => {
@@ -82,8 +126,11 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
   if (selectedProfessorData.length === 0) {
     return (
       <div className="bg-background p-6 rounded-lg shadow text-center">
-        <p className="text-tertiary mb-2">No professors selected</p>
-        <p className="text-sm text-tertiary">Click on professors in the table below to compare their GPAs.</p>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold">Instructor GPA Comparison</h3>
+        </div>
+        <p className="text-tertiary mb-2">No instructors selected</p>
+        <p className="text-sm text-tertiary">Select instructors from the GPA table to compare their GPAs.</p>
       </div>
     );
   }
@@ -91,9 +138,9 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
   return (
     <div className="bg-background p-4 rounded-lg shadow mb-6">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-bold">Professor GPA Comparison</h3>
+        <h3 className="text-lg font-bold">Instructor GPA Comparison</h3>
         <div className="text-sm text-tertiary">
-          {selectedProfessorData.length} professor{selectedProfessorData.length !== 1 ? 's' : ''} selected
+          {selectedProfessorData.length} instructor{selectedProfessorData.length !== 1 ? 's' : ''} selected
         </div>
       </div>
 
@@ -119,10 +166,10 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
             <Tooltip
               contentStyle={{ backgroundColor: 'rgb(var(--background-color))', borderColor: 'rgba(var(--text-tertiary-color), 0.2)' }}
               labelStyle={{ color: 'rgb(var(--text-primary-color))' }}
-              formatter={(value) => [value?.toFixed(2) || '-', '']}
+              formatter={(value, name) => [value?.toFixed(2) || '-', name]}
             />
             <Legend
-              formatter={(value) => <span style={{color: 'rgb(var(--text-primary-color))'}}>{value}</span>}
+              formatter={(value) => <span style={{ color: 'rgb(var(--text-primary-color))' }}>{value}</span>}
             />
             {selectedProfessorData.map((prof) => (
               <Line
@@ -141,8 +188,7 @@ const ProfessorComparisonChart = ({ gpaData, selectedProfessors }) => {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-background-secondary/30 text-sm text-tertiary flex justify-between">
-        <div>Click on professors in the table below to add or remove them from comparison.</div>
+      <div className="mt-4 pt-3 border-t border-background-secondary/30 text-sm text-tertiary flex justify-end">
         <div>Higher values indicate higher average GPAs.</div>
       </div>
     </div>

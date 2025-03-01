@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Tooltip } from '@chakra-ui/react';
 import { graphColors } from '@/lib/utils';
-import { stripCourseCode } from '@/pages/detail/[id]';
-import { translateType } from '../calendar';
+import { stripCourseCode } from '@/lib/utils';
+import { translateType } from '@/components/calendar';
 import { convertNumberToTime } from '@/lib/timeUtils';
 
 const CalendarCourse = ({

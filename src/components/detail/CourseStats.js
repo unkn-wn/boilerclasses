@@ -1,8 +1,13 @@
 // Component displaying circular progress indicators for GPA and RateMyProfessors data
 import React from 'react';
 import AnimatedCircularProgress from '@/components/detail/AnimatedCircularProgress';
+import { useDetailContext } from './context/DetailContext';
 
-const CourseStats = ({ selectedInstructor, curGPA, curRMP }) => {
+const CourseStats = () => {
+  const { selectedInstructors, curGPA, curRMP } = useDetailContext();
+
+  const selectedInstructor = selectedInstructors[selectedInstructors.length - 1];
+
   // Check if we have an instructor selected
   if (!selectedInstructor) {
     return (
