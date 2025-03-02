@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaFilter } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import { FiSearch } from "react-icons/fi";
 
 const SearchBar = ({
   placeholder,
@@ -15,13 +14,13 @@ const SearchBar = ({
     const baseStyles = "w-full bg-background placeholder:text-tertiary text-primary rounded-md border border-[rgb(var(--background-secondary-color))] focus:outline-none";
     const variantStyles = variant === "compact"
       ? "py-1.5 pl-8 pr-3 text-sm focus:border-zinc-500"
-      : "my-4 p-2 pl-10 pr-10 focus:border-zinc-500";
+      : "p-2 px-10 focus:border-zinc-500";
 
     return baseStyles + " " + variantStyles;
   };
 
   return (
-    <div className="relative">
+    <div className={`relative ` + className}>
       <FaFilter
         className="absolute left-3 top-1/2 -translate-y-1/2 text-tertiary"
         aria-hidden="true"

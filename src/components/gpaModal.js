@@ -97,8 +97,8 @@ const GpaModal = () => {
   };
 
   return (
-    <div className="w-full text-primary p-4">
-      <div className="flex flex-col mb-4">
+    <div className="w-full text-primary">
+      <div className="flex flex-col mb-2">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">GPA Breakdown</h2>
           <div className="flex items-center text-sm bg-background px-3 py-1 rounded-lg">
@@ -107,13 +107,21 @@ const GpaModal = () => {
             <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
           </div>
         </div>
+
+        {/* Description text */}
+        <div className="mt-2 flex items-start gap-3">
+          <div className="text-sm">
+            <p className="text-secondary mb-2">This table shows GPA data for each instructor across different semesters. The <span className="font-semibold">Average</span> column shows the instructor's overall GPA for this course.</p>
+            <p className="text-tertiary">Click on any row to select/deselect an instructor and add them to the charts in the Overview tab.</p>
+          </div>
+        </div>
       </div>
 
       <SearchBar
         placeholder="Filter instructors..."
         value={searchQuery}
         onChange={setSearchQuery}
-        className="mb-6"
+        className="mb-4"
       />
 
       <GpaTable

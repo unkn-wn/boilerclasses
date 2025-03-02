@@ -84,7 +84,7 @@ const Calendar = () => {
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
     return (
-        <div className="w-full rounded-xl bg-background p-2 md:p-4 mt-4">
+        <div className="w-full rounded-xl bg-background p-2 md:p-4 mt-4 shadow">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-bold">{CURRENT_SEMESTER} Schedule: </h3>
             </div>

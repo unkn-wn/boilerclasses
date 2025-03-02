@@ -50,13 +50,17 @@ const ScheduleGpaModal = ({ course }) => {
             <div key={index} className='grid grid-flow-row py-1 gap-1'>
               <h2 className='text-primary text-xs'>{instructor}</h2>
               <div className='w-full grid grid-flow-col auto-cols-fr justify-stretch gap-1'>
-                {Object.keys(gpa[instructor]).map((semester, index) => (
-                  <div key={index} className='flex flex-col'>
-                    <div className='grid py-1 text-center rounded-md relative overflow-hidden' style={{ backgroundColor: `${gpa[instructor][semester].color}` }}>
-                      <p className='text-white m-auto text-sm font-bold relative z-10'>{replaceZeroGpaWithDash(gpa[instructor][semester].gpa)}</p>
+                {Object.keys(gpa[instructor]).map((semester, index) => {
+                  const obj = gpa[instructor][semester];
+                  const gpaValue = obj.gpa;
+                  return <div key={index} className='flex flex-col'>
+                    <div className='grid py-1 text-center rounded-md relative overflow-hidden' style={{ backgroundColor: `${obj.color}` }}>
+                      <p className={`${gpaValue === 0 ? 'text-primary' : 'text-white'} m-auto text-sm font-bold relative z-10`}>
+                        {replaceZeroGpaWithDash(gpaValue)}
+                      </p>
                     </div>
-                  </div>
-                ))}
+                  </div>;
+                })}
               </div>
             </div>
           ))}

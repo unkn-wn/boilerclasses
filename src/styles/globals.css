@@ -5,9 +5,9 @@
 :root {
   /* Light mode variables */
   --super: 250, 250, 250;
-  --background-color: 229 229 229;       /* neutral-200 */
-  --background-secondary-color: 212 212 212;  /* neutral-300 */
-  --background-tertiary-color: 163 163 163; /* neutral-400 */
+  --background-color: 255 255 255;       /* white */
+  --background-secondary-color: 231 229 228;  /* stone-200 */
+  --background-tertiary-color: 188 182 178; /* stone-3[50] */
   --background-opposite: 23 23 23;        /* neutral-950 */
   --background-secondary-opposite: 64 64 64;  /* neutral-700 */
   --text-color: 23 23 23;                /* neutral-950 */

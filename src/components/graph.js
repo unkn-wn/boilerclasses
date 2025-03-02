@@ -28,7 +28,7 @@ const Graph = ({ data, scheduler = false }) => {
   // If no data, show empty state
   if (!data || !data.datasets || data.datasets.length === 0) {
     return (
-      <div className="h-full w-full bg-background mx-auto p-4 rounded-xl">
+      <div className="h-full w-full bg-background mx-auto p-4 rounded-xl shadow">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold">{chartTitle}</h3>
         </div>
@@ -40,7 +40,7 @@ const Graph = ({ data, scheduler = false }) => {
   }
 
   return (
-    <div className="h-full w-full bg-background mx-auto p-4 rounded-xl">
+    <div className="h-full w-full bg-background mx-auto p-4 rounded-xl shadow">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-bold">{chartTitle}</h3>
         {instructorCount > 0 && (

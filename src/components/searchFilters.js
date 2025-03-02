@@ -31,7 +31,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
         <div className='w-full flex place-content-end'>
           <div
             onClick={() => setFiltersCollapsed(false)}
-            className='flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-background text-primary border border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-secondary-color))] transition-all'
+            className='flex gap-2 items-center justify-center p-2 rounded-lg cursor-pointer bg-background text-primary border border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-secondary-color))] transition-all shadow'
           >
             <HamburgerIcon />
             {allFiltersString ? (
@@ -51,7 +51,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             <Select
               isMulti
               options={subjectOptions}
-              className="basic-multi-select w-full"
+              className="basic-multi-select w-full shadow rounded-xl"
               classNamePrefix="select"
               placeholder="Subject..."
               styles={instructorStyles}
@@ -64,7 +64,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             <Select
               isMulti
               options={semesterOptions}
-              className="basic-multi-select w-full"
+              className="basic-multi-select w-full shadow rounded-xl"
               classNamePrefix="select"
               placeholder="Semester..."
               styles={instructorStyles}
@@ -77,7 +77,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             <Select
               isMulti
               options={genedsOptions}
-              className="basic-multi-select w-full"
+              className="basic-multi-select w-full shadow rounded-xl"
               classNamePrefix="select"
               placeholder="Gen Ed..."
               styles={instructorStyles}
@@ -89,12 +89,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             {/* Credits Filter */}
             <Popover placement='bottom-start'>
               <PopoverTrigger>
-                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-tertiary-color))]'>
+                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-tertiary-color))] shadow'>
                   <span>Credits</span>
                   <ChevronDownIcon color='gray-800' />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))]'>
+              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))] shadow-lg'>
                 <PopoverBody paddingLeft={8} paddingRight={8} paddingTop={4} paddingBottom={4}>
                   <RangeSlider
                     aria-label={['min', 'max']}
@@ -128,12 +128,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             {/* Levels Filter */}
             <Popover placement='bottom-start'>
               <PopoverTrigger>
-                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-tertiary-color))]'>
+                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-color))] hover:border-[rgb(var(--background-tertiary-color))] shadow'>
                   <span>Level</span>
                   <ChevronDownIcon color="gray-800" />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))]' width='fit-content'>
+              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))] shadow-lg' width='fit-content'>
                 <Grid templateColumns='repeat(3, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
                   {[100, 200, 300, 400, 500, 600, 700, 800, 900].map(level => (
                     <Checkbox
@@ -155,14 +155,14 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
                 <div className='flex flex-row justify-evenly m-4 grow gap-2'>
                   <Button
                     size='sm'
-                    className='w-full'
+                    className='w-full shadow'
                     onClick={() => updateFilter('levels', [100, 200, 300, 400, 500, 600, 700, 800, 900])}
                   >
                     Reset
                   </Button>
                   <Button
                     size='sm'
-                    className='w-full'
+                    className='w-full shadow'
                     onClick={() => updateFilter('levels', [])}
                   >
                     Clear
@@ -174,12 +174,12 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
             {/* Schedule Types Filter */}
             <Popover placement='bottom-end'>
               <PopoverTrigger>
-                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-secondary-color))] hover:border-[rgb(var(--background-tertiary-color))]'>
+                <button className='flex flex-row gap-4 px-4 py-1.5 bg-background items-center border text-primary rounded-xl border-[rgb(var(--background-secondary-color))] hover:border-[rgb(var(--background-tertiary-color))] shadow'>
                   <span>Schedule</span>
                   <ChevronDownIcon color='gray-800' />
                 </button>
               </PopoverTrigger>
-              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))]' width='fit-content'>
+              <PopoverContent backgroundColor={`rgb(var(--background-color))`} borderColor='gray.800' className='bg-background border-[rgb(var(--background-secondary-color))] shadow-lg' width='fit-content'>
                 <Grid templateColumns='repeat(1, 1fr)' gap={3} marginLeft={6} marginRight={6} paddingTop={3}>
                   {[
                     "Lecture",
@@ -214,7 +214,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
                 <div className='flex flex-row justify-evenly m-4 grow gap-2'>
                   <Button
                     size='sm'
-                    className='w-full'
+                    className='w-full shadow'
                     onClick={() => updateFilter('scheduleTypes', [
                       "Clinic",
                       "Distance Learning",
@@ -234,7 +234,7 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
                   </Button>
                   <Button
                     size='sm'
-                    className='w-full'
+                    className='w-full shadow'
                     onClick={() => updateFilter('scheduleTypes', [])}
                   >
                     Clear

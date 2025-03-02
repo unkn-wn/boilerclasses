@@ -89,7 +89,7 @@ const CardDetails = ({ courseData, semData }) => {
           </div>
 
           {/* Right panel */}
-          <div className="flex flex-col w-full md:w-2/3 overflow-y-auto max-h-screen">
+          <div className="flex flex-col w-full md:w-2/3">
             {/* Instructor tabs section */}
             <div className="mb-8">
               <InstructorTabs />

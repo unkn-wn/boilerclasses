@@ -28,8 +28,8 @@ const CourseHeader = ({ backOrHome }) => {
         {courseData.subjectCode} {courseData.courseCode}: {courseData.title}
       </p>
 
-      <div className="flex flex-col gap-4 -mt-3 mb-1">
-        <div className="flex flex-row flex-wrap gap-1 mb-1 items-center">
+      <div className="flex flex-col gap-4 -mt-3 ">
+        <div className="flex flex-row flex-wrap gap-1 items-center">
           {/* Credits Display */}
           <p className="text-sm text-secondary font-bold">
             {courseData.credits && courseData.credits[0] === courseData.credits[1]

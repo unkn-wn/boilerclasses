@@ -122,17 +122,6 @@ const GpaTable = ({ gpaData, semesters, selectedInstructors, searchQuery, onSele
                     </td>
                   ))}
 
-                  {/* More button for extra semesters */}
-                  {semesters.length > 7 && (
-                    <td className="py-2 px-2 text-center">
-                      <button
-                        className="p-1 rounded-full hover:bg-background-secondary transition-colors"
-                        onClick={(e) => toggleExpanded(professor.name, e)}
-                      >
-                        <FiChevronDown size={16} />
-                      </button>
-                    </td>
-                  )}
                 </tr>
               </React.Fragment>
             );

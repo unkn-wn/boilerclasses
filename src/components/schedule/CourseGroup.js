@@ -223,14 +223,14 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                 backgroundColor: hasSelectedLectures ? `${courseColor.replace('rgb', 'rgba').replace(')', ', 0.5)')}` : 'rgb(var(--background-color))',
                 borderColor: hasSelectedLectures ? courseColor : 'rgb(var(--background-color))',
               }}
-              className="text-primary hover:brightness-125 h-full border"
+              className="text-primary hover:brightness-125 h-full border shadow"
               leftIcon={hasSelectedLectures ? <IoIosSwap /> : <IoMdInformationCircleOutline />}
             ><p>{hasSelectedLectures ? 'Change Sections' : 'Pick Sections'}</p></Button>
             <Button
               variant=""
               size="sm"
               onClick={reselectCourseDetails}
-              className="bg-background text-primary hover:brightness-125"
+              className="bg-background text-primary hover:brightness-125 shadow"
               rightIcon={<IoIosArrowForward />}
             ><p>Show Course</p></Button>
           </div>
@@ -240,7 +240,7 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
             {selectedCourseLectures.map(lecture => (
               <div
                 key={lecture.id}
-                className="flex justify-between items-center p-2 rounded-md bg-background"
+                className="flex justify-between items-center p-2 rounded-md bg-background shadow"
               >
                 <div className="text-sm text-primary flex-1">
                   <div>{`${lecture.type} ${lecture.instructors.length === 0 ? '' : '-'} ${lecture.instructors.join(", ")}`}</div>

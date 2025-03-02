@@ -12,7 +12,7 @@ const CourseStats = () => {
   if (!selectedInstructor) {
     return (
       <div className="flex flex-row md:gap-4 gap-2">
-        <div className="flex-1 flex flex-col items-center justify-center bg-background mx-auto p-4 rounded-xl h-48">
+        <div className="flex-1 flex flex-col items-center justify-center bg-background mx-auto p-4 rounded-xl h-48 shadow">
           <p className="text-tertiary text-md font-bold text-center">No instructor selected</p>
           <p className="text-tertiary text-xs font-light text-center">Select an instructor to view their statistics</p>
         </div>
@@ -35,7 +35,7 @@ const CourseStats = () => {
   return (
     <div className="flex flex-row md:gap-4 gap-2">
       {/* GPA CARD */}
-      <div className="relative flex-1 flex flex-col items-center bg-background mx-auto p-4 rounded-xl gap-2 h-48">
+      <div className="relative flex-1 flex flex-col items-center bg-background mx-auto p-4 rounded-xl gap-2 h-48 shadow">
         <div className="flex-1 items-center justify-center">
           {/* Show "No data available" message when no data */}
           {!hasGpaData ? (
@@ -62,7 +62,7 @@ const CourseStats = () => {
 
       {/* RMP RATING CARD */}
       <div
-        className={`relative flex-1 flex flex-col items-center bg-background mx-auto p-4 rounded-xl gap-2 h-48 ${selectedInstructor ? 'cursor-pointer hover:scale-[1.05] transition-all' : ''}`}
+        className={`relative flex-1 flex flex-col items-center bg-background mx-auto p-4 rounded-xl gap-2 h-48 shadow ${selectedInstructor ? 'cursor-pointer hover:scale-[1.05] transition-all' : ''}`}
         onClick={selectedInstructor ? () => window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${selectedInstructor}`, '_blank') : undefined}
       >
         <div className="flex-1 items-center justify-center">

@@ -13,7 +13,7 @@ const InstructorSelector = ({
       <Select
         isMulti
         options={instructors.map((instructor) => ({ value: instructor, label: instructor }))}
-        className="basic-multi-select w-full no-wrap"
+        className="basic-multi-select w-full no-wrap shadow rounded-xl"
         classNamePrefix="select"
         placeholder="Instructor..."
         menuPlacement='bottom'

@@ -9,8 +9,38 @@ const InstructorTabs = () => {
     <Tabs
       variant='soft-rounded'
       size='sm'
-      colorScheme='gray'
       defaultIndex={0}
+      sx={{
+        // Tab list container
+        '& .chakra-tabs__tablist': {
+          gap: '8px',
+        },
+        // Individual tab styling
+        '& .chakra-tabs__tab': {
+          color: 'rgb(var(--text-tertiary-color))',
+          fontWeight: '500',
+          backgroundColor: 'transparent',
+          transition: 'all 0.2s ease',
+          _hover: {
+            color: 'rgb(var(--text-secondary-color))',
+            backgroundColor: 'rgba(var(--background-tertiary-color))',
+          },
+          _selected: {
+            color: 'rgb(var(--text-opposite))',
+            backgroundColor: 'rgb(var(--background-opposite))',
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+            fontWeight: '600',
+          },
+          _active: {
+            backgroundColor: 'rgba(var(--background-tertiary-color))',
+          },
+        },
+        // Tab panels
+        '& .chakra-tabs__tab-panel': {
+          padding: '0',
+          paddingTop: '1rem',
+        }
+      }}
     >
       <TabList overflowY="hidden"
         sx={{
@@ -30,7 +60,9 @@ const InstructorTabs = () => {
 
         {/* GPA Details tab */}
         <TabPanel>
-          <GpaModal />
+          <div className="overflow-y-auto max-h-screen">
+            <GpaModal />
+          </div>
         </TabPanel>
       </TabPanels>
     </Tabs>
