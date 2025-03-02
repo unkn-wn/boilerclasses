@@ -1,7 +1,9 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  Legend, ResponsiveContainer, ReferenceLine
+} from 'recharts';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
-import { getColor } from '@/lib/gpaUtils';
 
 const ProfessorComparisonChart = () => {
   // Get all needed data from context
@@ -11,6 +13,8 @@ const ProfessorComparisonChart = () => {
   const [professorData, setProfessorData] = useState([]);
   // State for professor colors retrieved from context
   const [professorColors, setProfessorColors] = useState({});
+  // Toggle individual average lines
+  const [showIndividualAvgs, setShowIndividualAvgs] = useState(true);
 
   // Process the data from context
   useEffect(() => {
@@ -122,7 +126,31 @@ const ProfessorComparisonChart = () => {
     });
   }, [selectedProfessorData]);
 
-  // No professors selected - show informative message
+  // Calculate domain for Y axis to ensure all reference lines are visible
+  // IMPORTANT: Always calculate this, regardless of whether we'll use it or not
+  const yDomain = useMemo(() => {
+    let minY = 2.0; // Default minimum
+    let maxY = 4.0; // Default maximum
+
+    // Check if we need to adjust min/max for averages
+    if (selectedProfessorData.length > 0) {
+      selectedProfessorData.forEach(prof => {
+        if (prof.averageGpa !== null) {
+          minY = Math.min(minY, Math.floor(prof.averageGpa * 10) / 10);
+          maxY = Math.max(maxY, Math.ceil(prof.averageGpa * 10) / 10);
+        }
+      });
+
+      // Add padding
+      minY = Math.max(1.5, minY - 0.1);
+      maxY = Math.min(4.0, maxY + 0.1);
+    }
+
+    return [minY, maxY];
+  }, [selectedProfessorData]);
+
+  // Check if we have professors to display AFTER calculating all hooks
+  // This ensures hooks are always called in the same order
   if (selectedProfessorData.length === 0) {
     return (
       <div className="bg-background p-6 rounded-lg shadow text-center">
@@ -135,10 +163,23 @@ const ProfessorComparisonChart = () => {
     );
   }
 
+  // Now render the chart since we know we have data
   return (
     <div className="bg-background p-4 rounded-lg shadow mb-6">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-2">
         <h3 className="text-lg font-bold">GPA Trends</h3>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="show-averages"
+            checked={showIndividualAvgs}
+            onChange={() => setShowIndividualAvgs(!showIndividualAvgs)}
+            className="mr-1"
+          />
+          <label htmlFor="show-averages" className="text-sm text-tertiary cursor-pointer">
+            Show averages
+          </label>
+        </div>
         <div className="text-sm text-tertiary">
           {selectedProfessorData.length} instructor{selectedProfessorData.length !== 1 ? 's' : ''} selected
         </div>
@@ -159,7 +200,7 @@ const ProfessorComparisonChart = () => {
               }}
             />
             <YAxis
-              domain={[2, 4]}
+              domain={yDomain}
               tick={{ fill: 'rgb(var(--text-tertiary-color))', fontSize: 11 }}
               tickCount={5}
             />
@@ -169,8 +210,41 @@ const ProfessorComparisonChart = () => {
               formatter={(value, name) => [value?.toFixed(2) || '-', name]}
             />
             <Legend
-              formatter={(value) => <span style={{ color: 'rgb(var(--text-primary-color))' }}>{value}</span>}
+              formatter={(value) => {
+                const prof = selectedProfessorData.find(p => p.name === value);
+                if (!prof) return value;
+
+                const color = professorColors[value] || prof.backgroundColor;
+                return (
+                  <span style={{ color: 'rgb(var(--text-primary-color))' }}>
+                    {value}
+                    {prof.averageGpa && (
+                      <span style={{ color }} className="ml-1">
+                        (Avg: {prof.averageGpa.toFixed(2)})
+                      </span>
+                    )}
+                  </span>
+                );
+              }}
             />
+
+            {/* Add individual average reference lines - no labels */}
+            {showIndividualAvgs && selectedProfessorData.map((prof) => {
+              if (!prof.averageGpa) return null;
+              const color = professorColors[prof.name] || prof.backgroundColor;
+              return (
+                <ReferenceLine
+                  key={`avg-${prof.name}`}
+                  y={prof.averageGpa}
+                  stroke={color}
+                  strokeDasharray="3 3"
+                  strokeOpacity={0.7}
+                  ifOverflow="extendDomain"
+                />
+              );
+            })}
+
+            {/* Data lines */}
             {selectedProfessorData.map((prof) => (
               <Line
                 key={prof.name}
@@ -188,7 +262,8 @@ const ProfessorComparisonChart = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-background-secondary/30 text-sm text-tertiary flex justify-end">
+      <div className="mt-4 pt-3 border-t border-background-secondary/30 text-sm text-tertiary flex justify-between">
+        <div>Total GPA avgerages are shown in the legend.</div>
         <div>Higher values indicate higher average GPAs.</div>
       </div>
     </div>

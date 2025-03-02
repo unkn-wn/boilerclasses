@@ -28,7 +28,6 @@ const ExpandCollapseButton = () => {
         <motion.button
           key="collapse"
           {...sharedButtonProps}
-          className={`${sharedButtonProps.className} mt-4`}
           onClick={() => toggleExpanded(false)}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

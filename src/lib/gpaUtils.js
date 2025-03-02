@@ -34,7 +34,9 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
     const grades = [];
     const gpa = {};
     let colorIndex = 0;
-    let totalSemCount = 0;
+
+    // Keep track of unique semesters
+    const uniqueSemesters = new Set();
 
     for (const instructor of profs) {
         let avgGPA = 0;
@@ -53,6 +55,9 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
 
         let semesterCount = 0;
         for (const sem in gpaData[instructor]) {
+            // Add to unique semester set
+            uniqueSemesters.add(sem);
+
             avgGPA += gpaData[instructor][sem][13];
             avgGradeDist = avgGradeDist.map(
                 (val, i) => val + gpaData[instructor][sem][i]
@@ -73,9 +78,11 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
             data: avgGradeDist,
             backgroundColor: color,
         });
-
-        totalSemCount += semesterCount;
     }
+
+    // Total count should be the number of unique semesters
+    const totalSemCount = uniqueSemesters.size;
+
     return { grades, gpa, totalSemCount };
 };
 
@@ -97,25 +104,25 @@ export const averageAllData = (grades) => {
 
 // Function to get color based on GPA
 export const getColor = (gpa) => {
-	if (gpa === 0 || gpa === null) {
-		return `rgb(var(--background-color))`;
-	}
+    if (gpa === 0 || gpa === null) {
+        return `rgb(var(--background-color))`;
+    }
 
-	// Calculate the color based on GPA as a percentage of 4.0
-	const perc = gpa / 4.0;
-	const perc2 = perc * perc * perc;
-	const color1 = [221, 170, 51]; // Higher GPA color
-	const color2 = [79, 0, 56]; // Lower GPA color
+    // Calculate the color based on GPA as a percentage of 4.0
+    const perc = gpa / 4.0;
+    const perc2 = perc * perc * perc;
+    const color1 = [221, 170, 51]; // Higher GPA color
+    const color2 = [79, 0, 56]; // Lower GPA color
 
-	const w1 = perc2;
-	const w2 = 1 - perc2;
+    const w1 = perc2;
+    const w2 = 1 - perc2;
 
-	const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-	const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-	const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
+    const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
+    const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
+    const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
 
-	const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-	return hex;
+    const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    return hex;
 };
 
 // Processes GPA data into this format, used for gpaModal.js
@@ -227,4 +234,53 @@ export const calculateOverallGPA = (courseData) => {
             totalSemCount: 0,
         };
     }
+};
+
+/**
+ * Calculates grade distribution percentages from course data
+ */
+export const calculateGradeDistribution = (courseData) => {
+    if (!courseData?.gpa) return null;
+
+    // Initialize counters for each grade
+    let gradeCount = {
+        'A': 0,
+        'B': 0,
+        'C': 0,
+        'D': 0,
+        'F': 0,
+    };
+
+    let totalStudents = 0;
+
+    // Sum up grades across all professors and semesters
+    Object.keys(courseData.gpa).forEach(profName => {
+        Object.keys(courseData.gpa[profName]).forEach(semester => {
+            const semData = courseData.gpa[profName][semester];
+
+            // Group grades: A=[0,1,2], B=[3,4,5], C=[6,7,8], D=[9,10,11], F=[12]
+            gradeCount['A'] += (semData[0] || 0) + (semData[1] || 0) + (semData[2] || 0);
+            gradeCount['B'] += (semData[3] || 0) + (semData[4] || 0) + (semData[5] || 0);
+            gradeCount['C'] += (semData[6] || 0) + (semData[7] || 0) + (semData[8] || 0);
+            gradeCount['D'] += (semData[9] || 0) + (semData[10] || 0) + (semData[11] || 0);
+            gradeCount['F'] += (semData[12] || 0);
+
+            // Add to total students
+            for (let i = 0; i <= 12; i++) {
+                totalStudents += (semData[i] || 0);
+            }
+        });
+    });
+
+    // Calculate percentages if we have students
+    if (totalStudents > 0) {
+        return {
+            'A': Math.round((gradeCount['A'] / totalStudents) * 100),
+            'B': Math.round((gradeCount['B'] / totalStudents) * 100),
+            'C': Math.round((gradeCount['C'] / totalStudents) * 100),
+            'D': Math.round((gradeCount['D'] / totalStudents) * 100),
+            'F': Math.round((gradeCount['F'] / totalStudents) * 100)
+        };
+    }
+    return null;
 };

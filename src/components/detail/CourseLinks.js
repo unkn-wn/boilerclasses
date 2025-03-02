@@ -2,7 +2,6 @@ import React from 'react';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { Image } from '@chakra-ui/react';
 import { boilerExamsCourses, stripCourseCode } from '@/lib/utils';
-import OverallGpa from '@/components/OverallGpa';
 
 const CourseLinks = () => {
   const { courseData, sem, getSearchableProfString } = useDetailContext();
@@ -11,8 +10,6 @@ const CourseLinks = () => {
 
   return (
     <div className="flex flex-row flex-wrap gap-2 my-1">
-      <OverallGpa courseData={courseData} />
-
       {/* Reddit Link */}
       <a href={`https://www.reddit.com/r/Purdue/search/?q=${courseData.subjectCode}${stripCourseCode(courseData.courseCode)} OR "${courseData.subjectCode} ${stripCourseCode(courseData.courseCode)}" ${getSearchableProfString()}`}
          target="_blank"

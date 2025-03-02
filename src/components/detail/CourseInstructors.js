@@ -53,7 +53,9 @@ const CourseInstructorsContent = () => {
           ))}
 
           {/* Show More button */}
-          <ExpandCollapseButton />
+          <div className="mr-2">
+            <ExpandCollapseButton />
+          </div>
         </div>
       )}
 
@@ -97,7 +99,9 @@ const CourseInstructorsContent = () => {
             </div>
 
             {/* "Show Less" button */}
-            <ExpandCollapseButton />
+            <div className="mr-2">
+              <ExpandCollapseButton />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
