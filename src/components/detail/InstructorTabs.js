@@ -55,7 +55,9 @@ const InstructorTabs = () => {
 
       <TabPanels>
         <TabPanel>
-          <OverviewTabContent />
+          <div className="overflow-y-auto max-h-screen">
+            <OverviewTabContent />
+          </div>
         </TabPanel>
 
         {/* GPA Details tab */}
