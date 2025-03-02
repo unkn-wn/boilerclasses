@@ -35,7 +35,7 @@ const CourseInfoPanel = () => {
 
   return (
     <div className="bg-background p-4 rounded-xl shadow flex flex-col h-full">
-      <h3 className="text-md font-medium text-primary mb-3 border-b pb-2 border-background-secondary/30">
+      <h3 className="text-lg font-bold text-primary mb-3 border-b pb-2 border-background-secondary/30">
         Course Overview
       </h3>
 
