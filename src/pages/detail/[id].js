@@ -12,7 +12,7 @@ import { useBackOrHome } from '@/hooks/useRouteHistory';
 // ---------------------
 
 // ----- React imports -----
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 // ----- Component imports -----
 import { semesters, sanitizeDescription } from "@/lib/utils";
@@ -38,23 +38,14 @@ const CardDetails = ({ courseData, semData }) => {
   const [loading, setLoading] = useState(true);
   const backOrHome = useBackOrHome();
 
-  // Calculate available semesters
-  const availableSemesters = [];
-  semesters.forEach((sem) => {
-    try {
-      if (courseData.terms?.includes(sem)) {
-        availableSemesters.push(sem);
-      }
-    } catch { }
-  });
-
   // Initialize the course data
   useEffect(() => {
     if (!courseData) return;
 
+    // Sanitize description only needs to run once
     sanitizeDescription(courseData);
     setLoading(false);
-  }, [router.isReady, courseData]);
+  }, [courseData]);
 
 
   ///////////////////////////////////////  RENDER  /////////////////////////////////////////

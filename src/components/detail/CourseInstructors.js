@@ -17,7 +17,8 @@ const CourseInstructorsContent = () => {
     instructorsToShow,
     filteredSemesters,
     semesterGroups,
-    selectedInstructors
+    selectedInstructors,
+    isTransitioning
   } = useInstructorContext();
 
   return (
@@ -60,51 +61,54 @@ const CourseInstructorsContent = () => {
       )}
 
       {/* Expandable content */}
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              height: { duration: 0.3, ease: "easeInOut" },
-              opacity: { duration: 0.2 }
-            }}
-            className="overflow-hidden"
-          >
-            {/* Search bar and controls */}
-            <InstructorSearch />
-
-            {/* All instructors in expanded view */}
-            <div
-              className="max-h-72 overflow-y-auto pr-2 space-y-4"
-              style={{
-                scrollbarWidth: 'thin',
-                scrollbarColor: 'rgb(var(--background-tertiary-color)) transparent'
+      {expanded && (
+        <div>
+          <AnimatePresence>
+            <motion.div
+              key="expanded-content"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{
+                height: { duration: 0.5, ease: "easeInOut" },
+                opacity: { duration: 0.2 }
               }}
+              className="overflow-hidden"
             >
-              {/* Add scroll indicator */}
-              {filteredSemesters.length > 2 && (
-                <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-gradient-to-t from-background to-transparent opacity-70 rounded-b-lg" />
-              )}
+              {/* Search bar and controls */}
+              <InstructorSearch />
 
-              {/* Semester groups */}
-              {filteredSemesters.map(semester => (
-                <SemesterGroup
-                  key={semester}
-                  semester={semester}
-                  instructors={semesterGroups[semester] || []}
-                />
-              ))}
-            </div>
+              {/* All instructors in expanded view */}
+              <div
+                className="max-h-72 overflow-y-auto pr-2 space-y-4"
+                style={{
+                  scrollbarWidth: 'thin',
+                  scrollbarColor: 'rgb(var(--background-tertiary-color)) transparent'
+                }}
+              >
+                {/* Add scroll indicator */}
+                {filteredSemesters.length > 2 && (
+                  <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-gradient-to-t from-background to-transparent opacity-70 rounded-b-lg" />
+                )}
 
-            {/* "Show Less" button */}
-            <div className="mr-2">
-              <ExpandCollapseButton />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {/* Semester groups */}
+                {filteredSemesters.map(semester => (
+                  <SemesterGroup
+                    key={semester}
+                    semester={semester}
+                    instructors={semesterGroups[semester] || []}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* "Show Less" button - With extra styling for better visibility */}
+          <div className={`mr-2 mt-3 transition-all ${isTransitioning ? 'bg-blue-600/10 p-1 rounded-lg' : ''}`}>
+            <ExpandCollapseButton />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

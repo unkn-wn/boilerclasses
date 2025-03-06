@@ -9,53 +9,59 @@ const ExpandCollapseButton = () => {
     toggleExpanded,
     remainingInstructorsCount,
     hasPreviousSemesters,
-    sortedSemesters
+    sortedSemesters,
+    isTransitioning
   } = useInstructorContext();
 
-  // Styling and animation properties shared by both buttons
-  const sharedButtonProps = {
-    className: `w-full mt-2 py-2 px-3 text-sm text-tertiary hover:text-secondary
-                bg-background-secondary hover:bg-background-tertiary/50
-                rounded-lg transition-all flex items-center justify-center gap-2`,
-    whileHover: { scale: 1.01, y: -1 },
-    whileTap: { scale: 0.99 },
-    transition: { type: "spring", stiffness: 400, damping: 20 },
-  };
+  // Enhanced styling with attention-grabbing styles during transition
+  const buttonClassName = `w-full mt-2 py-2 px-3 text-sm
+                transition-all flex items-center justify-center gap-2 rounded-lg
+                ${isTransitioning
+                  ? 'bg-background-tertiary text-white shadow-md'
+                  : 'bg-background-secondary text-tertiary hover:text-secondary hover:bg-background-tertiary/50'}`;
+
+  // Content for expand/collapse buttons
+  const expandContent = (
+    <>
+      <FiChevronDown className={isTransitioning ? "text-white" : "text-tertiary"} />
+      <span>
+        {remainingInstructorsCount > 0 &&
+          `${remainingInstructorsCount} more instructor${remainingInstructorsCount !== 1 ? 's' : ''}`}
+        {remainingInstructorsCount > 0 && hasPreviousSemesters && ' + '}
+        {hasPreviousSemesters &&
+          `${sortedSemesters.length - 1} previous semester${sortedSemesters.length - 1 !== 1 ? 's' : ''}`}
+      </span>
+    </>
+  );
+
+  const collapseContent = (
+    <>
+      <FiChevronUp className={isTransitioning ? "text-white" : "text-tertiary"} size={16} />
+      <span>Show Less</span>
+    </>
+  );
 
   return (
-    <AnimatePresence mode="wait">
-      {expanded ? (
+    <div className="relative z-10">
+      {/* Using AnimatePresence with mode="sync" for crossfade effect */}
+      <AnimatePresence mode="sync">
         <motion.button
-          key="collapse"
-          {...sharedButtonProps}
-          onClick={() => toggleExpanded(false)}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
+          key={expanded ? "collapse" : "expand"}
+          className={buttonClassName}
+          onClick={() => toggleExpanded(!expanded)}
+          // Animation that stays in place
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          // Interactive feedback
+          whileHover={{ scale: 1.01, y: -1 }}
+          whileTap={{ scale: 0.99 }}
         >
-          <FiChevronUp className="mr-2 text-tertiary" />
-          Show Less
+          {expanded ? collapseContent : expandContent}
         </motion.button>
-      ) : (
-        <motion.button
-          key="expand"
-          {...sharedButtonProps}
-          onClick={() => toggleExpanded(true)}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-        >
-          <FiChevronDown className="text-tertiary" />
-          <span>
-            {remainingInstructorsCount > 0 &&
-              `${remainingInstructorsCount} more instructor${remainingInstructorsCount !== 1 ? 's' : ''}`}
-            {remainingInstructorsCount > 0 && hasPreviousSemesters && ' + '}
-            {hasPreviousSemesters &&
-              `${sortedSemesters.length - 1} previous semester${sortedSemesters.length - 1 !== 1 ? 's' : ''}`}
-          </span>
-        </motion.button>
-      )}
-    </AnimatePresence>
+      </AnimatePresence>
+    </div>
   );
 };
 

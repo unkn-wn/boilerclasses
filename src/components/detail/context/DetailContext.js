@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { calculateGradesAndGPA, collectAllProfessors } from '@/lib/gpaUtils';
 import { loadRatingsForProfs } from '@/components/RMP';
 import { labels } from '@/lib/utils';
@@ -23,86 +23,81 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
   const [curGPA, setCurGPA] = useState({});
   const [curRMP, setCurRMP] = useState({});
   const [sem, setSem] = useState(initialSemester);
-  const [gpaGraph, setGpaGraph] = useState({});
-  const [defaultGPA, setDefaultGPA] = useState({});
+  const [gpaGraph, setGpaGraph] = useState({ labels: [], datasets: [] });
+  const [defaultGPA, setDefaultGPA] = useState({ labels: [], datasets: [] });
   const [selectableInstructors, setSelectableInstructors] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [initializationComplete, setInitializationComplete] = useState(false);
 
-  // Initialize data on component mount
+  // Memoize expensive calculations to prevent recalculation on re-renders
+  const allProfs = useMemo(() => {
+    if (!courseData?.instructor) return [];
+    return collectAllProfessors(courseData.instructor);
+  }, [courseData?.instructor]);
+
+  // Memoize grade and GPA calculations
+  const calculatedGPA = useMemo(() => {
+    if (!courseData?.gpa || allProfs.length === 0) return { grades: [], gpa: {} };
+    return calculateGradesAndGPA(allProfs, courseData.gpa);
+  }, [courseData?.gpa, allProfs]);
+
+  // Initialize basic data on component mount - separate from heavy processing
   useEffect(() => {
     if (!courseData) return;
 
-    const setupData = async () => {
-      // Get all professors teaching the course
-      const allProfs = collectAllProfessors(courseData.instructor);
+    // Set initial semester
+    setSem(initialSemester);
 
-      // Calculate grades and GPA for all professors
-      const { grades, gpa } = calculateGradesAndGPA(
-        allProfs,
-        courseData.gpa,
-      );
+    // Set selectable instructors list
+    setSelectableInstructors(allProfs);
 
-      // Initialize graph state
-      setGpaGraph({
-        labels,
-        datasets: [],
-      });
+    // Initialize empty graph structure
+    setGpaGraph({ labels, datasets: [] });
+  }, [courseData, initialSemester, allProfs]);
 
-      // Set default GPA data
-      setDefaultGPA({
-        labels,
-        datasets: grades,
-      });
+  // Handle GPA data initialization separately
+  useEffect(() => {
+    if (!calculatedGPA.grades.length) return;
 
-      // Set current GPA data
-      setCurGPA(gpa);
+    // Set default GPA data
+    setDefaultGPA({
+      labels,
+      datasets: calculatedGPA.grades,
+    });
 
-      // Set list of all instructors
-      setSelectableInstructors(allProfs);
+    // Set current GPA data
+    setCurGPA(calculatedGPA.gpa);
 
-      // Set initial semester
-      setSem(initialSemester);
+  }, [calculatedGPA]);
 
-      // Select default instructor
-      const semesterProfs = courseData.instructor[initialSemester] || [];
-      const firstProf = semesterProfs.length > 0 ? semesterProfs[0] : allProfs[0];
+  // Select initial instructor after GPA data is loaded
+  useEffect(() => {
+    if (!defaultGPA.datasets.length || initializationComplete) return;
+
+    // Select default instructor
+    const semesterProfs = courseData?.instructor?.[initialSemester] || [];
+    const firstProf = semesterProfs.length > 0 ? semesterProfs[0] : allProfs[0];
+
+    if (firstProf) {
       setSelectedInstructors([firstProf]);
-
-      // Load initial graph for the first professor
       refreshGraph({ value: firstProf, label: firstProf });
+      setInitializationComplete(true);
+    }
+  }, [defaultGPA.datasets, courseData?.instructor, initialSemester, allProfs, initializationComplete]);
 
-      // Load RMP ratings
+  // Load RMP ratings separately to not block initial rendering
+  useEffect(() => {
+    if (!courseData || !initializationComplete) return;
+
+    const loadRatings = async () => {
       const ratings = await loadRatingsForProfs(courseData);
       setCurRMP(ratings);
-
-      // Done loading
-      setLoading(false);
     };
 
-    setupData();
-  }, [courseData, initialSemester]);
+    loadRatings();
+  }, [courseData, initializationComplete]);
 
-  // Add this new effect to ensure graph updates once defaultGPA is populated
-  useEffect(() => {
-    // Only run when defaultGPA datasets is populated and we have selected instructors
-    if (
-      defaultGPA.datasets &&
-      defaultGPA.datasets.length > 0 &&
-      selectedInstructors.length > 0 &&
-      !loading
-    ) {
-      // Refresh the graph with the currently selected instructors
-      const instructorObjects = selectedInstructors.map(name => ({
-        value: name,
-        label: name
-      }));
-
-      refreshGraph(instructorObjects);
-    }
-  }, [defaultGPA.datasets]);
-
-  // Function to refresh the graph when instructors change
-  const refreshGraph = (instructors) => {
+  // Function to refresh the graph when instructors change - memoize to prevent recreations
+  const refreshGraph = useCallback((instructors) => {
     const gpa = defaultGPA.datasets;
     if (!gpa || gpa.length === 0 || !instructors) return;
 
@@ -114,7 +109,9 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
 
     try {
       const newgpa = gpa.filter(inst => {
-        const isIncluded = instructors.some(instructor => instructor.label === inst.label.trim());
+        const isIncluded = Array.isArray(instructors)
+          ? instructors.some(instructor => instructor.label === inst.label.trim())
+          : instructors.label === inst.label.trim();
         return isIncluded;
       });
 
@@ -125,17 +122,19 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
     } catch (error) {
       console.error("Error filtering instructors", error);
     }
-  };
+  }, [defaultGPA.datasets]);
 
-  // Function to get searchable professor string for Reddit search
-  const getSearchableProfString = () => {
+  // Memoize searchable professor string to avoid recalculation
+  const getSearchableProfString = useCallback(() => {
+    if (!courseData?.instructor?.[sem]) return " OR ";
+
     let ret = " OR ";
-    courseData.instructor[sem]?.forEach((prof) => {
+    courseData.instructor[sem].forEach((prof) => {
       const profSplit = prof.split(" ");
       ret += `"${profSplit[0]} ${profSplit[profSplit.length - 1]}" OR `;
     });
     return ret.substring(0, ret.length - 4);
-  };
+  }, [courseData?.instructor, sem]);
 
   // Value object to provide through context
   const contextValue = {
@@ -148,7 +147,7 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
     gpaGraph,
     defaultGPA,
     selectableInstructors,
-    loading,
+    loading: !initializationComplete,
     refreshGraph,
     getSearchableProfString
   };

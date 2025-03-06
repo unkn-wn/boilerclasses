@@ -103,26 +103,55 @@ export const averageAllData = (grades) => {
 };
 
 // Function to get color based on GPA
-export const getColor = (gpa) => {
-    if (gpa === 0 || gpa === null) {
-        return `rgb(var(--background-color))`;
+/**
+ * Returns a color representing a GPA based on a specific visualization method
+ * @param {number} gpa - The GPA value (0-4 scale)
+ * @param {object} options - Optional configuration
+ * @param {boolean} options.asRGB - Returns RGB format instead of hex
+ * @returns {string} A color in hex format (or RGB if asRGB is true)
+ */
+export const getColor = (gpa, options = {}) => {
+    // Handle null/undefined/zero GPA
+    if (!gpa || gpa === 0) {
+        return options?.asRGB ? 'rgb(var(--text-tertiary-color))' : `rgb(var(--background-color))`;
     }
 
-    // Calculate the color based on GPA as a percentage of 4.0
-    const perc = gpa / 4.0;
-    const perc2 = perc * perc * perc;
-    const color1 = [221, 170, 51]; // Higher GPA color
-    const color2 = [79, 0, 56]; // Lower GPA color
+    // Define the color stops based on GPA values
+    const colorStops = [
+        { gpa: 1.0, color: [71, 0, 0] },  // Very low - Darkest red
+        { gpa: 2.25, color: [200, 30, 30] },  // Low - Red
+        { gpa: 3.25, color: [218, 170, 0] },  // Medium - Yellow (#daaa00)
+        { gpa: 4.0, color: [34, 197, 94] }   // High - Green (#22c55e)
+    ];
 
-    const w1 = perc2;
-    const w2 = 1 - perc2;
+    // Find the two color stops to interpolate between
+    let lowerStop = colorStops[0];
+    let upperStop = colorStops[colorStops.length - 1];
 
-    const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-    const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-    const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
+    for (let i = 0; i < colorStops.length - 1; i++) {
+        if (gpa >= colorStops[i].gpa && gpa <= colorStops[i + 1].gpa) {
+            lowerStop = colorStops[i];
+            upperStop = colorStops[i + 1];
+            break;
+        }
+    }
 
-    const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    return hex;
+    // Calculate how far between the two stops the GPA falls (0-1)
+    const range = upperStop.gpa - lowerStop.gpa;
+    const normalizedPosition = range === 0 ? 0 : (gpa - lowerStop.gpa) / range;
+
+    // Interpolate between the two colors
+    const r = Math.round(lowerStop.color[0] + normalizedPosition * (upperStop.color[0] - lowerStop.color[0]));
+    const g = Math.round(lowerStop.color[1] + normalizedPosition * (upperStop.color[1] - lowerStop.color[1]));
+    const b = Math.round(lowerStop.color[2] + normalizedPosition * (upperStop.color[2] - lowerStop.color[2]));
+
+    // Return in requested format
+    if (options?.asRGB) {
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Convert to hex
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
 };
 
 // Processes GPA data into this format, used for gpaModal.js
@@ -271,6 +300,39 @@ export const calculateGradeDistribution = (courseData) => {
             }
         });
     });
+
+    // Calculate percentages if we have students
+    if (totalStudents > 0) {
+        return {
+            'A': Math.round((gradeCount['A'] / totalStudents) * 100),
+            'B': Math.round((gradeCount['B'] / totalStudents) * 100),
+            'C': Math.round((gradeCount['C'] / totalStudents) * 100),
+            'D': Math.round((gradeCount['D'] / totalStudents) * 100),
+            'F': Math.round((gradeCount['F'] / totalStudents) * 100)
+        };
+    }
+    return null;
+};
+
+/**
+ * Calculates grade distribution percentages for a specific instructor
+ * @param {Array} gradeData - Array of grade counts [A+, A, A-, B+, B, B-, etc.]
+ * @returns {object|null} Grade distribution percentages {A: x%, B: y%, ...}
+ */
+export const calculateInstructorGradeDistribution = (gradeData) => {
+    if (!gradeData || !gradeData.some(val => val > 0)) return null;
+
+    // Initialize counters for each grade
+    let gradeCount = {
+        'A': (gradeData[0] || 0) + (gradeData[1] || 0) + (gradeData[2] || 0),
+        'B': (gradeData[3] || 0) + (gradeData[4] || 0) + (gradeData[5] || 0),
+        'C': (gradeData[6] || 0) + (gradeData[7] || 0) + (gradeData[8] || 0),
+        'D': (gradeData[9] || 0) + (gradeData[10] || 0) + (gradeData[11] || 0),
+        'F': (gradeData[12] || 0)
+    };
+
+    // Calculate total students
+    const totalStudents = Object.values(gradeCount).reduce((sum, count) => sum + count, 0);
 
     // Calculate percentages if we have students
     if (totalStudents > 0) {

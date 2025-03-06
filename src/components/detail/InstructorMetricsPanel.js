@@ -1,10 +1,11 @@
-import React from 'react';
-import { FiExternalLink } from 'react-icons/fi';
+import React, { useMemo } from 'react';
+import { FiExternalLink, FiCalendar } from 'react-icons/fi';
 import { useDetailContext } from './context/DetailContext';
 import AnimatedCircularProgress from './AnimatedCircularProgress';
+import { Tooltip } from '@chakra-ui/react';
 
 const InstructorMetricsPanel = () => {
-  const { selectedInstructors, curGPA, curRMP } = useDetailContext();
+  const { courseData, selectedInstructors, curGPA, curRMP } = useDetailContext();
 
   // Use the last instructor in the array as the active one
   const selectedInstructor = selectedInstructors[selectedInstructors.length - 1];
@@ -21,9 +22,17 @@ const InstructorMetricsPanel = () => {
                      curRMP[selectedInstructor] &&
                      curRMP[selectedInstructor] !== 0;
 
+  // Calculate the number of semesters for this instructor's GPA
+  const semesterCount = useMemo(() => {
+    if (!hasGpaData || !courseData?.gpa || !selectedInstructor) return 0;
+
+    const instructorData = courseData.gpa[selectedInstructor] || {};
+    return Object.keys(instructorData).length;
+  }, [courseData, selectedInstructor, hasGpaData]);
+
   // Open RMP page for selected instructor
   const openRmpPage = () => {
-    if (hasRmpData && selectedInstructor) {
+    if (selectedInstructor) {
       window.open(`https://www.ratemyprofessors.com/search/professors/783?q=${selectedInstructor}`, '_blank');
     }
   };
@@ -37,25 +46,40 @@ const InstructorMetricsPanel = () => {
       <div className="flex-1 flex justify-center items-center">
         {/* Container for both dials */}
         <div className="flex items-center justify-center gap-8">
-          {/* GPA DIAL */}
-          <div className="flex flex-col items-center">
-            {!hasGpaData ? (
-              <div className="h-[130px] w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
-                <p className="text-tertiary text-sm">No GPA</p>
+          {/* GPA DIAL with tooltip */}
+          <Tooltip
+            isDisabled={!hasGpaData}
+            label={
+              <div className="flex items-center gap-2 p-1">
+                <FiCalendar className="text-blue-300" />
+                <span>Averaged from <b>{semesterCount}</b> {semesterCount === 1 ? 'semester' : 'semesters'}</span>
               </div>
-            ) : (
-              <AnimatedCircularProgress
-                value={curGPA[selectedInstructor][0]}
-                maxValue={4}
-                text={curGPA[selectedInstructor][0].toFixed(2)}
-                color={curGPA[selectedInstructor][1]}
-                size={130}
-                strokeWidth={10}
-                duration={750}
-              />
-            )}
-            <p className="mt-3 text-sm font-medium text-secondary">Average GPA</p>
-          </div>
+            }
+            bg="rgba(var(--background-secondary-color))"
+            color="rgb(var(--text-color))"
+            borderRadius="md"
+            placement="bottom"
+            hasArrow
+          >
+            <div className={`flex flex-col items-center transition-transform ${hasGpaData && 'hover:scale-105 cursor-help'}`}>
+              {!hasGpaData ? (
+                <div className="h-[130px] w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
+                  <p className="text-tertiary text-sm">No GPA</p>
+                </div>
+              ) : (
+                <AnimatedCircularProgress
+                  value={curGPA[selectedInstructor][0]}
+                  maxValue={4}
+                  text={curGPA[selectedInstructor][0].toFixed(2)}
+                  color={curGPA[selectedInstructor][1]}
+                  size={130}
+                  strokeWidth={10}
+                  duration={750}
+                />
+              )}
+              <p className="mt-3 text-sm font-medium text-secondary">Average GPA</p>
+            </div>
+          </Tooltip>
 
           {/* RMP DIAL */}
           <div
@@ -64,7 +88,7 @@ const InstructorMetricsPanel = () => {
           >
             {!hasRmpData ? (
               <div className="h-[130px] w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
-                <p className="text-tertiary text-sm text-center">Click to<br/>search RMP</p>
+                <p className="text-tertiary text-sm text-center">No rating<br/>found!</p>
               </div>
             ) : (
               <div className="flex items-center justify-center">
@@ -90,7 +114,7 @@ const InstructorMetricsPanel = () => {
       <div className="mt-2 text-xs text-tertiary text-center">
         {!hasGpaData && !hasRmpData ?
           "No rating data available for this instructor" :
-          "Click RateMyProf to view detailed reviews"
+          ""
         }
       </div>
     </div>

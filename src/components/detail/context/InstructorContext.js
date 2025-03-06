@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { getColor } from '@/lib/gpaUtils';
 import { useDetailContext } from './DetailContext';
 
@@ -21,26 +21,28 @@ export const InstructorProvider = ({ children }) => {
   // Local state for UI interactions
   const [expanded, setExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [semesterGroups, setSemesterGroups] = useState({});
-  const [sortedSemesters, setSortedSemesters] = useState([]);
   const [expandedSemesters, setExpandedSemesters] = useState({});
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Process all instructor data and organize by semester
-  useEffect(() => {
-    if (!courseData || !courseData.instructor) return;
+  // Memoize semester groups to avoid recalculation on every render
+  const { semesterGroups, sortedSemesters } = useMemo(() => {
+    if (!courseData?.instructor) {
+      return { semesterGroups: {}, sortedSemesters: [] };
+    }
 
     // Build semester groups with instructors
     const groups = {};
     const allSemesters = new Set();
 
     // First collect all semesters and instructors
-    Object.keys(courseData.instructor || {}).forEach(termName => {
+    Object.keys(courseData.instructor).forEach(termName => {
       allSemesters.add(termName);
 
       if (!groups[termName]) {
         groups[termName] = [];
       }
 
+      // Process instructors for this term
       (courseData.instructor[termName] || []).forEach(professor => {
         // Get GPA data for this professor in this term if available
         let gpa = null;
@@ -72,9 +74,8 @@ export const InstructorProvider = ({ children }) => {
       return seasons.indexOf(b_split[0]) - seasons.indexOf(a_split[0]); // Season order
     });
 
-    setSemesterGroups(groups);
-    setSortedSemesters(sorted);
-  }, [courseData]);
+    return { semesterGroups: groups, sortedSemesters: sorted };
+  }, [courseData?.instructor, courseData?.gpa]);
 
   // Reset expanded semesters when main component collapses
   useEffect(() => {
@@ -90,16 +91,16 @@ export const InstructorProvider = ({ children }) => {
     }
   }, [expanded, sortedSemesters]);
 
-  // Toggle a specific semester's expanded state
-  const toggleSemester = (semester) => {
+  // Toggle a specific semester's expanded state - memoize to avoid function recreation
+  const toggleSemester = useCallback((semester) => {
     setExpandedSemesters(prev => ({
       ...prev,
       [semester]: !prev[semester]
     }));
-  };
+  }, []);
 
-  // Function to select/deselect all instructors in a semester
-  const toggleAllInSemester = (semester, e) => {
+  // Function to select/deselect all instructors in a semester - memoize
+  const toggleAllInSemester = useCallback((semester, e) => {
     // Prevent toggling the semester expansion
     if (e) e.stopPropagation();
 
@@ -126,26 +127,26 @@ export const InstructorProvider = ({ children }) => {
 
     // Update the selection in context
     refreshGraph(newSelection.map(name => ({ value: name, label: name })));
-  };
+  }, [semesterGroups, selectedInstructors, refreshGraph]);
 
-  // Toggle a specific professor's selection
-  const toggleProfessor = (professorName) => {
+  // Toggle a specific professor's selection - memoize
+  const toggleProfessor = useCallback((professorName) => {
     const newSelection = selectedInstructors.includes(professorName)
       ? selectedInstructors.filter(name => name !== professorName)
       : [...selectedInstructors, professorName];
 
     refreshGraph(newSelection.map(name => ({ value: name, label: name })));
-  };
+  }, [selectedInstructors, refreshGraph]);
 
-  // Check if all instructors in a semester are selected
-  const areAllInstructorsSelected = (semester) => {
+  // Check if all instructors in a semester are selected - memoize
+  const areAllInstructorsSelected = useCallback((semester) => {
     const instructors = semesterGroups[semester] || [];
     if (instructors.length === 0) return false;
     return instructors.every(instructor => selectedInstructors.includes(instructor.name));
-  };
+  }, [semesterGroups, selectedInstructors]);
 
-  // Filter semesters and instructors based on search query
-  const getFilteredSemesters = () => {
+  // Memoize filtered semesters based on search query
+  const filteredSemesters = useMemo(() => {
     if (!searchQuery) {
       return expanded ? sortedSemesters : [sem];
     }
@@ -156,38 +157,66 @@ export const InstructorProvider = ({ children }) => {
         instructor.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     });
-  };
+  }, [searchQuery, expanded, sortedSemesters, sem, semesterGroups]);
 
-  // Expand all semesters
-  const expandAllSemesters = () => {
+  // Expand all semesters - memoize
+  const expandAllSemesters = useCallback(() => {
     const expandAll = {};
     sortedSemesters.forEach(semester => {
       expandAll[semester] = true;
     });
     setExpandedSemesters(expandAll);
-  };
+  }, [sortedSemesters]);
 
-  // Collapse all semesters
-  const collapseAllSemesters = () => {
+  // Collapse all semesters - memoize
+  const collapseAllSemesters = useCallback(() => {
     const collapseAll = {};
     sortedSemesters.forEach(semester => {
       collapseAll[semester] = false;
     });
     setExpandedSemesters(collapseAll);
-  };
+  }, [sortedSemesters]);
 
-  // Toggle expanded state
-  const toggleExpanded = (value = !expanded) => {
+  // Toggle expanded state with transition state management - memoize
+  const toggleExpanded = useCallback((value = !expanded) => {
+    // Set transitioning state to highlight button during animation
+    setIsTransitioning(true);
+
+    // Set expanded state
     setExpanded(value);
-  };
 
-  // Calculate relevant data for the UI
-  const filteredSemesters = getFilteredSemesters();
-  const currentSemInstructors = semesterGroups[sem] || [];
-  const instructorsToShow = currentSemInstructors.slice(0, 2);
-  const remainingInstructorsCount = currentSemInstructors.length - 2;
+    // Reset transitioning state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 700); // Slightly longer than animation to ensure button stays highlighted
+  }, [expanded]);
 
-  const contextValue = {
+  // Memoize current semester instructors
+  const currentSemInstructors = useMemo(() =>
+    semesterGroups[sem] || [],
+    [semesterGroups, sem]
+  );
+
+  // Memoize instructors to show
+  const instructorsToShow = useMemo(() =>
+    currentSemInstructors.slice(0, 2),
+    [currentSemInstructors]
+  );
+
+  // Memoize remaining instructors count
+  const remainingInstructorsCount = useMemo(() =>
+    currentSemInstructors.length - 2,
+    [currentSemInstructors]
+  );
+
+  // Memoize whether there are previous semesters
+  const hasPreviousSemesters = useMemo(() =>
+    sortedSemesters.length > 1,
+    [sortedSemesters]
+  );
+
+  // Memoize the context value to prevent unnecessary re-renders of consumers
+  const contextValue = useMemo(() => ({
     // UI state
     expanded,
     searchQuery,
@@ -195,12 +224,13 @@ export const InstructorProvider = ({ children }) => {
     sortedSemesters,
     expandedSemesters,
     filteredSemesters,
+    isTransitioning,
 
     // Calculated values
     currentSemesterInstructors: currentSemInstructors,
     instructorsToShow,
     remainingInstructorsCount,
-    hasPreviousSemesters: sortedSemesters.length > 1,
+    hasPreviousSemesters,
 
     // Methods
     setSearchQuery,
@@ -211,7 +241,26 @@ export const InstructorProvider = ({ children }) => {
     areAllInstructorsSelected,
     expandAllSemesters,
     collapseAllSemesters
-  };
+  }), [
+    expanded,
+    searchQuery,
+    semesterGroups,
+    sortedSemesters,
+    expandedSemesters,
+    filteredSemesters,
+    isTransitioning,
+    currentSemInstructors,
+    instructorsToShow,
+    remainingInstructorsCount,
+    hasPreviousSemesters,
+    toggleExpanded,
+    toggleSemester,
+    toggleAllInSemester,
+    toggleProfessor,
+    areAllInstructorsSelected,
+    expandAllSemesters,
+    collapseAllSemesters
+  ]);
 
   return (
     <InstructorContext.Provider value={contextValue}>

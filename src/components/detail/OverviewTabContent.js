@@ -1,48 +1,43 @@
 // Component that renders the course overview tab with instructor selector, stats, and GPA graph
-import React from 'react';
+import React, { memo } from 'react';
 import InstructorSelector from './InstructorSelector';
 import CourseStats from './CourseStats';
 import Graph from '@/components/graph';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import ProfessorComparisonChart from './ProfessorComparisonChart';
 
-const OverviewTabContent = () => {
+// Memoize the entire component to prevent unnecessary re-renders
+const OverviewTabContent = memo(() => {
   const {
     defaultGPA,
     selectableInstructors,
     selectedInstructors,
     refreshGraph,
-    curGPA,
-    curRMP,
     gpaGraph,
-    courseData,
-    sem
   } = useDetailContext();
 
-  // Get instructors for the current semester
-  const instructors = courseData?.instructor?.[sem] || [];
+  // Check if we have datasets to display
+  const hasDefaultGPAData = defaultGPA?.datasets &&
+    Array.isArray(defaultGPA.datasets) &&
+    defaultGPA.datasets.length > 0;
 
   return (
     <>
       <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-        {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 &&
+        {hasDefaultGPAData && (
           <InstructorSelector
             instructors={selectableInstructors}
             selectedInstructors={selectedInstructors}
             onChange={(value) => refreshGraph(value)}
           />
-        }
+        )}
       </div>
 
       {/* Stat Cards */}
-      <CourseStats
-        selectedInstructor={selectedInstructors[selectedInstructors.length - 1]}
-        curGPA={curGPA}
-        curRMP={curRMP}
-      />
+      <CourseStats />
 
       {/* GPA Graph */}
-      {defaultGPA.datasets && Array.isArray(defaultGPA.datasets) && defaultGPA.datasets.length > 0 ? (
+      {hasDefaultGPAData ? (
         <div className='md:mt-4 mt-2 mb-4'>
           <Graph data={gpaGraph} />
         </div>
@@ -56,6 +51,9 @@ const OverviewTabContent = () => {
       <ProfessorComparisonChart />
     </>
   );
-};
+});
+
+// Important: Set displayName for devtools and memo
+OverviewTabContent.displayName = 'OverviewTabContent';
 
 export default OverviewTabContent;

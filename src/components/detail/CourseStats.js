@@ -30,7 +30,7 @@ const CourseStats = () => {
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
                 <p className="text-tertiary font-bold">Select an instructor to view metrics</p>
-                <p className="text-xs text-tertiary mt-2">Add instructors using the search bar above</p>
+                <p className="text-xs text-tertiary">Add instructors using the search bar above or the list on the left</p>
               </div>
             </div>
           </div>

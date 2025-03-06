@@ -10,6 +10,8 @@ const InstructorTabs = () => {
       variant='soft-rounded'
       size='sm'
       defaultIndex={0}
+      isLazy
+      lazyBehavior="keepMounted"
       sx={{
         // Tab list container
         '& .chakra-tabs__tablist': {
@@ -60,7 +62,7 @@ const InstructorTabs = () => {
           </div>
         </TabPanel>
 
-        {/* GPA Details tab */}
+        {/* GPA Details tab - now lazy loaded */}
         <TabPanel>
           <div className="overflow-y-auto max-h-screen">
             <GpaModal />

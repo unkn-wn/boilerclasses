@@ -79,7 +79,6 @@ const CourseHeader = ({ backOrHome }) => {
           ))}
         </div>
 
-        {/* Replace the instructors display with the new component */}
         <CourseInstructors />
       </div>
     </>
