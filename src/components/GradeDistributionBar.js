@@ -12,7 +12,8 @@ const GradeDistributionBar = ({ gradeDistribution, showLabels = true }) => {
     B: 'bg-yellow-500', // Yellow from 3.25 GPA
     C: 'bg-red-600', // Red from 2.25 GPA
     D: 'bg-red-800', // Darker red - blend toward 1.0 GPA color
-    F: 'bg-red-950'  // Darkest red from 1.0 GPA
+    F: 'bg-red-950',  // Darkest red from 1.0 GPA
+    // N: 'bg-background-secondary' // Gray for N/A or other grades
   };
 
   // If we don't have distribution data, show the empty state
@@ -54,15 +55,43 @@ const GradeDistributionBar = ({ gradeDistribution, showLabels = true }) => {
             </div>
           )
         ))}
+        {/* If we wanna add back N/A displaying
+         {(() => {
+          const validGrades = Object.entries(gradeDistribution)
+            .filter(([grade, percentage]) => percentage > 0 && grade !== "N");
+
+          // Calculate the sum of valid percentages
+          const totalPercentage = validGrades.reduce((sum, [_, percentage]) => sum + percentage, 0);
+
+          // Create scaling factor to fill 100% width (if total is 0, avoid division by 0)
+          const scalingFactor = totalPercentage > 0 ? 100 / totalPercentage : 1;
+
+          return validGrades.map(([grade, percentage]) => {
+            // Scale the percentage to fill the entire bar
+            const scaledPercentage = percentage * scalingFactor;
+
+            return (
+              <div
+                key={grade}
+                className={`h-full ${gradeColors[grade]} flex items-center justify-center text-[10px] text-white font-bold`}
+                style={{ width: `${scaledPercentage}%` }}
+              >
+                {scaledPercentage >= 8 ? grade : ''}
+              </div>
+            );
+          });
+        })()} */}
       </div>
 
       {/* Legend - keep this regardless of showLabels */}
       <div className="flex justify-between mt-1 text-[10px] text-tertiary">
         {Object.entries(gradeDistribution).map(([grade, percentage]) => (
-          <div key={grade} className="flex items-center">
-            <div className={`w-2 h-2 ${gradeColors[grade]} mr-1 rounded-sm`}></div>
-            <span>{grade}: {percentage}%</span>
-          </div>
+          percentage > 0 && (
+            <div key={grade} className="flex items-center">
+              <div className={`w-2 h-2 ${gradeColors[grade]} mr-1 rounded-sm`}></div>
+              <span>{grade}: {percentage}%</span>
+            </div>
+          )
         ))}
       </div>
     </div>

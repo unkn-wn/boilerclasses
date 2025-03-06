@@ -104,7 +104,7 @@ const CourseInstructorsContent = () => {
           </AnimatePresence>
 
           {/* "Show Less" button - With extra styling for better visibility */}
-          <div className={`mr-2 mt-3 transition-all ${isTransitioning ? 'bg-blue-600/10 p-1 rounded-lg' : ''}`}>
+          <div className={`mr-2 mt-3 transition-all`}>
             <ExpandCollapseButton />
           </div>
         </div>

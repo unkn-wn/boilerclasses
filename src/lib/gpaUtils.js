@@ -303,13 +303,23 @@ export const calculateGradeDistribution = (courseData) => {
 
     // Calculate percentages if we have students
     if (totalStudents > 0) {
-        return {
+        const distribution = {
             'A': Math.round((gradeCount['A'] / totalStudents) * 100),
             'B': Math.round((gradeCount['B'] / totalStudents) * 100),
             'C': Math.round((gradeCount['C'] / totalStudents) * 100),
             'D': Math.round((gradeCount['D'] / totalStudents) * 100),
             'F': Math.round((gradeCount['F'] / totalStudents) * 100)
         };
+
+        // Calculate sum of all percentages
+        // const totalPercentage = Object.values(distribution).reduce((sum, val) => sum + val, 0);
+
+        // Add N/A category if total doesn't add up to 100%
+        // if (totalPercentage < 100) {
+        //     distribution['N'] = 100 - totalPercentage;
+        // }
+
+        return distribution;
     }
     return null;
 };
@@ -322,27 +332,40 @@ export const calculateGradeDistribution = (courseData) => {
 export const calculateInstructorGradeDistribution = (gradeData) => {
     if (!gradeData || !gradeData.some(val => val > 0)) return null;
 
-    // Initialize counters for each grade
-    let gradeCount = {
-        'A': (gradeData[0] || 0) + (gradeData[1] || 0) + (gradeData[2] || 0),
-        'B': (gradeData[3] || 0) + (gradeData[4] || 0) + (gradeData[5] || 0),
-        'C': (gradeData[6] || 0) + (gradeData[7] || 0) + (gradeData[8] || 0),
-        'D': (gradeData[9] || 0) + (gradeData[10] || 0) + (gradeData[11] || 0),
-        'F': (gradeData[12] || 0)
+    // Calculate distribution with improved precision
+    const sampleDistribution = {
+        'A': Math.round((gradeData[0] + gradeData[1] + gradeData[2]) * 10) || 0,
+        'B': Math.round((gradeData[3] + gradeData[4] + gradeData[5]) * 10) || 0,
+        'C': Math.round((gradeData[6] + gradeData[7] + gradeData[8]) * 10) || 0,
+        'D': Math.round((gradeData[9] + gradeData[10] + gradeData[11]) * 10) || 0,
+        'F': Math.round(gradeData[12] * 10) || 0
     };
 
-    // Calculate total students
-    const totalStudents = Object.values(gradeCount).reduce((sum, count) => sum + count, 0);
-
-    // Calculate percentages if we have students
-    if (totalStudents > 0) {
-        return {
-            'A': Math.round((gradeCount['A'] / totalStudents) * 100),
-            'B': Math.round((gradeCount['B'] / totalStudents) * 100),
-            'C': Math.round((gradeCount['C'] / totalStudents) * 100),
-            'D': Math.round((gradeCount['D'] / totalStudents) * 100),
-            'F': Math.round((gradeCount['F'] / totalStudents) * 100)
-        };
+    // Calculate percentages, not scaling to 100 and ignoring N/A
+    let gradeDistribution = {};
+    const total = Object.values(sampleDistribution).reduce((sum, val) => sum + val, 0);
+    if (total > 0) {
+        gradeDistribution = Object.fromEntries(
+            Object.entries(sampleDistribution).map(([grade, value]) =>
+                [grade, Math.round((value / total) * 100)]
+            )
+        );
     }
-    return null;
+
+    // N/A CALCULATION -- for percentages that dont add to 100, some students drop
+    // Convert to percentages (dividing by 10)
+    // const distributionPercentages = Object.fromEntries(
+    //     Object.entries(sampleDistribution).map(([grade, value]) => [grade, value / 10])
+    // );
+
+    // Calculate sum of all percentages
+    // const totalPercentage = Object.values(distributionPercentages).reduce((sum, val) => sum + val, 0);
+
+    // Add N category if total doesn't equal 100
+    // const naPercentage = Math.round((100 - totalPercentage) * 10) / 10;
+
+    return {
+        ...gradeDistribution,
+        // ...(naPercentage > 0 ? { 'N': naPercentage } : {})
+    };
 };

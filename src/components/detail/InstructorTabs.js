@@ -52,7 +52,7 @@ const InstructorTabs = () => {
           },
         }}>
         <Tab>Overview</Tab>
-        <Tab>GPA Details</Tab>
+        <Tab>All Grades</Tab>
       </TabList>
 
       <TabPanels>
@@ -63,7 +63,7 @@ const InstructorTabs = () => {
           </div>
         </TabPanel>
 
-        {/* GPA Details tab - now lazy loaded */}
+        {/* GPA Details tab (lazy loaded) */}
         <TabPanel>
           <div className="overflow-y-auto max-h-screen">
             <GpaModal />

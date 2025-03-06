@@ -1,9 +1,10 @@
 // Table component that displays GPA data for all professors across semesters
-import React, { memo, useState, useMemo } from 'react';
-import { getColor } from '@/lib/gpaUtils';
+import React, { memo, useMemo, useState } from 'react';
+import { getColor, calculateInstructorGradeDistribution } from '@/lib/gpaUtils';
 import GradeDistributionBar from '@/components/GradeDistributionBar';
 import { useDetailContext } from './context/DetailContext';
 import { extractAllSemesters } from '@/lib/utils';
+import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
 // Memoized average cell with bolder text
 const AverageGpaCell = memo(({ averageGpa, color }) => {
@@ -29,7 +30,30 @@ const AverageGpaCell = memo(({ averageGpa, color }) => {
 
 AverageGpaCell.displayName = 'AverageGpaCell';
 
-const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
+// Sort header component that shows indicators and handles clicks
+const SortHeader = ({ label, field, currentSort, onSort, width = "auto" }) => {
+  const isActive = currentSort.field === field;
+  const direction = currentSort.direction;
+
+  return (
+    <th
+      className="py-2 px-2 text-center cursor-pointer hover:bg-background-secondary transition-colors"
+      style={{ width }}
+      onClick={() => onSort(field)}
+    >
+      <div className="text-[11px] text-tertiary font-bold flex items-center justify-center gap-1">
+        {label}
+        {isActive && (
+          <span className="ml-1">
+            {direction === 'asc' ? <FiArrowUp size={12} /> : <FiArrowDown size={12} />}
+          </span>
+        )}
+      </div>
+    </th>
+  );
+};
+
+const GpaTable = ({ searchQuery = '' }) => {
   // Get data directly from context instead of props
   const {
     courseData,
@@ -38,8 +62,8 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
     defaultGPA
   } = useDetailContext();
 
-  // Local state for selections when in localSelectMode
-  const [localSelectedInstructors, setLocalSelectedInstructors] = useState(selectedInstructors);
+  // Add sorting state
+  const [sort, setSort] = useState({ field: 'averageGpa', direction: 'desc' });
 
   // Process professor data from context
   const professorData = useMemo(() => {
@@ -63,32 +87,10 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
 
       const averageGpa = semesterCount > 0 ? avgGPA / semesterCount : null;
 
-      // Generate grade distribution data
+      // Generate grade distribution data using the utility function
       const gradeData = dataset.data;
-
-      // Check if there's any meaningful grade data
-      const hasGradeData = gradeData && gradeData.some(val => val > 0);
-
-      let gradeDistribution = null;
-      if (hasGradeData) {
-        const sampleDistribution = {
-          'A': Math.round((gradeData[0] + gradeData[1] + gradeData[2]) * 10) || 0,
-          'B': Math.round((gradeData[3] + gradeData[4] + gradeData[5]) * 10) || 0,
-          'C': Math.round((gradeData[6] + gradeData[7] + gradeData[8]) * 10) || 0,
-          'D': Math.round((gradeData[9] + gradeData[10] + gradeData[11]) * 10) || 0,
-          'F': Math.round(gradeData[12] * 10) || 0
-        };
-
-        // Only normalize if there's actual data
-        const total = Object.values(sampleDistribution).reduce((sum, val) => sum + val, 0);
-        if (total > 0) {
-          gradeDistribution = Object.fromEntries(
-            Object.entries(sampleDistribution).map(([grade, value]) =>
-              [grade, Math.round((value / total) * 100)]
-            )
-          );
-        }
-      }
+      const gradeDistribution = calculateInstructorGradeDistribution(gradeData);
+      const hasGradeData = gradeDistribution !== null;
 
       return {
         name: dataset.label,
@@ -114,50 +116,84 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
     );
   }, [professorData, searchQuery]);
 
-  // Handle selecting a professor
+  // Sort the filtered data based on current sort settings
+  const sortedData = useMemo(() => {
+    if (!filteredData.length) return [];
+
+    return [...filteredData].sort((a, b) => {
+      let comparison = 0;
+
+      // Handle null values for proper sorting
+      if (sort.field === 'averageGpa') {
+        // Sort nulls to the bottom regardless of sort direction
+        if (a.averageGpa === null && b.averageGpa !== null) return 1;
+        if (a.averageGpa !== null && b.averageGpa === null) return -1;
+        if (a.averageGpa === null && b.averageGpa === null) return 0;
+
+        comparison = a.averageGpa - b.averageGpa;
+      }
+      else if (sort.field === 'name') {
+        comparison = a.name.localeCompare(b.name);
+      }
+      else if (sort.field === 'gradeA') {
+        // Sort by percentage of A grades
+        const aGrade = a.gradeDistribution?.A || 0;
+        const bGrade = b.gradeDistribution?.A || 0;
+        comparison = aGrade - bGrade;
+      }
+
+      // Apply sort direction
+      return sort.direction === 'asc' ? comparison : -comparison;
+    });
+  }, [filteredData, sort]);
+
+  // Handle selecting a professor - simplified to always use context
   const handleSelectProfessor = (professorName) => {
-    if (localSelectMode) {
-      // Update local state when in localSelectMode (for modals)
-      setLocalSelectedInstructors(prev => {
-        const newSelection = prev.includes(professorName)
-          ? prev.filter(name => name !== professorName)
-          : [...prev, professorName];
+    const newSelection = selectedInstructors.includes(professorName)
+      ? selectedInstructors.filter(name => name !== professorName)
+      : [...selectedInstructors, professorName];
 
-        // Also update the context for visualization
-        refreshGraph(newSelection.map(name => ({ value: name, label: name })));
-
-        return newSelection;
-      });
-    } else {
-      // Direct context update (for inline usage)
-      const newSelection = selectedInstructors.includes(professorName)
-        ? selectedInstructors.filter(name => name !== professorName)
-        : [...selectedInstructors, professorName];
-
-      refreshGraph(newSelection.map(name => ({ value: name, label: name })));
-    }
+    refreshGraph(newSelection.map(name => ({ value: name, label: name })));
   };
 
-  // Get current selection based on mode
-  const currentSelection = localSelectMode ? localSelectedInstructors : selectedInstructors;
+  // Handle sorting when a column header is clicked
+  const handleSort = (field) => {
+    setSort(prevSort => ({
+      field,
+      direction: prevSort.field === field && prevSort.direction === 'desc' ? 'asc' : 'desc'
+    }));
+  };
 
   return (
     <div className="overflow-x-auto bg-background rounded-lg shadow">
       <table className="w-full">
         <thead>
           <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
-            <th className="text-left py-3 px-4 font-semibold">Instructor</th>
-            <th className="py-2 px-2 text-center" colSpan={2} style={{ width: "55%" }}>
-              <div className="text-[11px] text-tertiary font-bold">Grade Distribution</div>
-            </th>
-            <th className="py-2 px-2 text-center" style={{ width: "10%" }}>
-              <div className="text-[11px] text-tertiary font-bold">Average</div>
-            </th>
+            <SortHeader
+              label="Instructor"
+              field="name"
+              currentSort={sort}
+              onSort={handleSort}
+            />
+            <SortHeader
+              label="Grade Distribution"
+              field="gradeA"
+              currentSort={sort}
+              onSort={handleSort}
+              width="55%"
+            />
+            <SortHeader
+              label="Average"
+              field="averageGpa"
+              currentSort={sort}
+              onSort={handleSort}
+              width="10%"
+            />
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((professor) => {
-            const isSelected = currentSelection.includes(professor.name);
+          {sortedData.map((professor) => {
+            const isSelected = selectedInstructors.includes(professor.name);
 
             return (
               <tr
@@ -181,7 +217,7 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
                 </td>
 
                 {/* Grade Distribution Bar */}
-                <td className="py-2 px-2" colSpan={2}>
+                <td className="py-2 px-2">
                   <div className="w-full">
                     <GradeDistributionBar
                       gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
@@ -197,7 +233,6 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
                     color={getColor(professor.averageGpa)}
                   />
                 </td>
-
               </tr>
             );
           })}

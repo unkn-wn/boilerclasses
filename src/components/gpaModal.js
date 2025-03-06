@@ -21,7 +21,7 @@ const GpaModal = () => {
     <div className="w-full text-primary">
       <div className="flex flex-col mb-2">
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold">GPA Breakdown</h2>
+          <h2 className="text-2xl font-bold">All Grades</h2>
           {/* <div className="flex items-center text-sm bg-background px-3 py-1 rounded-lg">
             <span className='mr-1'>GPA:</span>
             <span className='text-white bg-[#632230] px-2 mr-1'>1.0</span>
@@ -33,7 +33,7 @@ const GpaModal = () => {
         <div className="mt-2 flex items-start gap-3">
           <div className="text-sm">
             <p className="text-secondary mb-2">This table shows grade distributions for every professor. The <span className="font-semibold">Average</span> column shows the instructor's overall GPA for this course.</p>
-            <p className="text-tertiary">Click on any instructor to add them to the Overview tab.</p>
+            <p className="text-tertiary">Click on any instructor to add them to the Overview tab. N/A in distributions represents withdrawals, incompletes, etc.</p>
           </div>
         </div>
       </div>
@@ -45,10 +45,8 @@ const GpaModal = () => {
         className="mb-4"
       />
 
-      {/* Pass only search query and enable local selection mode */}
       <GpaTable
         searchQuery={searchQuery}
-        localSelectMode={true}
       />
     </div>
   );
