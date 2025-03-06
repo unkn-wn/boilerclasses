@@ -147,11 +147,11 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
         <thead>
           <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
             <th className="text-left py-3 px-4 font-semibold">Instructor</th>
-            <th className="py-2 px-2 text-center" style={{ width: "10%" }}>
-              <div className="text-[11px] text-tertiary font-bold">Average</div>
-            </th>
             <th className="py-2 px-2 text-center" colSpan={2} style={{ width: "55%" }}>
               <div className="text-[11px] text-tertiary font-bold">Grade Distribution</div>
+            </th>
+            <th className="py-2 px-2 text-center" style={{ width: "10%" }}>
+              <div className="text-[11px] text-tertiary font-bold">Average</div>
             </th>
           </tr>
         </thead>
@@ -180,15 +180,7 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
                   </div>
                 </td>
 
-                {/* Average GPA */}
-                <td className="py-2 px-2 text-center">
-                  <AverageGpaCell
-                    averageGpa={professor.averageGpa}
-                    color={getColor(professor.averageGpa)}
-                  />
-                </td>
-
-                {/* Grade Distribution Bar - now using the enhanced component */}
+                {/* Grade Distribution Bar */}
                 <td className="py-2 px-2" colSpan={2}>
                   <div className="w-full">
                     <GradeDistributionBar
@@ -197,6 +189,15 @@ const GpaTable = ({ searchQuery = '', localSelectMode = false }) => {
                     />
                   </div>
                 </td>
+
+                {/* Average GPA */}
+                <td className="py-2 px-2 text-center">
+                  <AverageGpaCell
+                    averageGpa={professor.averageGpa}
+                    color={getColor(professor.averageGpa)}
+                  />
+                </td>
+
               </tr>
             );
           })}

@@ -32,8 +32,8 @@ const GpaModal = () => {
         {/* Description text */}
         <div className="mt-2 flex items-start gap-3">
           <div className="text-sm">
-            <p className="text-secondary mb-2">This table shows GPA data for each instructor across different semesters. The <span className="font-semibold">Average</span> column shows the instructor's overall GPA for this course.</p>
-            <p className="text-tertiary">Click on any row to select/deselect an instructor and add them to the charts in the Overview tab.</p>
+            <p className="text-secondary mb-2">This table shows grade distributions for every professor. The <span className="font-semibold">Average</span> column shows the instructor's overall GPA for this course.</p>
+            <p className="text-tertiary">Click on any instructor to add them to the Overview tab.</p>
           </div>
         </div>
       </div>

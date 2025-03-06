@@ -44,7 +44,7 @@ const Prereqs = ({ course, scheduler = false }) => {
 
   try {
     return (
-      (course.prereqs && course.prereqs[0].split(' ')[0] !== router.query.id) && (
+      (course.prereqs && course.prereqs.length > 0 && course.prereqs[0].split(' ')[0] !== router.query.id) && (
         <div className="prerequisites-container">
           {!scheduler && <div className="text-tertiary lg:text-sm text-xs mb-2">Prerequisites:</div>}
           <div className="lg:text-sm text-xs text-tertiary font-medium">

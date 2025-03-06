@@ -59,6 +59,7 @@ const InstructorTabs = () => {
         <TabPanel>
           <div className="overflow-y-auto max-h-screen">
             <OverviewTabContent />
+            <div className='h-40' />
           </div>
         </TabPanel>
 
@@ -66,6 +67,7 @@ const InstructorTabs = () => {
         <TabPanel>
           <div className="overflow-y-auto max-h-screen">
             <GpaModal />
+            <div className='h-40' />
           </div>
         </TabPanel>
       </TabPanels>
