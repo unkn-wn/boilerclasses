@@ -44,8 +44,8 @@ const InstructorMetricsPanel = () => {
       </h3>
 
       <div className="flex-1 flex justify-center items-center">
-        {/* Container for both dials */}
-        <div className="flex items-center justify-center gap-8">
+        {/* Container for both dials - stack on md (tablet) screens only */}
+        <div className="flex flex-row md:flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8">
           {/* GPA DIAL with tooltip */}
           <Tooltip
             isDisabled={!hasGpaData}
@@ -63,7 +63,7 @@ const InstructorMetricsPanel = () => {
           >
             <div className={`flex flex-col items-center transition-transform ${hasGpaData && 'hover:scale-105 cursor-help'}`}>
               {!hasGpaData ? (
-                <div className="h-[130px] w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
+                <div className="h-[100px] w-[100px] md:h-[110px] md:w-[110px] lg:h-[130px] lg:w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
                   <p className="text-tertiary text-sm">No GPA</p>
                 </div>
               ) : (
@@ -72,12 +72,12 @@ const InstructorMetricsPanel = () => {
                   maxValue={4}
                   text={curGPA[selectedInstructor][0].toFixed(2)}
                   color={curGPA[selectedInstructor][1]}
-                  size={130}
-                  strokeWidth={10}
+                  size={window.innerWidth < 768 ? 100 : (window.innerWidth < 1024 ? 110 : 130)}
+                  strokeWidth={window.innerWidth < 768 ? 8 : (window.innerWidth < 1024 ? 8 : 10)}
                   duration={750}
                 />
               )}
-              <p className="mt-3 text-sm font-medium text-secondary">Average GPA</p>
+              <p className="mt-2 md:mt-3 text-xs md:text-sm font-medium text-secondary">Average GPA</p>
             </div>
           </Tooltip>
 
@@ -87,8 +87,8 @@ const InstructorMetricsPanel = () => {
             onClick={openRmpPage}
           >
             {!hasRmpData ? (
-              <div className="h-[130px] w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
-                <p className="text-tertiary text-sm text-center">No rating<br/>found!</p>
+              <div className="h-[100px] w-[100px] md:h-[110px] md:w-[110px] lg:h-[130px] lg:w-[130px] flex items-center justify-center bg-background-secondary/20 rounded-full">
+                <p className="text-tertiary text-xs md:text-sm text-center">No rating<br/>found!</p>
               </div>
             ) : (
               <div className="flex items-center justify-center">
@@ -97,13 +97,13 @@ const InstructorMetricsPanel = () => {
                   maxValue={5}
                   text={curRMP[selectedInstructor].toFixed(1)}
                   color={hasGpaData ? curGPA[selectedInstructor][1] : `rgb(var(--text-color))`}
-                  size={130}
-                  strokeWidth={10}
+                  size={window.innerWidth < 768 ? 100 : (window.innerWidth < 1024 ? 110 : 130)}
+                  strokeWidth={window.innerWidth < 768 ? 8 : (window.innerWidth < 1024 ? 8 : 10)}
                   duration={750}
                 />
               </div>
             )}
-            <p className="mt-3 text-sm font-medium text-secondary flex items-center">
+            <p className="mt-2 md:mt-3 text-xs md:text-sm font-medium text-secondary flex items-center">
               RateMyProf
               <FiExternalLink size={12} className="ml-1 opacity-70" />
             </p>

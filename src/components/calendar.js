@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { useEffect, useState, useMemo, useRef, useCallback, memo } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
     Popover, PopoverTrigger, PopoverContent, PopoverHeader,
     PopoverBody, PopoverArrow, Spinner, Tooltip
 } from '@chakra-ui/react';
-import { FiClock, FiMapPin, FiUser, FiCalendar, FiShare } from 'react-icons/fi';
+import { FiClock, FiMapPin, FiUser, FiCalendar, FiShare, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
@@ -175,6 +175,103 @@ const WeekdayHeader = ({ day }) => {
     );
 };
 
+// Mobile day carousel component
+const MobileDayCarousel = ({ processedDays, hoveredCrn, setHoveredCrn }) => {
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    const [activeDayIndex, setActiveDayIndex] = useState(() => {
+        // Set today as active day, or Monday if weekend
+        const today = new Date().getDay();
+        return today >= 1 && today <= 5 ? today - 1 : 0;
+    });
+
+    // Get today's day number (0-indexed where Monday is 0)
+    const todayIndex = useMemo(() => {
+        const today = new Date().getDay();
+        return today >= 1 && today <= 5 ? today - 1 : -1;
+    }, []);
+
+    const nextDay = () => {
+        setActiveDayIndex((prev) => (prev === 4 ? 0 : prev + 1));
+    };
+
+    const prevDay = () => {
+        setActiveDayIndex((prev) => (prev === 0 ? 4 : prev - 1));
+    };
+
+    const activeDay = days[activeDayIndex];
+    const meetings = processedDays[activeDay];
+
+    return (
+        <div className="md:hidden">
+            {/* Day selector */}
+            <div className="flex justify-between items-center mb-3">
+                <button
+                    onClick={prevDay}
+                    className="p-2 rounded-full hover:bg-background-secondary"
+                    aria-label="Previous day"
+                >
+                    <FiChevronLeft />
+                </button>
+
+                <div className="flex items-center gap-2">
+                    <h3 className="font-bold">{activeDay}</h3>
+                    {todayIndex === activeDayIndex && (
+                        <span className="text-xs bg-yellow-500 text-black px-1.5 py-0.5 rounded-full font-medium">
+                            Today
+                        </span>
+                    )}
+                </div>
+
+                <button
+                    onClick={nextDay}
+                    className="p-2 rounded-full hover:bg-background-secondary"
+                    aria-label="Next day"
+                >
+                    <FiChevronRight />
+                </button>
+            </div>
+
+            {/* Day indicator dots */}
+            <div className="flex justify-center gap-1 mb-3">
+                {days.map((day, idx) => (
+                    <button
+                        key={day}
+                        onClick={() => setActiveDayIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                            idx === activeDayIndex
+                                ? 'bg-blue-500 w-4'
+                                : idx === todayIndex
+                                    ? 'bg-yellow-500/70'
+                                    : 'bg-background-tertiary'
+                        }`}
+                        aria-label={day}
+                    />
+                ))}
+            </div>
+
+            {/* Meetings for selected day */}
+            <div className="">
+                <div className="flex flex-col gap-3">
+                    {meetings && meetings.length > 0 ? (
+                        meetings.map((meeting, i) => (
+                            <MeetingDisplay
+                                meeting={meeting}
+                                key={meeting.crn + "-" + i}
+                                isHighlighted={hoveredCrn === meeting.crn}
+                                onHover={setHoveredCrn}
+                            />
+                        ))
+                    ) : (
+                        <div className="flex items-center justify-center h-20 text-tertiary text-sm bg-background/50 rounded-md">
+                            No meetings on {activeDay}
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 // Lazy-loaded Calendar component using Intersection Observer
 const LazyCalendar = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -289,34 +386,44 @@ const CalendarContent = () => {
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-5 gap-3 md:gap-4'>
-            {days.map((day, index) => {
-                const meetings = processedDays[day];
-                return (
-                    <div key={day} className="bg-background-secondary/20 rounded-lg p-2">
-                        <WeekdayHeader day={day} />
+        <>
+            {/* Mobile swipeable calendar */}
+            <MobileDayCarousel
+                processedDays={processedDays}
+                hoveredCrn={hoveredCrn}
+                setHoveredCrn={setHoveredCrn}
+            />
 
-                        <div className="flex flex-col gap-3 overflow-y-auto overflow-x-hidden max-h-40 md:max-h-80 lg:h-full">
-                            {/* Only render meetings if they exist */}
-                            {meetings && meetings.length > 0 ? (
-                                meetings.map((meeting, i) => (
-                                    <MeetingDisplay
-                                        meeting={meeting}
-                                        key={meeting.crn + "-" + i}
-                                        isHighlighted={hoveredCrn === meeting.crn}
-                                        onHover={setHoveredCrn}
-                                    />
-                                ))
-                            ) : (
-                                <div className="flex items-center justify-center h-20 text-tertiary text-sm bg-background/50 rounded-md">
-                                    No meetings
-                                </div>
-                            )}
+            {/* Desktop calendar grid */}
+            <div className='hidden md:grid grid-cols-5 gap-4'>
+                {days.map((day) => {
+                    const meetings = processedDays[day];
+                    return (
+                        <div key={day} className="bg-background-secondary/20 rounded-lg p-2">
+                            <WeekdayHeader day={day} />
+
+                            <div className="flex flex-col gap-3 overflow-y-auto overflow-x-hidden h-full max-h-80">
+                                {/* Only render meetings if they exist */}
+                                {meetings && meetings.length > 0 ? (
+                                    meetings.map((meeting, i) => (
+                                        <MeetingDisplay
+                                            meeting={meeting}
+                                            key={meeting.crn + "-" + i}
+                                            isHighlighted={hoveredCrn === meeting.crn}
+                                            onHover={setHoveredCrn}
+                                        />
+                                    ))
+                                ) : (
+                                    <div className="flex items-center justify-center h-20 text-tertiary text-sm bg-background/50 rounded-md">
+                                        No meetings
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                );
-            })}
-        </div>
+                    );
+                })}
+            </div>
+        </>
     );
 };
 

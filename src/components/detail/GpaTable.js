@@ -4,7 +4,7 @@ import { getColor, calculateInstructorGradeDistribution } from '@/lib/gpaUtils';
 import GradeDistributionBar from '@/components/GradeDistributionBar';
 import { useDetailContext } from './context/DetailContext';
 import { extractAllSemesters } from '@/lib/utils';
-import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import { FiArrowUp, FiArrowDown, FiHelpCircle } from 'react-icons/fi';
 
 // Memoized average cell with bolder text
 const AverageGpaCell = memo(({ averageGpa, color }) => {
@@ -37,7 +37,7 @@ const SortHeader = ({ label, field, currentSort, onSort, width = "auto" }) => {
 
   return (
     <th
-      className="py-2 px-2 text-center cursor-pointer hover:bg-background-secondary transition-colors"
+      className="py-2 px-2 text-center cursor-pointer hover:bg-background-secondary transition-colors hidden lg:table-cell"
       style={{ width }}
       onClick={() => onSort(field)}
     >
@@ -76,16 +76,16 @@ const GpaTable = ({ searchQuery = '' }) => {
 
       // Calculate average GPA
       let avgGPA = 0;
-      let semesterCount = 0;
+      let sectionsCount = 0;
 
       for (const sem in profGpaData) {
         if (profGpaData[sem][13] > 0) {
           avgGPA += profGpaData[sem][13];
-          semesterCount++;
+          sectionsCount++;
         }
       }
 
-      const averageGpa = semesterCount > 0 ? avgGPA / semesterCount : null;
+      const averageGpa = sectionsCount > 0 ? avgGPA / sectionsCount : null;
 
       // Generate grade distribution data using the utility function
       const gradeData = dataset.data;
@@ -98,7 +98,8 @@ const GpaTable = ({ searchQuery = '' }) => {
         gradeDistribution,
         hasGradeData,
         data: dataset.data,
-        backgroundColor: dataset.backgroundColor
+        backgroundColor: dataset.backgroundColor,
+        sectionsCount // Add semester count
       };
     });
   }, [courseData, defaultGPA]);
@@ -133,13 +134,16 @@ const GpaTable = ({ searchQuery = '' }) => {
         comparison = a.averageGpa - b.averageGpa;
       }
       else if (sort.field === 'name') {
-        comparison = a.name.localeCompare(b.name);
+        comparison = b.name.localeCompare(a.name);
       }
       else if (sort.field === 'gradeA') {
         // Sort by percentage of A grades
         const aGrade = a.gradeDistribution?.A || 0;
         const bGrade = b.gradeDistribution?.A || 0;
         comparison = aGrade - bGrade;
+      }
+      else if (sort.field === 'sectionsCount') {
+        comparison = a.sectionsCount - b.sectionsCount;
       }
 
       // Apply sort direction
@@ -164,80 +168,171 @@ const GpaTable = ({ searchQuery = '' }) => {
     }));
   };
 
+  // Mobile sort options menu
+  const SortOptions = () => (
+    <div className="lg:hidden bg-background rounded-t-lg p-3 border-b border-[rgb(var(--background-tertiary-color))]">
+      <div className="flex items-center justify-between">
+        <span className="text-xs text-tertiary">Sort by:</span>
+        <select
+          className="bg-background-secondary text-xs p-1 rounded"
+          value={`${sort.field}-${sort.direction}`}
+          onChange={(e) => {
+            const [field, direction] = e.target.value.split('-');
+            setSort({ field, direction });
+          }}
+        >
+          <option value="name-desc">Name (A-Z)</option>
+          <option value="name-asc">Name (Z-A)</option>
+          <option value="averageGpa-desc">GPA (High-Low)</option>
+          <option value="averageGpa-asc">GPA (Low-High)</option>
+          <option value="sectionsCount-desc">Sections (Most-Least)</option>
+          <option value="sectionsCount-asc">Sections (Least-Most)</option>
+          <option value="gradeA-desc">Grade A% (High-Low)</option>
+          <option value="gradeA-asc">Grade A% (Low-High)</option>
+        </select>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="overflow-x-auto bg-background rounded-lg shadow">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
-            <SortHeader
-              label="Instructor"
-              field="name"
-              currentSort={sort}
-              onSort={handleSort}
-            />
-            <SortHeader
-              label="Grade Distribution"
-              field="gradeA"
-              currentSort={sort}
-              onSort={handleSort}
-              width="55%"
-            />
-            <SortHeader
-              label="Average"
-              field="averageGpa"
-              currentSort={sort}
-              onSort={handleSort}
-              width="10%"
-            />
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((professor) => {
-            const isSelected = selectedInstructors.includes(professor.name);
+    <div className="bg-background rounded-lg shadow">
+      {/* Mobile sort options - now visible on tablets too */}
+      <SortOptions />
 
-            return (
-              <tr
-                key={professor.name}
-                className={`border-b border-[rgb(var(--background-secondary-color))] hover:bg-background-secondary transition-colors ${isSelected ? 'bg-background-secondary/20' : ''}`}
-                onClick={() => handleSelectProfessor(professor.name)}
-                style={{ cursor: 'pointer' }}
-              >
-                {/* Instructor name */}
-                <td className="py-2 px-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-md">{professor.name}</h3>
-                      {isSelected && (
-                        <span className="bg-background-secondary border border-[rgb(var(--background-tertiary-color))] text-primary text-xs px-2 py-0.5 rounded-full">
-                          Selected
-                        </span>
-                      )}
+      {/* Desktop table view */}
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="lg:table-header-group hidden">
+            <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
+              <SortHeader
+                label="Instructor"
+                field="name"
+                currentSort={sort}
+                onSort={handleSort}
+              />
+              <SortHeader
+                label="Sections"
+                field="sectionsCount"
+                currentSort={sort}
+                onSort={handleSort}
+                width="5%"
+              />
+              <SortHeader
+                label="Grade Distribution"
+                field="gradeA"
+                currentSort={sort}
+                onSort={handleSort}
+                width="55%"
+              />
+              <SortHeader
+                label="Average"
+                field="averageGpa"
+                currentSort={sort}
+                onSort={handleSort}
+                width="10%"
+              />
+            </tr>
+          </thead>
+          <tbody>
+            {sortedData.map((professor) => {
+              const isSelected = selectedInstructors.includes(professor.name);
+
+              return (
+                <tr
+                  key={professor.name}
+                  className={`block lg:table-row border-b border-[rgb(var(--background-secondary-color))] hover:bg-background-secondary transition-colors ${isSelected ? 'bg-background-secondary/20' : ''}`}
+                  onClick={() => handleSelectProfessor(professor.name)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {/* Instructor name - always visible */}
+                  <td className="py-3 px-3 lg:px-4 block lg:table-cell">
+                    <div className="flex flex-wrap items-center justify-between">
+                      {/* Name and Selected badge */}
+                      <div className="flex items-center gap-2 mb-1 lg:mb-0">
+                        <h3 className="font-semibold text-md">{professor.name}</h3>
+                        {isSelected && (
+                          <span className="bg-background-secondary border border-[rgb(var(--background-tertiary-color))] text-primary text-xs px-2 py-0.5 rounded-full">
+                            Selected
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Mobile/tablet stats row */}
+                      <div className="flex items-center justify-between w-full lg:hidden">
+                        {/* Sections count */}
+                        <div className="flex items-center gap-1">
+                          <span className="text-xs text-tertiary">Sections:</span>
+                          <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium">
+                            {professor.sectionsCount}
+                          </span>
+                        </div>
+
+                        {/* Average GPA */}
+                        <div className="flex items-center gap-1">
+                          <span className="text-xs text-tertiary">GPA:</span>
+                          <div className="inline-block">
+                            <div
+                              className="px-2 py-1 rounded"
+                              style={{
+                                backgroundColor: getColor(professor.averageGpa) || 'transparent',
+                                minWidth: '40px',
+                                textAlign: 'center'
+                              }}
+                            >
+                              <span className="text-xs font-bold text-white">
+                                {professor.averageGpa?.toFixed(2) || '-'}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </td>
 
-                {/* Grade Distribution Bar */}
-                <td className="py-2 px-2">
-                  <div className="w-full">
-                    <GradeDistributionBar
-                      gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
-                      showLabels={false}
+                    {/* Mobile/tablet grade distribution bar */}
+                    <div className="mt-2 lg:hidden">
+                      <div className="flex items-center gap-2">
+                        <div className="w-full">
+                          <GradeDistributionBar
+                            gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
+                            showLabels={false}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+
+                  {/* Sections Count - desktop only */}
+                  <td className="py-2 px-2 text-center hidden lg:table-cell">
+                    <div className="flex justify-center">
+                      <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium">
+                        {professor.sectionsCount}
+                      </span>
+                    </div>
+                  </td>
+
+                  {/* Grade Distribution Bar - desktop only */}
+                  <td className="py-2 px-2 hidden lg:table-cell">
+                    <div className="w-full">
+                      <GradeDistributionBar
+                        gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
+                        showLabels={false}
+                      />
+                    </div>
+                  </td>
+
+                  {/* Average GPA - desktop only */}
+                  <td className="py-2 px-2 text-center hidden lg:table-cell">
+                    <AverageGpaCell
+                      averageGpa={professor.averageGpa}
+                      color={getColor(professor.averageGpa)}
                     />
-                  </div>
-                </td>
-
-                {/* Average GPA */}
-                <td className="py-2 px-2 text-center">
-                  <AverageGpaCell
-                    averageGpa={professor.averageGpa}
-                    color={getColor(professor.averageGpa)}
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

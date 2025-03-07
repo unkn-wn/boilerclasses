@@ -57,17 +57,17 @@ const InstructorTabs = () => {
 
       <TabPanels>
         <TabPanel>
-          <div className="overflow-y-auto max-h-screen">
+          <div className="-m-4 p-4 overflow-y-auto max-h-screen">
             <OverviewTabContent />
-            <div className='h-40' />
+            <div className='hidden sm:block h-40' />
           </div>
         </TabPanel>
 
         {/* GPA Details tab (lazy loaded) */}
         <TabPanel>
-          <div className="overflow-y-auto max-h-screen">
+          <div className="-m-4 p-4 overflow-y-auto max-h-screen">
             <GpaModal />
-            <div className='h-40' />
+            <div className='hidden sm:block h-40' />
           </div>
         </TabPanel>
       </TabPanels>

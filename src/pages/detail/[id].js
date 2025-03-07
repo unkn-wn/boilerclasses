@@ -66,7 +66,7 @@ const CardDetails = ({ courseData, semData }) => {
     <DetailProvider courseData={courseData} initialSemester={semData}>
       <DetailPageHead />
 
-      <div className={`flex flex-col min-h-screen bg-super container mx-auto p-5 mt-5 ${inter.className} text-primary`}>
+      <div className={`flex flex-col min-h-screen bg-super container mx-auto p-5 ${inter.className} text-primary`}>
         <div className="flex md:flex-row flex-col md:gap-4">
           {/* Left panel */}
           <div className="flex flex-col w-full md:w-1/3 md:mr-3 justify-start h-full">
