@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import GpaTable from '@/components/detail/GpaTable';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 const GpaModal = () => {
   const { courseData } = useDetailContext();

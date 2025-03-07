@@ -87,7 +87,7 @@ const ReleaseNotes = () => {
             p={0}
           >
             {/* Custom header with gradient background */}
-            <div className="bg-gradient-to-r from-yellow-900 to-purple-900 px-6 py-5">
+            <div className="bg-gradient-to-r from-red-800 to-yellow-600 px-6 py-5">
               <Flex justifyContent="space-between" alignItems="center">
                 <Flex alignItems="center" gap={3}>
                   <div className="rounded-full">

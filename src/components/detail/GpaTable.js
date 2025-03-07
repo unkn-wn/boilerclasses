@@ -1,10 +1,10 @@
-// Table component that displays GPA data for all professors across semesters
 import React, { memo, useMemo, useState } from 'react';
 import { getColor, calculateInstructorGradeDistribution } from '@/lib/gpaUtils';
 import GradeDistributionBar from '@/components/GradeDistributionBar';
 import { useDetailContext } from './context/DetailContext';
 import { extractAllSemesters } from '@/lib/utils';
-import { FiArrowUp, FiArrowDown, FiHelpCircle } from 'react-icons/fi';
+import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 // Memoized average cell with bolder text
 const AverageGpaCell = memo(({ averageGpa, color }) => {
@@ -74,6 +74,10 @@ const GpaTable = ({ searchQuery = '' }) => {
       // Get GPA data per semester for this professor
       const profGpaData = courseData.gpa[dataset.label] || {};
 
+      // Check if professor teaches in current semester
+      // We don't do anything with it yet, maybe can add later if needed
+      const isCurrentSemester = courseData.instructor[CURRENT_SEMESTER].includes(dataset.label);
+
       // Calculate average GPA
       let avgGPA = 0;
       let sectionsCount = 0;
@@ -99,7 +103,8 @@ const GpaTable = ({ searchQuery = '' }) => {
         hasGradeData,
         data: dataset.data,
         backgroundColor: dataset.backgroundColor,
-        sectionsCount // Add semester count
+        sectionsCount,
+        isCurrentSemester
       };
     });
   }, [courseData, defaultGPA]);
@@ -122,6 +127,12 @@ const GpaTable = ({ searchQuery = '' }) => {
     if (!filteredData.length) return [];
 
     return [...filteredData].sort((a, b) => {
+      // Always sort current semester instructors to the top if that option is selected
+      if (sort.field === 'isCurrentSemester') {
+        if (a.isCurrentSemester && !b.isCurrentSemester) return -1;
+        if (!a.isCurrentSemester && b.isCurrentSemester) return 1;
+      }
+
       let comparison = 0;
 
       // Handle null values for proper sorting
@@ -181,6 +192,7 @@ const GpaTable = ({ searchQuery = '' }) => {
             setSort({ field, direction });
           }}
         >
+          <option value="isCurrentSemester-desc">Current Semester First</option>
           <option value="name-desc">Name (A-Z)</option>
           <option value="name-asc">Name (Z-A)</option>
           <option value="averageGpa-desc">GPA (High-Low)</option>
