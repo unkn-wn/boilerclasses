@@ -23,6 +23,8 @@ export default function Document() {
         />
       </Head>
       <body className='bg-neutral-50 dark:bg-neutral-950'>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8N23MSR"
+          height="0" width="0" style={{display:"none",visibility:"hidden"}}></iframe></noscript>
         <Main />
         <NextScript />
       </body>
