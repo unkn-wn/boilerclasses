@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheck, FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { useDetailContext } from '../context/DetailContext';
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 const SemesterHeader = ({
   semester,
@@ -11,8 +11,7 @@ const SemesterHeader = ({
   isAllSelected,
   onToggleSelectAll
 }) => {
-  const { sem } = useDetailContext();
-  const isCurrentSemester = semester === sem;
+  const isCurrentSemester = semester === CURRENT_SEMESTER;
 
   return (
     <div
@@ -35,11 +34,11 @@ const SemesterHeader = ({
         <span className="ml-2 text-xs text-tertiary">({instructorsCount})</span>
 
         {/* Current semester indicator */}
-        {isCurrentSemester && (
+        {/* {isCurrentSemester && (
           <span className="ml-2 text-xs bg-yellow-500/20 text-yellow-600 px-1 rounded">
             Current
           </span>
-        )}
+        )} */}
       </div>
 
       {/* Animated chevron */}

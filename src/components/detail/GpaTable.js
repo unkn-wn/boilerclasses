@@ -76,7 +76,7 @@ const GpaTable = ({ searchQuery = '' }) => {
 
       // Check if professor teaches in current semester
       // We don't do anything with it yet, maybe can add later if needed
-      const isCurrentSemester = courseData.instructor[CURRENT_SEMESTER].includes(dataset.label);
+      const isCurrentSemester = courseData?.instructor[CURRENT_SEMESTER]?.includes(dataset.label);
 
       // Calculate average GPA
       let avgGPA = 0;
