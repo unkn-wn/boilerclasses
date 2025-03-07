@@ -14,7 +14,7 @@ env:
 jobs:
   check_comment:
     runs-on: ubuntu-latest
-    # Only run this job when the trigger was a comment
+    # Only run this job when the trigger was a  comment
     if: github.event_name == 'issue_comment'
     outputs:
       should_deploy: ${{ steps.check.outputs.should_deploy }}
