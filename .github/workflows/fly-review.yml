@@ -26,7 +26,7 @@ jobs:
           # Check if this is a PR comment (not an issue comment)
           if [ "${{ github.event.issue.pull_request }}" != "" ]; then
             # Check if the comment is from the specified user and contains the trigger phrase
-            if [ "${{ github.event.comment.user.login }}" == "unkn-wn" ] && [[ "${{ github.event.comment.body }}" == *">deploy"* ]]; then
+            if [ "${{ github.event.comment.user.login }}" == "unkn-wn" ] && [[ "${{ github.event.comment.body }}" == *"deploy"* ]]; then
               echo "should_deploy=true" >> $GITHUB_OUTPUT
               echo "pr_number=${{ github.event.issue.number }}" >> $GITHUB_OUTPUT
             else
