@@ -12,7 +12,7 @@ import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 // Get the color for different meeting types - more subtle approach
 const getMeetingTypeIndicator = (type) => {
-    switch(type) {
+    switch (type) {
         case "Lecture":
             return "border-l-4 border-blue-500";
         case "Laboratory":
@@ -94,8 +94,8 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                             <div>
                                 <div className="font-medium">{meeting.room}</div>
                                 <a href={`https://www.google.com/maps/search/${encodeURIComponent(`${meeting.room.split(' ')[0]} Purdue`)}`}
-                                   target="_blank" rel="noopener noreferrer"
-                                   className="text-sm text-blue-500 hover:underline">
+                                    target="_blank" rel="noopener noreferrer"
+                                    className="text-sm text-blue-500 hover:underline">
                                     View on map
                                 </a>
                             </div>
@@ -140,7 +140,7 @@ MeetingDisplay.displayName = 'MeetingDisplay';
 
 // Helper function to get color for popover indicator dot
 const getTypeColor = (type) => {
-    switch(type) {
+    switch (type) {
         case "Lecture": return "bg-blue-500";
         case "Laboratory":
         case "Lab": return "bg-purple-500";
@@ -237,13 +237,12 @@ const MobileDayCarousel = ({ processedDays, hoveredCrn, setHoveredCrn }) => {
                     <button
                         key={day}
                         onClick={() => setActiveDayIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                            idx === activeDayIndex
+                        className={`w-2 h-2 rounded-full transition-all ${idx === activeDayIndex
                                 ? 'bg-blue-500 w-4'
                                 : idx === todayIndex
                                     ? 'bg-yellow-500/70'
                                     : 'bg-background-tertiary'
-                        }`}
+                            }`}
                         aria-label={day}
                     />
                 ))}
@@ -317,6 +316,10 @@ const LazyCalendar = () => {
                     <div className="flex items-center gap-1">
                         <span className="w-2.5 h-2.5 border-l-4 border-green-500 bg-background-secondary"></span>
                         <span className="text-tertiary">PSO</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                        <span className="w-2.5 h-2.5 border-l-4 border-yellow-500 bg-background-secondary"></span>
+                        <span className="text-tertiary">Recitation</span>
                     </div>
                 </div>
             </div>
