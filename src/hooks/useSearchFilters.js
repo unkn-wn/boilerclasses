@@ -27,28 +27,71 @@ const DEFAULT_FILTERS = {
 export const CURRENT_SEMESTER = "Spring 2025";
 export const PREVIOUS_SEMESTER = "Fall 2024";
 
+// Storage key for filters
+const FILTERS_STORAGE_KEY = "boilerclasses_filters";
+
 export const useSearchFilters = () => {
   const router = useRouter();
   const { query } = router;
 
+  // Load filters from sessionStorage on initial render
+  const getInitialFilters = () => {
+    // Only run on client side
+    if (typeof window === 'undefined') {
+      return {
+        ...DEFAULT_FILTERS,
+        semesters: [{ label: CURRENT_SEMESTER, value: CURRENT_SEMESTER }],
+        searchTerm: '',
+      };
+    }
+
+    try {
+      const savedFilters = sessionStorage.getItem(FILTERS_STORAGE_KEY);
+      if (savedFilters) {
+        const parsedFilters = JSON.parse(savedFilters);
+        return {
+          ...parsedFilters,
+          // Always ensure searchTerm from URL takes precedence
+          searchTerm: query.q || parsedFilters.searchTerm || '',
+        };
+      }
+    } catch (err) {
+      console.error("Error loading filters from sessionStorage:", err);
+    }
+
+    return {
+      ...DEFAULT_FILTERS,
+      semesters: [{ label: CURRENT_SEMESTER, value: CURRENT_SEMESTER }],
+      searchTerm: query.q || '',
+    };
+  };
+
   // Combined filters state
-  const [filters, setFilters] = useState({
-    ...DEFAULT_FILTERS,
-    semesters: [{ label: CURRENT_SEMESTER, value: CURRENT_SEMESTER }],
-    searchTerm: query.q || '',
-  });
+  const [filters, setFilters] = useState(getInitialFilters);
 
   // UI state
   const [displayLanding, setDisplayLanding] = useState(true);
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
   const [courses, setCourses] = useState([]);
+  const [initialized, setInitialized] = useState(false);
 
   // Update specific filter
   const updateFilter = (filterName, value) => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      [filterName]: value
-    }));
+    setFilters(prevFilters => {
+      const newFilters = {
+        ...prevFilters,
+        [filterName]: value
+      };
+
+      // Save to sessionStorage
+      try {
+        sessionStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(newFilters));
+      } catch (err) {
+        console.error("Error saving filters to sessionStorage:", err);
+      }
+
+      return newFilters;
+    });
   };
 
   // Transform search query
@@ -62,23 +105,34 @@ export const useSearchFilters = () => {
       .trim();
   };
 
-  // Sync router.query into filters
-  // useEffect(() => {
-  //   if (Object.keys(query).length > 0) {
-  //     const newFilters = { ...DEFAULT_FILTERS };
+  // Check if we should show landing or results page
+  useEffect(() => {
+    // Wait for client-side rendering to complete
+    if (typeof window === 'undefined') return;
 
-  //     if (query.q) newFilters.searchTerm = transformQuery(query.q);
-  //     if (query.sub) newFilters.subjects = query.sub.split(",").map((s) => ({ label: s, value: s }));
-  //     if (query.term) newFilters.semesters = query.term.split(",").map((t) => ({ label: t, value: t }));
-  //     if (query.gen) newFilters.genEds = query.gen.split(",").map((g) => ({ label: g, value: g }));
-  //     if (query.cmin) newFilters.credits.min = parseInt(query.cmin);
-  //     if (query.cmax) newFilters.credits.max = parseInt(query.cmax);
-  //     if (query.levels) newFilters.levels = query.levels.split(",").map(Number);
-  //     if (query.sched) newFilters.scheduleTypes = query.sched.split(",");
+    // Initialize the component
+    if (!initialized) {
+      // Check if we have any active filters to determine if we should show landing
+      const hasActiveFilters =
+        filters.searchTerm?.length > 1 ||
+        filters.subjects.length > 0 ||
+        filters.genEds.length > 0 ||
+        (filters.semesters.length > 0 &&
+         (filters.semesters.length !== 1 || filters.semesters[0].value !== CURRENT_SEMESTER));
 
-  //     setFilters(newFilters);
-  //   }
-  // }, [query]);
+      setDisplayLanding(!hasActiveFilters);
+      setInitialized(true);
+    }
+  }, [filters, initialized]);
+
+  // Handle search term from URL
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    if (query.q && query.q !== filters.searchTerm) {
+      updateFilter('searchTerm', query.q);
+    }
+  }, [query.q, router.isReady]);
 
   // Search function
   const search = async () => {
@@ -125,8 +179,11 @@ export const useSearchFilters = () => {
 
   // Search effect
   useEffect(() => {
-    search();
+    if (initialized) {
+      search();
+    }
   }, [
+    initialized,
     JSON.stringify(filters.subjects),
     JSON.stringify(filters.semesters),
     JSON.stringify(filters.genEds),
@@ -135,14 +192,23 @@ export const useSearchFilters = () => {
     filters.credits.max,
     JSON.stringify(filters.levels),
     JSON.stringify(filters.scheduleTypes),
-    JSON.stringify(query),
   ]);
 
-  // search term useEffect. Figure out how we can stick to just one useEffect
+  // Update search term in URL for shareable links
   useEffect(() => {
-    updateFilter("searchTerm", query.q);
-  }, [query]);
+    if (!initialized || !router.isReady) return;
 
+    if (filters.searchTerm) {
+      router.replace({
+        pathname: router.pathname,
+        query: { q: filters.searchTerm }
+      }, undefined, { shallow: true });
+    } else if (query.q) {
+      router.replace({
+        pathname: router.pathname
+      }, undefined, { shallow: true });
+    }
+  }, [filters.searchTerm, initialized, router.isReady]);
 
   return {
     filters,

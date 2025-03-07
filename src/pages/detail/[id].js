@@ -62,8 +62,15 @@ const CardDetails = ({ courseData, semData }) => {
     );
   }
 
+  // Use the courseId as a key to force DetailProvider to remount when ID changes
+  const courseId = courseData.detailId || router.query.id;
+
   return (
-    <DetailProvider courseData={courseData} initialSemester={semData}>
+    <DetailProvider
+      courseData={courseData}
+      initialSemester={semData}
+      key={courseId} // Add this key to force remount
+    >
       <DetailPageHead />
 
       <div className={`flex flex-col min-h-screen bg-super container mx-auto p-5 ${inter.className} text-primary`}>
