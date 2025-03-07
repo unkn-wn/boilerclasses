@@ -69,7 +69,7 @@ const CardDetails = ({ courseData, semData }) => {
     <DetailProvider
       courseData={courseData}
       initialSemester={semData}
-      key={courseId} // Add this key to force remount
+      key={courseId}
     >
       <DetailPageHead />
 

@@ -1,6 +1,5 @@
 // Component that renders the course overview tab with instructor selector, stats, and GPA graph
 import React, { memo } from 'react';
-import InstructorSelector from './InstructorSelector';
 import CourseStats from './CourseStats';
 import Graph from '@/components/graph';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
@@ -10,9 +9,6 @@ import ProfessorComparisonChart from './ProfessorComparisonChart';
 const OverviewTabContent = memo(() => {
   const {
     defaultGPA,
-    selectableInstructors,
-    selectedInstructors,
-    refreshGraph,
     gpaGraph,
   } = useDetailContext();
 
@@ -23,16 +19,6 @@ const OverviewTabContent = memo(() => {
 
   return (
     <>
-      <div className='flex flex-row gap-2 md:mb-4 mb-2'>
-        {hasDefaultGPAData && (
-          <InstructorSelector
-            instructors={selectableInstructors}
-            selectedInstructors={selectedInstructors}
-            onChange={(value) => refreshGraph(value)}
-          />
-        )}
-      </div>
-
       {/* Stat Cards */}
       <CourseStats />
 

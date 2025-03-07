@@ -15,7 +15,7 @@ import CourseSearch from '@/components/schedule/courseSearch';
 import ScheduleCalendar from '@/components/schedule/schedule';
 import Graph from '@/components/graph';
 import { collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/lib/gpaUtils';
-import { ScheduleGpaModal } from '@/components/gpaModal';
+import { ScheduleGpaModal } from '@/components/detail/gpaModal';
 import Prereqs from '@/components/prereqs';
 import Footer from '@/components/footer';
 

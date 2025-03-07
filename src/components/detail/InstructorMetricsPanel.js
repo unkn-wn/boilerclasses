@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { FiExternalLink, FiCalendar } from 'react-icons/fi';
 import { useDetailContext } from './context/DetailContext';
-import AnimatedCircularProgress from './AnimatedCircularProgress';
+import AnimatedCircularProgress from '../AnimatedCircularProgress';
 import { Tooltip } from '@chakra-ui/react';
 
 const InstructorMetricsPanel = () => {

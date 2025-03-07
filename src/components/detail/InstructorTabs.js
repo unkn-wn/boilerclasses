@@ -2,9 +2,23 @@
 import React from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import OverviewTabContent from './OverviewTabContent';
-import GpaModal from '@/components/gpaModal';
+import GpaModal from '@/components/detail/gpaModal';
+import InstructorSelector from './InstructorSelector';
+import { useDetailContext } from './context/DetailContext';
 
 const InstructorTabs = () => {
+  const {
+    defaultGPA,
+    selectableInstructors,
+    selectedInstructors,
+    refreshGraph,
+  } = useDetailContext();
+
+  // Check if we have datasets to display
+  const hasDefaultGPAData = defaultGPA?.datasets &&
+    Array.isArray(defaultGPA.datasets) &&
+    defaultGPA.datasets.length > 0;
+
   return (
     <Tabs
       variant='soft-rounded'
@@ -55,13 +69,23 @@ const InstructorTabs = () => {
         <Tab>All Grades</Tab>
       </TabList>
 
-      <TabPanels>
-        <TabPanel>
-          <div className="-m-4 p-4 overflow-y-auto max-h-screen">
-            <OverviewTabContent />
-            <div className='hidden sm:block h-40' />
-          </div>
-        </TabPanel>
+        <TabPanels>
+          <TabPanel>
+            {/* Fixed InstructorSelector at the top */}
+            {hasDefaultGPAData && (
+              <div className='mb-4'>
+                <InstructorSelector
+                  instructors={selectableInstructors}
+                  selectedInstructors={selectedInstructors}
+                  onChange={(value) => refreshGraph(value)}
+                />
+              </div>
+            )}
+            <div className="-m-4 p-4 overflow-y-auto max-h-screen">
+              <OverviewTabContent />
+              <div className='hidden sm:block h-40' />
+            </div>
+          </TabPanel>
 
         {/* GPA Details tab (lazy loaded) */}
         <TabPanel>

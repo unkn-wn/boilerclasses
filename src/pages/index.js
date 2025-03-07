@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import Card from "../components/card";
 import Footer from "../components/footer";
 import Head from "next/head";
+import ReleaseNotes from "../components/ReleaseNotes";
 
 import { WarningTwoIcon, ArrowUpIcon } from '@chakra-ui/icons';
 
@@ -205,7 +206,7 @@ const CourseCatalog = () => {
             />
             <Button
               onClick={() => router.push('https://schedule.boilerclasses.com')}
-              className="flex justify-self-center mt-4 md:mt-6 bg-background text-primary hover:brightness-125 w-fit p-4 shadow"
+              className="flex justify-self-center mt-4 md:mt-6 bg-background text-primary hover:bg-background-secondary w-fit p-4 shadow"
               variant=''
               size={{ base: 'xs', sm: 'sm', md: 'md' }}
               leftIcon={<IoMdCalendar />}
@@ -216,6 +217,8 @@ const CourseCatalog = () => {
           <div className='absolute bottom-0 w-full'>
             <Footer />
           </div>
+
+          <ReleaseNotes />
         </div>
       )}
     </>
