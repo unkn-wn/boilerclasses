@@ -10,7 +10,7 @@ const OverallGpa = ({ courseData, card, preCalculatedData = null }) => {
     <div className={`relative justify-center flex whitespace-nowrap
       ${card ? 'text-sm px-2 py-1 mx-1 my-1 rounded-full' : 'px-5 rounded-md'}`}
       style={{ backgroundColor: color }}>
-      <span className="my-auto font-black text-white">
+      <span className={`my-auto font-black ${gpa === 0 ? "text-primary" : "text-white"}`}>
         GPA: {gpa === 0 ? "N/A" : gpa}
       </span>
     </div>

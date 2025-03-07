@@ -25,8 +25,18 @@ const Graph = ({ data, scheduler = false }) => {
   // Get number of instructors in the dataset
   const instructorCount = data?.datasets?.length || 0;
 
-  // If no data, show empty state
-  if (!data || !data.datasets || data.datasets.length === 0) {
+  // Check if all datasets contain only zeros
+  const hasNoData = useMemo(() => {
+    if (!data || !data.datasets || data.datasets.length === 0) return true;
+
+    // Check if every dataset has all zeros
+    return data.datasets.every(dataset =>
+      !dataset.data || dataset.data.every(value => value === 0)
+    );
+  }, [data]);
+
+  // If no data or all zeros, show empty state
+  if (hasNoData) {
     return (
       <div className="h-full w-full bg-background mx-auto p-4 rounded-xl shadow">
         <div className="flex justify-between items-center mb-4">
@@ -78,7 +88,7 @@ const Graph = ({ data, scheduler = false }) => {
               }}
               labelStyle={{ color: 'rgb(var(--text-primary-color))' }}
               formatter={(value, name) => [`${value}%`, name]}
-							cursor={{ fill: 'rgba(var(--background-tertiary-color))' }}
+              cursor={{ fill: 'rgba(var(--background-tertiary-color))' }}
             />
             <Legend
               formatter={(value) => <span style={{color: 'rgb(var(--text-primary-color))'}}>{value}</span>}
@@ -89,7 +99,7 @@ const Graph = ({ data, scheduler = false }) => {
                 dataKey={dataset.label}
                 fill={dataset.backgroundColor}
                 animationDuration={750}
-								radius={[2, 2, 0, 0]}
+                radius={[2, 2, 0, 0]}
               />
             ))}
           </BarChart>
