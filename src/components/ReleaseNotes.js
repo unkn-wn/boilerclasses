@@ -29,7 +29,7 @@ const ReleaseNotes = () => {
   // Check if the user has seen the release notes before
   useEffect(() => {
     const seenReleaseNotes = localStorage.getItem('seenReleaseNotes-v1');
-    if (!seenReleaseNotes) {
+    if (!seenReleaseNotes && window.innerWidth >= 768) {
       onOpen();
     } else {
       setHasSeenNotes(true);
