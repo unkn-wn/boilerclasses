@@ -44,7 +44,7 @@ const ProfessorComparisonChart = () => {
         }
       });
 
-      const averageGpa = semesterCount > 0 ? totalGpa / semesterCount : null;
+      const averageGpa = semesterCount > 0 ? Math.round((totalGpa / semesterCount) * 100) / 100 : null;
 
       return {
         name: dataset.label,
@@ -128,6 +128,7 @@ const ProfessorComparisonChart = () => {
 
   // Calculate domain for Y axis to ensure all reference lines are visible
   // IMPORTANT: Always calculate this, regardless of whether we'll use it or not
+  // Calculate domain for Y axis to ensure all reference lines are visible
   const yDomain = useMemo(() => {
     let minY = 2.0; // Default minimum
     let maxY = 4.0; // Default maximum
@@ -136,14 +137,18 @@ const ProfessorComparisonChart = () => {
     if (selectedProfessorData.length > 0) {
       selectedProfessorData.forEach(prof => {
         if (prof.averageGpa !== null) {
-          minY = Math.min(minY, Math.floor(prof.averageGpa * 10) / 10);
-          maxY = Math.max(maxY, Math.ceil(prof.averageGpa * 10) / 10);
+          // Round to 1 decimal place
+          const flooredGPA = Math.floor(prof.averageGpa * 10) / 10;
+          const ceiledGPA = Math.ceil(prof.averageGpa * 10) / 10;
+
+          minY = Math.min(minY, flooredGPA);
+          maxY = Math.max(maxY, ceiledGPA);
         }
       });
 
-      // Add padding
-      minY = Math.max(1.5, minY - 0.1);
-      maxY = Math.min(4.0, maxY + 0.1);
+      // Add padding, but maintain 1 decimal precision
+      minY = Math.max(1.5, Math.floor((minY - 0.1) * 10) / 10);
+      maxY = Math.min(4.0, Math.ceil((maxY + 0.1) * 10) / 10);
     }
 
     return [minY, maxY];
