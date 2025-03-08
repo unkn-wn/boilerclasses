@@ -1,8 +1,8 @@
 name: Deploy Review App
 on:
   # Run this workflow on every PR event. Existing review apps will be updated when the PR is updated.
-  pull_request:
-    types: [opened, reopened, synchronize, closed]
+  # pull_request:
+  #   types: [opened, reopened, synchronize, closed]
   # Add trigger for comments on PRs
   issue_comment:
     types: [created, edited]
@@ -25,7 +25,7 @@ jobs:
       url: ${{ steps.deploy.outputs.url }}
     # Only run one deployment at a time per PR.
     concurrency:
-      group: pr-${{ github.event.number || github.event.issue.number }}
+      group: pr-${{ github.event.issue.number }}
 
     # Deploying apps with this "review" environment allows the URL for the app to be displayed in the PR UI.
     # Feel free to change the name of this environment.
