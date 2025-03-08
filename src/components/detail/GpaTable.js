@@ -54,12 +54,13 @@ const SortHeader = ({ label, field, currentSort, onSort, width = "auto" }) => {
 };
 
 const GpaTable = ({ searchQuery = '' }) => {
-  // Get data directly from context instead of props
+  // Get data directly from context including the highlight function
   const {
     courseData,
     selectedInstructors,
     refreshGraph,
-    defaultGPA
+    defaultGPA,
+    highlightOverviewTab // Get the highlight function from context
   } = useDetailContext();
 
   // Add sorting state
@@ -162,13 +163,16 @@ const GpaTable = ({ searchQuery = '' }) => {
     });
   }, [filteredData, sort]);
 
-  // Handle selecting a professor - simplified to always use context
+  // Handle selecting a professor
   const handleSelectProfessor = (professorName) => {
     const newSelection = selectedInstructors.includes(professorName)
       ? selectedInstructors.filter(name => name !== professorName)
       : [...selectedInstructors, professorName];
 
     refreshGraph(newSelection.map(name => ({ value: name, label: name })));
+
+    // Trigger the highlight animation for the Overview tab
+    highlightOverviewTab();
   };
 
   // Handle sorting when a column header is clicked

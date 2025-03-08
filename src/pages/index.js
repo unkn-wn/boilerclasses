@@ -2,10 +2,10 @@
 
 import React, { useEffect } from "react";
 import { Inter } from "next/font/google";
-import Card from "../components/card";
-import Footer from "../components/footer";
+import Card from "@/components/card";
+import Footer from "@/components/footer";
 import Head from "next/head";
-import ReleaseNotes from "../components/ReleaseNotes";
+import ReleaseNotes from "@/components/ReleaseNotes";
 
 import { WarningTwoIcon, ArrowUpIcon } from "@chakra-ui/icons";
 

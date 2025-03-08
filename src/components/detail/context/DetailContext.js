@@ -27,6 +27,7 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
   const [defaultGPA, setDefaultGPA] = useState({ labels: [], datasets: [] });
   const [selectableInstructors, setSelectableInstructors] = useState([]);
   const [initializationComplete, setInitializationComplete] = useState(false);
+  const [shouldHighlightOverviewTab, setShouldHighlightOverviewTab] = useState(false);
 
   // Memoize expensive calculations to prevent recalculation on re-renders
   const allProfs = useMemo(() => {
@@ -136,6 +137,15 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
     return ret.substring(0, ret.length - 4);
   }, [courseData?.instructor, sem]);
 
+  // Function to highlight the overview tab
+  const highlightOverviewTab = useCallback(() => {
+    setShouldHighlightOverviewTab(true);
+    // Reset the highlight state after animation completes
+    setTimeout(() => {
+      setShouldHighlightOverviewTab(false);
+    }, 2000);
+  }, []);
+
   // Value object to provide through context
   const contextValue = {
     courseData,
@@ -149,7 +159,9 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
     selectableInstructors,
     loading: !initializationComplete,
     refreshGraph,
-    getSearchableProfString
+    getSearchableProfString,
+    shouldHighlightOverviewTab,
+    highlightOverviewTab
   };
 
   return (

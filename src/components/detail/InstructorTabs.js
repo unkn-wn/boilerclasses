@@ -12,6 +12,7 @@ const InstructorTabs = () => {
     selectableInstructors,
     selectedInstructors,
     refreshGraph,
+    shouldHighlightOverviewTab,
   } = useDetailContext();
 
   // Check if we have datasets to display
@@ -55,37 +56,47 @@ const InstructorTabs = () => {
         '& .chakra-tabs__tab-panel': {
           padding: '0',
           paddingTop: '1rem',
-        }
+        },
       }}
     >
-      <TabList overflowY="hidden"
+      <TabList overflowY=""
         sx={{
           scrollbarWidth: 'none',
           '::-webkit-scrollbar': {
             display: 'none',
           },
         }}>
-        <Tab>Overview</Tab>
+        {/* Enhanced visual highlight for the Overview tab */}
+        <div className="relative">
+          <Tab zIndex={1} position="relative">Overview</Tab>
+          <div
+            className={`absolute inset-0 rounded-full transition-all duration-500 ease-in-out ${
+              shouldHighlightOverviewTab
+                ? 'bg-blue-500/15 shadow-[0_0_15px_rgba(59,130,246,1)] border border-blue-400 scale-105'
+                : 'bg-transparent border-transparent scale-100'
+            }`}
+          ></div>
+        </div>
         <Tab>All Grades</Tab>
       </TabList>
 
-        <TabPanels>
-          <TabPanel>
-            {/* Fixed InstructorSelector at the top */}
-            {hasDefaultGPAData && (
-              <div className='mb-4'>
-                <InstructorSelector
-                  instructors={selectableInstructors}
-                  selectedInstructors={selectedInstructors}
-                  onChange={(value) => refreshGraph(value)}
-                />
-              </div>
-            )}
-            <div className="-m-4 p-4 md:overflow-y-auto md:max-h-screen">
-              <OverviewTabContent />
-              <div className='hidden sm:block h-40' />
+      <TabPanels>
+        <TabPanel>
+          {/* Fixed InstructorSelector at the top */}
+          {hasDefaultGPAData && (
+            <div className='mb-4'>
+              <InstructorSelector
+                instructors={selectableInstructors}
+                selectedInstructors={selectedInstructors}
+                onChange={(value) => refreshGraph(value)}
+              />
             </div>
-          </TabPanel>
+          )}
+          <div className="-m-4 p-4 md:overflow-y-auto md:max-h-screen">
+            <OverviewTabContent />
+            <div className='hidden sm:block h-40' />
+          </div>
+        </TabPanel>
 
         {/* GPA Details tab (lazy loaded) */}
         <TabPanel>

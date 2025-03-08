@@ -54,7 +54,7 @@ const ReleaseNotes = () => {
   const showWhatsNewButton = !isOpen && hasSeenNotes;
 
   return (
-    <>
+    <div className='hidden md:block'>
       {showWhatsNewButton && (
         <Button
           position="fixed"
@@ -258,7 +258,7 @@ const ReleaseNotes = () => {
           </ModalContent>
         </div>
       </Modal>
-    </>
+    </div>
   );
 };
 

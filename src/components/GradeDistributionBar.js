@@ -10,7 +10,7 @@ const GradeDistributionBar = ({ gradeDistribution, showLabels = true }) => {
   const gradeColors = {
     A: 'bg-green-500', // Green from 4.0 GPA
     B: 'bg-yellow-500', // Yellow from 3.25 GPA
-    C: 'bg-red-600', // Red from 2.25 GPA
+    C: 'bg-orange-600', // Red from 2.25 GPA
     D: 'bg-red-800', // Darker red - blend toward 1.0 GPA color
     F: 'bg-red-950',  // Darkest red from 1.0 GPA
     // N: 'bg-background-secondary' // Gray for N/A or other grades
