@@ -53,7 +53,11 @@ const SortHeader = ({ label, field, currentSort, onSort, width = "auto" }) => {
   );
 };
 
-const GpaTable = ({ searchQuery = '' }) => {
+const GpaTable = ({
+  searchQuery = '',
+  showSelectedOnly = false,
+  selectedInstructorsList = null
+}) => {
   // Get data directly from context including the highlight function
   const {
     courseData,
@@ -116,12 +120,21 @@ const GpaTable = ({ searchQuery = '' }) => {
     [courseData]
   );
 
-  // Filter professors based on search query
+  // Filter professors based on search query and selected-only filter
   const filteredData = useMemo(() => {
-    return professorData.filter(professor =>
+    let filtered = professorData.filter(professor =>
       professor.name.toLowerCase().includes((searchQuery || '').toLowerCase())
     );
-  }, [professorData, searchQuery]);
+
+    // Apply the selected-only filter if enabled and we have a list of selected instructors
+    if (showSelectedOnly && selectedInstructorsList && selectedInstructorsList.length > 0) {
+      filtered = filtered.filter(professor =>
+        selectedInstructorsList.includes(professor.name)
+      );
+    }
+
+    return filtered;
+  }, [professorData, searchQuery, showSelectedOnly, selectedInstructorsList]);
 
   // Sort the filtered data based on current sort settings
   const sortedData = useMemo(() => {
@@ -156,6 +169,16 @@ const GpaTable = ({ searchQuery = '' }) => {
       }
       else if (sort.field === 'sectionsCount') {
         comparison = a.sectionsCount - b.sectionsCount;
+
+        // Use average GPA as a tiebreaker when section counts are equal
+        if (comparison === 0) {
+          // Handle null GPA values
+          if (a.averageGpa === null && b.averageGpa !== null) return 1;
+          if (a.averageGpa !== null && b.averageGpa === null) return -1;
+          if (a.averageGpa !== null && b.averageGpa !== null) {
+            comparison = a.averageGpa - b.averageGpa;
+          }
+        }
       }
 
       // Apply sort direction
@@ -264,8 +287,8 @@ const GpaTable = ({ searchQuery = '' }) => {
                   <td className="py-3 px-3 lg:px-4 block lg:table-cell">
                     <div className="flex flex-wrap items-center justify-between">
                       {/* Name and Selected badge */}
-                      <div className="flex items-center gap-2 mb-1 lg:mb-0">
-                        <h3 className="font-semibold text-md">{professor.name}</h3>
+                      <div className="flex w-full items-center gap-2 mb-1 lg:mb-0">
+                        <h3 className="flex-1 font-semibold text-md">{professor.name}</h3>
                         {isSelected && (
                           <span className="bg-background-secondary border border-[rgb(var(--background-tertiary-color))] text-primary text-xs px-2 py-0.5 rounded-full">
                             Selected

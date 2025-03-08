@@ -1,14 +1,22 @@
 // GPA Modal component for all GPA data for each professor and each semester
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import GpaTable from '@/components/detail/GpaTable';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { Switch } from '@chakra-ui/react';
 
 const GpaModal = () => {
-  const { courseData } = useDetailContext();
+  const { courseData, selectedInstructors } = useDetailContext();
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSelectedOnly, setShowSelectedOnly] = useState(false);
+
+  useEffect(() => {
+    if (selectedInstructors.length === 0) {
+      setShowSelectedOnly(false);
+    }
+  }, [selectedInstructors]);
 
   if (!courseData || !courseData.gpa) {
     return (
@@ -23,14 +31,8 @@ const GpaModal = () => {
       <div className="flex flex-col mb-2">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">All Grades</h2>
-          {/* <div className="flex items-center text-sm bg-background px-3 py-1 rounded-lg">
-            <span className='mr-1'>GPA:</span>
-            <span className='text-white bg-[#632230] px-2 mr-1'>1.0</span>
-            <span className='bg-[#ddaa33] px-2 text-black'>4.0</span>
-          </div> */}
         </div>
 
-        {/* Description text */}
         <div className="mt-2 flex items-start gap-3">
           <div className="text-sm">
             <p className="text-secondary mb-2">This table shows grade distributions for every professor. The <span className="font-semibold">Average</span> column shows the instructor's overall GPA for this course.</p>
@@ -39,15 +41,33 @@ const GpaModal = () => {
         </div>
       </div>
 
-      <SearchBar
-        placeholder="Filter instructors..."
-        value={searchQuery}
-        onChange={setSearchQuery}
-        className="mb-4"
-      />
+      <div className="flex flex-col md:flex-row gap-4 mb-4 items-end md:items-center">
+        <SearchBar
+          placeholder="Filter instructors..."
+          value={searchQuery}
+          onChange={setSearchQuery}
+          className="flex-grow"
+        />
+
+        {/* Selected instructors toggle switch */}
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="selected-only"
+            checked={showSelectedOnly}
+            onChange={() => setShowSelectedOnly(!showSelectedOnly)}
+            className="mr-1"
+          />
+          <label htmlFor="selected-only" className="text-sm text-tertiary cursor-pointer">
+            Selected Only
+          </label>
+        </div>
+      </div>
 
       <GpaTable
         searchQuery={searchQuery}
+        showSelectedOnly={showSelectedOnly}
+        selectedInstructorsList={selectedInstructors}
       />
     </div>
   );
