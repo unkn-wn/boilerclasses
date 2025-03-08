@@ -41,12 +41,12 @@ const GpaModal = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-4 items-end md:items-center">
+      <div className="flex flex-col sm:flex-row gap-4 mb-4 items-end sm:items-center">
         <SearchBar
           placeholder="Filter instructors..."
           value={searchQuery}
           onChange={setSearchQuery}
-          className="flex-grow"
+          className="w-full flex-1"
         />
 
         {/* Selected instructors toggle switch */}
@@ -54,6 +54,7 @@ const GpaModal = () => {
           <input
             type="checkbox"
             id="selected-only"
+            disabled={selectedInstructors.length === 0}
             checked={showSelectedOnly}
             onChange={() => setShowSelectedOnly(!showSelectedOnly)}
             className="mr-1"
