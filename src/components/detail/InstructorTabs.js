@@ -100,7 +100,7 @@ const InstructorTabs = () => {
 
         {/* GPA Details tab (lazy loaded) */}
         <TabPanel>
-          <div className="-m-4 p-4 overflow-y-auto max-h-screen">
+          <div className="-m-4 p-4 md:overflow-y-auto md:max-h-screen">
             <GpaModal />
             <div className='hidden sm:block h-40' />
           </div>

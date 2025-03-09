@@ -1,9 +1,12 @@
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useMemo, useState, useEffect } from 'react';
 import { getColor, calculateInstructorGradeDistribution } from '@/lib/gpaUtils';
 import GradeDistributionBar from '@/components/GradeDistributionBar';
 import { useDetailContext } from './context/DetailContext';
+import { useFilterContext } from './context/FilterContext';
 import { extractAllSemesters } from '@/lib/utils';
-import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import { FiArrowUp, FiArrowDown, FiChevronDown, FiChevronUp, FiUser, FiCalendar } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
 // Memoized average cell with bolder text
@@ -53,11 +56,81 @@ const SortHeader = ({ label, field, currentSort, onSort, width = "auto" }) => {
   );
 };
 
-const GpaTable = ({
-  searchQuery = '',
-  showSelectedOnly = false,
-  selectedInstructorsList = null
+// Show More/Less button component for mobile view
+const MobileShowMoreButton = ({
+  sortedData,
+  visibleData,
+  showAll,
+  setShowAll,
+  initialVisibleCount
 }) => {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const hasMoreToShow = sortedData.length > initialVisibleCount;
+
+  // Handle toggling between show all and show less
+  const toggleShowAll = () => {
+    setIsTransitioning(true);
+    setShowAll(prev => !prev);
+
+    // Reset transitioning state after animation completes
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  if (!hasMoreToShow) return null;
+
+  return (
+    <>
+      {/* Show All/Less button - only visible on mobile when there's more data */}
+      <div className="md:hidden relative z-10 px-4 pt-4 pb-2">
+        <AnimatePresence mode="sync">
+          <motion.button
+            key={showAll ? "collapse" : "expand"}
+            className={`w-full py-2 px-3 text-sm
+              transition-all flex items-center justify-center gap-2 rounded-lg
+              ${isTransitioning
+                ? 'bg-background-tertiary text-white shadow-md'
+                : 'bg-background-secondary text-tertiary hover:text-secondary hover:bg-background-tertiary/50'}`}
+            onClick={toggleShowAll}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            whileHover={{ scale: 1.01, y: -1 }}
+            whileTap={{ scale: 0.99 }}
+          >
+            {showAll ? (
+              <>
+                <FiChevronUp className={isTransitioning ? "text-white" : "text-tertiary"} size={16} />
+                <span>Show Less</span>
+              </>
+            ) : (
+              <>
+                <FiChevronDown className={isTransitioning ? "text-white" : "text-tertiary"} />
+                <span>{sortedData.length - initialVisibleCount} more instructor{sortedData.length - initialVisibleCount !== 1 ? 's' : ''}</span>
+              </>
+            )}
+          </motion.button>
+        </AnimatePresence>
+      </div>
+
+      {/* Show count info on mobile */}
+      {sortedData.length > 0 && (
+        <div className="md:hidden text-xs text-tertiary text-center">
+          Showing {visibleData.length} of {sortedData.length} instructors
+        </div>
+      )}
+    </>
+  );
+};
+
+const GpaTable = () => {
+  // Get filter state from context
+  const {
+    searchQuery,
+    showSelectedOnly,
+    showCurrentSemesterOnly
+  } = useFilterContext();
+
   // Get data directly from context including the highlight function
   const {
     courseData,
@@ -69,6 +142,12 @@ const GpaTable = ({
 
   // Add sorting state
   const [sort, setSort] = useState({ field: 'averageGpa', direction: 'desc' });
+
+  // Show all/less toggle for mobile
+  const [showAll, setShowAll] = useState(false);
+
+  // Initial count to show before "Show All"
+  const INITIAL_VISIBLE_COUNT = 5;
 
   // Process professor data from context
   const professorData = useMemo(() => {
@@ -120,21 +199,26 @@ const GpaTable = ({
     [courseData]
   );
 
-  // Filter professors based on search query and selected-only filter
+  // Filter professors based on search query and filter options
   const filteredData = useMemo(() => {
     let filtered = professorData.filter(professor =>
       professor.name.toLowerCase().includes((searchQuery || '').toLowerCase())
     );
 
     // Apply the selected-only filter if enabled and we have a list of selected instructors
-    if (showSelectedOnly && selectedInstructorsList && selectedInstructorsList.length > 0) {
+    if (showSelectedOnly && selectedInstructors && selectedInstructors.length > 0) {
       filtered = filtered.filter(professor =>
-        selectedInstructorsList.includes(professor.name)
+        selectedInstructors.includes(professor.name)
       );
     }
 
+    // Apply the current semester filter if enabled
+    if (showCurrentSemesterOnly) {
+      filtered = filtered.filter(professor => professor.isCurrentSemester);
+    }
+
     return filtered;
-  }, [professorData, searchQuery, showSelectedOnly, selectedInstructorsList]);
+  }, [professorData, searchQuery, showSelectedOnly, selectedInstructors, showCurrentSemesterOnly]);
 
   // Sort the filtered data based on current sort settings
   const sortedData = useMemo(() => {
@@ -186,6 +270,18 @@ const GpaTable = ({
     });
   }, [filteredData, sort]);
 
+  // Get visible data based on mobile limitations
+  const visibleData = useMemo(() => {
+    // On desktop, show all data
+    // On mobile, limit by showAll state
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      return sortedData; // Always show all on desktop
+    }
+
+    return showAll ? sortedData : sortedData.slice(0, INITIAL_VISIBLE_COUNT);
+  }, [sortedData, showAll]);
+
+
   // Handle selecting a professor
   const handleSelectProfessor = (professorName) => {
     const newSelection = selectedInstructors.includes(professorName)
@@ -206,7 +302,7 @@ const GpaTable = ({
     }));
   };
 
-  // Mobile sort options menu
+  // Mobile sort options menu with enhanced filter indicators
   const SortOptions = () => (
     <div className="lg:hidden bg-background rounded-t-lg p-3 border-b border-[rgb(var(--background-tertiary-color))]">
       <div className="flex items-center justify-between">
@@ -230,149 +326,179 @@ const GpaTable = ({
           <option value="gradeA-asc">Grade A% (Low-High)</option>
         </select>
       </div>
+
+      {/* Improved filter indicators for mobile */}
+      {(showSelectedOnly || showCurrentSemesterOnly) && (
+        <div className="mt-2 flex flex-wrap gap-2 justify-center">
+          {showSelectedOnly && (
+            <div className="flex items-center gap-1.5 bg-blue-500/15 text-blue-600 dark:text-blue-400 px-2 rounded-full text-xs">
+              <FiUser size={12} />
+              <span>Selected Only</span>
+            </div>
+          )}
+          {showCurrentSemesterOnly && (
+            <div className="flex items-center gap-1.5 bg-green-500/15 text-green-600 dark:text-green-400 px-2 rounded-full text-xs">
+              <FiCalendar size={12} />
+              <span>{CURRENT_SEMESTER}</span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 
   return (
-    <div className="bg-background rounded-lg shadow">
-      {/* Mobile sort options - now visible on tablets too */}
-      <SortOptions />
+    <>
+      <div className="bg-background rounded-lg shadow">
+        {/* Mobile sort options - now visible on tablets too */}
+        <SortOptions />
 
-      {/* Desktop table view */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="lg:table-header-group hidden">
-            <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
-              <SortHeader
-                label="Instructor"
-                field="name"
-                currentSort={sort}
-                onSort={handleSort}
-              />
-              <SortHeader
-                label="Sections"
-                field="sectionsCount"
-                currentSort={sort}
-                onSort={handleSort}
-                width="5%"
-              />
-              <SortHeader
-                label="Grade Distribution"
-                field="gradeA"
-                currentSort={sort}
-                onSort={handleSort}
-                width="55%"
-              />
-              <SortHeader
-                label="Average"
-                field="averageGpa"
-                currentSort={sort}
-                onSort={handleSort}
-                width="10%"
-              />
-            </tr>
-          </thead>
-          <tbody>
-            {sortedData.map((professor) => {
-              const isSelected = selectedInstructors.includes(professor.name);
+        {/* Desktop table view */}
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="lg:table-header-group hidden">
+              <tr className="border-b border-[rgb(var(--background-tertiary-color))]">
+                <SortHeader
+                  label="Instructor"
+                  field="name"
+                  currentSort={sort}
+                  onSort={handleSort}
+                />
+                <SortHeader
+                  label="Sections"
+                  field="sectionsCount"
+                  currentSort={sort}
+                  onSort={handleSort}
+                  width="5%"
+                />
+                <SortHeader
+                  label="Grade Distribution"
+                  field="gradeA"
+                  currentSort={sort}
+                  onSort={handleSort}
+                  width="55%"
+                />
+                <SortHeader
+                  label="Average"
+                  field="averageGpa"
+                  currentSort={sort}
+                  onSort={handleSort}
+                  width="10%"
+                />
+              </tr>
+            </thead>
+            <tbody>
+              {visibleData.map((professor) => {
+                const isSelected = selectedInstructors.includes(professor.name);
 
-              return (
-                <tr
-                  key={professor.name}
-                  className={`block lg:table-row border-b border-[rgb(var(--background-secondary-color))] hover:bg-background-secondary transition-colors ${isSelected ? 'bg-background-secondary/20' : ''}`}
-                  onClick={() => handleSelectProfessor(professor.name)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {/* Instructor name - always visible */}
-                  <td className="py-3 px-3 lg:px-4 block lg:table-cell">
-                    <div className="flex flex-wrap items-center justify-between">
-                      {/* Name and Selected badge */}
-                      <div className="flex w-full items-center gap-2 mb-1 lg:mb-0">
-                        <h3 className="flex-1 font-semibold text-md">{professor.name}</h3>
-                        {isSelected && (
-                          <span className="bg-background-secondary border border-[rgb(var(--background-tertiary-color))] text-primary text-xs px-2 py-0.5 rounded-full">
-                            Selected
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Mobile/tablet stats row */}
-                      <div className="flex items-center justify-between w-full lg:hidden">
-                        {/* Sections count */}
-                        <div className="flex items-center gap-1">
-                          <span className="text-xs text-tertiary">Sections:</span>
-                          <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium">
-                            {professor.sectionsCount}
-                          </span>
+                return (
+                  <tr
+                    key={professor.name}
+                    className={`block lg:table-row border-b border-[rgb(var(--background-secondary-color))] hover:bg-background-secondary transition-colors ${isSelected ? 'bg-background-secondary/20' : ''}`}
+                    onClick={() => handleSelectProfessor(professor.name)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {/* Instructor name - always visible */}
+                    <td className="py-3 px-3 lg:px-4 block lg:table-cell">
+                      <div className="flex flex-wrap items-center justify-between">
+                        {/* Name and Selected badge */}
+                        <div className="flex w-full items-center gap-2 mb-1 lg:mb-0">
+                          <h3 className="flex-1 font-semibold text-md">{professor.name}</h3>
+                          {isSelected && (
+                            <span className="bg-background-secondary border border-[rgb(var(--background-tertiary-color))] text-primary text-xs px-2 py-0.5 rounded-full">
+                              Selected
+                            </span>
+                          )}
                         </div>
 
-                        {/* Average GPA */}
-                        <div className="flex items-center gap-1">
-                          <span className="text-xs text-tertiary">GPA:</span>
-                          <div className="inline-block">
-                            <div
-                              className="px-2 py-1 rounded"
-                              style={{
-                                backgroundColor: getColor(professor.averageGpa) || 'transparent',
-                                minWidth: '40px',
-                                textAlign: 'center'
-                              }}
-                            >
-                              <span className="text-xs font-bold text-white">
-                                {professor.averageGpa?.toFixed(2) || '-'}
-                              </span>
+                        {/* Mobile/tablet stats row */}
+                        <div className="flex items-center justify-between w-full lg:hidden">
+                          {/* Sections count */}
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-tertiary">Sections:</span>
+                            <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium">
+                              {professor.sectionsCount}
+                            </span>
+                          </div>
+
+                          {/* Average GPA */}
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-tertiary">GPA:</span>
+                            <div className="inline-block">
+                              <div
+                                className="px-2 py-1 rounded"
+                                style={{
+                                  backgroundColor: getColor(professor.averageGpa) || 'transparent',
+                                  minWidth: '40px',
+                                  textAlign: 'center'
+                                }}
+                              >
+                                <span className="text-xs font-bold text-white">
+                                  {professor.averageGpa?.toFixed(2) || '-'}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Mobile/tablet grade distribution bar */}
-                    <div className="mt-2 lg:hidden">
-                      <div className="flex items-center gap-2">
-                        <div className="w-full">
-                          <GradeDistributionBar
-                            gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
-                            showLabels={false}
-                          />
+                      {/* Mobile/tablet grade distribution bar */}
+                      <div className="mt-2 lg:hidden">
+                        <div className="flex items-center gap-2">
+                          <div className="w-full">
+                            <GradeDistributionBar
+                              gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
+                              showLabels={false}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
+                    </td>
 
-                  {/* Sections Count - desktop only */}
-                  <td className="py-2 px-2 text-center hidden lg:table-cell">
-                    <div className="flex justify-center">
-                      <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium">
-                        {professor.sectionsCount}
-                      </span>
-                    </div>
-                  </td>
+                    {/* Sections Count - desktop only */}
+                    <td className="py-2 px-2 text-center hidden lg:table-cell">
+                      <div className="flex justify-center">
+                        <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium">
+                          {professor.sectionsCount}
+                        </span>
+                      </div>
+                    </td>
 
-                  {/* Grade Distribution Bar - desktop only */}
-                  <td className="py-2 px-2 hidden lg:table-cell">
-                    <div className="w-full">
-                      <GradeDistributionBar
-                        gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
-                        showLabels={false}
+                    {/* Grade Distribution Bar - desktop only */}
+                    <td className="py-2 px-2 hidden lg:table-cell">
+                      <div className="w-full">
+                        <GradeDistributionBar
+                          gradeDistribution={professor.hasGradeData ? professor.gradeDistribution : null}
+                          showLabels={false}
+                        />
+                      </div>
+                    </td>
+
+                    {/* Average GPA - desktop only */}
+                    <td className="py-2 px-2 text-center hidden lg:table-cell">
+                      <AverageGpaCell
+                        averageGpa={professor.averageGpa}
+                        color={getColor(professor.averageGpa)}
                       />
-                    </div>
-                  </td>
-
-                  {/* Average GPA - desktop only */}
-                  <td className="py-2 px-2 text-center hidden lg:table-cell">
-                    <AverageGpaCell
-                      averageGpa={professor.averageGpa}
-                      color={getColor(professor.averageGpa)}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+
+
+      {/* Mobile Show More/Less Component */}
+      <MobileShowMoreButton
+        sortedData={sortedData}
+        visibleData={visibleData}
+        showAll={showAll}
+        setShowAll={setShowAll}
+        initialVisibleCount={INITIAL_VISIBLE_COUNT}
+      />
+    </>
   );
 };
 

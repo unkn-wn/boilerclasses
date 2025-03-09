@@ -40,9 +40,10 @@ Here's file structure of how the Details (`[id].js`) page looks now. The entire 
       - graph.js (in `components/graph.js`)
       - ProfessorComparisonChart.js
   - (All under `All Grades` tab)
-    - gpaModal.js
-      - SearchBar.js (in `components/SearchBar.js`)
-      - GpaTable.js
+    - (All under this is wrapped in FilterProvider from `context/FilterContext.js`)
+      - gpaModal.js
+        - SearchBar.js (in `components/SearchBar.js`)
+        - GpaTable.js
 
 ### Bottom
 - calendar.js (in `components/calendar.js`)

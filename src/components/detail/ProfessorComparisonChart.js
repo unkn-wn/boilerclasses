@@ -186,7 +186,7 @@ const ProfessorComparisonChart = () => {
             <p className="text-xs text-tertiary">Select instructors to compare their GPAs.</p>
           </>
         ) : (
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mb-4">
             <p className="text-tertiary font-bold">No data available</p>
             <p className="text-sm text-tertiary mt-2">
               {selectedInstructors.length === 1
