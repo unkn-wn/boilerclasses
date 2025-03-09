@@ -88,6 +88,19 @@ const ProfessorComparisonChart = () => {
     return professorData.filter(prof => selectedInstructors.includes(prof.name));
   }, [professorData, selectedInstructors]);
 
+  // Check if there's actual data to display (similar to hasNoData in graph.js)
+  const hasNoData = useMemo(() => {
+    if (selectedInstructors.length === 0) return true;
+
+    // If no professors have been processed yet
+    if (!selectedProfessorData || selectedProfessorData.length === 0) return true;
+
+    // Check if all professors have empty or no GPA data
+    return selectedProfessorData.every(prof =>
+      !prof.gpas || prof.gpas.length === 0 || !prof.averageGpa
+    );
+  }, [selectedInstructors, selectedProfessorData]);
+
   // Transform data for the chart
   const chartData = useMemo(() => {
     if (selectedProfessorData.length === 0) return [];
@@ -154,16 +167,34 @@ const ProfessorComparisonChart = () => {
     return [minY, maxY];
   }, [selectedProfessorData]);
 
-  // Check if we have professors to display AFTER calculating all hooks
+  // Check if we have data to display AFTER calculating all hooks
   // This ensures hooks are always called in the same order
-  if (selectedProfessorData.length === 0) {
+  if (hasNoData) {
     return (
       <div className="bg-background p-6 rounded-lg shadow text-center">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold">GPA Trends</h3>
+          {selectedInstructors.length > 0 && (
+            <div className="text-sm text-tertiary">
+              {selectedInstructors.length} instructor{selectedInstructors.length !== 1 ? 's' : ''} selected
+            </div>
+          )}
         </div>
-        <p className="text-tertiary font-bold">No instructors selected</p>
-        <p className="text-xs text-tertiary">Select instructors to compare their GPAs.</p>
+        {selectedInstructors.length === 0 ? (
+          <>
+            <p className="text-tertiary font-bold">No instructors selected</p>
+            <p className="text-xs text-tertiary">Select instructors to compare their GPAs.</p>
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center">
+            <p className="text-tertiary font-bold">No data available</p>
+            <p className="text-sm text-tertiary mt-2">
+              {selectedInstructors.length === 1
+                ? `${selectedInstructors[0]} has no GPA data.`
+                : `Selected instructors have no GPA data: ${selectedInstructors.join(', ')}`}
+            </p>
+          </div>
+        )}
       </div>
     );
   }

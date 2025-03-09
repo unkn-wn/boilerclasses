@@ -25,6 +25,11 @@ const Graph = ({ data, scheduler = false }) => {
   // Get number of instructors in the dataset
   const instructorCount = data?.datasets?.length || 0;
 
+  // Get instructor names for display
+  const instructorNames = useMemo(() => {
+    return data?.datasets?.map(dataset => dataset.label) || [];
+  }, [data]);
+
   // Check if all datasets contain only zeros
   const hasNoData = useMemo(() => {
     if (!data || !data.datasets || data.datasets.length === 0) return true;
@@ -41,9 +46,21 @@ const Graph = ({ data, scheduler = false }) => {
       <div className="h-full w-full bg-background mx-auto p-4 rounded-xl shadow">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold">{chartTitle}</h3>
+          {instructorCount > 0 && (
+            <div className="text-sm text-tertiary">
+              {instructorCount} instructor{instructorCount !== 1 ? 's' : ''} selected
+            </div>
+          )}
         </div>
-        <div className="flex items-center justify-center h-64">
+        <div className="flex flex-col items-center justify-center h-64">
           <p className="text-tertiary font-bold">No data available</p>
+          {instructorCount > 0 && (
+            <p className="text-sm text-tertiary mt-2">
+              {instructorCount === 1
+                ? `${instructorNames[0]} has no grade distribution data.`
+                : `Selected instructors have no grade distribution data: ${instructorNames.join(', ')}`}
+            </p>
+          )}
         </div>
       </div>
     );

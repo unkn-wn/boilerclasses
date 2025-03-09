@@ -4,7 +4,7 @@ import { useEffect, useState, useMemo, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Popover, PopoverTrigger, PopoverContent, PopoverHeader,
-    PopoverBody, PopoverArrow, Spinner, Tooltip
+    PopoverBody, PopoverArrow, Spinner, Tooltip, Portal
 } from '@chakra-ui/react';
 import { FiClock, FiMapPin, FiUser, FiCalendar, FiShare, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
@@ -41,7 +41,7 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
     };
 
     return (
-        <Popover placement="auto" trigger="hover">
+        <Popover placement="auto" trigger="hover" strategy="fixed" gutter={8}>
             <PopoverTrigger>
                 <div
                     className={`w-full cursor-pointer rounded-md bg-background-secondary transition-all
@@ -65,73 +65,77 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                     </div>
                 </div>
             </PopoverTrigger>
-            <PopoverContent
-                backgroundColor={`rgb(var(--background-color))`}
-                borderColor='gray.500'
-                boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)"
-                minW={{ base: "90%", lg: "max-content" }}
-            >
-                <PopoverArrow />
-                <PopoverHeader className="flex justify-between items-center">
-                    <div className="flex items-center">
-                        <span className={`w-3 h-3 rounded-full mr-2 ${getTypeColor(meeting.Type)}`}></span>
-                        <span className="font-semibold">{meeting.Type}</span>
-                    </div>
-                    <div className="text-sm text-tertiary">CRN: {meeting.crn}</div>
-                </PopoverHeader>
-                <PopoverBody className="divide-y divide-background-secondary">
-                    {/* Time and Location Section */}
-                    <div className="pb-2">
-                        <div className="flex items-start gap-3 mb-2">
-                            <FiClock className="text-blue-500 mt-1 flex-shrink-0" />
-                            <div>
-                                <div className="font-medium">{meeting.startTime} - {meeting.endTime}</div>
-                                <div className="text-sm text-tertiary">{meeting.StartDate} to {meeting.EndDate}</div>
+            <Portal>
+                <PopoverContent
+                    backgroundColor={`rgb(var(--background-color))`}
+                    borderColor='gray.500'
+                    boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)"
+                    minW={{ base: "90%", lg: "max-content" }}
+                    zIndex={1400}
+                    className="text-primary"
+                >
+                    <PopoverArrow />
+                    <PopoverHeader className="flex justify-between items-center">
+                        <div className="flex items-center">
+                            <span className={`w-3 h-3 rounded-full mr-2 ${getTypeColor(meeting.Type)}`}></span>
+                            <span className="font-semibold">{meeting.Type}</span>
+                        </div>
+                        <div className="text-sm text-tertiary">CRN: {meeting.crn}</div>
+                    </PopoverHeader>
+                    <PopoverBody className="divide-y divide-background-secondary">
+                        {/* Time and Location Section */}
+                        <div className="pb-2">
+                            <div className="flex items-start gap-3 mb-2">
+                                <FiClock className="text-blue-500 mt-1 flex-shrink-0" />
+                                <div>
+                                    <div className="font-medium">{meeting.startTime} - {meeting.endTime}</div>
+                                    <div className="text-sm text-tertiary">{meeting.StartDate} to {meeting.EndDate}</div>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <FiMapPin className="text-red-500 mt-1 flex-shrink-0" />
+                                <div>
+                                    <div className="font-medium">{meeting.room}</div>
+                                    <a href={`https://www.google.com/maps/search/${encodeURIComponent(`${meeting.room.split(' ')[0]} Purdue`)}`}
+                                        target="_blank" rel="noopener noreferrer"
+                                        className="text-sm text-blue-500 hover:underline">
+                                        View on map
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div className="flex items-start gap-3">
-                            <FiMapPin className="text-red-500 mt-1 flex-shrink-0" />
-                            <div>
-                                <div className="font-medium">{meeting.room}</div>
-                                <a href={`https://www.google.com/maps/search/${encodeURIComponent(`${meeting.room.split(' ')[0]} Purdue`)}`}
-                                    target="_blank" rel="noopener noreferrer"
-                                    className="text-sm text-blue-500 hover:underline">
-                                    View on map
-                                </a>
+
+                        {/* Instructor Section */}
+                        <div className="py-2">
+                            <div className="flex items-start gap-3">
+                                <FiUser className="text-green-500 mt-1 flex-shrink-0" />
+                                <div>
+                                    <div className="font-medium">Instructor</div>
+                                    <div>{meeting.Instructors.map(i => i.Name).join(", ") || 'TBA'}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Instructor Section */}
-                    <div className="py-2">
-                        <div className="flex items-start gap-3">
-                            <FiUser className="text-green-500 mt-1 flex-shrink-0" />
-                            <div>
-                                <div className="font-medium">Instructor</div>
-                                <div>{meeting.Instructors.map(i => i.Name).join(", ") || 'TBA'}</div>
+                        {/* Days & Actions Section */}
+                        <div className="pt-2 flex justify-between items-center">
+                            <div className="flex items-center gap-2">
+                                <FiCalendar className="text-purple-500" />
+                                <span className="font-medium">{meeting.days}</span>
                             </div>
-                        </div>
-                    </div>
 
-                    {/* Days & Actions Section */}
-                    <div className="pt-2 flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                            <FiCalendar className="text-purple-500" />
-                            <span className="font-medium">{meeting.days}</span>
+                            <Tooltip label="Copy details" placement="top">
+                                <button
+                                    onClick={shareMeeting}
+                                    className="p-1.5 rounded-full hover:bg-background-secondary text-tertiary hover:text-secondary transition-colors"
+                                    aria-label="Share meeting details"
+                                >
+                                    <FiShare />
+                                </button>
+                            </Tooltip>
                         </div>
-
-                        <Tooltip label="Copy details" placement="top">
-                            <button
-                                onClick={shareMeeting}
-                                className="p-1.5 rounded-full hover:bg-background-secondary text-tertiary hover:text-secondary transition-colors"
-                                aria-label="Share meeting details"
-                            >
-                                <FiShare />
-                            </button>
-                        </Tooltip>
-                    </div>
-                </PopoverBody>
-            </PopoverContent>
+                    </PopoverBody>
+                </PopoverContent>
+            </Portal>
         </Popover>
     );
 });
@@ -405,22 +409,25 @@ const CalendarContent = () => {
                         <div key={day} className="bg-background-secondary/20 rounded-lg p-2">
                             <WeekdayHeader day={day} />
 
-                            <div className="flex flex-col gap-3 overflow-y-auto overflow-x-hidden h-full max-h-80">
-                                {/* Only render meetings if they exist */}
-                                {meetings && meetings.length > 0 ? (
-                                    meetings.map((meeting, i) => (
-                                        <MeetingDisplay
-                                            meeting={meeting}
-                                            key={meeting.crn + "-" + i}
-                                            isHighlighted={hoveredCrn === meeting.crn}
-                                            onHover={setHoveredCrn}
-                                        />
-                                    ))
-                                ) : (
-                                    <div className="flex items-center justify-center h-20 text-tertiary text-sm bg-background/50 rounded-md">
-                                        No meetings
-                                    </div>
-                                )}
+                            {/* Updated container for better handling of popovers */}
+                            <div className="h-full max-h-96" style={{ contain: 'paint' }}>
+                                <div className="flex flex-col gap-3 overflow-y-auto overflow-x-hidden h-full pr-1">
+                                    {/* Only render meetings if they exist */}
+                                    {meetings && meetings.length > 0 ? (
+                                        meetings.map((meeting, i) => (
+                                            <MeetingDisplay
+                                                meeting={meeting}
+                                                key={meeting.crn + "-" + i}
+                                                isHighlighted={hoveredCrn === meeting.crn}
+                                                onHover={setHoveredCrn}
+                                            />
+                                        ))
+                                    ) : (
+                                        <div className="flex items-center justify-center h-20 text-tertiary text-sm bg-background/50 rounded-md">
+                                            No meetings
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     );
