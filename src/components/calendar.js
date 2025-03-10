@@ -281,6 +281,7 @@ const LazyCalendar = () => {
     const calendarRef = useRef(null);
 
     useEffect(() => {
+        const calRef = calendarRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -291,12 +292,12 @@ const LazyCalendar = () => {
             { threshold: 0.1 } // Trigger when 10% is visible
         );
 
-        if (calendarRef.current) {
-            observer.observe(calendarRef.current);
+        if (calRef) {
+            observer.observe(calRef);
         }
 
         return () => {
-            if (calendarRef.current) {
+            if (calRef) {
                 observer.disconnect();
             }
         };

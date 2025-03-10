@@ -91,7 +91,7 @@ const ReleaseNotes = () => {
               <Flex justifyContent="space-between" alignItems="center">
                 <Flex alignItems="center" gap={3}>
                   <div className="rounded-full">
-                    <img src="/boilerclasses-FULL.png" alt="Boilerplate logo" width="36" />
+                    <Image src="/boilerclasses-FULL.png" alt="BoilerClasses logo" width="12" />
                   </div>
                   <Heading size={{ base: "md", md: "lg" }} fontWeight="bold">BoilerClasses Overhaul!</Heading>
                 </Flex>

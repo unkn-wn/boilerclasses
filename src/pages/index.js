@@ -241,6 +241,7 @@ const CourseCatalog = () => {
             <div className="flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6">
               <img
                 src="/boilerclasses-FULL.png"
+                alt="BoilerClasses Logo"
                 onClick={() => setDisplayLanding(false)}
                 className="my-auto w-10 h-10 mx-2 md:w-16 md:h-16 lg:w-20 lg:h-20 cursor-pointer"
               />
