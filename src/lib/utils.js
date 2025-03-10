@@ -568,3 +568,42 @@ export const sanitizeDescription = (data) => {
     data.description = "No Description Available";
   }
 };
+
+// Function to strip course code to remove the 00s
+export function stripCourseCode(courseCode) {
+  let formattedName = courseCode.toString();
+  if (/\d{5}$/.test(formattedName) && formattedName.slice(-2) === "00") {
+    formattedName = formattedName.slice(0, -2);
+  }
+  return formattedName;
+}
+
+// Function to convert gened code to name
+export function genedCodeToName(code) {
+  const gened = genedsOptions.filter(gened => gened.value === code);
+  return gened[0]?.label || code;
+}
+
+// Function to extract and sort semesters chronologically
+export function extractAllSemesters(gpaData) {
+  if (!gpaData) return [];
+
+  const allSemesters = new Set();
+  Object.values(gpaData).forEach(semesterData => {
+    Object.keys(semesterData).forEach(semester => {
+      allSemesters.add(semester);
+    });
+  });
+
+  // Sort semesters chronologically (oldest first)
+  return Array.from(allSemesters).sort((a, b) => {
+    const aYear = parseInt(a.split(' ')[1]);
+    const bYear = parseInt(b.split(' ')[1]);
+
+    if (aYear !== bYear) return aYear - bYear; // Oldest year first (ascending)
+
+    // Spring comes first in the same year
+    const seasonOrder = { 'Spring': 0, 'Summer': 1, 'Fall': 2 };
+    return seasonOrder[a.split(' ')[0]] - seasonOrder[b.split(' ')[0]];
+  });
+}
