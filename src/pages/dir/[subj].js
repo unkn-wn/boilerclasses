@@ -1,13 +1,25 @@
 import Link from 'next/link'
 import Head from 'next/head';
-
+import { useState, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
+import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/footer';
 import ErrorPage from 'next/error';
 
 const SubjectDirectory = ({ courses, subject }) => {
   const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredCourses = useMemo(() => {
+    if (!searchQuery.trim()) return courses;
+
+    const query = searchQuery.toLowerCase();
+    return courses.filter(course =>
+      course.value.title.toLowerCase().includes(query) ||
+      `${course.value.subjectCode} ${course.value.courseCode}`.toLowerCase().includes(query)
+    );
+  }, [courses, searchQuery]);
 
   if (!courses || courses.length === 0) {
     return <ErrorPage statusCode={404} />;
@@ -30,24 +42,28 @@ const SubjectDirectory = ({ courses, subject }) => {
     <div className='m-10'>
       <button onClick={() => router.back()} className='text-primary text-xl'>&lt;</button>
       <h1 className='font-bold text-primary text-3xl mb-4'>{subject} Courses</h1>
+      <SearchBar
+        placeholder="Filter courses..."
+        value={searchQuery}
+        onChange={setSearchQuery}
+        className='mb-4'
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {courses && courses.length > 0 ? (
-          courses.sort((a, b) => a.value.courseCode - b.value.courseCode).map((course) => (
+        {filteredCourses && filteredCourses.length > 0 ? (
+          filteredCourses.sort((a, b) => a.value.courseCode - b.value.courseCode).map((course) => (
             <Link key={course.value.detailId} href={`/detail/${course.value.detailId}`} className="p-6 bg-background rounded-md shadow-md text-lg font-semibold text-primary underline decoration-dotted underline-offset-4 hover:scale-[1.02] transition cursor-pointer">
               {course.value.subjectCode} {course.value.courseCode}: {course.value.title}
             </Link>
           ))
         ) : (
-          <p className="text-center text-secondary">No courses available.</p>
+          <p className="text-center text-tertiary col-span-3">No courses match your search.</p>
         )}
       </div>
     </div>
 
     <Footer />
-  </>
+  </>;
 };
-
-
 
 export async function getServerSideProps(context) {
   const params = new URLSearchParams({

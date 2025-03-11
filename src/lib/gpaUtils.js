@@ -34,7 +34,9 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
     const grades = [];
     const gpa = {};
     let colorIndex = 0;
-    let totalSemCount = 0;
+
+    // Keep track of unique semesters
+    const uniqueSemesters = new Set();
 
     for (const instructor of profs) {
         let avgGPA = 0;
@@ -53,6 +55,9 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
 
         let semesterCount = 0;
         for (const sem in gpaData[instructor]) {
+            // Add to unique semester set
+            uniqueSemesters.add(sem);
+
             avgGPA += gpaData[instructor][sem][13];
             avgGradeDist = avgGradeDist.map(
                 (val, i) => val + gpaData[instructor][sem][i]
@@ -73,9 +78,11 @@ export const calculateGradesAndGPA = (profs, gpaData) => {
             data: avgGradeDist,
             backgroundColor: color,
         });
-
-        totalSemCount += semesterCount;
     }
+
+    // Total count should be the number of unique semesters
+    const totalSemCount = uniqueSemesters.size;
+
     return { grades, gpa, totalSemCount };
 };
 
@@ -96,26 +103,55 @@ export const averageAllData = (grades) => {
 };
 
 // Function to get color based on GPA
-export const getColor = (gpa) => {
-	if (gpa === 0) {
-		return `rgb(var(--background-color))`;
-	}
+/**
+ * Returns a color representing a GPA based on a specific visualization method
+ * @param {number} gpa - The GPA value (0-4 scale)
+ * @param {object} options - Optional configuration
+ * @param {boolean} options.asRGB - Returns RGB format instead of hex
+ * @returns {string} A color in hex format (or RGB if asRGB is true)
+ */
+export const getColor = (gpa, options = {}) => {
+    // Handle null/undefined/zero GPA
+    if (!gpa || gpa === 0) {
+        return options?.asRGB ? 'rgb(var(--text-tertiary-color))' : `rgb(var(--background-color))`;
+    }
 
-	// Calculate the color based on GPA as a percentage of 4.0
-	const perc = gpa / 4.0;
-	const perc2 = perc * perc * perc;
-	const color1 = [221, 170, 51]; // Higher GPA color
-	const color2 = [79, 0, 56]; // Lower GPA color
+    // Define the color stops based on GPA values
+    const colorStops = [
+        { gpa: 1.0, color: [71, 0, 0] },  // Very low - Darkest red
+        { gpa: 2.25, color: [200, 30, 30] },  // Low - Red
+        { gpa: 3.25, color: [218, 170, 0] },  // Medium - Yellow (#daaa00)
+        { gpa: 4.0, color: [34, 197, 94] }   // High - Green (#22c55e)
+    ];
 
-	const w1 = perc2;
-	const w2 = 1 - perc2;
+    // Find the two color stops to interpolate between
+    let lowerStop = colorStops[0];
+    let upperStop = colorStops[colorStops.length - 1];
 
-	const r = Math.round(color1[0] * w1 + color2[0] * w2 * 1);
-	const g = Math.round(color1[1] * w1 + color2[1] * w2 * 1);
-	const b = Math.round(color1[2] * w1 + color2[2] * w2 * 1);
+    for (let i = 0; i < colorStops.length - 1; i++) {
+        if (gpa >= colorStops[i].gpa && gpa <= colorStops[i + 1].gpa) {
+            lowerStop = colorStops[i];
+            upperStop = colorStops[i + 1];
+            break;
+        }
+    }
 
-	const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-	return hex;
+    // Calculate how far between the two stops the GPA falls (0-1)
+    const range = upperStop.gpa - lowerStop.gpa;
+    const normalizedPosition = range === 0 ? 0 : (gpa - lowerStop.gpa) / range;
+
+    // Interpolate between the two colors
+    const r = Math.round(lowerStop.color[0] + normalizedPosition * (upperStop.color[0] - lowerStop.color[0]));
+    const g = Math.round(lowerStop.color[1] + normalizedPosition * (upperStop.color[1] - lowerStop.color[1]));
+    const b = Math.round(lowerStop.color[2] + normalizedPosition * (upperStop.color[2] - lowerStop.color[2]));
+
+    // Return in requested format
+    if (options?.asRGB) {
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Convert to hex
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
 };
 
 // Processes GPA data into this format, used for gpaModal.js
@@ -227,4 +263,109 @@ export const calculateOverallGPA = (courseData) => {
             totalSemCount: 0,
         };
     }
+};
+
+/**
+ * Calculates grade distribution percentages from course data
+ */
+export const calculateGradeDistribution = (courseData) => {
+    if (!courseData?.gpa) return null;
+
+    // Initialize counters for each grade
+    let gradeCount = {
+        'A': 0,
+        'B': 0,
+        'C': 0,
+        'D': 0,
+        'F': 0,
+    };
+
+    let totalStudents = 0;
+
+    // Sum up grades across all professors and semesters
+    Object.keys(courseData.gpa).forEach(profName => {
+        Object.keys(courseData.gpa[profName]).forEach(semester => {
+            const semData = courseData.gpa[profName][semester];
+
+            // Group grades: A=[0,1,2], B=[3,4,5], C=[6,7,8], D=[9,10,11], F=[12]
+            gradeCount['A'] += (semData[0] || 0) + (semData[1] || 0) + (semData[2] || 0);
+            gradeCount['B'] += (semData[3] || 0) + (semData[4] || 0) + (semData[5] || 0);
+            gradeCount['C'] += (semData[6] || 0) + (semData[7] || 0) + (semData[8] || 0);
+            gradeCount['D'] += (semData[9] || 0) + (semData[10] || 0) + (semData[11] || 0);
+            gradeCount['F'] += (semData[12] || 0);
+
+            // Add to total students
+            for (let i = 0; i <= 12; i++) {
+                totalStudents += (semData[i] || 0);
+            }
+        });
+    });
+
+    // Calculate percentages if we have students
+    if (totalStudents > 0) {
+        const distribution = {
+            'A': Math.round((gradeCount['A'] / totalStudents) * 100),
+            'B': Math.round((gradeCount['B'] / totalStudents) * 100),
+            'C': Math.round((gradeCount['C'] / totalStudents) * 100),
+            'D': Math.round((gradeCount['D'] / totalStudents) * 100),
+            'F': Math.round((gradeCount['F'] / totalStudents) * 100)
+        };
+
+        // Calculate sum of all percentages
+        // const totalPercentage = Object.values(distribution).reduce((sum, val) => sum + val, 0);
+
+        // Add N/A category if total doesn't add up to 100%
+        // if (totalPercentage < 100) {
+        //     distribution['N'] = 100 - totalPercentage;
+        // }
+
+        return distribution;
+    }
+    return null;
+};
+
+/**
+ * Calculates grade distribution percentages for a specific instructor
+ * @param {Array} gradeData - Array of grade counts [A+, A, A-, B+, B, B-, etc.]
+ * @returns {object|null} Grade distribution percentages {A: x%, B: y%, ...}
+ */
+export const calculateInstructorGradeDistribution = (gradeData) => {
+    if (!gradeData || !gradeData.some(val => val > 0)) return null;
+
+    // Calculate distribution with improved precision
+    const sampleDistribution = {
+        'A': Math.round((gradeData[0] + gradeData[1] + gradeData[2]) * 10) || 0,
+        'B': Math.round((gradeData[3] + gradeData[4] + gradeData[5]) * 10) || 0,
+        'C': Math.round((gradeData[6] + gradeData[7] + gradeData[8]) * 10) || 0,
+        'D': Math.round((gradeData[9] + gradeData[10] + gradeData[11]) * 10) || 0,
+        'F': Math.round(gradeData[12] * 10) || 0
+    };
+
+    // Calculate percentages, not scaling to 100 and ignoring N/A
+    let gradeDistribution = {};
+    const total = Object.values(sampleDistribution).reduce((sum, val) => sum + val, 0);
+    if (total > 0) {
+        gradeDistribution = Object.fromEntries(
+            Object.entries(sampleDistribution).map(([grade, value]) =>
+                [grade, Math.round((value / total) * 100)]
+            )
+        );
+    }
+
+    // N/A CALCULATION -- for percentages that dont add to 100, some students drop
+    // Convert to percentages (dividing by 10)
+    // const distributionPercentages = Object.fromEntries(
+    //     Object.entries(sampleDistribution).map(([grade, value]) => [grade, value / 10])
+    // );
+
+    // Calculate sum of all percentages
+    // const totalPercentage = Object.values(distributionPercentages).reduce((sum, val) => sum + val, 0);
+
+    // Add N category if total doesn't equal 100
+    // const naPercentage = Math.round((100 - totalPercentage) * 10) / 10;
+
+    return {
+        ...gradeDistribution,
+        // ...(naPercentage > 0 ? { 'N': naPercentage } : {})
+    };
 };

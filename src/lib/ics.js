@@ -1,7 +1,20 @@
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
 
+// Properly format date for iCalendar format with America/New_York timezone
 const formatICSDate = (date) => {
-  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const d = new Date(date);
+
+  // Format as YYYYMMDDTHHMMSS
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  const seconds = String(d.getSeconds()).padStart(2, '0');
+
+  // Construct the properly formatted date string
+  // For VTIMEZONE events, we use local time with TZID reference
+  return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 };
 
 const parseDate = (dateString) => {
@@ -70,10 +83,12 @@ export const generateICS = (lectures) => {
       icsContent = icsContent.concat([
         'BEGIN:VEVENT',
         `UID:${lecture.id}-${day}@boilerclasses.com`,
-        `DTSTAMP:${formatICSDate(new Date())}`,
-        `DTSTART:${formatICSDate(startDate)}`,
-        `DTEND:${formatICSDate(endDate)}`,
-        `RRULE:FREQ=WEEKLY;UNTIL=${formatICSDate(semesterEnd)}`,
+        `DTSTAMP:${formatICSDate(new Date())}Z`, // Current time in UTC
+        // Use TZID parameter to specify timezone for start/end times
+        `DTSTART;TZID=America/New_York:${formatICSDate(startDate)}`,
+        `DTEND;TZID=America/New_York:${formatICSDate(endDate)}`,
+        // Format the UNTIL value in UTC with Z suffix
+        `RRULE:FREQ=WEEKLY;UNTIL=${formatICSDate(semesterEnd)}Z`,
         `SUMMARY:${lecture.name} - ${lecture.type}`,
         `LOCATION:${lecture.room}`,
         `DESCRIPTION:${lecture.type}\\nInstructor(s): ${lecture.instructors.join(', ')}`,

@@ -34,6 +34,7 @@ export default function App({ Component, pageProps }) {
           src={`https://www.googletagmanager.com/gtag/js?id=G-48L6TGYD2L`}
         />
         <Script
+          id='google-analytics-config'
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];

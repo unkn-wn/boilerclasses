@@ -15,7 +15,7 @@ import CourseSearch from '@/components/schedule/courseSearch';
 import ScheduleCalendar from '@/components/schedule/schedule';
 import Graph from '@/components/graph';
 import { collectAllProfessors, calculateGradesAndGPA, averageAllData } from '@/lib/gpaUtils';
-import { ScheduleGpaModal } from '@/components/gpaModal';
+import { ScheduleGpaModal } from '@/components/detail/gpaModal';
 import Prereqs from '@/components/prereqs';
 import Footer from '@/components/footer';
 
@@ -178,7 +178,7 @@ const Schedule = () => {
 
         {/* Right Side */}
         <div id="right_side" className='flex flex-col w-full lg:w-1/2'>
-          <div className="mb-6">
+          <div className="mb-4">
             <CourseSearch
               courses={courses}
               onSelect={handleOnSelect}
@@ -228,7 +228,7 @@ const Schedule = () => {
                       {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                           <button
-                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-700 bg-red-900 hover:bg-red-700 text-white"
+                            className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-500 bg-red-700 hover:bg-red-900 text-white"
                             onClick={() => setPinCourses(pinCourses.filter(course => course.detailId !== selectedCourse.detailId))}
                           >
                             {isLoading ? (
@@ -239,7 +239,7 @@ const Schedule = () => {
                           </button>
                         ) : (
                           <button
-                            className="text-white flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-700 bg-green-900 hover:bg-green-700"
+                            className="text-white flex self-end gap-0.5 rounded-full border h-8 items-center justify-center px-2 text-sm cursor-pointer transition border-green-500 bg-green-700 hover:bg-green-900"
                             onClick={() => {
                               setPinCourses([...pinCourses, {
                                 ...selectedCourse,
@@ -372,7 +372,7 @@ const Schedule = () => {
                   {gpaGraph.datasets &&
                     gpaGraph.datasets.length > 0 &&
                     !gpaGraph.datasets[0].data.every(value => value === 0) ? (
-                    <div className='border border-[rgb(var(--background-secondary-color))] shadow-md shadow-[rgb(var(--background-opposite))]/10 rounded-xl h-96'>
+                    <div className='border border-[rgb(var(--background-secondary-color))] shadow-md shadow-[rgb(var(--background-opposite))]/10 rounded-xl'>
                       <div className='h-full'>
                         <Graph data={gpaGraph} scheduler />
                       </div>

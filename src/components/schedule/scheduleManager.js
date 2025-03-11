@@ -140,7 +140,7 @@ const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChang
               ]}
             >
               <button
-                className="flex items-center gap-2 px-3 py-1 text-sm text-secondary bg-background hover:brightness-125 transition rounded"
+                className="flex items-center gap-2 px-3 py-1 text-sm text-secondary bg-background hover:brightness-125 transition rounded shadow"
               >
                 <IoMdDownload />
                 Export Schedule

@@ -38,6 +38,7 @@ const Directory = () => {
           placeholder="Filter subjects..."
           value={searchQuery}
           onChange={setSearchQuery}
+          className='mb-4'
         />
         <div className="grid gap-4 grid-cols-4">
           {filteredCodes.map((code) => (
