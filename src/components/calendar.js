@@ -492,7 +492,7 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
         }
 
         // HARD CODED SEMESTER
-        const semester = "202520";
+        const semester = "202610";
         const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" +
             semester + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
             "&$filter=Subject/Abbreviation eq '" + subjectCode +
