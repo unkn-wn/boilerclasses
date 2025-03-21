@@ -24,8 +24,8 @@ const DEFAULT_FILTERS = {
 };
 
 // TODO: Make this dynamic
-export const CURRENT_SEMESTER = "Spring 2025";
-export const PREVIOUS_SEMESTER = "Fall 2024";
+export const CURRENT_SEMESTER = "Fall 2025";
+export const PREVIOUS_SEMESTER = "Spring 2025";
 
 // Storage key for filters
 const FILTERS_STORAGE_KEY = "boilerclasses_filters";

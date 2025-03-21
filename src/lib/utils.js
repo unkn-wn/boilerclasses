@@ -1,4 +1,4 @@
-export const semesters = ["Spring 2025", "Fall 2024", "Spring 2024", "Fall 2023", "Spring 2023", "Fall 2022", "Spring 2022", "Fall 2021", "Spring 2021", "Fall 2020", "Spring 2020", "Fall 2019"]
+export const semesters = ["Fall 2025", "Spring 2025", "Fall 2024", "Spring 2024", "Fall 2023", "Spring 2023", "Fall 2022", "Spring 2022", "Fall 2021", "Spring 2021", "Fall 2020", "Spring 2020", "Fall 2019"]
 export const subjects = ['AAE', 'AAS', 'ABE', 'AD', 'AFT', 'AGEC', 'AGR', 'AGRY', 'AMST', 'ANSC', 'ANTH', 'ARAB', 'ASAM', 'ASEC', 'ASL', 'ASM', 'ASTR', 'AT', 'BAND', 'BCHM', 'BIOL', 'BME', 'BMS', 'BTNY', 'CAND', 'CDIS', 'CE', 'CEM', 'CGT', 'CHE', 'CHM', 'CHNS', 'CLCS', 'CLPH', 'CM', 'CMPL', 'CNIT', 'COM', 'CPB', 'CS', 'CSR', 'DANC', 'EAPS', 'ECE', 'ECET', 'ECON', 'EDCI', 'EDPS', 'EDST', 'EEE', 'ENE', 'ENGL', 'ENGR', 'ENGT', 'ENTM', 'ENTR', 'EPCS', 'FLM', 'FNR', 'FR', 'FS', 'FVS', 'GER', 'GRAD', 'GREK', 'GS', 'GSLA', 'HDFS', 'HEBR', 'HIST', 'HK', 'HONR', 'HORT', 'HSCI', 'HSOP', 'HTM', 'IDE', 'IDIS', 'IE', 'IET', 'ILS', 'IMPH', 'IPPH', 'IT', 'ITAL', 'JPNS', 'JWST', 'KOR', 'LA', 'LALS', 'LATN', 'LC', 'LING', 'MA', 'MCMP', 'ME', 'MET', 'MFET', 'MGMT', 'MSE', 'MSL', 'MUS', 'NRES', 'NS', 'NUCL', 'NUPH', 'NUR', 'NUTR', 'OBHR', 'OLS', 'PES', 'PHIL', 'PHPR', 'PHRM', 'PHSC', 'PHYS', 'POL', 'PSY', 'PTGS', 'PUBH', 'REL', 'RUSS', 'SA', 'SCI', 'SCLA', 'SFS', 'SLHS', 'SOC', 'SPAN', 'STAT', 'SYS', 'TDM', 'TECH', 'THTR', 'TLI', 'VCS', 'VIP', 'VM', 'WGSS']
 export const genedsOptions = [
   { label: "Behavioral/Social Science", value: "BSS" },
@@ -13,6 +13,7 @@ export const genedsOptions = [
   { label: "Written Communication", value: "WC" }
 ]
 export const semesterOptions = [
+  { label: "Fall 2025", value: "Fall 2025" },
   { label: "Spring 2025", value: "Spring 2025" },
   { label: "Fall 2024", value: "Fall 2024" },
   { label: "Spring 2024", value: "Spring 2024" },
