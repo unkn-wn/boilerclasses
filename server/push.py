@@ -28,6 +28,8 @@ for classData in tqdm(data):
   r.json().set(key, Path.root_path(), classData)
   count += 1
 
+r.execute_command("FT.CONFIG", "SET", "MINPREFIX", "1")
+
 # create index
 r.execute_command("FT.CREATE", "idx:classes", "ON", "JSON", "PREFIX", "1", 
               "classes:", "SCHEMA", 
