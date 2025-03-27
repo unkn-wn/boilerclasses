@@ -31,10 +31,17 @@ const createCourseColorMap = (selectedLectures) => {
   const courseColorMap = new Map();
   let colorIndex = 0;
 
+  // Define fixed hex colors for PDF
+  const pdfColors = [
+    '#4287f5', '#f54242', '#42f554', '#f5a742', '#a742f5',
+    '#42f5e3', '#d442f5', '#f54275', '#87f542', '#4269f5',
+    '#f5bb42', '#f54242', '#42c5f5', '#e342f5', '#f58442'
+  ];
+
   selectedLectures.forEach(lecture => {
     const courseId = lecture.courseDetails.detailId;
     if (!courseColorMap.has(courseId)) {
-      courseColorMap.set(courseId, graphColors[colorIndex % graphColors.length]);
+      courseColorMap.set(courseId, pdfColors[colorIndex % pdfColors.length]);
       colorIndex++;
     }
   });
