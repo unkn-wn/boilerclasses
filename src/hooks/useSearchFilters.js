@@ -25,6 +25,7 @@ const DEFAULT_FILTERS = {
 
 // TODO: Make this dynamic
 export const CURRENT_SEMESTER = "Fall 2025";
+export const CURRENT_SEMESTER_CODE = "202610";
 export const PREVIOUS_SEMESTER = "Spring 2025";
 
 // Storage key for filters
