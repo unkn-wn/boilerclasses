@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { FiClock, FiMapPin, FiUser, FiCalendar, FiShare, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
-import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { CURRENT_SEMESTER, CURRENT_SEMESTER_CODE } from '@/hooks/useSearchFilters';
 
 // Get the color for different meeting types - more subtle approach
 const getMeetingTypeIndicator = (type) => {
@@ -242,10 +242,10 @@ const MobileDayCarousel = ({ processedDays, hoveredCrn, setHoveredCrn }) => {
                         key={day}
                         onClick={() => setActiveDayIndex(idx)}
                         className={`w-2 h-2 rounded-full transition-all ${idx === activeDayIndex
-                                ? 'bg-blue-500 w-4'
-                                : idx === todayIndex
-                                    ? 'bg-yellow-500/70'
-                                    : 'bg-background-tertiary'
+                            ? 'bg-blue-500 w-4'
+                            : idx === todayIndex
+                                ? 'bg-yellow-500/70'
+                                : 'bg-background-tertiary'
                             }`}
                         aria-label={day}
                     />
@@ -491,10 +491,12 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
             }
         }
 
-        // HARD CODED SEMESTER
-        const semester = "202610";
+        if (title.includes("'")) {
+            title = title.replace(/'/g, "''");
+        }
+
         const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" +
-            semester + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
+            CURRENT_SEMESTER_CODE + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
             "&$filter=Subject/Abbreviation eq '" + subjectCode +
             "' and Number eq '" + courseCode +
             "' and contains(Title, '" + encodeURIComponent(title) + "')";
