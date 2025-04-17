@@ -153,8 +153,7 @@ for code in class_codes:
       instructors = []
       tmp_instructors = curr_td.text.split(",")
       for j in range(len(tmp_instructors)):
-        if ("(P)" in curr_td.text and "(P)" in tmp_instructors[j]) or ("(P)" not in curr_td.text):
-          instructors.append(tmp_instructors[j].split("(")[0].strip())
+        instructors.append(tmp_instructors[j].split("(")[0].strip())
 
       if classfullId in doneIds:
         if sched_type in doneIds[classfullId]["instructor"]:
@@ -208,6 +207,7 @@ for code in class_codes:
 
     code_data = []
     for x in doneIds:
+      try:
         doneIds[x]["title"] = doneIds[x]["title"].replace("&amp;", "&")
         doneIds[x]["title"] = doneIds[x]["title"].replace("&nbsp;", " ")
         doneIds[x]["title"] = doneIds[x]["title"].strip()
@@ -215,6 +215,8 @@ for code in class_codes:
         doneIds[x]["description"] = doneIds[x]["description"].replace("&amp;", "&")
         doneIds[x]["description"] = doneIds[x]["description"].strip()
         code_data.append(doneIds[x])
+      except:
+        continue
     
     with open(temp_file, 'w') as f:
         json.dump(code_data, f, indent=4)
