@@ -2,6 +2,7 @@ import React from 'react';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { Image } from '@chakra-ui/react';
 import { boilerExamsCourses, stripCourseCode } from '@/lib/utils';
+import { CURRENT_SEMESTER_CODE } from '@/hooks/useSearchFilters';
 
 const CourseLinks = () => {
   const { courseData, sem, getSearchableProfString } = useDetailContext();
@@ -22,7 +23,7 @@ const CourseLinks = () => {
       </a>
 
       {/* Purdue Catalog Link */}
-      <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=202520&subj_code_in=${courseData.subjectCode}&crse_numb_in=${courseData.courseCode}`}
+      <a href={`https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in=${CURRENT_SEMESTER_CODE}&subj_code_in=${courseData.subjectCode}&crse_numb_in=${courseData.courseCode}`}
          target="_blank"
          rel="noopener noreferrer"
          className="text-sm text-white px-5 py-2 rounded-md whitespace-nowrap bg-yellow-600 hover:bg-yellow-700 transition-all duration-300 ease-out">
