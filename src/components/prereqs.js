@@ -40,66 +40,67 @@ const Prereqs = ({ course, scheduler = false }) => {
     }
   }
 
+  const generatePrereqTree = (tokens) => {
+
+    const stack = [];
+    let currentOp = null;
+    let i = 0;
+
+    while (i < tokens.length) {
+      const token = tokens[i];
+
+      if (token === "(") {
+
+        const [group, consumed] = generatePrereqTree(tokens.slice(i + 1));
+        stack.push(group);
+        
+        //Add an offset to remove all the tokens that were consumed in that sublevel
+        i += consumed + 2;
+
+      } else if (token === ")") {
+        break;
+      } else if (token === "and" || token === "or") {
+        currentOp = token;
+        i++;
+      } else {
+        stack.push({ type: "course", value: preReqCourseElement(token, i) });
+        i++;
+      }
+    }
+
+    if (stack.length === 1) return [stack[0], i];
+
+    return [
+      {
+        type: "group",
+        op: currentOp ?? "and",
+        children: stack,
+      },
+      i,
+    ];
+  };
+
+  const renderNode = (node) => {
+    // HTML elements were saved directly to the tree for courses
+    if (node.type === "course") {
+      return node.value;
+    }
+
+    return (
+      <li>
+        {node.op === "and" ? (node.children.length > 2 ? "ALL of:" : "BOTH of:") : "ONE of:"}
+        <ul style={{ paddingLeft: "1em" }}>
+          {node.children.map((child, i) => (
+            renderNode(child)
+          ))}
+        </ul>
+      </li>
+    );
+  };
+
   const parsePrereqs = (prereqs) => {
-    const tokenize = (tokens) => {
-
-      const stack = [];
-      let currentOp = null;
-      let i = 0;
-
-      while (i < tokens.length) {
-        const token = tokens[i];
-
-        if (token === "(") {
-
-          const [group, consumed] = tokenize(tokens.slice(i + 1));
-          stack.push(group);
-          
-          //Add an offset to remove all the tokens that were consumed in that sublevel
-          i += consumed + 2;
-
-        } else if (token === ")") {
-          break;
-        } else if (token === "and" || token === "or") {
-          currentOp = token;
-          i++;
-        } else {
-          stack.push({ type: "course", value: preReqCourseElement(token, i) });
-          i++;
-        }
-      }
-
-      if (stack.length === 1) return [stack[0], i];
-
-      return [
-        {
-          type: "group",
-          op: currentOp ?? "and",
-          children: stack,
-        },
-        i,
-      ];
-    };
-
-    const renderNode = (node) => {
-      // HTML elements were saved directly to the tree for courses
-      if (node.type === "course") {
-        return node.value;
-      }
-
-      return (
-        <li>
-          {node.op === "and" ? (node.children.length > 2 ? "ALL of:" : "BOTH of:") : "ONE of:"}
-          <ul style={{ paddingLeft: "1em" }}>
-            {node.children.map((child, i) => (
-              renderNode(child)
-            ))}
-          </ul>
-        </li>
-      );
-    };
-
-    const [tree] = tokenize(prereqs);
+    
+    const [tree] = generatePrereqTree(prereqs);
 
     return (
       <div>
