@@ -5,36 +5,42 @@ const Prereqs = ({ course, scheduler = false }) => {
   const router = useRouter();
 
   const preReqCourseElement = (token, i) => {
-    const [detailId, concurrent] = token.split(' ');
-    const subjectCodeMatch = token.match(/[A-Z]+/);
-    const courseNumberMatch = token.match(/\d+/);
+    if(token.split(' ').length === 2) {
+      const [detailId, concurrent] = token.split(' ');
+      const subjectCodeMatch = token.match(/[A-Z]+/);
+      const courseNumberMatch = token.match(/\d+/);
 
-    //TODO: determine if this should be handled somehow
-    // if (!subjectCodeMatch || !courseNumberMatch) {
-    //   return null;
-    // }
+      if (!subjectCodeMatch || !courseNumberMatch) {
+        return <li><p>Prereq Error! Check Purdue's official prereq report</p></li>;
+      }
 
-    const subjectCode = subjectCodeMatch[0];
-    const courseNumber = courseNumberMatch[0];
+      const subjectCode = subjectCodeMatch[0];
+      const courseNumber = courseNumberMatch[0];
 
-    return <li className='' key={i}>
-      <a
-        onClick={(e) => {
-          if (scheduler) {
-            window.open(`https://www.boilerclasses.com/detail/${detailId}`, '_blank');
-          } else {
-            router.push(`/detail/${detailId}`);
-          }
-        }}
-        className='underline decoration-dotted cursor-pointer hover:text-blue-700 transition-all duration-300 ease-out text-blue-600'
-      >
-        {subjectCode} {courseNumber}
-      </a>
-      {concurrent === "True" ? " [may be taken concurrently]" : ""}
-    </li>
+      return <li className='' key={i}>
+        <a
+          onClick={(e) => {
+            if (scheduler) {
+              window.open(`https://www.boilerclasses.com/detail/${detailId}`, '_blank');
+            } else {
+              router.push(`/detail/${detailId}`);
+            }
+          }}
+          className='underline decoration-dotted cursor-pointer hover:text-blue-700 transition-all duration-300 ease-out text-blue-600'
+        >
+          {subjectCode} {courseNumber}
+        </a>
+        {concurrent === "True" ? " [may be taken concurrently]" : ""}
+      </li>
+    } else if (token.split(' ').length == 3) {
+      const [subject, number, concurrent] = token.split(' ');
+      return `${subject} ${number}${concurrent === "True" ? " [may be taken concurrently]" : ""}`;
+    } else {
+      return `${"()".includes(token) ? "" : " "}${token}${"()".includes(token) ? "" : " "}`;
+    }
   }
 
-  const parsePrereqsNew = (prereqs) => {
+  const parsePrereqs = (prereqs) => {
     const tokenize = (tokens) => {
 
       const stack = [];
@@ -93,8 +99,6 @@ const Prereqs = ({ course, scheduler = false }) => {
       );
     };
 
-    console.log(prereqs)
-
     const [tree] = tokenize(prereqs);
 
     return (
@@ -110,7 +114,7 @@ const Prereqs = ({ course, scheduler = false }) => {
         <div className="prerequisites-container">
           {!scheduler && <div className="text-tertiary lg:text-sm text-xs mb-2">Prerequisites:</div>}
           <div className="lg:text-sm text-xs text-tertiary font-medium">
-            {parsePrereqsNew(course.prereqs)}
+            {parsePrereqs(course.prereqs)}
           </div>
         </div>
       )
