@@ -4,42 +4,104 @@ import Link from 'next/link';
 const Prereqs = ({ course, scheduler = false }) => {
   const router = useRouter();
 
-  const parsePrereqs = (prereq, i) => {
-    if (prereq.split(' ').length == 2) {
-      const [detailId, concurrent] = prereq.split(' ');
-      const subjectCodeMatch = detailId.match(/[A-Z]+/);
-      const courseNumberMatch = detailId.match(/\d+/);
+  const preReqCourseElement = (token, i) => {
+    const [detailId, concurrent] = token.split(' ');
+    const subjectCodeMatch = token.match(/[A-Z]+/);
+    const courseNumberMatch = token.match(/\d+/);
 
-      if (!subjectCodeMatch || !courseNumberMatch) {
-        return null;
+    //TODO: determine if this should be handled somehow
+    // if (!subjectCodeMatch || !courseNumberMatch) {
+    //   return null;
+    // }
+
+    const subjectCode = subjectCodeMatch[0];
+    const courseNumber = courseNumberMatch[0];
+
+    return <li className='' key={i}>
+      <a
+        onClick={(e) => {
+          if (scheduler) {
+            window.open(`https://www.boilerclasses.com/detail/${detailId}`, '_blank');
+          } else {
+            router.push(`/detail/${detailId}`);
+          }
+        }}
+        className='underline decoration-dotted cursor-pointer hover:text-blue-700 transition-all duration-300 ease-out text-blue-600'
+      >
+        {subjectCode} {courseNumber}
+      </a>
+      {concurrent === "True" ? " [may be taken concurrently]" : ""}
+    </li>
+  }
+
+  const parsePrereqsNew = (prereqs) => {
+    const tokenize = (tokens) => {
+
+      const stack = [];
+      let currentOp = null;
+      let i = 0;
+
+      while (i < tokens.length) {
+        const token = tokens[i];
+
+        if (token === "(") {
+
+          const [group, consumed] = tokenize(tokens.slice(i + 1));
+          stack.push(group);
+          
+          //Add an offset to remove all the tokens that were consumed in that sublevel
+          i += consumed + 2;
+
+        } else if (token === ")") {
+          break;
+        } else if (token === "and" || token === "or") {
+          currentOp = token;
+          i++;
+        } else {
+          stack.push({ type: "course", value: preReqCourseElement(token, i) });
+          i++;
+        }
       }
 
-      const subjectCode = subjectCodeMatch[0];
-      const courseNumber = courseNumberMatch[0];
+      if (stack.length === 1) return [stack[0], i];
+
+      return [
+        {
+          type: "group",
+          op: currentOp ?? "and",
+          children: stack,
+        },
+        i,
+      ];
+    };
+
+    const renderNode = (node) => {
+      // HTML elements were saved directly to the tree for courses
+      if (node.type === "course") {
+        return node.value;
+      }
 
       return (
-        <span className='' key={i}>
-          <a
-            onClick={(e) => {
-              if (scheduler) {
-                window.open(`https://www.boilerclasses.com/detail/${detailId}`, '_blank');
-              } else {
-                router.push(`/detail/${detailId}`);
-              }
-            }}
-            className='underline decoration-dotted cursor-pointer hover:text-blue-700 transition-all duration-300 ease-out text-blue-600'
-          >
-            {subjectCode} {courseNumber}
-          </a>
-          {concurrent === "True" ? " [may be taken concurrently]" : ""}
-        </span>
+        <li>
+          {node.op === "and" ? (node.children.length > 2 ? "ALL of:" : "BOTH of:") : "ONE of:"}
+          <ul style={{ paddingLeft: "1em" }}>
+            {node.children.map((child, i) => (
+              renderNode(child)
+            ))}
+          </ul>
+        </li>
       );
-    } else if (prereq.split(' ').length == 3) {
-      const [subject, number, concurrent] = prereq.split(' ');
-      return `${subject} ${number}${concurrent === "True" ? " [may be taken concurrently]" : ""}`;
-    } else {
-      return `${"()".includes(prereq) ? "" : " "}${prereq}${"()".includes(prereq) ? "" : " "}`;
-    }
+    };
+
+    console.log(prereqs)
+
+    const [tree] = tokenize(prereqs);
+
+    return (
+      <div>
+        <ul>{renderNode(tree)}</ul>
+      </div>
+    );
   };
 
   try {
@@ -48,7 +110,7 @@ const Prereqs = ({ course, scheduler = false }) => {
         <div className="prerequisites-container">
           {!scheduler && <div className="text-tertiary lg:text-sm text-xs mb-2">Prerequisites:</div>}
           <div className="lg:text-sm text-xs text-tertiary font-medium">
-            {course.prereqs.map((prereq, i) => parsePrereqs(prereq, i))}
+            {parsePrereqsNew(course.prereqs)}
           </div>
         </div>
       )
