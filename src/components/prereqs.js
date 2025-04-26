@@ -5,7 +5,7 @@ const Prereqs = ({ course, scheduler = false }) => {
   const router = useRouter();
 
   const preReqCourseElement = (token, i) => {
-    if(token.split(' ').length === 2) {
+    if (token.split(' ').length === 2) {
       const [detailId, concurrent] = token.split(' ');
       const subjectCodeMatch = token.match(/[A-Z]+/);
       const courseNumberMatch = token.match(/\d+/);
@@ -34,7 +34,10 @@ const Prereqs = ({ course, scheduler = false }) => {
       </li>
     } else if (token.split(' ').length == 3) {
       const [subject, number, concurrent] = token.split(' ');
-      return `${subject} ${number}${concurrent === "True" ? " [may be taken concurrently]" : ""}`;
+      console.log(token + " :::: " + subject + " " + number + " " + concurrent);
+      return <li className='' key={i}>
+        {subject} {number}{concurrent === "True" ? " [may be taken concurrently]" : ""}
+      </li>
     } else {
       return `${"()".includes(token) ? "" : " "}${token}${"()".includes(token) ? "" : " "}`;
     }
@@ -53,7 +56,7 @@ const Prereqs = ({ course, scheduler = false }) => {
 
         const [group, consumed] = generatePrereqTree(tokens.slice(i + 1));
         stack.push(group);
-        
+
         //Add an offset to remove all the tokens that were consumed in that sublevel
         i += consumed + 2;
 
@@ -80,18 +83,18 @@ const Prereqs = ({ course, scheduler = false }) => {
     ];
   };
 
-  const renderNode = (node) => {
+  const renderNode = (node, i) => {
     // HTML elements were saved directly to the tree for courses
     if (node.type === "course") {
       return node.value;
     }
 
     return (
-      <li>
+      <li key={i + "-" + node.op + node.children.map(child => child.value?.key || child.value).join("")}>
         {node.op === "and" ? (node.children.length > 2 ? "ALL of:" : "BOTH of:") : "ONE of:"}
         <ul style={{ paddingLeft: "1em" }}>
           {node.children.map((child, i) => (
-            renderNode(child)
+            renderNode(child, i)
           ))}
         </ul>
       </li>
@@ -99,12 +102,12 @@ const Prereqs = ({ course, scheduler = false }) => {
   };
 
   const parsePrereqs = (prereqs) => {
-    
+
     const [tree] = generatePrereqTree(prereqs);
 
     return (
       <div>
-        <ul>{renderNode(tree)}</ul>
+        <ul>{renderNode(tree, 0)}</ul>
       </div>
     );
   };
@@ -113,7 +116,11 @@ const Prereqs = ({ course, scheduler = false }) => {
     return (
       (course.prereqs && course.prereqs.length > 0 && course.prereqs[0].split(' ')[0] !== router.query.id) && (
         <div className="prerequisites-container">
-          {!scheduler && <div className="text-tertiary lg:text-sm text-xs mb-2">Prerequisites:</div>}
+          {!scheduler && (
+            <div className="font-semibold lg:text-sm text-xs text-tertiary border-b border-[rgb(var(--background-secondary-color))] mb-2">
+              Prerequisites
+            </div>
+          )}
           <div className="lg:text-sm text-xs text-tertiary font-medium">
             {parsePrereqs(course.prereqs)}
           </div>
