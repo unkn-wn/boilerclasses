@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Prereqs = ({ course, scheduler = false }) => {
   const router = useRouter();
 
-  const preReqCourseElement = (token, i) => {
+  const prereqCourseElement = (token, i) => {
     if (token.split(' ').length === 2) {
       const [detailId, concurrent] = token.split(' ');
       const subjectCodeMatch = token.match(/[A-Z]+/);
@@ -34,7 +34,6 @@ const Prereqs = ({ course, scheduler = false }) => {
       </li>
     } else if (token.split(' ').length == 3) {
       const [subject, number, concurrent] = token.split(' ');
-      console.log(token + " :::: " + subject + " " + number + " " + concurrent);
       return <li className='' key={i}>
         {subject} {number}{concurrent === "True" ? " [may be taken concurrently]" : ""}
       </li>
@@ -66,7 +65,7 @@ const Prereqs = ({ course, scheduler = false }) => {
         currentOp = token;
         i++;
       } else {
-        stack.push({ type: "course", value: preReqCourseElement(token, i) });
+        stack.push({ type: "course", value: prereqCourseElement(token, i) });
         i++;
       }
     }
