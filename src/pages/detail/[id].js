@@ -81,7 +81,7 @@ const CardDetails = ({ courseData, semData }) => {
             <CourseLinks />
             <CourseDescription />
             {/* Prerequisites */}
-            <div className='mb-4'>
+            <div className='my-4'>
               <Prereqs course={courseData} />
             </div>
           </div>
