@@ -268,14 +268,22 @@ const CourseCatalog = () => {
               size={{ base: "xs", sm: "sm", md: "md" }}
               leftIcon={<IoMdCalendar />}
             >
-              Try our Schedule Assistant!
+              Schedule Assistant
             </Button>
           </div>
           <div className="absolute bottom-0 w-full">
             <Footer />
           </div>
 
-          <ReleaseNotes />
+          {/* <ReleaseNotes /> */}
+          <div className='hidden md:block'>
+            <div
+              className="fixed bottom-4 left-4 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2"
+            >
+              <IoMdCalendar className="text-sm" />
+              <span className="text-sm font-medium">Spring 2026 Live!</span>
+            </div>
+          </div>
         </div>
       )}
     </>
