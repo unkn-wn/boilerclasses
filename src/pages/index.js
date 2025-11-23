@@ -13,7 +13,7 @@ import SearchFilters from "@/components/searchFilters";
 import { useSearchFilters } from "@/hooks/useSearchFilters";
 import { Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { IoMdCalendar } from "react-icons/io";
+import { IoMdCalendar, IoMdPerson } from "react-icons/io";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -277,12 +277,15 @@ const CourseCatalog = () => {
 
           {/* <ReleaseNotes /> */}
           <div className='hidden md:block'>
-            <div
-              className="fixed bottom-4 left-4 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2"
+            <a
+              href="https://forms.gle/q93vaLnrbzm3h6kK7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-4 left-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2 hover:from-blue-600 hover:to-blue-700 transition cursor-pointer"
             >
-              <IoMdCalendar className="text-sm" />
-              <span className="text-sm font-medium">Spring 2026 Live!</span>
-            </div>
+              <IoMdPerson className="text-sm" />
+              <span className="text-sm font-medium">Interested in being a maintainer?</span>
+            </a>
           </div>
         </div>
       )}
