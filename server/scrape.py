@@ -22,15 +22,15 @@ def format_instructors(by_sched):
 
   if len(by_sched) == count:
     return by_sched
-  
+
   for sched in special_sched:
     if sched in by_sched:
       del by_sched[sched]
-  
+
   return by_sched
 
 parser = argparse.ArgumentParser(description='which semester')
-parser.add_argument("-sem", default="Spring 2026", dest="sem", help="which semester (default: Spring 2026)")
+parser.add_argument("-sem", default="Fall 2026", dest="sem", help="which semester (default: Fall 2026)")
 
 args = parser.parse_args()
 
@@ -59,7 +59,7 @@ ensure_temp_dir(temp_dir)
 
 for code in class_codes:
     temp_file = f"{temp_dir}/{code}.json"
-    
+
     if os.path.exists(temp_file):
         print(f"Loading existing data for {code}...")
         with open(temp_file, 'r') as f:
@@ -98,7 +98,7 @@ for code in class_codes:
     # type_dropdown.select_by_value("DIS")
     # type_dropdown.select_by_value("SD")
     # type_dropdown.select_by_value("IND")
-    
+
     campus_dropdown = driver.find_element(By.XPATH, "//select[@name='sel_camp']")
     campus_dropdown = ui.Select(campus_dropdown)
     campus_dropdown.deselect_all()
@@ -141,14 +141,14 @@ for code in class_codes:
       classStruct["subjectCode"] = fullTitle[-2].split(' ')[0]
       classStruct["courseCode"] = fullTitle[-2].split(' ')[1]
       classfullId = classStruct["courseCode"] + classStruct["title"]
-      
+
       try:
         curr_table = tds[i].find_element(By.TAG_NAME, "table")
       except:
         continue
-      
+
       curr_td = curr_table.find_elements(By.TAG_NAME, "td")[-1]
-      # possible improvement: add prof email 
+      # possible improvement: add prof email
       sched_type = curr_table.find_elements(By.TAG_NAME, "td")[-2].text
       instructors = []
       tmp_instructors = curr_td.text.split(",")
@@ -217,10 +217,10 @@ for code in class_codes:
         code_data.append(doneIds[x])
       except:
         continue
-    
+
     with open(temp_file, 'w') as f:
         json.dump(code_data, f, indent=4)
-    
+
     jsonData.extend(code_data)
 
 outfile = open(f"data/classes_{sem_name}.json", "w")

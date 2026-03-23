@@ -67,7 +67,7 @@ out = {}
 semesters = []
 all_classes = []
 # TODO: change for semester
-latest_sem = "Spring 2026"
+latest_sem = "Fall 2026"
 
 for file_name in os.listdir(args.folder):
     path = args.folder + file_name
@@ -124,7 +124,7 @@ for class_id in tqdm(all_classes):
 
                 if "<a href=" not in class_sem["description"]:
                     class_data["description"] = class_sem["description"]
-    
+
     class_data["title"] = instances[0]["title"]
     class_data["subjectCode"] = s
     class_data["courseCode"] = c
