@@ -495,12 +495,13 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
             title = title.replace(/'/g, "''");
         }
 
-        const url = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" +
+        const baseUrl = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" +
             CURRENT_SEMESTER_CODE + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
             "&$filter=Subject/Abbreviation eq '" + subjectCode +
-            "' and Number eq '" + courseCode +
-            "' and contains(Title, '" + encodeURIComponent(title) + "')";
-        // console.log(url);
+            "' and Number eq '" + courseCode + "'";
+
+        const url = baseUrl + " and contains(Title, '" + encodeURIComponent(title) + "')";
+        // console.log(url)
 
         const response = await fetch(url);
         if (!response.ok) {
@@ -511,11 +512,44 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
 
         // BANDAID FIX #2: Filter out courses with the same title
         if (data.value.length > 1) {
-            console.warn('Multiple courses found with the same title:', data.value);
+            console.warn('Multiple courses found with the same code:', data.value);
             data.value = data.value.filter(course => course.Title === title);
         }
 
-        return data.value[0];
+        const result = data.value[0];
+
+        // if the title-matched record has no classes (course was renamed),
+        // retry without the title filter and pick the record that has classes.
+        if (result && (!result.Classes || result.Classes.length === 0)) {
+            const fallbackResponse = await fetch(baseUrl);
+            if (fallbackResponse.ok) {
+                const fallbackData = await fallbackResponse.json();
+                const withClasses = fallbackData.value.filter(c => c.Classes?.length > 0);
+                if (withClasses.length === 1) return withClasses[0];
+
+                // if multiple records with multiple classes
+                // pray
+                // possible rename - get most similar title
+                if (withClasses.length > 1) {
+                    const tokenize = (s) => new Set(s.toLowerCase().split(/\s+/).filter(Boolean));
+                    const originalWords = tokenize(title);
+                    let best = withClasses[0], bestScore = -1;
+                    for (const candidate of withClasses) {
+                        const candidateWords = tokenize(candidate.Title);
+                        const intersection = [...originalWords].filter(w => candidateWords.has(w)).length;
+                        const union = new Set([...originalWords, ...candidateWords]).size;
+                        const score = union > 0 ? intersection / union : 0;
+                        if (score > bestScore) {
+                            bestScore = score;
+                            best = candidate;
+                        }
+                    }
+                    return best;
+                }
+            }
+        }
+
+        return result;
     } catch (e) {
         console.error('Error fetching course data:', e);
         return null;
