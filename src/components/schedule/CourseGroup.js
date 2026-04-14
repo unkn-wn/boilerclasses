@@ -18,6 +18,7 @@ import { translateType } from '../calendar';
 import { sortByTime, sortByFirstDay } from './utils/sortUtils';
 import { getCourseColorIndex } from './schedule';
 import { graphColors } from '@/lib/utils';
+import { isIndianapolisRoom } from './utils/indianapolisUtils';
 
 // Cache for RMP ratings
 const rmpScoresCache = new Map();
@@ -341,7 +342,19 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                             ))}
                                           </div>
                                           <div className="text-xs text-secondary">
-                                            {translateType(lecture.type)} - {lecture.room}
+                                            <div className="flex flex-wrap items-center gap-1">
+                                              <span> {translateType(lecture.type)} - {lecture.room} </span>
+                                              {isIndianapolisRoom(lecture.room) && (
+                                                <div className='px-1 rounded font-bold relative overflow-hidden'
+                                                  style={{
+                                                    backgroundColor: "rgb(255, 165, 0)", // can be changed i just picked a red-ish color
+                                                  }}>
+                                                  <span className='relative z-10 text-white'>
+                                                    INDY
+                                                  </span>
+                                                </div>
+                                              )}
+                                            </div>
                                           </div>
                                         </span>
                                       </Checkbox>
