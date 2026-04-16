@@ -8,17 +8,21 @@ import {
 
 const Footer = () => {
     return (
-        <div className='grid justify-center py-5 relative'>
+        <div className='grid justify-center py-5 relative gap-3'>
             <h1 className='mx-2 text-tertiary text-sm text-center break-words'>
-                <span className='flex items-center justify-center'>
+                <span className='flex items-center justify-center gap-2 mb-0.5'>
                     <a href='https://github.com/unkn-wn/boilerclasses' target="_black" rel="noopener noreferrer" className='text-tertiary flex items-center gap-1 underline decoration-dashed decoration-1 underline-offset-2'>
                         <Image src="https://icones.pro/wp-content/uploads/2021/06/icone-github-grise.png" alt="" boxSize={4} />
                         BoilerClasses
                     </a>
-                    {/* <p>&nbsp;(last deployed 1/2/24)</p> */}
+                    <span className='text-tertiary'>·</span>
+                    <span>Sponsored by</span>
+                    <a href='https://www.mechanize.work/' target='_blank' rel='noopener noreferrer' className='text-tertiary flex items-center gap-1'>
+                        <img src='/mechanize.png' alt='Mechanize' className='h-3.5 w-auto inline' />
+                        <span className='underline decoration-dashed decoration-1 underline-offset-2'>Mechanize</span>
+                    </a>
                 </span>
-                is an <Link href={`/dir`}>unofficial catalog</Link> for Purdue courses made by Purdue students, <br className='hidden md:block' />
-                based in <strong>West Lafayette, Indiana</strong>. We'd love to hear your <a href="https://forms.gle/jtpLPbXm4X4RFoNh6" target="_black" rel="noopener noreferrer" className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</a>!
+                An <Link href={`/dir`}>unofficial catalog</Link> for Purdue courses made by Purdue students. We'd love to hear your <a href="https://forms.gle/jtpLPbXm4X4RFoNh6" target="_black" rel="noopener noreferrer" className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</a>!
                 {/* Inspired by <a href='https://classes.wtf/' target='_blank' rel='noopener noreferrer' className='underline decoration-dashed decoration-1 underline-offset-2'>classes.wtf</a><br /> */}
             </h1>
         </div>
