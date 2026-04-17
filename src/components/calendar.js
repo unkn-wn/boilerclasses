@@ -9,6 +9,7 @@ import {
 import { FiClock, FiMapPin, FiUser, FiCalendar, FiShare, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
 import { CURRENT_SEMESTER, CURRENT_SEMESTER_CODE } from '@/hooks/useSearchFilters';
+import { isIndianapolisRoom } from './schedule/utils/indianapolisUtils';
 
 // Get the color for different meeting types - more subtle approach
 const getMeetingTypeIndicator = (type) => {
@@ -32,6 +33,7 @@ const getMeetingTypeIndicator = (type) => {
 const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
     const meetingTypeIndicator = getMeetingTypeIndicator(meeting.Type);
     const isLecture = meeting.Type === "Lecture";
+    const isIndy = isIndianapolisRoom(meeting.room);
 
     // Function to copy meeting details to clipboard
     const shareMeeting = (e) => {
@@ -52,9 +54,16 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                 >
                     <div className="py-2 px-3">
                         <div className="flex justify-between items-center mb-1">
-                            <span className={`font-medium text-sm ${isLecture ? 'text-primary' : 'text-secondary'}`}>
-                                {translateType(meeting.Type)}
-                            </span>
+                            <div className="flex items-center gap-2">
+                                <span className={`font-medium text-sm ${isLecture ? 'text-primary' : 'text-secondary'}`}>
+                                    {translateType(meeting.Type)}
+                                </span>
+                                {isIndy && (
+                                    <div className='px-1 rounded font-bold bg-background-tertiary text-secondary text-[10px]'>
+                                        INDY
+                                    </div>
+                                )}
+                            </div>
                             <span className="text-tertiary text-xs">
                                 {meeting.startTime}
                             </span>
@@ -95,7 +104,14 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                             <div className="flex items-start gap-3">
                                 <FiMapPin className="text-red-500 mt-1 flex-shrink-0" />
                                 <div>
-                                    <div className="font-medium">{meeting.room}</div>
+                                    <div className="flex items-center gap-2">
+                                        <div className="font-medium">{meeting.room}</div>
+                                        {isIndy && (
+                                            <div className='px-1 rounded font-bold bg-background-tertiary text-secondary text-[10px]'>
+                                                INDY
+                                            </div>
+                                        )}
+                                    </div>
                                     <a href={`https://www.google.com/maps/search/${encodeURIComponent(`${meeting.room.split(' ')[0]} Purdue`)}`}
                                         target="_blank" rel="noopener noreferrer"
                                         className="text-sm text-blue-500 hover:underline">
