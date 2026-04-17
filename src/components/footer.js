@@ -18,7 +18,21 @@ const Footer = () => {
                     <span className='text-tertiary'>·</span>
                     <span>Sponsored by</span>
                     <a href='https://www.mechanize.work/' target='_blank' rel='noopener noreferrer' className='text-tertiary flex items-center gap-1'>
-                        <img src='/mechanize.png' alt='Mechanize' className='h-3.5 w-auto inline' />
+                        <span
+                            aria-hidden
+                            className='inline-block h-3.5 shrink-0 bg-current'
+                            style={{
+                                aspectRatio: '8981 / 9287',
+                                WebkitMaskImage: 'url(/mechanize.svg)',
+                                maskImage: 'url(/mechanize.svg)',
+                                WebkitMaskSize: 'contain',
+                                maskSize: 'contain',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskPosition: 'center',
+                                maskPosition: 'center',
+                            }}
+                        />
                         <span className='underline decoration-dashed decoration-1 underline-offset-2'>Mechanize</span>
                     </a>
                 </span>

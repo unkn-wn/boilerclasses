@@ -1,6 +1,6 @@
 // CourseCatalog.js
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 import Card from "@/components/card";
 import Footer from "@/components/footer";
@@ -17,9 +17,21 @@ import { IoMdCalendar, IoMdPerson, IoBulbOutline } from "react-icons/io";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const MECHANIZE_JOB_URL =
+  "https://jobs.ashbyhq.com/mechanize?utm_source=Purdue";
+
+const MECHANIZE_BANNER_COPY = [
+  "Mechanize is hiring junior SWEs. $300K base + equity. ",
+  "Better at coding than AI? Prove it. ",
+  "We hire engineers to outsmart AI. It's harder than you think. 300k + equity. ",
+  "Most engineers can't beat Claude on our take-home. Think you can? 300k + equity for Jr SWEs. ",
+];
+
 const CourseCatalog = () => {
   const router = useRouter();
   const [bannerVisible, setBannerVisible] = useState(true);
+  const [mechanizeBannerIndex, setMechanizeBannerIndex] = useState(0);
+  const mechanizeBannerIndexRef = useRef(0);
 
   const {
     filters,
@@ -104,6 +116,41 @@ const CourseCatalog = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Show next Mechanize banner line on each full refresh (advance on beforeunload avoids Strict Mode double-run)
+  useEffect(() => {
+    const key = "mechanizeBannerRotateIndex";
+    try {
+      const raw = localStorage.getItem(key);
+      const parsed = raw === null ? 0 : parseInt(raw, 10);
+      const n = MECHANIZE_BANNER_COPY.length;
+      const idx = Number.isFinite(parsed) ? ((parsed % n) + n) % n : 0;
+      mechanizeBannerIndexRef.current = idx;
+      setMechanizeBannerIndex(idx);
+    } catch {
+      mechanizeBannerIndexRef.current = 0;
+      setMechanizeBannerIndex(0);
+    }
+  }, []);
+
+  useEffect(() => {
+    const key = "mechanizeBannerRotateIndex";
+    const n = MECHANIZE_BANNER_COPY.length;
+    const persistNext = () => {
+      try {
+        localStorage.setItem(
+          key,
+          String((mechanizeBannerIndexRef.current + 1) % n)
+        );
+      } catch {
+        /* ignore */
+      }
+    };
+    window.addEventListener("beforeunload", persistNext);
+    return () => {
+      window.removeEventListener("beforeunload", persistNext);
+    };
+  }, []);
+
   // Get all filters as a string
   const allFiltersString = getAllFiltersString();
 
@@ -160,11 +207,19 @@ const CourseCatalog = () => {
       </Head>
 
       {bannerVisible && (
-        <div className="relative w-full bg-[#18181B] text-center text-xs py-2 flex items-center justify-center gap-2">
+        <div className="relative w-full bg-[#18181B] text-center text-sm py-2 flex items-center justify-center gap-2">
           <span className="w-1 h-1 rounded-full bg-[#F0A506] inline-block" />
-          <a href="https://jobs.ashbyhq.com/mechanize/b50c89dc-001c-4fb6-a4fc-a9f52f35b490" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-neutral-100 transition-colors duration-200 tracking-wide">
-            Mechanize is hiring junior SWEs ($300K base + equity) to work on RL environments for frontier AI labs.
-          </a>
+          <span className="text-neutral-400">
+            {MECHANIZE_BANNER_COPY[mechanizeBannerIndex]}
+            <a
+              href={MECHANIZE_JOB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-300 hover:text-neutral-100 transition-colors duration-200 tracking-wide"
+            >
+              Apply now!
+            </a>
+          </span>
           <button
             onClick={() => setBannerVisible(false)}
             className="ml-1 text-neutral-600 hover:text-neutral-300 transition-colors duration-200 text-[10px] leading-none"
