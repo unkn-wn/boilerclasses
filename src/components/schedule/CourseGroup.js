@@ -345,13 +345,8 @@ const CourseGroup = ({ parentCourse, lectures, selectedLectures, onLectureToggle
                                             <div className="flex flex-wrap items-center gap-1">
                                               <span> {translateType(lecture.type)} - {lecture.room} </span>
                                               {isIndianapolisRoom(lecture.room) && (
-                                                <div className='px-1 rounded font-bold relative overflow-hidden'
-                                                  style={{
-                                                    backgroundColor: "rgb(255, 165, 0)", // can be changed i just picked a red-ish color
-                                                  }}>
-                                                  <span className='relative z-10 text-white'>
-                                                    INDY
-                                                  </span>
+                                                <div className='px-1 rounded font-bold bg-background-tertiary text-secondary text-[10px]'>
+                                                  INDY
                                                 </div>
                                               )}
                                             </div>
