@@ -352,6 +352,22 @@ const LazyCalendar = () => {
     );
 };
 
+// Helper function to filter meetings based on location filter
+// "filterType" can be any of ["indy", "wl", "both"]
+// if filterType is none of the above, defaults to "wl"
+const filterMeetingsByLocation = (meetings, filterType) => {
+    if (!meetings) return [];
+    if (filterType === 'both') return meetings;
+    
+    return meetings.filter(meeting => {
+        const isIndy = isIndianapolisRoom(meeting.room);
+        // if (filterType === 'indy') return isIndy;
+        // if (filterType === 'wl') return !isIndy;
+        // return true;
+        return filterType === 'indy' ? isIndy : !isIndy;
+    });
+};
+
 // Main calendar content component - only rendered when visible
 const CalendarContent = () => {
     const { courseData } = useDetailContext();
@@ -360,6 +376,7 @@ const CalendarContent = () => {
     const [calendarData, setCalendarData] = useState(null);
     const [wait, setWait] = useState(true);
     const [hoveredCrn, setHoveredCrn] = useState(null);
+    const [locationFilter, setLocationFilter] = useState('both');
 
     // Prevent re-fetching on re-renders by using a ref
     const dataFetchedRef = useRef(false);
@@ -397,6 +414,19 @@ const CalendarContent = () => {
         return processedDays;
     }, [calendarData, detailId]);
 
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+    // filter the processed days based on location filter
+    const filteredProcessedDays = useMemo(() => {
+        if (!processedDays) return null;
+        
+        const filtered = {};
+        days.forEach(day => {
+            filtered[day] = filterMeetingsByLocation(processedDays[day], locationFilter);
+        });
+        return filtered;
+    }, [processedDays, locationFilter]);
+
     if (!processedDays) {
         return (
             <>
@@ -407,21 +437,44 @@ const CalendarContent = () => {
         );
     }
 
-    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-
     return (
         <>
+            <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <span className="text-sm font-medium text-tertiary">Location</span>
+                <div className="inline-flex w-full sm:w-auto rounded-xl border border-[rgb(var(--background-secondary-color))] bg-background p-1 shadow">
+                    {['indy', 'wl', 'both'].map((filter) => {
+                        const isActive = locationFilter === filter;
+                        const label = filter === 'indy' ? 'Indy' : filter === 'wl' ? 'WL' : 'Both';
+
+                        return (
+                            <button
+                                key={filter}
+                                onClick={() => setLocationFilter(filter)}
+                                className={`flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                    isActive
+                                        ? 'bg-background-opposite text-opposite shadow-sm'
+                                        : 'bg-transparent text-tertiary hover:bg-background-secondary hover:text-secondary'
+                                }`}
+                                aria-pressed={isActive}
+                            >
+                                {label}
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
             {/* Mobile swipeable calendar */}
             <MobileDayCarousel
-                processedDays={processedDays}
+                processedDays={filteredProcessedDays}
                 hoveredCrn={hoveredCrn}
-                setHoveredCrn={setHoveredCrn}
+                setHoveredCrn={setHoveredCrn}   
             />
 
             {/* Desktop calendar grid */}
             <div className='hidden md:grid grid-cols-5 gap-4'>
                 {days.map((day) => {
-                    const meetings = processedDays[day];
+                    const meetings = filteredProcessedDays[day];
                     return (
                         <div key={day} className="bg-background-secondary/20 rounded-lg p-2">
                             <WeekdayHeader day={day} />
