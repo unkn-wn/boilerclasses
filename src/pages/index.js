@@ -1,6 +1,6 @@
 // CourseCatalog.js
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 import Card from "@/components/card";
 import Footer from "@/components/footer";
@@ -13,12 +13,25 @@ import SearchFilters from "@/components/searchFilters";
 import { useSearchFilters } from "@/hooks/useSearchFilters";
 import { Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { IoMdCalendar, IoMdPerson } from "react-icons/io";
+import { IoMdCalendar, IoMdPerson, IoBulbOutline } from "react-icons/io";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const MECHANIZE_JOB_URL =
+  "https://mechanize.work/apply/software-engineer/?utm_source=purdue&utm_campaign=purdue";
+
+const MECHANIZE_BANNER_COPY = [
+  "Mechanize is hiring junior SWEs. $300K base + equity. ",
+  "Better at coding than AI? Prove it. ",
+  "We hire engineers to outsmart AI. It's harder than you think. 300k + equity. ",
+  "Most engineers can't beat Claude on our take-home. Think you can? 300k + equity for Jr SWEs. ",
+];
+
 const CourseCatalog = () => {
   const router = useRouter();
+  const [bannerVisible, setBannerVisible] = useState(true);
+  const [mechanizeBannerIndex, setMechanizeBannerIndex] = useState(0);
+  const mechanizeBannerIndexRef = useRef(0);
 
   const {
     filters,
@@ -103,6 +116,41 @@ const CourseCatalog = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Show next Mechanize banner line on each full refresh (advance on beforeunload avoids Strict Mode double-run)
+  useEffect(() => {
+    const key = "mechanizeBannerRotateIndex";
+    try {
+      const raw = localStorage.getItem(key);
+      const parsed = raw === null ? 0 : parseInt(raw, 10);
+      const n = MECHANIZE_BANNER_COPY.length;
+      const idx = Number.isFinite(parsed) ? ((parsed % n) + n) % n : 0;
+      mechanizeBannerIndexRef.current = idx;
+      setMechanizeBannerIndex(idx);
+    } catch {
+      mechanizeBannerIndexRef.current = 0;
+      setMechanizeBannerIndex(0);
+    }
+  }, []);
+
+  useEffect(() => {
+    const key = "mechanizeBannerRotateIndex";
+    const n = MECHANIZE_BANNER_COPY.length;
+    const persistNext = () => {
+      try {
+        localStorage.setItem(
+          key,
+          String((mechanizeBannerIndexRef.current + 1) % n)
+        );
+      } catch {
+        /* ignore */
+      }
+    };
+    window.addEventListener("beforeunload", persistNext);
+    return () => {
+      window.removeEventListener("beforeunload", persistNext);
+    };
+  }, []);
+
   // Get all filters as a string
   const allFiltersString = getAllFiltersString();
 
@@ -158,6 +206,30 @@ const CourseCatalog = () => {
         <link rel="canonical" href="https://boilerclasses.com/" />
       </Head>
 
+      {bannerVisible && (
+        <div className="relative w-full bg-[#18181B] text-center text-sm py-2 flex items-center justify-center gap-2">
+          <span className="w-1 h-1 rounded-full bg-[#F0A506] inline-block" />
+          <span className="text-neutral-400">
+            {MECHANIZE_BANNER_COPY[mechanizeBannerIndex]}
+            <a
+              href={MECHANIZE_JOB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-300 hover:text-neutral-100 transition-colors duration-200 tracking-wide"
+            >
+              Apply now!
+            </a>
+          </span>
+          <button
+            onClick={() => setBannerVisible(false)}
+            className="ml-1 text-neutral-600 hover:text-neutral-300 transition-colors duration-200 text-[10px] leading-none"
+            aria-label="Dismiss banner"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       <div id="scrollToTopBtn" className="hidden">
         <button
           className="fixed bg-background z-50 w-12 h-12 rounded-full right-12 bottom-20 shadow-black shadow-sm hover:bg-background-secondary transition"
@@ -170,7 +242,7 @@ const CourseCatalog = () => {
       {!displayLanding ? (
         <div
           id="parent"
-          className={`flex flex-col h-screen min-h-screen bg-super container mx-auto p-4 ${inter.className}`}
+          className={`flex flex-col ${bannerVisible ? "h-[calc(100vh-2rem)] min-h-[calc(100vh-2rem)]" : "h-screen min-h-screen"} bg-super container mx-auto p-4 ${inter.className}`}
         >
           {/* Header */}
           <div className="flex flex-row my-2 md:my-4 lg:my-0 lg:mt-4 lg:mb-8">
@@ -237,7 +309,7 @@ const CourseCatalog = () => {
       ) : (
         /* Landing Page */
         <div>
-          <div className="flex-col z-40 grid place-content-center mx-4 h-screen items-center justify-center">
+          <div className={`flex-col z-40 grid place-content-center mx-4 ${bannerVisible ? "h-[calc(100vh-2rem)]" : "h-screen"} items-center justify-center`}>
             <div className="flex flex-row justify-around my-2 md:gap-4 md:my-4 lg:my-0 lg:mt-4 lg:mb-6">
               <img
                 src="/boilerclasses-FULL.png"
@@ -275,18 +347,6 @@ const CourseCatalog = () => {
             <Footer />
           </div>
 
-          {/* <ReleaseNotes /> */}
-          <div className='hidden md:block'>
-            <a
-              href="https://forms.gle/q93vaLnrbzm3h6kK7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="fixed bottom-4 left-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2 hover:from-blue-600 hover:to-blue-700 transition cursor-pointer"
-            >
-              <IoMdPerson className="text-sm" />
-              <span className="text-sm font-medium">Interested in being a maintainer?</span>
-            </a>
-          </div>
         </div>
       )}
     </>
