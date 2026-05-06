@@ -18,7 +18,7 @@ import { IoMdCalendar, IoMdPerson, IoBulbOutline } from "react-icons/io";
 const inter = Inter({ subsets: ["latin"] });
 
 const MECHANIZE_JOB_URL =
-  "https://jobs.ashbyhq.com/mechanize?utm_source=Purdue";
+  "https://mechanize.work/apply/software-engineer/?utm_source=purdue&utm_campaign=purdue";
 
 const MECHANIZE_BANNER_COPY = [
   "Mechanize is hiring junior SWEs. $300K base + equity. ",
