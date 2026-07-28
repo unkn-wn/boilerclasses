@@ -4,10 +4,59 @@ import GradeDistributionBar from '@/components/GradeDistributionBar';
 import { useDetailContext } from './context/DetailContext';
 import { useFilterContext } from './context/FilterContext';
 import { extractAllSemesters } from '@/lib/utils';
-import { FiArrowUp, FiArrowDown, FiChevronDown, FiChevronUp, FiUser, FiCalendar } from 'react-icons/fi';
+import { FiArrowUp, FiArrowDown, FiChevronDown, FiChevronUp, FiUser, FiCalendar, FiStar } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { Popover, PopoverTrigger, PopoverContent, PopoverBody, PopoverArrow, Portal } from '@chakra-ui/react';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+
+// Sorts "Season Year" strings with most recent first (Fall > Summer > Spring within a year)
+const sortSemestersDesc = (semesters) => {
+  const seasonOrder = ["Spring", "Summer", "Fall"];
+  return [...semesters].sort((a, b) => {
+    const [aSeason, aYear] = a.split(" ");
+    const [bSeason, bYear] = b.split(" ");
+    if (aYear !== bYear) return bYear - aYear;
+    return seasonOrder.indexOf(bSeason) - seasonOrder.indexOf(aSeason);
+  });
+};
+
+// Popover that lists every [Semester] [Year] a professor taught, triggered by the sections count badge
+const SectionsPopover = ({ sectionsCount, semestersTaught, children }) => {
+  if (!sectionsCount) return children;
+
+  return (
+    <Popover trigger="click" placement="bottom" isLazy>
+      <PopoverTrigger>
+        {children}
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent
+          width="auto"
+          minWidth="150px"
+          maxWidth="220px"
+          bg="rgba(var(--background-secondary-color))"
+          borderColor="rgb(var(--background-tertiary-color))"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <PopoverArrow bg="rgba(var(--background-secondary-color))" />
+          <PopoverBody className="max-h-48 overflow-y-auto py-2 px-3">
+            <div className="text-xs text-tertiary font-semibold mb-1">
+              Taught {sectionsCount} {sectionsCount === 1 ? 'section' : 'sections'}
+            </div>
+            <ul className="space-y-1">
+              {sortSemestersDesc(semestersTaught).map(term => (
+                <li key={term} className="text-sm text-primary flex items-center gap-1.5">
+                  <FiCalendar size={11} className="text-tertiary flex-shrink-0" />
+                  {term}
+                </li>
+              ))}
+            </ul>
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
+    </Popover>
+  );
+};
 
 // Memoized average cell with bolder text
 const AverageGpaCell = memo(({ averageGpa, color }) => {
@@ -137,8 +186,25 @@ const GpaTable = () => {
     selectedInstructors,
     refreshGraph,
     defaultGPA,
+    curRMP,
     highlightOverviewTab // Get the highlight function from context
   } = useDetailContext();
+
+  // Build a map of professor name -> list of "Season Year" terms they taught,
+  // sourced from courseData.instructor (term -> [instructor names])
+  const instructorSemesters = useMemo(() => {
+    const map = {};
+    if (!courseData?.instructor) return map;
+
+    Object.entries(courseData.instructor).forEach(([term, instructors]) => {
+      (instructors || []).forEach(name => {
+        if (!map[name]) map[name] = [];
+        if (!map[name].includes(term)) map[name].push(term);
+      });
+    });
+
+    return map;
+  }, [courseData?.instructor]);
 
   // Add sorting state
   const [sort, setSort] = useState({ field: 'averageGpa', direction: 'desc' });
@@ -180,6 +246,13 @@ const GpaTable = () => {
       const gradeDistribution = calculateInstructorGradeDistribution(gradeData);
       const hasGradeData = gradeDistribution !== null;
 
+      // RMP rating for this professor (0/undefined means no rating found)
+      const rawRating = curRMP?.[dataset.label];
+      const rating = typeof rawRating === 'number' && rawRating > 0 ? rawRating : null;
+
+      // Every "Season Year" term this professor taught this course
+      const semestersTaught = instructorSemesters[dataset.label] || [];
+
       return {
         name: dataset.label,
         averageGpa,
@@ -188,10 +261,12 @@ const GpaTable = () => {
         data: dataset.data,
         backgroundColor: dataset.backgroundColor,
         sectionsCount,
-        isCurrentSemester
+        isCurrentSemester,
+        rating,
+        semestersTaught
       };
     });
-  }, [courseData, defaultGPA]);
+  }, [courseData, defaultGPA, curRMP, instructorSemesters]);
 
   // Get all available semesters
   const semesters = useMemo(() =>
@@ -250,6 +325,14 @@ const GpaTable = () => {
         const aGrade = a.gradeDistribution?.A || 0;
         const bGrade = b.gradeDistribution?.A || 0;
         comparison = aGrade - bGrade;
+      }
+      else if (sort.field === 'rating') {
+        // Sort nulls (no RMP rating found) to the bottom regardless of sort direction
+        if (a.rating === null && b.rating !== null) return 1;
+        if (a.rating !== null && b.rating === null) return -1;
+        if (a.rating === null && b.rating === null) return 0;
+
+        comparison = a.rating - b.rating;
       }
       else if (sort.field === 'sectionsCount') {
         comparison = a.sectionsCount - b.sectionsCount;
@@ -324,6 +407,8 @@ const GpaTable = () => {
           <option value="sectionsCount-asc">Sections (Least-Most)</option>
           <option value="gradeA-desc">Grade A% (High-Low)</option>
           <option value="gradeA-asc">Grade A% (Low-High)</option>
+          <option value="rating-desc">RMP Rating (High-Low)</option>
+          <option value="rating-asc">RMP Rating (Low-High)</option>
         </select>
       </div>
 
@@ -372,11 +457,18 @@ const GpaTable = () => {
                   width="5%"
                 />
                 <SortHeader
+                  label="Rating"
+                  field="rating"
+                  currentSort={sort}
+                  onSort={handleSort}
+                  width="8%"
+                />
+                <SortHeader
                   label="Grade Distribution"
                   field="gradeA"
                   currentSort={sort}
                   onSort={handleSort}
-                  width="55%"
+                  width="47%"
                 />
                 <SortHeader
                   label="Average"
@@ -413,13 +505,29 @@ const GpaTable = () => {
 
                         {/* Mobile/tablet stats row */}
                         <div className="flex items-center justify-between w-full lg:hidden">
-                          {/* Sections count */}
-                          <div className="flex items-center gap-1">
+                          {/* Sections count - tap to see which semesters/years */}
+                          <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
                             <span className="text-xs text-tertiary">Sections:</span>
-                            <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium">
-                              {professor.sectionsCount}
-                            </span>
+                            <SectionsPopover
+                              sectionsCount={professor.sectionsCount}
+                              semestersTaught={professor.semestersTaught}
+                            >
+                              <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium cursor-pointer hover:bg-background-tertiary/50 transition-colors">
+                                {professor.sectionsCount}
+                              </span>
+                            </SectionsPopover>
                           </div>
+
+                          {/* RMP Rating */}
+                          {professor.rating !== null && (
+                            <div className="flex items-center gap-1">
+                              <span className="text-xs text-tertiary">Rating:</span>
+                              <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium flex items-center gap-0.5">
+                                <FiStar size={10} className="text-yellow-500" />
+                                {professor.rating.toFixed(1)}
+                              </span>
+                            </div>
+                          )}
 
                           {/* Average GPA */}
                           <div className="flex items-center gap-1">
@@ -455,12 +563,31 @@ const GpaTable = () => {
                       </div>
                     </td>
 
-                    {/* Sections Count - desktop only */}
+                    {/* Sections Count - desktop only, click to see which semesters/years were taught */}
+                    <td className="py-2 px-2 text-center hidden lg:table-cell" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex justify-center">
+                        <SectionsPopover
+                          sectionsCount={professor.sectionsCount}
+                          semestersTaught={professor.semestersTaught}
+                        >
+                          <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium cursor-pointer hover:bg-background-tertiary/50 transition-colors">
+                            {professor.sectionsCount}
+                          </span>
+                        </SectionsPopover>
+                      </div>
+                    </td>
+
+                    {/* RMP Rating - desktop only */}
                     <td className="py-2 px-2 text-center hidden lg:table-cell">
                       <div className="flex justify-center">
-                        <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium">
-                          {professor.sectionsCount}
-                        </span>
+                        {professor.rating !== null ? (
+                          <span className="text-xs font-medium px-2 py-1 rounded-md bg-background-secondary flex items-center gap-1 w-fit">
+                            <FiStar size={11} className="text-yellow-500" />
+                            {professor.rating.toFixed(1)}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-tertiary">-</span>
+                        )}
                       </div>
                     </td>
 
