@@ -20,12 +20,30 @@ const sortSemestersDesc = (semesters) => {
   });
 };
 
-// Popover that lists every [Semester] [Year] a professor taught, triggered by the sections count badge
-const SectionsPopover = ({ sectionsCount, semestersTaught, children }) => {
-  if (!sectionsCount) return children;
+// Numeric score for a "Season Year" string - higher means more recent, used for tie-breaking sorts
+const getSemesterRecencyScore = (term) => {
+  const seasonOrder = { "Spring": 0, "Summer": 1, "Fall": 2 };
+  const [season, year] = term.split(" ");
+  return parseInt(year, 10) * 10 + (seasonOrder[season] ?? 0);
+};
+
+// Same RMP search URL used in the "All Instructors" panel (InstructorItem.js)
+const getRmpUrl = (name, curRMP) => {
+  if (curRMP && curRMP[name] && curRMP[name].link) {
+    return curRMP[name].link;
+  }
+  const nameParts = name.split(" ");
+  const firstName = nameParts[0];
+  const lastName = nameParts[nameParts.length - 1];
+  return `https://www.ratemyprofessors.com/search/professors/783?q=${firstName} ${lastName}`;
+};
+
+// Popover that lists every [Semester] [Year] a professor taught, shown on hover of the sections count badge
+const SectionsPopover = ({ semestersCount, semestersTaught, children }) => {
+  if (!semestersCount) return children;
 
   return (
-    <Popover trigger="click" placement="bottom" isLazy>
+    <Popover trigger="hover" placement="bottom" isLazy openDelay={150} closeDelay={100}>
       <PopoverTrigger>
         {children}
       </PopoverTrigger>
@@ -41,7 +59,7 @@ const SectionsPopover = ({ sectionsCount, semestersTaught, children }) => {
           <PopoverArrow bg="rgba(var(--background-secondary-color))" />
           <PopoverBody className="max-h-48 overflow-y-auto py-2 px-3">
             <div className="text-xs text-tertiary font-semibold mb-1">
-              Taught {sectionsCount} {sectionsCount === 1 ? 'section' : 'sections'}
+              Taught {semestersCount} {semestersCount === 1 ? 'semester' : 'semesters'}
             </div>
             <ul className="space-y-1">
               {sortSemestersDesc(semestersTaught).map(term => (
@@ -253,6 +271,14 @@ const GpaTable = () => {
       // Every "Season Year" term this professor taught this course
       const semestersTaught = instructorSemesters[dataset.label] || [];
 
+      // Recency score of the most recent semester taught (higher = more recent), used as a sort tie-breaker
+      const mostRecentSemesterScore = semestersTaught.length > 0
+        ? Math.max(...semestersTaught.map(getSemesterRecencyScore))
+        : null;
+
+      // Distinct number of semesters this professor taught the course (displayed count)
+      const semestersTaughtCount = semestersTaught.length;
+
       return {
         name: dataset.label,
         averageGpa,
@@ -263,7 +289,9 @@ const GpaTable = () => {
         sectionsCount,
         isCurrentSemester,
         rating,
-        semestersTaught
+        semestersTaught,
+        mostRecentSemesterScore,
+        semestersTaughtCount
       };
     });
   }, [courseData, defaultGPA, curRMP, instructorSemesters]);
@@ -333,9 +361,21 @@ const GpaTable = () => {
         if (a.rating === null && b.rating === null) return 0;
 
         comparison = a.rating - b.rating;
+
+        // Tie-break 1: average GPA (higher first, nulls sort to the bottom)
+        if (comparison === 0) {
+          if (a.averageGpa === null && b.averageGpa !== null) return 1;
+          if (a.averageGpa !== null && b.averageGpa === null) return -1;
+          if (a.averageGpa !== null && b.averageGpa !== null) comparison = a.averageGpa - b.averageGpa;
+        }
+
+        // Tie-break 2: most recently taught semester (more recent first)
+        if (comparison === 0) {
+          comparison = (a.mostRecentSemesterScore ?? -1) - (b.mostRecentSemesterScore ?? -1);
+        }
       }
-      else if (sort.field === 'sectionsCount') {
-        comparison = a.sectionsCount - b.sectionsCount;
+      else if (sort.field === 'semestersCount') {
+        comparison = a.semestersTaughtCount - b.semestersTaughtCount;
 
         // Use average GPA as a tiebreaker when section counts are equal
         if (comparison === 0) {
@@ -403,8 +443,8 @@ const GpaTable = () => {
           <option value="name-asc">Name (Z-A)</option>
           <option value="averageGpa-desc">GPA (High-Low)</option>
           <option value="averageGpa-asc">GPA (Low-High)</option>
-          <option value="sectionsCount-desc">Sections (Most-Least)</option>
-          <option value="sectionsCount-asc">Sections (Least-Most)</option>
+          <option value="semestersCount-desc">Semesters (Most-Least)</option>
+          <option value="semestersCount-asc">Semesters (Least-Most)</option>
           <option value="gradeA-desc">Grade A% (High-Low)</option>
           <option value="gradeA-asc">Grade A% (Low-High)</option>
           <option value="rating-desc">RMP Rating (High-Low)</option>
@@ -450,8 +490,8 @@ const GpaTable = () => {
                   onSort={handleSort}
                 />
                 <SortHeader
-                  label="Sections"
-                  field="sectionsCount"
+                  label="Semesters"
+                  field="semestersCount"
                   currentSort={sort}
                   onSort={handleSort}
                   width="5%"
@@ -505,27 +545,32 @@ const GpaTable = () => {
 
                         {/* Mobile/tablet stats row */}
                         <div className="flex items-center justify-between w-full lg:hidden">
-                          {/* Sections count - tap to see which semesters/years */}
+                          {/* Semesters count - hover to see which semesters/years */}
                           <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
-                            <span className="text-xs text-tertiary">Sections:</span>
+                            <span className="text-xs text-tertiary">Semesters:</span>
                             <SectionsPopover
-                              sectionsCount={professor.sectionsCount}
+                              semestersCount={professor.semestersTaughtCount}
                               semestersTaught={professor.semestersTaught}
                             >
-                              <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium cursor-pointer hover:bg-background-tertiary/50 transition-colors">
-                                {professor.sectionsCount}
+                              <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium cursor-default hover:bg-background-tertiary/50 transition-colors">
+                                {professor.semestersTaughtCount}
                               </span>
                             </SectionsPopover>
                           </div>
 
-                          {/* RMP Rating */}
+                          {/* RMP Rating - tap to open RMP page */}
                           {professor.rating !== null && (
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
                               <span className="text-xs text-tertiary">Rating:</span>
-                              <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium flex items-center gap-0.5">
+                              <a
+                                href={getRmpUrl(professor.name, curRMP)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium flex items-center gap-0.5 hover:bg-background-tertiary/50 transition-colors"
+                              >
                                 <FiStar size={10} className="text-yellow-500" />
                                 {professor.rating.toFixed(1)}
-                              </span>
+                              </a>
                             </div>
                           )}
 
@@ -563,28 +608,33 @@ const GpaTable = () => {
                       </div>
                     </td>
 
-                    {/* Sections Count - desktop only, click to see which semesters/years were taught */}
+                    {/* Semesters Count - desktop only, hover to see which semesters/years were taught */}
                     <td className="py-2 px-2 text-center hidden lg:table-cell" onClick={(e) => e.stopPropagation()}>
                       <div className="flex justify-center">
                         <SectionsPopover
-                          sectionsCount={professor.sectionsCount}
+                          semestersCount={professor.semestersTaughtCount}
                           semestersTaught={professor.semestersTaught}
                         >
-                          <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium cursor-pointer hover:bg-background-tertiary/50 transition-colors">
-                            {professor.sectionsCount}
+                          <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium cursor-default hover:bg-background-tertiary/50 transition-colors">
+                            {professor.semestersTaughtCount}
                           </span>
                         </SectionsPopover>
                       </div>
                     </td>
 
-                    {/* RMP Rating - desktop only */}
-                    <td className="py-2 px-2 text-center hidden lg:table-cell">
+                    {/* RMP Rating - desktop only, click to open RMP page */}
+                    <td className="py-2 px-2 text-center hidden lg:table-cell" onClick={(e) => e.stopPropagation()}>
                       <div className="flex justify-center">
                         {professor.rating !== null ? (
-                          <span className="text-xs font-medium px-2 py-1 rounded-md bg-background-secondary flex items-center gap-1 w-fit">
+                          <a
+                            href={getRmpUrl(professor.name, curRMP)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-medium px-2 py-1 rounded-md bg-background-secondary flex items-center gap-1 w-fit hover:bg-background-tertiary/50 transition-colors"
+                          >
                             <FiStar size={11} className="text-yellow-500" />
                             {professor.rating.toFixed(1)}
-                          </span>
+                          </a>
                         ) : (
                           <span className="text-xs text-tertiary">-</span>
                         )}
