@@ -4,7 +4,7 @@ import GradeDistributionBar from '@/components/GradeDistributionBar';
 import { useDetailContext } from './context/DetailContext';
 import { useFilterContext } from './context/FilterContext';
 import { extractAllSemesters } from '@/lib/utils';
-import { FiArrowUp, FiArrowDown, FiChevronDown, FiChevronUp, FiUser, FiCalendar, FiStar } from 'react-icons/fi';
+import { FiArrowUp, FiArrowDown, FiChevronDown, FiChevronUp, FiUser, FiCalendar } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Popover, PopoverTrigger, PopoverContent, PopoverBody, PopoverArrow, Portal } from '@chakra-ui/react';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
@@ -566,9 +566,8 @@ const GpaTable = () => {
                                 href={getRmpUrl(professor.name, curRMP)}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium flex items-center gap-0.5 hover:bg-background-tertiary/50 transition-colors"
+                                className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium hover:bg-background-tertiary/50 transition-colors"
                               >
-                                <FiStar size={10} className="text-yellow-500" />
                                 {professor.rating.toFixed(1)}
                               </a>
                             </div>
@@ -630,9 +629,8 @@ const GpaTable = () => {
                             href={getRmpUrl(professor.name, curRMP)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs font-medium px-2 py-1 rounded-md bg-background-secondary flex items-center gap-1 w-fit hover:bg-background-tertiary/50 transition-colors"
+                            className="text-xs font-medium px-2 py-1 rounded-md bg-background-secondary w-fit hover:bg-background-tertiary/50 transition-colors"
                           >
-                            <FiStar size={11} className="text-yellow-500" />
                             {professor.rating.toFixed(1)}
                           </a>
                         ) : (
