@@ -6,8 +6,75 @@ import { useFilterContext } from './context/FilterContext';
 import { extractAllSemesters } from '@/lib/utils';
 import { FiArrowUp, FiArrowDown, FiChevronDown, FiChevronUp, FiUser, FiCalendar } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { Popover, PopoverTrigger, PopoverContent, PopoverBody, PopoverArrow, Portal } from '@chakra-ui/react';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+
+// Sorts "Season Year" strings with most recent first (Fall > Summer > Spring within a year)
+const sortSemestersDesc = (semesters) => {
+  const seasonOrder = ["Spring", "Summer", "Fall"];
+  return [...semesters].sort((a, b) => {
+    const [aSeason, aYear] = a.split(" ");
+    const [bSeason, bYear] = b.split(" ");
+    if (aYear !== bYear) return bYear - aYear;
+    return seasonOrder.indexOf(bSeason) - seasonOrder.indexOf(aSeason);
+  });
+};
+
+// Numeric score for a "Season Year" string - higher means more recent, used for tie-breaking sorts
+const getSemesterRecencyScore = (term) => {
+  const seasonOrder = { "Spring": 0, "Summer": 1, "Fall": 2 };
+  const [season, year] = term.split(" ");
+  return parseInt(year, 10) * 10 + (seasonOrder[season] ?? 0);
+};
+
+// Same RMP search URL used in the "All Instructors" panel (InstructorItem.js)
+const getRmpUrl = (name, curRMP) => {
+  if (curRMP && curRMP[name] && curRMP[name].link) {
+    return curRMP[name].link;
+  }
+  const nameParts = name.split(" ");
+  const firstName = nameParts[0];
+  const lastName = nameParts[nameParts.length - 1];
+  return `https://www.ratemyprofessors.com/search/professors/783?q=${firstName} ${lastName}`;
+};
+
+// Popover that lists every [Semester] [Year] a professor taught, shown on hover of the sections count badge
+const SectionsPopover = ({ semestersCount, semestersTaught, children }) => {
+  if (!semestersCount) return children;
+
+  return (
+    <Popover trigger="hover" placement="bottom" isLazy openDelay={150} closeDelay={100}>
+      <PopoverTrigger>
+        {children}
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent
+          width="auto"
+          minWidth="150px"
+          maxWidth="220px"
+          bg="rgba(var(--background-secondary-color))"
+          borderColor="rgb(var(--background-tertiary-color))"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <PopoverArrow bg="rgba(var(--background-secondary-color))" />
+          <PopoverBody className="max-h-48 overflow-y-auto py-2 px-3">
+            <div className="text-xs text-tertiary font-semibold mb-1">
+              Taught {semestersCount} {semestersCount === 1 ? 'semester' : 'semesters'}
+            </div>
+            <ul className="space-y-1">
+              {sortSemestersDesc(semestersTaught).map(term => (
+                <li key={term} className="text-sm text-primary flex items-center gap-1.5">
+                  <FiCalendar size={11} className="text-tertiary flex-shrink-0" />
+                  {term}
+                </li>
+              ))}
+            </ul>
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
+    </Popover>
+  );
+};
 
 // Memoized average cell with bolder text
 const AverageGpaCell = memo(({ averageGpa, color }) => {
@@ -137,8 +204,25 @@ const GpaTable = () => {
     selectedInstructors,
     refreshGraph,
     defaultGPA,
+    curRMP,
     highlightOverviewTab // Get the highlight function from context
   } = useDetailContext();
+
+  // Build a map of professor name -> list of "Season Year" terms they taught,
+  // sourced from courseData.instructor (term -> [instructor names])
+  const instructorSemesters = useMemo(() => {
+    const map = {};
+    if (!courseData?.instructor) return map;
+
+    Object.entries(courseData.instructor).forEach(([term, instructors]) => {
+      (instructors || []).forEach(name => {
+        if (!map[name]) map[name] = [];
+        if (!map[name].includes(term)) map[name].push(term);
+      });
+    });
+
+    return map;
+  }, [courseData?.instructor]);
 
   // Add sorting state
   const [sort, setSort] = useState({ field: 'averageGpa', direction: 'desc' });
@@ -180,6 +264,21 @@ const GpaTable = () => {
       const gradeDistribution = calculateInstructorGradeDistribution(gradeData);
       const hasGradeData = gradeDistribution !== null;
 
+      // RMP rating for this professor (0/undefined means no rating found)
+      const rawRating = curRMP?.[dataset.label];
+      const rating = typeof rawRating === 'number' && rawRating > 0 ? rawRating : null;
+
+      // Every "Season Year" term this professor taught this course
+      const semestersTaught = instructorSemesters[dataset.label] || [];
+
+      // Recency score of the most recent semester taught (higher = more recent), used as a sort tie-breaker
+      const mostRecentSemesterScore = semestersTaught.length > 0
+        ? Math.max(...semestersTaught.map(getSemesterRecencyScore))
+        : null;
+
+      // Distinct number of semesters this professor taught the course (displayed count)
+      const semestersTaughtCount = semestersTaught.length;
+
       return {
         name: dataset.label,
         averageGpa,
@@ -188,10 +287,14 @@ const GpaTable = () => {
         data: dataset.data,
         backgroundColor: dataset.backgroundColor,
         sectionsCount,
-        isCurrentSemester
+        isCurrentSemester,
+        rating,
+        semestersTaught,
+        mostRecentSemesterScore,
+        semestersTaughtCount
       };
     });
-  }, [courseData, defaultGPA]);
+  }, [courseData, defaultGPA, curRMP, instructorSemesters]);
 
   // Get all available semesters
   const semesters = useMemo(() =>
@@ -251,8 +354,28 @@ const GpaTable = () => {
         const bGrade = b.gradeDistribution?.A || 0;
         comparison = aGrade - bGrade;
       }
-      else if (sort.field === 'sectionsCount') {
-        comparison = a.sectionsCount - b.sectionsCount;
+      else if (sort.field === 'rating') {
+        // Sort nulls (no RMP rating found) to the bottom regardless of sort direction
+        if (a.rating === null && b.rating !== null) return 1;
+        if (a.rating !== null && b.rating === null) return -1;
+        if (a.rating === null && b.rating === null) return 0;
+
+        comparison = a.rating - b.rating;
+
+        // Tie-break 1: average GPA (higher first, nulls sort to the bottom)
+        if (comparison === 0) {
+          if (a.averageGpa === null && b.averageGpa !== null) return 1;
+          if (a.averageGpa !== null && b.averageGpa === null) return -1;
+          if (a.averageGpa !== null && b.averageGpa !== null) comparison = a.averageGpa - b.averageGpa;
+        }
+
+        // Tie-break 2: most recently taught semester (more recent first)
+        if (comparison === 0) {
+          comparison = (a.mostRecentSemesterScore ?? -1) - (b.mostRecentSemesterScore ?? -1);
+        }
+      }
+      else if (sort.field === 'semestersCount') {
+        comparison = a.semestersTaughtCount - b.semestersTaughtCount;
 
         // Use average GPA as a tiebreaker when section counts are equal
         if (comparison === 0) {
@@ -320,10 +443,12 @@ const GpaTable = () => {
           <option value="name-asc">Name (Z-A)</option>
           <option value="averageGpa-desc">GPA (High-Low)</option>
           <option value="averageGpa-asc">GPA (Low-High)</option>
-          <option value="sectionsCount-desc">Sections (Most-Least)</option>
-          <option value="sectionsCount-asc">Sections (Least-Most)</option>
+          <option value="semestersCount-desc">Semesters (Most-Least)</option>
+          <option value="semestersCount-asc">Semesters (Least-Most)</option>
           <option value="gradeA-desc">Grade A% (High-Low)</option>
           <option value="gradeA-asc">Grade A% (Low-High)</option>
+          <option value="rating-desc">RMP Rating (High-Low)</option>
+          <option value="rating-asc">RMP Rating (Low-High)</option>
         </select>
       </div>
 
@@ -365,18 +490,25 @@ const GpaTable = () => {
                   onSort={handleSort}
                 />
                 <SortHeader
-                  label="Sections"
-                  field="sectionsCount"
+                  label="Semesters"
+                  field="semestersCount"
                   currentSort={sort}
                   onSort={handleSort}
                   width="5%"
+                />
+                <SortHeader
+                  label="Rating"
+                  field="rating"
+                  currentSort={sort}
+                  onSort={handleSort}
+                  width="8%"
                 />
                 <SortHeader
                   label="Grade Distribution"
                   field="gradeA"
                   currentSort={sort}
                   onSort={handleSort}
-                  width="55%"
+                  width="47%"
                 />
                 <SortHeader
                   label="Average"
@@ -413,13 +545,33 @@ const GpaTable = () => {
 
                         {/* Mobile/tablet stats row */}
                         <div className="flex items-center justify-between w-full lg:hidden">
-                          {/* Sections count */}
-                          <div className="flex items-center gap-1">
-                            <span className="text-xs text-tertiary">Sections:</span>
-                            <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium">
-                              {professor.sectionsCount}
-                            </span>
+                          {/* Semesters count - hover to see which semesters/years */}
+                          <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+                            <span className="text-xs text-tertiary">Semesters:</span>
+                            <SectionsPopover
+                              semestersCount={professor.semestersTaughtCount}
+                              semestersTaught={professor.semestersTaught}
+                            >
+                              <span className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium cursor-default hover:bg-background-tertiary/50 transition-colors">
+                                {professor.semestersTaughtCount}
+                              </span>
+                            </SectionsPopover>
                           </div>
+
+                          {/* RMP Rating - tap to open RMP page */}
+                          {professor.rating !== null && (
+                            <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+                              <span className="text-xs text-tertiary">Rating:</span>
+                              <a
+                                href={getRmpUrl(professor.name, curRMP)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs bg-background-secondary px-2 py-1 rounded-md font-medium hover:bg-background-tertiary/50 transition-colors"
+                              >
+                                {professor.rating.toFixed(1)}
+                              </a>
+                            </div>
+                          )}
 
                           {/* Average GPA */}
                           <div className="flex items-center gap-1">
@@ -455,12 +607,35 @@ const GpaTable = () => {
                       </div>
                     </td>
 
-                    {/* Sections Count - desktop only */}
-                    <td className="py-2 px-2 text-center hidden lg:table-cell">
+                    {/* Semesters Count - desktop only, hover to see which semesters/years were taught */}
+                    <td className="py-2 px-2 text-center hidden lg:table-cell" onClick={(e) => e.stopPropagation()}>
                       <div className="flex justify-center">
-                        <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium">
-                          {professor.sectionsCount}
-                        </span>
+                        <SectionsPopover
+                          semestersCount={professor.semestersTaughtCount}
+                          semestersTaught={professor.semestersTaught}
+                        >
+                          <span className="text-xs text-tertiary bg-background-secondary px-2 py-1 rounded-md font-medium cursor-default hover:bg-background-tertiary/50 transition-colors">
+                            {professor.semestersTaughtCount}
+                          </span>
+                        </SectionsPopover>
+                      </div>
+                    </td>
+
+                    {/* RMP Rating - desktop only, click to open RMP page */}
+                    <td className="py-2 px-2 text-center hidden lg:table-cell" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex justify-center">
+                        {professor.rating !== null ? (
+                          <a
+                            href={getRmpUrl(professor.name, curRMP)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-medium px-2 py-1 rounded-md bg-background-secondary w-fit hover:bg-background-tertiary/50 transition-colors"
+                          >
+                            {professor.rating.toFixed(1)}
+                          </a>
+                        ) : (
+                          <span className="text-xs text-tertiary">-</span>
+                        )}
                       </div>
                     </td>
 
