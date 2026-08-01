@@ -195,7 +195,8 @@ const GpaTable = () => {
   const {
     searchQuery,
     showSelectedOnly,
-    showCurrentSemesterOnly
+    showCurrentSemesterOnly,
+    selectedOnTop
   } = useFilterContext();
 
   // Get data directly from context including the highlight function
@@ -327,7 +328,7 @@ const GpaTable = () => {
   const sortedData = useMemo(() => {
     if (!filteredData.length) return [];
 
-    return [...filteredData].sort((a, b) => {
+    const sorted = [...filteredData].sort((a, b) => {
       // Always sort current semester instructors to the top if that option is selected
       if (sort.field === 'isCurrentSemester') {
         if (a.isCurrentSemester && !b.isCurrentSemester) return -1;
@@ -391,7 +392,22 @@ const GpaTable = () => {
       // Apply sort direction
       return sort.direction === 'asc' ? comparison : -comparison;
     });
-  }, [filteredData, sort]);
+
+    // "Selected On Top" takes precedence over every other sort criterion above -
+    // stable-sort the already-sorted array so each group (selected / unselected)
+    // keeps its existing relative order, with selected instructors moved first.
+    if (selectedOnTop && selectedInstructors && selectedInstructors.length > 0) {
+      return [...sorted].sort((a, b) => {
+        const aSelected = selectedInstructors.includes(a.name);
+        const bSelected = selectedInstructors.includes(b.name);
+        if (aSelected && !bSelected) return -1;
+        if (!aSelected && bSelected) return 1;
+        return 0;
+      });
+    }
+
+    return sorted;
+  }, [filteredData, sort, selectedOnTop, selectedInstructors]);
 
   // Get visible data based on mobile limitations
   const visibleData = useMemo(() => {

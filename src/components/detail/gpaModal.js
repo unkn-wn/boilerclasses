@@ -5,7 +5,7 @@ import SearchBar from '@/components/SearchBar';
 import GpaTable from '@/components/detail/GpaTable';
 import { useDetailContext } from '@/components/detail/context/DetailContext';
 import { FilterProvider, useFilterContext } from '@/components/detail/context/FilterContext';
-import { FiFilter, FiCheck, FiUser, FiCalendar, FiSliders } from 'react-icons/fi';
+import { FiFilter, FiCheck, FiUser, FiCalendar, FiSliders, FiArrowUp } from 'react-icons/fi';
 import { Switch } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
@@ -124,6 +124,8 @@ const FilterDropdown = ({ buttonRef }) => {
     setShowSelectedOnly,
     showCurrentSemesterOnly,
     setShowCurrentSemesterOnly,
+    selectedOnTop,
+    setSelectedOnTop,
     clearAllFilters
   } = useFilterContext();
 
@@ -227,6 +229,28 @@ const FilterDropdown = ({ buttonRef }) => {
                     isChecked={showCurrentSemesterOnly}
                     onChange={() => setShowCurrentSemesterOnly(!showCurrentSemesterOnly)}
                     colorScheme="green"
+                    className="ml-2"
+                    size="md"
+                  />
+                </div>
+
+                {/* Selected On Top Option */}
+                <div className={`flex items-center px-2 rounded-lg ${selectedOnTop ? 'bg-purple-50 dark:bg-purple-900/10' : ''}`}>
+                  <div className="flex items-center flex-1 gap-2">
+                    <div className={`p-1 rounded-md ${selectedOnTop ? 'bg-purple-100 dark:bg-purple-800/20 text-purple-600 dark:text-purple-400' : 'bg-background-secondary text-tertiary'}`}>
+                      <FiArrowUp size={16} />
+                    </div>
+                    <div className="flex-1 text-left">
+                      <label className="text-sm font-medium cursor-pointer flex-1">Selected On Top</label>
+                      <p className="text-xs text-tertiary -mt-1">
+                        Keeps selected instructors first
+                      </p>
+                    </div>
+                  </div>
+                  <Switch
+                    isChecked={selectedOnTop}
+                    onChange={() => setSelectedOnTop(!selectedOnTop)}
+                    colorScheme="purple"
                     className="ml-2"
                     size="md"
                   />
