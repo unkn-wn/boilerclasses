@@ -103,7 +103,7 @@ const FilterButton = () => {
         <div className="hidden lg:flex items-center gap-2">
           <span className="text-tertiary">Filters</span>
           {activeFiltersCount > 0 && (
-            <span className="inline-flex items-center justify-center h-4 w-4 text-xs bg-yellow-600 text-white rounded-full">
+            <span className="inline-flex items-center justify-center h-4 w-4 text-xs bg-gray-500 text-white rounded-full">
               {activeFiltersCount}
             </span>
           )}
@@ -185,7 +185,7 @@ const FilterDropdown = ({ buttonRef }) => {
             </div>
 
             {/* Content */}
-            <div className="pb-2 px-4 pt-2">
+            <div className="pb-3 px-4 pt-2">
               <div className="space-y-2">
                 {/* Selected Only Option */}
                 <div className={`flex items-center px-2 rounded-lg ${showSelectedOnly ? 'bg-blue-50 dark:bg-blue-900/10' : ''}`}>
@@ -235,16 +235,13 @@ const FilterDropdown = ({ buttonRef }) => {
                 </div>
 
                 {/* Selected On Top Option */}
-                <div className={`flex items-center px-2 rounded-lg ${selectedOnTop ? 'bg-purple-50 dark:bg-purple-900/10' : ''}`}>
+                <div className={`flex items-center px-2 py-1.5 rounded-lg ${selectedOnTop ? 'bg-purple-50 dark:bg-purple-900/10' : ''}`}>
                   <div className="flex items-center flex-1 gap-2">
                     <div className={`p-1 rounded-md ${selectedOnTop ? 'bg-purple-100 dark:bg-purple-800/20 text-purple-600 dark:text-purple-400' : 'bg-background-secondary text-tertiary'}`}>
                       <FiArrowUp size={16} />
                     </div>
                     <div className="flex-1 text-left">
                       <label className="text-sm font-medium cursor-pointer flex-1">Selected On Top</label>
-                      <p className="text-xs text-tertiary -mt-1">
-                        Keeps selected instructors first
-                      </p>
                     </div>
                   </div>
                   <Switch
