@@ -9,12 +9,13 @@ export const FilterProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showSelectedOnly, setShowSelectedOnly] = useState(false);
   const [showCurrentSemesterOnly, setShowCurrentSemesterOnly] = useState(false);
+  const [selectedOnTop, setSelectedOnTop] = useState(true);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Get selected instructors from DetailContext
   const { selectedInstructors } = useDetailContext();
 
-  // Count of active filters for badge display
+  // Count of active filters for badge display (selectedOnTop is on by default so it isn't counted as an "active" filter)
   const activeFiltersCount = [showSelectedOnly, showCurrentSemesterOnly].filter(Boolean).length;
 
   // Reset selected-only filter if no instructors are selected
@@ -24,10 +25,11 @@ export const FilterProvider = ({ children }) => {
     }
   }, [selectedInstructors]);
 
-  // Clear all filters
+  // Clear all filters (selectedOnTop resets back to its default of true, not off)
   const clearAllFilters = () => {
     setShowSelectedOnly(false);
     setShowCurrentSemesterOnly(false);
+    setSelectedOnTop(true);
   };
 
   return (
@@ -41,6 +43,8 @@ export const FilterProvider = ({ children }) => {
       setShowSelectedOnly,
       showCurrentSemesterOnly,
       setShowCurrentSemesterOnly,
+      selectedOnTop,
+      setSelectedOnTop,
 
       // Dropdown state
       isFilterOpen,
