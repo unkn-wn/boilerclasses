@@ -328,7 +328,16 @@ const GpaTable = () => {
   const sortedData = useMemo(() => {
     if (!filteredData.length) return [];
 
-    const sorted = [...filteredData].sort((a, b) => {
+    const selectedSet = new Set(selectedOnTop ? selectedInstructors : []);
+
+    return [...filteredData].sort((a, b) => {
+      if (selectedSet.size > 0) {
+        const aSelected = selectedSet.has(a.name);
+        const bSelected = selectedSet.has(b.name);
+        if (aSelected && !bSelected) return -1;
+        if (!aSelected && bSelected) return 1;
+      }
+
       // Always sort current semester instructors to the top if that option is selected
       if (sort.field === 'isCurrentSemester') {
         if (a.isCurrentSemester && !b.isCurrentSemester) return -1;
@@ -392,21 +401,6 @@ const GpaTable = () => {
       // Apply sort direction
       return sort.direction === 'asc' ? comparison : -comparison;
     });
-
-    // "Selected On Top" takes precedence over every other sort criterion above -
-    // stable-sort the already-sorted array so each group (selected / unselected)
-    // keeps its existing relative order, with selected instructors moved first.
-    if (selectedOnTop && selectedInstructors && selectedInstructors.length > 0) {
-      return [...sorted].sort((a, b) => {
-        const aSelected = selectedInstructors.includes(a.name);
-        const bSelected = selectedInstructors.includes(b.name);
-        if (aSelected && !bSelected) return -1;
-        if (!aSelected && bSelected) return 1;
-        return 0;
-      });
-    }
-
-    return sorted;
   }, [filteredData, sort, selectedOnTop, selectedInstructors]);
 
   // Get visible data based on mobile limitations
