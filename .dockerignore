@@ -2,3 +2,5 @@ node_modules
 .gitignore
 .next
 .git
+server/data
+server/classes_out.json
