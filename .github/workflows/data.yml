@@ -1,6 +1,6 @@
 name: Data Pipeline
 
-# Weekly: scrape the newest 2 terms, harmonize everything on S3, and publish a
+# Weekly: scrape the newest 2 terms, pull the newest grades, harmonize, and publish a
 # content-addressed snapshot. data.lock pins the snapshot that gets deployed.
 on:
   schedule:
@@ -109,10 +109,24 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+      - name: Fetch data and update grades on S3
+        working-directory: server
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          aws s3 sync "s3://$BUCKET/data/" data/ --exclude "*" --include "*.json"
+          # newest 5 grade semesters from boiler-grades, uploaded only if they changed
+          python3 grades.py --latest 5
+          for f in data/grades/classes_*.json; do
+            key="data/grades/$(basename "$f")"
+            remote=$(aws s3api head-object --bucket "$BUCKET" --key "$key" --query ETag --output text 2>/dev/null | tr -d '"')
+            if [ "$remote" != "$(md5sum "$f" | cut -d' ' -f1)" ]; then
+              aws s3 cp "$f" "s3://$BUCKET/$key"
+            fi
+          done
       - id: snapshot
         working-directory: server
         run: |
-          aws s3 sync "s3://$BUCKET/data/" data/ --exclude "*" --include "*.json"
           python3 harmonize.py
           SHA=$(sha256sum classes_out.json | cut -d' ' -f1)
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
