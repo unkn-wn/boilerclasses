@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import terms from '@/data/terms.json';
 
@@ -30,6 +30,19 @@ export const CURRENT_SEMESTER_CODE = terms.current.code;
 
 // Storage key for filters
 const FILTERS_STORAGE_KEY = "boilerclasses_filters";
+const SEMANTIC_SEARCH_DELAY_MS = 200;
+
+const abortableDelay = (milliseconds, signal) => new Promise((resolve, reject) => {
+  const handleAbort = () => {
+    clearTimeout(timeout);
+    reject(new DOMException('Aborted', 'AbortError'));
+  };
+  const timeout = setTimeout(() => {
+    signal.removeEventListener('abort', handleAbort);
+    resolve();
+  }, milliseconds);
+  signal.addEventListener('abort', handleAbort, { once: true });
+});
 
 export const useSearchFilters = () => {
   const router = useRouter();
@@ -75,7 +88,11 @@ export const useSearchFilters = () => {
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
   const [courses, setCourses] = useState([]);
   const [latency, setLatency] = useState(null);
+  const [semanticSearching, setSemanticSearching] = useState(false);
   const [initialized, setInitialized] = useState(false);
+  const searchRequestRef = useRef(0);
+  const lexicalControllerRef = useRef(null);
+  const semanticControllerRef = useRef(null);
 
   // Update specific filter
   const updateFilter = (filterName, value) => {
@@ -139,6 +156,13 @@ export const useSearchFilters = () => {
   // Search function
   const search = async () => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
+    const requestId = ++searchRequestRef.current;
+
+    lexicalControllerRef.current?.abort();
+    semanticControllerRef.current?.abort();
+    const lexicalController = new AbortController();
+    lexicalControllerRef.current = lexicalController;
+    setSemanticSearching(false);
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
       setCourses([]);
@@ -160,8 +184,11 @@ export const useSearchFilters = () => {
 
     try {
       const start = performance.now();
-      const response = await fetch(`/api/search?${params}`);
+      const response = await fetch(`/api/search?${params}`, {
+        signal: lexicalController.signal,
+      });
       const data = await response.json();
+      if (requestId !== searchRequestRef.current) return;
       setLatency(Math.round(performance.now() - start));
 
       // Clean up descriptions
@@ -176,10 +203,58 @@ export const useSearchFilters = () => {
       }));
 
       setCourses(processedCourses);
+
+      if (transformQuery(searchTerm).length < 2) return;
+
+      const semanticController = new AbortController();
+      semanticControllerRef.current = semanticController;
+      params.set('maxlim', 8);
+      setSemanticSearching(true);
+
+      try {
+        // Avoid starting expensive semantic work for every intermediate keystroke.
+        await abortableDelay(SEMANTIC_SEARCH_DELAY_MS, semanticController.signal);
+        const semanticResponse = await fetch(`/api/semantic-search?${params}`, {
+          signal: semanticController.signal,
+        });
+        const semanticData = await semanticResponse.json();
+        if (requestId !== searchRequestRef.current) return;
+
+        const semanticCourses = semanticData.courses.documents.map(item => ({
+          ...item,
+          value: {
+            ...item.value,
+            description: item.value.description.startsWith("<a href=")
+              ? "No Description Available"
+              : item.value.description
+          }
+        }));
+
+        setCourses(currentCourses => {
+          const existingIds = new Set(
+            currentCourses.map(course => course.value.detailId)
+          );
+          return [
+            ...currentCourses,
+            ...semanticCourses.filter(course => !existingIds.has(course.value.detailId)),
+          ];
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          console.error('Semantic search failed:', error);
+        }
+      } finally {
+        if (requestId === searchRequestRef.current) {
+          setSemanticSearching(false);
+        }
+      }
     } catch (error) {
+      if (error.name === 'AbortError') return;
       console.error('Search failed:', error);
-      setCourses([]);
-      setLatency(null);
+      if (requestId === searchRequestRef.current) {
+        setCourses([]);
+        setLatency(null);
+      }
     }
   };
 
@@ -225,6 +300,7 @@ export const useSearchFilters = () => {
     setFiltersCollapsed,
     courses,
     latency,
+    semanticSearching,
     transformQuery,
   };
 };

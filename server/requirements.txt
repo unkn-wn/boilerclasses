@@ -7,3 +7,5 @@ flask-cors
 requests
 selenium
 webdriver-manager
+fastembed==0.7.3
+waitress==3.0.2
