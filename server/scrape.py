@@ -11,7 +11,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 from tqdm import tqdm
 import os
+import re
 import shutil
+import sys
+import requests
 
 def format_instructors(by_sched):
   special_sched = ["Laboratory", "Laboratory Preparation", "Recitation", "Practice Study Observation"]
@@ -31,15 +34,27 @@ def format_instructors(by_sched):
 
 parser = argparse.ArgumentParser(description='which semester')
 parser.add_argument("-sem", default="Fall 2026", dest="sem", help="which semester (default: Fall 2026)")
+parser.add_argument("--latest", type=int, dest="latest", help="print the newest N Fall/Spring terms as JSON and exit")
+parser.add_argument("--fresh", action="store_true", dest="fresh", help="ignore existing per-subject checkpoints")
+parser.add_argument("-subjects", dest="subjects", help="comma-separated subjects for a quick test scrape, e.g. CS,MA (output goes to test_classes_<sem>.json)")
 
 args = parser.parse_args()
+
+link = "https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched"
+
+session = requests.Session()
+session.headers["User-Agent"] = "boilerclasses-scraper (+https://www.boilerclasses.com)"
+
+if args.latest:
+  html = session.get(link, timeout=30).text
+  terms = re.findall(r'<OPTION VALUE="\d+">((?:Fall|Spring) \d{4})', html)
+  print(json.dumps(terms[:args.latest]))
+  sys.exit(0)
 
 
 options = Options()
 options.add_argument("--headless")
 options.add_experimental_option("detach", True)
-
-link = "https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched"
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
@@ -55,7 +70,12 @@ def ensure_temp_dir(temp_dir):
     if not os.path.exists(temp_dir):
         os.makedirs(temp_dir)
 
+if args.fresh and os.path.exists(temp_dir):
+    shutil.rmtree(temp_dir)
 ensure_temp_dir(temp_dir)
+
+if args.subjects:
+    class_codes = [code.strip().upper() for code in args.subjects.split(",")]
 
 for code in class_codes:
     temp_file = f"{temp_dir}/{code}.json"
@@ -222,6 +242,20 @@ for code in class_codes:
         json.dump(code_data, f, indent=4)
 
     jsonData.extend(code_data)
+
+if args.subjects:
+    # test scrape: keep it out of data/ so harmonize never picks it up
+    print(f"scraped {len(jsonData)} courses from {', '.join(class_codes)}")
+    with open(f"test_classes_{sem_name}.json", "w") as outfile:
+        json.dump(jsonData, outfile, indent=4)
+    if len(jsonData) == 0:
+        sys.exit(1)
+    sys.exit(0)
+
+# a partial scrape (Purdue down, markup change) must never be uploaded
+if len(jsonData) < 1000:
+    print(f"only {len(jsonData)} courses scraped for {args.sem}, refusing to write output")
+    sys.exit(1)
 
 outfile = open(f"data/classes_{sem_name}.json", "w")
 json.dump(jsonData, outfile, indent=4)

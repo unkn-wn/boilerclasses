@@ -58,18 +58,31 @@ parser.add_argument(
     dest="outfile",
     help="where to write result JSON",
 )
+parser.add_argument(
+    "-termsfile",
+    default="../src/data/terms.json",
+    dest="termsfile",
+    help="where to write the term list used by the frontend",
+)
 
 args = parser.parse_args()
 
+
+def term_key(term):
+    season, year = term.split(" ")
+    return (int(year), {"Spring": 0, "Summer": 1, "Fall": 2}[season])
+
+def term_code(term):
+    # Purdue Banner codes: Fall 2026 -> 202710, Spring 2026 -> 202620
+    season, year = term.split(" ")
+    return f"{int(year) + 1}10" if season == "Fall" else f"{year}20"
 
 # combining scraped JSONs into one file
 out = {}
 semesters = []
 all_classes = []
-# TODO: change for semester
-latest_sem = "Fall 2026"
 
-for file_name in os.listdir(args.folder):
+for file_name in sorted(os.listdir(args.folder)):
     path = args.folder + file_name
     if "json" not in path:
         continue
@@ -77,6 +90,13 @@ for file_name in os.listdir(args.folder):
     data = json.load(f)
     f.close()
     semesters.append(data)
+
+# oldest first, so later semesters win when picking descriptions
+semesters.sort(key=lambda data: term_key(data[0]["term"]))
+all_terms = [data[0]["term"] for data in semesters]
+latest_sem = all_terms[-1]
+
+for data in semesters:
     for class_data in data:
         all_classes.append(
             class_data["subjectCode"]
@@ -125,11 +145,11 @@ for class_id in tqdm(all_classes):
                 if "<a href=" not in class_sem["description"]:
                     class_data["description"] = class_sem["description"]
 
-    class_data["title"] = instances[0]["title"]
+    class_data["title"] = instances[-1]["title"]
     class_data["subjectCode"] = s
     class_data["courseCode"] = c
-    class_data["crn"] = list(set(class_data["crn"]))
-    class_data["sched"] = list(set(class_data["sched"]))
+    class_data["crn"] = sorted(set(class_data["crn"]))
+    class_data["sched"] = sorted(set(class_data["sched"]))
     if "description" not in class_data:
         class_data["description"] = instances[0]["description"]
     class_data["credits"] = next(
@@ -155,7 +175,7 @@ for i in range(len(course_data)):
 
 
 print("adding grades....")
-for file_name in tqdm(os.listdir(args.gradefolder)):
+for file_name in tqdm(sorted(os.listdir(args.gradefolder))):
     if "json" not in file_name:
         continue
     currSubjectCode = ""
@@ -320,13 +340,22 @@ for i in range(len(course_data)):
     except:
         invalid_indices.append(i)
 
-for idx in invalid_indices:
-    course_data.pop(idx)
+invalid_indices = set(invalid_indices)
+course_data = [c for i, c in enumerate(course_data) if i not in invalid_indices]
 
 print(f"writing to {args.outfile}...")
 outfile = open(args.outfile, "w")
-json.dump(course_data, outfile, indent=4)
+json.dump(course_data, outfile, indent=4, sort_keys=True)
 outfile.close()
+
+print(f"writing to {args.termsfile}...")
+os.makedirs(os.path.dirname(args.termsfile), exist_ok=True)
+with open(args.termsfile, "w") as termsfile:
+    json.dump({
+        "current": {"name": latest_sem, "code": term_code(latest_sem)},
+        "all": all_terms[::-1],
+    }, termsfile, indent=2)
+    termsfile.write("\n")
 print("done!")
 
 

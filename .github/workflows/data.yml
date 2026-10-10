@@ -1,0 +1,143 @@
+name: Data Pipeline
+
+# Weekly: scrape the newest 2 terms, harmonize everything on S3, and publish a
+# content-addressed snapshot. data.lock pins the snapshot that gets deployed.
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+    inputs:
+      terms:
+        description: 'JSON list of terms to scrape, e.g. ["Fall 2026"]. Empty = newest 2, [] = skip scraping'
+        required: false
+        default: ""
+      subjects:
+        description: 'Test mode: comma-separated subjects, e.g. CS,MA. Scrapes only those, uploads nothing, skips publish'
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency: data-pipeline
+
+env:
+  BUCKET: boilerclasses
+  AWS_REGION: us-east-2
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      terms: ${{ steps.terms.outputs.terms }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: server/requirements.txt
+      - run: pip install -r server/requirements.txt
+      - id: terms
+        working-directory: server
+        env:
+          TERMS: ${{ inputs.terms }}
+        run: echo "terms=${TERMS:-$(python3 scrape.py --latest 2)}" >> "$GITHUB_OUTPUT"
+
+  scrape:
+    needs: plan
+    if: needs.plan.outputs.terms != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        term: ${{ fromJSON(needs.plan.outputs.terms) }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: server/requirements.txt
+      - run: pip install -r server/requirements.txt
+      - if: inputs.subjects != ''
+        name: Test scrape (no upload)
+        working-directory: server
+        env:
+          TERM_NAME: ${{ matrix.term }}
+          SUBJECTS: ${{ inputs.subjects }}
+        run: |
+          mkdir -p data
+          python3 scrape.py -sem "$TERM_NAME" -subjects "$SUBJECTS" --fresh
+      - if: inputs.subjects != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-scrape-${{ strategy.job-index }}
+          path: server/test_classes_*.json
+      - if: inputs.subjects == ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - if: inputs.subjects == ''
+        name: Scrape and upload
+        working-directory: server
+        env:
+          TERM_NAME: ${{ matrix.term }}
+        run: |
+          mkdir -p data
+          python3 scrape.py -sem "$TERM_NAME" --fresh
+          SLUG=$(echo "$TERM_NAME" | tr -d ' ' | tr '[:upper:]' '[:lower:]')
+          aws s3 cp "data/classes_${SLUG}.json" "s3://$BUCKET/data/classes_${SLUG}.json"
+
+  publish:
+    needs: [plan, scrape]
+    # a failed term never uploads, so S3 still holds its last good file
+    if: ${{ !cancelled() && needs.plan.result == 'success' && inputs.subjects == '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: server/requirements.txt
+      - run: pip install -r server/requirements.txt
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: snapshot
+        working-directory: server
+        run: |
+          aws s3 sync "s3://$BUCKET/data/" data/ --exclude "*" --include "*.json"
+          python3 harmonize.py
+          SHA=$(sha256sum classes_out.json | cut -d' ' -f1)
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          if [ "$SHA" = "$(cat ../data.lock 2>/dev/null)" ]; then
+            echo "snapshot unchanged"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          aws s3 cp classes_out.json "s3://$BUCKET/snapshots/$SHA.json"
+          echo "$SHA" > ../data.lock
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - if: steps.snapshot.outputs.changed == 'true'
+        env:
+          SHA: ${{ steps.snapshot.outputs.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.lock src/data/terms.json
+          git commit -m "data: snapshot ${SHA:0:12}"
+          git pull --rebase
+          git push
+      # pushes made with GITHUB_TOKEN don't trigger fly.yml, so deploy here
+      - if: steps.snapshot.outputs.changed == 'true'
+        uses: superfly/flyctl-actions/setup-flyctl@ed8efb33836e8b2096c7fd3ba1c8afe303ebbff1 # master, Node 24 runtime
+      - if: steps.snapshot.outputs.changed == 'true'
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
