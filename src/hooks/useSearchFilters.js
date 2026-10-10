@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, startTransition } from 'react';
 import { useRouter } from 'next/router';
 import terms from '@/data/terms.json';
 
@@ -31,7 +31,7 @@ export const CURRENT_SEMESTER_CODE = terms.current.code;
 // Storage key for filters
 const FILTERS_STORAGE_KEY = "boilerclasses_filters";
 
-export const useSearchFilters = () => {
+export const useSearchFilters = ({ view = 'full' } = {}) => {
   const router = useRouter();
   const { query } = router;
 
@@ -78,8 +78,9 @@ export const useSearchFilters = () => {
   const [initialized, setInitialized] = useState(false);
 
   // Update specific filter
-  const updateFilter = (filterName, value) => {
+  const updateFilter = useCallback((filterName, value) => {
     setFilters(prevFilters => {
+      if (Object.is(prevFilters[filterName], value)) return prevFilters;
       const newFilters = {
         ...prevFilters,
         [filterName]: value
@@ -94,7 +95,7 @@ export const useSearchFilters = () => {
 
       return newFilters;
     });
-  };
+  }, []);
 
   // Transform search query
   const transformQuery = (query) => {
@@ -137,7 +138,7 @@ export const useSearchFilters = () => {
   }, [query.q, router.isReady]);
 
   // Search function
-  const search = async () => {
+  const search = async (signal) => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
@@ -155,28 +156,31 @@ export const useSearchFilters = () => {
       cmax: credits.max,
       levels,
       sched: scheduleTypes,
-      maxlim: 100
+      maxlim: 100,
+      view
     });
 
     try {
       const start = performance.now();
-      const response = await fetch(`/api/search?${params}`);
+      const response = await fetch(`/api/search?${params}`, { signal });
+      if (!response.ok) throw new Error(`Search failed: ${response.status}`);
       const data = await response.json();
-      setLatency(Math.round(performance.now() - start));
+      if (signal.aborted) return;
+      const elapsed = Math.round(performance.now() - start);
 
       // Clean up descriptions
-      const processedCourses = data.courses.documents.map(item => ({
-        ...item,
-        value: {
-          ...item.value,
-          description: item.value.description.startsWith("<a href=")
-            ? "No Description Available"
-            : item.value.description
-        }
-      }));
+      const processedCourses = data.courses.documents.map(item =>
+        item.value.description.startsWith("<a href=")
+          ? { ...item, value: { ...item.value, description: "No Description Available" } }
+          : item
+      );
 
-      setCourses(processedCourses);
+      startTransition(() => {
+        setLatency(elapsed);
+        setCourses(processedCourses);
+      });
     } catch (error) {
+      if (signal.aborted) return;
       console.error('Search failed:', error);
       setCourses([]);
       setLatency(null);
@@ -185,36 +189,56 @@ export const useSearchFilters = () => {
 
   // Search effect
   useEffect(() => {
-    if (initialized) {
-      search();
-    }
+    if (!initialized) return;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => search(controller.signal), 25);
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
   }, [
     initialized,
-    JSON.stringify(filters.subjects),
-    JSON.stringify(filters.semesters),
-    JSON.stringify(filters.genEds),
+    view,
+    filters.subjects,
+    filters.semesters,
+    filters.genEds,
     transformQuery(filters.searchTerm),
     filters.credits.min,
     filters.credits.max,
-    JSON.stringify(filters.levels),
-    JSON.stringify(filters.scheduleTypes),
+    filters.levels,
+    filters.scheduleTypes,
   ]);
 
   // Update search term in URL for shareable links
   useEffect(() => {
     if (!initialized || !router.isReady) return;
 
+    const url = new URL(window.location.href);
     if (filters.searchTerm) {
-      router.replace({
-        pathname: router.pathname,
-        query: { q: filters.searchTerm }
-      }, undefined, { shallow: true });
-    } else if (query.q) {
-      router.replace({
-        pathname: router.pathname
-      }, undefined, { shallow: true });
+      url.searchParams.set('q', filters.searchTerm);
+    } else {
+      url.searchParams.delete('q');
     }
+    if (url.href === window.location.href) return;
+
+    // Update the shareable URL without starting a Next router transition.
+    // Preserve Next's history metadata for back/forward navigation.
+    const href = `${url.pathname}${url.search}${url.hash}`;
+    const state = window.history.state;
+    window.history.replaceState(
+      state?.__N ? { ...state, as: href, url: href } : state,
+      '',
+      href
+    );
   }, [filters.searchTerm, initialized, router.isReady]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      updateFilter('searchTerm', new URL(window.location.href).searchParams.get('q') || '');
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   return {
     filters,

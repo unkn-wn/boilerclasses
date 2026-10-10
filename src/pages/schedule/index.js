@@ -21,6 +21,19 @@ import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const hasFullCourseData = course => course?.gpa != null && Array.isArray(course.gened);
+
+const restoreFullCourse = async (course, signal) => {
+  if (hasFullCourseData(course)) return course;
+  const params = new URLSearchParams({ detailId: course.detailId });
+  const response = await fetch(`/api/get?${params}`, { signal });
+  if (!response.ok) throw new Error('Could not restore schedule course');
+  const data = await response.json();
+  const full = data.course.documents[0]?.value;
+  if (!hasFullCourseData(full)) throw new Error('Full schedule course not found');
+  return { ...course, ...full };
+};
+
 const Schedule = () => {
   const {
     updateFilter,
@@ -37,7 +50,7 @@ const Schedule = () => {
   const [pinCourses, setPinCourses] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('pinnedCourses');
-      return saved ? JSON.parse(saved) : [];
+      return saved ? JSON.parse(saved).filter(hasFullCourseData) : [];
     }
     return [];
   });
@@ -46,12 +59,24 @@ const Schedule = () => {
 
   // loads the previously selected course from localStorage when the page loads
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedCourse = localStorage.getItem('selectedCourse');
-      if (savedCourse) {
-        setSelectedCourse(JSON.parse(savedCourse));
-      }
+    const controller = new AbortController();
+    const savedCourse = localStorage.getItem('selectedCourse');
+    const savedPins = JSON.parse(localStorage.getItem('pinnedCourses') || '[]');
+    if (savedCourse) {
+      restoreFullCourse(JSON.parse(savedCourse), controller.signal)
+        .then(course => { if (!controller.signal.aborted) setSelectedCourse(course); })
+        .catch(error => { if (!controller.signal.aborted) console.error(error); });
     }
+    savedPins.filter(course => !hasFullCourseData(course)).forEach(course => {
+      restoreFullCourse(course, controller.signal)
+        .then(full => {
+          if (controller.signal.aborted) return;
+          setPinCourses(previous => previous.some(item => item.detailId === full.detailId)
+            ? previous : [...previous, full]);
+        })
+        .catch(error => { if (!controller.signal.aborted) console.error(error); });
+    });
+    return () => controller.abort();
   }, []);
 
   // saves the selected course to localStorage whenever it changes

@@ -30,7 +30,7 @@ export const collectAllProfessors = (instructors) => {
 //     },
 //     totalSemCount: 2,
 // }
-export const calculateGradesAndGPA = (profs, gpaData) => {
+export const calculateGradesAndGPA = (profs, gpaData = {}) => {
     const grades = [];
     const gpa = {};
     let colorIndex = 0;
@@ -168,7 +168,7 @@ export const getColor = (gpa, options = {}) => {
 //     }, etc
 // }
 export const processGpaData = (course, recentOnly = false) => {
-    if (!course || Object.keys(course.gpa).length === 0) return {};
+    if (!course?.gpa || Object.keys(course.gpa).length === 0) return {};
 
     const grades = {};
     const sems = [];

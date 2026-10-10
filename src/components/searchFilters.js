@@ -260,4 +260,4 @@ const SearchFilters = ({ filters, updateFilter, filtersCollapsed, setFiltersColl
 }
 
 
-export default SearchFilters;
+export default React.memo(SearchFilters);
