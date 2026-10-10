@@ -1,7 +1,8 @@
 import { calculateOverallGPA } from '@/lib/gpaUtils';
-import { Tooltip } from '@chakra-ui/react';
+import { useId } from 'react';
 
 const OverallGpa = ({ courseData, card, preCalculatedData = null }) => {
+  const tooltipId = useId();
   // Use pre-calculated data if provided, otherwise calculate it
   const { gpa, color, profCount, totalSemCount } = preCalculatedData || calculateOverallGPA(courseData);
 
@@ -19,19 +20,17 @@ const OverallGpa = ({ courseData, card, preCalculatedData = null }) => {
   // Only wrap in tooltip if card is true
   if (card) {
     return (
-      <Tooltip
-        label={`Averaged across ${totalSemCount} semester(s) and ${profCount} instructor(s)`}
-        hasArrow
-        placement='auto'
-        bg={`rgb(var(--background-secondary-color))`}
-        color={`rgb(var(--text-color))`}
-        openDelay={0}
-        fontSize='sm'
-        px={2}
-        py={1}
-      >
+      <div className="group relative inline-flex" tabIndex={0} aria-describedby={tooltipId}>
         {content}
-      </Tooltip>
+        <span
+          id={tooltipId}
+          role="tooltip"
+          className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-1 w-max max-w-[240px] -translate-x-1/2 rounded px-2 py-1 text-sm invisible group-hover:visible group-focus:visible"
+          style={{ backgroundColor: 'rgb(var(--background-secondary-color))', color: 'rgb(var(--text-color))' }}
+        >
+          Averaged across {totalSemCount} semester(s) and {profCount} instructor(s)
+        </span>
+      </div>
     );
   }
 

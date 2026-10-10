@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "q": "",
+    "sub": "",
+    "term": "",
+    "gen": "",
+    "cmin": "0",
+    "cmax": "18",
+    "levels": "100,200,300,400,500,600,700,800,900",
+    "sched": "Clinic,Distance Learning,Experiential,Individual Study,Laboratory,Laboratory Preparation,Lecture,Practice Study Observation,Presentation,Recitation,Research,Studio",
+    "maxlim": "100"
+  },
+  "cases": {
+    "broad": { "q": "introduction" },
+    "broad_1": { "q": "introduction", "maxlim": "1" },
+    "broad_10": { "q": "introduction", "maxlim": "10" },
+    "broad_50": { "q": "introduction", "maxlim": "50" },
+    "subject": { "q": "computer", "sub": "CS" },
+    "multiword": { "q": "data structures" },
+    "current_multiword": { "q": "data structures", "term": "Fall 2026" },
+    "current_multiword_card": { "q": "data structures", "term": "Fall 2026", "view": "card" },
+    "filtered": { "sub": "CS", "term": "Fall 2026", "levels": "200", "sched": "Lecture" },
+    "sparse": { "q": "operating systems", "sub": "CS", "term": "Fall 2026", "sched": "Lecture" }
+  }
+}

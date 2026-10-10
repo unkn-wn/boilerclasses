@@ -6,7 +6,48 @@ from redis.commands.json.path import Path
 from tqdm import tqdm
 # from dotenv import load_dotenv
 import argparse
+import math
+from decimal import Decimal, ROUND_HALF_UP
 # load_dotenv()
+
+
+def overall_gpa(course):
+  """Match the browser's instructor averages, counts, and GPA color."""
+  averages = []
+  semesters = set()
+  for instructor, records in course.get('gpa', {}).items():
+    if not instructor:
+      continue
+    semesters.update(records)
+    if records:
+      total = 0
+      for row in records.values():
+        total += row[13]
+      average = math.floor(total / len(records) * 100 + 0.5) / 100
+      if average != 0:
+        averages.append(average)
+
+  total = 0
+  for average in averages:
+    total += average
+  # JavaScript toFixed rounds the exact binary float, with ties away from zero.
+  gpa = str(Decimal(total / len(averages)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)) if averages else 0
+  color = 'rgb(var(--background-color))'
+  if gpa:
+    stops = [(1.0, (71, 0, 0)), (2.25, (200, 30, 30)),
+             (3.25, (218, 170, 0)), (4.0, (34, 197, 94))]
+    lower, upper = stops[0], stops[-1]
+    value = float(gpa)
+    for start, end in zip(stops, stops[1:]):
+      if start[0] <= value <= end[0]:
+        lower, upper = start, end
+        break
+    fraction = (value - lower[0]) / (upper[0] - lower[0])
+    rgb = [math.floor(a + fraction * (b - a) + 0.5)
+           for a, b in zip(lower[1], upper[1])]
+    color = '#' + ''.join(format(channel, '02x') for channel in rgb)
+  return {'gpa': gpa, 'color': color, 'profCount': len(averages),
+          'totalSemCount': len(semesters)}
 
 # REDIS_HOST = os.getenv('REDIS_HOST')
 # REDIS_PORT = os.getenv('REDIS_PORT')
@@ -24,6 +65,7 @@ count = 1
 f = open(args.infile)
 data = json.load(f)
 for classData in tqdm(data):
+  classData['overallGpa'] = overall_gpa(classData)
   key = "classes:" + str(count)
   r.json().set(key, Path.root_path(), classData)
   count += 1
