@@ -95,6 +95,6 @@ for _, slug, url in semesters[:args.latest]:
   res.raise_for_status()
   rows = convert(res.content.decode("utf-8-sig"))
   path = os.path.join(args.out, f"classes_{slug}.json")
-  with open(path, "w") as out:
-    json.dump(rows, out, indent=2)
+  with open(path, "w", encoding="utf-8") as out:
+    json.dump(rows, out, indent=2, ensure_ascii=False)
   print(f"wrote {len(rows)} rows to {path}")
