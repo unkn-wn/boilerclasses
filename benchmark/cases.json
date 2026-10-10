@@ -19,6 +19,7 @@
     "multiword": { "q": "data structures" },
     "current_multiword": { "q": "data structures", "term": "Fall 2026" },
     "current_multiword_card": { "q": "data structures", "term": "Fall 2026", "view": "card" },
+    "typo_card": { "q": "data structuress", "term": "Fall 2026", "view": "card" },
     "filtered": { "sub": "CS", "term": "Fall 2026", "levels": "200", "sched": "Lecture" },
     "sparse": { "q": "operating systems", "sub": "CS", "term": "Fall 2026", "sched": "Lecture" }
   }

@@ -25,7 +25,7 @@ const OverallGpa = ({ courseData, card, preCalculatedData = null }) => {
         <span
           id={tooltipId}
           role="tooltip"
-          className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-1 w-max max-w-[240px] -translate-x-1/2 rounded px-2 py-1 text-sm invisible group-hover:visible group-focus:visible"
+          className="pointer-events-none absolute left-full top-1/2 z-50 ml-1 w-max max-w-[240px] -translate-y-1/2 rounded px-2 py-1 text-sm invisible group-hover:visible group-focus:visible"
           style={{ backgroundColor: 'rgb(var(--background-secondary-color))', color: 'rgb(var(--text-color))' }}
         >
           Averaged across {totalSemCount} semester(s) and {profCount} instructor(s)

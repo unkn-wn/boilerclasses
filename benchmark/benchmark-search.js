@@ -4,6 +4,7 @@
 const { createClient } = require('redis');
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
+let buildSearchText;
 const { defaults, cases } = JSON.parse(readFileSync(join(__dirname, 'cases.json'), 'utf8'));
 
 function redisQuery(p) {
@@ -15,7 +16,7 @@ function redisQuery(p) {
   const sched = p.get('sched').split(',');
   const ranges = levels.map(level => `@courseCode:[${parseInt(level, 10) * 100}, ${parseInt(level, 10) * 100 + 9999}]`);
   // Match src/lib/redis.js, including its current level range calculation.
-  return `${q}${q.trim() ? '*' : ''}${sub[0] ? ` @subjectCode:{${sub.join('|')}}` : ''}${term[0] ? ` @terms:{${term.join('|')}}` : ''}${gen[0] ? gen.map(g => ` @gened:{${g}}`) : ''} (@creditMin:[${p.get('cmin')}, ${p.get('cmax')}] | @creditMax:[${p.get('cmin')}, ${p.get('cmax')}])${levels[0] ? ` (${ranges.join(' | ')})` : ' @courseCode:[0, 0]'}${sched[0] ? ` @sched:{${sched.join('|')}}` : ' @sched:{}'}`;
+  return `${buildSearchText(q)}${sub[0] ? ` @subjectCode:{${sub.join('|')}}` : ''}${term[0] ? ` @terms:{${term.join('|')}}` : ''}${gen[0] ? gen.map(g => ` @gened:{${g}}`) : ''} (@creditMin:[${p.get('cmin')}, ${p.get('cmax')}] | @creditMax:[${p.get('cmin')}, ${p.get('cmax')}])${levels[0] ? ` (${ranges.join(' | ')})` : ' @courseCode:[0, 0]'}${sched[0] ? ` @sched:{${sched.join('|')}}` : ' @sched:{}'}`;
 }
 
 function percentile(sorted, p) {
@@ -23,6 +24,7 @@ function percentile(sorted, p) {
 }
 
 async function main() {
+  ({ buildSearchText } = await import('../src/lib/redis.js'));
   const mode = process.argv[2];
   const selected = process.argv[3] ?? 'all';
   const count = Number(process.argv[4] ?? 100);
