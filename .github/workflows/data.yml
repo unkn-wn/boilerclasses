@@ -99,6 +99,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # snapshot cleanup reads old data.lock values
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
@@ -155,3 +157,16 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      # keep the snapshots the last 10 data.lock commits point to (rollback window), delete the rest
+      - name: Clean up old snapshots
+        run: |
+          KEEP=$( (cat data.lock; for c in $(git log -n 10 --format=%H -- data.lock); do git show "$c:data.lock"; done) | sort -u)
+          if ! grep -qx "$(cat data.lock)" <<< "$KEEP"; then
+            echo "current snapshot missing from keep list, skipping cleanup"
+            exit 0
+          fi
+          aws s3 ls "s3://$BUCKET/snapshots/" | awk '{print $4}' | grep -E '^[0-9a-f]{64}\.json$' | while read -r f; do
+            if ! grep -qx "${f%.json}" <<< "$KEEP"; then
+              aws s3 rm "s3://$BUCKET/snapshots/$f"
+            fi
+          done

@@ -25,7 +25,7 @@ COPY . .
 RUN npm run build
 WORKDIR /home/server
 
-RUN python3 download.py
-RUN python3 harmonize.py
+# Data comes from the snapshot pinned in data.lock (built by .github/workflows/data.yml)
+RUN sh fetch_snapshot.sh
 
 CMD ["/bin/sh", "script.sh"]
