@@ -200,14 +200,18 @@ for file_name in tqdm(sorted(os.listdir(args.gradefolder))):
         if grade["title"] != "":
             currTitle = grade["title"]
 
-        if grade["avg gpa"] == "NaN" or "-Honors" in grade["title"]:
+        if grade["avg gpa"] == "NaN":
             continue
+        # honors rows share CRNs with regular sections, so only attach them to honors courses
+        # titles are truncated to 30 chars, so the suffix shows up as -Honors, -Honor, - Honors, -Hnrs, etc.
+        isHonors = re.search(r"[-–]\s*(Honors?|Honrs?|Hnrs)\s*$", currTitle, re.I)
         # found = False
         for i in range(len(course_data)):
             if (
                 int(grade["CRN"]) in course_data[i]["crn"]
                 and currSubjectCode == course_data[i]["subjectCode"]
                 and currCourseCode == course_data[i]["courseCode"]
+                and (not isHonors or re.search(r"\b(Honors?|Honrs?|Hnrs)\b", course_data[i]["title"], re.I))
             ):
                 found = True
                 if currSemester in course_data[i]["gpa"]:
@@ -274,14 +278,11 @@ for i in range(len(course_data)):
             if formattedInstructor in gpa_data:
                 if semester in gpa_data[formattedInstructor]:
                     for k in range(len(gpa_data[formattedInstructor][semester])):
-                        gpa_data[formattedInstructor][semester][k] = round(
-                            (
-                                gpa_data[formattedInstructor][semester][k] * gpa_data_count[formattedInstructor][semester]
-                                + entry[1][k]
-                            )
-                            / (gpa_data_count[formattedInstructor][semester] + 1),
-                            2,
-                        )
+                        gpa_data[formattedInstructor][semester][k] = (
+                            gpa_data[formattedInstructor][semester][k] * gpa_data_count[formattedInstructor][semester]
+                            + entry[1][k]
+                        ) / (gpa_data_count[formattedInstructor][semester] + 1)
+                    gpa_data_count[formattedInstructor][semester] += 1
                 else:
                     gpa_data[formattedInstructor][semester] = entry[1]
                     gpa_data_count[formattedInstructor][semester] = 1
@@ -289,7 +290,11 @@ for i in range(len(course_data)):
                 gpa_data[formattedInstructor] = {semester: entry[1]}
                 gpa_data_count[formattedInstructor] = {semester: 1}
 
-    course_data[i]["gpa"] = gpa_data
+    # round once at the end so the result doesn't depend on section order
+    course_data[i]["gpa"] = {
+        instr: {sem: [round(v, 2) for v in vals] for sem, vals in sems.items()}
+        for instr, sems in gpa_data.items()
+    }
 
 # adding geneds
 gened_file = open(args.genedfile)

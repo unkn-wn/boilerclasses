@@ -253,7 +253,7 @@ if args.subjects:
     sys.exit(0)
 
 # a partial scrape (Purdue down, markup change) must never be uploaded
-if len(jsonData) < 1000:
+if len(jsonData) < 3500:
     print(f"only {len(jsonData)} courses scraped for {args.sem}, refusing to write output")
     sys.exit(1)
 
