@@ -29,6 +29,7 @@ const CourseCatalog = () => {
     setFiltersCollapsed,
     courses,
     latency,
+    semanticSearching,
     transformQuery,
   } = useSearchFilters();
 
@@ -214,16 +215,23 @@ const CourseCatalog = () => {
           />
 
           {/* Results */}
-          {courses.length > 0 || filters.searchTerm.length < 2 ? (
-            <div className="text-opposite grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-              {courses.length > 0 &&
-                courses.map((course) => (
-                  <Card
-                    key={course.id}
-                    course={course.value}
-                    searchTerm={filters.searchTerm}
-                  />
-                ))}
+          {courses.length > 0 || filters.searchTerm.length < 2 || semanticSearching ? (
+            <div>
+              {/* {semanticSearching && filters.searchTerm.length >= 2 && (
+                <p className="mb-4 text-sm text-tertiary" role="status">
+                  Finding related courses...
+                </p>
+              )} */}
+              <div className="text-opposite grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
+                {courses.length > 0 &&
+                  courses.map((course) => (
+                    <Card
+                      key={course.id}
+                      course={course.value}
+                      searchTerm={filters.searchTerm}
+                    />
+                  ))}
+              </div>
             </div>
           ) : (
             <div className="flex flex-col h-full w-full items-center justify-center align-center gap-2">

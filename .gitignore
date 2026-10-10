@@ -42,3 +42,4 @@ server/.env
 .claude/
 
 server/**/*.json
+server/course_embeddings.npy
