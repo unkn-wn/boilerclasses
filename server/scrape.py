@@ -15,6 +15,7 @@ import re
 import shutil
 import sys
 import requests
+import prereqs
 
 def format_instructors(by_sched):
   special_sched = ["Laboratory", "Laboratory Preparation", "Recitation", "Practice Study Observation"]
@@ -190,7 +191,10 @@ for code in class_codes:
         classStruct["sched"] = [sched_type]
         viewCatalog = tds[i].find_elements(By.TAG_NAME, "a")[0]
         catalogLink = viewCatalog.get_attribute('href')
-        catalogEntries[classfullId] = catalogLink
+        # the link goes to the catalog listing; the detail page has the same description
+        # plus prerequisites
+        term_in = re.search(r"term_in=(\d+)", catalogLink).group(1)
+        catalogEntries[classfullId] = f"https://selfservice.mypurdue.purdue.edu/prod/bwckctlg.p_disp_course_detail?cat_term_in={term_in}&subj_code_in={classStruct['subjectCode']}&crse_numb_in={classStruct['courseCode']}"
 
         doneIds[classfullId] = classStruct
 
@@ -211,7 +215,9 @@ for code in class_codes:
       if len(driver.find_elements(By.CLASS_NAME, "ntdefault")) == 0:
         continue
       tds_catalog = driver.find_elements(By.CLASS_NAME, "ntdefault")[0]
-      desc = tds_catalog.get_attribute('innerHTML').split("\n")[1]
+      catalog_html = tds_catalog.get_attribute('innerHTML')
+      doneIds[courseId]["prereqs"] = prereqs.extract(catalog_html)
+      desc = catalog_html.split("\n")[1]
       doneIds[courseId]["description"] = desc.split(".00.")[-1].strip()
       cred = desc.split('.00.')[0].split(': ')[-1]
       try:
