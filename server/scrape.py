@@ -42,8 +42,11 @@ args = parser.parse_args()
 
 link = "https://selfservice.mypurdue.purdue.edu/prod/bwckschd.p_disp_dyn_sched"
 
+session = requests.Session()
+session.headers["User-Agent"] = "boilerclasses-scraper (+https://www.boilerclasses.com)"
+
 if args.latest:
-  html = requests.get(link, timeout=30).text
+  html = session.get(link, timeout=30).text
   terms = re.findall(r'<OPTION VALUE="\d+">((?:Fall|Spring) \d{4})', html)
   print(json.dumps(terms[:args.latest]))
   sys.exit(0)
