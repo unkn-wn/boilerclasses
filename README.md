@@ -24,12 +24,11 @@ This will expose the container's port `3000` to your machine. Navigate to `local
 
 ## Without Docker
 1. Firstly, make sure you have [python](https://www.python.org/downloads/), [node](https://nodejs.org/en/download/), and [redis](https://redis.io/docs/install/install-redis/) installed.
-2. Then, navigate into the `server` directory and run the following commands:
+2. Then, navigate into the `server` directory and run:
    ```
-   python3 download.py
-   python3 harmonize.py
+   sh fetch_snapshot.sh
    ```
-   `download.py` will download JSON files for you from our [S3 bucket](https://s3.amazonaws.com/boilerclasses) and `harmonize.py` will combine these to give you a single JSON file containing all the information required. More details regarding what these files do are coming soon.  
+   This downloads the data snapshot pinned in `data.lock` (the same data production serves) to `server/classes_out.json` and verifies its hash.
 3. Now, you want to spawn a Redis instance at the port `6379`. To do this, run the following command:
    ```
    redis-server --daemonize yes
@@ -54,11 +53,15 @@ This will expose the container's port `3000` to your machine. Navigate to `local
 
 # Data Collection
 
-There are four scripts in the `server` directory that aid with data collection:
-1. `scrape.py` scrapes a particular semester's data from Purdue's catalog. Generates a singular JSON file for a semester.
-3. `download.py` either downloads the data from our [S3 bucket](https://s3.amazonaws.com/boilerclasses), or runs `scrape.py` for every semester. The default is downloading because it's faster.
-4. `harmonize.py` combines all the JSON files downloaded and makes one JSON containing all the data required.
-5. `push.py` pushes the data from the resultant JSON from `harmonize.py` to the Redis instance.
+Data is refreshed by the **Data Pipeline** GitHub Action (`.github/workflows/data.yml`), weekly on Mondays or by hand from the Actions tab:
+1. `scrape.py` scrapes the newest 2 semesters from Purdue's catalog and uploads them to our [S3 bucket](https://s3.amazonaws.com/boilerclasses). Older semesters stay as they are on S3.
+2. `grades.py` converts the newest 5 semesters of grade CSVs from [BoilerGrades](https://github.com/eduxstad/boiler-grades) and uploads any that changed.
+3. `harmonize.py` combines everything on S3 into one JSON file and writes `src/data/terms.json` for the frontend.
+4. If the result changed, it's uploaded as `snapshots/<sha256>.json`, the hash is committed to `data.lock`, and the site is deployed. Only the snapshots from the last 10 `data.lock` commits are kept.
+
+To roll back data, revert the `data.lock` commit. `push.py` loads `classes_out.json` into Redis when the container starts.
+
+Manual runs take two optional inputs: `terms` (e.g. `["Fall 2026"]`, or `[]` to skip scraping) and `subjects` (e.g. `CS`, a quick test scrape that uploads nothing).
 
 Running the `scrape.py` script may cause issues, but feel free to tweak line ~42, where the driver is initialized. It is somewhat system-dependent -- that configuration should work on MacOS with a Google Chrome driver and `selenium v4.x`. If you want more clarification/help, open up an [issue](https://github.com/unkn-wn/boilerclasses/issues)!
 
