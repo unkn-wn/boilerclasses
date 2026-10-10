@@ -145,6 +145,10 @@ for class_id in tqdm(all_classes):
                 if "<a href=" not in class_sem["description"]:
                     class_data["description"] = class_sem["description"]
 
+                # newest scraped term wins; None means it has no (parseable) prereqs
+                if "prereqs" in class_sem:
+                    class_data["prereqs"] = class_sem["prereqs"]
+
     class_data["title"] = instances[-1]["title"]
     class_data["subjectCode"] = s
     class_data["courseCode"] = c
@@ -315,11 +319,13 @@ prereqs_data = json.load(prereqs_file)
 prereqs_file.close()
 
 print("adding prereqs.....")
-for class_data in tqdm(prereqs_data):
-    sub, code = class_data.split()
-    for i in range(len(course_data)):
-        if (course_data[i]["subjectCode"] == sub and course_data[i]["courseCode"] == code):
-            course_data[i]["prereqs"] = prereqs_data[class_data]
+# static file only fills in courses no scraped term has prereq info for
+for c in course_data:
+    key = f'{c["subjectCode"]} {c["courseCode"]}'
+    if "prereqs" not in c and key in prereqs_data:
+        c["prereqs"] = prereqs_data[key]
+    if "prereqs" in c and c["prereqs"] is None:
+        del c["prereqs"]
 
 
 test = []
@@ -342,6 +348,14 @@ for i in range(len(course_data)):
 
 invalid_indices = set(invalid_indices)
 course_data = [c for i, c in enumerate(course_data) if i not in invalid_indices]
+
+# prereq tokens "SUBJ CODE concurrent" -> "detailId concurrent" for courses we have pages for
+detail_ids = {f'{c["subjectCode"]} {c["courseCode"]}': c["detailId"] for c in course_data}
+for c in course_data:
+    for j, token in enumerate(c.get("prereqs", [])):
+        parts = token.split(" ")
+        if len(parts) == 3 and f"{parts[0]} {parts[1]}" in detail_ids:
+            c["prereqs"][j] = f'{detail_ids[f"{parts[0]} {parts[1]}"]} {parts[2]}'
 
 print(f"writing to {args.outfile}...")
 outfile = open(args.outfile, "w")
