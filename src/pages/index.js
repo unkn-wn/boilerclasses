@@ -28,6 +28,7 @@ const CourseCatalog = () => {
     filtersCollapsed,
     setFiltersCollapsed,
     courses,
+    latency,
     transformQuery,
   } = useSearchFilters();
 
@@ -198,6 +199,9 @@ const CourseCatalog = () => {
               onChange={(e) => updateFilter("searchTerm", e.target.value)}
               className="placeholder:text-tertiary text-primary text-xl bg-super w-full pb-2 border-b-2 border-[rgb(var(--background-opposite))] focus:outline-none focus:border-blue-500 transition duration-300"
             />
+            {latency !== null && (
+              <div className="absolute mt-1 text-xs text-tertiary">{latency} ms</div>
+            )}
           </div>
 
           {/* Filters */}

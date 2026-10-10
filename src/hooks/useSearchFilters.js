@@ -74,6 +74,7 @@ export const useSearchFilters = () => {
   const [displayLanding, setDisplayLanding] = useState(true);
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
   const [courses, setCourses] = useState([]);
+  const [latency, setLatency] = useState(null);
   const [initialized, setInitialized] = useState(false);
 
   // Update specific filter
@@ -141,6 +142,7 @@ export const useSearchFilters = () => {
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
       setCourses([]);
+      setLatency(null);
       return;
     }
 
@@ -157,8 +159,10 @@ export const useSearchFilters = () => {
     });
 
     try {
+      const start = performance.now();
       const response = await fetch(`/api/search?${params}`);
       const data = await response.json();
+      setLatency(Math.round(performance.now() - start));
 
       // Clean up descriptions
       const processedCourses = data.courses.documents.map(item => ({
@@ -175,6 +179,7 @@ export const useSearchFilters = () => {
     } catch (error) {
       console.error('Search failed:', error);
       setCourses([]);
+      setLatency(null);
     }
   };
 
@@ -219,6 +224,7 @@ export const useSearchFilters = () => {
     filtersCollapsed,
     setFiltersCollapsed,
     courses,
+    latency,
     transformQuery,
   };
 };
