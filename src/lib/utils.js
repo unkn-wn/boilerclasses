@@ -1,4 +1,6 @@
-export const semesters = ["Fall 2026", "Spring 2026", "Fall 2025", "Spring 2025", "Fall 2024", "Spring 2024", "Fall 2023", "Spring 2023", "Fall 2022", "Spring 2022", "Fall 2021", "Spring 2021", "Fall 2020", "Spring 2020", "Fall 2019"]
+import terms from "@/data/terms.json"
+
+export const semesters = terms.all
 export const subjects = ["AAE", "AAS", "ABE", "ACCT", "AD", "AFT", "AGEC", "AGR", "AGRY", "AMST", "ANSC", "ANTH", "ARAB", "ARCH", "ASAM", "ASEC", "ASL", "ASM", "ASTR", "AT", "BAND", "BCHM", "BIOL", "BME", "BMS", "BTNY", "BUS", "CAND", "CCE", "CDIS", "CE", "CEM", "CGT", "CHE", "CHM", "CHNS", "CIT", "CLCS", "CLPH", "CM", "CMGT", "CMPL", "CNIT", "COM", "CPB", "CS", "CSCI", "CSR", "DANC", "DCTC", "DSB", "EAPS", "ECE", "ECET", "ECON", "EDCI", "EDPS", "EDST", "EEE", "ENE", "ENGL", "ENGR", "ENGT", "ENTM", "ENTR", "EPCS", "EXPL", "FIN", "FLM", "FNR", "FR", "FS", "FVS", "GEP", "GER", "GRAD", "GREK", "GS", "GSLA", "HDFS", "HEBR", "HER", "HETM", "HHS", "HIST", "HK", "HONR", "HORT", "HSCI", "HSOP", "HTM", "IBE", "IDE", "IDIS", "IE", "IET", "ILS", "IMPH", "IPPH", "INT", "IT", "ITAL", "JPNS", "JWST", "KOR", "LA", "LALS", "LATN", "LC", "LING", "MA", "MATH", "MCMP", "ME", "MET", "MFET", "MGMT", "MIS", "MKTG", "MSE", "MSL", "MSPE", "MUS", "NRES", "NS", "NUCL", "NUPH", "NUR", "NUTR", "OBHR", "OLS", "OPP", "PES", "PHIL", "PHPR", "PHRM", "PHSC", "PHYS", "POL", "PSY", "PTGS", "PUBH", "QM", "REAL", "REG", "REL", "RPMP", "RUSS", "SA", "SCI", "SCLA", "SCOM", "SFS", "SLHS", "SOC", "SPAN", "STAT", "STRT", "SYS", "TCM", "TDM", "TECH", "THTR", "TLI", "VCS", "VIP", "VM", "WGSS"]
 export const genedsOptions = [
   { label: "Behavioral/Social Science", value: "BSS" },
@@ -12,30 +14,7 @@ export const genedsOptions = [
   { label: "Science Technology and Society", value: "STS" },
   { label: "Written Communication", value: "WC" }
 ]
-export const semesterOptions = [
-  { label: "Fall 2026", value: "Fall 2026" },
-  { label: "Spring 2026", value: "Spring 2026" },
-  { label: "Fall 2025", value: "Fall 2025" },
-  { label: "Spring 2025", value: "Spring 2025" },
-  { label: "Fall 2024", value: "Fall 2024" },
-  { label: "Spring 2024", value: "Spring 2024" },
-  { label: "Fall 2023", value: "Fall 2023" },
-  { label: "Spring 2023", value: "Spring 2023" },
-  { label: "Fall 2022", value: "Fall 2022" },
-  { label: "Spring 2022", value: "Spring 2022" },
-  { label: "Fall 2021", value: "Fall 2021" },
-  { label: "Spring 2021", value: "Spring 2021" },
-  { label: "Fall 2020", value: "Fall 2020" },
-  { label: "Spring 2020", value: "Spring 2020" },
-  { label: "Fall 2019", value: "Fall 2019" },
-  // {label: "Spring 2019", value: "Spring 2019"},
-  // {label: "Fall 2018", value: "Fall 2018"},
-  // {label: "Spring 2018", value: "Spring 2018"},
-  // {label: "Fall 2017", value: "Fall 2017"},
-  // {label: "Spring 2017", value: "Spring 2017"},
-  // {label: "Fall 2016", value: "Fall 2016"},
-  // {label: "Spring 2016", value: "Spring 2016"}
-]
+export const semesterOptions = semesters.map((sem) => ({ label: sem, value: sem }))
 
 export const subjectOptions = [
   { value: "AAE", label: "AAE: Aero & Astro Engineering" },

@@ -38,4 +38,7 @@ next-env.d.ts
 
 server/.env
 
+# claude code
+.claude/
+
 server/**/*.json
