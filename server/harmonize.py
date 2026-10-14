@@ -3,6 +3,18 @@ import os
 import argparse
 from tqdm import tqdm
 import re
+from schema import validate_courses
+
+
+def first_last(name):
+    """Keep first/last names without treating a generational suffix as a surname."""
+    parts = name.split()
+    while len(parts) > 1 and re.fullmatch(r"(?:Jr|Sr|II|III|IV|V|VI|VII|VIII|IX|X)\.?", parts[-1], re.I):
+        parts.pop()
+    if not parts:
+        return "TBA"
+    first, last = parts[0], parts[-1].rstrip(",")
+    return first if len(parts) == 1 else f"{first} {last}"
 
 """
 structure for data:
@@ -89,6 +101,7 @@ for file_name in sorted(os.listdir(args.folder)):
     f = open(path)
     data = json.load(f)
     f.close()
+    validate_courses(data, kind="scraped", source=path)
     semesters.append(data)
 
 # oldest first, so later semesters win when picking descriptions
@@ -138,7 +151,7 @@ for class_id in tqdm(all_classes):
                 # formatting instructor names to only First Last
                 instrs = []
                 for instr in class_sem["instructor"]:
-                    instrs.append(instr.split(" ")[0] + " " + instr.split(" ")[-1])
+                    instrs.append(first_last(instr))
                 instrs = [x.replace("TBA TBA", "TBA") for x in instrs]
                 class_data["instructor"][class_sem["term"]] = instrs
 
@@ -363,6 +376,7 @@ for c in course_data:
             c["prereqs"][j] = f'{detail_ids[f"{parts[0]} {parts[1]}"]} {parts[2]}'
 
 print(f"writing to {args.outfile}...")
+validate_courses(course_data, kind="harmonized", source=args.outfile)
 outfile = open(args.outfile, "w")
 json.dump(course_data, outfile, indent=4, sort_keys=True)
 outfile.close()
