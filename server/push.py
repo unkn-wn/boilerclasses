@@ -8,6 +8,7 @@ from tqdm import tqdm
 import argparse
 import math
 from decimal import Decimal, ROUND_HALF_UP
+from schema import validate_courses
 # load_dotenv()
 
 
@@ -53,8 +54,6 @@ def overall_gpa(course):
 # REDIS_PORT = os.getenv('REDIS_PORT')
 # REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
-r = redis.Redis(host='localhost', port=6379)
-r.flushall()
 parser = argparse.ArgumentParser(description='data files')
 parser.add_argument("-data", default="classes_out.json", dest="infile", help="which file to get data from")
 
@@ -64,6 +63,11 @@ args = parser.parse_args()
 count = 1
 f = open(args.infile)
 data = json.load(f)
+f.close()
+validate_courses(data, kind="harmonized", source=args.infile)
+# Validate the complete input before clearing any Redis data.
+r = redis.Redis(host='localhost', port=6379)
+r.flushall()
 for classData in tqdm(data):
   classData['overallGpa'] = overall_gpa(classData)
   key = "classes:" + str(count)

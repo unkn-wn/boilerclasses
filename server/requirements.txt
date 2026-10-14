@@ -5,5 +5,3 @@ redis
 flask
 flask-cors
 requests
-selenium
-webdriver-manager
