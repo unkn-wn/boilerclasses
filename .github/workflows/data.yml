@@ -105,7 +105,8 @@ jobs:
         run: |
           python3 scrape_sections.py -sem "$TERM_NAME"
           for f in data/sections_*.json; do
-            aws s3 cp "$f" "s3://$BUCKET/sections/$(basename "$f" | sed 's/^sections_//')" --content-type application/json
+            # under data/ so the pipeline role can write it; publish's data/ sync pulls it back down
+            aws s3 cp "$f" "s3://$BUCKET/data/sections/$(basename "$f" | sed 's/^sections_//')" --content-type application/json
           done
 
   publish:
@@ -156,16 +157,17 @@ jobs:
           aws s3 cp classes_out.json "s3://$BUCKET/snapshots/$SHA.json"
           echo "$SHA" > ../data.lock
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      # current term's sections (uploaded by the scrape job), pinned in sections.lock like data.lock
+      # current term's sections (synced down with data/ above), pinned in sections.lock like data.lock
       - id: sections
         working-directory: server
         run: |
           CODE=$(python3 -c 'import json; print(json.load(open("../src/data/terms.json"))["current"]["code"])')
-          if ! aws s3 cp "s3://$BUCKET/sections/$CODE.json" sections_out.json; then
+          if [ ! -f "data/sections/$CODE.json" ]; then
             echo "no sections for $CODE, keeping sections.lock"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          cp "data/sections/$CODE.json" sections_out.json
           SHA=$(sha256sum sections_out.json | cut -d' ' -f1)
           if [ "$SHA" = "$(cat ../sections.lock 2>/dev/null)" ]; then
             echo "sections unchanged"
