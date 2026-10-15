@@ -19,6 +19,12 @@ const Footer = () => {
                         <Image src="https://icones.pro/wp-content/uploads/2021/06/icone-github-grise.png" alt="" boxSize={4} />
                         BoilerClasses
                     </a>
+                    <span className='mx-2'>|</span>
+                    <span className='flex items-center gap-1'>
+                        Maintained by
+                        <Image src="/boilerexams-mark.png" alt="" boxSize={4} />
+                        <a href='https://boilerexams.com' target="_blank" rel="noopener noreferrer" className='text-tertiary underline decoration-dashed decoration-1 underline-offset-2'>Boilerexams</a>
+                    </span>
                 </span>
                 An <Link href={`/dir`}>unofficial catalog</Link> for Purdue courses made by Purdue students. We'd love to hear your <button onClick={onOpen} className='underline decoration-dashed decoration-1 underline-offset-2'>feedback</button>!
                 {/* Inspired by <a href='https://classes.wtf/' target='_blank' rel='noopener noreferrer' className='underline decoration-dashed decoration-1 underline-offset-2'>classes.wtf</a><br /> */}
