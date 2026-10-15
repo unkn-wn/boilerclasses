@@ -105,7 +105,8 @@ jobs:
         run: |
           python3 scrape_sections.py -sem "$TERM_NAME"
           for f in data/sections_*.json; do
-            aws s3 cp "$f" "s3://$BUCKET/sections/$(basename "$f" | sed 's/^sections_//')" --content-type application/json
+            # under data/ so the pipeline role can write it; publish's data/ sync pulls it back down
+            aws s3 cp "$f" "s3://$BUCKET/data/sections/$(basename "$f" | sed 's/^sections_//')" --content-type application/json
           done
 
   publish:
@@ -156,14 +157,11 @@ jobs:
           aws s3 cp classes_out.json "s3://$BUCKET/snapshots/$SHA.json"
           echo "$SHA" > ../data.lock
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      # the schedule terms' sections (uploaded by the scrape job), merged into one
+      # the schedule terms' sections (synced down with data/ above), merged into one
       # {termCode: {detailId: sections}} file and pinned in sections.lock like data.lock
       - id: sections
         working-directory: server
         run: |
-          # data/ is ignored by .dockerignore, so these don't end up in the image
-          aws s3 sync "s3://$BUCKET/sections/" data/sections/ --exclude "*" --include "*.json" \
-            || echo "::warning::could not download fresh sections"
           if [ -f ../sections.lock ]; then
             aws s3 cp "s3://$BUCKET/snapshots/$(cat ../sections.lock).json" data/sections_pinned.json || true
           fi
