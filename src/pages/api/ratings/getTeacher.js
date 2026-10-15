@@ -1,5 +1,5 @@
 import NextCors from 'nextjs-cors';
-import ratings from '@mtucourses/rate-my-professors';
+import ratings from '@/lib/ratings';
 
 async function handler(req, res) {
    // Run the cors middleware
