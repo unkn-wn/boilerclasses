@@ -1,6 +1,6 @@
 // CourseCatalog.js
 
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Inter } from "next/font/google";
 import Card from "@/components/card";
 import Footer from "@/components/footer";
@@ -31,7 +31,18 @@ const CourseCatalog = () => {
     latency,
     semanticSearching,
     transformQuery,
-  } = useSearchFilters();
+  } = useSearchFilters({ view: 'card' });
+
+  // Search text is not used by the filter panel. Keep its props stable while typing.
+  const panelFilters = useMemo(() => ({
+    subjects: filters.subjects,
+    semesters: filters.semesters,
+    genEds: filters.genEds,
+    credits: filters.credits,
+    levels: filters.levels,
+    scheduleTypes: filters.scheduleTypes,
+  }), [filters.subjects, filters.semesters, filters.genEds,
+    filters.credits, filters.levels, filters.scheduleTypes]);
 
   // Gets all the filters as a string for displaying to users
   const getAllFiltersString = () => {
@@ -77,14 +88,13 @@ const CourseCatalog = () => {
       setDisplayLanding(false);
       updateFilter("searchTerm", searchTerm);
     }
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set("q", searchTerm);
-    window.history.replaceState({}, "", newUrl);
   };
 
-  // Make sure search bar updates when query changes
+  // Show results when a search arrives from typing or a shared URL.
   useEffect(() => {
-    changeLanding(filters.searchTerm || "");
+    if (filters.searchTerm?.length >= 2) {
+      setDisplayLanding(false);
+    }
   }, [filters.searchTerm]);
 
   // Focus on proper search bar on load
@@ -207,7 +217,7 @@ const CourseCatalog = () => {
 
           {/* Filters */}
           <SearchFilters
-            filters={filters}
+            filters={panelFilters}
             updateFilter={updateFilter}
             filtersCollapsed={filtersCollapsed}
             setFiltersCollapsed={setFiltersCollapsed}
@@ -228,7 +238,6 @@ const CourseCatalog = () => {
                     <Card
                       key={course.id}
                       course={course.value}
-                      searchTerm={filters.searchTerm}
                     />
                   ))}
               </div>

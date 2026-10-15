@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback, startTransition } from 'react';
 import { useRouter } from 'next/router';
 import terms from '@/data/terms.json';
 
@@ -44,7 +44,7 @@ const abortableDelay = (milliseconds, signal) => new Promise((resolve, reject) =
   signal.addEventListener('abort', handleAbort, { once: true });
 });
 
-export const useSearchFilters = () => {
+export const useSearchFilters = ({ view = 'full' } = {}) => {
   const router = useRouter();
   const { query } = router;
 
@@ -90,13 +90,11 @@ export const useSearchFilters = () => {
   const [latency, setLatency] = useState(null);
   const [semanticSearching, setSemanticSearching] = useState(false);
   const [initialized, setInitialized] = useState(false);
-  const searchRequestRef = useRef(0);
-  const lexicalControllerRef = useRef(null);
-  const semanticControllerRef = useRef(null);
 
   // Update specific filter
-  const updateFilter = (filterName, value) => {
+  const updateFilter = useCallback((filterName, value) => {
     setFilters(prevFilters => {
+      if (Object.is(prevFilters[filterName], value)) return prevFilters;
       const newFilters = {
         ...prevFilters,
         [filterName]: value
@@ -111,7 +109,7 @@ export const useSearchFilters = () => {
 
       return newFilters;
     });
-  };
+  }, []);
 
   // Transform search query
   const transformQuery = (query) => {
@@ -154,14 +152,8 @@ export const useSearchFilters = () => {
   }, [query.q, router.isReady]);
 
   // Search function
-  const search = async () => {
+  const search = async (signal) => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
-    const requestId = ++searchRequestRef.current;
-
-    lexicalControllerRef.current?.abort();
-    semanticControllerRef.current?.abort();
-    const lexicalController = new AbortController();
-    lexicalControllerRef.current = lexicalController;
     setSemanticSearching(false);
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
@@ -179,20 +171,51 @@ export const useSearchFilters = () => {
       cmax: credits.max,
       levels,
       sched: scheduleTypes,
-      maxlim: 100
+      maxlim: 100,
+      view
     });
 
     try {
       const start = performance.now();
-      const response = await fetch(`/api/search?${params}`, {
-        signal: lexicalController.signal,
-      });
+      const response = await fetch(`/api/search?${params}`, { signal });
+      if (!response.ok) throw new Error(`Search failed: ${response.status}`);
       const data = await response.json();
-      if (requestId !== searchRequestRef.current) return;
-      setLatency(Math.round(performance.now() - start));
+      if (signal.aborted) return;
+      const elapsed = Math.round(performance.now() - start);
 
       // Clean up descriptions
-      const processedCourses = data.courses.documents.map(item => ({
+      const processedCourses = data.courses.documents.map(item =>
+        item.value.description.startsWith("<a href=")
+          ? { ...item, value: { ...item.value, description: "No Description Available" } }
+          : item
+      );
+
+      startTransition(() => {
+        setLatency(elapsed);
+        setCourses(processedCourses);
+      });
+    } catch (error) {
+      if (signal.aborted) return;
+      console.error('Search failed:', error);
+      setCourses([]);
+      setLatency(null);
+      return;
+    }
+
+    if (transformQuery(searchTerm).length < 2) return;
+
+    params.set('maxlim', 8);
+    setSemanticSearching(true);
+
+    try {
+      // Avoid starting expensive semantic work for every intermediate keystroke.
+      await abortableDelay(SEMANTIC_SEARCH_DELAY_MS, signal);
+      const semanticResponse = await fetch(`/api/semantic-search?${params}`, { signal });
+      if (!semanticResponse.ok) throw new Error(`Semantic search failed: ${semanticResponse.status}`);
+      const semanticData = await semanticResponse.json();
+      if (signal.aborted) return;
+
+      const semanticCourses = semanticData.courses.documents.map(item => ({
         ...item,
         value: {
           ...item.value,
@@ -202,94 +225,78 @@ export const useSearchFilters = () => {
         }
       }));
 
-      setCourses(processedCourses);
-
-      if (transformQuery(searchTerm).length < 2) return;
-
-      const semanticController = new AbortController();
-      semanticControllerRef.current = semanticController;
-      params.set('maxlim', 8);
-      setSemanticSearching(true);
-
-      try {
-        // Avoid starting expensive semantic work for every intermediate keystroke.
-        await abortableDelay(SEMANTIC_SEARCH_DELAY_MS, semanticController.signal);
-        const semanticResponse = await fetch(`/api/semantic-search?${params}`, {
-          signal: semanticController.signal,
-        });
-        const semanticData = await semanticResponse.json();
-        if (requestId !== searchRequestRef.current) return;
-
-        const semanticCourses = semanticData.courses.documents.map(item => ({
-          ...item,
-          value: {
-            ...item.value,
-            description: item.value.description.startsWith("<a href=")
-              ? "No Description Available"
-              : item.value.description
-          }
-        }));
-
-        setCourses(currentCourses => {
-          const existingIds = new Set(
-            currentCourses.map(course => course.value.detailId)
-          );
-          return [
-            ...currentCourses,
-            ...semanticCourses.filter(course => !existingIds.has(course.value.detailId)),
-          ];
-        });
-      } catch (error) {
-        if (error.name !== 'AbortError') {
-          console.error('Semantic search failed:', error);
-        }
-      } finally {
-        if (requestId === searchRequestRef.current) {
-          setSemanticSearching(false);
-        }
-      }
+      setCourses(currentCourses => {
+        const existingIds = new Set(
+          currentCourses.map(course => course.value.detailId)
+        );
+        return [
+          ...currentCourses,
+          ...semanticCourses.filter(course => !existingIds.has(course.value.detailId)),
+        ];
+      });
     } catch (error) {
-      if (error.name === 'AbortError') return;
-      console.error('Search failed:', error);
-      if (requestId === searchRequestRef.current) {
-        setCourses([]);
-        setLatency(null);
+      if (!signal.aborted) {
+        console.error('Semantic search failed:', error);
+      }
+    } finally {
+      if (!signal.aborted) {
+        setSemanticSearching(false);
       }
     }
   };
 
   // Search effect
   useEffect(() => {
-    if (initialized) {
-      search();
-    }
+    if (!initialized) return;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => search(controller.signal), 25);
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
   }, [
     initialized,
-    JSON.stringify(filters.subjects),
-    JSON.stringify(filters.semesters),
-    JSON.stringify(filters.genEds),
+    view,
+    filters.subjects,
+    filters.semesters,
+    filters.genEds,
     transformQuery(filters.searchTerm),
     filters.credits.min,
     filters.credits.max,
-    JSON.stringify(filters.levels),
-    JSON.stringify(filters.scheduleTypes),
+    filters.levels,
+    filters.scheduleTypes,
   ]);
 
   // Update search term in URL for shareable links
   useEffect(() => {
     if (!initialized || !router.isReady) return;
 
+    const url = new URL(window.location.href);
     if (filters.searchTerm) {
-      router.replace({
-        pathname: router.pathname,
-        query: { q: filters.searchTerm }
-      }, undefined, { shallow: true });
-    } else if (query.q) {
-      router.replace({
-        pathname: router.pathname
-      }, undefined, { shallow: true });
+      url.searchParams.set('q', filters.searchTerm);
+    } else {
+      url.searchParams.delete('q');
     }
+    if (url.href === window.location.href) return;
+
+    // Update the shareable URL without starting a Next router transition.
+    // Preserve Next's history metadata for back/forward navigation.
+    const href = `${url.pathname}${url.search}${url.hash}`;
+    const state = window.history.state;
+    window.history.replaceState(
+      state?.__N ? { ...state, as: href, url: href } : state,
+      '',
+      href
+    );
   }, [filters.searchTerm, initialized, router.isReady]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      updateFilter('searchTerm', new URL(window.location.href).searchParams.get('q') || '');
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   return {
     filters,

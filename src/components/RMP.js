@@ -120,8 +120,6 @@ export function getRMPScore(rmpData, instructor) {
 
 
 // Asynchronously fetch RMP rating for all professors
-let isLoadingRatings = false;
-
 export async function loadRatingsForProfs(course, onUpdate = null) {
   if (!course) return Promise.resolve({});
 
@@ -133,9 +131,6 @@ export async function loadRatingsForProfs(course, onUpdate = null) {
       }
     }
   }
-
-  if (isLoadingRatings) return Promise.resolve({});
-  isLoadingRatings = true;
 
   const ratings = {};
   try {
@@ -152,7 +147,5 @@ export async function loadRatingsForProfs(course, onUpdate = null) {
   } catch (error) {
     console.error("Error loading ratings:", error);
     return Promise.resolve({});
-  } finally {
-    isLoadingRatings = false;
   }
 }

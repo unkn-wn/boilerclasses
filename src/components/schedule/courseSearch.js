@@ -14,15 +14,11 @@ const CourseSearch = ({ courses, onSelect, searchTerm, updateFilter }) => {
   const displayedCourses = useMemo(() => {
     if (!shouldShowDropdown) return [];
 
-    const sorted = [...courses].sort((a, b) => {
-      const aOffered = a.value.terms.includes(CURRENT_SEMESTER);
-      const bOffered = b.value.terms.includes(CURRENT_SEMESTER);
-      if (aOffered && !bOffered) return -1;
-      if (!aOffered && bOffered) return 1;
-      return `${a.value.subjectCode}${a.value.courseCode}`
-        .localeCompare(`${b.value.subjectCode}${b.value.courseCode}`);
-    });
-    return sorted.slice(0, 10);
+    // Stable sort preserves Redis relevance within each availability group.
+    return [...courses].sort((a, b) =>
+      Number(b.value.terms.includes(CURRENT_SEMESTER)) -
+      Number(a.value.terms.includes(CURRENT_SEMESTER))
+    ).slice(0, 10);
   }, [courses, shouldShowDropdown]);
 
   // Update coursesRef when displayedCourses changes

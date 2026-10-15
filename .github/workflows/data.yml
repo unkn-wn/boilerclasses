@@ -43,7 +43,11 @@ jobs:
         working-directory: server
         env:
           TERMS: ${{ inputs.terms }}
-        run: echo "terms=${TERMS:-$(python3 scrape.py --latest 2)}" >> "$GITHUB_OUTPUT"
+        run: |
+          if [ -z "$TERMS" ]; then
+            TERMS=$(python3 scrape.py --latest 2)
+          fi
+          echo "terms=$TERMS" >> "$GITHUB_OUTPUT"
 
   scrape:
     needs: plan

@@ -5,11 +5,7 @@ import OverallGpa from "./OverallGpa";
 import React from 'react';
 import Link from 'next/link'
 
-import { useRouter } from 'next/router';
-
-
-const Card = ({ course, searchTerm }) => {
-  const router = useRouter();
+const Card = ({ course }) => {
 
   const instructors = new Set();
   const availableSemesters = [];
@@ -24,22 +20,13 @@ const Card = ({ course, searchTerm }) => {
   });
   const uniqueInstructors = [...instructors];
 
-  const handleLink = () => {
-    router.push({
-      pathname: `/`,
-      query: { q: searchTerm }
-    });
-  }
-
 
   return (
-    <>
       <Link
         href={{ pathname: `/detail/${course.detailId}` }}
         passHref
         className="flex flex-col bg-background p-6 rounded-md shadow-md hover:scale-[1.02] transition hover:transition cursor-pointer">
 
-        <div onClick={() => handleLink()}>
           <h2 className="lg:text-lg md:text-lg font-bold text-primary">{course.subjectCode} {course.courseCode}: {course.title}</h2>
 
           <div className="lg:text-sm text-sm text-tertiary font-medium my-1">
@@ -51,7 +38,7 @@ const Card = ({ course, searchTerm }) => {
                 {` | `}
               </p>
 
-              <OverallGpa courseData={course} card />
+              <OverallGpa courseData={course} preCalculatedData={course.overallGpa} card />
             </div>
             <p>
               {uniqueInstructors[0]}
@@ -63,10 +50,9 @@ const Card = ({ course, searchTerm }) => {
           </div>
 
           <p className="text-sm text-secondary mb-4 break-words grow">
-            <span>{course.description.length > 300
+            {course.description.length > 300
               ? `${course.description.substring(0, 300)}...`
               : course.description}
-            </span>
           </p>
 
           <div className="flex flex-row flex-wrap">
@@ -86,9 +72,7 @@ const Card = ({ course, searchTerm }) => {
             ))}
           </div>
 
-        </div>
       </Link >
-    </>
   )
 };
 

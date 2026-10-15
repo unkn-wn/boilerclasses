@@ -1,6 +1,21 @@
 
 import { createClient } from 'redis';
 
+// Input: "data structures"
+// Output: "((data | %data%) (structures* | %structures%))"
+// Input: "cs 250" → Output: "(cs 250*)" (no fuzzy matching for short words/numbers).
+export function buildSearchText(query) {
+  const words = query.trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return '';
+  const terms = words.map((word, i) => {
+    const escaped = word.replace(/([\\,.<>{}\[\]"':;!@#$%^&*()\-+=~|/?])/g, '\\$1');
+    // Preserve the trailing prefix search while adding one-edit typo tolerance.
+    const exact = escaped + (i === words.length - 1 ? '*' : '');
+    return /^\p{L}{4,}$/u.test(word) ? `(${exact} | %${escaped}%)` : exact;
+  });
+  return `(${terms.join(' ')})`;
+}
+
 const client = createClient();
 
 async function connect() {
@@ -13,7 +28,7 @@ export async function searchCourses(q, sub, term, gen, cmin, cmax, levels, sched
   await connect();
   try {
     const formattedLevels = levels.map(level => `@courseCode:[${parseInt(level)*100}, ${parseInt(level)*100 + 9999}]`)
-    const res = await client.ft.search('idx:classes', `${q}${q.trim().length > 0 ? "*" : ""}${sub[0].length > 0 ? ` @subjectCode:{${sub.join("|")}}` : ""}${term[0].length > 0 ? ` @terms:{${term.join("|")}}` : ""}${gen[0].length > 0 ? gen.map((g) => ` @gened:{${g}}`) : ""} (@creditMin:[${cmin}, ${cmax}] | @creditMax:[${cmin}, ${cmax}])${levels[0].length > 0 ? ` (${formattedLevels.join(" | ")})` : " @courseCode:[0, 0]"}${sched[0].length > 0 ? ` @sched:{${sched.join("|")}}` : " @sched:{}"}`, {
+    const res = await client.ft.search('idx:classes', `${buildSearchText(q)}${sub[0].length > 0 ? ` @subjectCode:{${sub.join("|")}}` : ""}${term[0].length > 0 ? ` @terms:{${term.join("|")}}` : ""}${gen[0].length > 0 ? gen.map((g) => ` @gened:{${g}}`) : ""} (@creditMin:[${cmin}, ${cmax}] | @creditMax:[${cmin}, ${cmax}])${levels[0].length > 0 ? ` (${formattedLevels.join(" | ")})` : " @courseCode:[0, 0]"}${sched[0].length > 0 ? ` @sched:{${sched.join("|")}}` : " @sched:{}"}`, {
       LIMIT: { size: size, from: 0 }
     });
     return res;
