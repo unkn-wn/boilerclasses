@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import TimeGrid from './TimeGrid';
 import CalendarCourse from './CalendarCourse';
 import { DAYS } from './utils/constants';
-import { useToast } from '@chakra-ui/react';
+import { useToast, useDisclosure } from '@chakra-ui/react';
+import FeedbackModal from '../feedbackModal';
 
 
 import { getCourseData } from '../calendar';
@@ -18,6 +19,7 @@ export const getCourseColorIndex = (detailId, courseColorMap) => {
 
 const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCourseRemove }) => {
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [allLectures, setAllLectures] = useState([]);
   const [displayedLectures, setDisplayedLectures] = useState([]);
@@ -105,14 +107,12 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
               <span className="font-bold text-primary mb-1">
                 Something went wrong, please let us know!
               </span>
-              <a
-                href="https://forms.gle/jtpLPbXm4X4RFoNh6"
+              <button
+                onClick={onOpen}
                 className="text-primary underline hover:text-gray-200 text-center"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Report Issue
-              </a>
+              </button>
             </div>
           ),
           duration: 2000,
@@ -272,6 +272,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
           courseColorMap={courseColorMap}
         />
       </div>
+      <FeedbackModal isOpen={isOpen} onClose={onClose} />
     </div>
 
   );
