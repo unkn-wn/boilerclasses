@@ -28,7 +28,7 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    ```
    sh fetch_snapshot.sh
    ```
-   This downloads the data snapshot pinned in `data.lock` (the same data production serves) to `server/classes_out.json` and verifies its hash.
+   This downloads the data snapshot pinned in `data.lock` (the same data production serves) to `server/classes_out.json` and verifies its hash. It also downloads the schedule's section times pinned in `sections.lock` to `server/sections_out.json`.
 3. Now, you want to spawn a Redis instance at the port `6379`. To do this, run the following command:
    ```
    redis-server --daemonize yes
@@ -58,6 +58,7 @@ Data is refreshed by the **Data Pipeline** GitHub Action (`.github/workflows/dat
 2. `grades.py` converts the newest 5 semesters of grade CSVs from [BoilerGrades](https://github.com/eduxstad/boiler-grades) and uploads any that changed.
 3. `harmonize.py` combines everything on S3 into one JSON file and writes `src/data/terms.json` for the frontend.
 4. If the result changed, it's uploaded as `snapshots/<sha256>.json`, the hash is committed to `data.lock`, and the site is deployed. Only the snapshots from the last 10 `data.lock` commits are kept.
+5. `scrape_sections.py` scrapes each term's section meeting times for the schedule. The current term's file is pinned the same way, in `sections.lock`, and served from memory by `/api/sections`.
 
 To roll back data, revert the `data.lock` commit. `push.py` loads `classes_out.json` into Redis when the container starts.
 

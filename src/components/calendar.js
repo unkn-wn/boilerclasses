@@ -7,8 +7,9 @@ import {
     PopoverBody, PopoverArrow, Spinner, Tooltip, Portal
 } from '@chakra-ui/react';
 import { FiClock, FiMapPin, FiUser, FiCalendar, FiShare, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { convertNumberToTime, convertTo12HourFormat, calculateEndTime } from '@/lib/timeUtils';
-import { CURRENT_SEMESTER, CURRENT_SEMESTER_CODE } from '@/hooks/useSearchFilters';
+import { convertNumberToTime } from '@/lib/timeUtils';
+import { CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { getSections, processLectureData } from '@/lib/sections';
 import { isIndianapolisRoom } from './schedule/utils/indianapolisUtils';
 
 // Get the color for different meeting types - more subtle approach
@@ -31,14 +32,14 @@ const getMeetingTypeIndicator = (type) => {
 
 // Memoized Meeting component with enhanced visual design
 const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
-    const meetingTypeIndicator = getMeetingTypeIndicator(meeting.Type);
-    const isLecture = meeting.Type === "Lecture";
+    const meetingTypeIndicator = getMeetingTypeIndicator(meeting.type);
+    const isLecture = meeting.type === "Lecture";
     const isIndy = isIndianapolisRoom(meeting.room);
 
     // Function to copy meeting details to clipboard
     const shareMeeting = (e) => {
         e.stopPropagation();
-        const details = `${meeting.Type}: ${meeting.startTime}-${meeting.endTime} at ${meeting.room}\nInstructor: ${meeting.Instructors[0]?.Name || 'TBA'}`;
+        const details = `${meeting.type}: ${meeting.startTime}-${meeting.endTime} at ${meeting.room}\nInstructor: ${meeting.instructors[0] || 'TBA'}`;
         navigator.clipboard.writeText(details);
     };
 
@@ -56,7 +57,7 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                         <div className="flex justify-between items-center mb-1">
                             <div className="flex items-center gap-2">
                                 <span className={`font-medium text-sm ${isLecture ? 'text-primary' : 'text-secondary'}`}>
-                                    {translateType(meeting.Type)}
+                                    {translateType(meeting.type)}
                                 </span>
                                 {isIndy && (
                                     <div className='px-1 rounded font-bold bg-background-tertiary text-secondary text-[10px]'>
@@ -69,7 +70,7 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                             </span>
                         </div>
                         <p className="text-tertiary text-xs truncate mt-0.5">
-                            {meeting.Instructors[0]?.Name || 'TBA'}
+                            {meeting.instructors[0] || 'TBA'}
                         </p>
                     </div>
                 </div>
@@ -86,8 +87,8 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                     <PopoverArrow />
                     <PopoverHeader className="flex justify-between items-center">
                         <div className="flex items-center">
-                            <span className={`w-3 h-3 rounded-full mr-2 ${getTypeColor(meeting.Type)}`}></span>
-                            <span className="font-semibold">{meeting.Type}</span>
+                            <span className={`w-3 h-3 rounded-full mr-2 ${getTypeColor(meeting.type)}`}></span>
+                            <span className="font-semibold">{meeting.type}</span>
                         </div>
                         <div className="text-sm text-tertiary">CRN: {meeting.crn}</div>
                     </PopoverHeader>
@@ -98,7 +99,7 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                                 <FiClock className="text-blue-500 mt-1 flex-shrink-0" />
                                 <div>
                                     <div className="font-medium">{meeting.startTime} - {meeting.endTime}</div>
-                                    <div className="text-sm text-tertiary">{meeting.StartDate} to {meeting.EndDate}</div>
+                                    <div className="text-sm text-tertiary">{meeting.startDate} to {meeting.endDate}</div>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
@@ -127,7 +128,7 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                                 <FiUser className="text-green-500 mt-1 flex-shrink-0" />
                                 <div>
                                     <div className="font-medium">Instructor</div>
-                                    <div>{meeting.Instructors.map(i => i.Name).join(", ") || 'TBA'}</div>
+                                    <div>{meeting.instructors.join(", ") || 'TBA'}</div>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +137,7 @@ const MeetingDisplay = memo(({ meeting, isHighlighted, onHover }) => {
                         <div className="pt-2 flex justify-between items-center">
                             <div className="flex items-center gap-2">
                                 <FiCalendar className="text-purple-500" />
-                                <span className="font-medium">{meeting.days}</span>
+                                <span className="font-medium">{meeting.day.join(", ")}</span>
                             </div>
 
                             <Tooltip label="Copy details" placement="top">
@@ -371,9 +372,9 @@ const filterMeetingsByLocation = (meetings, filterType) => {
 // Main calendar content component - only rendered when visible
 const CalendarContent = () => {
     const { courseData } = useDetailContext();
-    const { subjectCode, courseCode, title, detailId } = courseData;
+    const { detailId } = courseData;
 
-    const [calendarData, setCalendarData] = useState(null);
+    const [lectures, setLectures] = useState(null);
     const [wait, setWait] = useState(true);
     const [hoveredCrn, setHoveredCrn] = useState(null);
     const [locationFilter, setLocationFilter] = useState('both');
@@ -388,8 +389,8 @@ const CalendarContent = () => {
 
         const fetchCourseData = async () => {
             try {
-                const data = await getCourseData(subjectCode, courseCode, title);
-                setCalendarData(data);
+                const sections = await getSections(detailId);
+                setLectures(processLectureData([sections], [courseData]));
             } catch (error) {
                 console.error("Error fetching calendar data:", error);
             } finally {
@@ -398,21 +399,22 @@ const CalendarContent = () => {
         };
 
         fetchCourseData();
-    }, [subjectCode, courseCode, title]);
+    }, [detailId]);
 
-    // Process meeting data once when calendar data changes
+    // Group meetings by weekday once the sections load
     const processedDays = useMemo(() => {
-        if (!calendarData?.Classes?.[0]?.Sections) return null;
+        if (!lectures?.length) return null;
 
-        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
         const processedDays = {};
-
-        days.forEach(day => {
-            processedDays[day] = getMeetingsForDay(day, calendarData, detailId);
+        ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].forEach(day => {
+            processedDays[day] = lectures
+                .filter(lecture => lecture.day.includes(day.slice(0, 3)))
+                .map(lecture => ({ ...lecture, endTime: convertNumberToTime(lecture.end) }))
+                .sort((a, b) => a.start - b.start);
         });
 
         return processedDays;
-    }, [calendarData, detailId]);
+    }, [lectures]);
 
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -507,122 +509,9 @@ const CalendarContent = () => {
     );
 };
 
-// Helper function to get meetings for a specific day
-// Moved outside component to prevent recreation on each render
-const getMeetingsForDay = (day, calendarData, detailId) => {
-    if (!calendarData?.Classes) return [];
-
-    const meetings = [];
-    calendarData.Classes.forEach(course => {
-        course.Sections.forEach(section => {
-            section.Meetings.forEach(meeting => {
-                if (meeting.DaysOfWeek.includes(day)) {
-                    const startTime = meeting.StartTime.split('.')[0];
-                    const duration = meeting.Duration.replace('PT', '');
-                    const end = calculateEndTime(startTime, duration);
-                    const endTime = convertNumberToTime(end);
-
-                    meetings.push({
-                        ...meeting,
-                        sectionType: section.Type,
-                        crn: section.Crn,
-                        room: `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`,
-                        startTime: convertTo12HourFormat(meeting.StartTime.split('.')[0]),
-                        endTime,
-                        days: meeting.DaysOfWeek,
-                        detailId,
-                    });
-                }
-            });
-        });
-    });
-
-    return meetings.sort((a, b) => {
-        const aTime = a.StartTime.split(':');
-        const bTime = b.StartTime.split(':');
-        return (parseInt(aTime[0]) * 60 + parseInt(aTime[1])) -
-            (parseInt(bTime[0]) * 60 + parseInt(bTime[1]));
-    });
-};
-
 // Main exported component - now using lazy loading
 const Calendar = () => {
     return <LazyCalendar />;
-};
-
-// API function moved outside of component to avoid recreation
-export const getCourseData = async (subjectCode, courseCode, title) => {
-    try {
-        // BANDAID FIX #1: Hardcode STAT 416 and STAT 519
-        if (subjectCode === 'STAT') {
-            if (courseCode === 41600 || courseCode === 51900) {
-                subjectCode = 'MA';
-            }
-        }
-
-        if (title.includes("'")) {
-            title = title.replace(/'/g, "''");
-        }
-
-        const baseUrl = "https://api.purdue.io/odata/Courses?$expand=Classes($filter=Term/Code eq '" +
-            CURRENT_SEMESTER_CODE + "';$expand=Sections($expand=Meetings($expand=Instructors,Room($expand=Building))))" +
-            "&$filter=Subject/Abbreviation eq '" + subjectCode +
-            "' and Number eq '" + courseCode + "'";
-
-        const url = baseUrl + " and contains(Title, '" + encodeURIComponent(title) + "')";
-        // console.log(url)
-
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // BANDAID FIX #2: Filter out courses with the same title
-        if (data.value.length > 1) {
-            console.warn('Multiple courses found with the same code:', data.value);
-            data.value = data.value.filter(course => course.Title === title);
-        }
-
-        const result = data.value[0];
-
-        // if the title-matched record has no classes (course was renamed),
-        // retry without the title filter and pick the record that has classes.
-        if (result && (!result.Classes || result.Classes.length === 0)) {
-            const fallbackResponse = await fetch(baseUrl);
-            if (fallbackResponse.ok) {
-                const fallbackData = await fallbackResponse.json();
-                const withClasses = fallbackData.value.filter(c => c.Classes?.length > 0);
-                if (withClasses.length === 1) return withClasses[0];
-
-                // if multiple records with multiple classes
-                // pray
-                // possible rename - get most similar title
-                if (withClasses.length > 1) {
-                    const tokenize = (s) => new Set(s.toLowerCase().split(/\s+/).filter(Boolean));
-                    const originalWords = tokenize(title);
-                    let best = withClasses[0], bestScore = -1;
-                    for (const candidate of withClasses) {
-                        const candidateWords = tokenize(candidate.Title);
-                        const intersection = [...originalWords].filter(w => candidateWords.has(w)).length;
-                        const union = new Set([...originalWords, ...candidateWords]).size;
-                        const score = union > 0 ? intersection / union : 0;
-                        if (score > bestScore) {
-                            bestScore = score;
-                            best = candidate;
-                        }
-                    }
-                    return best;
-                }
-            }
-        }
-
-        return result;
-    } catch (e) {
-        console.error('Error fetching course data:', e);
-        return null;
-    }
 };
 
 // Helper function for type translation
