@@ -92,7 +92,6 @@ def term_code(term):
 # combining scraped JSONs into one file
 out = {}
 semesters = []
-all_classes = []
 
 for file_name in sorted(os.listdir(args.folder)):
     path = args.folder + file_name
@@ -109,58 +108,33 @@ semesters.sort(key=lambda data: term_key(data[0]["term"]))
 all_terms = [data[0]["term"] for data in semesters]
 latest_sem = all_terms[-1]
 
-for data in semesters:
-    for class_data in data:
-        all_classes.append(
-            class_data["subjectCode"]
-            + " "
-            + class_data["courseCode"]
-            + ": "
-            + ''.join(e for e in class_data["title"] if e.isalnum())
-        )
-
-all_classes = list(set(all_classes))
-all_classes.sort()
+# Group once in semester order rather than rescan all records per course.
+# Preserve the existing punctuation-insensitive title identity and sort order.
+grouped = {}
+for semester in semesters:
+    for course in semester:
+        title = ''.join(char for char in course["title"] if char.isalnum())
+        identity = f'{course["subjectCode"]} {course["courseCode"]}: {title}'
+        grouped.setdefault(identity, []).append(course)
 
 print("syncing up classes.....")
-for class_id in tqdm(all_classes):
-    s, c = class_id.split(": ")[0].split(" ")
-    t = ": ".join(class_id.split(": ")[1:])
-    instances = []
-    class_data = {}
-    class_data["terms"] = []
-    class_data["instructor"] = {}
-    class_data["crn"] = []
-    class_data["sched"] = []
-    for semester in semesters:
-        for class_sem in semester:
-            if (
-                class_sem["subjectCode"] == s
-                and class_sem["courseCode"] == c
-                and ''.join(e for e in class_sem["title"] if e.isalnum()) == t
-            ):
-                instances.append(class_sem)
-                class_data["crn"].extend(class_sem["crn"])
-                if "Distance Learning" in class_sem["sched"]:
-                    if class_sem["term"] == latest_sem:
-                        class_data["sched"].extend(class_sem["sched"])
-                else:
-                    class_data["sched"].extend(class_sem["sched"])
-                class_data["terms"].append(class_sem["term"])
-
-                # formatting instructor names to only First Last
-                instrs = []
-                for instr in class_sem["instructor"]:
-                    instrs.append(first_last(instr))
-                instrs = [x.replace("TBA TBA", "TBA") for x in instrs]
-                class_data["instructor"][class_sem["term"]] = instrs
-
-                if "<a href=" not in class_sem["description"]:
-                    class_data["description"] = class_sem["description"]
-
-                # newest scraped term wins; None means it has no (parseable) prereqs
-                if "prereqs" in class_sem:
-                    class_data["prereqs"] = class_sem["prereqs"]
+for class_id in tqdm(sorted(grouped)):
+    instances = grouped[class_id]
+    s, c = instances[0]["subjectCode"], instances[0]["courseCode"]
+    class_data = {"terms": [], "instructor": {}, "crn": [], "sched": []}
+    for class_sem in instances:
+        class_data["crn"].extend(class_sem["crn"])
+        if "Distance Learning" not in class_sem["sched"] or class_sem["term"] == latest_sem:
+            class_data["sched"].extend(class_sem["sched"])
+        class_data["terms"].append(class_sem["term"])
+        class_data["instructor"][class_sem["term"]] = [
+            first_last(name) for name in class_sem["instructor"]
+        ]
+        if "<a href=" not in class_sem["description"]:
+            class_data["description"] = class_sem["description"]
+        # Newest scraped term wins, including explicit null prerequisites.
+        if "prereqs" in class_sem:
+            class_data["prereqs"] = class_sem["prereqs"]
 
     class_data["title"] = instances[-1]["title"]
     class_data["subjectCode"] = s
@@ -179,9 +153,7 @@ for class_id in tqdm(all_classes):
             class_data["credits"][1] = max(instance["credits"][1], class_data["credits"][1])
     out[class_id] = class_data
 
-course_data = []
-for x in out:
-    course_data.append(out[x])
+course_data = list(out.values())
 
 for i in range(len(course_data)):
     course_data[i]["gened"] = []
@@ -189,8 +161,15 @@ for i in range(len(course_data)):
         course_data[i]["gpa"] = {}
 
 # adding grade information
+grade_index = {}
+for i, course in enumerate(course_data):
+    for crn in course["crn"]:
+        grade_index.setdefault((course["subjectCode"], course["courseCode"], crn), []).append(i)
 
-
+grade_fields = (
+    "totalAplus", "totalA", "totalAminus", "totalBplus", "totalB", "totalBminus",
+    "totalCplus", "totalC", "totalCminus", "totalDplus", "totalD", "totalDminus", "totalF",
+)
 print("adding grades....")
 for file_name in tqdm(sorted(os.listdir(args.gradefolder))):
     if "json" not in file_name:
@@ -203,7 +182,6 @@ for file_name in tqdm(sorted(os.listdir(args.gradefolder))):
     grade_file = open(args.gradefolder + file_name)
     grade_data = json.load(grade_file)
     grade_file.close()
-    # count = 0
     for grade in grade_data:
         if grade["subject"] != "":
             currSubjectCode = grade["subject"]
@@ -222,62 +200,14 @@ for file_name in tqdm(sorted(os.listdir(args.gradefolder))):
         # honors rows share CRNs with regular sections, so only attach them to honors courses
         # titles are truncated to 30 chars, so the suffix shows up as -Honors, -Honor, - Honors, -Hnrs, etc.
         isHonors = re.search(r"[-–]\s*(Honors?|Honrs?|Hnrs)\s*$", currTitle, re.I)
-        # found = False
-        for i in range(len(course_data)):
-            if (
-                int(grade["CRN"]) in course_data[i]["crn"]
-                and currSubjectCode == course_data[i]["subjectCode"]
-                and currCourseCode == course_data[i]["courseCode"]
-                and (not isHonors or re.search(r"\b(Honors?|Honrs?|Hnrs)\b", course_data[i]["title"], re.I))
-            ):
-                found = True
-                if currSemester in course_data[i]["gpa"]:
-                    course_data[i]["gpa"][currSemester].append(
-                        [
-                            grade["instructor"],
-                            [
-                                grade["totalAplus"],
-                                grade["totalA"],
-                                grade["totalAminus"],
-                                grade["totalBplus"],
-                                grade["totalB"],
-                                grade["totalBminus"],
-                                grade["totalCplus"],
-                                grade["totalC"],
-                                grade["totalCminus"],
-                                grade["totalDplus"],
-                                grade["totalD"],
-                                grade["totalDminus"],
-                                grade["totalF"],
-                                float(grade["avg gpa"]),
-                            ],
-                        ]
-                    )
-                else:
-                    course_data[i]["gpa"][currSemester] = [
-                        [
-                            grade["instructor"],
-                            [
-                                grade["totalAplus"],
-                                grade["totalA"],
-                                grade["totalAminus"],
-                                grade["totalBplus"],
-                                grade["totalB"],
-                                grade["totalBminus"],
-                                grade["totalCplus"],
-                                grade["totalC"],
-                                grade["totalCminus"],
-                                grade["totalDplus"],
-                                grade["totalD"],
-                                grade["totalDminus"],
-                                grade["totalF"],
-                                float(grade["avg gpa"]),
-                            ],
-                        ]
-                    ]
-        # if found:
-        #   count += 1
-    # print(count, len(grade_data))
+        for i in grade_index.get((currSubjectCode, currCourseCode, int(grade["CRN"])), []):
+            course = course_data[i]
+            if isHonors and not re.search(r"\b(Honors?|Honrs?|Hnrs)\b", course["title"], re.I):
+                continue
+            counts = [grade[field] for field in grade_fields]
+            course["gpa"].setdefault(currSemester, []).append(
+                [grade["instructor"], counts + [float(grade["avg gpa"])]]
+            )
 print("syncing grades....")
 for i in range(len(course_data)):
     gpa_data = {}
