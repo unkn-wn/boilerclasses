@@ -23,14 +23,20 @@ SPECIAL_SCHEDULES = {"Laboratory", "Laboratory Preparation", "Recitation", "Prac
 def make_session():
     session = requests.Session()
     session.headers["User-Agent"] = "boilerclasses-scraper (+https://www.boilerclasses.com)"
-    retry = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
+    # The only POST is term/search, an idempotent search-session initializer.
+    # urllib3 otherwise excludes POST from retries after dropped connections.
+    retry = Retry(total=3, backoff_factor=1, allowed_methods={"GET", "POST"},
+                  status_forcelist=[429, 500, 502, 503, 504])
     session.mount("https://", HTTPAdapter(max_retries=retry))
     return session
 
 
 def request(session, endpoint, **kwargs):
-    response = session.request(kwargs.pop("method", "GET"), BASE_URL + endpoint, timeout=30, **kwargs)
-    response.raise_for_status()
+    try:
+        response = session.request(kwargs.pop("method", "GET"), BASE_URL + endpoint, timeout=30, **kwargs)
+        response.raise_for_status()
+    except requests.RequestException as error:
+        raise requests.RequestException(f"{endpoint} {kwargs.get('params', {})}: {error}") from error
     if not response.url.startswith(BASE_URL):
         raise ValueError(f"Banner redirected {endpoint} to {response.url}")
     return response
@@ -107,14 +113,26 @@ def text_content(fragment):
     return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", fragment)).split())
 
 
-def course_description(fragment):
+def course_description(fragment, catalog=None):
     # Retain catalog text rather than section-specific information.
     fragment = re.split(r"<b>\s*Section information text:\s*</b>", fragment, flags=re.I)[0]
     text = text_content(fragment)
     text = re.sub(r"^Description:\s*", "", text, flags=re.I)
     match = re.match(r"Credit Hours:\s*(.*?)\.(?:\s+|$)(.*)", text, re.I)
     if not match:
-        raise ValueError(f"Missing or invalid catalog description: {text[:160]}")
+        # Some real Banner descriptions have no credit header (including
+        # malformed source text). Read credits from the separate catalog pane;
+        # preserve its description verbatim rather than inventing a replacement.
+        if catalog is None or not re.search(r'<section\b[^>]*aria-labelledby=["\']courseDescription["\']', fragment, re.I):
+            raise ValueError(f"Missing or invalid catalog description: {text[:160]}")
+        hours = re.search(r'<span\b[^>]*class=["\']credit-hours-direction["\'][^>]*>(.*?)</span>', catalog, re.S | re.I)
+        if not hours:
+            raise ValueError("Missing catalog credit hours")
+        value = text_content(hours[1])
+        if not re.fullmatch(r'\d+(?:\.\d+)?(?:\s+(?:to|or|-)\s*\d+(?:\.\d+)?)*', value, re.I):
+            raise ValueError(f"Invalid catalog credit hours: {value}")
+        numbers = [int(float(n)) for n in re.findall(r'\d+(?:\.\d+)?', value)]
+        return text, [min(numbers), max(numbers)]
     # Preserve integer catalog credit ranges; labs may have zero section hours.
     credit_range = re.match(r"\d+(?:\.\d+)?(?:\s+(?:to|or)\s+\d+(?:\.\d+)?)*", match[1], re.I)
     if not credit_range:
@@ -164,10 +182,19 @@ def scrape_subject(term, name, subject):
             key = (course["subjectCode"], course["courseCode"])
             if key not in details:
                 params = {"term": term, "courseReferenceNumber": course["crn"][0]}
-                description, credits = course_description(request(
-                    session, "searchResults/getCourseDescription", params=params).text)
-                requirements = prereqs.extract_banner(request(
-                    session, "searchResults/getSectionPrerequisites", params=params).text)
+                context = f"{name} {key[0]} {key[1]} CRN {params['courseReferenceNumber']}"
+                try:
+                    fragment = request(session, "searchResults/getCourseDescription", params=params).text
+                    try:
+                        description, credits = course_description(fragment)
+                    except ValueError:
+                        catalog = request(session, "searchResults/getSectionCatalogDetails", params=params).text
+                        description, credits = course_description(fragment, catalog)
+                        print(f"Warning: {context}: description has no credit header; using catalog credits, preserving source text", file=sys.stderr)
+                    requirements = prereqs.extract_banner(request(
+                        session, "searchResults/getSectionPrerequisites", params=params).text)
+                except (requests.RequestException, ValueError) as error:
+                    raise ValueError(f"{context}: {error}") from error
                 details[key] = description, credits, requirements
             course["description"], course["credits"], course["prereqs"] = details[key]
         validate_courses(courses, kind="scraped", source=f"Banner {subject}", allow_empty=True, expected_term=name)

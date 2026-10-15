@@ -1,7 +1,12 @@
 import sys
+import socket
+import threading
 import unittest
+from contextlib import contextmanager
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from unittest.mock import Mock, patch
+import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import prereqs
@@ -22,7 +27,69 @@ def response(value):
     return result
 
 
+@contextmanager
+def dropping_server(failures):
+    class Handler(BaseHTTPRequestHandler):
+        attempts = 0
+
+        def do_POST(self):
+            self.rfile.read(int(self.headers.get('Content-Length', 0)))
+            type(self).attempts += 1
+            if self.attempts <= failures:
+                self.connection.shutdown(socket.SHUT_RDWR)
+                self.connection.close()
+                return
+            self.send_response(200)
+            self.send_header('Content-Length', '2')
+            self.end_headers()
+            self.wfile.write(b'{}')
+
+        do_GET = do_POST
+
+        def log_message(self, *args):
+            pass
+
+    server = HTTPServer(('127.0.0.1', 0), Handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        yield f'http://127.0.0.1:{server.server_port}/', Handler
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join()
+
+
 class ScrapeTests(unittest.TestCase):
+    def test_dropped_connections_retry_get_and_search_post(self):
+        for method in ('GET', 'POST'):
+            with self.subTest(method=method), dropping_server(1) as (url, handler), scrape.make_session() as session:
+                adapter = session.get_adapter('https://')
+                adapter.max_retries.backoff_factor = 0
+                session.mount('http://', adapter)
+                with patch.object(scrape, 'BASE_URL', url):
+                    self.assertEqual(scrape.request(session, 'term/search', method=method, data={'term': '202720'}).json(), {})
+                self.assertEqual(handler.attempts, 2)
+
+    def test_persistent_disconnect_stops_after_retry_budget(self):
+        with dropping_server(10) as (url, handler), scrape.make_session() as session:
+            adapter = session.get_adapter('https://')
+            adapter.max_retries.backoff_factor = 0
+            session.mount('http://', adapter)
+            with patch.object(scrape, 'BASE_URL', url), self.assertRaisesRegex(requests.RequestException, 'term/search'):
+                scrape.request(session, 'term/search', method='POST', data={'term': '202720'})
+            self.assertEqual(handler.attempts, 4)
+
+    def test_real_cce_description_uses_catalog_credits(self):
+        fixtures = Path(__file__).parent / 'fixtures'
+        fragment = (fixtures / 'banner_cce320_description.html').read_text()
+        catalog = (fixtures / 'banner_cce320_catalog.html').read_text()
+        self.assertEqual(scrape.course_description(fragment, catalog), ('1.0 | LAB 3 1.0 | 1.0 | DIS 0 1.0 |', [1, 1]))
+        with self.assertRaises(ValueError):
+            scrape.course_description('<html>Page not found</html>', catalog)
+        with self.assertRaisesRegex(ValueError, 'Missing catalog credit'):
+            scrape.course_description(fragment, '<html>Page not found</html>')
+
     def test_lookup_uses_page_numbers(self):
         with patch.object(scrape, "request", side_effect=[response([{"code": "CS"}]), response([{"code": "MA"}]), response([])]) as request:
             self.assertEqual([x["code"] for x in scrape.lookup(Mock(), "get_subject", term="202720")], ["CS", "MA"])
