@@ -87,15 +87,14 @@ export const DetailProvider = ({ children, courseData, initialSemester }) => {
 
   // Load RMP ratings separately to not block initial rendering
   useEffect(() => {
-    if (!courseData || !initializationComplete) return;
-
-    const loadRatings = async () => {
-      const ratings = await loadRatingsForProfs(courseData);
-      setCurRMP(ratings);
-    };
-
-    loadRatings();
-  }, [courseData, initializationComplete]);
+    if (!courseData) return;
+    let active = true;
+    setCurRMP({});
+    loadRatingsForProfs(courseData, ratings => {
+      if (active) setCurRMP(ratings);
+    });
+    return () => { active = false; };
+  }, [courseData]);
 
   // Function to refresh the graph when instructors change - memoize to prevent recreations
   const refreshGraph = useCallback((instructors) => {
