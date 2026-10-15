@@ -9,7 +9,8 @@ import { Spinner, Tooltip } from '@chakra-ui/react'
 import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-icons/io";
 
 // Group internal imports
-import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { useSearchFilters } from '@/hooks/useSearchFilters';
+import { SCHEDULE_SEMESTERS, semesterStorageKey, migrateScheduleStorage } from '@/lib/terms';
 import { genedsOptions, labels, sanitizeDescription } from '@/lib/utils';
 import CourseSearch from '@/components/schedule/courseSearch';
 import ScheduleCalendar from '@/components/schedule/schedule';
@@ -34,116 +35,36 @@ const restoreFullCourse = async (course, signal) => {
   return { ...course, ...full };
 };
 
+const SEMESTER_STORAGE_KEY = 'scheduleSemester';
+
 const Schedule = () => {
-  const {
-    updateFilter,
-    courses,
-    filters,
-  } = useSearchFilters();
+  const searchFilters = useSearchFilters();
 
-  const [selectedCourse, setSelectedCourse] = useState(null);
-  const [gpaGraph, setGpaGraph] = useState({
-    labels,
-    datasets: []
-  });
+  // null until mounted: the page is prerendered without localStorage, so the saved term
+  // (and every per-term planner initializer) is only read on the client
+  const [semester, setSemester] = useState(null);
 
-  const [pinCourses, setPinCourses] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('pinnedCourses');
-      return saved ? JSON.parse(saved).filter(hasFullCourseData) : [];
-    }
-    return [];
-  });
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  // loads the previously selected course from localStorage when the page loads
   useEffect(() => {
-    const controller = new AbortController();
-    const savedCourse = localStorage.getItem('selectedCourse');
-    const savedPins = JSON.parse(localStorage.getItem('pinnedCourses') || '[]');
-    if (savedCourse) {
-      restoreFullCourse(JSON.parse(savedCourse), controller.signal)
-        .then(course => { if (!controller.signal.aborted) setSelectedCourse(course); })
-        .catch(error => { if (!controller.signal.aborted) console.error(error); });
+    const newest = SCHEDULE_SEMESTERS[SCHEDULE_SEMESTERS.length - 1];
+    let saved = null;
+    try {
+      migrateScheduleStorage();
+      saved = localStorage.getItem(SEMESTER_STORAGE_KEY);
+    } catch (error) {
+      console.error('Error loading schedule semester:', error);
     }
-    savedPins.filter(course => !hasFullCourseData(course)).forEach(course => {
-      restoreFullCourse(course, controller.signal)
-        .then(full => {
-          if (controller.signal.aborted) return;
-          setPinCourses(previous => previous.some(item => item.detailId === full.detailId)
-            ? previous : [...previous, full]);
-        })
-        .catch(error => { if (!controller.signal.aborted) console.error(error); });
-    });
-    return () => controller.abort();
+    // defaults to the newest term, which is what most people are planning for
+    setSemester(SCHEDULE_SEMESTERS.find(option => option.code === saved) ?? newest);
   }, []);
 
-  // saves the selected course to localStorage whenever it changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (selectedCourse) {
-        localStorage.setItem('selectedCourse', JSON.stringify(selectedCourse));
-      } else {
-        localStorage.removeItem('selectedCourse');
-      }
+    if (!semester) return;
+    try {
+      localStorage.setItem(SEMESTER_STORAGE_KEY, semester.code);
+    } catch (error) {
+      console.error('Error saving schedule semester:', error);
     }
-  }, [selectedCourse]);
-
-  // keeps the pinned courses synced with localStorage
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // remove initialPin before saving
-      const coursesToSave = pinCourses.map(({ initialPin, ...course }) => course);
-      localStorage.setItem('pinnedCourses', JSON.stringify(coursesToSave));
-    }
-  }, [pinCourses]);
-
-  // processes the selected course data and generates the grade distribution graph
-  const graphData = useMemo(() => {
-    if (!selectedCourse) return null;
-
-    sanitizeDescription(selectedCourse);
-    const allProfs = collectAllProfessors(selectedCourse.instructor);
-    const { grades } = calculateGradesAndGPA(allProfs, selectedCourse.gpa);
-    return {
-      labels,
-      datasets: averageAllData(grades),
-    };
-  }, [selectedCourse]);
-
-  // updates the graph and adds a brief highlight animation to the course details section
-  useEffect(() => {
-    if (!graphData) return;
-    setGpaGraph(graphData);
-
-    // Highlight course details section
-    const highlightCourseDiv = async () => {
-      const courseDiv = document.getElementById("course_details");
-      courseDiv.classList.add("ring-4", "ring-yellow-500");
-      await new Promise(resolve => setTimeout(resolve, 500));
-      courseDiv.classList.remove("ring-4", "ring-yellow-500");
-    };
-
-    highlightCourseDiv();
-  }, [graphData]);
-
-  // handles when a user selects a course from the search dropdown
-  const handleOnSelect = (course) => {
-    if (!course) return;
-    updateFilter('searchTerm', '');
-    setSelectedCourse(course.value);
-    localStorage.setItem('selectedCourse', JSON.stringify(course.value));
-  };
-
-  // removes a course from the pinned courses list and clears selection if it was selected
-  const handleCourseRemove = (detailId) => {
-    setPinCourses(prevCourses => prevCourses.filter(course => course.detailId !== detailId));
-    if (selectedCourse?.detailId === detailId) {
-      setSelectedCourse(null);
-      localStorage.removeItem('selectedCourse');
-    }
-  };
+  }, [semester]);
 
   return (
     <>
@@ -193,11 +114,153 @@ const Schedule = () => {
         Use the Scheduling Assistant on Desktop for the best experience!
       </div>
 
+      {/* remount per term so every piece of schedule state reloads from that term's storage */}
+      {semester && (
+        <SchedulePlanner
+          key={semester.code}
+          semester={semester}
+          setSemester={setSemester}
+          {...searchFilters}
+        />
+      )}
+      <Footer />
+    </>
+  );
+};
+
+const SchedulePlanner = ({ semester, setSemester, updateFilter, courses, filters }) => {
+  const pinnedKey = semesterStorageKey('pinnedCourses', semester.code);
+  const selectedKey = semesterStorageKey('selectedCourse', semester.code);
+
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [gpaGraph, setGpaGraph] = useState({
+    labels,
+    datasets: []
+  });
+
+  const [pinCourses, setPinCourses] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(pinnedKey);
+      return saved ? JSON.parse(saved).filter(hasFullCourseData) : [];
+    }
+    return [];
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // loads the previously selected course from localStorage when the page loads
+  useEffect(() => {
+    const controller = new AbortController();
+    const savedCourse = localStorage.getItem(selectedKey);
+    const savedPins = JSON.parse(localStorage.getItem(pinnedKey) || '[]');
+    if (savedCourse) {
+      restoreFullCourse(JSON.parse(savedCourse), controller.signal)
+        .then(course => { if (!controller.signal.aborted) setSelectedCourse(course); })
+        .catch(error => { if (!controller.signal.aborted) console.error(error); });
+    }
+    savedPins.filter(course => !hasFullCourseData(course)).forEach(course => {
+      restoreFullCourse(course, controller.signal)
+        .then(full => {
+          if (controller.signal.aborted) return;
+          setPinCourses(previous => previous.some(item => item.detailId === full.detailId)
+            ? previous : [...previous, full]);
+        })
+        .catch(error => { if (!controller.signal.aborted) console.error(error); });
+    });
+    return () => controller.abort();
+  }, []);
+
+  // saves the selected course to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (selectedCourse) {
+        localStorage.setItem(selectedKey, JSON.stringify(selectedCourse));
+      } else {
+        localStorage.removeItem(selectedKey);
+      }
+    }
+  }, [selectedCourse]);
+
+  // keeps the pinned courses synced with localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // remove initialPin before saving
+      const coursesToSave = pinCourses.map(({ initialPin, ...course }) => course);
+      localStorage.setItem(pinnedKey, JSON.stringify(coursesToSave));
+    }
+  }, [pinCourses]);
+
+  // processes the selected course data and generates the grade distribution graph
+  const graphData = useMemo(() => {
+    if (!selectedCourse) return null;
+
+    sanitizeDescription(selectedCourse);
+    const allProfs = collectAllProfessors(selectedCourse.instructor);
+    const { grades } = calculateGradesAndGPA(allProfs, selectedCourse.gpa);
+    return {
+      labels,
+      datasets: averageAllData(grades),
+    };
+  }, [selectedCourse]);
+
+  // updates the graph and adds a brief highlight animation to the course details section
+  useEffect(() => {
+    if (!graphData) return;
+    setGpaGraph(graphData);
+
+    // Highlight course details section
+    const highlightCourseDiv = async () => {
+      const courseDiv = document.getElementById("course_details");
+      courseDiv.classList.add("ring-4", "ring-yellow-500");
+      await new Promise(resolve => setTimeout(resolve, 500));
+      courseDiv.classList.remove("ring-4", "ring-yellow-500");
+    };
+
+    highlightCourseDiv();
+  }, [graphData]);
+
+  // handles when a user selects a course from the search dropdown
+  const handleOnSelect = (course) => {
+    if (!course) return;
+    updateFilter('searchTerm', '');
+    setSelectedCourse(course.value);
+    localStorage.setItem(selectedKey, JSON.stringify(course.value));
+  };
+
+  // removes a course from the pinned courses list and clears selection if it was selected
+  const handleCourseRemove = (detailId) => {
+    setPinCourses(prevCourses => prevCourses.filter(course => course.detailId !== detailId));
+    if (selectedCourse?.detailId === detailId) {
+      setSelectedCourse(null);
+      localStorage.removeItem(selectedKey);
+    }
+  };
+
+  return (
+    <>
       <div id="parent" className={`flex flex-col lg:flex-row gap-10 min-h-screen bg-super container mx-auto px-4 text-primary ${inter.className}`}>
         {/* Left Side */}
         <div className='flex flex-col w-full lg:w-1/2 gap-2'>
           <div className='mx-2'>
-            <ScheduleCalendar courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} onCourseRemove={handleCourseRemove} />
+            <div className='flex flex-row flex-wrap items-center gap-2 mb-4'>
+              <span className='text-sm text-tertiary'>Planning for</span>
+              <div role='radiogroup' aria-label='Semester' className='flex flex-row rounded-full border border-[rgb(var(--background-secondary-color))] bg-background p-0.5'>
+                {SCHEDULE_SEMESTERS.map(option => (
+                  <button
+                    key={option.code}
+                    role='radio'
+                    aria-checked={option.code === semester.code}
+                    onClick={() => setSemester(option)}
+                    className={`px-3 py-1 text-sm rounded-full transition ${option.code === semester.code
+                      ? 'bg-yellow-600 text-white'
+                      : 'text-secondary hover:bg-background-secondary'}`}
+                  >
+                    {option.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <ScheduleCalendar semester={semester} courses={pinCourses} setIsLoading={setIsLoading} setSelectedCourse={setSelectedCourse} onCourseRemove={handleCourseRemove} />
           </div>
         </div>
 
@@ -206,6 +269,7 @@ const Schedule = () => {
           <div className="mb-4">
             <CourseSearch
               courses={courses}
+              semester={semester.name}
               onSelect={handleOnSelect}
               searchTerm={filters.searchTerm}
               updateFilter={updateFilter}
@@ -250,7 +314,7 @@ const Schedule = () => {
                       </a>
 
                       {/* Add Course button */}
-                      {selectedCourse.instructor[CURRENT_SEMESTER] && selectedCourse.instructor[CURRENT_SEMESTER].length > 0 ? (
+                      {selectedCourse.instructor[semester.name] && selectedCourse.instructor[semester.name].length > 0 ? (
                         pinCourses.some(course => course.detailId === selectedCourse.detailId) ? (
                           <button
                             className="flex self-end rounded-full border h-8 w-8 items-center justify-center p-0 font-bold cursor-pointer transition border-red-500 bg-red-700 hover:bg-red-900 text-white"
@@ -282,7 +346,7 @@ const Schedule = () => {
                           </button>
                         )) : (
                         <Tooltip
-                          label={`Course not offered in ${CURRENT_SEMESTER}`}
+                          label={`Course not offered in ${semester.name}`}
                           aria-label="Course availability tooltip"
                           hasArrow
                           placement="bottom"
@@ -345,8 +409,8 @@ const Schedule = () => {
                       <div className="flex flex-wrap flex-row gap-x-1 text-sm text-blue-400 font-light">
 
 
-                        {selectedCourse.instructor[CURRENT_SEMESTER] ? (
-                          selectedCourse.instructor[CURRENT_SEMESTER].map((prof, i) => (
+                        {selectedCourse.instructor[semester.name] ? (
+                          selectedCourse.instructor[semester.name].map((prof, i) => (
 
                             <span key={i}>
                               <a
@@ -359,11 +423,11 @@ const Schedule = () => {
                               >
                                 {prof}
                               </a>
-                              {i < selectedCourse.instructor[CURRENT_SEMESTER].length - 1 && ", "}
+                              {i < selectedCourse.instructor[semester.name].length - 1 && ", "}
                             </span>
                           ))
                         ) : (
-                          <p className='text-primary text-sm font-light text-left w-full'>No instructors listed for {CURRENT_SEMESTER}</p>
+                          <p className='text-primary text-sm font-light text-left w-full'>No instructors listed for {semester.name}</p>
                         )}
                       </div>
                     </div>
@@ -384,6 +448,7 @@ const Schedule = () => {
                       <p className="text-sm font-bold">GPA Avg Per Semester</p>
                       <ScheduleGpaModal
                         course={selectedCourse}
+                        semester={semester.name}
                       />
                     </div>
 
@@ -415,7 +480,6 @@ const Schedule = () => {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }
