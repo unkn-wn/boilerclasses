@@ -9,13 +9,28 @@ import {
   useToast,
 } from '@chakra-ui/react';
 
-const FEEDBACK_URL = "https://api.boilerexams.com/v3/boilerclasses/feedback";
+// Set NEXT_PUBLIC_FEEDBACK_URL to a local backend when developing; the prod API only allows boilerclasses.com origins
+const FEEDBACK_URL = process.env.NEXT_PUBLIC_FEEDBACK_URL || "https://api.boilerexams.com/v3/boilerclasses/feedback";
+// The API limits content by bytes, not characters, so accents and emoji count for more than one
+const MAX_CONTENT_BYTES = 4000;
+
+// The API answers 400s with { description }, and 429s with plain text
+const getErrorMessage = async (res) => {
+  if (res.status === 429) return "You're sending feedback too quickly, please wait a minute and try again.";
+  if (res.status === 400) {
+    const data = await res.json().catch(() => null);
+    if (data?.description) return data.description + ".";
+  }
+  return "Something went wrong, please try again.";
+};
 
 const FeedbackModal = ({ isOpen, onClose }) => {
   const toast = useToast();
   const [content, setContent] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const isTooLong = new TextEncoder().encode(content.trim()).length > MAX_CONTENT_BYTES;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +41,16 @@ const FeedbackModal = ({ isOpen, onClose }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content, email }),
       });
-      if (!res.ok) throw new Error(`Feedback failed with status ${res.status}`);
+      if (!res.ok) {
+        toast({
+          title: await getErrorMessage(res),
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top"
+        });
+        return;
+      }
 
       setContent("");
       setEmail("");
@@ -60,7 +84,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
       <ModalContent
         bg="rgb(var(--background-color))"
         color="rgb(var(--text-color))"
-        borderRadius="xl"
+        borderRadius={{ base: "none", md: "xl" }}
         boxShadow="0 25px 50px -12px rgba(0, 0, 0, 0.7)"
         mx={{ base: 0, md: 4 }}
       >
@@ -79,12 +103,17 @@ const FeedbackModal = ({ isOpen, onClose }) => {
                 id='feedback-content'
                 required
                 rows={5}
-                maxLength={4000}
+                maxLength={MAX_CONTENT_BYTES}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Include the relevant course name, or steps to reproduce if it's a bug"
                 className={inputStyles + " resize-none"}
               />
+              {isTooLong && (
+                <p className='text-red-500 text-xs'>
+                  Your feedback is too long, please shorten it.
+                </p>
+              )}
             </div>
             <div className='flex flex-col gap-1.5'>
               <label htmlFor='feedback-email' className='text-sm font-medium'>
@@ -101,7 +130,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
             </div>
             <button
               type="submit"
-              disabled={isSubmitting || !content.trim()}
+              disabled={isSubmitting || !content.trim() || isTooLong}
               className="self-end bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-white px-6 py-2 rounded-md font-medium text-sm"
             >
               {isSubmitting ? "Sending..." : "Submit"}
