@@ -560,6 +560,19 @@ export const getCourseData = async (subjectCode, courseCode, title) => {
             }
         }
 
+        // Try our internal sections endpoint first
+        try {
+            const localRes = await fetch(`/api/sections?subjectCode=${encodeURIComponent(subjectCode)}&courseCode=${encodeURIComponent(courseCode)}&term=${encodeURIComponent(CURRENT_SEMESTER_CODE)}`);
+            if (localRes.ok) {
+                const localData = await localRes.json();
+                if (localData && localData.Classes && localData.Classes.length > 0) {
+                    return localData;
+                }
+            }
+        } catch (localErr) {
+            console.warn('Internal sections fetch failed, falling back to purdue.io:', localErr);
+        }
+
         if (title.includes("'")) {
             title = title.replace(/'/g, "''");
         }

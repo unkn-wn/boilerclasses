@@ -88,7 +88,9 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
               firstLecture = courseLectures[0];
             }
 
-            updatedSelectedIds.add(firstLecture.id);
+            if (firstLecture) {
+              updatedSelectedIds.add(firstLecture.id);
+            }
 
             // delete course.initialPin;
           }
