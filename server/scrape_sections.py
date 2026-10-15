@@ -264,38 +264,73 @@ def parse_subject_sections(raw_sections, term_code):
 
     return final_courses
 
+def get_all_subjects(term_code):
+    with make_session() as session:
+        res = session.get(
+            BASE_URL + "classSearch/get_subject",
+            params={"searchTerm": "", "term": term_code, "offset": 1, "max": 500},
+            timeout=15
+        ).json()
+        return [row["code"] for row in res if row.get("code")]
+
+def scrape_subject_worker(term_code, subj):
+    with make_session() as session:
+        t0 = time.time()
+        raw_sections = get_sections_for_subject(session, term_code, subj)
+        parsed = parse_subject_sections(raw_sections, term_code)
+        elapsed = time.time() - t0
+        return subj, raw_sections, parsed, elapsed
+
 def main():
     parser = argparse.ArgumentParser(description="Scrape Purdue course sections")
     parser.add_argument("-term", default="202720", help="term code (default: 202720 for Spring 2027)")
-    parser.add_argument("-subjects", default="CS,MA,PHYS,ENGL,CHM", help="comma-separated subjects to scrape")
+    parser.add_argument("-subjects", default="all", help="comma-separated subjects to scrape, or 'all' for every subject")
+    parser.add_argument("-workers", type=int, default=4, help="number of concurrent worker threads (default: 4)")
     parser.add_argument("-outfile", default="../src/data/sections_202720.json", help="output file path")
+    parser.add_argument("--pretty", action="store_true", help="pretty print JSON output with 2 spaces")
     args = parser.parse_args()
 
-    subjects = [s.strip().upper() for s in args.subjects.split(",") if s.strip()]
-    print(f"Scraping sections for term {args.term}, subjects: {subjects}")
+    if args.subjects.lower() == "all" or not args.subjects.strip():
+        print(f"Fetching all available subjects for term {args.term}...")
+        subjects = get_all_subjects(args.term)
+        print(f"Found {len(subjects)} subjects across the university.")
+    else:
+        subjects = [s.strip().upper() for s in args.subjects.split(",") if s.strip()]
+
+    print(f"Scraping sections for term {args.term} using {args.workers} workers...")
+    t_start = time.time()
 
     all_courses = {}
     total_sections_count = 0
+    completed = 0
 
-    with make_session() as session:
-        for subj in subjects:
-            t0 = time.time()
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+        future_to_subj = {executor.submit(scrape_subject_worker, args.term, subj): subj for subj in subjects}
+        for future in as_completed(future_to_subj):
+            subj = future_to_subj[future]
+            completed += 1
             try:
-                raw_sections = get_sections_for_subject(session, args.term, subj)
-                parsed = parse_subject_sections(raw_sections, args.term)
+                subj, raw_sections, parsed, elapsed = future.result()
                 all_courses.update(parsed)
                 total_sections_count += len(raw_sections)
-                print(f"[{subj}] Scraped {len(raw_sections)} sections across {len(parsed)} courses in {time.time()-t0:.2f}s")
+                print(f"[{completed}/{len(subjects)}] {subj}: {len(raw_sections)} sections, {len(parsed)} courses ({elapsed:.2f}s)")
             except Exception as e:
-                print(f"[{subj}] Error scraping sections: {e}", file=sys.stderr)
+                print(f"[{completed}/{len(subjects)}] {subj} ERROR: {e}", file=sys.stderr)
 
     out_path = Path(args.outfile)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w") as f:
-        json.dump(all_courses, f, indent=2)
+        if args.pretty:
+            json.dump(all_courses, f, indent=2)
+        else:
+            json.dump(all_courses, f, separators=(',', ':'))
 
     file_size_kb = out_path.stat().st_size / 1024
-    print(f"\nDone! Saved {len(all_courses)} courses ({total_sections_count} sections) to {out_path} ({file_size_kb:.1f} KB)")
+    total_time = time.time() - t_start
+    print(f"\nCompleted in {total_time:.2f}s!")
+    print(f"Saved {len(all_courses)} courses ({total_sections_count} sections) to {out_path} ({file_size_kb:.1f} KB)")
 
 if __name__ == "__main__":
     main()
