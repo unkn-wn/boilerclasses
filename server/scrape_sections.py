@@ -1,6 +1,7 @@
-"""
-Proof of Concept: Scrape current term course sections and meetings from Banner 9
-and output a compact, normalized schedule dataset for BoilerClasses.
+"""Scrape a term's section meetings from Banner into data/sections_<term code>.json.
+
+Output maps detailId -> sections. The data pipeline uploads it to S3 and
+src/pages/api/sections.js serves it from memory.
 """
 
 import argparse
@@ -8,329 +9,136 @@ import html
 import json
 import re
 import sys
-import time
 from pathlib import Path
+
 import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
-BASE_URL = "https://apps.mypurdue.purdue.edu/StudentRegistrationSsb/ssb/"
-PAGE_SIZE = 100
+from scrape import MIN_COURSES, get_sections, get_terms, lookup, make_session, request, term_name
 
-def make_session():
-    session = requests.Session()
-    session.headers["User-Agent"] = "boilerclasses-sections-scraper (+https://www.boilerclasses.com)"
-    retry = Retry(total=3, backoff_factor=1, allowed_methods={"GET", "POST"},
-                  status_forcelist=[429, 500, 502, 503, 504])
-    session.mount("https://", HTTPAdapter(max_retries=retry))
-    return session
+# PIN sections only feed the schedule's Indy/WL filter; course pages come from PWL.
+CAMPUSES = ["PWL", "PIN"]
+DAYS = [("monday", "Mon"), ("tuesday", "Tue"), ("wednesday", "Wed"), ("thursday", "Thu"),
+        ("friday", "Fri"), ("saturday", "Sat"), ("sunday", "Sun")]
 
-def calculate_iso_duration(start_time_str, end_time_str):
-    """
-    Given '0930' and '1120', returns 'PT1H50M'
-    """
-    if not start_time_str or not end_time_str or len(start_time_str) < 4 or len(end_time_str) < 4:
-        return "PT50M"
-    try:
-        sh, sm = int(start_time_str[:2]), int(start_time_str[2:])
-        eh, em = int(end_time_str[:2]), int(end_time_str[2:])
-        diff = (eh * 60 + em) - (sh * 60 + sm)
-        if diff <= 0:
-            return "PT50M"
-        hours = diff // 60
-        mins = diff % 60
-        if hours > 0 and mins > 0:
-            return f"PT{hours}H{mins}M"
-        elif hours > 0:
-            return f"PT{hours}H"
-        else:
-            return f"PT{mins}M"
-    except Exception:
-        return "PT50M"
 
-def format_start_time(time_str):
-    """
-    Converts '0930' to '09:30:00.0000000' for purdue.io OData compatibility
-    """
-    if not time_str or len(time_str) < 4:
-        return "00:00:00.0000000"
-    return f"{time_str[:2]}:{time_str[2:]}:00.0000000"
+def detail_id(section):
+    # Must match harmonize.py's detailId so files line up with course pages.
+    title = html.unescape(section["courseTitle"]).strip()
+    return re.sub(r"[^a-zA-Z0-9]", "", f"{section['subject']} {section['courseNumber']} {title}")
 
-def format_date(date_str):
-    """
-    Converts MM/DD/YYYY to YYYY-MM-DD
-    """
-    if not date_str:
-        return ""
-    parts = date_str.split("/")
-    if len(parts) == 3:
-        return f"{parts[2]}-{parts[0].zfill(2)}-{parts[1].zfill(2)}"
-    return date_str
 
-def extract_days_string(meeting_time):
-    day_map = [
-        ("Monday", "monday"),
-        ("Tuesday", "tuesday"),
-        ("Wednesday", "wednesday"),
-        ("Thursday", "thursday"),
-        ("Friday", "friday"),
-        ("Saturday", "saturday"),
-        ("Sunday", "sunday")
-    ]
-    days = [d_name for d_name, key in day_map if meeting_time.get(key)]
-    return ", ".join(days) if days else "None"
+def banner_time(value):
+    return f"{value[:2]}:{value[2:]}" if value else None
 
-def get_sections_for_subject(session, term_code, subject):
-    """
-    Fetches all sections for a subject. A fresh search session is required
-    because Banner caches parameters on the session.
-    """
-    init_res = session.post(
-        BASE_URL + "term/search?mode=search",
-        data={"term": term_code},
-        timeout=15
-    ).json()
-    
-    if "fwdURL" not in init_res:
-        raise ValueError("Banner did not initialize class search")
 
-    rows = []
-    seen_crns = set()
-    offset = 0
-    
-    while True:
-        page = session.get(
-            BASE_URL + "searchResults/searchResults",
-            params={
-                "txt_subject": subject,
-                "txt_term": term_code,
-                "pageOffset": offset,
-                "pageMaxSize": PAGE_SIZE,
-                "sortColumn": "courseNumber",
-                "sortDirection": "asc"
-            },
-            timeout=30
-        ).json()
+def banner_date(value):
+    month, day, year = value.split("/")
+    return f"{year}-{month}-{day}"
 
-        if page.get("success") is not True:
-            raise ValueError(f"Banner returned unsuccessful response for {subject}")
 
-        total = int(page.get("totalCount", 0))
-        data = page.get("data") or []
-
-        for sec in data:
-            crn = str(sec.get("courseReferenceNumber"))
-            if crn not in seen_crns:
-                seen_crns.add(crn)
-                rows.append(sec)
-
-        offset += len(data)
-        if offset >= total or not data:
-            break
-
-    return rows
-
-def parse_subject_sections(raw_sections, term_code):
-    """
-    Transforms raw Banner sections into courses with Classes, Sections, and Meetings.
-    Matches the schema expected by BoilerClasses calendar.js and scheduleManager.js.
-    """
-    courses_map = {}
-
-    for sec in raw_sections:
-        subj = sec.get("subject")
-        num = sec.get("courseNumber")
-        title = html.unescape(sec.get("courseTitle", "")).strip()
-        course_key = f"{subj} {num}"
-        crn = str(sec.get("courseReferenceNumber"))
-        sec_type = sec.get("scheduleTypeDescription") or "Lecture"
-        link_id = sec.get("linkIdentifier") or "DEFAULT"
-        class_id = f"{course_key}_{link_id}" if sec.get("isSectionLinked") else f"{course_key}_{crn}"
-
-        if course_key not in courses_map:
-            courses_map[course_key] = {
-                "Id": f"{subj}_{num}",
-                "Number": num,
-                "Subject": subj,
-                "Title": title,
-                "Classes": {}
-            }
-
-        course = courses_map[course_key]
-
-        if class_id not in course["Classes"]:
-            course["Classes"][class_id] = {
-                "Id": class_id,
-                "Sections": []
-            }
-
-        class_obj = course["Classes"][class_id]
-
-        # Extract faculty
-        instructors = []
-        for fac in (sec.get("faculty") or []):
-            if fac.get("displayName"):
-                instructors.append({
-                    "Id": str(fac.get("bannerId") or fac.get("emailAddress") or fac.get("displayName")),
-                    "Name": fac.get("displayName"),
-                    "Email": fac.get("emailAddress", "")
-                })
-
-        if not instructors:
-            instructors.append({
-                "Id": "tba",
-                "Name": "TBA",
-                "Email": ""
-            })
-
-        # Extract meetings
-        meetings = []
-        meetings_faculty = sec.get("meetingsFaculty") or []
-        for idx, mf in enumerate(meetings_faculty):
-            mt = mf.get("meetingTime")
-            if not mt:
-                continue
-
-            days_str = extract_days_string(mt)
-            start_time_raw = mt.get("beginTime")
-            end_time_raw = mt.get("endTime")
-            duration_iso = calculate_iso_duration(start_time_raw, end_time_raw)
-            start_time_iso = format_start_time(start_time_raw) if start_time_raw else None
-            
-            bldg_code = mt.get("building") or "TBA"
-            bldg_name = mt.get("buildingDescription") or "TBA"
-            room_num = mt.get("room") or "TBA"
-
-            meetings.append({
-                "Id": f"{crn}_{idx}",
-                "SectionId": crn,
-                "Type": sec_type,
-                "StartDate": format_date(mt.get("startDate")),
-                "EndDate": format_date(mt.get("endDate")),
-                "DaysOfWeek": days_str,
-                "StartTime": start_time_iso,
-                "Duration": duration_iso,
-                "Instructors": instructors,
-                "Room": {
-                    "Number": room_num,
-                    "Building": {
-                        "ShortCode": bldg_code,
-                        "Name": bldg_name
-                    }
-                }
-            })
-
-        # Fallback if no meetingFaculty was provided (e.g. async/arr)
-        if not meetings:
-            meetings.append({
-                "Id": f"{crn}_0",
-                "SectionId": crn,
-                "Type": sec_type,
-                "StartDate": "",
-                "EndDate": "",
-                "DaysOfWeek": "None",
-                "StartTime": None,
-                "Duration": "PT0M",
-                "Instructors": instructors,
-                "Room": {
-                    "Number": "TBA",
-                    "Building": {
-                        "ShortCode": "TBA",
-                        "Name": "TBA"
-                    }
-                }
-            })
-
-        class_obj["Sections"].append({
-            "Id": crn,
-            "Crn": crn,
-            "Type": sec_type,
-            "StartDate": format_date(sec.get("startDate")),
-            "EndDate": format_date(sec.get("endDate")),
-            "Meetings": meetings
+def format_section(section):
+    meetings = []
+    for entry in section.get("meetingsFaculty") or []:
+        time = entry["meetingTime"]
+        building, room = time.get("building"), time.get("room")
+        meetings.append({
+            "days": [abbr for day, abbr in DAYS if time[day]],
+            "start": banner_time(time["beginTime"]), "end": banner_time(time["endTime"]),
+            "startDate": banner_date(time["startDate"]), "endDate": banner_date(time["endDate"]),
+            "room": f"{building} {room}" if building and room else building or "TBA",
         })
+    faculty = section.get("faculty") or []
+    return {
+        "crn": int(section["courseReferenceNumber"]), "type": section["scheduleTypeDescription"],
+        "instructors": [person["displayName"].strip() for person in faculty if person.get("displayName")],
+        "meetings": meetings,
+    }
 
-    # Convert Classes dict to list
-    final_courses = {}
-    for key, c_data in courses_map.items():
-        classes_list = list(c_data["Classes"].values())
-        final_courses[key] = {
-            "Id": c_data["Id"],
-            "Number": c_data["Number"],
-            "Subject": c_data["Subject"],
-            "Title": c_data["Title"],
-            "Classes": classes_list
-        }
 
-    return final_courses
+def schedule_sections(session, term, rows):
+    """Format a course's sections, giving linked sections (a lecture and its labs) one classId."""
+    parent = {int(row["courseReferenceNumber"]): int(row["courseReferenceNumber"]) for row in rows}
 
-def get_all_subjects(term_code):
+    def find(crn):
+        while parent[crn] != crn:
+            crn = parent[crn]
+        return crn
+
+    links = {}
+    for row in rows:
+        if row.get("linkIdentifier"):
+            links.setdefault(row["linkIdentifier"], []).append(int(row["courseReferenceNumber"]))
+    for crns in links.values():
+        for crn in crns[1:]:
+            parent[find(crn)] = find(crns[0])
+    # A section's link identifier names its own group, not its partners (lecture A1
+    # pairs with labs A2), so ask Banner. A lecture's response already covers its labs.
+    queried = set()
+    for crns in links.values():
+        if find(crns[0]) in queried:
+            continue
+        linked = request(session, "searchResults/fetchLinkedSections",
+                         params={"term": term, "courseReferenceNumber": crns[0]}).json()["linkedData"]
+        for combination in linked:
+            for other in combination:
+                crn = int(other["courseReferenceNumber"])
+                if crn in parent:
+                    parent[find(crn)] = find(crns[0])
+        queried.add(find(crns[0]))
+    return [{**format_section(row), "classId": str(find(int(row["courseReferenceNumber"])))} for row in rows]
+
+
+def scrape_subject(term, subject):
+    rows = []
+    # Banner caches the first search per session, so each campus needs its own.
+    for campus in CAMPUSES:
+        with make_session() as session:
+            rows += get_sections(session, term, subject, campus)
+    courses = {}
+    for row in rows:
+        courses.setdefault(detail_id(row), []).append(row)
     with make_session() as session:
-        res = session.get(
-            BASE_URL + "classSearch/get_subject",
-            params={"searchTerm": "", "term": term_code, "offset": 1, "max": 500},
-            timeout=15
-        ).json()
-        return [row["code"] for row in res if row.get("code")]
+        request(session, "term/search", method="POST", params={"mode": "search"}, data={"term": term})
+        result = {}
+        for key, course_rows in courses.items():
+            try:
+                result[key] = schedule_sections(session, term, course_rows)
+            except (requests.RequestException, ValueError, KeyError) as error:
+                raise ValueError(f"{key}: {error}") from error
+        return result
 
-def scrape_subject_worker(term_code, subj):
-    with make_session() as session:
-        t0 = time.time()
-        raw_sections = get_sections_for_subject(session, term_code, subj)
-        parsed = parse_subject_sections(raw_sections, term_code)
-        elapsed = time.time() - t0
-        return subj, raw_sections, parsed, elapsed
 
 def main():
-    parser = argparse.ArgumentParser(description="Scrape Purdue course sections")
-    parser.add_argument("-term", default="202720", help="term code (default: 202720 for Spring 2027)")
-    parser.add_argument("-subjects", default="all", help="comma-separated subjects to scrape, or 'all' for every subject")
-    parser.add_argument("-workers", type=int, default=4, help="number of concurrent worker threads (default: 4)")
-    parser.add_argument("-outfile", default="../src/data/sections_202720.json", help="output file path")
-    parser.add_argument("--pretty", action="store_true", help="pretty print JSON output with 2 spaces")
+    parser = argparse.ArgumentParser(description="Scrape Purdue Banner section meetings")
+    parser.add_argument("-sem", default="Fall 2026", help="semester name (default: Fall 2026)")
+    parser.add_argument("-subjects", help="comma-separated subjects for a test scrape")
     args = parser.parse_args()
+    term = next((term for term in get_terms() if term_name(term) == args.sem), None)
+    if term is None:
+        raise ValueError(f"Term {args.sem!r} not found in Banner")
+    with make_session() as session:
+        subjects = [row["code"] for row in lookup(session, "get_subject", term=term["code"])]
+    if args.subjects is not None:
+        selected = list(dict.fromkeys(code.strip().upper() for code in args.subjects.split(",") if code.strip()))
+        if not selected or set(selected) - set(subjects):
+            raise ValueError(f"Invalid subjects: {args.subjects!r}")
+        subjects = selected
+    courses = {}
+    for subject in subjects:
+        print(f"Scraping {subject}...", flush=True)
+        courses.update(scrape_subject(term["code"], subject))
+    # The pipeline replaces the live file with this one, so never write a partial term.
+    if args.subjects is None and len(courses) < MIN_COURSES:
+        raise ValueError(f"Only {len(courses)} courses scraped for {args.sem}; refusing to write output")
+    output = Path(f"data/sections_{term['code']}.json")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(courses, separators=(",", ":"), sort_keys=True))
+    print(f"Wrote {len(courses)} courses ({sum(map(len, courses.values()))} sections) to {output}")
 
-    if args.subjects.lower() == "all" or not args.subjects.strip():
-        print(f"Fetching all available subjects for term {args.term}...")
-        subjects = get_all_subjects(args.term)
-        print(f"Found {len(subjects)} subjects across the university.")
-    else:
-        subjects = [s.strip().upper() for s in args.subjects.split(",") if s.strip()]
-
-    print(f"Scraping sections for term {args.term} using {args.workers} workers...")
-    t_start = time.time()
-
-    all_courses = {}
-    total_sections_count = 0
-    completed = 0
-
-    from concurrent.futures import ThreadPoolExecutor, as_completed
-
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        future_to_subj = {executor.submit(scrape_subject_worker, args.term, subj): subj for subj in subjects}
-        for future in as_completed(future_to_subj):
-            subj = future_to_subj[future]
-            completed += 1
-            try:
-                subj, raw_sections, parsed, elapsed = future.result()
-                all_courses.update(parsed)
-                total_sections_count += len(raw_sections)
-                print(f"[{completed}/{len(subjects)}] {subj}: {len(raw_sections)} sections, {len(parsed)} courses ({elapsed:.2f}s)")
-            except Exception as e:
-                print(f"[{completed}/{len(subjects)}] {subj} ERROR: {e}", file=sys.stderr)
-
-    out_path = Path(args.outfile)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_path, "w") as f:
-        if args.pretty:
-            json.dump(all_courses, f, indent=2)
-        else:
-            json.dump(all_courses, f, separators=(',', ':'))
-
-    file_size_kb = out_path.stat().st_size / 1024
-    total_time = time.time() - t_start
-    print(f"\nCompleted in {total_time:.2f}s!")
-    print(f"Saved {len(all_courses)} courses ({total_sections_count} sections) to {out_path} ({file_size_kb:.1f} KB)")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (requests.RequestException, ValueError, KeyError, TypeError) as error:
+        print(f"Section scrape failed: {error}", file=sys.stderr)
+        sys.exit(1)

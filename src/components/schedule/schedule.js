@@ -5,8 +5,8 @@ import { DAYS } from './utils/constants';
 import { useToast } from '@chakra-ui/react';
 
 
-import { getCourseData } from '../calendar';
-import ScheduleManager, { processLectureData } from './scheduleManager';
+import ScheduleManager from './scheduleManager';
+import { getSections, processLectureData } from '@/lib/sections';
 
 // Func to get course color index based on detailId
 export const getCourseColorIndex = (detailId, courseColorMap) => {
@@ -58,9 +58,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
 
       setIsLoading(true);
       try {
-        const coursePromises = courses.map(course =>
-          getCourseData(course.subjectCode, course.courseCode, course.title)
-        );
+        const coursePromises = courses.map(course => getSections(course.detailId));
 
         const rawResults = await Promise.all(coursePromises);
         // Pass the full courses array to processLectureData
@@ -88,9 +86,7 @@ const ScheduleCalendar = ({ courses = [], setIsLoading, setSelectedCourse, onCou
               firstLecture = courseLectures[0];
             }
 
-            if (firstLecture) {
-              updatedSelectedIds.add(firstLecture.id);
-            }
+            if (firstLecture) updatedSelectedIds.add(firstLecture.id);
 
             // delete course.initialPin;
           }
