@@ -10,6 +10,7 @@ import { IoMdOpen, IoMdTrash, IoIosClose, IoIosWarning, IoMdAdd } from "react-ic
 
 // Group internal imports
 import { useSearchFilters, CURRENT_SEMESTER } from '@/hooks/useSearchFilters';
+import { getBuildId } from '@/lib/localSearch';
 import { genedsOptions, labels, sanitizeDescription } from '@/lib/utils';
 import CourseSearch from '@/components/schedule/courseSearch';
 import ScheduleCalendar from '@/components/schedule/schedule';
@@ -25,7 +26,7 @@ const hasFullCourseData = course => course?.gpa != null && Array.isArray(course.
 
 const restoreFullCourse = async (course, signal) => {
   if (hasFullCourseData(course)) return course;
-  const params = new URLSearchParams({ detailId: course.detailId });
+  const params = new URLSearchParams({ detailId: course.detailId, v: getBuildId() });
   const response = await fetch(`/api/get?${params}`, { signal });
   if (!response.ok) throw new Error('Could not restore schedule course');
   const data = await response.json();
@@ -39,7 +40,7 @@ const Schedule = () => {
     updateFilter,
     courses,
     filters,
-  } = useSearchFilters();
+  } = useSearchFilters({ view: 'card' });
 
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [gpaGraph, setGpaGraph] = useState({
@@ -128,12 +129,14 @@ const Schedule = () => {
     highlightCourseDiv();
   }, [graphData]);
 
-  // handles when a user selects a course from the search dropdown
+  // handles when a user selects a course from the search dropdown; results are
+  // card summaries, so this fetches the full course (grades, gened)
   const handleOnSelect = (course) => {
     if (!course) return;
     updateFilter('searchTerm', '');
-    setSelectedCourse(course.value);
-    localStorage.setItem('selectedCourse', JSON.stringify(course.value));
+    restoreFullCourse(course.value)
+      .then(setSelectedCourse)
+      .catch(console.error);
   };
 
   // removes a course from the pinned courses list and clears selection if it was selected

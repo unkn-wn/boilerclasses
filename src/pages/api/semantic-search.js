@@ -1,3 +1,5 @@
+import { setCacheHeaders } from "../../lib/cache";
+
 const SEMANTIC_SEARCH_URL = process.env.SEMANTIC_SEARCH_URL || "http://127.0.0.1:5001/search";
 const SEMANTIC_TIMEOUT_MS = 10_000;
 
@@ -18,9 +20,13 @@ export default async function handler(req, res) {
     if (!response.ok) {
       throw new Error(`Semantic worker returned ${response.status}`);
     }
-    return res.status(200).json(await response.json());
+    const data = await response.json();
+    // The embeddings are baked into each build, so results only change on deploy.
+    setCacheHeaders(req, res);
+    return res.status(200).json(data);
   } catch (error) {
     console.error("Semantic search unavailable:", error.message);
+    res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ courses: { documents: [] }, available: false });
   } finally {
     clearTimeout(timeout);

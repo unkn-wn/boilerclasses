@@ -16,6 +16,7 @@ from embeddings import (
   load_embedding_artifact,
 )
 from schema import validate_courses
+from search_index import write_search_index
 
 
 def overall_gpa(course):
@@ -110,6 +111,9 @@ def main():
     if count % 500 == 0:
       pipe.execute()
   pipe.execute()
+
+  # Same courses, in the same order, for browser-side search (/api/search-index)
+  write_search_index(data, "search_index.json")
 
   client.execute_command("FT.CONFIG", "SET", "MINPREFIX", "1")
 

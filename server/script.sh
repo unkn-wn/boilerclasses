@@ -11,5 +11,7 @@ python3 push.py
 if redis-cli FT._LIST | grep -qx "idx:classes:vector"; then
   EMBEDDING_THREADS=1 python3 semantic_api.py &
 fi
+# Browser search index; builds in the background so the site isn't held up.
+node build_search_index.mjs &
 cd ..
 npm run start

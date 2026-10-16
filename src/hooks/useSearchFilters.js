@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, startTransition } from 'react';
 import { useRouter } from 'next/router';
 import terms from '@/data/terms.json';
+import { getBuildId, isLocalSearchReady, searchLocally, startLocalSearch } from '@/lib/localSearch';
 
 const DEFAULT_FILTERS = {
   subjects: [],
@@ -162,7 +163,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       return;
     }
 
-    const params = new URLSearchParams({
+    const query = {
       q: transformQuery(searchTerm),
       sub: subjects.map(x => x.value),
       term: semesters.map(x => x.value),
@@ -171,20 +172,24 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       cmax: credits.max,
       levels,
       sched: scheduleTypes,
-      maxlim: 100,
-      view
-    });
+    };
 
     try {
       const start = performance.now();
-      const response = await fetch(`/api/search?${params}`, { signal });
-      if (!response.ok) throw new Error(`Search failed: ${response.status}`);
-      const data = await response.json();
+      let documents;
+      if (view === 'card' && isLocalSearchReady()) {
+        documents = await searchLocally({ ...query, limit: 100 });
+      } else {
+        const params = new URLSearchParams({ ...query, maxlim: 100, view, v: getBuildId() });
+        const response = await fetch(`/api/search?${params}`, { signal });
+        if (!response.ok) throw new Error(`Search failed: ${response.status}`);
+        documents = (await response.json()).courses.documents;
+      }
       if (signal.aborted) return;
       const elapsed = Math.round(performance.now() - start);
 
       // Clean up descriptions
-      const processedCourses = data.courses.documents.map(item =>
+      const processedCourses = documents.map(item =>
         item.value.description.startsWith("<a href=")
           ? { ...item, value: { ...item.value, description: "No Description Available" } }
           : item
@@ -204,13 +209,13 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
 
     if (transformQuery(searchTerm).length < 2) return;
 
-    params.set('maxlim', 8);
+    const semanticParams = new URLSearchParams({ ...query, maxlim: 8, v: getBuildId() });
     setSemanticSearching(true);
 
     try {
       // Avoid starting expensive semantic work for every intermediate keystroke.
       await abortableDelay(SEMANTIC_SEARCH_DELAY_MS, signal);
-      const semanticResponse = await fetch(`/api/semantic-search?${params}`, { signal });
+      const semanticResponse = await fetch(`/api/semantic-search?${semanticParams}`, { signal });
       if (!semanticResponse.ok) throw new Error(`Semantic search failed: ${semanticResponse.status}`);
       const semanticData = await semanticResponse.json();
       if (signal.aborted) return;
@@ -244,6 +249,13 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       }
     }
   };
+
+  // Load browser-side search in the background once the page has settled.
+  useEffect(() => {
+    if (view !== 'card') return;
+    const idle = window.requestIdleCallback ?? (callback => setTimeout(callback, 1500));
+    idle(startLocalSearch, { timeout: 3000 });
+  }, [view]);
 
   // Search effect
   useEffect(() => {
