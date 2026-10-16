@@ -157,19 +157,6 @@ jobs:
           aws s3 cp classes_out.json "s3://$BUCKET/snapshots/$SHA.json"
           echo "$SHA" > ../data.lock
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      # embeddings are built here rather than in the deploy, which runs on a much slower VM.
-      # checks S3 instead of "changed" so a pinned snapshot without embeddings gets backfilled
-      - name: Publish embeddings
-        working-directory: server
-        run: |
-          SHA=$(cat ../data.lock)
-          if aws s3api head-object --bucket "$BUCKET" --key "snapshots/$SHA.embeddings.npy" >/dev/null 2>&1; then
-            echo "embeddings for $SHA already published"
-            exit 0
-          fi
-          python3 vectorize.py
-          aws s3 cp course_embeddings.manifest.json "s3://$BUCKET/snapshots/$SHA.embeddings.json" --content-type application/json
-          aws s3 cp course_embeddings.npy "s3://$BUCKET/snapshots/$SHA.embeddings.npy"
       # current term's sections (synced down with data/ above), pinned in sections.lock like data.lock
       - id: sections
         working-directory: server
@@ -210,8 +197,8 @@ jobs:
             echo "current snapshot missing from keep list, skipping cleanup"
             exit 0
           fi
-          aws s3 ls "s3://$BUCKET/snapshots/" | awk '{print $4}' | grep -E '^[0-9a-f]{64}(\.embeddings)?\.(json|npy)$' | while read -r f; do
-            if ! grep -qx "${f%%.*}" <<< "$KEEP"; then
+          aws s3 ls "s3://$BUCKET/snapshots/" | awk '{print $4}' | grep -E '^[0-9a-f]{64}\.json$' | while read -r f; do
+            if ! grep -qx "${f%.json}" <<< "$KEEP"; then
               aws s3 rm "s3://$BUCKET/snapshots/$f"
             fi
           done

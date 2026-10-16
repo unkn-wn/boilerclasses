@@ -5,6 +5,5 @@ node_modules
 server/data
 server/classes_out.json
 server/sections_out.json
-server/course_embeddings.npy
-server/course_embeddings.manifest.json
+server/embedding_cache
 *.log

@@ -7,10 +7,10 @@ until redis-cli ping >/dev/null 2>&1; do
 done
 
 python3 push.py
-# push.py skips the vector index when the snapshot has no matching embeddings
-if redis-cli FT._LIST | grep -qx "idx:classes:vector"; then
-  EMBEDDING_THREADS=1 python3 semantic_api.py &
-fi
+# Semantic search: the worker answers queries, and embed.py fills in course vectors
+# in the background (only courses whose text isn't cached yet hit the model)
+EMBEDDING_THREADS=1 python3 semantic_api.py &
+EMBEDDING_THREADS=2 nice -n 10 python3 embed.py &
 # Browser search index; builds in the background so the site isn't held up.
 node build_search_index.mjs &
 cd ..

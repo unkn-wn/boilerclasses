@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+__pycache__/
+*.py[cod]
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -42,4 +44,5 @@ server/.env
 .claude/
 
 server/**/*.json
-server/course_embeddings.npy
+
+server/embedding_cache/

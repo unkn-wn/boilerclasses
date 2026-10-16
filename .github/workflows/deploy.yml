@@ -52,7 +52,9 @@ jobs:
 
           run() {
             docker rm -f boilerclasses > /dev/null 2>&1 || true
-            docker run -d --name boilerclasses --restart unless-stopped -p 80:3000 "$1" > /dev/null
+            # the volume keeps the course embedding cache across deploys
+            docker run -d --name boilerclasses --restart unless-stopped -p 80:3000 \
+              -v boilerclasses-embeddings:/home/server/embedding_cache "$1" > /dev/null
           }
           # the site comes up once push.py has loaded the snapshot into redis
           healthy() {

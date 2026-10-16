@@ -7,13 +7,10 @@ import redis
 from tqdm import tqdm
 
 from embeddings import (
-  DEFAULT_MANIFEST_PATH,
-  DEFAULT_VECTORS_PATH,
   EMBEDDING_DIM,
   VECTOR_FIELD_NAME,
   VECTOR_INDEX_NAME,
   VECTOR_KEY_PREFIX,
-  load_embedding_artifact,
 )
 from schema import validate_courses
 from search_index import write_search_index
@@ -58,30 +55,14 @@ def overall_gpa(course):
           'totalSemCount': len(semesters)}
 
 
-def tag_values(values):
-  return ",".join(str(value) for value in values)
-
-
 def main():
   parser = argparse.ArgumentParser(description="Load course data into Redis")
   parser.add_argument("--data", "-data", default="classes_out.json", dest="infile")
-  parser.add_argument("--vectors", default=DEFAULT_VECTORS_PATH)
-  parser.add_argument("--manifest", default=DEFAULT_MANIFEST_PATH)
   args = parser.parse_args()
 
   with open(args.infile) as infile:
     data = json.load(infile)
   validate_courses(data, kind="harmonized", source=args.infile)
-
-  # Embeddings are optional: if they're missing or don't match this snapshot, load
-  # lexical search only rather than failing the whole site.
-  try:
-    embeddings = load_embedding_artifact(
-      data, args.infile, args.vectors, args.manifest
-    )
-  except (OSError, ValueError) as error:
-    print(f"Skipping semantic search: {error}")
-    embeddings = None
 
   client = redis.Redis(host="localhost", port=6379)
   client.ping()
@@ -93,21 +74,6 @@ def main():
     course["overallGpa"] = overall_gpa(course)
     course_key = f"classes:{count}"
     pipe.execute_command("JSON.SET", course_key, "$", json.dumps(course))
-    if embeddings is not None:
-      pipe.hset(
-        f"{VECTOR_KEY_PREFIX}{count}",
-        mapping={
-          "courseKey": course_key,
-          "subjectCode": course["subjectCode"],
-          "terms": tag_values(course["terms"]),
-          "gened": tag_values(course["gened"]),
-          "sched": tag_values(course["sched"]),
-          "courseCode": course["courseCode"],
-          "creditMin": course["credits"][0],
-          "creditMax": course["credits"][1],
-          VECTOR_FIELD_NAME: embeddings[count - 1].tobytes(),
-        },
-      )
     if count % 500 == 0:
       pipe.execute()
   pipe.execute()
@@ -131,10 +97,8 @@ def main():
               "$.gened[*]", "AS", "gened", "TAG",
               "$.sched[*]", "AS", "sched", "TAG")
 
-  if embeddings is None:
-    return
-
-  # This remains separate so the existing lexical schema and queries are unchanged.
+  # Kept separate so the lexical schema and queries are unchanged. It starts empty;
+  # embed.py fills it in the background, and hashes are indexed as they're added.
   client.execute_command(
     "FT.CREATE", VECTOR_INDEX_NAME,
     "ON", "HASH",
