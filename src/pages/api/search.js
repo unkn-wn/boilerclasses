@@ -1,4 +1,5 @@
 import { searchCourses } from "../../lib/redis"
+import { setCacheHeaders } from "../../lib/cache"
 
 const cardFields = [
   'detailId', 'subjectCode', 'courseCode', 'title', 'credits',
@@ -38,6 +39,7 @@ export default async function handler(req, res) {
     const courses = req.query.view === 'card'
       ? { ...results, documents: results.documents.map(summarizeSearchDocument) }
       : results;
+    setCacheHeaders(req, res);
     if (profile) {
       const searched = performance.now();
       const body = JSON.stringify({ courses });

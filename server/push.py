@@ -9,6 +9,7 @@ import argparse
 import math
 from decimal import Decimal, ROUND_HALF_UP
 from schema import validate_courses
+from search_index import write_search_index
 # load_dotenv()
 
 
@@ -73,6 +74,9 @@ for classData in tqdm(data):
   key = "classes:" + str(count)
   r.json().set(key, Path.root_path(), classData)
   count += 1
+
+# Same courses, in the same order, for browser-side search (/api/search-index)
+write_search_index(data, "search_index.json")
 
 r.execute_command("FT.CONFIG", "SET", "MINPREFIX", "1")
 
