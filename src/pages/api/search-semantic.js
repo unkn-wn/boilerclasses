@@ -1,5 +1,7 @@
 import { setCacheHeaders } from "../../lib/cache";
 
+// Named under /api/search so the Cloudflare cache rule for /api/search* covers it.
+
 const SEMANTIC_SEARCH_URL = process.env.SEMANTIC_SEARCH_URL || "http://127.0.0.1:5001/search";
 const SEMANTIC_TIMEOUT_MS = 10_000;
 
@@ -21,8 +23,13 @@ export default async function handler(req, res) {
       throw new Error(`Semantic worker returned ${response.status}`);
     }
     const data = await response.json();
-    // The embeddings are baked into each build, so results only change on deploy.
-    setCacheHeaders(req, res);
+    if (data.ready) {
+      // Once every vector is loaded, results only change on deploy.
+      setCacheHeaders(req, res);
+    } else {
+      // Vectors are still loading after a deploy; don't let Cloudflare keep a partial answer.
+      res.setHeader("Cache-Control", "no-store");
+    }
     return res.status(200).json(data);
   } catch (error) {
     console.error("Semantic search unavailable:", error.message);

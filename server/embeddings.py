@@ -12,14 +12,25 @@ EMBEDDING_DIM = 384
 VECTOR_INDEX_NAME = "idx:classes:vector"
 VECTOR_FIELD_NAME = "embedding"
 VECTOR_KEY_PREFIX = "class-vectors:"
+# Set by embed.py once every vector is loaded; push.py's flushall clears it on restart.
+SEMANTIC_READY_KEY = "semantic:ready"
 QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 TEXT_TEMPLATE_VERSION = 1
 # On the VM this directory is the boilerclasses-embeddings volume, so it survives deploys
 DEFAULT_CACHE_PATH = os.getenv("EMBEDDING_CACHE", "embedding_cache/embeddings.sqlite3")
-# Cosine distance past which a match is dropped. Tuned for bge-small-en-v1.5 on 40
-# real and 20 nonsense queries: real queries' best matches fell between 0.18 and 0.33,
-# nonsense started at 0.35. Retune if the model or text template changes.
-SEMANTIC_MAX_DISTANCE = float(os.getenv("SEMANTIC_MAX_DISTANCE", "0.33"))
+# Cosine distance past which a match is dropped. Tuned for bge-small-en-v1.5 on 48
+# student-style queries with known answers and 20 nonsense ones: 0.33 dropped real
+# matches ("rock and roll", "how the internet works"), and nonsense made of made-up
+# words starts around 0.38. Retune if the model or text template changes.
+SEMANTIC_MAX_DISTANCE = float(os.getenv("SEMANTIC_MAX_DISTANCE", "0.36"))
+# Ranking nudges, subtracted from the distance. Many specialized courses sit about as
+# close to a query as the course most students mean, so commonly offered courses
+# (by semesters taught, scaled 0-1) and 100-200 level courses win near-ties.
+# Same tuning set: 34/48 to 40/48 right answers in the top 8.
+POPULARITY_WEIGHT = 0.03
+INTRO_WEIGHT = 0.01
+# Nearest courses considered before re-ranking.
+SEMANTIC_CANDIDATES = 50
 
 
 @lru_cache(maxsize=1)
