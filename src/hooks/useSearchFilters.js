@@ -231,14 +231,15 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
         }
       }));
 
+      // Semantic matches go after courses matching every word but before partial
+      // matches, which are weaker guesses; a partial match they repeat moves up.
       setCourses(currentCourses => {
-        const existingIds = new Set(
-          currentCourses.map(course => course.value.detailId)
-        );
-        return [
-          ...currentCourses,
-          ...semanticCourses.filter(course => !existingIds.has(course.value.detailId)),
-        ];
+        const full = currentCourses.filter(course => !course.partial);
+        const fullIds = new Set(full.map(course => course.value.detailId));
+        const semantic = semanticCourses.filter(course => !fullIds.has(course.value.detailId));
+        const semanticIds = new Set(semantic.map(course => course.value.detailId));
+        const partial = currentCourses.filter(course => course.partial && !semanticIds.has(course.value.detailId));
+        return [...full, ...semantic, ...partial];
       });
     } catch (error) {
       if (!signal.aborted) {
