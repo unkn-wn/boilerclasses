@@ -4,6 +4,7 @@
 // (src/workers/search.worker.js); both use the rules below.
 import MiniSearch from 'minisearch';
 import { stemmer } from 'stemmer';
+import { orderByCourseCode } from './courseOrder.mjs';
 
 // RediSearch's default English stop words: ignored in documents and queries.
 const STOP_WORDS = new Set([
@@ -117,11 +118,12 @@ export function searchCourses(courses, index, params) {
     combineWith: 'AND',
     queries: words.map((word, i) => wordQuery(word, i === words.length - 1)),
   };
-  return index.search(query, {
+  const results = index.search(query, {
     boost: { fullTitle: 50 },
     // Query words are already split and lowercased above.
     tokenize: text => [text],
     processTerm: term => term,
     filter: result => matchesFilters(courses[result.id], filters),
-  }).slice(0, limit).map(result => toDocument(courses[result.id]));
+  }).map(result => toDocument(courses[result.id]));
+  return orderByCourseCode(results, params.q).slice(0, limit);
 }
