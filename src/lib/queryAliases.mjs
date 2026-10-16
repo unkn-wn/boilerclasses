@@ -12,6 +12,10 @@ const ABBREVIATIONS = {
   phys: 'physics', econ: 'economics', psych: 'psychology', comp: 'computer', sci: 'science',
   intro: 'introduction', gen: 'general', thermo: 'thermodynamics', mech: 'mechanics',
   ml: 'machine learning', ai: 'artificial intelligence', os: 'operating systems', db: 'database',
+  rl: 'reinforcement learning', dl: 'deep learning', nlp: 'natural language processing',
+  cv: 'computer vision', hci: 'human computer interaction', llm: 'large language models',
+  llms: 'large language models', nn: 'neural networks', nns: 'neural networks',
+  dsa: 'data structures algorithms', algo: 'algorithms', algos: 'algorithms', crypto: 'cryptography',
 };
 
 const TO_ROMAN = { 1: 'i', 2: 'ii', 3: 'iii', 4: 'iv' };
