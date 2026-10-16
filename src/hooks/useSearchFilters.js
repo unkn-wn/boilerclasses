@@ -279,7 +279,16 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
     const from = measureFrom.current;
     if (from === null) return;
     measureFrom.current = null;
-    requestAnimationFrame(() => setTimeout(() => setLatency(Math.round(performance.now() - from))));
+    // Background tabs don't paint frames; fall back to when the results were committed.
+    const committed = performance.now();
+    let shown = false;
+    const show = at => {
+      if (shown) return;
+      shown = true;
+      setLatency(Math.round(at - from));
+    };
+    requestAnimationFrame(() => setTimeout(() => show(performance.now())));
+    setTimeout(() => show(committed), 200);
   }, [courses]);
 
   // Load browser-side search as soon as the page is up; it downloads in the background.
