@@ -35,6 +35,9 @@ const INDEX_OPTIONS = {
 // prefix, words of 4+ letters allow one typo, and (as in Redis) only whole
 // words that aren't the last also match other words with the same stem.
 const wordQuery = (word, last) => {
+  // A single typed letter matches thousands of words; looking for it only at
+  // the start of title words keeps each keystroke fast and the results useful.
+  if (last && word.length === 1) return { queries: [word], prefix: true, fields: ['fullTitle'] };
   const options = [{ queries: [word], prefix: last }];
   if (/^\p{L}{4,}$/u.test(word)) options.push({ queries: [word], fuzzy: 1 });
   if (!last && isWord(word)) options.push({ queries: [STEM + stemmer(word)] });

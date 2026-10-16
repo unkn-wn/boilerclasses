@@ -37,6 +37,7 @@ export function startLocalSearch() {
   });
 }
 
+// Resolves with null when a newer search replaced this one.
 export function searchLocally(params) {
   return new Promise(resolve => {
     const id = ++nextId;
