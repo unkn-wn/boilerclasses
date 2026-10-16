@@ -234,10 +234,12 @@ const CourseCatalog = () => {
               )} */}
               <div className="text-opposite grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
                 {courses.length > 0 &&
-                  courses.map((course) => (
+                  courses.map((course, i) => (
                     <Card
                       key={course.id}
                       course={course.value}
+                      // 12 cards fill the first screen in the widest (3-column) layout
+                      belowFold={i >= 12}
                     />
                   ))}
               </div>
