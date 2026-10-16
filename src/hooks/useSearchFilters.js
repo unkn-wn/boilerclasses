@@ -31,7 +31,7 @@ export const CURRENT_SEMESTER_CODE = terms.current.code;
 
 // Storage key for filters
 const FILTERS_STORAGE_KEY = "boilerclasses_filters";
-const SEMANTIC_SEARCH_DELAY_MS = 200;
+const SEMANTIC_SEARCH_DELAY_MS = 100;
 
 const abortableDelay = (milliseconds, signal) => new Promise((resolve, reject) => {
   const handleAbort = () => {

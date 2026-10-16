@@ -8,6 +8,12 @@ from semantic_search import search
 app = Flask(__name__)
 MAX_RESULTS = 8
 MAX_QUERY_LENGTH = 500
+# Only what a result card shows, like /api/search?view=card. Full records carry
+# every instructor's grade history and are many times larger.
+CARD_FIELDS = (
+    "detailId", "subjectCode", "courseCode", "title", "credits",
+    "description", "instructor", "terms", "sched", "overallGpa",
+)
 
 
 def csv_values(name):
@@ -66,7 +72,7 @@ def semantic_search():
         {
             "id": match["courseKey"],
             "value": {
-                **match["course"],
+                **{field: match["course"].get(field) for field in CARD_FIELDS},
                 "semanticDistance": match["distance"],
             },
         }
@@ -77,4 +83,5 @@ def semantic_search():
 
 if __name__ == "__main__":
     load_embedding_model()
-    serve(app, host="127.0.0.1", port=5001, threads=1)
+    # each request embeds with one thread, so several can run at once on the VM's cores
+    serve(app, host="127.0.0.1", port=5001, threads=4)

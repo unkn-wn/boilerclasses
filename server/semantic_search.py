@@ -1,6 +1,7 @@
 import argparse
 import json
 import re
+from functools import lru_cache
 
 import redis
 
@@ -49,6 +50,12 @@ def build_filter_query(filters):
     return " ".join(clauses) or "*"
 
 
+@lru_cache(maxsize=1024)
+def query_vector(query):
+    # the same text with different filters (or a cache miss at Cloudflare) skips the model
+    return embed_query(query).tobytes()
+
+
 def search(query, limit, filters=None, client=None):
     if not query.strip():
         return []
@@ -56,7 +63,7 @@ def search(query, limit, filters=None, client=None):
         return []
 
     client = client or redis.Redis(host="localhost", port=6379)
-    query_vector = embed_query(query).tobytes()
+    vector = query_vector(query)
     filter_query = build_filter_query(filters)
     filter_expression = "*" if filter_query == "*" else f"({filter_query})"
     knn_query = (
@@ -67,7 +74,7 @@ def search(query, limit, filters=None, client=None):
         "FT.SEARCH",
         VECTOR_INDEX_NAME,
         knn_query,
-        "PARAMS", "2", "query_vector", query_vector,
+        "PARAMS", "2", "query_vector", vector,
         "SORTBY", "vector_score",
         "LIMIT", "0", str(limit),
         "RETURN", "2", "courseKey", "vector_score",
