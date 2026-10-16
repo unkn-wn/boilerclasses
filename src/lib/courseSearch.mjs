@@ -5,6 +5,7 @@
 import MiniSearch from 'minisearch';
 import { stemmer } from 'stemmer';
 import { orderByCourseCode } from './courseOrder.mjs';
+import { nicknameCourses, queryVariants } from './queryAliases.mjs';
 
 // RediSearch's default English stop words: ignored in documents and queries.
 const STOP_WORDS = new Set([
@@ -102,11 +103,11 @@ export function searchCourses(courses, index, params) {
     levels: params.levels.map(Number),
   };
   const limit = Number(params.limit) || 100;
-  const words = params.q.toLowerCase().split(/[\s\p{P}]+/u)
-    .filter(word => word && !STOP_WORDS.has(word));
   const toDocument = course => ({ id: course.id, value: course.value });
+  const splitWords = text => text.toLowerCase().split(/[\s\p{P}]+/u)
+    .filter(word => word && !STOP_WORDS.has(word));
 
-  if (!words.length) {
+  if (!splitWords(params.q).length) {
     const results = [];
     for (const course of courses) {
       if (matchesFilters(course, filters)) {
@@ -117,25 +118,43 @@ export function searchCourses(courses, index, params) {
     return results;
   }
 
-  const queries = words.map((word, i) => wordQuery(word, i === words.length - 1));
   const options = {
     boost: { fullTitle: 50 },
-    // Query words are already split and lowercased above.
+    // Query words are already split and lowercased.
     tokenize: text => [text],
     processTerm: term => term,
     filter: result => matchesFilters(courses[result.id], filters),
   };
-  const results = orderByCourseCode(
-    index.search({ combineWith: 'AND', queries }, options).map(result => toDocument(courses[result.id])),
-    params.q,
-  );
+  const search = (words, combineWith) => index.search({
+    combineWith,
+    queries: words.map((word, i) => wordQuery(word, i === words.length - 1)),
+  }, options);
+
+  // Nicknames ("calc 3") pin their courses first, then each way of reading the
+  // query ("calculus 3", "calculus iii", "calc 3") adds the courses matching all its words.
+  const pinnedCodes = nicknameCourses(params.q);
+  const results = courses
+    .filter(course => pinnedCodes.includes(`${course.value.subjectCode} ${course.value.courseCode}`) && matchesFilters(course, filters))
+    .sort((a, b) => pinnedCodes.indexOf(`${a.value.subjectCode} ${a.value.courseCode}`) - pinnedCodes.indexOf(`${b.value.subjectCode} ${b.value.courseCode}`))
+    .map(toDocument);
+  const found = new Set(results.map(document => document.id));
+  const variants = queryVariants(params.q);
+  for (const variant of variants) {
+    const matches = search(splitWords(variant), 'AND').map(result => toDocument(courses[result.id]));
+    for (const document of orderByCourseCode(matches, variant)) {
+      if (!found.has(document.id)) {
+        found.add(document.id);
+        results.push(document);
+      }
+    }
+  }
+  const words = splitWords(variants[0]);
   if (results.length >= PARTIAL_THRESHOLD || words.length < 2) return results.slice(0, limit);
 
   // Sentence-like searches ("machine learning for beginners") rarely match every
   // word, so add courses matching most of them. Rare words score far higher than
   // common ones like "classes", so the useful matches lead.
-  const found = new Set(results.map(document => document.id));
-  const partial = index.search({ combineWith: 'OR', queries }, options)
+  const partial = search(words, 'OR')
     .filter(result => !found.has(courses[result.id].id) && matchedWords(result, words) >= 2)
     .map(result => ({ ...toDocument(courses[result.id]), partial: true }));
   return [...results, ...partial].slice(0, limit);

@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback, startTransition } from 'react';
+import { useState, useEffect, useCallback, useRef, startTransition } from 'react';
 import { useRouter } from 'next/router';
 import terms from '@/data/terms.json';
 import { getBuildId, isLocalSearchReady, searchLocally, startLocalSearch } from '@/lib/localSearch';
+import { semanticQuery } from '@/lib/queryAliases.mjs';
 
 const DEFAULT_FILTERS = {
   subjects: [],
@@ -89,11 +90,16 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
   const [courses, setCourses] = useState([]);
   const [latency, setLatency] = useState(null);
+  // The latency shown is what the user waits: from their keystroke (or filter
+  // change) until the new results are on screen, not just the search itself.
+  const changedAt = useRef(null);
+  const measureFrom = useRef(null);
   const [semanticSearching, setSemanticSearching] = useState(false);
   const [initialized, setInitialized] = useState(false);
 
   // Update specific filter
   const updateFilter = useCallback((filterName, value) => {
+    changedAt.current = performance.now();
     setFilters(prevFilters => {
       if (Object.is(prevFilters[filterName], value)) return prevFilters;
       const newFilters = {
@@ -156,6 +162,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
   const search = async (signal) => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
     let wordMatches = 0;
+    const searchStartedAt = changedAt.current ?? performance.now();
     setSemanticSearching(false);
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
@@ -176,7 +183,6 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
     };
 
     try {
-      const start = performance.now();
       let documents;
       if (view === 'card' && isLocalSearchReady()) {
         documents = await searchLocally({ ...query, limit: 100 });
@@ -188,7 +194,6 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
         documents = (await response.json()).courses.documents;
       }
       if (signal.aborted) return;
-      const elapsed = Math.round(performance.now() - start);
 
       // Clean up descriptions
       const processedCourses = documents.map(item =>
@@ -199,10 +204,12 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
 
       const semanticPending = transformQuery(searchTerm).length >= 2;
       startTransition(() => {
-        setLatency(elapsed);
         // With no word matches, semantic results are still on the way; keep the
         // previous results up until they land instead of flashing an empty page.
-        if (processedCourses.length > 0 || !semanticPending) setCourses(processedCourses);
+        if (processedCourses.length > 0 || !semanticPending) {
+          measureFrom.current = searchStartedAt;
+          setCourses(processedCourses);
+        }
       });
       wordMatches = processedCourses.length;
     } catch (error) {
@@ -215,7 +222,8 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
 
     if (transformQuery(searchTerm).length < 2) return;
 
-    const semanticParams = new URLSearchParams({ ...query, maxlim: 8, v: getBuildId() });
+    // Expanded abbreviations embed far better: "calc iii" → "calculus iii".
+    const semanticParams = new URLSearchParams({ ...query, q: semanticQuery(query.q), maxlim: 8, v: getBuildId() });
     setSemanticSearching(true);
 
     try {
@@ -239,8 +247,12 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       // Semantic matches go after courses matching every word but before partial
       // matches, which are weaker guesses; a partial match they repeat moves up.
       setCourses(currentCourses => {
-        // The list on screen is the previous search's when nothing matched by word.
-        if (wordMatches === 0) return semanticCourses;
+        // The list on screen is the previous search's when nothing matched by word,
+        // so these are the first new results the user sees.
+        if (wordMatches === 0) {
+          measureFrom.current = searchStartedAt;
+          return semanticCourses;
+        }
         const full = currentCourses.filter(course => !course.partial);
         const fullIds = new Set(full.map(course => course.value.detailId));
         const semantic = semanticCourses.filter(course => !fullIds.has(course.value.detailId));
@@ -260,6 +272,15 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       }
     }
   };
+
+  // Once new results are committed, wait for the browser to paint them (the next
+  // frame, then a task after it) and show how long the user waited.
+  useEffect(() => {
+    const from = measureFrom.current;
+    if (from === null) return;
+    measureFrom.current = null;
+    requestAnimationFrame(() => setTimeout(() => setLatency(Math.round(performance.now() - from))));
+  }, [courses]);
 
   // Load browser-side search as soon as the page is up; it downloads in the background.
   useEffect(() => {
