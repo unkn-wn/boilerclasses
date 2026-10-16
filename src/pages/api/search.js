@@ -1,5 +1,6 @@
 import { searchCourses } from "../../lib/redis"
 import { setCacheHeaders } from "../../lib/cache"
+import { orderByCourseCode } from "../../lib/courseOrder.mjs"
 
 const cardFields = [
   'detailId', 'subjectCode', 'courseCode', 'title', 'credits',
@@ -35,7 +36,8 @@ export default async function handler(req, res) {
     const levels = param(req.query.levels);
     const sched = param(req.query.sched);
     const maxlim = param(req.query.maxlim, "100");
-    const results = await searchCourses(q, subjects.split(","), terms.split(","), gen.split(","), cmin, cmax, levels.split(","), sched.split(","), maxlim);
+    const found = await searchCourses(q, subjects.split(","), terms.split(","), gen.split(","), cmin, cmax, levels.split(","), sched.split(","), maxlim);
+    const results = { ...found, documents: orderByCourseCode(found.documents, q) };
     const courses = req.query.view === 'card'
       ? { ...results, documents: results.documents.map(summarizeSearchDocument) }
       : results;
