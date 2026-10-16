@@ -216,7 +216,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
     try {
       // Avoid starting expensive semantic work for every intermediate keystroke.
       await abortableDelay(SEMANTIC_SEARCH_DELAY_MS, signal);
-      const semanticResponse = await fetch(`/api/semantic-search?${semanticParams}`, { signal });
+      const semanticResponse = await fetch(`/api/search-semantic?${semanticParams}`, { signal });
       if (!semanticResponse.ok) throw new Error(`Semantic search failed: ${semanticResponse.status}`);
       const semanticData = await semanticResponse.json();
       if (signal.aborted) return;

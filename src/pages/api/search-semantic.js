@@ -1,5 +1,7 @@
 import { setCacheHeaders } from "../../lib/cache";
 
+// Named under /api/search so the Cloudflare cache rule for /api/search* covers it.
+
 const SEMANTIC_SEARCH_URL = process.env.SEMANTIC_SEARCH_URL || "http://127.0.0.1:5001/search";
 const SEMANTIC_TIMEOUT_MS = 10_000;
 

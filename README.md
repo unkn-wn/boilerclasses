@@ -52,7 +52,7 @@ This will expose the container's port `3000` to your machine. Navigate to `local
 
 ### Semantic search
 
-Lexical results show first, and semantic matches (`/api/semantic-search`) are appended below them. Each course's code, title, and description are embedded with `BAAI/bge-small-en-v1.5`. A query is embedded the same way, and the closest courses by cosine distance are returned, dropping any past `SEMANTIC_MAX_DISTANCE` in `server/embeddings.py` so nonsense queries can still show no results.
+Lexical results show first, and semantic matches (`/api/search-semantic`) are appended below them. Each course's code, title, and description are embedded with `BAAI/bge-small-en-v1.5`. A query is embedded the same way, and the closest courses by cosine distance are returned, dropping any past `SEMANTIC_MAX_DISTANCE` in `server/embeddings.py` so nonsense queries can still show no results.
 
 When the container starts, `embed.py` runs in the background while the site serves lexical search. Vectors are cached in SQLite by a hash of the embedded text, so only new or edited courses go through the model; grade, instructor, and term changes cost nothing. In production the cache lives on the `boilerclasses-embeddings` Docker volume, so it survives deploys. The first run embeds every course, and later deploys only embed what changed.
 
