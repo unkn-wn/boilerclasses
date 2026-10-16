@@ -15,6 +15,7 @@ import redis
 
 from embeddings import (
   DEFAULT_CACHE_PATH,
+  SEMANTIC_READY_KEY,
   VECTOR_FIELD_NAME,
   VECTOR_KEY_PREFIX,
   course_embedding_text,
@@ -93,6 +94,7 @@ def main():
     if count % 500 == 0:
       pipe.execute()
   pipe.execute()
+  client.set(SEMANTIC_READY_KEY, "1")
   print(f"Semantic search ready: loaded {len(courses)} vectors", flush=True)
 
 

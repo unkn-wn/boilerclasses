@@ -1,11 +1,13 @@
+import redis
 from flask import Flask, jsonify, request
 from waitress import serve
 
-from embeddings import SEMANTIC_MAX_DISTANCE, load_embedding_model
+from embeddings import SEMANTIC_MAX_DISTANCE, SEMANTIC_READY_KEY, load_embedding_model
 from semantic_search import search
 
 
 app = Flask(__name__)
+client = redis.Redis(host="localhost", port=6379)
 MAX_RESULTS = 8
 MAX_QUERY_LENGTH = 500
 # Only what a result card shows, like /api/search?view=card. Full records carry
@@ -61,11 +63,13 @@ def health():
 def semantic_search():
     query = request.args.get("q", "").strip()[:MAX_QUERY_LENGTH]
     limit = min(max(int_arg("maxlim", MAX_RESULTS), 1), MAX_RESULTS)
+    # While embed.py is still loading vectors, results are partial and must not be cached.
+    ready = client.exists(SEMANTIC_READY_KEY) == 1
     if len(query) < 2:
-        return jsonify({"courses": {"documents": []}})
+        return jsonify({"courses": {"documents": []}, "ready": ready})
 
     matches = [
-        match for match in search(query, limit, request_filters())
+        match for match in search(query, limit, request_filters(), client)
         if match["distance"] <= SEMANTIC_MAX_DISTANCE
     ]
     documents = [
@@ -78,7 +82,7 @@ def semantic_search():
         }
         for match in matches
     ]
-    return jsonify({"courses": {"documents": documents}})
+    return jsonify({"courses": {"documents": documents}, "ready": ready})
 
 
 if __name__ == "__main__":

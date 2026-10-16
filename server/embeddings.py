@@ -12,6 +12,8 @@ EMBEDDING_DIM = 384
 VECTOR_INDEX_NAME = "idx:classes:vector"
 VECTOR_FIELD_NAME = "embedding"
 VECTOR_KEY_PREFIX = "class-vectors:"
+# Set by embed.py once every vector is loaded; push.py's flushall clears it on restart.
+SEMANTIC_READY_KEY = "semantic:ready"
 QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 TEXT_TEMPLATE_VERSION = 1
 # On the VM this directory is the boilerclasses-embeddings volume, so it survives deploys
