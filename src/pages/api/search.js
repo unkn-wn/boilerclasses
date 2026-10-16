@@ -42,10 +42,15 @@ export default async function handler(req, res) {
     // nicknames first, then each variant ("calculus 3", "calc 3") in order.
     const pinned = nicknameCourses(q);
     const variants = q ? queryVariants(q) : [q];
-    const [pinnedFound, ...variantsFound] = await Promise.all([
+    const [pinnedFound, firstFound] = await Promise.all([
       pinned.length ? searchCodes(pinned, ...filters, maxlim) : { documents: [] },
-      ...variants.map(variant => searchCourses(variant, ...filters, maxlim)),
+      searchCourses(variants[0], ...filters, maxlim),
     ]);
+    // Other readings only matter when the first didn't fill the page
+    const full = pinnedFound.documents.length + firstFound.documents.length >= (Number(maxlim) || 100);
+    const variantsFound = [firstFound, ...(full ? [] : await Promise.all(
+      variants.slice(1).map(variant => searchCourses(variant, ...filters, maxlim)),
+    ))];
     const code = document => `${document.value.subjectCode} ${document.value.courseCode}`;
     const merged = [];
     const seen = new Set();

@@ -140,6 +140,8 @@ export function searchCourses(courses, index, params) {
   const found = new Set(results.map(document => document.id));
   const variants = queryVariants(params.q);
   for (const variant of variants) {
+    // Other readings only matter when earlier ones didn't fill the page
+    if (results.length >= limit) break;
     const matches = search(splitWords(variant), 'AND').map(result => toDocument(courses[result.id]));
     for (const document of orderByCourseCode(matches, variant)) {
       if (!found.has(document.id)) {
