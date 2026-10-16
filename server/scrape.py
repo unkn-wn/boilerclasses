@@ -18,6 +18,7 @@ BASE_URL = "https://apps.mypurdue.purdue.edu/StudentRegistrationSsb/ssb/"
 PAGE_SIZE = 100
 MIN_COURSES = 3500
 SPECIAL_SCHEDULES = {"Laboratory", "Laboratory Preparation", "Recitation", "Practice Study Observation"}
+CAMPUSES = {"PWL": "West Lafayette", "PIN": "Indianapolis and W Lafayette"}
 
 
 def make_session():
@@ -72,7 +73,7 @@ def get_terms():
     return sorted(terms, key=lambda term: term["code"], reverse=True)
 
 
-def get_sections(session, term, subject):
+def get_sections(session, term, subject, campus="PWL"):
     # Banner caches the first search. Use a fresh session per subject and keep
     # that session for its pages and details.
     result = request(session, "term/search", method="POST", params={"mode": "search"},
@@ -83,7 +84,7 @@ def get_sections(session, term, subject):
     expected = None
     while True:
         page = request(session, "searchResults/searchResults", params={
-            "txt_subject": subject, "txt_term": term, "txt_campus": "PWL",
+            "txt_subject": subject, "txt_term": term, "txt_campus": campus,
             "pageOffset": len(rows), "pageMaxSize": PAGE_SIZE,
             "sortColumn": "subjectDescription", "sortDirection": "asc",
         }).json()
@@ -98,7 +99,7 @@ def get_sections(session, term, subject):
             crn = section["courseReferenceNumber"]
             if section["subject"] != subject or section["term"] != term or crn in seen:
                 raise ValueError(f"Unexpected or repeated section in {subject}: {crn}")
-            if section["campusDescription"] != "West Lafayette":
+            if section["campusDescription"] != CAMPUSES[campus]:
                 raise ValueError(f"Unexpected campus in {subject}: {section['campusDescription']}")
             seen.add(crn)
         rows.extend(sections)

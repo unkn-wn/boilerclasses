@@ -4,6 +4,7 @@ node_modules
 .next
 server/data
 server/classes_out.json
+server/sections_out.json
 server/course_embeddings.npy
 server/course_embeddings.manifest.json
 *.log

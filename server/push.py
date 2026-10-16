@@ -72,38 +72,41 @@ def main():
     data = json.load(infile)
   validate_courses(data, kind="harmonized", source=args.infile)
 
-  # Validate before flushing Redis so a stale or missing artifact cannot destroy
-  # an otherwise healthy local dataset.
-  embeddings = load_embedding_artifact(
-    data, args.infile, args.vectors, args.manifest
-  )
+  # Embeddings are optional: if they're missing or don't match this snapshot, load
+  # lexical search only rather than failing the whole site.
+  try:
+    embeddings = load_embedding_artifact(
+      data, args.infile, args.vectors, args.manifest
+    )
+  except (OSError, ValueError) as error:
+    print(f"Skipping semantic search: {error}")
+    embeddings = None
 
   client = redis.Redis(host="localhost", port=6379)
   client.ping()
   client.flushall()
 
-  print(f"Loading {len(data)} courses and precomputed embeddings into Redis...")
+  print(f"Loading {len(data)} courses into Redis...")
   pipe = client.pipeline(transaction=False)
-  for count, (course, embedding) in enumerate(
-    tqdm(zip(data, embeddings), total=len(data)), start=1
-  ):
+  for count, course in enumerate(tqdm(data), start=1):
     course["overallGpa"] = overall_gpa(course)
     course_key = f"classes:{count}"
     pipe.execute_command("JSON.SET", course_key, "$", json.dumps(course))
-    pipe.hset(
-      f"{VECTOR_KEY_PREFIX}{count}",
-      mapping={
-        "courseKey": course_key,
-        "subjectCode": course["subjectCode"],
-        "terms": tag_values(course["terms"]),
-        "gened": tag_values(course["gened"]),
-        "sched": tag_values(course["sched"]),
-        "courseCode": course["courseCode"],
-        "creditMin": course["credits"][0],
-        "creditMax": course["credits"][1],
-        VECTOR_FIELD_NAME: embedding.tobytes(),
-      },
-    )
+    if embeddings is not None:
+      pipe.hset(
+        f"{VECTOR_KEY_PREFIX}{count}",
+        mapping={
+          "courseKey": course_key,
+          "subjectCode": course["subjectCode"],
+          "terms": tag_values(course["terms"]),
+          "gened": tag_values(course["gened"]),
+          "sched": tag_values(course["sched"]),
+          "courseCode": course["courseCode"],
+          "creditMin": course["credits"][0],
+          "creditMax": course["credits"][1],
+          VECTOR_FIELD_NAME: embeddings[count - 1].tobytes(),
+        },
+      )
     if count % 500 == 0:
       pipe.execute()
   pipe.execute()
@@ -123,6 +126,9 @@ def main():
               "$.credits[1]", "as", "creditMax", "NUMERIC", 
               "$.gened[*]", "AS", "gened", "TAG",
               "$.sched[*]", "AS", "sched", "TAG")
+
+  if embeddings is None:
+    return
 
   # This remains separate so the existing lexical schema and queries are unchanged.
   client.execute_command(

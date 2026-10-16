@@ -18,6 +18,10 @@ ARTIFACT_VERSION = 1
 TEXT_TEMPLATE_VERSION = 1
 DEFAULT_VECTORS_PATH = "course_embeddings.npy"
 DEFAULT_MANIFEST_PATH = "course_embeddings.manifest.json"
+# Cosine distance past which a match is dropped. Tuned for bge-small-en-v1.5 on 40
+# real and 20 nonsense queries: real queries' best matches fell between 0.18 and 0.33,
+# nonsense started at 0.35. Retune if the model or text template changes.
+SEMANTIC_MAX_DISTANCE = float(os.getenv("SEMANTIC_MAX_DISTANCE", "0.33"))
 
 
 @lru_cache(maxsize=1)

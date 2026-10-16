@@ -33,10 +33,9 @@ This will expose the container's port `3000` to your machine. Navigate to `local
    ```
    pip3 install -r requirements.txt
    sh fetch_snapshot.sh
-   python3 vectorize.py
    ```
-   `fetch_snapshot.sh` downloads and verifies the data snapshot pinned in `data.lock`, and `vectorize.py` generates a checksummed embedding artifact.
-3. Start Redis Stack on port `6379`:
+   This downloads the data snapshot pinned in `data.lock` (the same data production serves) to `server/classes_out.json` and verifies its hash, along with the snapshot's course embeddings for semantic search. It also downloads the schedule's section times pinned in `sections.lock` to `server/sections_out.json`.
+3. Now, you want to spawn a Redis instance at the port `6379`. To do this, run the following command:
    ```
    docker run --name boilerclasses-redis --rm -d -p 6379:6379 redis/redis-stack-server:7.0.6-RC8
    ```
@@ -60,7 +59,9 @@ This will expose the container's port `3000` to your machine. Navigate to `local
 `server/vectorize.py` embeds each course with `BAAI/bge-small-en-v1.5`. It embeds
 the subject/course code, title, and description into a normalized 384-dimensional
 `FLOAT32` vector. The script writes `course_embeddings.npy` and a manifest that
-binds the vectors to the source JSON checksum and ordered course IDs.
+binds the vectors to the source JSON checksum and ordered course IDs. The data
+pipeline runs it and publishes both files next to the snapshot, so you only need
+to run it yourself when testing a local `classes_out.json`.
 
 `server/push.py` validates that artifact, stores each vector and its filter fields
 in a paired Redis hash, and creates the `idx:classes:vector` FLAT cosine index. It
@@ -74,8 +75,9 @@ python3 semantic_search.py "low level classes about operating systems and memory
 Use `--limit` to change the number of results. The website accesses the same search
 through a local background worker. The existing lexical request renders first;
 semantic matches are fetched separately and appended without delaying or
-reordering lexical results. If the worker is unavailable, lexical search continues
-to work normally.
+reordering lexical results. Matches farther than `SEMANTIC_MAX_DISTANCE` (in
+`embeddings.py`) are dropped, so nonsense queries can still show no results. If the
+worker or the embeddings are unavailable, lexical search continues to work normally.
 
    PS: if you look at the Dockerfile, you can see that these exact commands are run!
 
@@ -85,9 +87,10 @@ Data is refreshed by the **Data Pipeline** GitHub Action (`.github/workflows/dat
 1. `scrape.py` scrapes the newest 2 semesters from Purdue's catalog and uploads them to our [S3 bucket](https://s3.amazonaws.com/boilerclasses). Older semesters stay as they are on S3.
 2. `grades.py` converts the newest 5 semesters of grade CSVs from [BoilerGrades](https://github.com/eduxstad/boiler-grades) and uploads any that changed.
 3. `harmonize.py` combines everything on S3 into one JSON file and writes `src/data/terms.json` for the frontend.
-4. If the result changed, it's uploaded as `snapshots/<sha256>.json`, the hash is committed to `data.lock`, and the site is deployed. Only the snapshots from the last 10 `data.lock` commits are kept.
+4. If the result changed, it's uploaded as `snapshots/<sha256>.json`, the hash is committed to `data.lock`, and the site is deployed. `vectorize.py` embeds every snapshot that doesn't have embeddings yet and uploads them as `snapshots/<sha256>.embeddings.npy` and `.embeddings.json`. Only the files for the last 10 `data.lock` commits are kept.
+5. `scrape_sections.py` scrapes each term's section meeting times for the schedule. The current term's file is pinned the same way, in `sections.lock`, and served from memory by `/api/sections`.
 
-To roll back data, revert the `data.lock` commit. The Docker build fetches the pinned snapshot and generates its embeddings. When the container starts, `push.py` validates and loads both artifacts into Redis, then creates the lexical and vector indexes.
+To roll back data, revert the `data.lock` commit. The Docker build fetches the pinned snapshot and its embeddings. When the container starts, `push.py` validates and loads both artifacts into Redis, then creates the lexical and vector indexes.
 
 Manual runs take two optional inputs: `terms` (e.g. `["Fall 2026"]`, or `[]` to skip scraping) and `subjects` (e.g. `CS`, a quick test scrape that uploads nothing).
 

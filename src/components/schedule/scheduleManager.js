@@ -4,58 +4,6 @@ import HoverMenu from './HoverMenu';
 import CourseGroup from './CourseGroup';
 import { downloadICS } from '@/lib/ics';
 import { openPDFInNewTab } from '@/lib/pdf';  // Update import
-import { calculateEndTime, convertTo12HourFormat } from '@/lib/timeUtils';
-import { normalizeInstructorName } from './utils/scheduleUtils';
-
-export const processLectureData = (courseResults, courses) => {
-  const coursesArray = [];
-
-  courseResults.forEach((courseData, index) => {
-    if (!courseData?.Classes?.[0]?.Sections) return;
-
-    // Store the full course object for reference
-    const course = courses[index];
-    const courseName = `${course.subjectCode} ${course.courseCode}`;
-
-    courseData.Classes.forEach(classData => {
-      classData.Sections.forEach(section => {
-        section.Meetings.forEach(meeting => {
-          const days = meeting.DaysOfWeek.split(',').map(day => day.trim().slice(0, 3));
-          const startTime = meeting.StartTime == null ? '00:00' : meeting.StartTime.split('.')[0];
-          const [hours, minutes] = startTime.split(':').map(Number);
-          const duration = meeting.Duration.replace('PT', '');
-          const start = hours * 100 + minutes;
-          const end = calculateEndTime(startTime, duration);
-
-          // Normalize instructor names before adding to coursesArray
-          const normalizedInstructors = meeting.Instructors.map(i =>
-            normalizeInstructorName(i.Name, course.instructor)
-          );
-
-          coursesArray.push({
-            id: meeting.Id,
-            name: courseName,
-            classId: classData.Id,
-            type: meeting.Type,
-            start,
-            end,
-            day: days.includes("Non") ? ["None"] : days,
-            instructors: normalizedInstructors,
-            startTime: startTime === '00:00' ? "No Meeting Time" : convertTo12HourFormat(startTime), // if no time, set to No Meeting Time
-            room: `${meeting.Room.Building.ShortCode}` === 'TBA' ? 'TBA' : `${meeting.Room.Building.ShortCode} ${meeting.Room.Number}`, // if "TBA", set to TBA
-            duration,
-            crn: section.Crn,
-            courseDetails: course,
-            startDate: meeting.StartDate,
-            endDate: meeting.EndDate
-          });
-        });
-      });
-    });
-  });
-
-  return coursesArray;
-};
 
 const ScheduleManager = ({ lectures, selectedLectureIds, onLectureSelectionChange, setSelectedCourse, onCourseRemove, courseColorMap }) => {
   const [minCredits, setMinCredits] = useState(0);
