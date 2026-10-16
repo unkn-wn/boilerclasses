@@ -117,16 +117,35 @@ export function searchCourses(courses, index, params) {
     return results;
   }
 
-  const query = {
-    combineWith: 'AND',
-    queries: words.map((word, i) => wordQuery(word, i === words.length - 1)),
-  };
-  const results = index.search(query, {
+  const queries = words.map((word, i) => wordQuery(word, i === words.length - 1));
+  const options = {
     boost: { fullTitle: 50 },
     // Query words are already split and lowercased above.
     tokenize: text => [text],
     processTerm: term => term,
     filter: result => matchesFilters(courses[result.id], filters),
-  }).map(result => toDocument(courses[result.id]));
-  return orderByCourseCode(results, params.q).slice(0, limit);
+  };
+  const results = orderByCourseCode(
+    index.search({ combineWith: 'AND', queries }, options).map(result => toDocument(courses[result.id])),
+    params.q,
+  );
+  if (results.length >= PARTIAL_THRESHOLD || words.length < 2) return results.slice(0, limit);
+
+  // Sentence-like searches ("machine learning for beginners") rarely match every
+  // word, so add courses matching most of them. Rare words score far higher than
+  // common ones like "classes", so the useful matches lead.
+  const found = new Set(results.map(document => document.id));
+  const partial = index.search({ combineWith: 'OR', queries }, options)
+    .filter(result => !found.has(courses[result.id].id) && matchedWords(result, words) >= 2)
+    .map(result => ({ ...toDocument(courses[result.id]), partial: true }));
+  return [...results, ...partial].slice(0, limit);
+}
+
+// Below this many full matches, partial matches are added after them.
+const PARTIAL_THRESHOLD = 20;
+
+// How many distinct query words a result matched, counting a word's stem as the word.
+function matchedWords(result, words) {
+  const matched = new Set(result.queryTerms.map(term => term.startsWith(STEM) ? term.slice(1) : term));
+  return words.filter(word => matched.has(word) || matched.has(stemmer(word))).length;
 }
