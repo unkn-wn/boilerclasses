@@ -155,6 +155,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
   // Search function
   const search = async (signal) => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
+    let wordMatches = 0;
     setSemanticSearching(false);
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
@@ -196,10 +197,14 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
           : item
       );
 
+      const semanticPending = transformQuery(searchTerm).length >= 2;
       startTransition(() => {
         setLatency(elapsed);
-        setCourses(processedCourses);
+        // With no word matches, semantic results are still on the way; keep the
+        // previous results up until they land instead of flashing an empty page.
+        if (processedCourses.length > 0 || !semanticPending) setCourses(processedCourses);
       });
+      wordMatches = processedCourses.length;
     } catch (error) {
       if (signal.aborted) return;
       console.error('Search failed:', error);
@@ -234,6 +239,8 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       // Semantic matches go after courses matching every word but before partial
       // matches, which are weaker guesses; a partial match they repeat moves up.
       setCourses(currentCourses => {
+        // The list on screen is the previous search's when nothing matched by word.
+        if (wordMatches === 0) return semanticCourses;
         const full = currentCourses.filter(course => !course.partial);
         const fullIds = new Set(full.map(course => course.value.detailId));
         const semantic = semanticCourses.filter(course => !fullIds.has(course.value.detailId));
@@ -244,6 +251,8 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
     } catch (error) {
       if (!signal.aborted) {
         console.error('Semantic search failed:', error);
+        // Nothing matched by word either, so drop the previous search's results.
+        if (wordMatches === 0) setCourses([]);
       }
     } finally {
       if (!signal.aborted) {
