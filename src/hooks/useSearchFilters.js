@@ -31,6 +31,19 @@ export const CURRENT_SEMESTER_CODE = terms.current.code;
 
 // Storage key for filters
 const FILTERS_STORAGE_KEY = "boilerclasses_filters";
+const SEMANTIC_SEARCH_DELAY_MS = 100;
+
+const abortableDelay = (milliseconds, signal) => new Promise((resolve, reject) => {
+  const handleAbort = () => {
+    clearTimeout(timeout);
+    reject(new DOMException('Aborted', 'AbortError'));
+  };
+  const timeout = setTimeout(() => {
+    signal.removeEventListener('abort', handleAbort);
+    resolve();
+  }, milliseconds);
+  signal.addEventListener('abort', handleAbort, { once: true });
+});
 
 export const useSearchFilters = ({ view = 'full' } = {}) => {
   const router = useRouter();
@@ -76,6 +89,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
   const [filtersCollapsed, setFiltersCollapsed] = useState(true);
   const [courses, setCourses] = useState([]);
   const [latency, setLatency] = useState(null);
+  const [semanticSearching, setSemanticSearching] = useState(false);
   const [initialized, setInitialized] = useState(false);
 
   // Update specific filter
@@ -141,6 +155,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
   // Search function
   const search = async (signal) => {
     let { searchTerm, subjects, semesters, genEds, credits, levels, scheduleTypes } = filters;
+    setSemanticSearching(false);
 
     if (searchTerm && searchTerm.length <= 1 && subjects.length === 0 && semesters.length === 0 && genEds.length === 0) {
       setCourses([]);
@@ -190,6 +205,49 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       console.error('Search failed:', error);
       setCourses([]);
       setLatency(null);
+      return;
+    }
+
+    if (transformQuery(searchTerm).length < 2) return;
+
+    const semanticParams = new URLSearchParams({ ...query, maxlim: 8, v: getBuildId() });
+    setSemanticSearching(true);
+
+    try {
+      // Avoid starting expensive semantic work for every intermediate keystroke.
+      await abortableDelay(SEMANTIC_SEARCH_DELAY_MS, signal);
+      const semanticResponse = await fetch(`/api/semantic-search?${semanticParams}`, { signal });
+      if (!semanticResponse.ok) throw new Error(`Semantic search failed: ${semanticResponse.status}`);
+      const semanticData = await semanticResponse.json();
+      if (signal.aborted) return;
+
+      const semanticCourses = semanticData.courses.documents.map(item => ({
+        ...item,
+        value: {
+          ...item.value,
+          description: item.value.description.startsWith("<a href=")
+            ? "No Description Available"
+            : item.value.description
+        }
+      }));
+
+      setCourses(currentCourses => {
+        const existingIds = new Set(
+          currentCourses.map(course => course.value.detailId)
+        );
+        return [
+          ...currentCourses,
+          ...semanticCourses.filter(course => !existingIds.has(course.value.detailId)),
+        ];
+      });
+    } catch (error) {
+      if (!signal.aborted) {
+        console.error('Semantic search failed:', error);
+      }
+    } finally {
+      if (!signal.aborted) {
+        setSemanticSearching(false);
+      }
     }
   };
 
@@ -261,6 +319,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
     setFiltersCollapsed,
     courses,
     latency,
+    semanticSearching,
     transformQuery,
   };
 };

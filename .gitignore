@@ -44,3 +44,5 @@ server/.env
 .claude/
 
 server/**/*.json
+
+server/embedding_cache/
