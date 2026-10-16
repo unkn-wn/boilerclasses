@@ -9,6 +9,7 @@ restarts the container partway through picks up where it left off.
 """
 import argparse
 import json
+import math
 import time
 
 import redis
@@ -25,6 +26,14 @@ from embeddings import (
 )
 
 BATCH_SIZE = 256
+
+
+def semesters_taught(course):
+  # Same count as push.py's overall_gpa totalSemCount: semesters with grade data
+  gpa = course.get("gpa")
+  if not isinstance(gpa, dict):
+    return 0
+  return len({semester for instructor, records in gpa.items() if instructor for semester in records})
 
 
 def tag_values(values):
@@ -73,6 +82,11 @@ def main():
     vectors.update(rows)
     print(f"Embedded {offset + len(batch)}/{len(missing)} in {time.time() - start:.0f}s", flush=True)
 
+  # Ranking signals for semantic_search: how many semesters a course has been taught
+  # (log-scaled to 0-1) and whether it's 100-200 level
+  semesters = [semesters_taught(course) for course in courses]
+  most = math.log1p(max(semesters) or 1)
+
   # Same order as push.py, so class-vectors:N points at classes:N
   client = redis.Redis(host="localhost", port=6379)
   pipe = client.pipeline(transaction=False)
@@ -88,6 +102,8 @@ def main():
         "courseCode": course["courseCode"],
         "creditMin": course["credits"][0],
         "creditMax": course["credits"][1],
+        "popularity": math.log1p(semesters[count - 1]) / most,
+        "intro": int(course["courseCode"] < 30000),
         VECTOR_FIELD_NAME: vectors[h],
       },
     )

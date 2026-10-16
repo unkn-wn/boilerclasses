@@ -5,7 +5,15 @@ from functools import lru_cache
 
 import redis
 
-from embeddings import VECTOR_FIELD_NAME, VECTOR_INDEX_NAME, embed_query
+from embeddings import (
+    INTRO_WEIGHT,
+    POPULARITY_WEIGHT,
+    SEMANTIC_CANDIDATES,
+    SEMANTIC_MAX_DISTANCE,
+    VECTOR_FIELD_NAME,
+    VECTOR_INDEX_NAME,
+    embed_query,
+)
 
 
 DEFAULT_QUERY = "low level classes about operating systems and memory"
@@ -56,7 +64,7 @@ def query_vector(query):
     return embed_query(query).tobytes()
 
 
-def search(query, limit, filters=None, client=None):
+def search(query, limit, filters=None, client=None, max_distance=SEMANTIC_MAX_DISTANCE):
     if not query.strip():
         return []
     if limit < 1:
@@ -66,8 +74,9 @@ def search(query, limit, filters=None, client=None):
     vector = query_vector(query)
     filter_query = build_filter_query(filters)
     filter_expression = "*" if filter_query == "*" else f"({filter_query})"
+    pool = max(limit, SEMANTIC_CANDIDATES)
     knn_query = (
-        f"{filter_expression}=>[KNN {limit} @{VECTOR_FIELD_NAME} "
+        f"{filter_expression}=>[KNN {pool} @{VECTOR_FIELD_NAME} "
         "$query_vector AS vector_score]"
     )
     result = client.execute_command(
@@ -76,20 +85,28 @@ def search(query, limit, filters=None, client=None):
         knn_query,
         "PARAMS", "2", "query_vector", vector,
         "SORTBY", "vector_score",
-        "LIMIT", "0", str(limit),
-        "RETURN", "2", "courseKey", "vector_score",
+        "LIMIT", "0", str(pool),
+        "RETURN", "4", "courseKey", "vector_score", "popularity", "intro",
         "DIALECT", "2",
     )
 
-    rows = []
+    candidates = []
     for offset in range(1, len(result), 2):
         fields = result[offset + 1]
         row = {
             fields[index].decode("utf-8"): fields[index + 1]
             for index in range(0, len(fields), 2)
         }
-        course_key = row["courseKey"].decode("utf-8")
-        rows.append((course_key, float(row["vector_score"])))
+        distance = float(row["vector_score"])
+        if distance > max_distance:
+            continue
+        # see POPULARITY_WEIGHT in embeddings.py
+        score = (distance
+                 - POPULARITY_WEIGHT * float(row.get("popularity", 0))
+                 - INTRO_WEIGHT * float(row.get("intro", 0)))
+        candidates.append((score, row["courseKey"].decode("utf-8"), distance))
+    candidates.sort()
+    rows = [(course_key, distance) for _, course_key, distance in candidates[:limit]]
 
     pipe = client.pipeline(transaction=False)
     for course_key, _ in rows:

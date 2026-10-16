@@ -111,6 +111,8 @@ def main():
     "courseCode", "NUMERIC",
     "creditMin", "NUMERIC",
     "creditMax", "NUMERIC",
+    "popularity", "NUMERIC",
+    "intro", "NUMERIC",
     VECTOR_FIELD_NAME,
     "VECTOR", "FLAT", "6",
     "TYPE", "FLOAT32",

@@ -2,7 +2,7 @@ import redis
 from flask import Flask, jsonify, request
 from waitress import serve
 
-from embeddings import SEMANTIC_MAX_DISTANCE, SEMANTIC_READY_KEY, load_embedding_model
+from embeddings import SEMANTIC_READY_KEY, load_embedding_model
 from semantic_search import search
 
 
@@ -68,10 +68,7 @@ def semantic_search():
     if len(query) < 2:
         return jsonify({"courses": {"documents": []}, "ready": ready})
 
-    matches = [
-        match for match in search(query, limit, request_filters(), client)
-        if match["distance"] <= SEMANTIC_MAX_DISTANCE
-    ]
+    matches = search(query, limit, request_filters(), client)
     documents = [
         {
             "id": match["courseKey"],
