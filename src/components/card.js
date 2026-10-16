@@ -5,9 +5,6 @@ import OverallGpa from "./OverallGpa";
 import React from 'react';
 import Link from 'next/link'
 
-// Off-screen cards skip layout and paint until they scroll into view.
-const offscreen = { contentVisibility: 'auto', containIntrinsicSize: 'auto 280px' };
-
 const Card = ({ course }) => {
 
   const instructors = new Set();
@@ -28,7 +25,6 @@ const Card = ({ course }) => {
       <Link
         href={{ pathname: `/detail/${course.detailId}` }}
         passHref
-        style={offscreen}
         className="flex flex-col bg-background p-6 rounded-md shadow-md hover:scale-[1.02] transition hover:transition cursor-pointer">
 
           <h2 className="lg:text-lg md:text-lg font-bold text-primary">{course.subjectCode} {course.courseCode}: {course.title}</h2>
