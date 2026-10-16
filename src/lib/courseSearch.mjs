@@ -133,7 +133,7 @@ export function searchCourses(courses, index, params) {
   // Nicknames ("calc 3") pin their courses first, then each way of reading the
   // query ("calculus 3", "calculus iii", "calc 3") adds the courses matching all its words.
   const pinnedCodes = nicknameCourses(params.q);
-  const results = courses
+  const results = pinnedCodes.length === 0 ? [] : courses
     .filter(course => pinnedCodes.includes(`${course.value.subjectCode} ${course.value.courseCode}`) && matchesFilters(course, filters))
     .sort((a, b) => pinnedCodes.indexOf(`${a.value.subjectCode} ${a.value.courseCode}`) - pinnedCodes.indexOf(`${b.value.subjectCode} ${b.value.courseCode}`))
     .map(toDocument);
