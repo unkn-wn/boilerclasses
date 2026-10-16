@@ -4,6 +4,7 @@
 // (src/workers/search.worker.js); both use the rules below.
 import MiniSearch from 'minisearch';
 import { stemmer } from 'stemmer';
+import { orderByCourseCode } from './courseOrder.mjs';
 
 // RediSearch's default English stop words: ignored in documents and queries.
 const STOP_WORDS = new Set([
@@ -34,6 +35,9 @@ const INDEX_OPTIONS = {
 // prefix, words of 4+ letters allow one typo, and (as in Redis) only whole
 // words that aren't the last also match other words with the same stem.
 const wordQuery = (word, last) => {
+  // A single typed letter matches thousands of words; looking for it only at
+  // the start of title words keeps each keystroke fast and the results useful.
+  if (last && word.length === 1) return { queries: [word], prefix: true, fields: ['fullTitle'] };
   const options = [{ queries: [word], prefix: last }];
   if (/^\p{L}{4,}$/u.test(word)) options.push({ queries: [word], fuzzy: 1 });
   if (!last && isWord(word)) options.push({ queries: [STEM + stemmer(word)] });
@@ -117,11 +121,12 @@ export function searchCourses(courses, index, params) {
     combineWith: 'AND',
     queries: words.map((word, i) => wordQuery(word, i === words.length - 1)),
   };
-  return index.search(query, {
+  const results = index.search(query, {
     boost: { fullTitle: 50 },
     // Query words are already split and lowercased above.
     tokenize: text => [text],
     processTerm: term => term,
     filter: result => matchesFilters(courses[result.id], filters),
-  }).slice(0, limit).map(result => toDocument(courses[result.id]));
+  }).map(result => toDocument(courses[result.id]));
+  return orderByCourseCode(results, params.q).slice(0, limit);
 }

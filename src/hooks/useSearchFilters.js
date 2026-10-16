@@ -164,6 +164,7 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
       let documents;
       if (view === 'card' && isLocalSearchReady()) {
         documents = await searchLocally({ ...query, limit: 100 });
+        if (!documents) return;
       } else {
         const params = new URLSearchParams({ ...query, maxlim: 100, view, v: getBuildId() });
         const response = await fetch(`/api/search?${params}`, { signal });
@@ -192,18 +193,17 @@ export const useSearchFilters = ({ view = 'full' } = {}) => {
     }
   };
 
-  // Load browser-side search in the background once the page has settled.
+  // Load browser-side search as soon as the page is up; it downloads in the background.
   useEffect(() => {
-    if (view !== 'card') return;
-    const idle = window.requestIdleCallback ?? (callback => setTimeout(callback, 1500));
-    idle(startLocalSearch, { timeout: 3000 });
+    if (view === 'card') startLocalSearch();
   }, [view]);
 
   // Search effect
   useEffect(() => {
     if (!initialized) return;
     const controller = new AbortController();
-    const timeout = setTimeout(() => search(controller.signal), 25);
+    // Browser search is cheap and drops stale searches itself; only server requests wait.
+    const timeout = setTimeout(() => search(controller.signal), isLocalSearchReady() ? 0 : 25);
     return () => {
       clearTimeout(timeout);
       controller.abort();

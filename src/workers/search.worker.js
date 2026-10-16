@@ -2,6 +2,8 @@ import { decodeCourses, loadIndex, searchCourses } from '@/lib/courseSearch.mjs'
 
 let courses = [];
 let index = null;
+// Typing sends a search per keystroke; only the newest is worth running.
+let latest = null;
 
 const fetchPart = async (url, read) => {
   const response = await fetch(url);
@@ -23,6 +25,13 @@ self.onmessage = async ({ data }) => {
       self.postMessage({ type: 'failed', error: String(error) });
     }
   } else if (data.type === 'search') {
-    self.postMessage({ type: 'results', id: data.id, documents: searchCourses(courses, index, data.params) });
+    if (latest) self.postMessage({ type: 'results', id: latest.id, documents: null });
+    latest = data;
+    // Searches that arrive while this one waits replace it.
+    setTimeout(() => {
+      if (latest !== data) return;
+      latest = null;
+      self.postMessage({ type: 'results', id: data.id, documents: searchCourses(courses, index, data.params) });
+    });
   }
 };
