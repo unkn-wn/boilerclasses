@@ -1,3 +1,6 @@
+import json
+import re
+
 import redis
 from flask import Flask, jsonify, request
 from waitress import serve
@@ -16,6 +19,37 @@ CARD_FIELDS = (
     "detailId", "subjectCode", "courseCode", "title", "credits",
     "description", "instructor", "terms", "sched", "overallGpa",
 )
+
+
+# A search needs at least one real word from the catalog to get semantic matches, so
+# gibberish ("asdkjqwe", "lorem ipsum") returns nothing instead of the nearest vectors.
+# Stop words are Redis's defaults, ignored like they are in lexical search.
+WORD = re.compile(r"[a-z]+")
+STOP_WORDS = {
+    "a", "is", "the", "an", "and", "are", "as", "at", "be", "but", "by", "for",
+    "if", "in", "into", "it", "no", "not", "of", "on", "or", "such", "that",
+    "their", "then", "there", "these", "they", "this", "to", "was", "will", "with",
+}
+
+
+def load_vocabulary(path="classes_out.json"):
+    with open(path) as infile:
+        courses = json.load(infile)
+    words = set()
+    for course in courses:
+        words.update(WORD.findall(f"{course.get('title', '')} {course.get('description', '')}".lower()))
+    return words
+
+
+VOCABULARY = load_vocabulary()
+
+
+def has_catalog_word(query):
+    return any(
+        word in VOCABULARY
+        for word in WORD.findall(query.lower())
+        if len(word) >= 3 and word not in STOP_WORDS
+    )
 
 
 def csv_values(name):
@@ -65,7 +99,7 @@ def semantic_search():
     limit = min(max(int_arg("maxlim", MAX_RESULTS), 1), MAX_RESULTS)
     # While embed.py is still loading vectors, results are partial and must not be cached.
     ready = client.exists(SEMANTIC_READY_KEY) == 1
-    if len(query) < 2:
+    if len(query) < 2 or not has_catalog_word(query):
         return jsonify({"courses": {"documents": []}, "ready": ready})
 
     matches = search(query, limit, request_filters(), client)
